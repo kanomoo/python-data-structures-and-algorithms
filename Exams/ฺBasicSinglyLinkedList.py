@@ -26,6 +26,8 @@
 
 
 
+
+
 class Node:
     def __init__(self, data = None):
         self.data = data
@@ -49,3 +51,43 @@ if __name__ == "__main__":
     node.next = n2
 
     List.display()
+
+
+
+
+
+# class Node:
+#     def __init__(self, data):
+#         self.data = data
+#         self.next = None
+
+# class SLinkedList:
+#     def __init__(self):
+#         self.head = None
+
+#     def append(self, data):
+#         new_node = Node(data)
+#         if not self.head: # None มีค่าเป็น False
+#             self.head = new_node
+#             return
+        
+#         last_node = self.head
+#         while last_node.next:
+#             last_node = last_node.next
+#         last_node.next = new_node
+
+#     def display(self):
+#         nodes = []
+#         current = self.head
+#         while current:
+#             nodes.append(str(current.data))
+#             current = current.next
+#         print(" -> ".join(nodes) if nodes else "List is empty")
+
+# if __name__ == "__main__":
+#     my_list = SLinkedList()
+    
+#     for month in ["January", "February", "March", "April"]:
+#         my_list.append(month)
+
+#     my_list.display()
