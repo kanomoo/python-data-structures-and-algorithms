@@ -297,9 +297,12 @@ class LinkedList:
 
 if __name__ == "__main__":
     myList = LinkedList()
-    myList.add(75)
-    myList.add(74)
-    myList.search(75)
-    myList.insert(2, 1)
+    myList.add(96)
+    myList.add(42)
+    myList.add(18)
+    myList.add(23)
+    myList.add(77)
+    myList.search(18)
+    myList.insert(32, 2)
     myList.getdata()
 
