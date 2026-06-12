@@ -41,34 +41,82 @@
 
 
 
-class Queue:
+# class Queue:
+#     def __init__(self, limit):
+#         self.item = []
+#         self.limit = limit
+#         self.front = 0
+#         self.rear = -1
+#         self.size = 0
+
+#     def isEmpty(self):
+#         return self.size < 0
+    
+#     def enQueue(self, item):
+#         if self.size > self.limit: return
+#         self.item.append(item)
+#         self.rear += 1
+#         self.size += 1
+    
+#     def deQueue(self):
+#         if not self.isEmpty(): return
+#         self.item.pop(0)
+#         self.rear -= 1
+#         self.size -= 1
+
+#     def printQueue(self):
+#         for i in range(self.size): print(self.item[i], end = " ")
+#         print()
+
+# if __name__ == "__main__":
+#     queue = Queue(5)
+#     queue.deQueue()
+#     print(queue.isEmpty())
+
+
+class Queue():
     def __init__(self, limit):
-        self.item = []
+        self.items = []
         self.limit = limit
         self.front = 0
         self.rear = -1
         self.size = 0
 
-    def isEmpty(self):
-        return self.size < 0
+    def enqueue(self, item):
+        if self.size >= self.limit: print("Stack Overflow, Cannot enqueue", item)
+        else: 
+            self.items.append(item)
+            self.rear += 1
+            self.size += 1
     
-    def enQueue(self, item):
-        if self.size > self.limit: return
-        self.item.append(item)
-        self.rear += 1
-        self.size += 1
+    def dequeue(self):
+        if self.isempty(): print("Stack Underflow")
+        else: 
+            self.items.pop(0)
+            self.rear -= 1
+            self.size -= 1
     
-    def deQueue(self):
-        if not self.isEmpty(): return
-        self.item.pop(0)
-        self.rear -= 1
-        self.size -= 1
+    def isempty(self):
+        return self.size <= 0
 
-    def printQueue(self):
-        for i in range(self.size): print(self.item[i], end = " ")
+    def printqueue(self):
+        for i in range(self.size): print(self.items[i], end = " ")
         print()
 
 if __name__ == "__main__":
     queue = Queue(5)
-    queue.deQueue()
-    print(queue.isEmpty())
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    queue.enqueue(4)
+    queue.enqueue(5)
+    queue.enqueue(6)
+    queue.printqueue()
+    queue.dequeue()
+    queue.dequeue()
+    queue.dequeue()
+    queue.dequeue()
+    queue.dequeue()
+    queue.printqueue()
+    queue.dequeue()
+
