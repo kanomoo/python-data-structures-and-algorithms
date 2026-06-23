@@ -136,20 +136,20 @@ def inorder_traversal(root: Node):
         if isOperator(root.value):
             print(")", end = "")
 
-def preOrder(root: Node) -> str:
-    if root is not None:
-        
-
-def inOrder(root: Node) -> str:
+def preOrder(root: Node) -> str: # root left right
     pass
 
-def postOrder(root: Node) -> str:
+def inOrder(root: Node) -> str: # left root right
+    pass
+
+def postOrder(root: Node) -> str: # left right root
     pass
 
 
 if __name__ == "__main__":
     tree = constructingExpressionTree("ab+cde+**")
     inorder_traversal(tree)
+    preOrder(tree)
 
 
 
