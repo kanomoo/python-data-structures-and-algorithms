@@ -137,20 +137,28 @@ def inorder_traversal(root: Node):
             print(")", end = "")
 
 def preOrder(root: Node) -> str: # root left right
-    pass
+    if root is not None:
+        print(root.value, end = "")
+        preOrder(root.left)
+        preOrder(root.right)
 
 def inOrder(root: Node) -> str: # left root right
-    pass
+    if root is not None:
+        inOrder(root.left)
+        print(root.value, end = "")
+        inOrder(root.right)
 
 def postOrder(root: Node) -> str: # left right root
-    pass
+    if root is not None:
+        postOrder(root.left)
+        postOrder(root.right)
+        print(root.value, end = "")
 
 
 if __name__ == "__main__":
     tree = constructingExpressionTree("ab+cde+**")
     inorder_traversal(tree)
-    preOrder(tree)
-
-
-
+    print("\nPreOrder : ", end = ""); preOrder(tree)
+    print("\nInOrder : ", end = ""); inOrder(tree)
+    print("\nPostOrder : ", end = ""); postOrder(tree)
 
