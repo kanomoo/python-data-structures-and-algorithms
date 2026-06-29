@@ -152,4 +152,44 @@ class BinarySearchTree:
         self.root = None
     
     def insert(self, value):
-        pass
+        if self.root is None: self.root = Node(value)
+        else: self._insert_recursive(self.root, value)
+    
+    def _insert_recursive(self, current_node: Node, value):
+        if value < current_node.value:
+            if current_node.left is None: current_node.left = Node(value)
+            else: self._insert_recursive(current_node.left, value)
+        elif value > current_node.value:
+            if current_node.right is None: current_node.right = Node(value)
+            else: self._insert_recursive(current_node.right, value)
+        else: pass
+    
+    def delete(self, value):
+        self.root = self._delete_recursive(self.root, value)
+
+    def _delete_recursive(self, current_node: Node, value):
+        if current_node is None: return current_node
+
+        if value < current_node.value: current_node.left = self._delete_recursive(current_node, value)
+        elif value < current_node.value: current_node.right = self._delete_recursive(current_node, value)
+        else:
+            if current_node.right is None: return current_node.left
+            elif current_node.left is None:  return current_node.right
+        
+    
+
+def preOrder(root: Node):
+    if root is not None:
+        print(root.value, end = "")
+        preOrder(root.left)
+        preOrder(root.right)
+
+if __name__ == "__main__":
+    tree = BinarySearchTree()
+    tree.insert(6)
+    tree.insert(2)
+    tree.insert(1)
+    tree.insert(4)
+    tree.insert(3)
+    tree.insert(8)
+    preOrder(tree.root)
