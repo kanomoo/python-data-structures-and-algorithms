@@ -176,7 +176,15 @@ class BinarySearchTree:
             if current_node.right is None: return current_node.left
             elif current_node.left is None:  return current_node.right
         
+            temp_node: Node = self._min_value(current_node)
+            current_node.value = temp_node.value
+            current_node.right = self._delete_recursive(current_node.right, temp_node.value)
+        
+        return current_node
     
+    def _min_value(self, current_node: Node):
+        if current_node.left is None: return current_node.left
+        return self._min_value(current_node.left)
 
 def preOrder(root: Node):
     if root is not None:
