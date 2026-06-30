@@ -166,25 +166,24 @@ class BinarySearchTree:
     
     def delete(self, value):
         self.root = self._delete_recursive(self.root, value)
-
+    
     def _delete_recursive(self, current_node: Node, value):
         if current_node is None: return current_node
-
-        if value < current_node.value: current_node.left = self._delete_recursive(current_node, value)
-        elif value < current_node.value: current_node.right = self._delete_recursive(current_node, value)
+        if value < current_node.value: current_node.left = self._delete_recursive(current_node.left, value)
+        elif value > current_node.value: current_node.right = self._delete_recursive(current_node.right, value)
         else:
-            if current_node.right is None: return current_node.left
-            elif current_node.left is None:  return current_node.right
-        
-            temp_node: Node = self._min_value(current_node)
-            current_node.value = temp_node.value
-            current_node.right = self._delete_recursive(current_node.right, temp_node.value)
-        
+            if current_node.left is None: return current_node.right
+            elif current_node.right is None: return current_node.left
+
+            temp = self._min_value_node(current_node.right)
+            current_node.value = temp.value
+            current_node.right = self._delete_recursive(current_node.right, temp.value)
+
         return current_node
-    
-    def _min_value(self, current_node: Node):
-        if current_node.left is None: return current_node.left
-        return self._min_value(current_node.left)
+
+    def _min_value_node(self, current_node: Node):
+        if current_node.left is None : return current_node
+        return self._min_value_node(current_node.left)
 
 def preOrder(root: Node):
     if root is not None:
@@ -193,11 +192,23 @@ def preOrder(root: Node):
         preOrder(root.right)
 
 if __name__ == "__main__":
+    # tree = BinarySearchTree()
+    # tree.insert(6)
+    # tree.insert(2)
+    # tree.insert(1)
+    # tree.insert(4)
+    # tree.insert(3)
+    # tree.insert(8)
+    # tree.delete(4)
+    # preOrder(tree.root)
+
     tree = BinarySearchTree()
     tree.insert(6)
     tree.insert(2)
     tree.insert(1)
-    tree.insert(4)
+    tree.insert(5)
     tree.insert(3)
+    tree.insert(4)
     tree.insert(8)
+    tree.delete(2)
     preOrder(tree.root)
