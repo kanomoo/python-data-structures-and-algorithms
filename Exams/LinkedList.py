@@ -308,9 +308,9 @@ if __name__ == "__main__":
 
 
     # mylist = LinkedList()
-    # mylist.add(30)
-    # mylist.add(20)
     # mylist.add(10)
+    # mylist.insert(20, 1)
+    # mylist.insert(30, 2)
     # mylist.getdata()
 
 
@@ -373,12 +373,38 @@ if __name__ == "__main__":
     # mylist.getdata()
 
 
+    # mylist = LinkedList()
+    # mylist.add("C")
+    # mylist.add("B")
+    # mylist.add("A")
+
+    # mylist.remove("A")
+    # mylist.add("X")
+    # mylist.add("A")
+    # mylist.getdata()
+
+
+    # mylist = LinkedList()
+    # mylist.add("C")
+    # mylist.add("B")
+    # mylist.add("A")
+
+    # mylist.remove("A")
+    # mylist.add("X")
+    # mylist.add("A")
+    # mylist.getdata()
+
+
+
     mylist = LinkedList()
     mylist.add("C")
     mylist.add("B")
     mylist.add("A")
 
-    mylist.remove("A")
-    mylist.add("X")
-    mylist.add("A")
+    node = Node("X")
+    node.set_next(mylist.head.get_next())
+    mylist.head.set_next(node)
+    
     mylist.getdata()
+
+
