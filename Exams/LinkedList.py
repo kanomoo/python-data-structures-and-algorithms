@@ -233,7 +233,7 @@ class Node:
     def set_data(self, new_data):
         self.data = new_data
 
-    def get_next(self):
+    def get_next(self) -> Node:
         return self.next
 
     def set_next(self, new_next):
@@ -296,13 +296,89 @@ class LinkedList:
 
 
 if __name__ == "__main__":
-    myList = LinkedList()
-    myList.add(96)
-    myList.add(42)
-    myList.add(18)
-    myList.add(23)
-    myList.add(77)
-    myList.search(18)
-    myList.insert(32, 2)
-    myList.getdata()
+    # myList = LinkedList()
+    # myList.add(96)
+    # myList.add(42)
+    # myList.add(18)
+    # myList.add(23)
+    # myList.add(77)
+    # myList.search(18)
+    # myList.insert(32, 2)
+    # myList.getdata()mylist.head
 
+
+    # mylist = LinkedList()
+    # mylist.add(30)
+    # mylist.add(20)
+    # mylist.add(10)
+    # mylist.getdata()
+
+
+
+    # mylist = LinkedList()
+    # mylist.add("D")
+    # mylist.add("C")
+    # mylist.add("B")
+    # mylist.add("A")
+
+    # mylist.remove("B")
+    # mylist.insert("B", 2)
+    # mylist.getdata()
+
+
+
+    # mylist = LinkedList()
+    # mylist.add(3)
+    # mylist.add(1)
+    # mylist.add(2)
+    # mylist.add(1)
+
+    # mylist.remove(1)
+    # mylist.getdata()
+
+
+
+    # mylist = LinkedList()
+    # mylist.add(3)
+    # mylist.add(1)
+    # mylist.add(2)
+    # mylist.add(1)
+
+    # mylist.remove(1)
+    # mylist.remove(1)
+    # mylist.add(1)
+    # mylist.getdata()
+
+
+
+
+    # mylist = LinkedList()
+    # mylist.add("C")
+    # mylist.add("B")
+    # mylist.add("A")
+    
+    # mylist.head.next = mylist.head.get_next().get_next()
+    # mylist.getdata()
+
+
+
+    # mylist = LinkedList()
+    # mylist.add("D")
+    # mylist.add("C")
+    # mylist.add("B")
+    # mylist.add("A")
+    
+    # node = mylist.head
+    # node.set_next(node.get_next().get_next().get_next())
+    # mylist.getdata()
+
+
+    mylist = LinkedList()
+    mylist.add("C")
+    mylist.add("B")
+    mylist.add("A")
+
+    mylist.remove("A")
+    mylist.add("X")
+    mylist.add("A")
+    mylist.getdata()
