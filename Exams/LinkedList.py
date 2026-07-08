@@ -357,7 +357,7 @@ if __name__ == "__main__":
     # mylist.add("B")
     # mylist.add("A")
     
-    # mylist.head.next = mylist.head.get_next().get_next()
+    # mylist.head.next.next = mylist.head.get_next().get_next().get_next()
     # mylist.getdata()
 
 
@@ -368,8 +368,8 @@ if __name__ == "__main__":
     # mylist.add("B")
     # mylist.add("A")
     
-    # node = mylist.head
-    # node.set_next(node.get_next().get_next().get_next())
+    # current_node : Node = mylist.head
+    # current_node.next = current_node.next.next.next
     # mylist.getdata()
 
 
@@ -396,15 +396,38 @@ if __name__ == "__main__":
 
 
 
-    mylist = LinkedList()
-    mylist.add("C")
-    mylist.add("B")
-    mylist.add("A")
+    # mylist = LinkedList()
+    # mylist.add("C")
+    # mylist.add("B")
+    # mylist.add("A")
 
-    node = Node("X")
-    node.set_next(mylist.head.get_next())
-    mylist.head.set_next(node)
+    # node = Node("X")
+    # node.set_next(mylist.head.get_next())
+    # mylist.head.set_next(node)
     
+    # mylist.getdata()
+
+    # 6806021 612037
+    mylist = LinkedList()
+    mylist.add(6)
+    mylist.add(1)
+    mylist.insert(2, 1)
+    mylist.add(0)
+    mylist.insert(3, 3)
+    mylist.insert(7, 5)
+    
+    # 0 1 2 3 6 7
+
+    current_node = mylist.head
+    node1 = mylist.head
+    node2 = node1.get_next()
+    node3 = node2.get_next()
+    node4 = node3.get_next()
+    node5 = node4.get_next()
+    node6 = node5.get_next()
+
+    node6.set_next(node2)
+    node5.set_next(node1)
+    node1.set_next(None)
+    mylist.head = node6
     mylist.getdata()
-
-
