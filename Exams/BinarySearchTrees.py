@@ -232,10 +232,14 @@ class BinarySearchTree:
             
         return current_node
     
-    def _min_node_value(self, current_node: Node):
-        if current_node.left is None: return current_node
-        else: return self._min_node_value(current_node.left)
+    # def _min_node_value(self, current_node: Node):
+    #     if current_node.left is None: return current_node
+    #     else: return self._min_node_value(current_node.left)
 
+    def _min_node_value(self, node: Node):
+        current = node
+        while current.left is not None: current = current.left
+        return current
 
     def preOrder(self):
         self._preOrder_recursive(self.root)
