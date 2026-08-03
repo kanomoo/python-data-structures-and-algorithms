@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA-Wiki/04 - Priority Queues & Hashing/04.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap).md",
+                "file": "DSA-Wiki/01 - Foundations & Python OOP/01.2 - Python Review & Object-Oriented Programming (OOP).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap)"
+              "title": "01.2 - Python Review & Object-Oriented Programming (OOP)"
             }
           }
         ]
@@ -185,21 +185,21 @@
   },
   "active": "b73095b6a9367901",
   "lastOpenFiles": [
+    "DSA-Wiki/01 - Foundations & Python OOP/01.2 - Python Review & Object-Oriented Programming (OOP).md",
+    "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
+    "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.2 - Binary Search Trees (BST) & Insertion.md",
+    "DSA-Wiki/05 - Sorting & Graph Algorithms/05.3 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path).md",
+    "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.1 - Tree Terminology & Binary Trees.md",
+    "DSA-Wiki/04 - Priority Queues & Hashing/04.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap).md",
     "DSA-Wiki/04 - Priority Queues & Hashing/04.2 - Hash Tables & Collision Resolution Strategies.md",
     "DSA-Wiki/05 - Sorting & Graph Algorithms/05.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick).md",
-    "DSA-Wiki/04 - Priority Queues & Hashing/04.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap).md",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.3 - Binary Search Tree Removal (Node Deletion Cases).md",
-    "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.2 - Binary Search Trees (BST) & Insertion.md",
-    "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.1 - Tree Terminology & Binary Trees.md",
     "DSA-Wiki/02 - Linear Data Structures/02.3 - Queues & Circular Array Queues.md",
     "DSA-Wiki/02 - Linear Data Structures/02.2 - Stacks & Applications (Infix, Postfix, Parentheses).md",
     "DSA-Wiki/02 - Linear Data Structures/02.1 - Linked Lists (Singly, Doubly, Circular).md",
-    "DSA-Wiki/01 - Foundations & Python OOP/01.2 - Python Review & Object-Oriented Programming (OOP).md",
-    "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
     "DSA-Wiki/05 - Sorting & Graph Algorithms/05.2 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort).md",
     "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.1 - Comprehensive Exam Questions, Tracing & Python Solutions.md",
     "DSA-Wiki/06 - Exam Preparation & Coding Practice",
-    "DSA-Wiki/05 - Sorting & Graph Algorithms/05.3 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path).md",
     "DSA-Wiki/05 - Sorting & Graph Algorithms",
     "DSA-Wiki/04 - Priority Queues & Hashing",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)",
