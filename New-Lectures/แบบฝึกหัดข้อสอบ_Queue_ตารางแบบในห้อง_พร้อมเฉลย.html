@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบฝึกหัด Queue 8 ข้อ (ถอดแบบใบงานในห้อง พร้อมเฉลย)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #0f766e;
+    --primary-light: #14b8a6;
+    --secondary: #1e3a8a;
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --border-color: #cbd5e1;
+    --code-bg: #f0fdfa;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 30px 15px;
+  }
+
+  .container {
+    max-width: 950px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-color);
+  }
+
+  .header {
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+  }
+
+  .header h1 {
+    margin: 0 0 8px 0;
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .rules-box {
+    background: #f0fdfa;
+    border-left: 4px solid var(--primary);
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    font-size: 14px;
+  }
+
+  .rules-box h3 {
+    margin: 0 0 8px 0;
+    color: #115e59;
+    font-size: 16px;
+  }
+
+  .rules-box ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  th, td {
+    border: 1px solid var(--border-color);
+    padding: 12px 14px;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    color: var(--primary);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .col-no { width: 5%; text-align: center; font-weight: 700; }
+  .col-io { width: 30%; }
+  .col-cond { width: 30%; }
+  .col-sol { width: 35%; background-color: #f0fdf4; }
+
+  pre, code {
+    font-family: 'Fira Code', Consolas, Monaco, monospace;
+    font-size: 13px;
+  }
+
+  pre {
+    background: #ffffff;
+    border: 1px solid #99f6e4;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+    overflow-x: auto;
+  }
+
+  .explain-section {
+    margin-top: 35px;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+  }
+
+  .explain-section h2 {
+    color: var(--primary);
+    font-size: 18px;
+    margin-top: 0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; border: none; padding: 0; max-width: 100%; }
+    .print-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>แบบฝึกหัด: Queue ADT (ถอดแบบตารางแบบฝึกหัดในห้อง 8 ข้อ)</h1>
+    <div><strong>วิชา:</strong> Data Structures & Algorithms | <strong>หัวข้อ:</strong> Queue Manipulation</div>
+  </div>
+
+  <div class="rules-box">
+    <h3>📌 กฎเหล็กสำหรับการทำแบบฝึกหัด Queue:</h3>
+    <ol>
+      <li><strong>ห้ามเข้าถึง Index หรือ Private List ภายในตรงๆ</strong> (ห้าม <code>q.item[0]</code> หรือ <code>q[1]</code> เด็ดขาด)</li>
+      <li><strong>ใช้เฉพาะ Method ของคลาส Queue:</strong> <code>enQueue(item)</code>, <code>deQueue()</code>, <code>isEmpty()</code>, <code>size()</code>, <code>front()</code></li>
+      <li>หากมีโครงสร้างเสริม ให้ใช้ <code>Stack</code> หรือตัวแปรชั่วคราวเท่านั้น</li>
+      <li>กำหนดตอนเริ่มต้นให้ <code>q = Queue()</code> (หัวแถว Front อยู่ซ้าย, ท้ายแถว Rear อยู่ขวา: <code>[Front ... Rear]</code>)</li>
+      <li>หากโจทย์ซับซ้อนเกินกว่าจะใช้คำสั่งเดียว ให้เขียนลำดับคำสั่ง (Sequence of operations) ให้ถูกต้อง</li>
+    </ol>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="col-no">ข้อ</th>
+        <th class="col-io">โจทย์ (Input &rarr; Output)</th>
+        <th class="col-cond">เงื่อนไข (Condition)</th>
+        <th class="col-sol">เฉลยคำตอบ / โค้ด (Solution)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-no">1</td>
+        <td class="col-io">
+          ตอนเริ่มต้น ตัวแปร <code>q</code> ว่าง<br>
+          <code>[] -&gt; [10, 20, 30]</code><br>
+          <small>(Front: 10, Rear: 30)</small>
+        </td>
+        <td class="col-cond">เริ่มจาก Queue ว่าง ให้ใช้ <code>enQueue</code> สร้างผลลัพธ์นี้</td>
+        <td class="col-sol">
+          <pre><code>q.enQueue(10)
+q.enQueue(20)
+q.enQueue(30)</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">2</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>q</code> ข้อมูลคือ <code>1, 2, 3, 4</code><br>
+          <code>[1, 2, 3, 4] -&gt; [2, 3, 4]</code>
+        </td>
+        <td class="col-cond">ลบข้อมูลที่อยู่หน้าสุด (Front = 1) ออก 1 ตัว</td>
+        <td class="col-sol">
+          <pre><code>q.deQueue()</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">3</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>q</code> ข้อมูลคือ <code>A, B, C, D</code><br>
+          <code>[A, B, C, D] -&gt; [A, B, D, C]</code>
+        </td>
+        <td class="col-cond">สลับตำแหน่ง C และ D (ท้ายแถว) โดยใช้ <code>deQueue</code> กับ <code>enQueue</code></td>
+        <td class="col-sol">
+          <pre><code>q.enQueue(q.deQueue()) # หมุน A ไปท้าย
+q.enQueue(q.deQueue()) # หมุน B ไปท้าย
+c = q.deQueue()        # ดึง C ออก
+d = q.deQueue()        # ดึง D ออก
+q.enQueue(d)           # ใส่ D ก่อน
+q.enQueue(c)           # ใส่ C ตาม</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">4</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>q</code> ข้อมูลคือ <code>1, 2, 3, 4</code><br>
+          <code>[1, 2, 3, 4] -&gt; [1, 2, 3]</code>
+        </td>
+        <td class="col-cond">ลบข้อมูลท้ายแถว (Rear = 4) ออก โดยคงลำดับตัวอื่นไว้</td>
+        <td class="col-sol">
+          <pre><code>for _ in range(q.size() - 1):
+    q.enQueue(q.deQueue())
+q.deQueue() # ทิ้งตัวที่ 4</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">5</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>q</code> ข้อมูลคือ <code>1, 2, 1, 3</code><br>
+          <code>[1, 2, 1, 3] -&gt; [1, 2, 3]</code>
+        </td>
+        <td class="col-cond">ลบเลข <code>1</code> ตัวหลังออก (ตัวที่อยู่ระหว่าง 2 กับ 3)</td>
+        <td class="col-sol">
+          <pre><code>q.enQueue(q.deQueue()) # ส่ง 1 ไปท้าย
+q.enQueue(q.deQueue()) # ส่ง 2 ไปท้าย
+q.deQueue()            # ทิ้ง 1 ตัวที่สอง
+q.enQueue(q.deQueue()) # ส่ง 3 ไปท้าย</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">6</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>q</code> ข้อมูลคือ <code>A, B, C</code><br>
+          <code>[A, B, C] -&gt; [A, C]</code>
+        </td>
+        <td class="col-cond">ลบ B ที่อยู่ตรงกลางออก โดยห้ามเข้าถึง index</td>
+        <td class="col-sol">
+          <pre><code>q.enQueue(q.deQueue()) # ส่ง A ไปท้าย
+q.deQueue()            # ทิ้ง B
+q.enQueue(q.deQueue()) # ส่ง C ไปท้าย</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">7</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>q</code> ข้อมูลคือ <code>A, B, C, D</code><br>
+          <code>[A, B, C, D] -&gt; [D, C, B, A]</code>
+        </td>
+        <td class="col-cond">กลับลำดับข้อมูลใน Queue ทั้งหมด (Reverse Queue) ด้วย Stack <code>s</code></td>
+        <td class="col-sol">
+          <pre><code>while not q.isEmpty():
+    s.push(q.deQueue())
+
+while not s.is_empty():
+    q.enQueue(s.pop())</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">8</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>q</code> ข้อมูลคือ <code>A, B, C</code><br>
+          <code>[A, B, C] -&gt; [A, X, B, C]</code>
+        </td>
+        <td class="col-cond">เพิ่ม X เข้าไปใน Queue ระหว่าง A กับ B</td>
+        <td class="col-sol">
+          <pre><code>q.enQueue(q.deQueue()) # ส่ง A ไปท้าย
+q.enQueue('X')         # ใส่ X ต่อท้าย A
+q.enQueue(q.deQueue()) # ส่ง B ไปท้าย
+q.enQueue(q.deQueue()) # ส่ง C ไปท้าย</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="explain-section">
+    <h2>💡 ถอดรหัสเทคนิคการทำโจทย์ Queue ของอาจารย์</h2>
+    <p><strong>1. เทคนิค Rotation (หมุนคิว):</strong> เพียงใช้คำสั่ง <code>q.enQueue(q.deQueue())</code> เราสามารถเลื่อนสมาชิกตัวหน้าสุดไปต่อท้ายสุด เพื่อให้โหนดเป้าหมายที่อยู่ตรงกลางเลื่อนขึ้นมาที่หัวแถว (Front) ให้เราลบหรือแทรกได้ทันที</p>
+    <p><strong>2. การกลับลำดับ (Reverse):</strong> การเทจาก Queue (FIFO) ลง Stack (LIFO) แล้วเทกลับเข้า Queue จะได้ข้อมูลที่เรียงกลับด้านทันทีในเวลา $O(N)$</p>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ พิมพ์ / บันทึกเป็น PDF</button>
+
+</body>
+</html>

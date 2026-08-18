@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
+                "file": "New-Lectures/ข้อสอบกลางภาค_Data_Structures_Midterm_Exam.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01.1 - Introduction to Data Structures & Algorithm Analysis"
+              "title": "ข้อสอบกลางภาค_Data_Structures_Midterm_Exam"
             }
           }
         ]
@@ -187,12 +187,29 @@
   },
   "active": "b73095b6a9367901",
   "lastOpenFiles": [
+    "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.4 - Queue Practice Exam Problems & Solutions.md",
+    "New-Lectures/แบบฝึกหัดข้อสอบ_Queue_ตารางแบบในห้อง_พร้อมเฉลย.html",
+    "New-Lectures/แบบฝึกหัดข้อสอบ_Queue_ตารางแบบในห้อง_พร้อมเฉลย.md",
+    "New-Lectures/แบบฝึกหัดข้อสอบ_Stack_ตารางแบบในห้อง_พร้อมเฉลย.html",
+    "New-Lectures/แบบฝึกหัดข้อสอบ_Stack_ตารางแบบในห้อง_พร้อมเฉลย.md",
+    "New-Lectures/examp_linked_list_2.jpg",
+    "New-Lectures/examp_linked_list_1.jpg",
+    "New-Lectures/ข้อสอบกลางภาค_Data_Structures_Midterm_Exam copy.html",
+    "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.3 - Stack Practice Exam Problems & Solutions.md",
+    "New-Lectures/โจทย์_Stack_สไตล์ข้อสอบจริง_พร้อมเฉลย.md",
+    "Ch/ch4-Stack.py",
+    "Ch/ch3-Linked-List.py",
+    "Ch/ch--Linked-List.py",
+    "Ch/ch2-Linked-List.py",
+    "Ch",
+    "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.2 - Midterm Real Exam Mock & Solutions.md",
+    "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
+    "New-Lectures/ข้อสอบกลางภาค_Data_Structures_Midterm_Exam.html",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.2 - Binary Search Trees (BST) & Insertion.md",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.3 - Binary Search Tree Removal (Node Deletion Cases).md",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.1 - Tree Terminology & Binary Trees.md",
     "DSA-Wiki/02 - Linear Data Structures/02.3 - Queues & Circular Array Queues.md",
     "DSA-Wiki/02 - Linear Data Structures/02.2 - Stacks & Applications (Infix, Postfix, Parentheses).md",
-    "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
     "DSA-Wiki/00 - Overview & Index/Index.md",
     "DSA-Wiki/00 - Overview & Index/Glossary & Complexity Cheat Sheet.md",
     "ยังไม่ได้ตั้งชื่อ.canvas",
@@ -212,19 +229,6 @@
     "DSA-Wiki/05 - Sorting & Graph Algorithms/05.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick).md",
     "DSA-Wiki/05 - Sorting & Graph Algorithms/05.2 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort).md",
     "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.1 - Comprehensive Exam Questions, Tracing & Python Solutions.md",
-    "DSA-Wiki/06 - Exam Preparation & Coding Practice",
-    "DSA-Wiki/05 - Sorting & Graph Algorithms",
-    "DSA-Wiki/04 - Priority Queues & Hashing",
-    "DSA-Wiki/03 - Hierarchical Data Structures (Trees)",
-    "LLM-Wiki/05 - Evaluation, Security & Exam Practice/05.3 - Exam Preparation Guide & Q&A Examples.md",
-    "DSA-Wiki/02 - Linear Data Structures",
-    "DSA-Wiki/01 - Foundations & Python OOP",
-    "DSA-Wiki/00 - Overview & Index",
-    "DSA-Wiki",
-    "LLM-Wiki/05 - Evaluation, Security & Exam Practice/05.2 - LLM Security, Safety & Guardrails (Prompt Injection, Jailbreak).md",
-    "LLM-Wiki/05 - Evaluation, Security & Exam Practice/05.1 - Evaluation Metrics & Benchmarks (MMLU, GSM8K, BLEU, ROUGE).md",
-    "LLM-Wiki/03 - Inference, Acceleration & Optimization/03.1 - Decoding Strategies (Greedy, Sampling, Top-k, Top-p, Temperature).md",
-    "LLM-Wiki/01 - Foundations & Architecture/01.1 - Introduction to LLMs & NLP History.md",
-    "LLM-Wiki/00 - Overview & Index/Index.md"
+    "LLM-Wiki/05 - Evaluation, Security & Exam Practice/05.3 - Exam Preparation Guide & Q&A Examples.md"
   ]
 }

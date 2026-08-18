@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ข้อสอบกลางภาคฉบับจริง (Midterm Exam) Data Structures & Algorithms</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #3b82f6;
+    --secondary: #0d9488;
+    --accent: #d97706;
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --code-bg: #f1f5f9;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    line-height: 1.7;
+    margin: 0;
+    padding: 30px 15px;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-color);
+  }
+
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+  }
+
+  .header h1 {
+    margin: 0 0 10px 0;
+    color: var(--primary);
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  .header h2 {
+    margin: 0;
+    color: var(--secondary);
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .exam-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    background: #eff6ff;
+    padding: 16px 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-light);
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+
+  .meta-item strong { color: var(--primary); }
+
+  h2.part-title {
+    color: var(--primary);
+    background: #f1f5f9;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border-left: 5px solid var(--primary);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  h3.question-title {
+    color: #1e293b;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .score-badge {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  pre, code {
+    font-family: 'Fira Code', Consolas, Monaco, monospace;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    padding: 14px 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-size: 14px;
+  }
+
+  th, td {
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f8fafc;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #fbfcfe;
+  }
+
+  .solution-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+
+  .solution-title {
+    font-weight: 700;
+    color: #15803d;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  .tree-diagram {
+    font-family: 'Fira Code', monospace;
+    background: #ffffff;
+    border: 1px dashed #94a3b8;
+    padding: 15px;
+    border-radius: 6px;
+    display: block;
+    white-space: pre;
+    color: #0f172a;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; border: none; padding: 0; max-width: 100%; }
+    .print-btn { display: none; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>MIDTERM EXAMINATION: DATA STRUCTURES & ALGORITHMS</h1>
+    <h2>ข้อสอบกลางภาคฉบับเต็ม 6 ส่วน (อิงจาก exam.txt & ข้อสอบจริงใน Mid) พร้อมเฉลยละเอียด</h2>
+  </div>
+
+  <div class="exam-meta">
+    <div class="meta-item"><strong>คะแนนในข้อสอบ:</strong> 70 คะแนน (หาร 2 เหลือ 35 คะแนน)</div>
+    <div class="meta-item"><strong>เงื่อนไข:</strong> เปิดตำราได้ (Open Book / Open Notes)</div>
+    <div class="meta-item"><strong>ภาษา:</strong> คำถามภาษาอังกฤษ / ตอบไทยหรืออังกฤษได้</div>
+    <div class="meta-item"><strong>การเขียนตอบ:</strong> ปากกาสำหรับข้อเขียน / ดินสอสำหรับรูป Tree</div>
+  </div>
+
+  <!-- PART 1 -->
+  <h2 class="part-title">1. Singly Linked List (10 คะแนน)</h2>
+  
+  <h3 class="question-title">
+    <span>1.1 Write statements in main program (ข้อสอบจริงจาก Mid)</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question:</strong> Write the statements in main program when the instance variable <code>listA</code> with ordered inputs are <code>1, 3, 8, 7, 9</code> and has result outputs are <code>9, 5, 1, 3, 7, 2, 8</code> by using class <code>LinkedList</code>'s methods that we learned only.</p>
+  
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
+    <pre><code># Initial: 1 -> 3 -> 8 -> 7 -> 9
+listA.remove(9)       # ลบ 9 ท้ายออก -> 1 -> 3 -> 8 -> 7
+listA.remove(8)       # ลบ 8 ออก -> 1 -> 3 -> 7
+listA.insert(8, 3)     # แทรก 8 ที่ index 3 -> 1 -> 3 -> 7 -> 8
+listA.insert(2, 3)     # แทรก 2 ที่ index 3 -> 1 -> 3 -> 7 -> 2 -> 8
+listA.add(5)          # add แทรกที่ head -> 5 -> 1 -> 3 -> 7 -> 2 -> 8
+listA.add(9)          # add แทรกที่ head -> 9 -> 5 -> 1 -> 3 -> 7 -> 2 -> 8</code></pre>
+  </div>
+
+  <h3 class="question-title">
+    <span>1.2 Special cases when implementing Linked List (ข้อสอบจริงจาก Mid)</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question:</strong> When we implement Linked List, there are many special cases we must check. If the elements of a list are <code>34, 12, 52, 16, 15</code>, write at least 3 special cases by examples.</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
+    <ol>
+      <li><code>Find(99)</code> หรือ <code>Delete(99)</code>: ค้นหาหรือลบข้อมูลที่ไม่มีอยู่ใน List (Element Not Found) เพื่อป้องกัน <code>NoneType</code> error</li>
+      <li><code>Insert(88, 10)</code>: การแทรกที่ Index เกินขนาดความยาวของ List (Index Out of Bounds)</li>
+      <li><code>Delete(34)</code> หรือ <code>Insert(99, 0)</code>: การจัดการที่ตำแหน่ง Head Node (ต้องเปลี่ยน <code>self.head</code> โดยตรง)</li>
+    </ol>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="page-break"></div>
+  <h2 class="part-title">2. Stack & Queue (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>2.1 Delete elements using Queue (ข้อสอบจริงจาก Mid)</span>
+    <span class="score-badge">Score: 10</span>
+  </h3>
+  <p><strong>Question:</strong> If there is the exists Stack's instance variable <code>s</code> which has 5 elements <code>8, 4, 6, 9, 2</code> (where 8 is Bottom and 2 is Top) already. Write statement in main program to delete element <strong>4</strong> and <strong>9</strong> from the instance variable <code>s</code> with using the exists Queue's instance variable <code>q</code> and has result output are <code>8, 6, 2</code> (Bottom: 8, Top: 2) by using class <code>Stack</code>'s and <code>Queue</code>'s methods that we learned only.</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
+    <pre><code># 1. Pop ข้อมูลออกจาก Stack โดยคัดเอาเฉพาะ 2, 6, 8 ใส่ Queue q
+val = s.pop()    # 2
+q.enQueue(val)
+s.pop()          # 9 (ทิ้ง)
+val = s.pop()    # 6
+q.enQueue(val)
+s.pop()          # 4 (ทิ้ง)
+val = s.pop()    # 8
+q.enQueue(val)
+# ตอนนี้ q = [Front: 2, 6, 8 :Rear]
+
+# 2. ถ่ายข้อมูลกลับคืนเพื่อคงลำดับเดิม
+while not q.isEmpty():
+    s.push(q.deQueue())    # s = [Bottom: 2, 6, 8 :Top]
+
+while not s.is_empty():
+    q.enQueue(s.pop())     # q = [Front: 8, 6, 2 :Rear]
+
+while not q.isEmpty():
+    s.push(q.deQueue())    # s = [Bottom: 8, 6, 2 :Top] (ได้ 8, 6, 2 ตามเดิม)</code></pre>
+  </div>
+
+  <!-- PART 3 -->
+  <h2 class="part-title">3. Binary Search Tree (15 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>3.1 Recursive current_node step tracing table</span>
+    <span class="score-badge">Score: 8</span>
+  </h3>
+  <p><strong>Question:</strong> เขียนขั้นตอนการทำงานใน recursive <code>current_node</code> กับ <code>value</code> และประโยคคำสั่งที่ถูกทำ เมื่อเงื่อนไข <code>if..else</code> เป็นจริง เมื่อแทรกค่า <code>25</code> ลงใน BST ที่มีโหนด <code>50, 20, 70, 30</code>:</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 ตารางแสดงขั้นตอนการทำงาน (Recursive Tracing):</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Call ครั้งที่</th>
+          <th><code>current_node.value</code></th>
+          <th><code>value</code></th>
+          <th>เงื่อนไขที่ตรวจสอบ</th>
+          <th>ประโยคคำสั่งที่ถูกทำงาน (Executed Statement)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><code>50</code></td>
+          <td><code>25</code></td>
+          <td><code>25 &lt; 50</code> is <code>True</code> (left มีโหนด 20)</td>
+          <td><code>self._insert_recursive(current_node.left, 25)</code></td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><code>20</code></td>
+          <td><code>25</code></td>
+          <td><code>25 &gt; 20</code> is <code>True</code> (right มีโหนด 30)</td>
+          <td><code>self._insert_recursive(current_node.right, 25)</code></td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><code>30</code></td>
+          <td><code>25</code></td>
+          <td><code>25 &lt; 30</code> is <code>True</code> (left ว่าง)</td>
+          <td><code>current_node.left = Node(25)</code> <em>(สร้างโหนดสำเร็จ)</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="question-title">
+    <span>3.2 Reconstructing Tree from Traversals</span>
+    <span class="score-badge">Score: 7</span>
+  </h3>
+  <p><strong>Question:</strong> ให้ผลการเดินท่องไปใน Tree มาให้ แล้วเขียน Tree ออกมา<br>
+  - <strong>Pre-order:</strong> <code>60, 30, 15, 40, 35, 80, 70, 95</code><br>
+  - <strong>In-order:</strong> <code>15, 30, 35, 40, 60, 70, 80, 95</code></p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 รูป Binary Search Tree:</div>
+    <div class="tree-diagram">
+          60
+        /    \
+      30      80
+     /  \    /  \
+   15   40  70  95
+        /
+       35</div>
+    <p><strong>Post-order Traversal:</strong> <code>15, 35, 40, 30, 70, 95, 80, 60</code></p>
+  </div>
+
+  <!-- PART 4 -->
+  <div class="page-break"></div>
+  <h2 class="part-title">4. Expression Tree (15 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>4.1 Infix to Postfix with Stack Status</span>
+    <span class="score-badge">Score: 8</span>
+  </h3>
+  <p><strong>Question:</strong> ให้เขียนขั้นตอนเครื่องหมายเข้าออก Stack เพื่อแปลง Infix เป็น Postfix:<br>
+  <code>((A + B) * C - (D - E) / (F + G))</code></p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 Postfix Output Result:</div>
+    <pre><code>A B + C * D E - F G + / -</code></pre>
+  </div>
+
+  <h3 class="question-title">
+    <span>4.2 Expression Tree Drawing & Evaluation</span>
+    <span class="score-badge">Score: 7</span>
+  </h3>
+  <p><strong>Question:</strong> วาดภาพ Expression Tree และหาคำตอบจาก Postfix: <code>5 3 + 8 6 2 / - *</code></p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 รูป Expression Tree & ผลการคำนวณ:</div>
+    <div class="tree-diagram">
+            *
+        /       \
+       +         -
+      / \       / \
+     5   3     8   /
+                  / \
+                 6   2</div>
+    <p><strong>การคำนวณ:</strong> Subtree ซ้าย $= 5+3=8$, Subtree ขวา $= 8 - (6/2) = 5$, ราก $= 8 \times 5 =$ <strong style="color:#15803d; font-size:16px;">40</strong></p>
+  </div>
+
+  <!-- PART 5 & 6 -->
+  <h2 class="part-title">5. หลักการอะไรเอ่ย & 6. คำถามย่อย (20 คะแนน)</h2>
+  
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยสรุปประเด็นสำคัญ:</div>
+    <ul>
+      <li><strong>หลักการ LIFO:</strong> Last-In, First-Out ใน Stack (ตัวอย่าง: Function Call Stack, Undo/Redo)</li>
+      <li><strong>กฎของ BST:</strong> Left Child &lt; Parent &lt; Right Child ทุก Subtree</li>
+      <li><strong>Collision Resolution:</strong> <em>Chaining</em> ต่อ Linked List ในช่องเดิม, <em>Open Addressing (Linear Probing)</em> เลื่อนหาช่องว่างถัดไปใน Array</li>
+      <li><strong>Array vs Linked List Access:</strong> Array ใช้ $O(1)$ (Contiguous Memory), Singly Linked List ใช้ $O(n)$ (Sequential Traversal)</li>
+      <li><strong>Hash Indexing:</strong> <code>"cat"</code> เก็บ Index 4, <code>"dog"</code> เก็บ Index 6, <code>"bird"</code> ชนที่ Index 4</li>
+      <li><strong><code>[None]*7</code> vs <code>[]</code>:</strong> <code>[None]*7</code> จอง 7 ช่อง กำหนดค่าตาม Index ได้ทันที, <code>[]</code> ขนาด 0 ถ้าเข้าถึงด้วย index จะเกิด <code>IndexError</code></li>
+      <li><strong>Output ของฟังก์ชัน <code>mystery(5)</code>:</strong> ได้ <strong>15</strong> ($5 \times 3 \times 1$)</li>
+    </ul>
+  </div>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ พิมพ์ / บันทึกเป็น PDF</button>
+
+</body>
+</html>

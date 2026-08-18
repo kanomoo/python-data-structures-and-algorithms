@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบฝึกหัด Stack 8 ข้อ (ถอดแบบใบงานในห้อง พร้อมเฉลย)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1e3a8a;
+    --primary-light: #3b82f6;
+    --secondary: #0d9488;
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --border-color: #cbd5e1;
+    --code-bg: #f1f5f9;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 30px 15px;
+  }
+
+  .container {
+    max-width: 950px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-color);
+  }
+
+  .header {
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+  }
+
+  .header h1 {
+    margin: 0 0 8px 0;
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .rules-box {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    font-size: 14px;
+  }
+
+  .rules-box h3 {
+    margin: 0 0 8px 0;
+    color: #b45309;
+    font-size: 16px;
+  }
+
+  .rules-box ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  th, td {
+    border: 1px solid var(--border-color);
+    padding: 12px 14px;
+    vertical-align: top;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    color: var(--primary);
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .col-no { width: 5%; text-align: center; font-weight: 700; }
+  .col-io { width: 30%; }
+  .col-cond { width: 30%; }
+  .col-sol { width: 35%; background-color: #f0fdf4; }
+
+  pre, code {
+    font-family: 'Fira Code', Consolas, Monaco, monospace;
+    font-size: 13px;
+  }
+
+  pre {
+    background: #ffffff;
+    border: 1px solid #bbf7d0;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+    overflow-x: auto;
+  }
+
+  .explain-section {
+    margin-top: 35px;
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+  }
+
+  .explain-section h2 {
+    color: var(--primary);
+    font-size: 18px;
+    margin-top: 0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; border: none; padding: 0; max-width: 100%; }
+    .print-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>แบบฝึกหัด: Stack ADT (ถอดแบบตารางแบบฝึกหัดในห้อง 8 ข้อ)</h1>
+    <div><strong>วิชา:</strong> Data Structures & Algorithms | <strong>หัวข้อ:</strong> Stack Manipulation</div>
+  </div>
+
+  <div class="rules-box">
+    <h3>📌 กฎเหล็กสำหรับการทำแบบฝึกหัด Stack:</h3>
+    <ol>
+      <li><strong>ห้ามเข้าถึง Index หรือ Private List ภายในตรงๆ</strong> (ห้าม <code>s.items[0]</code> หรือ <code>s[1]</code> เด็ดขาด)</li>
+      <li><strong>ใช้เฉพาะ Method ของคลาส Stack:</strong> <code>push(item)</code>, <code>pop()</code>, <code>top()</code>, <code>is_empty()</code>, <code>size()</code></li>
+      <li>หากโจทย์มีโครงสร้างเสริม ให้ใช้ <code>Queue</code> (<code>enQueue</code>, <code>deQueue</code>, <code>isEmpty</code>) หรือตัวแปรชั่วคราวเท่านั้น</li>
+      <li>กำหนดตอนเริ่มต้นให้ <code>s = Stack()</code> (ก้น Stack อยู่ซ้าย, ยอด Stack / Top อยู่ขวา: <code>[Bottom ... Top]</code>)</li>
+      <li>หากโจทย์ซับซ้อนเกินกว่าจะใช้คำสั่งเดียว ให้เขียนลำดับคำสั่ง (Sequence of operations) ให้ถูกต้อง</li>
+    </ol>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="col-no">ข้อ</th>
+        <th class="col-io">โจทย์ (Input &rarr; Output)</th>
+        <th class="col-cond">เงื่อนไข (Condition)</th>
+        <th class="col-sol">เฉลยคำตอบ / โค้ด (Solution)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-no">1</td>
+        <td class="col-io">
+          ตอนเริ่มต้น ตัวแปร <code>s</code> ว่าง<br>
+          <code>[] -&gt; [10, 20, 30]</code><br>
+          <small>(Bottom: 10, Top: 30)</small>
+        </td>
+        <td class="col-cond">เริ่มจาก Stack ว่าง ให้ใช้ <code>push</code> สร้างผลลัพธ์นี้</td>
+        <td class="col-sol">
+          <pre><code>s.push(10)
+s.push(20)
+s.push(30)</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">2</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>s</code> ข้อมูลคือ <code>1, 2, 3, 4</code><br>
+          <code>[1, 2, 3, 4] -&gt; [1, 2, 3]</code>
+        </td>
+        <td class="col-cond">ลบข้อมูลที่อยู่บนสุด (Top = 4) ออก 1 ตัว</td>
+        <td class="col-sol">
+          <pre><code>s.pop()</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">3</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>s</code> ข้อมูลคือ <code>A, B, C, D</code><br>
+          <code>[A, B, C, D] -&gt; [A, B, D, C]</code>
+        </td>
+        <td class="col-cond">สลับตำแหน่ง C และ D โดยห้ามแก้ข้อมูลตรงๆ ให้ใช้ <code>pop</code> กับ <code>push</code> เท่านั้น</td>
+        <td class="col-sol">
+          <pre><code>d = s.pop()
+c = s.pop()
+s.push(d)
+s.push(c)</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">4</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>s</code> ข้อมูลคือ <code>1, 2, 3, 4</code><br>
+          <code>[1, 2, 3, 4] -&gt; [2, 3, 4]</code>
+        </td>
+        <td class="col-cond">ลบก้น Stack (Bottom = 1) ออก โดยใช้ Queue <code>q</code> ช่วย และคงลำดับเดิม</td>
+        <td class="col-sol">
+          <pre><code>while not s.is_empty():
+    q.enQueue(s.pop())
+
+s.push(q.deQueue()) # 4
+s.push(q.deQueue()) # 3
+s.push(q.deQueue()) # 2
+q.deQueue()         # ทิ้ง 1
+
+while not s.is_empty():
+    q.enQueue(s.pop())
+while not q.isEmpty():
+    s.push(q.deQueue())</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">5</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>s</code> ข้อมูลคือ <code>1, 2, 1, 3</code><br>
+          <code>[1, 2, 1, 3] -&gt; [1, 2, 3]</code>
+        </td>
+        <td class="col-cond">ลบเลข <code>1</code> ตัวบนสุดออก (ที่อยู่ระหว่าง 2 กับ 3)</td>
+        <td class="col-sol">
+          <pre><code>top_val = s.pop()   # ดึง 3 ออก
+s.pop()             # ดึง 1 ทิ้ง
+s.push(top_val)     # ใส่ 3 กลับคืน</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">6</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>s</code> ข้อมูลคือ <code>A, B, C</code><br>
+          <code>[A, B, C] -&gt; [A, C]</code>
+        </td>
+        <td class="col-cond">ลบ B ออก โดยการดึงผ่านตัวแปรชั่วคราว ห้ามใช้ index</td>
+        <td class="col-sol">
+          <pre><code>c = s.pop()
+s.pop()             # ทิ้ง B
+s.push(c)</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">7</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>s</code> ข้อมูลคือ <code>A, B, C, D</code><br>
+          <code>[A, B, C, D] -&gt; [A, D]</code>
+        </td>
+        <td class="col-cond">ลบ B และ C ออกจาก Stack</td>
+        <td class="col-sol">
+          <pre><code>d = s.pop()
+s.pop()             # ทิ้ง C
+s.pop()             # ทิ้ง B
+s.push(d)</code></pre>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-no">8</td>
+        <td class="col-io">
+          สมมติตอนเริ่มต้น ตัวแปร <code>s</code> ข้อมูลคือ <code>A, B, C</code><br>
+          <code>[A, B, C] -&gt; [A, B, X, C]</code>
+        </td>
+        <td class="col-cond">เพิ่ม X เข้าไปใน Stack ถัดจาก B</td>
+        <td class="col-sol">
+          <pre><code>c = s.pop()
+s.push('X')
+s.push(c)</code></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="explain-section">
+    <h2>💡 ถอดรหัสหลักการออกข้อสอบของอาจารย์ (Teacher's Exam Design Logic)</h2>
+    <p><strong>1. Input &rarr; Target State:</strong> อาจารย์จะดูความเข้าใจเรื่อง <em>LIFO (Last-In First-Out)</em> ว่าคุณรู้หรือไม่ว่าตัวไหนเข้าก่อน-หลัง และเวลาจะแทรกหรือลบตัวกลาง ต้องดึงตัวบนสุดออกไปพักไว้ที่ไหนก่อนเสมอ</p>
+    <p><strong>2. Sequence of Operations:</strong> ต้องเขียนคำสั่งทีละบรรทัด ห้ามข้ามขั้นตอน และเมื่อทำเสร็จ สภาพข้อมูลใน Stack จะต้องเรียงจากก้นขึ้นยอดตรงตามเป้าหมาย 100%</p>
+    <p><strong>3. การห้ามใช้ List Method:</strong> ห้าม <code>.append()</code> หรือ <code>[0]</code> ตรงๆ บน Stack instance เพื่อประเมินความเข้าใจเรื่อง ADT Encapsulation</p>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ พิมพ์ / บันทึกเป็น PDF</button>
+
+</body>
+</html>
