@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DSA-Wiki/01 - Foundations & Python OOP/01.2 - Python Review & Object-Oriented Programming (OOP).md",
+                "file": "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01.2 - Python Review & Object-Oriented Programming (OOP)"
+              "title": "01.1 - Introduction to Data Structures & Algorithm Analysis"
             }
           }
         ]
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "File explorer"
@@ -185,18 +187,29 @@
   },
   "active": "b73095b6a9367901",
   "lastOpenFiles": [
-    "DSA-Wiki/01 - Foundations & Python OOP/01.2 - Python Review & Object-Oriented Programming (OOP).md",
-    "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.2 - Binary Search Trees (BST) & Insertion.md",
-    "DSA-Wiki/05 - Sorting & Graph Algorithms/05.3 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path).md",
+    "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.3 - Binary Search Tree Removal (Node Deletion Cases).md",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.1 - Tree Terminology & Binary Trees.md",
+    "DSA-Wiki/02 - Linear Data Structures/02.3 - Queues & Circular Array Queues.md",
+    "DSA-Wiki/02 - Linear Data Structures/02.2 - Stacks & Applications (Infix, Postfix, Parentheses).md",
+    "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
+    "DSA-Wiki/00 - Overview & Index/Index.md",
+    "DSA-Wiki/00 - Overview & Index/Glossary & Complexity Cheat Sheet.md",
+    "ยังไม่ได้ตั้งชื่อ.canvas",
+    "2026-08-17.md",
+    "ยังไม่ได้ตั้งชื่อ.base",
+    "Exams/README.md",
+    "Lectures/Assignment 1 Linked List/Screenshot 2026-02-15 171703.png",
+    "Lectures/Assignment 1 Linked List/Screenshot 2026-02-15 171249.png",
+    "Lectures/Assignment 1 Linked List/README.md",
+    "Lectures/Assignment 1 Linked List/Assign 1.1_ Linked List (For students who do their homework incorrectly)/Screenshot 2026-02-15 171901.png",
+    "Lectures/Assignment 1 Linked List/Assign 1.1_ Linked List (For students who do their homework incorrectly)/Screenshot 2026-02-15 171848.png",
+    "DSA-Wiki/02 - Linear Data Structures/02.1 - Linked Lists (Singly, Doubly, Circular).md",
+    "DSA-Wiki/01 - Foundations & Python OOP/01.2 - Python Review & Object-Oriented Programming (OOP).md",
+    "DSA-Wiki/05 - Sorting & Graph Algorithms/05.3 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path).md",
     "DSA-Wiki/04 - Priority Queues & Hashing/04.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap).md",
     "DSA-Wiki/04 - Priority Queues & Hashing/04.2 - Hash Tables & Collision Resolution Strategies.md",
     "DSA-Wiki/05 - Sorting & Graph Algorithms/05.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick).md",
-    "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.3 - Binary Search Tree Removal (Node Deletion Cases).md",
-    "DSA-Wiki/02 - Linear Data Structures/02.3 - Queues & Circular Array Queues.md",
-    "DSA-Wiki/02 - Linear Data Structures/02.2 - Stacks & Applications (Infix, Postfix, Parentheses).md",
-    "DSA-Wiki/02 - Linear Data Structures/02.1 - Linked Lists (Singly, Doubly, Circular).md",
     "DSA-Wiki/05 - Sorting & Graph Algorithms/05.2 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort).md",
     "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.1 - Comprehensive Exam Questions, Tracing & Python Solutions.md",
     "DSA-Wiki/06 - Exam Preparation & Coding Practice",
@@ -206,15 +219,12 @@
     "LLM-Wiki/05 - Evaluation, Security & Exam Practice/05.3 - Exam Preparation Guide & Q&A Examples.md",
     "DSA-Wiki/02 - Linear Data Structures",
     "DSA-Wiki/01 - Foundations & Python OOP",
-    "DSA-Wiki/00 - Overview & Index/Glossary & Complexity Cheat Sheet.md",
-    "DSA-Wiki/00 - Overview & Index/Index.md",
     "DSA-Wiki/00 - Overview & Index",
     "DSA-Wiki",
     "LLM-Wiki/05 - Evaluation, Security & Exam Practice/05.2 - LLM Security, Safety & Guardrails (Prompt Injection, Jailbreak).md",
     "LLM-Wiki/05 - Evaluation, Security & Exam Practice/05.1 - Evaluation Metrics & Benchmarks (MMLU, GSM8K, BLEU, ROUGE).md",
     "LLM-Wiki/03 - Inference, Acceleration & Optimization/03.1 - Decoding Strategies (Greedy, Sampling, Top-k, Top-p, Temperature).md",
     "LLM-Wiki/01 - Foundations & Architecture/01.1 - Introduction to LLMs & NLP History.md",
-    "LLM-Wiki/00 - Overview & Index/Index.md",
-    "LLM-Wiki/00 - Overview & Index/Glossary & Cheat Sheet.md"
+    "LLM-Wiki/00 - Overview & Index/Index.md"
   ]
 }
