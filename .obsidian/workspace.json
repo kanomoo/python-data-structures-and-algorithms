@@ -187,6 +187,12 @@
   },
   "active": "b73095b6a9367901",
   "lastOpenFiles": [
+    "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.5 - Predicted Midterm Exam 2026 Comprehensive.md",
+    "New-Lectures/เก็งข้อสอบกลางภาค_2026_Data_Structures_Comprehensive.html",
+    "New-Lectures/เก็งข้อสอบกลางภาค_2026_Data_Structures_Comprehensive.md",
+    "Ch/ch5.1_Binary_Search.py",
+    "Ch/ch5_Tree.py",
+    "Ch/ch4.1_Queue.py",
     "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.4 - Queue Practice Exam Problems & Solutions.md",
     "New-Lectures/แบบฝึกหัดข้อสอบ_Queue_ตารางแบบในห้อง_พร้อมเฉลย.html",
     "New-Lectures/แบบฝึกหัดข้อสอบ_Queue_ตารางแบบในห้อง_พร้อมเฉลย.md",
@@ -200,11 +206,8 @@
     "Ch/ch4-Stack.py",
     "Ch/ch3-Linked-List.py",
     "Ch/ch--Linked-List.py",
-    "Ch/ch2-Linked-List.py",
-    "Ch",
     "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.2 - Midterm Real Exam Mock & Solutions.md",
     "DSA-Wiki/01 - Foundations & Python OOP/01.1 - Introduction to Data Structures & Algorithm Analysis.md",
-    "New-Lectures/ข้อสอบกลางภาค_Data_Structures_Midterm_Exam.html",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.2 - Binary Search Trees (BST) & Insertion.md",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.3 - Binary Search Tree Removal (Node Deletion Cases).md",
     "DSA-Wiki/03 - Hierarchical Data Structures (Trees)/03.1 - Tree Terminology & Binary Trees.md",
@@ -214,7 +217,6 @@
     "DSA-Wiki/00 - Overview & Index/Glossary & Complexity Cheat Sheet.md",
     "ยังไม่ได้ตั้งชื่อ.canvas",
     "2026-08-17.md",
-    "ยังไม่ได้ตั้งชื่อ.base",
     "Exams/README.md",
     "Lectures/Assignment 1 Linked List/Screenshot 2026-02-15 171703.png",
     "Lectures/Assignment 1 Linked List/Screenshot 2026-02-15 171249.png",
@@ -227,8 +229,6 @@
     "DSA-Wiki/04 - Priority Queues & Hashing/04.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap).md",
     "DSA-Wiki/04 - Priority Queues & Hashing/04.2 - Hash Tables & Collision Resolution Strategies.md",
     "DSA-Wiki/05 - Sorting & Graph Algorithms/05.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick).md",
-    "DSA-Wiki/05 - Sorting & Graph Algorithms/05.2 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort).md",
-    "DSA-Wiki/06 - Exam Preparation & Coding Practice/06.1 - Comprehensive Exam Questions, Tracing & Python Solutions.md",
-    "LLM-Wiki/05 - Evaluation, Security & Exam Practice/05.3 - Exam Preparation Guide & Q&A Examples.md"
+    "DSA-Wiki/05 - Sorting & Graph Algorithms/05.2 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort).md"
   ]
 }

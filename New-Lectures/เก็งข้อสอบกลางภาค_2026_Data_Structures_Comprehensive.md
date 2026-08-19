@@ -1,0 +1,282 @@
+# 🎯 เก็งข้อสอบกลางภาค 2026: Data Structures & Algorithms (ฉบับสมบูรณ์ตรงตาม Lecture 5.1, 5.2, 5.3 และ PDF ในห้อง 100%)
+
+> [!IMPORTANT] **ข้อมูลและเกณฑ์การสอบ (Examination Specifications)**
+> - **คะแนนเต็ม:** 70 คะแนน (หาร 2 เหลือ 35 คะแนน)
+> - **เงื่อนไข:** เปิดตำราได้ (Open Book / Open Notes)
+> - **รูปแบบคำถาม:** โจทย์ภาษาอังกฤษพร้อมคำแปลไทยกำกับ `( )` ทุกข้อ
+> - **การเขียนตอบ:** ตอบภาษาไทยหรืออังกฤษได้ / เขียนคำตอบด้วยปากกา / วาดรูป Tree ด้วยดินสอได้
+> - **เอกสารอ้างอิงตรงจากชีทอาจารย์:**
+>   - `For example Binary Search Tree std.pdf` (Example 5.1 Insert, Example 5.2 Remove 1 child)
+>   - `Example for Binary Search Tree remove 2 std.pdf` (Example 5.3 Remove 2 children with min)
+>   - `For example Queue.pdf`, `exam.txt`, `removebst.pdf`
+
+---
+
+# 📖 คู่มือถอดรหัสสำนวนโจทย์ของอาจารย์ (Teacher's Question Phrasing)
+
+| สำนวนภาษาอังกฤษในข้อสอบ | ความหมายที่แท้จริง | สิ่งที่ต้องเขียนตอบ (Do's & Don'ts) |
+| :--- | :--- | :--- |
+| **`Write the steps for the _insert_recursive() / _delete_recursive() function when... In each round, consists of: 1) values of value and current_node 2) statements executed under if-else`** | ให้เขียนไล่ขั้นตอนการทำงานของ Recursive ทีละรอบตามฟอร์แมตในสไลด์ | **ห้ามเขียนบรรยายลอยๆ** ต้องเขียน:<br>1. `First round: value = ... , current_node = ...`<br>2. ประโยคคำสั่งที่ถูกทำ เช่น `_insert_recursive(current_node.left, value)` |
+| **`Each iteration for the _min_value_node() function...`** | แสดงการทำงานของฟังก์ชันหา min ในกิ่งขวา | แสดงค่าเริ่มต้นของ `current_node` และลูป `while current.left is not None:` |
+| **`Write statements in main program... by using class ... methods only`** | ให้เขียนคำสั่ง Python ในส่วน main | ห้ามใช้ built-in list (`append`, slicing `[:]`) ให้ใช้เฉพาะ method ของคลาสที่เรียน |
+| **`If there is the exists ... already`** | มีตัวแปรสร้างและใส่ข้อมูลไว้แล้ว | เริ่มเขียนคำสั่งจัดการตัวแปรนั้นได้ทันที |
+
+---
+
+# 🥞 สูตรสำเร็จการลบเลขใดๆ ออกจาก Stack โดยใช้ Queue
+
+```python
+# สมมุติ: Stack s มี [Bottom: a, b, Target1, c, Target2, d :Top]
+# 1. Pop ทีละตัว กรองเลขที่ไม่ใช่ Target เข้า Queue q (Target สั่ง pop ทิ้ง)
+val = s.pop(); q.enQueue(val)  # d
+s.pop()                        # ทิ้ง Target2
+val = s.pop(); q.enQueue(val)  # c
+s.pop()                        # ทิ้ง Target1
+val = s.pop(); q.enQueue(val)  # b
+val = s.pop(); q.enQueue(val)  # a
+
+# 2. ถ่ายจาก q เข้า s (s.push(q.deQueue()) ทุกตัว -> ข้อมูลกลับหัว)
+# 3. Pop จาก s กลับเข้า q (q.enQueue(s.pop()) ทุกตัว -> ข้อมูลกลับหัวอีกครั้ง)
+# 4. Dequeue จาก q กลับเข้า s (s.push(q.deQueue()) ทุกตัว -> ได้ระเบียบ LIFO เดิมเป๊ะ!)
+```
+
+---
+
+# 📋 ตัวข้อสอบเก็งกลางภาค 2026 (ครบ 6 Part 70 คะแนน)
+
+---
+
+## Part 1: Singly & Doubly Linked List (10 คะแนน)
+
+### ข้อ 1.1: Main Program Statement Manipulation (5 คะแนน)
+**Question (EN):**  
+Suppose you have an instance variable `listA` of class `LinkedList` with initial elements: `[20, 50, 10, 80, 40]` (where `20` is at Head). Write statements in `main` program to transform `listA` so that the final output becomes: `[100, 20, 30, 10, 80, 70]` by using class `LinkedList`'s methods that we learned only. `//Score 5`
+
+#### 💡 เฉลย (Solution):
+```python
+listA.remove(50)       # เหลือ: 20 -> 10 -> 80 -> 40
+listA.remove(40)       # เหลือ: 20 -> 10 -> 80
+listA.insert(30, 1)     # ได้: 20 -> 30 -> 10 -> 80
+listA.insert(70, 4)     # ได้: 20 -> 30 -> 10 -> 80 -> 70
+listA.add(100)          # add ไว้หน้าสุด -> 100 -> 20 -> 30 -> 10 -> 80 -> 70
+```
+
+---
+
+### ข้อ 1.2: Pointer Reconnection without Methods (5 คะแนน)
+**Question (EN):**  
+Given a Singly Linked List `myList` with nodes `A -> B -> C -> D`. Write statements to delete node `B` and node `C` by updating pointer relationships directly **without using `remove()` method**. `//Score 5`
+
+#### 💡 เฉลย (Solution):
+```python
+node_A = myList.head
+myList.head.set_next(node_A.get_next().get_next().get_next())
+# หรือเขียนแบบย่อ: myList.head.next = myList.head.next.next.next
+```
+
+---
+
+## Part 2: Stack & Circular Queue + Special Cases of Queue (10 คะแนน)
+
+### ข้อ 2.1: Filter Elements from Stack using Queue (5 คะแนน)
+**Question (EN):**  
+If there is an existing Stack `s` which has 6 elements `[14, 5, 22, 9, 31, 7]` *(where `14` is Bottom and `7` is Top)*. Write statements in main program to delete elements `5` and `9` from `s` using an auxiliary Queue `q` so that final `s` contains `[14, 22, 31, 7]` *(Bottom: 14, Top: 7)*. `//Score 5`
+
+#### 💡 เฉลยแบบเขียนทีละบรรทัด (ไม่ใช้ while):
+```python
+# 1. Pop คัดกรอง 7, 31, 22, 14 ใส่ Queue q (ทิ้ง 9 และ 5)
+val = s.pop(); q.enQueue(val) # 7
+val = s.pop(); q.enQueue(val) # 31
+s.pop()                       # ทิ้ง 9
+val = s.pop(); q.enQueue(val) # 22
+s.pop()                       # ทิ้ง 5
+val = s.pop(); q.enQueue(val) # 14
+
+# 2. ถ่ายจาก q เข้า s
+s.push(q.deQueue()); s.push(q.deQueue()); s.push(q.deQueue()); s.push(q.deQueue())
+
+# 3. Pop จาก s กลับเข้า q
+q.enQueue(s.pop()); q.enQueue(s.pop()); q.enQueue(s.pop()); q.enQueue(s.pop())
+
+# 4. Dequeue จาก q กลับเข้า s (ได้ลำดับเดิมที่ถูกต้อง)
+s.push(q.deQueue()); s.push(q.deQueue()); s.push(q.deQueue()); s.push(q.deQueue())
+```
+
+---
+
+### ข้อ 2.2: Special Boundary Cases of Circular Queue (5 คะแนน)
+**Question (EN):**  
+When implementing a Circular Array Queue with fixed capacity $N=5$, write at least 3 special boundary cases with method calls and pointer states. `//Score 5`
+
+#### 💡 เฉลย (Solution):
+1. **Queue Underflow:** เรียก `q.deQueue()` ขณะคิวว่างเปล่า (`isEmpty() == True`) ต้องดัก `if self.isEmpty(): return None` เพื่อป้องกัน error
+2. **Queue Overflow:** เรียก `q.enQueue(99)` ขณะคิวเต็ม ต้องตรวจ `(rear + 1) % limit == front` ป้องกันข้อมูลทับหัวแถว
+3. **Pointer Wrap-Around:** เมื่อ `rear` ชี้ที่ช่อง 4 (ท้ายอาเรย์) ต้องใช้สูตร `rear = (rear + 1) % limit` เพื่อวนกลับมาชี้ index 0
+
+---
+
+## Part 3: Binary Search Tree (รวมทั้งแบบ Insert ธรรมดา และแบบ Remove มี min ตรงตาม PDF 100%) (15 คะแนน)
+
+---
+
+### ข้อ 3.1: BST Recursive Insertion Tracing (แบบธรรมดา - ตรงตาม Example 5.1 PDF) (5 คะแนน)
+
+**Question (EN):**  
+**Example for Binary Search Tree: Insert**  
+For example 5.1: If there is the exist `BinarySearchTree`'s instance variable name `bst` contains the numbers `[1, 2, 3, 4, 6, 8]` (In-order traversal) as the image following:
+```text
+          6
+        /   \
+       2     8
+     /   \
+    1     4
+         /
+        3
+```
+Write the steps for the `_insert_recursive()` function when **insert `5`** into the instance variable `bst`. In each round, consists of:  
+1) what are the values of the parameters `value` and `current_node` of the `_insert_recursive()` function, and  
+2) what statements are executed under the `if-else` condition that is checked as true.  
+Each iteration must write 2 things. `//Score 5`
+
+**(คำแปลไทย):**  
+*(กำหนด BST มีข้อมูลตามภาพ จงเขียนขั้นตอนการทำงานของฟังก์ชัน `_insert_recursive()` เมื่อแทรกค่า `5` ลงใน `bst` โดยระบุค่า `value`, `current_node` และคำสั่งที่ถูกทำในแต่ละรอบ)*
+
+#### 💡 รูปแบบการเขียนตอบที่ถูกต้อง (ถอดแบบจาก PDF Example 5.1 หน้า 2-3):
+```text
+Answer:
+Each iteration for the _insert_recursive() function when insert 5
+
+First round: value = 5 , current_node = 6
+_insert_recursive(current_node.left, value)
+
+round 2: value = 5 , current_node = 2
+_insert_recursive(current_node.right, value)
+
+round 3: value = 5 , current_node = 4
+_insert_recursive(current_node.right, value)
+
+round 4: value = 5 , current_node = None
+if current_node.right is None: is True
+current_node.right = Node(value)
+```
+
+---
+
+### ข้อ 3.2: BST Recursive Deletion with Two Children (แบบมี min - ตรงตาม Example 5.3 PDF) (5 คะแนน)
+
+**Question (EN):**  
+**Example for Binary Search Tree: Remove (2), two children.**  
+For example 5.3: If there is the exist `BinarySearchTree`'s instance variable name `bst` contains the elements as the image following:
+```text
+          6
+        /   \
+      [2]    8
+     /   \
+    1     5
+         /
+        3
+         \
+          4
+```
+Write the steps for the `_delete_recursive()` function when **remove `2`** from the instance variable `bst`. In each round, consists of:  
+1) what are the values of the parameters `value` and `current_node` of the `_delete_recursive()` function, and  
+2) what statements are executed under the `if-else` condition that is checked as true.  
+Each iteration must write 2 things. `//Score 5`
+
+#### 💡 รูปแบบการเขียนตอบที่ถูกต้อง (ถอดแบบจาก PDF Example 5.3 หน้า 2-4):
+```text
+Answer:
+Each iteration for the _delete_recursive() function when remove 2:
+
+First round: value = 2 , current_node = 6
+current_node.left = _delete_recursive(current_node.left, value)
+
+round 2: value = 2 , current_node = 2
+temp_node = self._min_value_node(current_node.right)
+current_node.value = temp_node.value
+current_node.right = _delete_recursive(current_node.right, temp_node.value)
+
+----------------------------------------------------------------------
+Each iteration for the _min_value_node() function to find minimum of right subtree:
+First round current_node = 5
+
+_min_value_node(self, node):
+    current = node
+    while current.left is not None:
+        current = current.left
+    return current
+(ผลลัพธ์: ได้ temp_node = 3, นำค่า 3 ไปเขียนทับโหนด 2 ทำให้ current_node.value = 3)
+----------------------------------------------------------------------
+
+round 3: value = 3 , current_node = 5
+current_node.left = _delete_recursive(current_node.left, value)
+
+round 4: value = 3 , current_node = 3
+return current_node.right
+(ผลลัพธ์: ส่งโหนด 4 กลับไปให้โหนด 5.left ชี้แทนโหนด 3)
+```
+
+---
+
+### ข้อ 3.3: Reconstructing BST from Traversals (5 คะแนน)
+**Question (EN):**  
+Pre-order: `45, 25, 15, 35, 30, 75, 60, 85` และ In-order: `15, 25, 30, 35, 45, 60, 75, 85`. Draw BST and write Post-order. `//Score 5`
+
+#### 💡 เฉลยรูป BST และลำดับ Post-order:
+```text
+          45
+        /    \
+      25      75
+     /  \    /  \
+   15   35  60  85
+        /
+       30
+```
+- **Post-order:** `15, 30, 35, 25, 60, 85, 75, 45`
+
+---
+
+## Part 4: Infix to Postfix & Expression Tree (15 คะแนน)
+
+### ข้อ 4.1: Convert Infix to Postfix with Power Operator (8 คะแนน)
+**Question (EN):** Trace Operator Stack for converting `(A + B * C) / (D - E ^ F)` to Postfix. `//Score 8`  
+👉 **ผลลัพธ์ Postfix:** `A B C * + D E F ^ - /`
+
+---
+
+### ข้อ 4.2: Expression Tree Construction & Evaluation (7 คะแนน)
+**Question (EN):** Draw Expression Tree and evaluate `18 6 / 4 2 * + 5 -` `//Score 7`  
+```text
+            -
+        /       \
+       +         5
+      / \
+     /   *
+    / \ / \
+   18 6 4  2
+```
+**การคำนวณ:** $(18 / 6) + (4 \times 2) - 5 = 3 + 8 - 5 = \mathbf{6}$
+
+---
+
+## Part 5: หลักการอะไรเอ่ย (10 คะแนน)
+
+1. **Degenerate BST ($O(n)$):** เมื่อข้อมูลเรียงลำดับมาล่วงหน้า Tree จะเอียงเป็นเส้นตรง (Skewed Tree) ทำให้ความเร็วค้นหาลดเหลือ $O(n)$ เหมือน Linked List
+2. **Circular Queue Modulo:** ใช้ `(rear + 1) % capacity` เพื่อให้ Pointer วนกลับไปใช้พื้นที่ว่าง index 0 ด้านหน้า
+3. **Primary Clustering:** การเกาะกลุ่มก้อนยาวใน Linear Probing แก้ไขด้วย **Quadratic Probing** ($+1^2, +2^2, +3^2$)
+4. **Function Call Stack:** Recursion ใช้ Stack ใน Memory เพื่อบันทึก Frame ทำงานแบบ LIFO และ Pop ย้อนกลับคืนค่าเมื่อถึง Base Case
+
+---
+
+## Part 6: คำถามย่อย & Code Tracing (10 คะแนน)
+
+### ข้อ 6.1: Quadratic Probing Hash Tracing (5 คะแนน)
+**Question (EN):** Insert `15, 22, 29` into Table size 7 using Quadratic Probing ($h(k) = k \pmod 7$). `//Score 5`  
+👉 **ผลลัพธ์ตาราง:**  
+`Index 0: None` | `Index 1: 15` | `Index 2: 22` | `Index 3: None` | `Index 4: None` | `Index 5: 29` | `Index 6: None`
+
+---
+
+### ข้อ 6.2: Leaf Node Counting Tracing (5 คะแนน)
+**Question (EN):** Trace `count_leaves(root)` for Root 50 (left: 30 with leaves 20, 40; right: 70 with leaf 80). `//Score 5`  
+👉 **ผลลัพธ์:** มีโหนดใบ 3 ตัว (20, 40, 80) $\implies \mathbf{3}$

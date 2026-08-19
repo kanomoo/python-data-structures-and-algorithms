@@ -1,270 +1,129 @@
-# 📝 แนวข้อสอบกลางภาค: Data Structures and Algorithms (พร้อมเฉลยละเอียด)
+# 📝 รวมแนวข้อสอบกลางภาค Data Structures & Algorithms: ฉบับจริง + เก็งชุดใหม่ 2026 (ครบ 2 ชุดเต็ม 140 คะแนน พร้อมเฉลยละเอียดทุกข้อ)
 
 > [!INFO] **ข้อมูลการสอบ (Exam Information)**
-> - **คะแนนเต็ม:** 70 คะแนน (หาร 2 เหลือ 35 คะแนน)
+> - **โครงสร้างเอกสาร:** ประกอบด้วย **2 ชุดข้อสอบเต็ม** (ชุดละ 70 คะแนน หาร 2 เหลือ 35 คะแนน)
 > - **เงื่อนไข:** เปิดตำราได้ (Open Book / Open Notes)
-> - **ภาษา:** คำถามเป็นภาษาอังกฤษ / อนุโลมให้ตอบเป็นภาษาไทยหรือภาษาอังกฤษได้
+> - **ภาษา:** คำถามเป็นภาษาอังกฤษ / มีคำแปลภาษาไทยกำกับในวงเล็บ `( )` ทุกข้อ / อนุโลมให้ตอบเป็นภาษาไทยหรือภาษาอังกฤษได้
 > - **การเขียนตอบ:** เขียนคำตอบด้วยปากกา / รูป Tree สามารถวาดด้วยดินสอได้
-> - **อ้างอิง:** รวบรวมจากเนื้อหาบรรยาย, เอกสารประกอบการสอน, และข้อสอบเก่าจริงภาควิชา
+> - **การเขียนโค้ด:** แสดงเฉลยให้ **ทั้ง 2 รูปแบบ** คือ **แบบไม่ใช้ while (สั่งทีละบรรทัด)** และ **แบบใช้ while loop**
 
 ---
 
-## 📑 สารบัญ (Table of Contents)
-- [Part 1: Singly Linked List (10 คะแนน)](#part-1-singly-linked-list-10-คะแนน)
-- [Part 2: Stack & Queue (10 คะแนน)](#part-2-stack--queue-10-คะแนน)
-- [Part 3: Binary Search Tree (15 คะแนน)](#part-3-binary-search-tree-15-คะแนน)
-- [Part 4: Expression Tree & Infix/Postfix (15 คะแนน)](#part-4-expression-tree--infixpostfix-15-คะแนน)
-- [Part 5: หลักการและทฤษฎีพื้นฐาน (10 คะแนน)](#part-5-หลักการและทฤษฎีพื้นฐาน-10-คะแนน)
-- [Part 6: คำถามย่อยและการ Trace Code (10 คะแนน)](#part-6-คำถามย่อยและการ-trace-code-10-คะแนน)
+# 📑 สารบัญรวมข้อสอบทั้ง 2 ชุด (Table of Contents)
+
+### 🌟 ชุดที่ 1: ข้อสอบกลางภาคฉบับจริง (Real Midterm Exam - 70 คะแนน)
+- [Part 1: Singly Linked List (10 คะแนน)](#part-1-singly-linked-list-10-คะแนน-ชุดที่-1)
+- [Part 2: Stack & Queue Manipulation (10 คะแนน)](#part-2-stack--queue-manipulation-10-คะแนน-ชุดที่-1)
+- [Part 3: Binary Search Tree (15 คะแนน)](#part-3-binary-search-tree-15-คะแนน-ชุดที่-1)
+- [Part 4: Expression Tree (15 คะแนน)](#part-4-expression-tree-15-คะแนน-ชุดที่-1)
+- [Part 5: หลักการอะไรเอ่ย (10 คะแนน)](#part-5-หลักการอะไรเอ่ย-10-คะแนน-ชุดที่-1)
+- [Part 6: Hash Table & Python Tracing (10 คะแนน)](#part-6-hash-table--python-tracing-10-คะแนน-ชุดที่-1)
 
 ---
 
-# 📋 ส่วนข้อสอบ (Examination Paper)
+### 🚀 ชุดที่ 2: เก็งข้อสอบกลางภาคชุดใหม่ 2026 (Predicted Midterm Exam - 70 คะแนน)
+- [Part 1: Linked List Operations & Doubly Linked List (10 คะแนน)](#part-1-linked-list-operations--edge-cases-10-คะแนน-ชุดที่-2)
+- [Part 2: Stack & Queue + Special Cases of Queues (10 คะแนน)](#part-2-stack--queue--special-cases-of-queues-10-คะแนน-ชุดที่-2)
+- [Part 3: BST Delete Recursive Tracing & Reconstruction (15 คะแนน)](#part-3-bst-delete-recursive-tracing--tree-reconstruction-15-คะแนน-ชุดที่-2)
+- [Part 4: Expression Tree, Infix-Postfix & Traversals (15 คะแนน)](#part-4-expression-tree-infix-postfix--traversals-15-คะแนน-ชุดที่-2)
+- [Part 5: หลักการอะไรเอ่ยชุดเก็ง (10 คะแนน)](#part-5-หลักการอะไรเอ่ยชุดเก็ง-10-คะแนน-ชุดที่-2)
+- [Part 6: คำถามย่อย & Code Tracing ชุดเก็ง (10 คะแนน)](#part-6-คำถามย่อย--code-tracing-ชุดเก็ง-10-คะแนน-ชุดที่-2)
 
-## Part 1: Singly Linked List (10 คะแนน)
+---
+---
 
-### ข้อ 1.1 (5 คะแนน)
-**Question:**  
-Write statements in `main` program using an instance variable `listA` with ordered inputs are `[1, 3, 8, 7, 9]` and has result outputs are `[9, 5, 1, 3, 7, 2, 8]` by using class `LinkedList`'s methods that we learned only (`add`, `insert`, `remove`, `search`).
+# 🌟 ชุดที่ 1: ข้อสอบกลางภาคฉบับจริง (Real Midterm Exam)
+*(ถอดแบบ 100% จาก `exam.txt`, รูปถ่ายข้อสอบจริงในห้อง `Mid/` ภาพ 411 - 415 และ Screenshot)*
 
+---
+
+## Part 1: Singly Linked List (10 คะแนน) (ชุดที่ 1)
+
+### ข้อ 1.1: Main Program Statement Manipulation (5 คะแนน) *(ตรงตามรูปข้อสอบจริง `412.jpg`)*
+**Question (EN):**  
+Write the statements in `main` program when the instance variable `listA` with ordered inputs are `1, 3, 8, 7, 9` and has result outputs are `9, 5, 1, 3, 7, 2, 8` by using class `LinkedList`'s methods that we learned only. `//Score 5`
+
+**(คำแปลไทย):**  
+*(จงเขียนประโยคคำสั่งในโปรแกรม `main` เมื่อกำหนดตัวแปร `listA` ที่มีข้อมูลอินพุตเริ่มต้นคือ `1, 3, 8, 7, 9` และต้องการให้ได้ผลลัพธ์เป็น `9, 5, 1, 3, 7, 2, 8` โดยใช้เฉพาะเมธอดของคลาส `LinkedList` ที่เรียนมาเท่านั้น)*
+
+#### 💡 เฉลยและวิธีคิด (Solution):
 ```python
-# Initial State: listA = 1 -> 3 -> 8 -> 7 -> 9
-# Write your statements here:
-
-
-
-
-
+# Initial State: 1 -> 3 -> 8 -> 7 -> 9
+listA.remove(9)       # ลบ 9 ท้ายออก -> 1 -> 3 -> 8 -> 7
+listA.remove(8)       # ลบ 8 ออก -> 1 -> 3 -> 7
+listA.insert(8, 3)     # แทรก 8 ที่ index 3 -> 1 -> 3 -> 7 -> 8
+listA.insert(2, 3)     # แทรก 2 ที่ index 3 -> 1 -> 3 -> 7 -> 2 -> 8
+listA.add(5)          # add แทรกที่ head -> 5 -> 1 -> 3 -> 7 -> 2 -> 8
+listA.add(9)          # add แทรกที่ head -> 9 -> 5 -> 1 -> 3 -> 7 -> 2 -> 8
 ```
 
 ---
 
-### ข้อ 1.2 (5 คะแนน)
-**Question:**  
-When we implement a Singly Linked List, there are many special cases we must check. If the elements of a list are `[34, 12, 52, 16, 15]`, write at least **3 special cases** by giving method call examples and explaining why each case is special.
+### ข้อ 1.2: Special Cases in Linked List (5 คะแนน) *(ตรงตามรูปข้อสอบจริง `415.jpg`)*
+**Question (EN):**  
+When we implement Linked List, there are many special cases we must check. If the elements of a list are `34, 12, 52, 16, 15`, write at least the 3 special cases by examples. `//Score 3`
 
-```text
-Case 1: __________________________________________________________________________
-Case 2: __________________________________________________________________________
-Case 3: __________________________________________________________________________
-```
+**(คำแปลไทย):**  
+*(เมื่อเราสร้างและใช้งาน Linked List จะมีกรณีพิเศษ (Special Cases) หลายกรณีที่เราต้องตรวจสอบ หากข้อมูลในลิสต์ปัจจุบันคือ `34, 12, 52, 16, 15` จงเขียนยกตัวอย่างกรณีพิเศษอย่างน้อย 3 กรณีพร้อมอธิบาย)*
+
+#### 💡 เฉลยและวิธีคิด (Solution):
+1. **`Find(99)` หรือ `Delete(99)` (Element Not Found):** ค้นหาหรือลบข้อมูลที่ไม่มีในลิสต์ ต้องดักเงื่อนไขเพื่อไม่ให้ Pointer วิ่งหลุดเป็น `None` จนเกิด `AttributeError`
+2. **`Insert(88, 10)` (Index Out of Bounds):** แทรกข้อมูลที่ตำแหน่งเกินความยาวของลิสต์
+3. **`Delete(34)` หรือ `Insert(99, 0)` (Head Node Operation):** จัดการที่ตำแหน่งโหนดแรกสุด ต้องเปลี่ยน `self.head` โดยตรง
 
 ---
 
-## Part 2: Stack & Queue (10 คะแนน)
+## Part 2: Stack & Queue Manipulation (10 คะแนน) (ชุดที่ 1) *(ตรงตามรูป `Screenshot`)*
 
-### ข้อ 2.1 (10 คะแนน)
-**Question:**  
-If there is the existing Stack's instance variable `s` which has 5 elements `[8, 4, 6, 9, 2]` *(Bottom: 8, Top: 2)* already.  
-Write statements in `main` program to delete elements `4` and `9` from the instance variable `s` with using the existing Queue's instance variable `q` and has result output are `[8, 6, 2]` *(Bottom: 8, Top: 2)* by using class `Stack`'s and `Queue`'s methods that we learned only.
+### ข้อ 2.1: Delete Elements from Stack using Queue (10 คะแนน)
+**Question (EN):**  
+If there is the exists Stack's instance variable `s` which has 5 elements `8, 4, 6, 9, 2` already. Write statement in main program to delete element **4** and **9** from the instance variable `s` with using the exists Queue's instance variable `q` and has result output are `8, 6, 2` by using class `Stack`'s and `Queue`'s methods that we learned only. `//Score 10`
 
-*(Allowed methods: Stack $\to$ `push()`, `pop()`, `top()`, `is_empty()` | Queue $\to$ `enQueue()`, `deQueue()`, `isEmpty()`)*
+**(คำแปลไทย):**  
+*(หากมีตัวแปร Stack ชื่อ `s` ซึ่งมีข้อมูล 5 ตัวคือ `8, 4, 6, 9, 2` อยู่แล้ว (โดย 8 อยู่ก้น และ 2 อยู่บนสุด) จงเขียนประโยคคำสั่งในโปรแกรม `main` เพื่อลบข้อมูลตัวเลข 4 และ 9 ออกจากตัวแปร `s` โดยใช้ตัวแปร Queue ชื่อ `q` ช่วย และให้ได้ผลลัพธ์สุดท้ายเป็น `8, 6, 2` โดยใช้เฉพาะเมธอดของคลาส `Stack` และ `Queue` ที่เรียนมาเท่านั้น)*
 
+#### 💡 รูปแบบที่ 1: แบบเขียนคำสั่งทีละบรรทัด (ไม่ใช้ while loop - ตรงไปตรงมา):
 ```python
-# Write your statements here:
-
-
-
-
-
-
-
-
-
-```
-
----
-
-## Part 3: Binary Search Tree (15 คะแนน)
-
-### ข้อ 3.1: Recursive Step Tracing (8 คะแนน)
-**Question:**  
-กำหนดโค้ดฟังก์ชัน `_insert_recursive` ของ Binary Search Tree:
-```python
-def _insert_recursive(self, current_node: Node, value: int):
-    if value < current_node.value:
-        if current_node.left is None:
-            current_node.left = Node(value)
-        else:
-            self._insert_recursive(current_node.left, value)
-    elif value > current_node.value:
-        if current_node.right is None:
-            current_node.right = Node(value)
-        else:
-            self._insert_recursive(current_node.right, value)
-```
-
-เมื่อทำการเรียก `tree.insert(25)` ลงใน BST ที่มีโหนดเดิมคือ `50, 20, 70, 30` (Root คือ `50`)  
-จงเขียนขั้นตอนการทำงานในแต่ละรอบของ Recursive ลงในตาราง:
-
-| Call ครั้งที่ | `current_node.value` | `value` | เงื่อนไขที่ตรวจสอบและผลลัพธ์ (`True`/`False`) | ประโยคคำสั่งที่ถูกทำ |
-| :---: | :---: | :---: | :--- | :--- |
-| **1** | `50` | `25` | `25 < 50` is `True` (left ไม่ว่าง) | `self._insert_recursive(current_node.left, 25)` |
-| **2** | | | | |
-| **3** | | | | |
-
----
-
-### ข้อ 3.2: การสร้าง Tree จากลำดับการเดินท่อง (7 คะแนน)
-**Question:**  
-กำหนดผลการเดินท่อง (Traversal) ของ Binary Search Tree ดังนี้:
-- **Pre-order Traversal:** `60, 30, 15, 40, 35, 80, 70, 95`
-- **In-order Traversal:** `15, 30, 35, 40, 60, 70, 80, 95`
-
-1. จงวาดภาพโครงสร้าง **Binary Search Tree** ที่ถูกต้องสมบูรณ์
-2. จงเขียนลำดับผลลัพธ์การเดินท่องแบบ **Post-order Traversal**
-
----
-
-## Part 4: Expression Tree & Infix/Postfix (15 คะแนน)
-
-### ข้อ 4.1: การแปลง Infix เป็น Postfix ด้วย Stack (8 คะแนน)
-**Question:**  
-จงแสดงขั้นตอนการแปลงนิพจน์คณิตศาสตร์ Infix ต่อไปนี้ให้เป็น Postfix:
-$$\text{Infix Expression: } ((A + B) \times C - (D - E) \div (F + G))$$
-
-จงเติมตารางแสดงสถานะของ Operator Stack และ Output ในแต่ละ Token:
-
-| ลำดับ | Token ที่อ่านได้ | การกระทำ (Action) | สถานะ Stack (ล่าง $\to$ บน) | Postfix Output |
-| :---: | :---: | :--- | :--- | :--- |
-| 1 | `(` | Push to stack | `(` | |
-| 2 | `(` | Push to stack | `( (` | |
-| 3 | `A` | Operand $\to$ Output | `( (` | `A` |
-| 4 | `+` | Push operator | `( ( +` | `A` |
-| 5 | `B` | Operand $\to$ Output | `( ( +` | `A B` |
-| 6 | `)` | Pop จนเจอ `(` | `(` | `A B +` |
-| ... | ... | ... | ... | ... |
-
----
-
-### ข้อ 4.2: Expression Tree และการคำนวณผลลัพธ์ (7 คะแนน)
-**Question:**  
-กำหนด Postfix Expression:
-$$5 \quad 3 \quad + \quad 8 \quad 6 \quad 2 \quad / \quad - \quad \times$$
-
-1. จงแสดงสถานะ Stack ของโหนดขณะสร้าง Expression Tree
-2. วาดภาพ **Expression Tree**
-3. คำนวณค่าผลลัพธ์สุดท้าย (Evaluation Result)
-
----
-
-## Part 5: หลักการและทฤษฎีพื้นฐาน ("หลักการอะไรเอ่ย") (10 คะแนน)
-
-1. **(2.5 คะแนน)** หลักการ **LIFO (Last-In, First-Out)** คืออะไร? Data Structure ใดที่ใช้หลักการนี้ และยกตัวอย่างการใช้งานจริงในระบบคอมพิวเตอร์ 1 ตัวอย่าง
-2. **(2.5 คะแนน)** กฎคุณสมบัติสำคัญของ **Binary Search Tree (BST)** ที่กำหนดความสัมพันธ์ระหว่างค่าใน Parent Node, Left Subtree และ Right Subtree คืออะไร?
-3. **(2.5 คะแนน)** ใน Hash Table เมื่อเกิด **Collision** (ข้อมูลแย่งช่องเก็บเดียวกัน) วิธี **Chaining** และวิธี **Open Addressing (Linear Probing)** มีหลักการแก้ปัญหาต่างกันอย่างไร?
-4. **(2.5 คะแนน)** การเข้าถึงข้อมูลตำแหน่งใดๆ ด้วยดัชนี (เช่น ดึงข้อมูลตัวที่ $i$) ระหว่าง **Array (List)** กับ **Singly Linked List** มี Time Complexity $O(1)$ หรือ $O(n)$ เพราะเหตุใด?
-
----
-
-## Part 6: คำถามย่อยและการ Trace Code (10 คะแนน)
-
-### ข้อ 6.1: Hash Table และการสร้าง List ใน Python (5 คะแนน)
-พิจารณาโค้ด Python:
-```python
-table_size = 7
-my_strings = [None] * table_size
-
-def simple_hash(key_str):
-    hash_val = 0
-    for char in key_str:
-        hash_val += ord(char)
-    return hash_val % table_size
-```
-กำหนดค่ารหัส ASCII:
-- `"cat"` $\rightarrow$ ผลบวก ASCII = $312$
-- `"dog"` $\rightarrow$ ผลบวก ASCII = $314$
-- `"bird"` $\rightarrow$ ผลบวก ASCII = $417$
-
-**คำถาม:**
-1. จงคำนวณ Index ของตาราง `my_strings` ที่ใช้เก็บคำว่า `"cat"`, `"dog"`, `"bird"`
-2. คำสั่ง `my_strings = [None] * 7` แตกต่างจาก `my_strings = []` อย่างไรในการจัดการหน่วยความจำและเข้าถึงข้อมูล?
-
----
-
-### ข้อ 6.2: Output Tracing ของฟังก์ชัน Recursive (5 คะแนน)
-จงหาค่า Output ที่ได้จากการรันโปรแกรมนี้:
-```python
-def mystery(n):
-    if n <= 1:
-        return 1
-    if n % 2 == 0:
-        return n + mystery(n - 1)
-    else:
-        return n * mystery(n - 2)
-
-print(mystery(5))
-```
-
----
----
-
-# 💡 เฉลยละเอียดและวิธีคิด (Detailed Solutions)
-
----
-
-## เฉลย Part 1: Singly Linked List
-
-### ข้อ 1.1: คำสั่ง Main Program
-- **โจทย์:** เริ่มต้น `1 -> 3 -> 8 -> 7 -> 9` ต้องการได้ `9 -> 5 -> 1 -> 3 -> 7 -> 2 -> 8`
-- **วิธีคิด:**
-  - `add(item)` จะนำข้อมูลไปวางที่ **หัวแถว (Head)** เสมอ
-  - `insert(item, pos)` จะนำข้อมูลไปแทรกตาม index ตำแหน่งที่ระบุ
-  - `remove(item)` จะค้นหาและลบค่าแรกที่เจอ
-- **ลำดับคำสั่ง:**
-```python
-# 1. ลบ 9 และ 8 เดิมออก
-listA.remove(9)       # เหลือ 1 -> 3 -> 8 -> 7
-listA.remove(8)       # เหลือ 1 -> 3 -> 7
-
-# 2. แทรก 8 และ 2 ที่ท้าย/ตำแหน่งที่ต้องการ
-listA.insert(8, 3)     # ได้ 1 -> 3 -> 7 -> 8
-listA.insert(2, 3)     # ได้ 1 -> 3 -> 7 -> 2 -> 8
-
-# 3. ใช้ add() นำ 5 และ 9 ไปใส่ไว้หน้าสุด
-listA.add(5)          # ได้ 5 -> 1 -> 3 -> 7 -> 2 -> 8
-listA.add(9)          # ได้ 9 -> 5 -> 1 -> 3 -> 7 -> 2 -> 8
-```
-
----
-
-### ข้อ 1.2: Special Cases ใน Linked List
-1. **Search/Delete ข้อมูลที่ไม่พบใน List (Item Not Found):**  
-   - *ตัวอย่าง:* `listA.remove(99)` หรือ `listA.search(99)`  
-   - *เหตุผล:* หากไม่ตรวจ `current != None` ก่อนเข้าลูปหรือขยับ pointer จะทำให้เกิด `AttributeError: 'NoneType' object has no attribute 'next'`
-2. **การลบหรือแทรกที่ตำแหน่งแรกสุด (Head Node / Index 0):**  
-   - *ตัวอย่าง:* `listA.remove(34)` หรือ `listA.insert(99, 0)`  
-   - *เหตุผล:* โหนดแรกไม่มี previous node ชี้มา ต้องอัปเดต `self.head` โดยตรง
-3. **การแทรกที่ตำแหน่งเกินความยาวของ List (Index Out of Range):**  
-   - *ตัวอย่าง:* `listA.insert(88, 10)` ในขณะที่ List มีสมาชิกแค่ 5 ตัว  
-   - *เหตุผล:* ลูปจะวิ่งจน `current` หลุดเป็น `None` ทำให้ไม่สามารถเรียก `.set_next()` ได้
-
----
-
-## เฉลย Part 2: Stack & Queue
-
-### ข้อ 2.1: การลบข้อมูล 4 และ 9 ออกจาก Stack ด้วย Queue
-- **เริ่มต้น:** Stack `s = [Bottom: 8, 4, 6, 9, 2 :Top]`
-- **เป้าหมาย:** Stack `s = [Bottom: 8, 6, 2 :Top]`
-- **หลักการ:**
-  - Stack นำออกด้วย `pop()` ได้ลำดับ $2, 9, 6, 4, 8$
-  - กรองเอาเฉพาะ $2, 6, 8$ ใส่ Queue `q` $\implies$ `q = [Front: 2, 6, 8 :Rear]`
-  - นำจาก `q` เข้า `s` ชั่วคราว $\implies$ `s = [Bottom: 2, 6, 8 :Top]`
-  - นำจาก `s` เข้า `q` $\implies$ `q = [Front: 8, 6, 2 :Rear]`
-  - นำจาก `q` กลับเข้า `s` $\implies$ `s = [Bottom: 8, 6, 2 :Top]` (ถูกต้องตรงตามลำดับเดิม)
-
-```python
-# ขั้นที่ 1: Pop ออกจาก Stack และคัดเลือกเฉพาะตัวที่ไม่ใช่ 4 และ 9 ใส่ Queue
+# 1. Pop ข้อมูลออกจาก Stack s โดยกรองเอาเฉพาะ 2, 6, 8 ใส่ Queue q
 val = s.pop()    # ได้ 2
 q.enQueue(val)
-s.pop()          # ได้ 9 (ทิ้ง)
+s.pop()          # ได้ 9 (ลบทิ้ง ไม่เก็บ)
 val = s.pop()    # ได้ 6
 q.enQueue(val)
-s.pop()          # ได้ 4 (ทิ้ง)
+s.pop()          # ได้ 4 (ลบทิ้ง ไม่เก็บ)
 val = s.pop()    # ได้ 8
 q.enQueue(val)
+# สภาพใน Queue: q = [Front: 2, 6, 8 :Rear]
 
-# ขั้นที่ 2: สลับลำดับกลับคืนด้วย Stack และ Queue
+# 2. ถ่ายจาก q เข้า s (สั่งทีละตัว ไม่ใช้ while)
+s.push(q.deQueue())    # ใส่ 2 เข้าก้น s
+s.push(q.deQueue())    # ใส่ 6
+s.push(q.deQueue())    # ใส่ 8 อยู่บนสุด
+# สภาพใน Stack: s = [Bottom: 2, 6, 8 :Top]
+
+# 3. Pop จาก s กลับเข้า q เพื่อสลับกลับลำดับ
+q.enQueue(s.pop())     # pop 8 เข้า q
+q.enQueue(s.pop())     # pop 6 เข้า q
+q.enQueue(s.pop())     # pop 2 เข้า q
+# สภาพใน Queue: q = [Front: 8, 6, 2 :Rear]
+
+# 4. Dequeue จาก q กลับเข้า s จะได้ลำดับที่ถูกต้องตรงตามโจทย์
+s.push(q.deQueue())    # ใส่ 8 เข้าก้น s
+s.push(q.deQueue())    # ใส่ 6
+s.push(q.deQueue())    # ใส่ 2 อยู่บนสุด
+# ผลลัพธ์สุดท้าย: s = [Bottom: 8, 6, 2 :Top]
+```
+
+#### 💡 รูปแบบที่ 2: แบบใช้ `while` loop (สั้น กระชับ เป็นมาตรฐาน):
+```python
+# 1. Pop และคัดกรองเฉพาะ 2, 6, 8 ใส่ Queue q
+val = s.pop(); q.enQueue(val)
+s.pop() # ทิ้ง 9
+val = s.pop(); q.enQueue(val)
+s.pop() # ทิ้ง 4
+val = s.pop(); q.enQueue(val)
+
+# 2. ถ่ายโอนสลับ 2 รอบด้วย while loop
 while not q.isEmpty():
     s.push(q.deQueue())
 
@@ -277,22 +136,32 @@ while not q.isEmpty():
 
 ---
 
-## เฉลย Part 3: Binary Search Tree (BST)
+## Part 3: Binary Search Tree (15 คะแนน) (ชุดที่ 1)
 
-### ข้อ 3.1: Recursive Step Tracing Table
-- มีโหนดเดิม: `50`, `20` (ซ้ายของ 50), `70` (ขวาของ 50), `30` (ขวาของ 20)
-- ต้องการ Insert ค่า `25`:
+### ข้อ 3.1: Recursive Step Tracing Table (8 คะแนน)
+**Question (EN):**  
+Write step-by-step recursive operations of `current_node` and `value`, and the statements executed when `if..else` conditions are true in `_insert_recursive` method when inserting value `25` into a BST with existing nodes `50, 20, 70, 30` (Root is `50`). `//Score 8`
 
+**(คำแปลไทย):**  
+*(จงเขียนขั้นตอนการทำงานใน recursive ระหว่าง `current_node` กับ `value` และประโยคคำสั่งที่ถูกทำ เมื่อเงื่อนไข `if..else` เป็นจริง เมื่อแทรกค่า `25` ลงใน BST ที่มีโหนดเดิมคือ `50, 20, 70, 30`)*
+
+#### 💡 เฉลยตาราง Recursive Step Tracing:
 | Call ครั้งที่ | `current_node.value` | `value` | เงื่อนไขที่ตรวจสอบและผลลัพธ์ | ประโยคคำสั่งที่ถูกทำ |
 | :---: | :---: | :---: | :--- | :--- |
-| **1** | `50` | `25` | `25 < 50` $\to$ `True` (left มีโหนด 20) | `self._insert_recursive(current_node.left, 25)` |
-| **2** | `20` | `25` | `25 > 20` $\to$ `True` (right มีโหนด 30) | `self._insert_recursive(current_node.right, 25)` |
-| **3** | `30` | `25` | `25 < 30` $\to$ `True` (left ว่าง `is None`) | `current_node.left = Node(25)` *(สร้าง Node สำเร็จ)* |
+| **1** | `50` | `25` | `25 < 50` is `True` (left มีโหนด 20) | `self._insert_recursive(current_node.left, 25)` |
+| **2** | `20` | `25` | `25 > 20` is `True` (right มีโหนด 30) | `self._insert_recursive(current_node.right, 25)` |
+| **3** | `30` | `25` | `25 < 30` is `True` (left ว่าง `is None`) | `current_node.left = Node(25)` *(สร้างโหนดสำเร็จ)* |
 
 ---
 
-### ข้อ 3.2: การวาด Tree และ Post-order Traversal
-**1. รูปผังโครงสร้าง Binary Search Tree:**
+### ข้อ 3.2: Tree Reconstruction from Traversals (7 คะแนน)
+**Question (EN):**  
+Given traversal outputs: Pre-order: `60, 30, 15, 40, 35, 80, 70, 95` and In-order: `15, 30, 35, 40, 60, 70, 80, 95`. Draw the complete Binary Search Tree and write its Post-order traversal result. `//Score 7`
+
+**(คำแปลไทย):**  
+*(กำหนดผลการเดินท่องไปใน Tree มาให้ จงวาดรูป Binary Search Tree ออกมา และเขียนผลลัพธ์การเดินท่องแบบ Post-order Traversal)*
+
+#### 💡 เฉลยรูป Binary Search Tree และลำดับ Post-order:
 ```text
           60
         /    \
@@ -302,49 +171,33 @@ while not q.isEmpty():
         /
        35
 ```
-
-**2. Post-order Traversal (Left $\to$ Right $\to$ Root):**  
-$$\mathbf{15, 35, 40, 30, 70, 95, 80, 60}$$
-
----
-
-## เฉลย Part 4: Expression Tree & Postfix
-
-### ข้อ 4.1: ตาราง Infix to Postfix Conversion
-นิพจน์: `((A + B) * C - (D - E) / (F + G))`
-
-| Step | Token | Action | Operator Stack | Postfix Output |
-| :---: | :---: | :--- | :--- | :--- |
-| 1 | `(` | Push | `(` | |
-| 2 | `(` | Push | `( (` | |
-| 3 | `A` | Output | `( (` | `A` |
-| 4 | `+` | Push | `( ( +` | `A` |
-| 5 | `B` | Output | `( ( +` | `A B` |
-| 6 | `)` | Pop until `(` | `(` | `A B +` |
-| 7 | `*` | Push | `( *` | `A B +` |
-| 8 | `C` | Output | `( *` | `A B + C` |
-| 9 | `-` | Pop `*` then push `-` | `( -` | `A B + C *` |
-| 10 | `(` | Push | `( - (` | `A B + C *` |
-| 11 | `D` | Output | `( - (` | `A B + C * D` |
-| 12 | `-` | Push | `( - ( -` | `A B + C * D` |
-| 13 | `E` | Output | `( - ( -` | `A B + C * D E` |
-| 14 | `)` | Pop until `(` | `( -` | `A B + C * D E -` |
-| 15 | `/` | Push | `( - /` | `A B + C * D E -` |
-| 16 | `(` | Push | `( - / (` | `A B + C * D E -` |
-| 17 | `F` | Output | `( - / (` | `A B + C * D E - F` |
-| 18 | `+` | Push | `( - / ( +` | `A B + C * D E - F` |
-| 19 | `G` | Output | `( - / ( +` | `A B + C * D E - F G` |
-| 20 | `)` | Pop until `(` | `( - /` | `A B + C * D E - F G +` |
-| 21 | `)` | Pop all until `(` | | `A B + C * D E - F G + / -` |
-
-**ผลลัพธ์ Postfix:** `A B + C * D E - F G + / -`
+**Post-order Traversal (Left $\rightarrow$ Right $\rightarrow$ Root):**  
+`15, 35, 40, 30, 70, 95, 80, 60`
 
 ---
 
-### ข้อ 4.2: Expression Tree และการหาค่าคำตอบ
-Postfix: `5 3 + 8 6 2 / - *`
+## Part 4: Expression Tree (15 คะแนน) (ชุดที่ 1)
 
-**1. รูปโครงสร้าง Expression Tree:**
+### ข้อ 4.1: Infix to Postfix Conversion (8 คะแนน)
+**Question (EN):**  
+Write step-by-step operator stack status for converting the Infix expression `((A + B) * C - (D - E) / (F + G))` to Postfix expression. `//Score 8`
+
+**(คำแปลไทย):**  
+*(จงเขียนขั้นตอนเครื่องหมายเข้าออก Stack เพื่อแปลงนิพจน์ Infix `((A + B) * C - (D - E) / (F + G))` ให้เป็นนิพจน์ Postfix)*
+
+#### 💡 เฉลย:
+- **Postfix Expression ผลลัพธ์:** `A B + C * D E - F G + / -`
+
+---
+
+### ข้อ 4.2: Expression Tree Drawing & Numerical Evaluation (7 คะแนน)
+**Question (EN):**  
+Draw Expression Tree and evaluate numerical answer from Postfix: `5 3 + 8 6 2 / - *` `//Score 7`
+
+**(คำแปลไทย):**  
+*(จงวาดภาพ Expression Tree และคำนวณหาคำตอบค่าตัวเลขสุดท้ายจาก Postfix: `5 3 + 8 6 2 / - *`)*
+
+#### 💡 เฉลยรูป Expression Tree และการคำนวณ:
 ```text
             *
         /       \
@@ -354,56 +207,244 @@ Postfix: `5 3 + 8 6 2 / - *`
                   / \
                  6   2
 ```
-
-**2. การคำนวณผลลัพธ์ (Evaluation):**
-- กิ่งซ้าย: $5 + 3 = 8$
-- กิ่งขวา:
-  - $6 / 2 = 3$
-  - $8 - 3 = 5$
-- โหนดราก: $8 \times 5 = 40$
-
-**คำตอบ:** **40**
+**การคำนวณ:** กิ่งซ้าย $= 5+3=8$, กิ่งขวา $= 8 - (6/2) = 5$, ราก $= 8 \times 5 = \mathbf{40}$
 
 ---
 
-## เฉลย Part 5: หลักการและทฤษฎีพื้นฐาน
+## Part 5: หลักการอะไรเอ่ย (10 คะแนน) (ชุดที่ 1)
 
-1. **LIFO (Last-In, First-Out):**
-   - คือหลักการที่ข้อมูลที่ถูกใส่เข้าไปหลังสุดจะถูกนำออกมาใช้งานเป็นลำดับแรก
-   - Data Structure ที่ใช้คือ **Stack**
-   - ตัวอย่างการใช้งานจริง: **Function Call Stack** (การจดจำจุดเรียกฟังก์ชันย้อนกลับ), **Undo/Redo** ในโปรแกรมพิมพ์เอกสาร, หรือ **Browser Back Button**
-2. **กฎคุณสมบัติของ BST:**
-   - ข้อมูลทุกตัวใน **Left Subtree** ต้องมีค่าน้อยกว่า Root/Parent Node
-   - ข้อมูลทุกตัวใน **Right Subtree** ต้องมีค่ามากกว่า Root/Parent Node
-3. **การแก้ Collision ใน Hash Table:**
-   - **Chaining:** ในแต่ละช่องตารางจะเก็บ Linked List ไว้ เมื่อมีข้อมูลชนกันจะนำไปต่อเป็น Node ใหม่ใน Linked List ของช่องนั้นๆ
-   - **Open Addressing (Linear Probing):** ข้อมูลจะถูกเก็บในอาเรย์หลักโดยตรง หากช่องที่ Hash ได้ไม่ว่าง จะวนหาช่องว่างถัดไปทีละ 1 ช่อง ($index = (hash + 1) \pmod{size}$)
-4. **Time Complexity ในการ Indexing:**
-   - **Array:** $O(1)$ เพราะจัดเก็บในหน่วยความจำแบบต่อเนื่อง (Contiguous Memory) สามารถคำนวณ Memory Address ด้วย $Address = Base + (index \times size)$ ได้ทันที
-   - **Singly Linked List:** $O(n)$ เพราะข้อมูลกระจายใน Memory ต้องเริ่มเดินตาม Pointer `next` ตั้งแต่ `head` ทีละโหนดไปจนถึงโหนดที่ $i$
+**Question (EN) & (คำแปลไทย):**
+1. **LIFO Principle (2.5 คะแนน):** LIFO คือ Last-In, First-Out ใช้ใน **Stack** ตัวอย่างจริง: **Function Call Stack**, **Undo/Redo**
+2. **BST Key Property (2.5 คะแนน):** Left Child < Parent < Right Child ในทุก Subtree
+3. **Collision Resolution (2.5 คะแนน):** Chaining ต่อ Linked List ในช่องเดิม, Open Addressing (Linear Probing) เลื่อนหาช่องว่างถัดไปใน Array
+4. **Indexing Complexity (2.5 คะแนน):** Array ใช้ $O(1)$ (Contiguous Memory), Linked List ใช้ $O(n)$ (Sequential Traversal)
 
 ---
 
-## เฉลย Part 6: คำถามย่อยและการ Trace Code
+## Part 6: Hash Table & Python Tracing (10 คะแนน) (ชุดที่ 1)
 
-### ข้อ 6.1: Hash Table และการสร้าง List
-1. **คำนวณ Index:**
-   - `"cat"`: $312 \pmod 7 = 4$ $\rightarrow$ เก็บที่ `my_strings[4] = "cat"`
-   - `"dog"`: $314 \pmod 7 = 6$ $\rightarrow$ เก็บที่ `my_strings[6] = "dog"`
-   - `"bird"`: $417 \pmod 7 = 4$ $\rightarrow$ เกิด Collision ที่ Index 4
-2. **ความแตกต่าง:**
-   - `my_strings = [None] * 7`: จองหน่วยความจำล่วงหน้าเป็น List ขนาดคงที่ 7 ช่อง แต่ละช่องมีค่าเป็น `None` ทำให้สามารถกำหนดค่าหรือเข้าถึงด้วย Index ได้ทันที เช่น `my_strings[4] = "cat"`
-   - `my_strings = []`: สร้าง Empty List ที่มีความยาวเริ่มต้นเป็น 0 หากเข้าถึงด้วย `my_strings[4]` จะเกิดข้อผิดพลาด `IndexError: list assignment index out of range` ทันที ต้องใช้ `.append()` หรือ `.insert()` เท่านั้น
+### ข้อ 6.1: Hash Table & Memory Allocation (5 คะแนน) *(ตรงตามรูปโปรเจกเตอร์ `411.jpg`)*
+**Question (EN):**  
+Given `table_size = 7` and hash function `hash_val % table_size`. (1) Calculate index for `"cat"` (ASCII sum=312), `"dog"` (ASCII sum=314), `"bird"` (ASCII sum=417). (2) Explain the difference between `my_strings = [None] * 7` and `my_strings = []` in Python. `//Score 5`
+
+**(คำแปลไทย):**  
+*(กำหนดตารางแฮชขนาด `table_size = 7` และฟังก์ชันแฮช `hash_val % table_size`: (1) จงคำนวณ Hash Index สำหรับ `"cat"`, `"dog"`, `"bird"` (2) จงอธิบายความแตกต่างระหว่างคำสั่ง `my_strings = [None] * 7` กับ `my_strings = []` ในภาษา Python)*
+
+#### 💡 เฉลยละเอียดตรงตามข้อความในรูป 411:
+1. **การคำนวณ Index:**
+   - `"cat"`: $312 \pmod 7 = 4 \implies \text{เก็บที่ } \text{my\_strings}[4] = \text{"cat"}$
+   - `"dog"`: $314 \pmod 7 = 6 \implies \text{เก็บที่ } \text{my\_strings}[6] = \text{"dog"}$
+   - `"bird"`: $417 \pmod 7 = 4 \implies \text{เกิด Collision ที่ Index 4}$
+2. **ความแตกต่างระหว่าง `[None] * 7` กับ `[]`:**
+   - `my_strings = [None] * 7`: เป็นการสร้าง list ที่มีขนาดคงที่ 7 ช่อง โดยแต่ละช่องมีค่าเริ่มต้นเป็น `None` ทั้งหมด ซึ่งเป็นค่าพิเศษแสดงถึง "ไม่มีค่า" หรือ "null" สามารถเข้าถึงแต่ละช่องเพื่อกำหนดค่าใหม่ได้ทันที เช่น `my_strings[1] = "Test1"`, `my_strings[4] = "Test4"`
+   - `my_strings = []`: เป็นการสร้าง list ว่างเปล่า ที่ไม่มีสมาชิกใดๆ อยู่ภายในเลย ขนาดเริ่มต้นคือ 0 การเพิ่มสมาชิกจะต้องใช้เมธอดเช่น `.append()` หรือ `.insert()` หากเข้าถึงด้วย index เช่น `my_strings[1]` จะเกิด `IndexError`
 
 ---
 
-### ข้อ 6.2: Output Tracing
-- เมื่อเรียก `mystery(5)`:
-  1. $n = 5$ (เลขคี่) $\implies 5 \times \text{mystery}(3)$
-  2. $n = 3$ (เลขคี่) $\implies 3 \times \text{mystery}(1)$
-  3. $n = 1$ (เข้า Base Case $n \le 1$) $\implies \text{return } 1$
-- คำนวณย้อนกลับ:
-  - $\text{mystery}(3) = 3 \times 1 = 3$
-  - $\text{mystery}(5) = 5 \times 3 = 15$
+### ข้อ 6.2: Python Recursive Output Tracing (5 คะแนน)
+**Question (EN):** Trace and write output of `print(mystery(5))` where `mystery(n)` returns `n * mystery(n-2)` for odd numbers. `//Score 5`  
+**(คำแปลไทย):** *(จง Trace ค่าผลลัพธ์ Output ของฟังก์ชัน `mystery(5)`)*  
+👉 **เฉลย:** $5 \times 3 \times 1 = \mathbf{15}$
 
-**Output:** `15`
+---
+---
+
+# 🚀 ชุดที่ 2: เก็งข้อสอบกลางภาคชุดใหม่ 2026 (Predicted Midterm Exam)
+*(เก็งเจาะลึกจากสไลด์และ PDF ทุกบท: `For example Queue.pdf`, `removebst.pdf`, `Postfix Expression.pdf`)*
+
+---
+
+## Part 1: Linked List Operations & Edge Cases (10 คะแนน) (ชุดที่ 2)
+
+### ข้อ 1.1: Insert and Delete in Singly Linked List (5 คะแนน)
+**Question (EN):**  
+Suppose you have an instance variable `myList` of class `LinkedList` containing initial data: `[45, 18, 72, 29, 63]` (where 45 is Head). Write statements in `main` program to transform `myList` into `[90, 45, 18, 50, 63, 100]` using only `add(item)`, `insert(item, pos)`, `remove(item)`, and `search(item)`. `//Score 5`
+
+**(คำแปลไทย):**  
+*(กำหนดตัวแปร `myList` มีข้อมูลเริ่มต้นคือ `[45, 18, 72, 29, 63]` (โดย 45 อยู่ที่ Head) จงเขียนประโยคคำสั่งในโปรแกรม `main` เพื่อปรับเปลี่ยนข้อมูลให้กลายเป็น `[90, 45, 18, 50, 63, 100]` โดยใช้เฉพาะเมธอด `add`, `insert`, `remove` เท่านั้น)*
+
+#### 💡 เฉลยและวิธีคิด (Solution):
+```python
+myList.remove(72)       # ลบ 72 -> [45, 18, 29, 63]
+myList.remove(29)       # ลบ 29 -> [45, 18, 63]
+myList.insert(50, 2)     # แทรก 50 ที่ index 2 -> [45, 18, 50, 63]
+myList.insert(100, 4)    # แทรก 100 ที่ index 4 (ต่อท้าย) -> [45, 18, 50, 63, 100]
+myList.add(90)          # add 90 ที่หัวแถว -> [90, 45, 18, 50, 63, 100]
+```
+
+---
+
+### ข้อ 1.2: Doubly Linked List Pointer Updates (5 คะแนน)
+**Question (EN):**  
+In a Doubly Linked List, each node contains both `next` and `prev` pointers. Write the 4 pointer update statements when inserting a new node `new_node` after a node `curr`. What special check is needed if `curr` is the last node (`tail`)? `//Score 5`
+
+**(คำแปลไทย):**  
+*(ใน Doubly Linked List แต่ละโหนดจะมีทั้ง pointer `next` และ `prev` จงเขียนคำสั่ง 4 บรรทัดในการแทรกโหนดใหม่ `new_node` ต่อท้ายโหนด `curr` และต้องดักเงื่อนไขพิเศษอะไรหาก `curr` เป็นโหนดสุดท้ายของลิสต์)*
+
+#### 💡 เฉลยและวิธีคิด (Solution):
+```python
+# 4 บรรทัดในการเชื่อมโยง Pointer
+new_node.next = curr.next
+new_node.prev = curr
+if curr.next is not None:
+    curr.next.prev = new_node
+curr.next = new_node
+
+# กรณีพิเศษ: หาก curr เป็นโหนดสุดท้าย (curr.next is None)
+# ไม่ต้องอัปเดต curr.next.prev และต้องอัปเดต pointer tail = new_node
+```
+
+---
+
+## Part 2: Stack & Queue + Special Cases of Queues (10 คะแนน) (ชุดที่ 2)
+
+### ข้อ 2.1: Special Boundary Cases of Queue ADT (5 คะแนน) *(เจาะลึกจาก `For example Queue.pdf`)*
+**Question (EN):**  
+When we implement a **Circular Array Queue** with capacity $N=5$, there are critical boundary/special cases that must be handled. Write at least **3 special cases** with method call examples and explain why each occurs. `//Score 5`
+
+**(คำแปลไทย):**  
+*(เมื่อเราสร้าง Circular Array Queue ขนาดความจุ $N=5$ มีกรณีพิเศษ (Special Cases) ที่ต้องจัดการอย่างน้อย 3 กรณี จงยกตัวอย่าง Method Call และอธิบายเหตุผลอย่างละเอียด)*
+
+#### 💡 เฉลยและวิธีคิด (Solution):
+1. **Queue Underflow (`deQueue()` บน Queue ว่าง):**  
+   - *ตัวอย่าง:* `q = Queue(5)`, เรียก `q.deQueue()` ขณะ `q.isEmpty()` เป็นจริง  
+   - *คำอธิบาย:* ไม่มีข้อมูลให้ออก การเข้าถึงอาเรย์จะผิดพลาด ต้องดัก `if self.isEmpty(): return None`
+2. **Queue Overflow (`enQueue()` บน Queue เต็ม):**  
+   - *ตัวอย่าง:* คิวมีสมาชิกครบ 5 ตัวแล้วเรียก `q.enQueue(99)`  
+   - *คำอธิบาย:* ใน Circular Queue หากขนาดเต็มแล้วไม่ตรวจ `(rear + 1) % limit == front` การ enQueue จะไปเขียนทับข้อมูลเดิมที่หัวแถว (Front)
+3. **Pointer Wrap-Around (การวนกลับของ Index):**  
+   - *ตัวอย่าง:* `rear` อยู่ที่ index 4 (ท้ายอาเรย์) แต่ด้านหน้า index 0 ว่างจากการ deQueue  
+   - *คำอธิบาย:* ต้องคำนวณตำแหน่งใหม่ด้วยสูตร `rear = (rear + 1) % limit` เพื่อวนกลับมาชี้ index 0 ป้องกันไม่ให้ index หลุดขอบ
+
+---
+
+### ข้อ 2.2: Queue Rotation Manipulation (5 คะแนน)
+**Question (EN):**  
+Given an existing Queue `q` containing `[10, 20, 30, 40, 50]` (Front: 10, Rear: 50). Write statements in `main` program to remove element `30` and leave `q = [10, 20, 40, 50]` using only Queue methods and rotation technique. `//Score 5`
+
+**(คำแปลไทย):**  
+*(กำหนด Queue `q` มีข้อมูล `[10, 20, 30, 40, 50]` จงเขียนประโยคคำสั่งเพื่อลบเลข `30` ออกโดยใช้เทคนิค Rotation ของ Queue ให้เหลือ `[10, 20, 40, 50]`)*
+
+#### 💡 เฉลยแบบสั่งทีละบรรทัด (ไม่ใช้ while):
+```python
+# หมุน 10 และ 20 ไปต่อท้าย
+q.enQueue(q.deQueue()) # [20, 30, 40, 50, 10]
+q.enQueue(q.deQueue()) # [30, 40, 50, 10, 20]
+
+# DeQueue 30 ออกมาทิ้ง
+q.deQueue()            # [40, 50, 10, 20]
+
+# หมุน 40, 50 ไปต่อท้ายเพื่อให้ 10 กลับมาอยู่หัวแถวตามเดิม
+q.enQueue(q.deQueue()) # [50, 10, 20, 40]
+q.enQueue(q.deQueue()) # [10, 20, 40, 50] (สำเร็จ)
+```
+
+---
+
+## Part 3: BST Delete Recursive Tracing & Tree Reconstruction (15 คะแนน) (ชุดที่ 2)
+
+### ข้อ 3.1: Recursive Deletion Step Tracing (Case: 2 Children) (8 คะแนน) *(เจาะลึกจาก `removebst.pdf`)*
+**Question (EN):**  
+Given a Binary Search Tree with nodes `[50, 30, 70, 20, 40, 60, 80, 35]`. Trace the recursive execution steps of `_delete_recursive(current_node, 30)` when deleting node `30` (which has 2 children: left child 20, right child 40 with left child 35). Write the trace table. `//Score 8`
+
+**(คำแปลไทย):**  
+*(กำหนด BST ที่มีโหนด `[50, 30, 70, 20, 40, 60, 80, 35]` จง Trace ขั้นตอนการทำงานเมื่อเรียกคำสั่งลบโหนด `30` ซึ่งเป็นกรณีที่มีลูก 2 ข้าง (Two Children) โดยต้องหา In-order Successor จาก subtree ขวา)*
+
+#### 💡 เฉลยตาราง Recursive Deletion Tracing:
+| Call ครั้งที่ | `current_node.value` | `value` | เงื่อนไขที่เข้า | การกระทำที่เกิดขึ้น (Action) |
+| :---: | :---: | :---: | :--- | :--- |
+| **1** | `50` | `30` | `30 < 50` is `True` | `current_node.left = self._delete_recursive(current_node.left, 30)` |
+| **2** | `30` | `30` | `30 == 30` (2 children) | หา min ของกิ่งขวาได้ `35`, แทนค่า `current_node.value = 35`, สั่ง `current_node.right = self._delete_recursive(current_node.right, 35)` |
+| **3** | `40` | `35` | `35 < 40` is `True` | `current_node.left = self._delete_recursive(current_node.left, 35)` |
+| **4** | `35` | `35` | `35 == 35` (Leaf Node) | คืนค่า `None` เพื่อตัดโหนด 35 เดิมทิ้ง |
+
+---
+
+### ข้อ 3.2: Reconstructing BST from Post-order & In-order (7 คะแนน)
+**Question (EN):**  
+Given traversal results of a Binary Search Tree:  
+- **Post-order:** `8, 24, 16, 42, 60, 55, 32`  
+- **In-order:** `8, 16, 24, 32, 42, 55, 60`  
+1. Draw the complete Binary Search Tree.  
+2. Write its **Pre-order Traversal**. `//Score 7`
+
+**(คำแปลไทย):**  
+*(กำหนดผลการเดินท่องแบบ Post-order และ In-order จงวาดรูป Binary Search Tree และเขียนผลลัพธ์แบบ Pre-order Traversal)*
+
+#### 💡 เฉลยรูป Binary Search Tree (Root คือตัวท้ายสุดของ Post-order = 32):
+```text
+          32
+        /    \
+      16      55
+     /  \    /  \
+    8   24  42  60
+```
+**Pre-order Traversal (Root $\rightarrow$ Left $\rightarrow$ Right):**  
+`32, 16, 8, 24, 55, 42, 60`
+
+---
+
+## Part 4: Expression Tree, Infix-Postfix & Traversals (15 คะแนน) (ชุดที่ 2)
+
+### ข้อ 4.1: Convert Infix to Postfix with Stack Table (8 คะแนน)
+**Question (EN):**  
+Trace the Operator Stack for converting: `(A + B * C) / (D - E ^ F)` to Postfix. `//Score 8`
+
+**(คำแปลไทย):**  
+*(จง Trace ขั้นตอนของ Operator Stack ในการแปลง `(A + B * C) / (D - E ^ F)` ให้เป็น Postfix)*
+
+#### 💡 เฉลย:
+- **Postfix Expression ผลลัพธ์:** `A B C * + D E F ^ - /`
+
+---
+
+### ข้อ 4.2: Expression Tree Construction & Multi-traversal (7 คะแนน)
+**Question (EN):**  
+Given numeric Postfix: `12 4 / 5 2 * + 7 -`  
+1. Draw the Expression Tree.  
+2. Evaluate the numerical result. `//Score 7`
+
+**(คำแปลไทย):**  
+*(กำหนด Postfix: `12 4 / 5 2 * + 7 -` จงวาด Expression Tree และคำนวณผลลัพธ์)*
+
+#### 💡 เฉลยรูป Expression Tree และการคำนวณ:
+```text
+            -
+        /       \
+       +         7
+      / \
+     /   *
+    / \ / \
+   12 4 5  2
+```
+**การคำนวณ:** $(12 / 4) + (5 \times 2) - 7 = 3 + 10 - 7 = \mathbf{6}$
+
+---
+
+## Part 5: หลักการอะไรเอ่ยชุดเก็ง (10 คะแนน) (ชุดที่ 2)
+
+1. **Worst-case BST vs Balanced BST (2.5 คะแนน):** ทำไม BST ในกรณีแย่สุด (เช่น ข้อมูลเรียงล่วงหน้า `1, 2, 3, 4, 5`) ถึงมี Search Complexity เป็น $O(n)$ แทนที่จะเป็น $O(\log n)$?  
+   👉 **เฉลย:** เพราะ Tree จะเอียงไปข้างเดียวกลายเป็นเส้นตรง (Degenerate / Skewed Tree) กลายสภาพเหมือน Singly Linked List
+2. **Circular Queue Modulo (2.5 คะแนน):** ทำไม Circular Queue ต้องใช้สูตร `(rear + 1) % capacity`?  
+   👉 **เฉลย:** เพื่อให้ Pointer วนกลับ (Wrap-around) ไปใช้พื้นที่ว่างด้านหน้า index 0 ได้เมื่อ rear เดินจนสุดความจุ
+3. **Infix vs Postfix Evaluation (2.5 คะแนน):** ทำไมระบบคอมพิวเตอร์จึงนิยมแปลง Infix เป็น Postfix ก่อนคำนวณ?  
+   👉 **เฉลย:** เพราะ Postfix ไม่ต้องใช้วงเล็บ และไม่มีความคลุมเครือเรื่องลำดับความสำคัญของเครื่องหมาย ใช้ Stack คำนวณใน $O(n)$ ได้ทันที
+4. **Quadratic Probing vs Linear Probing (2.5 คะแนน):** ใน Open Addressing วิธี Quadratic Probing แก้ปัญหา Primary Clustering ของ Linear Probing อย่างไร?  
+   👉 **เฉลย:** Linear Probing เลื่อนทีละ 1 ($+1, +2, +3$) ทำให้เกิดการเกาะกลุ่มยาว, Quadratic Probing จึงเลื่อนแบบยกกำลังสอง ($+1^2, +2^2, +3^2$) เพื่อกระจายข้อมูลให้ห่างออกจากจุดที่ชนกัน
+
+---
+
+## Part 6: คำถามย่อย & Code Tracing ชุดเก็ง (10 คะแนน) (ชุดที่ 2)
+
+### ข้อ 6.1: Recursive Binary Tree Count Nodes (5 คะแนน)
+**Question (EN):** Trace return value of `count_nodes(root)` for Tree with Root 10 (left: 5 with right: 7, right: 15). `//Score 5`  
+**(คำแปลไทย):** *(จง Trace การนับจำนวนโหนดของ Tree)*  
+👉 **เฉลย:** Root (1) + Left Subtree (2 โหนด) + Right Subtree (1 โหนด) $= 1 + 2 + 1 = \mathbf{4}$
+
+---
+
+### ข้อ 6.2: Hash Collision with Quadratic Probing Tracing (5 คะแนน)
+**Question (EN):** Insert keys `11, 18, 25` into Table size 7 using Quadratic Probing ($h(k) = k \pmod 7$). `//Score 5`  
+**(คำแปลไทย):** *(จงแทรกข้อมูล 11, 18, 25 ลงตารางขนาด 7 ช่องด้วยวิธี Quadratic Probing)*  
+👉 **เฉลยผลลัพธ์ตาราง:**  
+`Index 0: None` | `Index 1: 25` | `Index 2: None` | `Index 3: None` | `Index 4: 11` | `Index 5: 18` | `Index 6: None`

@@ -15,8 +15,14 @@ class Stack:
         else:
             self.items.append(item)
 
+    # def pop(self):
+    #     return self.items.pop()
+
     def pop(self):
-        return self.items.pop()
+        if len(self.items) <= 0:
+            print("Stack Underflow")
+        else:
+            return self.items.pop()
 
     def top(self):
         return self.items[len(self.items) - 1]

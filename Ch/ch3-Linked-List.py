@@ -182,8 +182,32 @@ if __name__ == "__main__":
     # mylist.insert(5, 4)
     # mylist.getdata()
 
+# For example 2. 3
+
+    mylist.add(3)
+
+    mylist.add(1)
+    mylist.insert(2, 1)
+    mylist.insert(4, 3)
+    mylist.insert(5, 4)
+
+    node1 = mylist.head
+    node2 = node1.next
+    node3 = node2.next
+    node4 = node3.next
+    node5 = node4.next
+
+    node1.next = node4 # 1 (4->5) 2 3
+    node3.next = node2 # 1 (4->5) -> (3->2)
+    node4.next = node3 # 1 4 3 (2->3) | 5->None
+    node2.next = node5 # 1 4 3 2 5
+
+    mylist.getdata()
+
+
+
 # Assign 1: Linked List
-    # 68060216 120347
+#     68060216 120347
 
     mylist = LinkedList()
     mylist.add(1)        # 1
@@ -192,7 +216,7 @@ if __name__ == "__main__":
     mylist.insert(3, 3)  # 0 1 2 3
     mylist.insert(4, 4)  # 0 1 2 3 4
     mylist.insert(7, 5)  # 0 1 2 3 4 7
-    
+
     node1 = mylist.head
     node2 = node1.next
     node3 = node2.next

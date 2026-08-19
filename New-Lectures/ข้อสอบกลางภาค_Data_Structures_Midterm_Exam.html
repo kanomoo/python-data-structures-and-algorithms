@@ -3,10 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ข้อสอบกลางภาคฉบับจริง (Midterm Exam) Data Structures & Algorithms</title>
+<title>รวมข้อสอบกลางภาค Data Structures & Algorithms (ครบ 2 ชุดเต็ม ฉบับจริง + เก็งชุดใหม่ 2026)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<!-- MathJax configuration -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <style>
   :root {
     --primary: #1e3a8a;
@@ -16,7 +27,6 @@
     --bg-main: #f8fafc;
     --card-bg: #ffffff;
     --text-color: #1e293b;
-    --text-muted: #64748b;
     --border-color: #e2e8f0;
     --code-bg: #f1f5f9;
   }
@@ -32,7 +42,7 @@
   }
 
   .container {
-    max-width: 920px;
+    max-width: 980px;
     margin: 0 auto;
     background: var(--card-bg);
     padding: 40px 50px;
@@ -76,15 +86,36 @@
 
   .meta-item strong { color: var(--primary); }
 
+  .set-divider {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0d9488 100%);
+    color: #ffffff;
+    padding: 18px 24px;
+    border-radius: 10px;
+    margin: 50px 0 30px 0;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.2);
+  }
+
+  .set-divider h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .set-divider p {
+    margin: 6px 0 0 0;
+    opacity: 0.9;
+    font-size: 14px;
+  }
+
   h2.part-title {
     color: var(--primary);
     background: #f1f5f9;
-    padding: 10px 16px;
+    padding: 12px 18px;
     border-radius: 6px;
     border-left: 5px solid var(--primary);
-    margin-top: 40px;
+    margin-top: 35px;
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 19px;
   }
 
   h3.question-title {
@@ -104,6 +135,17 @@
     border-radius: 12px;
     font-size: 13px;
     font-weight: 600;
+  }
+
+  .thai-trans {
+    color: #475569;
+    font-style: italic;
+    background: #f8fafc;
+    border-left: 3px solid #cbd5e1;
+    padding: 8px 14px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0 15px 0;
+    font-size: 14.5px;
   }
 
   pre, code {
@@ -149,7 +191,8 @@
     border-left: 4px solid #22c55e;
     padding: 18px 22px;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 25px;
   }
 
   .solution-title {
@@ -170,6 +213,16 @@
     color: #0f172a;
     font-size: 13px;
     line-height: 1.3;
+  }
+
+  .method-subtitle {
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 15px 0 6px 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .print-btn {
@@ -200,24 +253,33 @@
 <div class="container">
   <div class="header">
     <h1>MIDTERM EXAMINATION: DATA STRUCTURES & ALGORITHMS</h1>
-    <h2>ข้อสอบกลางภาคฉบับเต็ม 6 ส่วน (อิงจาก exam.txt & ข้อสอบจริงใน Mid) พร้อมเฉลยละเอียด</h2>
+    <h2>รวมชุดข้อสอบกลางภาค: ครบ 2 ชุดเต็ม 140 คะแนน (ฉบับจริง + เก็งชุดใหม่ 2026)</h2>
   </div>
 
   <div class="exam-meta">
-    <div class="meta-item"><strong>คะแนนในข้อสอบ:</strong> 70 คะแนน (หาร 2 เหลือ 35 คะแนน)</div>
+    <div class="meta-item"><strong>โครงสร้างชุดข้อสอบ:</strong> 2 ชุดเต็ม (ชุดละ 70 คะแนน)</div>
     <div class="meta-item"><strong>เงื่อนไข:</strong> เปิดตำราได้ (Open Book / Open Notes)</div>
-    <div class="meta-item"><strong>ภาษา:</strong> คำถามภาษาอังกฤษ / ตอบไทยหรืออังกฤษได้</div>
-    <div class="meta-item"><strong>การเขียนตอบ:</strong> ปากกาสำหรับข้อเขียน / ดินสอสำหรับรูป Tree</div>
+    <div class="meta-item"><strong>ภาษา:</strong> คำถาม EN / แปลไทย / ตอบ TH หรือ EN ได้</div>
+    <div class="meta-item"><strong>การเขียนตอบ:</strong> ปากกาสำหรับข้อเขียน / ดินสอสำหรับวาด Tree</div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SET 1: REAL EXAM -->
+  <!-- ========================================== -->
+  <div class="set-divider">
+    <h2>🌟 ชุดที่ 1: ข้อสอบกลางภาคฉบับจริง (Real Midterm Exam - 70 คะแนน)</h2>
+    <p>ถอดแบบ 100% จาก exam.txt, รูปถ่ายข้อสอบจริงในห้อง Mid/ (ภาพ 411 - 415 และ Screenshot)</p>
   </div>
 
   <!-- PART 1 -->
-  <h2 class="part-title">1. Singly Linked List (10 คะแนน)</h2>
+  <h2 class="part-title">1. Singly Linked List (10 คะแนน) (ชุดที่ 1)</h2>
   
   <h3 class="question-title">
-    <span>1.1 Write statements in main program (ข้อสอบจริงจาก Mid)</span>
+    <span>1.1 Write statements in main program (จากรูปภาพข้อสอบจริง 412)</span>
     <span class="score-badge">Score: 5</span>
   </h3>
-  <p><strong>Question:</strong> Write the statements in main program when the instance variable <code>listA</code> with ordered inputs are <code>1, 3, 8, 7, 9</code> and has result outputs are <code>9, 5, 1, 3, 7, 2, 8</code> by using class <code>LinkedList</code>'s methods that we learned only.</p>
+  <p><strong>Question (EN):</strong> Write the statements in main program when the instance variable <code>listA</code> with ordered inputs are <code>1, 3, 8, 7, 9</code> and has result outputs are <code>9, 5, 1, 3, 7, 2, 8</code> by using class <code>LinkedList</code>'s methods that we learned only.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> จงเขียนประโยคคำสั่งในโปรแกรม main เมื่อกำหนดตัวแปร <code>listA</code> ที่มีข้อมูลอินพุตเริ่มต้นคือ <code>1, 3, 8, 7, 9</code> และต้องการให้ได้ผลลัพธ์เป็น <code>9, 5, 1, 3, 7, 2, 8</code> โดยใช้เฉพาะเมธอดของคลาส LinkedList ที่เรียนมาเท่านั้น</div>
   
   <div class="solution-box">
     <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
@@ -231,62 +293,92 @@ listA.add(9)          # add แทรกที่ head -> 9 -> 5 -> 1 -> 3 -> 7 
   </div>
 
   <h3 class="question-title">
-    <span>1.2 Special cases when implementing Linked List (ข้อสอบจริงจาก Mid)</span>
+    <span>1.2 Special cases when implementing Linked List (จากรูปภาพข้อสอบจริง 415)</span>
     <span class="score-badge">Score: 5</span>
   </h3>
-  <p><strong>Question:</strong> When we implement Linked List, there are many special cases we must check. If the elements of a list are <code>34, 12, 52, 16, 15</code>, write at least 3 special cases by examples.</p>
+  <p><strong>Question (EN):</strong> When we implement Linked List, there are many special cases we must check. If the elements of a list are <code>34, 12, 52, 16, 15</code>, write at least the 3 special cases by examples.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> เมื่อเราสร้างและใช้งาน Linked List จะมีกรณีพิเศษ (Special Cases) หลายกรณีที่เราต้องตรวจสอบ หากข้อมูลในลิสต์ปัจจุบันคือ <code>34, 12, 52, 16, 15</code> จงเขียนยกตัวอย่างกรณีพิเศษอย่างน้อย 3 กรณีพร้อมอธิบาย</div>
 
   <div class="solution-box">
     <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
     <ol>
-      <li><code>Find(99)</code> หรือ <code>Delete(99)</code>: ค้นหาหรือลบข้อมูลที่ไม่มีอยู่ใน List (Element Not Found) เพื่อป้องกัน <code>NoneType</code> error</li>
+      <li><code>Find(99)</code> หรือ <code>Delete(99)</code>: ค้นหาหรือลบข้อมูลที่ไม่มีใน List (Element Not Found) เพื่อป้องกัน <code>NoneType</code> error</li>
       <li><code>Insert(88, 10)</code>: การแทรกที่ Index เกินขนาดความยาวของ List (Index Out of Bounds)</li>
       <li><code>Delete(34)</code> หรือ <code>Insert(99, 0)</code>: การจัดการที่ตำแหน่ง Head Node (ต้องเปลี่ยน <code>self.head</code> โดยตรง)</li>
     </ol>
   </div>
 
   <!-- PART 2 -->
-  <div class="page-break"></div>
-  <h2 class="part-title">2. Stack & Queue (10 คะแนน)</h2>
+  <h2 class="part-title">2. Stack & Queue Manipulation (10 คะแนน) (ชุดที่ 1)</h2>
 
   <h3 class="question-title">
-    <span>2.1 Delete elements using Queue (ข้อสอบจริงจาก Mid)</span>
+    <span>2.1 Delete elements using Queue (จากรูปภาพข้อสอบจริง Screenshot)</span>
     <span class="score-badge">Score: 10</span>
   </h3>
-  <p><strong>Question:</strong> If there is the exists Stack's instance variable <code>s</code> which has 5 elements <code>8, 4, 6, 9, 2</code> (where 8 is Bottom and 2 is Top) already. Write statement in main program to delete element <strong>4</strong> and <strong>9</strong> from the instance variable <code>s</code> with using the exists Queue's instance variable <code>q</code> and has result output are <code>8, 6, 2</code> (Bottom: 8, Top: 2) by using class <code>Stack</code>'s and <code>Queue</code>'s methods that we learned only.</p>
+  <p><strong>Question (EN):</strong> If there is the exists Stack's instance variable <code>s</code> which has 5 elements <code>8, 4, 6, 9, 2</code> (where 8 is Bottom and 2 is Top) already. Write statement in main program to delete element <strong>4</strong> and <strong>9</strong> from the instance variable <code>s</code> with using the exists Queue's instance variable <code>q</code> and has result output are <code>8, 6, 2</code> (Bottom: 8, Top: 2) by using class <code>Stack</code>'s and <code>Queue</code>'s methods that we learned only.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> หากมีตัวแปร Stack ชื่อ <code>s</code> ซึ่งมีข้อมูล 5 ตัวคือ <code>8, 4, 6, 9, 2</code> อยู่แล้ว จงเขียนประโยคคำสั่งในโปรแกรม main เพื่อลบข้อมูลตัวเลข <strong>4</strong> และ <strong>9</strong> ออกจากตัวแปร <code>s</code> โดยใช้ตัวแปร Queue ชื่อ <code>q</code> ช่วย และให้ได้ผลลัพธ์สุดท้ายเป็น <code>8, 6, 2</code> โดยใช้เฉพาะเมธอดของคลาส Stack และ Queue ที่เรียนมาเท่านั้น</div>
 
   <div class="solution-box">
-    <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
-    <pre><code># 1. Pop ข้อมูลออกจาก Stack โดยคัดเอาเฉพาะ 2, 6, 8 ใส่ Queue q
-val = s.pop()    # 2
+    <div class="solution-title">💡 เฉลยละเอียดแสดงให้ 2 รูปแบบ:</div>
+    
+    <div class="method-subtitle">🔹 รูปแบบที่ 1: แบบเขียนคำสั่งทีละบรรทัด (ไม่ใช้ while loop - ตรงไปตรงมา)</div>
+    <pre><code># 1. Pop ข้อมูลออกจาก Stack s โดยกรองเอาเฉพาะ 2, 6, 8 ใส่ Queue q
+val = s.pop()    # ได้ 2
 q.enQueue(val)
-s.pop()          # 9 (ทิ้ง)
-val = s.pop()    # 6
+s.pop()          # ได้ 9 (ลบทิ้ง ไม่เก็บ)
+val = s.pop()    # ได้ 6
 q.enQueue(val)
-s.pop()          # 4 (ทิ้ง)
-val = s.pop()    # 8
+s.pop()          # ได้ 4 (ลบทิ้ง ไม่เก็บ)
+val = s.pop()    # ได้ 8
 q.enQueue(val)
-# ตอนนี้ q = [Front: 2, 6, 8 :Rear]
+# สภาพใน Queue ตอนนี้: q = [Front: 2, 6, 8 :Rear]
 
-# 2. ถ่ายข้อมูลกลับคืนเพื่อคงลำดับเดิม
+# 2. ถ่ายจาก q เข้า s (สั่งทีละตัว ไม่ใช้ while)
+s.push(q.deQueue())    # ใส่ 2 เข้าก้น s
+s.push(q.deQueue())    # ใส่ 6
+s.push(q.deQueue())    # ใส่ 8 อยู่บนสุด
+# สภาพใน Stack ตอนนี้: s = [Bottom: 2, 6, 8 :Top]
+
+# 3. Pop จาก s กลับเข้า q เพื่อสลับกลับลำดับ
+q.enQueue(s.pop())     # pop 8 เข้า q
+q.enQueue(s.pop())     # pop 6 เข้า q
+q.enQueue(s.pop())     # pop 2 เข้า q
+# สภาพใน Queue ตอนนี้: q = [Front: 8, 6, 2 :Rear]
+
+# 4. Dequeue จาก q กลับเข้า s จะได้ลำดับที่ถูกต้องตรงตามโจทย์
+s.push(q.deQueue())    # ใส่ 8 เข้าก้น s
+s.push(q.deQueue())    # ใส่ 6
+s.push(q.deQueue())    # ใส่ 2 อยู่บนสุด
+# ผลลัพธ์สุดท้าย: s = [Bottom: 8, 6, 2 :Top] (ถูกต้อง 100%)</code></pre>
+
+    <div class="method-subtitle">🔹 รูปแบบที่ 2: แบบใช้ while loop (สั้น กระชับ เป็นมาตรฐาน)</div>
+    <pre><code># 1. Pop และคัดกรองเฉพาะ 2, 6, 8 ใส่ Queue q
+val = s.pop(); q.enQueue(val)
+s.pop() # ทิ้ง 9
+val = s.pop(); q.enQueue(val)
+s.pop() # ทิ้ง 4
+val = s.pop(); q.enQueue(val)
+
+# 2. ถ่ายโอนสลับ 2 รอบด้วย while loop
 while not q.isEmpty():
-    s.push(q.deQueue())    # s = [Bottom: 2, 6, 8 :Top]
+    s.push(q.deQueue())
 
 while not s.is_empty():
-    q.enQueue(s.pop())     # q = [Front: 8, 6, 2 :Rear]
+    q.enQueue(s.pop())
 
 while not q.isEmpty():
-    s.push(q.deQueue())    # s = [Bottom: 8, 6, 2 :Top] (ได้ 8, 6, 2 ตามเดิม)</code></pre>
+    s.push(q.deQueue())</code></pre>
   </div>
 
   <!-- PART 3 -->
-  <h2 class="part-title">3. Binary Search Tree (15 คะแนน)</h2>
+  <h2 class="part-title">3. Binary Search Tree (15 คะแนน) (ชุดที่ 1)</h2>
 
   <h3 class="question-title">
-    <span>3.1 Recursive current_node step tracing table</span>
+    <span>3.1 Recursive current_node step tracing table (จาก exam.txt & 482)</span>
     <span class="score-badge">Score: 8</span>
   </h3>
-  <p><strong>Question:</strong> เขียนขั้นตอนการทำงานใน recursive <code>current_node</code> กับ <code>value</code> และประโยคคำสั่งที่ถูกทำ เมื่อเงื่อนไข <code>if..else</code> เป็นจริง เมื่อแทรกค่า <code>25</code> ลงใน BST ที่มีโหนด <code>50, 20, 70, 30</code>:</p>
+  <p><strong>Question (EN):</strong> Write step-by-step recursive operations of <code>current_node</code> and <code>value</code>, and the statements executed when <code>if..else</code> conditions are true in <code>_insert_recursive</code> method when inserting value <code>25</code> into a BST with existing nodes <code>50, 20, 70, 30</code> (Root is 50).</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> จงเขียนขั้นตอนการทำงานใน recursive ระหว่าง <code>current_node</code> กับ <code>value</code> และประโยคคำสั่งที่ถูกทำ เมื่อเงื่อนไข <code>if..else</code> เป็นจริง เมื่อแทรกค่า <code>25</code> ลงใน BST ที่มีโหนดเดิมคือ <code>50, 20, 70, 30</code></div>
 
   <div class="solution-box">
     <div class="solution-title">💡 ตารางแสดงขั้นตอนการทำงาน (Recursive Tracing):</div>
@@ -330,9 +422,8 @@ while not q.isEmpty():
     <span>3.2 Reconstructing Tree from Traversals</span>
     <span class="score-badge">Score: 7</span>
   </h3>
-  <p><strong>Question:</strong> ให้ผลการเดินท่องไปใน Tree มาให้ แล้วเขียน Tree ออกมา<br>
-  - <strong>Pre-order:</strong> <code>60, 30, 15, 40, 35, 80, 70, 95</code><br>
-  - <strong>In-order:</strong> <code>15, 30, 35, 40, 60, 70, 80, 95</code></p>
+  <p><strong>Question (EN):</strong> Given traversal outputs: Pre-order: <code>60, 30, 15, 40, 35, 80, 70, 95</code> and In-order: <code>15, 30, 35, 40, 60, 70, 80, 95</code>. Draw the complete Binary Search Tree and write its Post-order traversal result.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> กำหนดผลการเดินท่องไปใน Tree มาให้ จงวาดรูป Binary Search Tree ออกมา และเขียนผลลัพธ์การเดินท่องแบบ Post-order Traversal</div>
 
   <div class="solution-box">
     <div class="solution-title">💡 รูป Binary Search Tree:</div>
@@ -348,15 +439,14 @@ while not q.isEmpty():
   </div>
 
   <!-- PART 4 -->
-  <div class="page-break"></div>
-  <h2 class="part-title">4. Expression Tree (15 คะแนน)</h2>
+  <h2 class="part-title">4. Expression Tree (15 คะแนน) (ชุดที่ 1)</h2>
 
   <h3 class="question-title">
-    <span>4.1 Infix to Postfix with Stack Status</span>
+    <span>4.1 Infix to Postfix with Stack Status (จาก exam.txt & 480)</span>
     <span class="score-badge">Score: 8</span>
   </h3>
-  <p><strong>Question:</strong> ให้เขียนขั้นตอนเครื่องหมายเข้าออก Stack เพื่อแปลง Infix เป็น Postfix:<br>
-  <code>((A + B) * C - (D - E) / (F + G))</code></p>
+  <p><strong>Question (EN):</strong> Write step-by-step incoming tokens and operator stack status for converting Infix <code>((A + B) * C - (D - E) / (F + G))</code> to Postfix expression.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> จงเขียนขั้นตอนเครื่องหมายเข้าออก Stack เพื่อแปลงนิพจน์ Infix <code>((A + B) * C - (D - E) / (F + G))</code> ให้เป็น Postfix</div>
 
   <div class="solution-box">
     <div class="solution-title">💡 Postfix Output Result:</div>
@@ -364,10 +454,11 @@ while not q.isEmpty():
   </div>
 
   <h3 class="question-title">
-    <span>4.2 Expression Tree Drawing & Evaluation</span>
+    <span>4.2 Expression Tree Drawing & Numerical Evaluation</span>
     <span class="score-badge">Score: 7</span>
   </h3>
-  <p><strong>Question:</strong> วาดภาพ Expression Tree และหาคำตอบจาก Postfix: <code>5 3 + 8 6 2 / - *</code></p>
+  <p><strong>Question (EN):</strong> Draw the Expression Tree and evaluate the final numerical answer from Postfix: <code>5 3 + 8 6 2 / - *</code></p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> จงวาดภาพ Expression Tree และคำนวณหาคำตอบค่าตัวเลขสุดท้ายจาก Postfix: <code>5 3 + 8 6 2 / - *</code></div>
 
   <div class="solution-box">
     <div class="solution-title">💡 รูป Expression Tree & ผลการคำนวณ:</div>
@@ -379,23 +470,275 @@ while not q.isEmpty():
      5   3     8   /
                   / \
                  6   2</div>
-    <p><strong>การคำนวณ:</strong> Subtree ซ้าย $= 5+3=8$, Subtree ขวา $= 8 - (6/2) = 5$, ราก $= 8 \times 5 =$ <strong style="color:#15803d; font-size:16px;">40</strong></p>
+    <p><strong>การคำนวณ:</strong> Subtree ซ้าย $= 5+3=8$, Subtree ขวา $= 8 - (6/2) = 5$, ราก $= 8 \times 5 = \mathbf{40}$</p>
   </div>
 
   <!-- PART 5 & 6 -->
-  <h2 class="part-title">5. หลักการอะไรเอ่ย & 6. คำถามย่อย (20 คะแนน)</h2>
+  <h2 class="part-title">5. หลักการอะไรเอ่ย (10 คะแนน) (ชุดที่ 1)</h2>
   
   <div class="solution-box">
-    <div class="solution-title">💡 เฉลยสรุปประเด็นสำคัญ:</div>
+    <div class="solution-title">💡 เฉลยและคำแปล:</div>
     <ul>
-      <li><strong>หลักการ LIFO:</strong> Last-In, First-Out ใน Stack (ตัวอย่าง: Function Call Stack, Undo/Redo)</li>
-      <li><strong>กฎของ BST:</strong> Left Child &lt; Parent &lt; Right Child ทุก Subtree</li>
-      <li><strong>Collision Resolution:</strong> <em>Chaining</em> ต่อ Linked List ในช่องเดิม, <em>Open Addressing (Linear Probing)</em> เลื่อนหาช่องว่างถัดไปใน Array</li>
-      <li><strong>Array vs Linked List Access:</strong> Array ใช้ $O(1)$ (Contiguous Memory), Singly Linked List ใช้ $O(n)$ (Sequential Traversal)</li>
-      <li><strong>Hash Indexing:</strong> <code>"cat"</code> เก็บ Index 4, <code>"dog"</code> เก็บ Index 6, <code>"bird"</code> ชนที่ Index 4</li>
-      <li><strong><code>[None]*7</code> vs <code>[]</code>:</strong> <code>[None]*7</code> จอง 7 ช่อง กำหนดค่าตาม Index ได้ทันที, <code>[]</code> ขนาด 0 ถ้าเข้าถึงด้วย index จะเกิด <code>IndexError</code></li>
-      <li><strong>Output ของฟังก์ชัน <code>mystery(5)</code>:</strong> ได้ <strong>15</strong> ($5 \times 3 \times 1$)</li>
+      <li><strong>1. LIFO (Last-In, First-Out):</strong> ข้อมูลที่เข้าหลังสุดจะถูกนำออกก่อน ใช้ใน <strong>Stack</strong> ตัวอย่างจริง: Function Call Stack, Undo History</li>
+      <li><strong>2. กฎของ BST:</strong> Left Child &lt; Parent &lt; Right Child ในทุก Subtree</li>
+      <li><strong>3. Collision Resolution:</strong> <em>Chaining</em> ต่อ Linked List ในช่องเดิม, <em>Open Addressing (Linear Probing)</em> เลื่อนหาช่องว่างถัดไปใน Array</li>
+      <li><strong>4. Array vs Linked List Access:</strong> Array ใช้ $O(1)$ (Contiguous Memory), Singly Linked List ใช้ $O(n)$ (Sequential Traversal)</li>
     </ul>
+  </div>
+
+  <h2 class="part-title">6. คำถามย่อยและการ Trace Code (10 คะแนน) (ชุดที่ 1)</h2>
+
+  <h3 class="question-title">
+    <span>6.1 Hash Table & Memory Allocation (ถอดแบบตรงจากภาพโปรเจกเตอร์ IMG_20260623_173233_411.jpg)</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Given <code>table_size = 7</code> and hash function <code>hash_val % table_size</code>. (1) Calculate index for <code>"cat"</code> (ASCII sum=312), <code>"dog"</code> (ASCII sum=314), <code>"bird"</code> (ASCII sum=417). (2) Explain the difference between <code>my_strings = [None] * 7</code> and <code>my_strings = []</code> in Python.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> กำหนด <code>table_size = 7</code> และฟังก์ชันแฮช <code>hash_val % table_size</code>: (1) จงคำนวณ Hash Index สำหรับ <code>"cat"</code>, <code>"dog"</code>, <code>"bird"</code> (2) จงอธิบายความแตกต่างระหว่าง <code>my_strings = [None] * 7</code> กับ <code>my_strings = []</code> ในภาษา Python</div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยละเอียดตรงตามข้อความในรูป 411:</div>
+    <ol>
+      <li><strong>การคำนวณ Hash Index:</strong>
+        <ul>
+          <li><code>"cat"</code>: $312 \pmod 7 = 4 \implies \text{เก็บที่ } \text{my\_strings}[4] = \text{"cat"}$</li>
+          <li><code>"dog"</code>: $314 \pmod 7 = 6 \implies \text{เก็บที่ } \text{my\_strings}[6] = \text{"dog"}$</li>
+          <li><code>"bird"</code>: $417 \pmod 7 = 4 \implies \text{เกิด Collision ที่ Index 4}$</li>
+        </ul>
+      </li>
+      <li><strong>ความแตกต่างระหว่าง <code>[None] * 7</code> กับ <code>[]</code>:</strong>
+        <ul>
+          <li><code>my_strings = [None] * 7</code>: เป็นการสร้าง list ที่มีขนาด 7 โดยแต่ละช่องจะมีค่าเริ่มต้นเป็น <code>None</code> ทั้งหมด ซึ่งเป็นค่าพิเศษที่แสดงถึง "ไม่มีค่า" หรือ "null" ขนาดของ list นี้จะคงที่อยู่ที่ 7 และสามารถเข้าถึงแต่ละช่องเพื่อกำหนดค่าใหม่ได้ทันที เช่น <code>my_strings[1] = "Test1"</code>, <code>my_strings[4] = "Test4"</code></li>
+          <li><code>my_strings = []</code>: เป็นการสร้าง list ว่างเปล่า ที่ไม่มีสมาชิกใดๆ อยู่ภายในเลย ขนาดเริ่มต้นคือ 0 การเพิ่มสมาชิกเข้าไปจะต้องใช้เมธอดเช่น <code>append()</code> หรือ <code>insert()</code> หากเข้าถึงด้วย index เช่น <code>my_strings[1]</code> จะเกิด <code>IndexError</code></li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <h3 class="question-title">
+    <span>6.2 Python Recursive Output Tracing (จาก exam.txt)</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Trace and write the output result of the recursive program: <code>print(mystery(5))</code></p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> จง Trace ขั้นตอนการทำงานและเขียนผลลัพธ์ Output ของฟังก์ชัน recursive <code>mystery(5)</code></div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลย:</div>
+    <p><code>mystery(5)</code> $= 5 \times \text{mystery}(3) = 5 \times (3 \times \text{mystery}(1)) = 5 \times 3 \times 1 = \mathbf{15}$</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SET 2: PREDICTED EXAM 2026 -->
+  <!-- ========================================== -->
+  <div class="page-break"></div>
+  <div class="set-divider" style="background: linear-gradient(135deg, #0f766e 0%, #1e3a8a 100%);">
+    <h2>🚀 ชุดที่ 2: เก็งข้อสอบกลางภาคชุดใหม่ 2026 (Predicted Midterm Exam - 70 คะแนน)</h2>
+    <p>เก็งครอบคลุมทุกบท: Doubly Linked List, Special Cases of Queue, BST Delete Successor, Quadratic Probing</p>
+  </div>
+
+  <!-- SET 2 PART 1 -->
+  <h2 class="part-title">1. Linked List Operations & Edge Cases (10 คะแนน) (ชุดที่ 2)</h2>
+
+  <h3 class="question-title">
+    <span>1.1 Insert and Delete in Singly Linked List</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Suppose you have an instance variable <code>myList</code> of class <code>LinkedList</code> containing initial data: <code>[45, 18, 72, 29, 63]</code> (where 45 is Head). Write statements in <code>main</code> program to transform <code>myList</code> into <code>[90, 45, 18, 50, 63, 100]</code> using only <code>add</code>, <code>insert</code>, <code>remove</code>.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> กำหนด <code>myList = [45, 18, 72, 29, 63]</code> จงเขียนคำสั่งใน main program เพื่อเปลี่ยนเป็น <code>[90, 45, 18, 50, 63, 100]</code></div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
+    <pre><code>myList.remove(72)       # ลบ 72 -> [45, 18, 29, 63]
+myList.remove(29)       # ลบ 29 -> [45, 18, 63]
+myList.insert(50, 2)     # แทรก 50 ที่ index 2 -> [45, 18, 50, 63]
+myList.insert(100, 4)    # แทรก 100 ที่ index 4 (ต่อท้าย) -> [45, 18, 50, 63, 100]
+myList.add(90)          # add 90 ที่หัวแถว -> [90, 45, 18, 50, 63, 100]</code></pre>
+  </div>
+
+  <h3 class="question-title">
+    <span>1.2 Doubly Linked List Pointer Updates</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> In a Doubly Linked List, write the 4 pointer update statements when inserting a new node <code>new_node</code> after node <code>curr</code>.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> ใน Doubly Linked List จงเขียนคำสั่ง 4 บรรทัดในการแทรกโหนดใหม่ <code>new_node</code> ต่อท้ายโหนด <code>curr</code></div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
+    <pre><code>new_node.next = curr.next
+new_node.prev = curr
+if curr.next is not None:
+    curr.next.prev = new_node
+curr.next = new_node</code></pre>
+  </div>
+
+  <!-- SET 2 PART 2 -->
+  <h2 class="part-title">2. Stack & Queue + Special Cases of Queues (10 คะแนน) (ชุดที่ 2)</h2>
+
+  <h3 class="question-title">
+    <span>2.1 Special Boundary Cases of Queue ADT (เก็งจาก For example Queue.pdf)</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> When we implement a Circular Array Queue with capacity $N=5$, write at least <strong>3 special cases</strong> with method call examples and explain why each occurs.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> เมื่อสร้าง Circular Array Queue ขนาด 5 ช่อง จงเขียนยกตัวอย่างกรณีพิเศษ 3 กรณีพร้อมอธิบาย</div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยและวิธีคิด:</div>
+    <ol>
+      <li><strong>Queue Underflow:</strong> เรียก <code>q.deQueue()</code> ตอนคิวว่างเปล่า ต้องดัก <code>if self.isEmpty(): return None</code> เพื่อป้องกัน error</li>
+      <li><strong>Queue Overflow (Full Queue):</strong> เมื่อคิวมีสมาชิกครบ 5 ตัวแล้วเรียก <code>q.enQueue(99)</code> ต้องตรวจ <code>(rear + 1) % limit == front</code> มิฉะนั้นข้อมูลจะไปทับตัวหน้าสุด</li>
+      <li><strong>Pointer Wrap-Around:</strong> เมื่อ <code>rear</code> ชี้ที่ index 4 (ท้ายอาเรย์) ต้องใช้สูตร <code>(rear + 1) % limit</code> เพื่อวนกลับมาชี้ที่ index 0 ด้านหน้า</li>
+    </ol>
+  </div>
+
+  <h3 class="question-title">
+    <span>2.2 Queue Rotation Manipulation</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Given <code>q = [10, 20, 30, 40, 50]</code>. Write statements in main program to remove <code>30</code> leaving <code>[10, 20, 40, 50]</code> using only Queue methods.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> กำหนด <code>q = [10, 20, 30, 40, 50]</code> จงลบเลข 30 ออกด้วยเทคนิค Rotation ให้เหลือ <code>[10, 20, 40, 50]</code></div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยแบบเขียนทีละบรรทัด (ไม่ใช้ while):</div>
+    <pre><code>q.enQueue(q.deQueue()) # [20, 30, 40, 50, 10]
+q.enQueue(q.deQueue()) # [30, 40, 50, 10, 20]
+q.deQueue()            # ทิ้ง 30 -> [40, 50, 10, 20]
+q.enQueue(q.deQueue()) # [50, 10, 20, 40]
+q.enQueue(q.deQueue()) # [10, 20, 40, 50]</code></pre>
+  </div>
+
+  <!-- SET 2 PART 3 -->
+  <h2 class="part-title">3. BST Delete Recursive Tracing & Tree Reconstruction (15 คะแนน) (ชุดที่ 2)</h2>
+
+  <h3 class="question-title">
+    <span>3.1 Recursive Deletion Step Tracing (Case: 2 Children) (เก็งจาก removebst.pdf)</span>
+    <span class="score-badge">Score: 8</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Trace recursive execution of <code>_delete_recursive(current_node, 30)</code> when deleting node <code>30</code> (having 2 children: left child 20, right child 40 with left child 35) in BST.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> จง Trace ขั้นตอนการลบโหนด 30 (กรณีมีลูก 2 ข้าง) ใน Binary Search Tree</div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 ตาราง Recursive Deletion Tracing:</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Call #</th>
+          <th><code>current_node.value</code></th>
+          <th><code>value</code></th>
+          <th>เงื่อนไขที่เข้า</th>
+          <th>การกระทำที่เกิดขึ้น (Action)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><code>50</code></td>
+          <td><code>30</code></td>
+          <td><code>30 &lt; 50</code> is <code>True</code></td>
+          <td><code>current_node.left = self._delete_recursive(current_node.left, 30)</code></td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><code>30</code></td>
+          <td><code>30</code></td>
+          <td><code>30 == 30</code> (2 children)</td>
+          <td>หา min กิ่งขวาได้ <code>35</code>, แทนค่า <code>current_node.value = 35</code>, ลบ <code>35</code> จากกิ่งขวา</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><code>40</code></td>
+          <td><code>35</code></td>
+          <td><code>35 &lt; 40</code> is <code>True</code></td>
+          <td><code>current_node.left = self._delete_recursive(current_node.left, 35)</code></td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td><code>35</code></td>
+          <td><code>35</code></td>
+          <td><code>35 == 35</code> (Leaf)</td>
+          <td>คืนค่า <code>None</code> เพื่อตัดโหนด 35 ทิ้ง</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="question-title">
+    <span>3.2 Reconstructing BST from Post-order & In-order</span>
+    <span class="score-badge">Score: 7</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Given Post-order: <code>8, 24, 16, 42, 60, 55, 32</code> and In-order: <code>8, 16, 24, 32, 42, 55, 60</code>. Draw BST and write Pre-order traversal.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> กำหนด Post-order และ In-order จงวาดรูป Binary Search Tree และเขียน Pre-order</div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 รูป Binary Search Tree:</div>
+    <div class="tree-diagram">
+          32
+        /    \
+      16      55
+     /  \    /  \
+    8   24  42  60</div>
+    <p><strong>Pre-order Traversal:</strong> <code>32, 16, 8, 24, 55, 42, 60</code></p>
+  </div>
+
+  <!-- SET 2 PART 4 -->
+  <h2 class="part-title">4. Expression Tree & Traversal (15 คะแนน) (ชุดที่ 2)</h2>
+
+  <h3 class="question-title">
+    <span>4.1 Infix to Postfix with Power Operator</span>
+    <span class="score-badge">Score: 8</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Convert <code>(A + B * C) / (D - E ^ F)</code> to Postfix.</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> แปลงนิพจน์ <code>(A + B * C) / (D - E ^ F)</code> ให้เป็น Postfix</div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 Postfix Output:</div>
+    <pre><code>A B C * + D E F ^ - /</code></pre>
+  </div>
+
+  <h3 class="question-title">
+    <span>4.2 Expression Tree Evaluation</span>
+    <span class="score-badge">Score: 7</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Draw Expression Tree and evaluate: <code>12 4 / 5 2 * + 7 -</code></p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> วาด Expression Tree และคำนวณผลลัพธ์จาก <code>12 4 / 5 2 * + 7 -</code></div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 การคำนวณ:</div>
+    <p>$(12 / 4) + (5 \times 2) - 7 = 3 + 10 - 7 = \mathbf{6}$</p>
+  </div>
+
+  <!-- SET 2 PART 5 & 6 -->
+  <h2 class="part-title">5. หลักการอะไรเอ่ยชุดเก็ง (10 คะแนน) (ชุดที่ 2)</h2>
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลย:</div>
+    <ul>
+      <li><strong>Worst-case BST:</strong> เมื่อข้อมูลเรียงลำดับมาล่วงหน้า Tree จะเอียงเป็นเส้นตรง (Skewed Tree) ทำให้ Time Complexity กลายเป็น $O(n)$ เหมือน Linked List</li>
+      <li><strong>Circular Queue Modulo:</strong> ใช้ <code>(rear + 1) % capacity</code> เพื่อให้ Pointer วนกลับไปใช้พื้นที่ว่างด้านหน้า index 0 ได้</li>
+      <li><strong>Postfix Calculation:</strong> คอมพิวเตอร์ชอบ Postfix เพราะไม่ต้องใช้วงเล็บและไม่มีความกำกวมเรื่องลำดับความสำคัญ ใช้ Stack คำนวณได้ใน $O(n)$</li>
+      <li><strong>Quadratic Probing:</strong> แก้ Primary Clustering ของ Linear Probing โดยขยับแบบกำลังสอง $+1^2, +2^2, +3^2$</li>
+    </ul>
+  </div>
+
+  <h2 class="part-title">6. คำถามย่อย & Code Tracing ชุดเก็ง (10 คะแนน) (ชุดที่ 2)</h2>
+
+  <h3 class="question-title">
+    <span>6.1 Recursive Binary Tree Count Nodes</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Trace return value of <code>count_nodes(root)</code> for Tree with Root 10 (left: 5 with right: 7, right: 15).</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> จง Trace การนับจำนวนโหนดของ Tree</div>
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลย:</div>
+    <p>Root (1) + Left Subtree (2 โหนด) + Right Subtree (1 โหนด) $= 1 + 2 + 1 = \mathbf{4}$</p>
+  </div>
+
+  <h3 class="question-title">
+    <span>6.2 Quadratic Probing Hash Tracing</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Insert keys <code>11, 18, 25</code> into Table size 7 using Quadratic Probing ($h(k) = k \pmod 7$).</p>
+  <div class="thai-trans"><strong>(คำแปลไทย):</strong> จงแทรกข้อมูล 11, 18, 25 ลงตารางขนาด 7 ช่องด้วยวิธี Quadratic Probing</div>
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยผลลัพธ์ตาราง:</div>
+    <p><code>Index 0: None</code> | <code>Index 1: 25</code> | <code>Index 2: None</code> | <code>Index 3: None</code> | <code>Index 4: 11</code> | <code>Index 5: 18</code> | <code>Index 6: None</code></p>
   </div>
 
 </div>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เก็งข้อสอบกลางภาค 2026: Data Structures & Algorithms (ฉบับครบทั้ง Insert 5.1 & Remove 5.3)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<!-- MathJax configuration -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+  :root {
+    --primary: #0f766e;
+    --primary-light: #0d9488;
+    --secondary: #1e3a8a;
+    --accent: #d97706;
+    --bg-main: #f8fafc;
+    --card-bg: #ffffff;
+    --text-color: #1e293b;
+    --border-color: #e2e8f0;
+    --code-bg: #f1f5f9;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    line-height: 1.7;
+    margin: 0;
+    padding: 30px 15px;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-color);
+  }
+
+  .header {
+    text-align: center;
+    border-bottom: 3px solid var(--primary);
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+  }
+
+  .header h1 {
+    margin: 0 0 10px 0;
+    color: var(--primary);
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  .header h2 {
+    margin: 0;
+    color: var(--secondary);
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .exam-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    background: #f0fdfa;
+    padding: 16px 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-light);
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+
+  .meta-item strong { color: var(--primary); }
+
+  .guide-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 5px solid var(--secondary);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+  }
+
+  .guide-box h3 {
+    margin-top: 0;
+    color: var(--secondary);
+  }
+
+  h2.part-title {
+    color: var(--primary);
+    background: #f1f5f9;
+    padding: 12px 18px;
+    border-radius: 6px;
+    border-left: 5px solid var(--primary);
+    margin-top: 35px;
+    margin-bottom: 20px;
+    font-size: 19px;
+  }
+
+  h3.question-title {
+    color: #1e293b;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .score-badge {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .thai-trans {
+    color: #475569;
+    font-style: italic;
+    background: #f8fafc;
+    border-left: 3px solid #cbd5e1;
+    padding: 8px 14px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0 15px 0;
+    font-size: 14.5px;
+  }
+
+  pre, code {
+    font-family: 'Fira Code', Consolas, Monaco, monospace;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border-color);
+    padding: 14px 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-size: 14px;
+  }
+
+  th, td {
+    border: 1px solid var(--border-color);
+    padding: 10px 12px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f8fafc;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #fbfcfe;
+  }
+
+  .solution-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+
+  .solution-title {
+    font-weight: 700;
+    color: #15803d;
+    margin-bottom: 10px;
+    font-size: 15px;
+  }
+
+  .tree-diagram {
+    font-family: 'Fira Code', monospace;
+    background: #ffffff;
+    border: 1px dashed #94a3b8;
+    padding: 15px;
+    border-radius: 6px;
+    display: block;
+    white-space: pre;
+    color: #0f172a;
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .exact-answer-block {
+    background: #ffffff;
+    border: 2px solid #0f766e;
+    border-radius: 8px;
+    padding: 18px;
+    margin: 15px 0;
+    font-family: 'Fira Code', monospace;
+    color: #111827;
+    font-size: 13.5px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; border: none; padding: 0; max-width: 100%; }
+    .print-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>MIDTERM EXAMINATION PREDICTION 2026</h1>
+    <h2>เก็งข้อสอบกลางภาค 2026: Data Structures & Algorithms (ครบทั้ง Insert 5.1 & Remove 5.3)</h2>
+  </div>
+
+  <div class="exam-meta">
+    <div class="meta-item"><strong>คะแนนเต็ม:</strong> 70 คะแนน (หาร 2 เหลือ 35 คะแนน)</div>
+    <div class="meta-item"><strong>เงื่อนไข:</strong> เปิดตำราได้ (Open Book / Open Notes)</div>
+    <div class="meta-item"><strong>ภาษา:</strong> คำถาม EN / แปลไทย / ตอบ TH หรือ EN ได้</div>
+    <div class="meta-item"><strong>การเขียนตอบ:</strong> ปากกาสำหรับข้อเขียน / ดินสอสำหรับวาด Tree</div>
+  </div>
+
+  <!-- GUIDE BOX 1 -->
+  <div class="guide-box">
+    <h3>📖 พจนานุกรมและหลักการแปลโจทย์ของอาจารย์</h3>
+    <table>
+      <thead>
+        <tr><th>สำนวนภาษาอังกฤษในข้อสอบ</th><th>ความหมายที่แท้จริง</th><th>สิ่งที่ต้องเขียนตอบ</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong><code>Write the steps for the _insert_recursive() / _delete_recursive() function... In each round, consists of: 1) values of value and current_node 2) statements executed under if-else</code></strong></td><td>ให้เขียนขั้นตอนการทำงานของ Recursive ทีละรอบ</td><td>เขียนระบุ <code>First round: value = ... , current_node = ...</code> และประโยคคำสั่งที่ถูกทำ</td></tr>
+        <tr><td><strong><code>Each iteration for the _min_value_node() function...</code></strong></td><td>แสดงการทำงานของฟังก์ชันหา min</td><td>แสดงค่า <code>current_node</code> เริ่มต้นและการเลี้ยวซ้ายจนได้ค่าต่ำสุด</td></tr>
+        <tr><td><strong><code>Write statements in main program... by using class ... methods only</code></strong></td><td>ให้เขียนคำสั่งในโปรแกรมหลัก</td><td>เขียนเรียก Method ทีละบรรทัด (ห้ามใช้ built-in list)</td></tr>
+        <tr><td><strong><code>If there is the exists ... already</code></strong></td><td>มีตัวแปรสร้างและใส่ข้อมูลไว้แล้ว</td><td>เริ่มจัดการตัวแปรนั้นได้ทันที (ไม่ต้องประกาศใหม่)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PART 1 -->
+  <h2 class="part-title">1. Singly & Doubly Linked List (10 คะแนน)</h2>
+  
+  <h3 class="question-title">
+    <span>1.1 Main Program Statement Manipulation</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Suppose you have an instance variable <code>listA</code> of class <code>LinkedList</code> with initial elements: <code>[20, 50, 10, 80, 40]</code> (where 20 is at Head). Write statements in <code>main</code> program to transform <code>listA</code> so that the final output becomes: <code>[100, 20, 30, 10, 80, 70]</code> using only LinkedList methods (`add`, `insert`, `remove`).</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลย:</div>
+    <pre><code>listA.remove(50)       # เหลือ: 20 -> 10 -> 80 -> 40
+listA.remove(40)       # เหลือ: 20 -> 10 -> 80
+listA.insert(30, 1)     # ได้: 20 -> 30 -> 10 -> 80
+listA.insert(70, 4)     # ได้: 20 -> 30 -> 10 -> 80 -> 70
+listA.add(100)          # add ไว้หน้าสุด -> 100 -> 20 -> 30 -> 10 -> 80 -> 70</code></pre>
+  </div>
+
+  <h3 class="question-title">
+    <span>1.2 Pointer Reconnection without Methods</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Given a Singly Linked List <code>myList</code> with nodes <code>A -> B -> C -> D</code>. Write statements to delete node <code>B</code> and node <code>C</code> by updating pointer relationships directly <strong>without using `remove()` method</strong>.</p>
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลย:</div>
+    <pre><code>node_A = myList.head
+myList.head.set_next(node_A.get_next().get_next().get_next())
+# หรือเขียนแบบย่อ: myList.head.next = myList.head.next.next.next</code></pre>
+  </div>
+
+  <!-- PART 2 -->
+  <h2 class="part-title">2. Stack & Circular Queue + Special Cases of Queue (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>2.1 Filter Elements from Stack using Queue</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> If there is an existing Stack <code>s</code> which has 6 elements <code>[14, 5, 22, 9, 31, 7]</code> (where 14 is Bottom and 7 is Top). Write statements in main program to delete elements <strong>5</strong> and <strong>9</strong> from <code>s</code> using an auxiliary Queue <code>q</code> so that final <code>s</code> contains <code>[14, 22, 31, 7]</code>.</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยแบบสั่งทีละบรรทัด (ไม่ใช้ while):</div>
+    <pre><code>val = s.pop(); q.enQueue(val) # 7
+val = s.pop(); q.enQueue(val) # 31
+s.pop()                       # ทิ้ง 9
+val = s.pop(); q.enQueue(val) # 22
+s.pop()                       # ทิ้ง 5
+val = s.pop(); q.enQueue(val) # 14
+
+s.push(q.deQueue()); s.push(q.deQueue()); s.push(q.deQueue()); s.push(q.deQueue())
+q.enQueue(s.pop()); q.enQueue(s.pop()); q.enQueue(s.pop()); q.enQueue(s.pop())
+s.push(q.deQueue()); s.push(q.deQueue()); s.push(q.deQueue()); s.push(q.deQueue())</code></pre>
+  </div>
+
+  <h3 class="question-title">
+    <span>2.2 Special Boundary Cases of Circular Queue</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> When implementing a Circular Array Queue with fixed capacity $N=5$, write at least 3 special boundary cases with method calls and pointer states.</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลย:</div>
+    <ol>
+      <li><strong>Queue Underflow:</strong> เรียก <code>q.deQueue()</code> ตอนคิวว่างเปล่า ต้องดัก <code>if self.isEmpty(): return None</code> เพื่อป้องกัน error</li>
+      <li><strong>Queue Overflow:</strong> เมื่อคิวมีสมาชิกครบ 5 ตัวแล้วเรียก <code>q.enQueue(99)</code> ต้องตรวจ <code>(rear + 1) % limit == front</code> มิฉะนั้นข้อมูลจะไปทับตัวหน้าสุด</li>
+      <li><strong>Pointer Wrap-Around:</strong> เมื่อ <code>rear</code> ชี้ที่ index 4 (ท้ายอาเรย์) ต้องใช้สูตร <code>(rear + 1) % limit</code> เพื่อวนกลับมาชี้ที่ index 0 ด้านหน้า</li>
+    </ol>
+  </div>
+
+  <!-- PART 3 -->
+  <h2 class="part-title">3. Binary Search Tree (ครบทั้ง Insert 5.1 & Remove 5.3 ตรงตาม PDF) (15 คะแนน)</h2>
+
+  <!-- PART 3.1: INSERT -->
+  <h3 class="question-title">
+    <span>3.1 BST Recursive Insertion Tracing (แบบธรรมดา - ตรงตาม Example 5.1 PDF)</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong><br>
+  <strong>Example for Binary Search Tree: Insert</strong><br>
+  For example 5.1: if there is the exist BinarySearchTree's instance variable name <code>bst</code> contains the numbers <code>[1, 2, 3, 4, 6, 8]</code> (In-order traversal) as the image following:<br>
+  (Tree: Root <code>6</code> -> left: <code>2</code> with children <code>1</code> and <code>4</code> (4 has left child <code>3</code>), right child of 6 is <code>8</code>)<br>
+  Write the steps for the <code>_insert_recursive()</code> function when <strong>insert `5`</strong> into the instance variable <code>bst</code>. In each round, consists of:<br>
+  1) what are the values of the parameters value and current_node of the <code>_insert_recursive()</code> function, and<br>
+  2) what statements are executed under the if-else condition that is checked as true.<br>
+  Each iteration must write 2 things.</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 รูปแบบการเขียนตอบที่ถูกต้อง (ตรงตาม PDF 5.1 หน้า 2-3):</div>
+    <div class="exact-answer-block">Answer:
+Each iteration for the _insert_recursive() function when insert 5
+
+First round: value = 5 , current_node = 6
+_insert_recursive(current_node.left, value)
+
+round 2: value = 5 , current_node = 2
+_insert_recursive(current_node.right, value)
+
+round 3: value = 5 , current_node = 4
+_insert_recursive(current_node.right, value)
+
+round 4: value = 5 , current_node = None
+if current_node.right is None: is True
+current_node.right = Node(value)</div>
+  </div>
+
+  <!-- PART 3.2: REMOVE TWO CHILDREN -->
+  <h3 class="question-title">
+    <span>3.2 BST Recursive Deletion with Two Children (แบบมี min - ตรงตาม Example 5.3 PDF)</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong><br>
+  <strong>Example for Binary Search Tree: Remove (2), two children.</strong><br>
+  For example 5.3: if there is the exist BinarySearchTree's instance variable name <code>bst</code> contains elements: Root <code>6</code> -> left: <code>2</code> (children <code>1</code> and <code>5</code>, where 5 has left <code>3</code> with right <code>4</code>), right: <code>8</code>.<br>
+  Write the steps for the <code>_delete_recursive()</code> function when <strong>remove `2`</strong> from the instance variable <code>bst</code>.</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 รูปแบบการเขียนตอบที่ถูกต้อง (ตรงตาม PDF 5.3 หน้า 2-4):</div>
+    <div class="exact-answer-block">Answer:
+Each iteration for the _delete_recursive() function when remove 2
+
+First round: value = 2 , current_node = 6
+current_node.left = _delete_recursive(current_node.left, value)
+
+round 2: value = 2 , current_node = 2
+temp_node = self._min_value_node(current_node.right)
+current_node.value = temp_node.value
+current_node.right = _delete_recursive(current_node.right, temp_node.value)
+
+----------------------------------------------------------------------
+Each iteration for the _min_value_node () function to find minimum of right subtree:
+First round current_node = 5
+
+_min_value_node(self, node):
+    current = node
+    while current.left is not None:
+        current = current.left
+    return current
+(ผลลัพธ์: ได้ temp_node = 3, นำค่า 3 ไปเขียนทับโหนด 2 ทำให้ current_node.value = 3)
+----------------------------------------------------------------------
+
+round 3: value = 3 , current_node = 5
+current_node.left = _delete_recursive(current_node.left, value)
+
+round 4: value = 3 , current_node = 3
+return current_node.right
+(ผลลัพธ์: ส่งโหนด 4 กลับไปให้โหนด 5.left ชี้แทนโหนด 3)</div>
+  </div>
+
+  <!-- PART 3.3: RECONSTRUCTION -->
+  <h3 class="question-title">
+    <span>3.3 Reconstructing BST from Pre-order & In-order</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Given Pre-order: <code>45, 25, 15, 35, 30, 75, 60, 85</code> and In-order: <code>15, 25, 30, 35, 45, 60, 75, 85</code>. Draw BST and write Post-order.</p>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 รูป Binary Search Tree:</div>
+    <div class="tree-diagram">
+          45
+        /    \
+      25      75
+     /  \    /  \
+   15   35  60  85
+        /
+       30</div>
+    <p><strong>Post-order Traversal:</strong> <code>15, 30, 35, 25, 60, 85, 75, 45</code></p>
+  </div>
+
+  <!-- PART 4 -->
+  <h2 class="part-title">4. Infix to Postfix Operator Stack & Expression Tree (15 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>4.1 Infix to Postfix with Power Operator (^)</span>
+    <span class="score-badge">Score: 8</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Trace Operator Stack for converting: <code>(A + B * C) / (D - E ^ F)</code> to Postfix.</p>
+  <div class="solution-box">
+    <div class="solution-title">💡 ผลลัพธ์ Postfix:</div>
+    <pre><code>A B C * + D E F ^ - /</code></pre>
+  </div>
+
+  <h3 class="question-title">
+    <span>4.2 Expression Tree & Numerical Evaluation</span>
+    <span class="score-badge">Score: 7</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Draw Expression Tree and evaluate: <code>18 6 / 4 2 * + 5 -</code></p>
+  <div class="solution-box">
+    <div class="solution-title">💡 การคำนวณ:</div>
+    <p>$(18 / 6) + (4 \times 2) - 5 = 3 + 8 - 5 = \mathbf{6}$</p>
+  </div>
+
+  <!-- PART 5 & 6 -->
+  <h2 class="part-title">5. หลักการอะไรเอ่ย (Fundamental Concepts & Big-O) (10 คะแนน)</h2>
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลย:</div>
+    <ul>
+      <li><strong>Degenerate BST:</strong> ข้อมูลเรียงล่วงหน้าทำให้เกิด Skewed Tree ความเร็วค้นหาตกฮวบเหลือ $O(n)$ เหมือน Linked List</li>
+      <li><strong>Circular Queue Modulo:</strong> ใช้ <code>(rear + 1) % capacity</code> เพื่อให้ Pointer วนกลับไปใช้พื้นที่ว่างด้านหน้า index 0 ได้</li>
+      <li><strong>Primary Clustering:</strong> การเกาะกลุ่มยาวใน Linear Probing แก้ไขด้วย <strong>Quadratic Probing</strong> ซึ่งกระโดดเป็นกำลังสอง $+1^2, +2^2, +3^2$</li>
+      <li><strong>Function Call Stack:</strong> Recursion ใช้ Stack บันทึกข้อมูลแต่ละรอบแบบ LIFO เมื่อถึง Base case จะ Pop ย้อนกลับคืนค่า</li>
+    </ul>
+  </div>
+
+  <h2 class="part-title">6. คำถามย่อย, Hashing Collision & Code Tracing (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>6.1 Quadratic Probing Hash Tracing</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Insert keys <code>15, 22, 29</code> into Table size 7 initialized with <code>[None]*7</code> using Quadratic Probing ($h(k) = k \pmod 7$).</p>
+  <div class="solution-box">
+    <div class="solution-title">💡 สภาพตารางสุดท้าย:</div>
+    <p><code>Index 0: None</code> | <code>Index 1: 15</code> | <code>Index 2: 22</code> | <code>Index 3: None</code> | <code>Index 4: None</code> | <code>Index 5: 29</code> | <code>Index 6: None</code></p>
+  </div>
+
+  <h3 class="question-title">
+    <span>6.2 Recursive Tree Leaf Node Counting Tracing</span>
+    <span class="score-badge">Score: 5</span>
+  </h3>
+  <p><strong>Question (EN):</strong> Trace output of <code>count_leaves(root)</code> for Tree with Root 50 (left: 30 with leaves 20, 40; right: 70 with leaf 80).</p>
+  <div class="solution-box">
+    <div class="solution-title">💡 ผลลัพธ์:</div>
+    <p>โหนดใบคือ 20, 40, 80 รวมกันได้ $\mathbf{3}$</p>
+  </div>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ พิมพ์ / บันทึกเป็น PDF</button>
+
+</body>
+</html>
