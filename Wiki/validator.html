@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Wiki Comprehensive Validator</title>
+  <script src="vendor/marked.min.js"></script>
+  <script src="vendor/mermaid.min.js"></script>
+  <script src="wiki-data.js"></script>
+</head>
+<body>
+  <h1>Wiki Diagram & Content Validator</h1>
+  <div id="results">Running tests...</div>
+
+  <script>
+    (async function() {
+      const resultsDiv = document.getElementById('results');
+      const docs = window.WIKI_DATA ? Object.values(window.WIKI_DATA.documents) : [];
+      
+      let totalDiagrams = 0;
+      let failedDiagrams = [];
+      let passedDiagrams = 0;
+
+      mermaid.initialize({
+        startOnLoad: false,
+        suppressErrorRendering: true,
+        securityLevel: 'loose'
+      });
+
+      console.log(`Starting validation of ${docs.length} documents...`);
+
+      for (const doc of docs) {
+        const matches = [...doc.content.matchAll(/```mermaid\s*\n([\s\S]*?)\n```/g)];
+        for (let i = 0; i < matches.length; i++) {
+          totalDiagrams++;
+          const code = matches[i][1].trim();
+          const testId = `test-diagram-${doc.id.replace(/[^a-zA-Z0-9]/g, '_')}-${i}`;
+          
+          try {
+            await mermaid.parse(code);
+            const container = document.createElement('div');
+            container.id = 'container-' + testId;
+            document.body.appendChild(container);
+            
+            const res = await mermaid.render(testId, code);
+            passedDiagrams++;
+            container.remove();
+          } catch (err) {
+            console.error(`FAILED: Doc [${doc.id}], Diagram #${i + 1}`, err.message);
+            failedDiagrams.push({
+              docId: doc.id,
+              diagramIndex: i + 1,
+              code: code,
+              error: err.message || String(err)
+            });
+          }
+        }
+      }
+
+      let summaryHtml = `<h2>Summary: Total Diagrams: ${totalDiagrams}, Passed: ${passedDiagrams}, Failed: ${failedDiagrams.length}</h2>`;
+      if (failedDiagrams.length > 0) {
+        summaryHtml += '<ul>';
+        failedDiagrams.forEach(f => {
+          summaryHtml += `<li><b>${f.docId} (Diagram ${f.diagramIndex}):</b> ${f.error}</li>`;
+        });
+        summaryHtml += '</ul>';
+      } else {
+        summaryHtml += '<p style="color:green; font-weight:bold;">ALL DIAGRAMS PASSED VALIDATION PERFECTLY!</p>';
+      }
+      resultsDiv.innerHTML = summaryHtml;
+      window.__VALIDATION_COMPLETE__ = true;
+      window.__TOTAL_DIAGRAMS__ = totalDiagrams;
+      window.__FAILED_COUNT__ = failedDiagrams.length;
+    })();
+  </script>
+</body>
+</html>

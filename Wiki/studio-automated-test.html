@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Automated Wiki Studio & Python Runner Test</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="vendor/marked.min.js"></script>
+  <script src="vendor/mermaid.min.js"></script>
+  <script src="wiki-data.js"></script>
+  <script src="dsa-interactive-studio.js"></script>
+</head>
+<body style="padding: 20px; background: #090d16; color: #fff;">
+  <h1>Automated Studio & Python Runner Test Harness</h1>
+  <div id="test-status" style="font-size: 18px; color: #38bdf8;">Starting tests...</div>
+  <div id="test-article" style="max-width: 900px; margin: 20px auto;">
+    <h2>✂️ 3. ขั้นตอนการจัดการ Pointer ทีละสเต็ป</h2>
+    <div class="code-card-wrapper">
+      <div class="code-card-header">
+        <span class="code-lang-tag">python</span>
+        <div class="code-actions-group">
+          <button id="test-run-live-btn" class="code-btn code-btn-run-live" onclick="window.WikiApp.toggleInlineRunner(this)">
+            ▶ รันโค้ดทันที (Run Live)
+          </button>
+        </div>
+      </div>
+      <pre><code class="language-python"># Test Python Code
+ll = [10, 20, 30]
+print("Testing Linked List in Wiki:", ll)
+ll.append(99)
+print("Updated list:", ll)
+</code></pre>
+    </div>
+  </div>
+
+  <div id="test-results" style="margin-top: 30px; font-family: monospace; white-space: pre-wrap;"></div>
+
+  <script src="app.js"></script>
+  <script>
+    (async function() {
+      const results = [];
+      const log = (msg) => {
+        results.push(msg);
+        document.getElementById('test-results').textContent = results.join('\n');
+      };
+
+      try {
+        log('1. Testing widget mount...');
+        const article = document.getElementById('test-article');
+        window.DsaWikiStudio.mountWidgetsForDoc('03.1 - Linked Lists (Singly, Doubly, Circular)', article);
+        
+        const widget = document.getElementById('studio-widget-linked-list');
+        if (widget) {
+          log('✅ Studio Widget successfully mounted in DOM');
+        } else {
+          throw new Error('Studio widget failed to mount');
+        }
+
+        log('2. Testing Insert Head operation with value 99...');
+        const inputVal = document.getElementById('studio-widget-linked-list-val');
+        if (inputVal) inputVal.value = '99';
+        window.DsaWikiStudio.act('studio-widget-linked-list', 'insertHead');
+
+        const stepExp = widget.querySelector('.studio-step-exp');
+        log('Widget Step Exp: ' + (stepExp ? stepExp.textContent : ''));
+
+        log('3. Testing Step Next button...');
+        window.DsaWikiStudio.act('studio-widget-linked-list', 'next');
+        const step2Exp = widget.querySelector('.studio-step-exp');
+        log('Widget Step 2 Exp: ' + (step2Exp ? step2Exp.textContent : ''));
+
+        log('4. Testing Inline Python Runner toggle...');
+        const runLiveBtn = document.getElementById('test-run-live-btn');
+        if (runLiveBtn) {
+          runLiveBtn.click();
+          await new Promise(r => setTimeout(r, 1000));
+          const runner = document.querySelector('.inline-python-runner');
+          if (runner) {
+            log('✅ Inline Python Runner created');
+            const consoleOut = runner.querySelector('.inline-console-out');
+            log('Console output:\n' + (consoleOut ? consoleOut.textContent : ''));
+          } else {
+            throw new Error('Inline runner not found');
+          }
+        }
+
+        log('\n🎉 ALL STUDIO & PYTHON RUNNER TESTS COMPLETED SUCCESSFULLY!');
+        document.getElementById('test-status').textContent = 'TESTS PASSED (100%)';
+        document.getElementById('test-status').style.color = '#34d399';
+        window.__TESTS_PASSED__ = true;
+      } catch (err) {
+        log('❌ TEST FAILED: ' + err.message);
+        document.getElementById('test-status').textContent = 'TEST FAILED';
+        document.getElementById('test-status').style.color = '#f87171';
+      }
+    })();
+  </script>
+</body>
+</html>

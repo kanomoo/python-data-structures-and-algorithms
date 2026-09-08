@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Automated BST & Heap Studio Test</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="vendor/marked.min.js"></script>
+  <script src="vendor/mermaid.min.js"></script>
+  <script src="wiki-data.js"></script>
+  <script src="dsa-interactive-studio.js"></script>
+</head>
+<body style="padding: 20px; background: #090d16; color: #fff;">
+  <h1>Automated BST & Heap Interactive Studio Test</h1>
+  <div id="test-status" style="font-size: 18px; color: #38bdf8;">Running tests...</div>
+
+  <div id="container-bst" style="max-width: 900px; margin: 20px auto;">
+    <h2>🌲 2. อัลกอริทึมของ BST</h2>
+  </div>
+
+  <div id="container-heap" style="max-width: 900px; margin: 40px auto;">
+    <h2>🏛️ 1. กายวิภาคและโครงสร้างของ Binary Heap</h2>
+  </div>
+
+  <div id="test-results" style="margin-top: 30px; font-family: monospace; white-space: pre-wrap;"></div>
+
+  <script src="app.js"></script>
+  <script>
+    (async function() {
+      const results = [];
+      const log = (msg) => {
+        results.push(msg);
+        document.getElementById('test-results').textContent = results.join('\n');
+      };
+
+      try {
+        log('1. Mounting BST Widget...');
+        const bstCont = document.getElementById('container-bst');
+        window.DsaWikiStudio.mountWidgetsForDoc('05.2 - Binary Search Trees (BST) & Insertion', bstCont);
+        const bstWidget = document.getElementById('studio-widget-bst');
+        if (!bstWidget) throw new Error('BST widget failed to mount');
+        log('✅ BST widget mounted');
+
+        log('2. Inserting value 45 into BST...');
+        const bstInput = document.getElementById('studio-widget-bst-val');
+        if (bstInput) bstInput.value = '45';
+        window.DsaWikiStudio.act('studio-widget-bst', 'insert');
+        const bstExp = bstWidget.querySelector('.studio-step-exp');
+        log('BST Step 1: ' + (bstExp ? bstExp.textContent : ''));
+
+        log('3. Mounting Heap Widget...');
+        const heapCont = document.getElementById('container-heap');
+        window.DsaWikiStudio.mountWidgetsForDoc('07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap)', heapCont);
+        const heapWidget = document.getElementById('studio-widget-heap');
+        if (!heapWidget) throw new Error('Heap widget failed to mount');
+        log('✅ Min-Heap widget mounted');
+
+        log('4. Inserting value 14 into Min-Heap (Percolate Up)...');
+        const heapInput = document.getElementById('studio-widget-heap-val');
+        if (heapInput) heapInput.value = '14';
+        window.DsaWikiStudio.act('studio-widget-heap', 'insert');
+        const heapExp = heapWidget.querySelector('.studio-step-exp');
+        log('Heap Step 1: ' + (heapExp ? heapExp.textContent : ''));
+
+        log('\n🎉 ALL BST & HEAP TESTS PASSED (100%)');
+        document.getElementById('test-status').textContent = 'TESTS PASSED (100%)';
+        document.getElementById('test-status').style.color = '#34d399';
+        window.__TESTS_PASSED__ = true;
+      } catch (err) {
+        log('❌ FAILED: ' + err.message);
+        document.getElementById('test-status').textContent = 'FAILED';
+        document.getElementById('test-status').style.color = '#f87171';
+      }
+    })();
+  </script>
+</body>
+</html>

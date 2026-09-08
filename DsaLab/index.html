@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Lab Studio — ห้องทดลองและ Interactive Visual Debugger ภาษา Python</title>
+  <meta name="description" content="ห้องปฏิบัติการเขียนโค้ด Python และ Visual Debugger จำลองขั้นตอนวิธีและโครงสร้างข้อมูลแบบมีภาพเคลื่อนไหวทีละสเต็ป" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div id="app-container">
+  <!-- Mobile Sidebar Backdrop -->
+  <div id="sidebar-overlay" class="sidebar-overlay" style="display:none;"></div>
+
+  <!-- Left Sidebar: Curriculum & Exercises -->
+  <aside id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <h1>DSA Lab Studio</h1>
+        <p>Interactive Debugger & Python Runner</p>
+      </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="sidebar-tabs">
+      <button id="tab-exam" class="side-tab-btn active" data-cat="exam" title="การบ้านและโจทย์ในคาบ (Assignments 1-4 & Test Programs)">
+        🎯 ข้อสอบ/การบ้าน
+      </button>
+      <button id="tab-linear" class="side-tab-btn" data-cat="linear" title="โครงสร้างข้อมูลเชิงเส้น (Linked List, Stack, Queue)">
+        🧱 เชิงเส้น
+      </button>
+      <button id="tab-trees" class="side-tab-btn" data-cat="tree-hash" title="ต้นไม้และฮีป (BST, Heap, Hashing)">
+        🌳 ต้นไม้ & ฮีป
+      </button>
+    </div>
+
+    <!-- Exercises List Container -->
+    <div id="exercises-container" class="sidebar-content">
+      <!-- Dynamically injected by app.js -->
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="status-dot"></span>
+        <span id="engine-status-text">Python Engine พร้อมทำงาน</span>
+      </div>
+      <a href="../Wiki/index.html#/Glossary & Complexity Cheat Sheet" target="_blank" style="color: inherit; text-decoration: none;" title="เปิดดูตารางสรุปสูตรและ Big-O">
+        สูตร 💡
+      </a>
+    </div>
+  </aside>
+
+  <!-- Resizer 1: Sidebar & Workspace -->
+  <div id="resizer-sidebar" class="resizer-horizontal" title="ลากเพื่อปรับขนาดความกว้างเมนู"></div>
+
+  <!-- Main Workspace -->
+  <main id="workspace">
+    <!-- Top Navigation Bar -->
+    <header class="top-nav-bar">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button id="btn-toggle-sidebar" class="btn btn-ghost" style="padding: 4px 8px;" title="เปิด/ปิด แถบสารบัญ">
+          ☰
+        </button>
+        <div class="breadcrumbs">
+          <span id="crumb-module">Assignment</span>
+          <span>/</span>
+          <span id="crumb-exercise" class="active-crumb">Linked List</span>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <a href="../Wiki/index.html" class="btn btn-ghost" title="เปิดอ่านสารานุกรมความรู้ DSA Wiki" style="text-decoration: none; color: inherit;">
+          <span>📚</span>
+          <span>สารานุกรม Wiki</span>
+        </a>
+        <button id="btn-reset-code" class="btn btn-ghost" title="โหลดโค้ดตั้งต้นเฉพาะข้อนี้">
+          <span>🔄</span>
+          <span>รีเซ็ตโจทย์นี้</span>
+        </button>
+        <button id="btn-run-python" class="btn btn-primary" title="รันโค้ด Python ในเบราว์เซอร์ (Ctrl + Enter)">
+          <span>▶️</span>
+          <span>รันโปรแกรม (Ctrl+Enter)</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile View Switcher -->
+    <div id="mobile-view-tabs" class="mobile-view-tabs">
+      <button id="m-tab-theory" class="mobile-tab-btn active">📖 คำอธิบายโจทย์</button>
+      <button id="m-tab-studio" class="mobile-tab-btn">💻 โค้ด & เครื่องมือจำลอง</button>
+    </div>
+
+    <!-- Split Content View -->
+    <div id="split-content" class="split-content view-theory">
+      <!-- Left Panel: Theory & Assignment Guide -->
+      <section id="theory-panel" class="theory-panel">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+          <h2 id="theory-title" class="theory-title">หัวข้อแบบฝึกหัด</h2>
+          <span id="theory-badge" class="ex-badge">Basic</span>
+        </div>
+        <div id="theory-body" class="theory-body">
+          <!-- Theory content injected dynamically -->
+        </div>
+      </section>
+
+      <!-- Resizer 2: Theory & Studio -->
+      <div id="resizer-theory" class="resizer-horizontal" title="ลากเพื่อปรับขนาด"></div>
+
+      <!-- Right Panel: Code Editor + Visualizer/Result -->
+      <section id="studio-panel" class="studio-panel">
+        <!-- Editor Area -->
+        <div id="editor-wrapper" class="editor-wrapper">
+          <div class="editor-header">
+            <div class="editor-tabs-list">
+              <button class="editor-tab active" id="tab-main-py">main.py</button>
+            </div>
+            <div class="editor-toolbar">
+              <span id="editor-cursor-pos" style="font-size: 0.72rem; color: var(--text-muted); margin-right: 6px;">Ln 1, Col 1</span>
+              <button id="btn-copy-code" class="tool-btn" title="คัดลอกโค้ด">คัดลอก (Copy)</button>
+              <button id="btn-clear-code" class="tool-btn" title="ล้างกล่องโค้ด">ล้าง (Clear)</button>
+            </div>
+          </div>
+
+          <div class="editor-body">
+            <textarea id="python-editor" class="code-textarea" spellcheck="false" placeholder="เขียนโค้ด Python ที่นี่ (รองรับ Tab, Indent, และกด Ctrl+Enter เพื่อรัน)..."></textarea>
+          </div>
+        </div>
+
+        <!-- Resizer 3: Editor & Result/Visualizer -->
+        <div id="resizer-editor" class="resizer-vertical" title="ลากเพื่อปรับขนาดบน-ล่าง"></div>
+
+        <!-- Result / Visualizer Area -->
+        <div id="result-wrapper" class="result-wrapper">
+          <div class="result-header">
+            <div class="result-view-tabs">
+              <button id="rtab-visualizer" class="rtab-btn active">
+                <span>🕹️</span>
+                <span>Interactive Debugger</span>
+              </button>
+              <button id="rtab-console" class="rtab-btn">
+                <span>💻</span>
+                <span>Console Output</span>
+              </button>
+              <button id="rtab-watch" class="rtab-btn">
+                <span>🔍</span>
+                <span>Variables Watch</span>
+              </button>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-muted);" id="exec-status">
+              พร้อมทำงาน
+            </div>
+          </div>
+
+          <div class="result-body-container">
+            <!-- 1. Visualizer View -->
+            <div id="pane-visualizer" style="display: flex; flex-direction: column; flex: 1; overflow: auto;">
+              <!-- Step Debugger Controls Bar -->
+              <div class="debugger-controls-bar">
+                <div class="debug-btn-group">
+                  <button id="dbg-play-btn" class="dbg-btn play" title="เล่นต่อเนื่องอัตโนมัติ">▶ เล่น (Play)</button>
+                  <button id="dbg-prev-btn" class="dbg-btn" title="ย้อนหลัง 1 สเต็ป">⏮ ถอยกลับ (Step Back)</button>
+                  <button id="dbg-next-btn" class="dbg-btn" title="ก้าวไปข้างหน้า 1 สเต็ป">⏭ ก้าวถัดไป (Step Next)</button>
+                  <button id="dbg-reset-btn" class="dbg-btn" title="รีเซ็ตสเต็ปเริ่มต้น">🔄 เริ่มใหม่ (Reset)</button>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span id="dbg-step-counter" class="step-indicator">Step 1 / 1</span>
+                  <div class="speed-control">
+                    <span>ความเร็ว:</span>
+                    <input id="dbg-speed-slider" type="range" min="300" max="2500" step="100" value="1000" class="speed-slider" title="ปรับความเร็วการเล่นอัตโนมัติ" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step Explanation Notification -->
+              <div class="step-explanation-box">
+                <span class="step-pointer-icon">👉</span>
+                <span id="dbg-explanation">กำลังเตรียมการจำลองโครงสร้างข้อมูล...</span>
+              </div>
+
+              <!-- Dynamic Graphic Canvas -->
+              <div id="visualizer-canvas">
+                <!-- Injected dynamically by visualizers.js -->
+              </div>
+            </div>
+
+            <!-- 2. Console Output View -->
+            <div id="pane-console" style="display: none; flex: 1; flex-direction: column;">
+              <pre id="console-output"><span class="term-prompt">&gt;&gt;&gt;</span> พร้อมรันโค้ด Python... กดปุ่ม <b>"รันโปรแกรม"</b> หรือ <code>Ctrl + Enter</code></pre>
+            </div>
+
+            <!-- 3. Variables Watch View -->
+            <div id="pane-watch" style="display: none; flex: 1; flex-direction: column;">
+              <div id="variables-watch">
+                <table class="watch-table">
+                  <thead>
+                    <tr>
+                      <th>ตัวแปร (Variable)</th>
+                      <th>ค่าปัจจุบัน (Current Value)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="watch-tbody">
+                    <tr><td colspan="2" style="color: var(--text-muted); text-align: center;">ไม่มีค่าตัวแปรในสเต็ปนี้</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Load Pyodide WebAssembly for in-browser Python execution -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+
+<!-- Application Scripts -->
+<script src="exercises.js"></script>
+<script src="visualizers.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Data Structures & Algorithms — Knowledge Hub & Interactive Studio</title>
+  <meta name="description" content="ระบบสารานุกรมความรู้และห้องปฏิบัติการเขียนโค้ด ดีบักเกอร์แสดงภาพเคลื่อนไหว (Interactive Visual Debugger) สำหรับวิชาโครงสร้างข้อมูลและขั้นตอนวิธี" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-hover: #162038;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(99, 102, 241, 0.4);
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --brand: #6366f1;
+      --cyan: #06b6d4;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans Thai', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 36px 20px;
+      overflow-x: hidden;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 70%);
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .badge-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 999px;
+      font-size: 13px;
+      color: #a5b4fc;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.3rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 35%, #a5b4fc 70%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--text-sub);
+      max-width: 720px;
+      margin: 0 auto 44px auto;
+      line-height: 1.7;
+    }
+
+    .hub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 760px) {
+      .hub-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hub-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hub-card:hover {
+      background: var(--card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 24px rgba(99, 102, 241, 0.2);
+    }
+
+    .card-icon-box {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+    }
+
+    .hub-card.dsa-lab .card-icon-box {
+      background: rgba(6, 182, 212, 0.12);
+      border-color: rgba(6, 182, 212, 0.25);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 22px;
+      flex: 1;
+    }
+
+    .card-features {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .card-features li {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .hub-card:hover .card-btn {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: white;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+    }
+
+    .hub-card.dsa-lab:hover .card-btn {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      border-color: #06b6d4;
+    }
+
+    /* Assignment Quick Showcase Grid */
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 12px 0 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .assignment-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      text-align: left;
+    }
+
+    .assign-card {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .assign-card:hover {
+      background: rgba(22, 32, 56, 0.9);
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .assign-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .assign-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .assign-sub {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    footer {
+      margin-top: 48px;
+      font-size: 12.5px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-glow"></div>
+
+  <div class="container">
+    <div class="badge-top">
+      <span>⚡</span>
+      <span>ระบบสารานุกรมความรู้และห้องปฏิบัติการภาษา Python DSA</span>
+    </div>
+
+    <h1>Python Data Structures & Algorithms</h1>
+    <p class="subtitle">
+      ศูนย์รวมเนื้อหาบทเรียนและการบ้านวิชา DSA อย่างละเอียด<br />
+      พร้อมระบบรันโค้ด Python จริงในเบราว์เซอร์ และ <b>Interactive Visual Debugger</b> จำลองการทำงานทีละสเต็ป
+    </p>
+
+    <div class="hub-grid">
+      <!-- Card 1: Wiki Knowledge Hub -->
+      <a href="Wiki/index.html" class="hub-card wiki-hub">
+        <div class="card-icon-box">📚</div>
+        <h2 class="card-title">สารานุกรม DSA Wiki</h2>
+        <p class="card-desc">
+          รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แผนผัง Mermaid, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K)
+        </p>
+        <ul class="card-features">
+          <li>✓ บทที่ 1 - 11 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O</li>
+          <li>✓ ตารางสรุป Time & Space Complexity Cheat Sheet</li>
+          <li>✓ แผนผังเชื่อมโยงโครงสร้างข้อมูล (Obsidian Wikilinks)</li>
+          <li>✓ ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที</li>
+        </ul>
+        <div class="card-btn">
+          <span>📖 เปิดสารานุกรม Wiki</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Card 2: DSA Lab Studio -->
+      <a href="DsaLab/index.html" class="hub-card dsa-lab">
+        <div class="card-icon-box">🔬</div>
+        <h2 class="card-title">ห้องทดลอง DSA Lab & Debugger</h2>
+        <p class="card-desc">
+          สตูดิโอเขียนโค้ด Python และระบบดีบักเกอร์เชิงภาพเคลื่อนไหว (Interactive Visualizer) ก้าวทีละสเต็ป ดูค่าตัวแปร และทดลองข้อมูลจริง
+        </p>
+        <ul class="card-features">
+          <li>✓ รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม)</li>
+          <li>✓ โหมด Step Debug: กด Play, Pause, Step Next, Step Back</li>
+          <li>✓ แอนิเมชัน Linked List, BST, Heap, Sorting, และ Graph</li>
+          <li>✓ แปลงโจทย์การบ้านและภาพงานในคาบมาเป็นโมเดลจำลอง</li>
+        </ul>
+        <div class="card-btn">
+          <span>🚀 เข้าสู่ห้องทดลอง DSA Lab</span>
+          <span>→</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Quick Assignment Showcase -->
+    <div class="section-title">
+      <span>🎯</span>
+      <span>โจทย์การบ้านและแบบจำลองสไลด์ Interactive (คลิกเพื่อทดสอบทันที)</span>
+    </div>
+
+    <div class="assignment-strip">
+      <a href="DsaLab/index.html?ex=assign1_linkedlist" class="assign-card">
+        <span class="assign-tag">Assignment 1</span>
+        <div class="assign-name">🔗 Singly Linked List</div>
+        <div class="assign-sub">จำลองข้อมูลนักศึกษา, การแทรก, ลบ, และท่องโหนด</div>
+      </a>
+
+      <a href="DsaLab/index.html?ex=test1_queue" class="assign-card">
+        <span class="assign-tag">Test Program 1</span>
+        <div class="assign-name">📥 Circular Array Queue</div>
+        <div class="assign-sub">จำลองคิวแถวคอย Enqueue / Dequeue พร้อมตัวชี้ Front & Rear</div>
+      </a>
+
+      <a href="DsaLab/index.html?ex=lecture5_bst_delete" class="assign-card">
+        <span class="assign-tag">Lecture 5.2</span>
+        <div class="assign-name">🌲 BST Delete (2 Children)</div>
+        <div class="assign-sub">จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor</div>
+      </a>
+
+      <a href="DsaLab/index.html?ex=assign3_heap" class="assign-card">
+        <span class="assign-tag">Assignment 3</span>
+        <div class="assign-name">🔺 Binary Min-Heap</div>
+        <div class="assign-sub">ดูภาพคู่ขนาน Tree View & Array View พร้อม Percolate Up/Down</div>
+      </a>
+
+      <a href="DsaLab/index.html?ex=test2_sorting" class="assign-card">
+        <span class="assign-tag">Test Program 2</span>
+        <div class="assign-name">📊 Sorting Comparison Race</div>
+        <div class="assign-sub">เปรียบเทียบ Bubble, Selection, Insertion, Quick Sort แบบเรียลไทม์</div>
+      </a>
+
+      <a href="DsaLab/index.html?ex=assign4_dijkstra" class="assign-card">
+        <span class="assign-tag">Assignment 4</span>
+        <div class="assign-name">🗺️ Shortest Path (Dijkstra)</div>
+        <div class="assign-sub">กราฟจุดยอด $v_1-v_7$ พร้อมตารางคำนวณ Known & dv ทีละสเต็ป</div>
+      </a>
+    </div>
+
+    <footer>
+      Python Data Structures & Algorithms Knowledge Base & Interactive Studio — พัฒนาเพื่อการเรียนรู้อย่างมีประสิทธิภาพสูงสุด
+    </footer>
+  </div>
+</body>
+</html>
