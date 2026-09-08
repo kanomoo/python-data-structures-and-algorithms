@@ -111,9 +111,18 @@ const CURRICULUM_CATEGORIES = [
 // Exam preparation & Mock exam zone (Cleanly isolated)
 const EXAM_CATEGORIES = [
   {
+    id: 'exam-final',
+    type: 'exam',
+    title: '🏁 ข้อสอบปลายภาค & กับดักอาจารย์ (Final Exam 2568)',
+    description: 'ข้อสอบปลายภาคฉบับจริง: Hashing, Binary Heap, Sorting, Graphs, Dijkstra และ 5 กับดักห้องเรียนที่อาจารย์เน้นย้ำ',
+    files: [
+      '11.6 - Final Exam Real Classroom Prep & Solutions.md'
+    ]
+  },
+  {
     id: 'exam-mock',
     type: 'exam',
-    title: '🎯 ข้อสอบจำลอง & ตะลุยโจทย์ (Mock Exams)',
+    title: '🎯 ข้อสอบจำลองกลางภาค & ตะลุยโจทย์ (Midterm Mock)',
     description: 'แนวข้อสอบเสมือนจริง Midterm, ข้อสอบเก็งปี 2026 และคลังข้อสอบ 20 ข้อ',
     files: [
       '11.1 - Midterm Real Exam Mock & Solutions.md',

@@ -151,6 +151,7 @@
     if (docId.startsWith('10.1')) return 'บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path)';
 
     // Exam items
+    if (docId.startsWith('11.6')) return '🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)';
     if (docId.startsWith('11.1')) return '🎯 ข้อสอบจริง Midterm Real Mock (2026)';
     if (docId.startsWith('11.2')) return '🎯 ข้อสอบเก็ง Predicted Midterm 2026';
     if (docId.startsWith('11.3')) return '🎯 เจาะข้อสอบ Stack Practice (Exam Style)';

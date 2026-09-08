@@ -79,6 +79,7 @@ graph TD
 - [[10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path)]]: Unweighted Shortest Path (BFS) และ Dijkstra's Algorithm (Priority Queue) พร้อมตาราง Trace ทีละสเต็ป
 
 ### 🎯 โซนเตรียมสอบ: Exam Preparation & Practice (คลังข้อสอบและการจำลองสอบ)
+- 🏁 **[[11.6 - Final Exam Real Classroom Prep & Solutions]]**: เจาะลึกแนวข้อสอบปลายภาค 2568 (Hashing, Binary Heap, Sorting, Graphs, Dijkstra และ 5 กับดักอาจารย์)
 - [[11.1 - Midterm Real Exam Mock & Solutions]]: แนวข้อสอบจริงกลางภาค 20 ข้อ พร้อมเฉลยละเอียด
 - [[11.2 - Predicted Midterm Exam 2026 Comprehensive]]: ข้อสอบเก็งกลางภาคปี 2026 ครบทุกเรื่อง
 - [[11.3 - Stack Practice Exam Problems & Solutions]]: รวมโจทย์เจาะลึกเรื่อง Stack และ Infix/Postfix
