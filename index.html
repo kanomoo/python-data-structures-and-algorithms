@@ -85,6 +85,7 @@
       margin-bottom: 16px;
       background: linear-gradient(135deg, #ffffff 35%, #a5b4fc 70%, #38bdf8 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -309,15 +310,16 @@
       <!-- Card 2: DSA Lab Studio -->
       <a href="DsaLab/index.html" class="hub-card dsa-lab">
         <div class="card-icon-box">🔬</div>
-        <h2 class="card-title">ห้องทดลอง DSA Lab & Debugger</h2>
+        <h2 class="card-title">ห้องทดลอง DSA Lab & Interactive Studio</h2>
         <p class="card-desc">
-          สตูดิโอเขียนโค้ด Python และระบบดีบักเกอร์เชิงภาพเคลื่อนไหว (Interactive Visualizer) ก้าวทีละสเต็ป ดูค่าตัวแปร และทดลองข้อมูลจริง
+          สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง สามารถกรอกค่าทดสอบได้เอง พร้อม Live Python Code Sync
         </p>
         <ul class="card-features">
           <li>✓ รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม)</li>
-          <li>✓ โหมด Step Debug: กด Play, Pause, Step Next, Step Back</li>
-          <li>✓ แอนิเมชัน Linked List, BST, Heap, Sorting, และ Graph</li>
-          <li>✓ แปลงโจทย์การบ้านและภาพงานในคาบมาเป็นโมเดลจำลอง</li>
+          <li>✓ <b>Interactive Action Deck</b>: กรอกค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ</li>
+          <li>✓ <b>Live Code Sync</b>: ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์</li>
+          <li>✓ แอนิเมชันคู่ขนาน <b>Tree Structure View & 1-Based Array Index View</b></li>
+          <li>✓ ชิปคำนวณสูตรคณิตศาสตร์: Parent $\lfloor i/2 \rfloor$, Left $2i$, Right $2i+1$</li>
         </ul>
         <div class="card-btn">
           <span>🚀 เข้าสู่ห้องทดลอง DSA Lab</span>
@@ -355,38 +357,38 @@
     <!-- Quick Assignment Showcase -->
     <div class="section-title">
       <span>🎯</span>
-      <span>โจทย์การบ้านและแบบจำลองสไลด์ Interactive (คลิกเพื่อทดสอบทันที)</span>
+      <span>แบบจำลอง Interactive จากข้อสอบจริง (คลิกเพื่อทดสอบทันที)</span>
     </div>
 
     <div class="assignment-strip">
-      <a href="DsaLab/index.html?ex=assign1_linkedlist" class="assign-card">
-        <span class="assign-tag">Assignment 1</span>
-        <div class="assign-name">🔗 Singly Linked List</div>
-        <div class="assign-sub">จำลองข้อมูลนักศึกษา, การแทรก, ลบ, และท่องโหนด</div>
+      <a href="DsaLab/index.html?ex=assign3_heap" class="assign-card" style="border-color: rgba(245, 158, 11, 0.35);">
+        <span class="assign-tag" style="color: #f59e0b;">Exams/Heap.py</span>
+        <div class="assign-name">🔺 Binary Min-Heap Studio</div>
+        <div class="assign-sub">Interactive Percolate Up & Down ใส่ค่าเองได้อิสระ</div>
       </a>
 
-      <a href="DsaLab/index.html?ex=test1_queue" class="assign-card">
-        <span class="assign-tag">Test Program 1</span>
-        <div class="assign-name">📥 Circular Array Queue</div>
-        <div class="assign-sub">จำลองคิวแถวคอย Enqueue / Dequeue พร้อมตัวชี้ Front & Rear</div>
+      <a href="DsaLab/index.html?ex=exam_hash" class="assign-card" style="border-color: rgba(6, 182, 212, 0.35);">
+        <span class="assign-tag" style="color: #06b6d4;">Exams/Hash.py</span>
+        <div class="assign-name">🔑 Hash Table & ASCII Modulo</div>
+        <div class="assign-sub">คำนวณ ord(char) และจำลองลง Bucket ตารางแฮช</div>
       </a>
 
       <a href="DsaLab/index.html?ex=lecture5_bst_delete" class="assign-card">
-        <span class="assign-tag">Lecture 5.2</span>
+        <span class="assign-tag">Exams/BST</span>
         <div class="assign-name">🌲 BST Delete (2 Children)</div>
         <div class="assign-sub">จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor</div>
       </a>
 
-      <a href="DsaLab/index.html?ex=assign3_heap" class="assign-card">
-        <span class="assign-tag">Assignment 3</span>
-        <div class="assign-name">🔺 Binary Min-Heap</div>
-        <div class="assign-sub">ดูภาพคู่ขนาน Tree View & Array View พร้อม Percolate Up/Down</div>
+      <a href="DsaLab/index.html?ex=stack_postfix" class="assign-card">
+        <span class="assign-tag">Exams/Postfix</span>
+        <div class="assign-name">🥞 Stack Postfix Evaluator</div>
+        <div class="assign-sub">จำลองการประเมินค่านิพจน์ด้วย Stack ทีละโทเค็น</div>
       </a>
 
-      <a href="DsaLab/index.html?ex=test2_sorting" class="assign-card">
-        <span class="assign-tag">Test Program 2</span>
-        <div class="assign-name">📊 Sorting Comparison Race</div>
-        <div class="assign-sub">เปรียบเทียบ Bubble, Selection, Insertion, Quick Sort แบบเรียลไทม์</div>
+      <a href="DsaLab/index.html?ex=assign1_linkedlist" class="assign-card">
+        <span class="assign-tag">Assignment 1</span>
+        <div class="assign-name">🔗 Singly Linked List</div>
+        <div class="assign-sub">จำลองข้อมูลนักศึกษา, การแทรก, ลบ, และท่องโหนด</div>
       </a>
 
       <a href="DsaLab/index.html?ex=assign4_dijkstra" class="assign-card">

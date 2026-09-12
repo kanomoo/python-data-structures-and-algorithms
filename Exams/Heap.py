@@ -54,3 +54,27 @@ class BinaryHeap:
                 break
             hole = child
         self.array[hole] = temp
+
+    def print_heap(self):
+        print("[", end = "")
+        for i in range(self.currentSize):
+            print(self.array[i], end = "" if i == self.currentSize - 1 else ", ")
+        print("]")
+
+
+if __name__ == "__main__":
+    heap = BinaryHeap(11)
+    heap.insert(13)
+    heap.insert(14)
+    heap.insert(16)
+    heap.insert(19)
+    heap.insert(21)
+    heap.insert(19)
+    heap.insert(68)
+    heap.insert(65)
+    heap.insert(26)
+    heap.insert(32)
+    heap.insert(31)
+    heap.print_heap()
+    heap.delete_min()
+    heap.print_heap()

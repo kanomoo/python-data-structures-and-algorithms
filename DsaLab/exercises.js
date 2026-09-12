@@ -559,5 +559,40 @@ expr = ['5', '3', '+', '8', '2', '-', '*', '4', '/']
 ans = eval_postfix(expr)
 print("\\nคำตอบสุดท้าย =", ans)
 `
+  },
+
+  {
+    id: 'exam_hash',
+    category: 'tree-hash',
+    badge: 'Exams/Hash.py',
+    title: '🔑 Hash Table: ASCII Sum & Modulo (Exams)',
+    subtitle: 'คำนวณ Hash Function ด้วย ord(char) และจำลองการลง Bucket ในตารางแฮช',
+    visualizer: 'hash',
+    defaultData: { key: 'AB', size: 10 },
+    theory: `
+### 🔑 การทำงานของ Hash Function (Exams/Hash.py)
+ในข้อสอบและโค้ดตัวอย่างใน \`Exams/Hash.py\` ฟังก์ชันแฮชใช้หลักการบวกค่ารหัส ASCII:
+1. วนลูปอ่านตัวอักษรทีละตัวในข้อความ \`key\`
+2. หาค่ารหัสแอสกีด้วยฟังก์ชันไพทอน \`ord(char)\`
+3. บวกผลรวมสะสม \`hash_val += ord(char)\`
+4. หาดัชนีช่องด้วยการ Modulo: \`hash_val % table_size\`
+5. ผลลัพธ์ที่ได้คือช่อง Index ใน Array ที่ข้อมูลจะถูกจัดเก็บ
+
+> [!TIP]
+> ลองพิมพ์ข้อความภาษาอังกฤษอื่นๆ เช่น "HELLO", "TEST", "DATA" ในแถบ **Action Deck** ด้านบนเพื่อทดสอบการคำนวณแบบสดๆ ได้ทันที!
+`,
+    starterCode: `# คัดลอกจาก Exams/Hash.py
+def hash(key, table_size):
+    hash_val = 0
+    for char in key:
+        hash_val += ord(char)
+        print(f"-{ord(char)}")
+    return hash_val % table_size
+
+if __name__ == "__main__":
+    print("Hash('AB', 10) =", hash("AB", 10))
+    print("Hash('HELLO', 10) =", hash("HELLO", 10))
+    print("Hash('DSA', 10) =", hash("DSA", 10))
+`
   }
 ];

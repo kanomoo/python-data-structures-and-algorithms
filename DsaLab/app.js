@@ -91,6 +91,28 @@
     elements.rtabVisualizer = document.getElementById('rtab-visualizer');
     elements.rtabConsole = document.getElementById('rtab-console');
     elements.rtabWatch = document.getElementById('rtab-watch');
+
+    // Interactive Action Deck & Live Code Sync Elements
+    elements.deckValInput = document.getElementById('deck-val-input');
+    elements.deckBtnInsert = document.getElementById('deck-btn-insert');
+    elements.deckBtnDelete = document.getElementById('deck-btn-delete');
+    elements.deckBtnSearch = document.getElementById('deck-btn-search');
+    elements.deckBtnRandom = document.getElementById('deck-btn-random');
+    elements.deckBtnPreset = document.getElementById('deck-btn-preset-exam');
+    elements.deckBtnClear = document.getElementById('deck-btn-clear');
+    elements.deckLblInsert = document.getElementById('deck-lbl-insert');
+    elements.deckLblDelete = document.getElementById('deck-lbl-delete');
+    elements.deckLblSearch = document.getElementById('deck-lbl-search');
+
+    elements.chipOpText = document.getElementById('chip-op-text');
+    elements.chipCondVal = document.getElementById('chip-cond-val');
+    elements.chipParentVal = document.getElementById('chip-parent-val');
+    elements.chipLeftVal = document.getElementById('chip-left-val');
+    elements.chipRightVal = document.getElementById('chip-right-val');
+
+    elements.codeSyncFilename = document.getElementById('code-sync-filename');
+    elements.codeSyncContent = document.getElementById('code-sync-content');
+    elements.btnToggleCodeSync = document.getElementById('btn-toggle-code-sync');
   }
 
   /* ---------------- Category & Exercise Management ---------------- */
@@ -151,12 +173,79 @@
     elements.editor.value = ex.starterCode;
     updateCursorPos();
 
+    // Configure Interactive Action Deck & Live Code Sync
+    configureActionDeckForExercise(ex);
+    loadCodeSyncForExercise(ex.id);
+
     // Initialize Steps for Visual Debugger
     if (window.DsaVisualizers) {
       state.steps = window.DsaVisualizers.getStepsForExercise(ex.id);
       state.currentStepIndex = 0;
       renderCurrentStep();
     }
+  }
+
+  function configureActionDeckForExercise(ex) {
+    if (!elements.deckValInput) return;
+    if (ex.id === 'assign3_heap') {
+      elements.deckValInput.value = '25';
+      elements.deckValInput.placeholder = 'เช่น 25, 8, 15';
+      if (elements.deckLblInsert) elements.deckLblInsert.textContent = 'Insert';
+      if (elements.deckLblDelete) elements.deckLblDelete.textContent = 'Delete Min';
+      if (elements.deckLblSearch) elements.deckLblSearch.textContent = 'Find Min';
+      if (elements.deckBtnDelete) elements.deckBtnDelete.style.display = 'inline-flex';
+      if (elements.deckBtnSearch) elements.deckBtnSearch.style.display = 'inline-flex';
+      if (elements.chipOpText) elements.chipOpText.textContent = 'Binary Min-Heap';
+      if (elements.chipParentVal) elements.chipParentVal.textContent = '⌊i / 2⌋';
+      if (elements.chipLeftVal) elements.chipLeftVal.textContent = '2i';
+      if (elements.chipRightVal) elements.chipRightVal.textContent = '2i + 1';
+    } else if (ex.id === 'exam_hash') {
+      elements.deckValInput.value = 'HELLO';
+      elements.deckValInput.placeholder = 'เช่น HELLO, AB';
+      if (elements.deckLblInsert) elements.deckLblInsert.textContent = 'Hash Key';
+      if (elements.deckLblSearch) elements.deckLblSearch.textContent = 'Calculate';
+      if (elements.deckBtnDelete) elements.deckBtnDelete.style.display = 'none';
+      if (elements.deckBtnSearch) elements.deckBtnSearch.style.display = 'inline-flex';
+      if (elements.chipOpText) elements.chipOpText.textContent = 'ASCII Hash & Modulo';
+      if (elements.chipParentVal) elements.chipParentVal.textContent = 'sum(ord)';
+      if (elements.chipLeftVal) elements.chipLeftVal.textContent = '% size';
+      if (elements.chipRightVal) elements.chipRightVal.textContent = 'Slot Idx';
+    } else if (ex.id === 'lecture5_bst_delete') {
+      elements.deckValInput.value = '70';
+      elements.deckValInput.placeholder = 'เช่น 70, 80';
+      if (elements.deckLblInsert) elements.deckLblInsert.textContent = 'Delete 70';
+      if (elements.deckLblDelete) elements.deckLblDelete.textContent = 'Successor';
+      if (elements.deckBtnDelete) elements.deckBtnDelete.style.display = 'inline-flex';
+      if (elements.chipOpText) elements.chipOpText.textContent = 'BST Deletion';
+      if (elements.chipParentVal) elements.chipParentVal.textContent = 'Left < Node';
+      if (elements.chipLeftVal) elements.chipLeftVal.textContent = 'Right > Node';
+      if (elements.chipRightVal) elements.chipRightVal.textContent = 'In-order Min';
+    } else {
+      elements.deckValInput.value = '10';
+      elements.deckValInput.placeholder = 'Value';
+      if (elements.deckLblInsert) elements.deckLblInsert.textContent = 'Action';
+      if (elements.deckBtnDelete) elements.deckBtnDelete.style.display = 'inline-flex';
+      if (elements.deckBtnSearch) elements.deckBtnSearch.style.display = 'inline-flex';
+      if (elements.chipOpText) elements.chipOpText.textContent = ex.title.replace(/^.+?:\s*/, '');
+    }
+  }
+
+  function loadCodeSyncForExercise(exId) {
+    if (!elements.codeSyncContent || !window.DsaVisualizers) return;
+    const snippet = window.DsaVisualizers.getCodeSnippetForExercise(exId);
+    if (!snippet) return;
+    if (elements.codeSyncFilename) elements.codeSyncFilename.textContent = snippet.filename;
+    let html = '';
+    snippet.lines.forEach((lineText, idx) => {
+      const lineNum = idx + 1;
+      html += `
+        <div class="sync-line" data-line="${lineNum}">
+          <span class="sync-line-num">${lineNum}</span>
+          <span class="sync-line-code">${escapeHtml(lineText)}</span>
+        </div>
+      `;
+    });
+    elements.codeSyncContent.innerHTML = html;
   }
 
   function formatMarkdown(md) {
@@ -197,7 +286,28 @@
     // 4. Update Variables Watch Table
     updateWatchTable(step.vars);
 
-    // 5. Button states
+    // 5. Update Real-time Formula Chips & Status
+    if (step.vars) {
+      if (elements.chipCondVal) {
+        elements.chipCondVal.textContent = step.vars.comparison || step.vars.condition || step.vars.action || (state.currentStepIndex === state.steps.length - 1 ? 'สมบูรณ์ ✓' : 'กำลังประมวลผล');
+      }
+      if (step.vars.parent !== undefined && elements.chipParentVal && state.currentEx?.id === 'assign3_heap') {
+        elements.chipParentVal.textContent = `idx ${step.vars.parent}`;
+      }
+    }
+
+    // 6. Synchronize Active Code Line in Live Sync Box
+    if (elements.codeSyncContent && step.line) {
+      const activeLines = elements.codeSyncContent.querySelectorAll('.sync-line.is-active');
+      activeLines.forEach(l => l.classList.remove('is-active'));
+      const target = elements.codeSyncContent.querySelector(`.sync-line[data-line="${step.line}"]`);
+      if (target) {
+        target.classList.add('is-active');
+        target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
+
+    // 7. Button states
     elements.dbgPrevBtn.disabled = state.currentStepIndex === 0;
     elements.dbgNextBtn.disabled = state.currentStepIndex === state.steps.length - 1;
   }
@@ -525,6 +635,45 @@ sys.stderr = _stderr_buf
     if (elements.rtabVisualizer) elements.rtabVisualizer.addEventListener('click', () => switchResultTab('visualizer'));
     if (elements.rtabConsole) elements.rtabConsole.addEventListener('click', () => switchResultTab('console'));
     if (elements.rtabWatch) elements.rtabWatch.addEventListener('click', () => switchResultTab('watch'));
+
+    // Interactive Action Deck Controls (Claude Artifact Inspired)
+    function triggerDynamicAction(action) {
+      if (!state.currentEx || !window.DsaVisualizers) return;
+      const val = elements.deckValInput ? elements.deckValInput.value.trim() : '';
+      const newSteps = window.DsaVisualizers.executeDynamicAction(state.currentEx.id, action, val);
+      if (newSteps && newSteps.length > 0) {
+        pausePlayback();
+        state.steps = newSteps;
+        state.currentStepIndex = 0;
+        renderCurrentStep();
+        startPlayback();
+        showToast(`⚡ จำลอง ${action.toUpperCase()} (${val || 'Active'})`);
+      }
+    }
+
+    if (elements.deckBtnInsert) elements.deckBtnInsert.addEventListener('click', () => triggerDynamicAction('insert'));
+    if (elements.deckBtnDelete) elements.deckBtnDelete.addEventListener('click', () => triggerDynamicAction('delete'));
+    if (elements.deckBtnSearch) elements.deckBtnSearch.addEventListener('click', () => triggerDynamicAction('search'));
+    if (elements.deckBtnRandom) elements.deckBtnRandom.addEventListener('click', () => triggerDynamicAction('random'));
+    if (elements.deckBtnPreset) elements.deckBtnPreset.addEventListener('click', () => triggerDynamicAction('preset'));
+    if (elements.deckBtnClear) elements.deckBtnClear.addEventListener('click', () => triggerDynamicAction('clear'));
+
+    if (elements.deckValInput) {
+      elements.deckValInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          triggerDynamicAction('insert');
+        }
+      });
+    }
+
+    if (elements.btnToggleCodeSync) {
+      elements.btnToggleCodeSync.addEventListener('click', () => {
+        const isHidden = elements.codeSyncContent.style.display === 'none';
+        elements.codeSyncContent.style.display = isHidden ? 'block' : 'none';
+        elements.btnToggleCodeSync.textContent = isHidden ? 'ซ่อนโค้ด' : 'แสดงโค้ด';
+      });
+    }
 
     // Step Debugger Controls
     if (elements.dbgPlayBtn) elements.dbgPlayBtn.addEventListener('click', togglePlayback);

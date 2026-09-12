@@ -169,6 +169,66 @@
           <div class="result-body-container">
             <!-- 1. Visualizer View -->
             <div id="pane-visualizer" style="display: flex; flex-direction: column; flex: 1; overflow: auto;">
+              <!-- Interactive Action Deck (Claude Artifact Inspired) -->
+              <div id="interactive-action-deck" class="interactive-action-deck">
+                <div class="deck-main-actions">
+                  <div class="deck-input-group">
+                    <span class="deck-input-label">ค่า (Value):</span>
+                    <input type="text" id="deck-val-input" class="deck-input" placeholder="เช่น 25, 8" value="25" />
+                  </div>
+                  <button id="deck-btn-insert" class="deck-btn deck-btn-primary" title="แทรกค่าใหม่และจำลองขั้นตอนแบบเรียลไทม์">
+                    <span>➕</span>
+                    <span id="deck-lbl-insert">Insert</span>
+                  </button>
+                  <button id="deck-btn-delete" class="deck-btn deck-btn-danger" title="ลบค่าหัวแถว (Delete Min / Delete Root)">
+                    <span>➖</span>
+                    <span id="deck-lbl-delete">Delete Min</span>
+                  </button>
+                  <button id="deck-btn-search" class="deck-btn deck-btn-secondary" title="ค้นหาค่า / Find Min">
+                    <span>🔍</span>
+                    <span id="deck-lbl-search">Find Min</span>
+                  </button>
+                </div>
+                <div class="deck-extra-actions">
+                  <button id="deck-btn-random" class="deck-btn deck-btn-ghost" title="สุ่มชุดข้อมูลใหม่">
+                    <span>🎲</span>
+                    <span>Random</span>
+                  </button>
+                  <button id="deck-btn-preset-exam" class="deck-btn deck-btn-ghost" title="โหลดข้อมูลตัวอย่างตามข้อสอบ Exams">
+                    <span>📝</span>
+                    <span>Exams Preset</span>
+                  </button>
+                  <button id="deck-btn-clear" class="deck-btn deck-btn-ghost" title="ล้างข้อมูล">
+                    <span>🧹</span>
+                    <span>Clear</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Real-time Math Formulas & State Badges Strip -->
+              <div id="deck-formula-strip" class="deck-formula-strip">
+                <div class="formula-chip op-chip" id="chip-op">
+                  <span class="chip-dot"></span>
+                  <span id="chip-op-text">Min-Heap Active</span>
+                </div>
+                <div class="formula-chip" id="chip-formula-parent" title="สูตรหาโหนดแม่ Parent">
+                  <span class="chip-k">Parent:</span>
+                  <span class="chip-v" id="chip-parent-val">⌊i / 2⌋</span>
+                </div>
+                <div class="formula-chip" id="chip-formula-left" title="สูตรหาลูกซ้าย Left Child">
+                  <span class="chip-k">Left:</span>
+                  <span class="chip-v" id="chip-left-val">2i</span>
+                </div>
+                <div class="formula-chip" id="chip-formula-right" title="สูตรหาลูกขวา Right Child">
+                  <span class="chip-k">Right:</span>
+                  <span class="chip-v" id="chip-right-val">2i + 1</span>
+                </div>
+                <div class="formula-chip stat-chip" id="chip-condition">
+                  <span class="chip-k">สถานะ:</span>
+                  <span class="chip-v" id="chip-cond-val">พร้อมทำงาน</span>
+                </div>
+              </div>
+
               <!-- Step Debugger Controls Bar -->
               <div class="debugger-controls-bar">
                 <div class="debug-btn-group">
@@ -196,6 +256,21 @@
               <!-- Dynamic Graphic Canvas -->
               <div id="visualizer-canvas">
                 <!-- Injected dynamically by visualizers.js -->
+              </div>
+
+              <!-- Live Code Synchronization Box -->
+              <div id="live-code-sync-box" class="live-code-sync-box">
+                <div class="code-sync-header">
+                  <div class="code-sync-title">
+                    <span>🐍</span>
+                    <span id="code-sync-filename">Exams/Heap.py</span>
+                    <span class="code-sync-tag">Live Sync</span>
+                  </div>
+                  <button id="btn-toggle-code-sync" class="tool-btn" title="ย่อ/ขยายกล่องโค้ด">ซ่อน/แสดงโค้ด</button>
+                </div>
+                <div class="code-sync-content" id="code-sync-content">
+                  <!-- Lines dynamically injected with .sync-line -->
+                </div>
               </div>
             </div>
 

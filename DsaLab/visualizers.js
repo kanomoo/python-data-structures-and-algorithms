@@ -395,88 +395,249 @@ window.DsaVisualizers = (function () {
   // ========================================================
   // 4. Binary Min-Heap Visualizer
   // ========================================================
-  function createHeapSteps() {
+  // ========================================================
+  // 4. Binary Min-Heap Dynamic Engine (Exams/Heap.py)
+  // ========================================================
+  let dynamicHeapState = [0, 13, 14, 16, 19, 21, 19, 68, 65, 26, 32, 31];
+
+  function getDynamicHeap() {
+    return [...dynamicHeapState];
+  }
+
+  function setDynamicHeap(arr) {
+    dynamicHeapState = [...arr];
+  }
+
+  function resetDynamicHeapToExam() {
+    dynamicHeapState = [0, 13, 14, 16, 19, 21, 19, 68, 65, 26, 32, 31];
+    return createHeapDefaultSteps();
+  }
+
+  function createHeapDefaultSteps() {
     const steps = [];
-    let heap = [0, 10, 12, 20, 14, 16, 25, 30, 22];
+    let h = [...dynamicHeapState];
+    steps.push({
+      line: 3,
+      explanation: `📌 สถานะเริ่มต้น Binary Min-Heap: โครงสร้างอิงตาม <b>Exams/Heap.py</b> ขนาด ${h.length - 1} โหนด (Root = ${h[1]})`,
+      vars: { size: h.length - 1, min_root: h[1], array_view: h.slice(1) },
+      visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: 1, op: 'init' }
+    });
+    return steps;
+  }
+
+  function createDynamicHeapInsertSteps(val) {
+    const num = parseInt(val, 10);
+    if (isNaN(num)) return createHeapDefaultSteps();
+
+    const steps = [];
+    let h = [...dynamicHeapState];
+
+    if (h.length >= 24) {
+      steps.push({
+        line: 6,
+        explanation: '⚠️ Heap เต็มความจุจำลอง (Max 23 elements)',
+        vars: { size: h.length - 1 },
+        visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'full' }
+      });
+      return steps;
+    }
+
+    // Step 1: Append hole at end
+    h.push(num);
+    let hole = h.length - 1;
+    let parent = Math.floor(hole / 2);
 
     steps.push({
-      line: 5,
-      explanation: 'สถานะเริ่มต้น: Binary Min-Heap ใน Array [10, 12, 20, 14, 16, 25, 30, 22] (ขนาด = 8)',
-      vars: { size: heap.length - 1, min: heap[1] },
-      visualData: { heap: [...heap], activeIdx: -1, parentIdx: -1, op: 'init' }
+      line: 7, // self.currentSize += 1; hole = self.currentSize
+      explanation: `📥 <b>Insert(${num})</b>: นำค่าใหม่ลงที่ท้ายอาร์เรย์ตำแหน่ง <code>index ${hole}</code> (สร้างช่องว่าง hole) -> เตรียมตรวจ <b>Percolate Up</b> กับ Parent index ${parent} (ค่า ${h[parent]})`,
+      vars: { hole: hole, parent: parent, 'heap[parent]': h[parent], insert_val: num },
+      visualData: { heap: [...h], holeIdx: hole, parentIdx: parent, activeIdx: hole, op: 'insert_start', val: num }
     });
 
-    heap.push(8);
-    let i = heap.length - 1;
+    while (hole > 1 && num < h[Math.floor(hole / 2)]) {
+      let p = Math.floor(hole / 2);
+      steps.push({
+        line: 9, // while hole > 1 and x < self.array[hole // 2]:
+        explanation: `🔍 <b>ตรวจเงื่อนไข</b>: <code>${num} < heap[${p}] (${h[p]})</code> เป็น <b>จริง (True)</b> -> ค่าใหม่น้อยกว่าโหนดแม่ จึงเลื่อนแม่ (${h[p]}) ลงมาที่ index ${hole}`,
+        vars: { hole: hole, parent: p, comparison: `${num} < ${h[p]} (True)`, action: 'Shift Down Parent' },
+        visualData: { heap: [...h], holeIdx: hole, parentIdx: p, activeIdx: hole, op: 'compare_up', val: num }
+      });
+
+      h[hole] = h[p];
+      hole = p;
+
+      steps.push({
+        line: 11, // self.array[hole] = self.array[hole // 2]; hole //= 2
+        explanation: `⬆️ <b>เลื่อนสำเร็จ</b>: ย้ายช่องว่าง hole ขึ้นไปที่ <code>index ${hole}</code> -> คำนวณ Parent ถัดไป = ⌊${hole} / 2⌋ = ${Math.floor(hole / 2)}`,
+        vars: { new_hole: hole, next_parent: Math.floor(hole / 2), val: num },
+        visualData: { heap: [...h], holeIdx: hole, parentIdx: Math.floor(hole / 2), activeIdx: hole, op: 'shifted_up', val: num }
+      });
+    }
+
+    h[hole] = num;
     steps.push({
-      line: 9,
-      explanation: `แทรก 8: นำค่า 8 ใส่ที่ตำแหน่งท้ายสุด index ${i} -> เตรียมตรวจสอบ Percolate Up กับ Parent`,
-      vars: { inserted: 8, index: i, parent: Math.floor(i / 2) },
-      visualData: { heap: [...heap], activeIdx: i, parentIdx: Math.floor(i / 2), op: 'insert' }
+      line: 12, // self.array[hole] = x
+      explanation: `🎉 <b>Percolate Up สำเร็จ</b>: สิ้นสุดลูป (hole = ${hole} ถึงราก หรือแม่มีค่าน้อยกว่า ${num}) -> บรรจุค่า <code>${num}</code> ลงที่ <code>heap[${hole}]</code>`,
+      vars: { final_slot: hole, placed: num, new_root: h[1], total_elements: h.length - 1 },
+      visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: hole, op: 'complete', val: num }
     });
 
-    let p = Math.floor(i / 2);
+    dynamicHeapState = [...h];
+    return steps;
+  }
+
+  function createDynamicHeapDeleteMinSteps() {
+    const steps = [];
+    let h = [...dynamicHeapState];
+
+    if (h.length <= 1) {
+      steps.push({
+        line: 14,
+        explanation: '⚠️ Heap ว่างเปล่า (Empty Heap): ไม่สามารถ Delete Min ได้',
+        vars: { size: 0 },
+        visualData: { heap: [0], holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'empty' }
+      });
+      return steps;
+    }
+
+    const minItem = h[1];
+
+    if (h.length === 2) {
+      h.pop();
+      steps.push({
+        line: 15,
+        explanation: `🗑️ ดึงค่าสุดท้าย ${minItem} ออกจาก Heap สำเร็จ -> ตอนนี้ Heap ว่างเปล่า`,
+        vars: { deleted_min: minItem, remaining: 0 },
+        visualData: { heap: [0], holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'complete' }
+      });
+      dynamicHeapState = [...h];
+      return steps;
+    }
+
+    const lastItem = h.pop();
+    let currentSize = h.length - 1;
+    let hole = 1;
+    let temp = lastItem;
+
     steps.push({
-      line: 15,
-      explanation: `เปรียบเทียบ: heap[${i}] (8) < heap[${p}] (${heap[p]}) -> สลับตำแหน่งขึ้นไป!`,
-      vars: { swap: `8 with ${heap[p]}` },
-      visualData: { heap: [...heap], activeIdx: i, parentIdx: p, op: 'swap' }
+      line: 15, // min_item = self.array[1]; self.array[1] = self.array[self.currentSize]
+      explanation: `🗑️ <b>Delete Min()</b>: ดึงค่า Min Root = <b>${minItem}</b> ออกมา -> นำค่าปลายสุด <b>${lastItem}</b> มาถือไว้ในตัวแปร <code>temp = ${temp}</code> เพื่อทำ <b>Percolate Down</b> จาก <code>hole = 1</code>`,
+      vars: { extracted_min: minItem, temp_last: temp, hole: 1, current_size: currentSize },
+      visualData: { heap: [...h], holeIdx: 1, parentIdx: 1, activeIdx: 1, op: 'delete_start', temp: temp, minItem: minItem }
     });
 
-    let temp = heap[i];
-    heap[i] = heap[p];
-    heap[p] = temp;
-    i = p;
-    p = Math.floor(i / 2);
+    while (hole * 2 <= currentSize) {
+      let child = hole * 2;
+      const hasRight = child !== currentSize;
+      const rightIsSmaller = hasRight && h[child + 1] < h[child];
 
+      if (rightIsSmaller) {
+        child += 1;
+      }
+
+      steps.push({
+        line: 25, // if child != self.currentSize and self.array[child + 1] < self.array[child]: child += 1
+        explanation: `🔍 <b>หาลูกตัวที่น้อยที่สุด</b>: โหนด index ${hole} มีลูกซ้าย index ${hole * 2} (${h[hole * 2]}) ${hasRight ? `และลูกขวา index ${hole * 2 + 1} (${h[hole * 2 + 1]})` : ''} -> <b>เลือก index ${child} (ค่า ${h[child]})</b>`,
+        vars: { hole: hole, smaller_child: child, child_val: h[child], temp: temp },
+        visualData: { heap: [...h], holeIdx: hole, parentIdx: hole, activeIdx: child, op: 'compare_children', temp: temp }
+      });
+
+      if (h[child] < temp) {
+        steps.push({
+          line: 27, // if self.array[child] < temp: self.array[hole] = self.array[child]
+          explanation: `⬇️ <b>เลื่อนลูกขึ้น</b>: ค่าลูก <code>${h[child]} < temp (${temp})</code> จึงเลื่อนค่า ${h[child]} ขึ้นมาที่ index ${hole} แล้วย้ายช่องว่าง hole ลงไปที่ index ${child}`,
+          vars: { hole: hole, promoted_child: child, value: h[child], next_hole: child },
+          visualData: { heap: [...h], holeIdx: hole, parentIdx: hole, activeIdx: child, op: 'shift_down', temp: temp }
+        });
+        h[hole] = h[child];
+        hole = child;
+      } else {
+        steps.push({
+          line: 29, // else: break
+          explanation: `🛑 <b>หยุด Percolate Down</b>: ค่าลูกตัวที่น้อยที่สุด <code>${h[child]} >= temp (${temp})</code> คุณสมบัติ Min-Heap ถูกต้องแล้ว ไม่ต้องสลับต่อ`,
+          vars: { hole: hole, condition: `${temp} <= ${h[child]} (True)` },
+          visualData: { heap: [...h], holeIdx: hole, parentIdx: -1, activeIdx: hole, op: 'stop_down', temp: temp }
+        });
+        break;
+      }
+    }
+
+    h[hole] = temp;
     steps.push({
-      line: 15,
-      explanation: `เปรียบเทียบต่อ: ตอนนี้ 8 อยู่ที่ index ${i} | Parent คือ index ${p} (ค่า ${heap[p]}) -> 8 < 12 สลับอีกครั้ง!`,
-      vars: { index: i, parent: p },
-      visualData: { heap: [...heap], activeIdx: i, parentIdx: p, op: 'swap' }
+      line: 32, // self.array[hole] = temp
+      explanation: `🎉 <b>วางค่าสำเร็จ</b>: วาง <code>temp (${temp})</code> ลงที่ <code>heap[${hole}]</code> -> ได้ Min Root ใหม่ = <b>${h[1]}</b> (ค่าที่ลบได้คือ ${minItem})`,
+      vars: { final_hole: hole, placed_temp: temp, new_min_root: h[1], deleted: minItem },
+      visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: hole, op: 'complete', minItem: minItem }
     });
 
-    temp = heap[i];
-    heap[i] = heap[p];
-    heap[p] = temp;
-    i = p;
-    p = Math.floor(i / 2);
+    dynamicHeapState = [...h];
+    return steps;
+  }
 
+  function createDynamicHeapFindMinSteps() {
+    const steps = [];
+    const h = [...dynamicHeapState];
+    if (h.length <= 1) {
+      steps.push({
+        line: 14,
+        explanation: 'Heap ว่างเปล่า ไม่มีค่า Min',
+        vars: { size: 0 },
+        visualData: { heap: [0], holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'empty' }
+      });
+      return steps;
+    }
     steps.push({
-      line: 15,
-      explanation: `เปรียบเทียบกับ Root: 8 อยู่ที่ index ${i} | Parent คือ Root index 1 (ค่า ${heap[1]}) -> 8 < 10 สลับขึ้นเป็นรากใหม่!`,
-      vars: { index: i, parent: 1 },
-      visualData: { heap: [...heap], activeIdx: i, parentIdx: 1, op: 'swap' }
+      line: 4, // def find_min(self): return self.array[1]
+      explanation: `⚡ <b>find_min()</b>: ใน Binary Min-Heap ค่าที่น้อยที่สุดจะอยู่ที่รากเสมอ <code>heap[1] = ${h[1]}</code> ทำงานเร็วระดับ <b>O(1)</b> โดยไม่ต้องค้นหาทั้งต้นไม้`,
+      vars: { min_value: h[1], index: 1, complexity: 'O(1)' },
+      visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: 1, op: 'find_min' }
     });
-
-    temp = heap[i];
-    heap[i] = heap[1];
-    heap[1] = temp;
-
-    steps.push({
-      line: 18,
-      explanation: `🎉 Percolate Up สำเร็จ: 8 กลายเป็น Min Root ตัวใหม่ของ Heap!`,
-      vars: { new_min: 8, root: heap[1] },
-      visualData: { heap: [...heap], activeIdx: 1, parentIdx: -1, op: 'complete' }
-    });
-
     return steps;
   }
 
   function renderHeap(container, visualData) {
-    const { heap, activeIdx, parentIdx } = visualData;
+    const { heap, holeIdx, parentIdx, activeIdx, op } = visualData;
+    const n = heap.length - 1;
 
     let html = '<div class="heap-dual-container">';
 
-    html += '<div class="heap-array-view"><div class="heap-view-title">📋 Array Index View [1 .. n]</div><div class="heap-array-slots">';
-    for (let idx = 1; idx < heap.length; idx++) {
-      let slotClass = 'h-slot';
-      if (idx === activeIdx) slotClass += ' is-active';
-      if (idx === parentIdx) slotClass += ' is-parent';
+    // 1. Array 1-Indexed View Box
+    html += `
+      <div class="heap-view-box">
+        <div class="heap-view-header">
+          <div class="heap-view-title">
+            <span>📋</span>
+            <span>Array Index Representation [1 .. ${n}]</span>
+          </div>
+          <div class="heap-view-badge">1-Based Array Indexing (Exams/Heap.py)</div>
+        </div>
+        <div class="heap-array-slots">
+          <!-- Sentinel Index 0 -->
+          <div class="h-slot-wrapper">
+            <span class="h-badge" style="background:#475569; color:#f8fafc;">Sentinel</span>
+            <div class="h-slot is-sentinel">
+              <span class="h-val" style="color:#64748b;">None</span>
+              <span class="h-idx">[0]</span>
+            </div>
+          </div>
+    `;
 
+    for (let idx = 1; idx <= n; idx++) {
+      let slotClass = 'h-slot';
       let badge = '';
-      if (idx === activeIdx) badge = '<span class="h-badge act">Active</span>';
-      if (idx === parentIdx) badge = '<span class="h-badge par">Parent</span>';
+
+      if (idx === holeIdx) {
+        slotClass += ' is-active';
+        badge = '<span class="h-badge act">Hole</span>';
+      } else if (idx === parentIdx) {
+        slotClass += ' is-parent';
+        badge = '<span class="h-badge par">Parent</span>';
+      } else if (idx === activeIdx && op === 'compare_children') {
+        slotClass += ' is-child';
+        badge = '<span class="h-badge child">Min Child</span>';
+      } else if (idx === 1) {
+        badge = '<span class="h-badge root">Root</span>';
+      }
 
       html += `
         <div class="h-slot-wrapper">
@@ -490,43 +651,95 @@ window.DsaVisualizers = (function () {
     }
     html += '</div></div>';
 
-    const coords = [
-      null,
-      { x: 260, y: 35 },
-      { x: 140, y: 90 },
-      { x: 380, y: 90 },
-      { x: 80, y: 145 },
-      { x: 200, y: 145 },
-      { x: 320, y: 145 },
-      { x: 440, y: 145 },
-      { x: 50, y: 200 },
-      { x: 110, y: 200 }
-    ];
+    // 2. Tree Structure View Box (Dynamic SVG for any number of elements)
+    const maxLevel = Math.max(1, Math.floor(Math.log2(Math.max(1, n))));
+    const svgWidth = Math.max(540, Math.pow(2, maxLevel) * 48);
+    const svgHeight = 45 + (maxLevel + 1) * 65;
 
-    html += '<div class="heap-tree-view"><div class="heap-view-title">🌲 Tree Structure View</div><svg class="heap-svg" viewBox="0 0 520 230">';
+    // Calculate node coordinates dynamically
+    const coords = [null];
+    for (let i = 1; i <= n; i++) {
+      const level = Math.floor(Math.log2(i));
+      const slots = Math.pow(2, level);
+      const col = i - slots;
+      const x = (col + 0.5) * (svgWidth / slots);
+      const y = 35 + level * 62;
+      coords.push({ x: Math.round(x), y: Math.round(y), level });
+    }
 
-    for (let i = 1; i < heap.length; i++) {
+    html += `
+      <div class="heap-view-box">
+        <div class="heap-view-header">
+          <div class="heap-view-title">
+            <span>🌲</span>
+            <span>Tree Structure View (ระดับความลึก: ${maxLevel + 1} ชั้น)</span>
+          </div>
+          <div class="heap-view-badge">Left = 2i, Right = 2i + 1</div>
+        </div>
+        <svg class="heap-svg" viewBox="0 0 ${svgWidth} ${svgHeight}">
+          <defs>
+            <linearGradient id="grad-active" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f59e0b" />
+              <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+            <linearGradient id="grad-parent" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1" />
+              <stop offset="100%" stop-color="#4f46e5" />
+            </linearGradient>
+            <linearGradient id="grad-child" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#06b6d4" />
+              <stop offset="100%" stop-color="#0284c7" />
+            </linearGradient>
+            <linearGradient id="grad-root" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#10b981" />
+              <stop offset="100%" stop-color="#059669" />
+            </linearGradient>
+          </defs>
+    `;
+
+    // Draw tree edges
+    for (let i = 1; i <= n; i++) {
       const left = i * 2;
       const right = i * 2 + 1;
-      if (left < heap.length && coords[left]) {
-        html += `<line x1="${coords[i].x}" y1="${coords[i].y}" x2="${coords[left].x}" y2="${coords[left].y}" class="bst-edge" />`;
+      const pCoord = coords[i];
+
+      if (left <= n && coords[left]) {
+        const isLeftActive = (left === activeIdx || left === holeIdx) && (i === parentIdx || i === holeIdx);
+        html += `<line x1="${pCoord.x}" y1="${pCoord.y}" x2="${coords[left].x}" y2="${coords[left].y}" class="heap-edge ${isLeftActive ? 'active-edge' : ''}" />`;
       }
-      if (right < heap.length && coords[right]) {
-        html += `<line x1="${coords[i].x}" y1="${coords[i].y}" x2="${coords[right].x}" y2="${coords[right].y}" class="bst-edge" />`;
+      if (right <= n && coords[right]) {
+        const isRightActive = (right === activeIdx || right === holeIdx) && (i === parentIdx || i === holeIdx);
+        html += `<line x1="${pCoord.x}" y1="${pCoord.y}" x2="${coords[right].x}" y2="${coords[right].y}" class="heap-edge ${isRightActive ? 'active-edge' : ''}" />`;
       }
     }
 
-    for (let i = 1; i < heap.length; i++) {
-      if (!coords[i]) continue;
-      let nodeClass = 'bst-node-circle';
-      if (i === activeIdx) nodeClass += ' is-target';
-      if (i === parentIdx) nodeClass += ' is-successor';
+    // Draw tree nodes
+    for (let i = 1; i <= n; i++) {
+      const c = coords[i];
+      let nodeClass = 'heap-node-circle';
+      let fillAttr = '';
+      let tagText = '';
+
+      if (i === holeIdx) {
+        nodeClass += ' is-hole';
+        tagText = 'HOLE';
+      } else if (i === parentIdx) {
+        nodeClass += ' is-parent';
+        tagText = 'PARENT';
+      } else if (i === activeIdx && op === 'compare_children') {
+        nodeClass += ' is-child';
+        tagText = 'MIN';
+      } else if (i === 1) {
+        nodeClass += ' is-root';
+        tagText = 'ROOT';
+      }
 
       html += `
-        <g transform="translate(${coords[i].x}, ${coords[i].y})">
-          <circle r="18" class="${nodeClass}"></circle>
-          <text text-anchor="middle" dy="5" class="bst-node-text">${heap[i]}</text>
-          <text text-anchor="middle" dy="28" class="bst-node-label" style="font-size:10px;">i=${i}</text>
+        <g transform="translate(${c.x}, ${c.y})">
+          <circle r="20" class="${nodeClass}" ${fillAttr}></circle>
+          <text text-anchor="middle" dy="5" class="heap-node-text">${heap[i]}</text>
+          <text text-anchor="middle" dy="32" class="heap-node-idx">i=${i}</text>
+          ${tagText ? `<text dy="-24" class="heap-node-tag">${tagText}</text>` : ''}
         </g>
       `;
     }
@@ -943,16 +1156,241 @@ window.DsaVisualizers = (function () {
     container.innerHTML = html;
   }
 
+  // ========================================================
+  // 8. Hash Table Visualizer (Exams/Hash.py)
+  // ========================================================
+  function createHashSteps(key = 'AB', tableSize = 10) {
+    const steps = [];
+    let hashVal = 0;
+    const chars = String(key || 'AB').split('');
+    const buckets = new Array(tableSize).fill(null);
+
+    steps.push({
+      line: 1,
+      explanation: `🔑 <b>Hashing (Exams/Hash.py)</b>: คำนวณ Hash สำหรับ Key = "<b>${key}</b>" ลงใน Table ขนาด ${tableSize} ช่อง`,
+      vars: { key: key, table_size: tableSize, hash_val: 0 },
+      visualData: { key: key, tableSize: tableSize, currentIdx: 0, sum: 0, buckets: [...buckets], op: 'init' }
+    });
+
+    chars.forEach((c, idx) => {
+      const code = c.charCodeAt(0);
+      hashVal += code;
+      steps.push({
+        line: 4, // for char in key: hash_val += ord(char)
+        explanation: `อักษรตัวที่ ${idx + 1}: '<b>${c}</b>' -> รหัส ASCII <code>ord('${c}') = ${code}</code> | ผลรวมสะสม <code>hash_val = ${hashVal}</code>`,
+        vars: { char: c, 'ord(char)': code, hash_val: hashVal },
+        visualData: { key: key, char: c, ord: code, sum: hashVal, tableSize: tableSize, buckets: [...buckets], op: 'char' }
+      });
+    });
+
+    const finalIdx = hashVal % tableSize;
+    buckets[finalIdx] = key;
+    steps.push({
+      line: 6, // return hash_val % table_size
+      explanation: `🎉 <b>ผลลัพธ์ Modulo</b>: <code>${hashVal} % ${tableSize} = ${finalIdx}</code> -> จัดเก็บ Key "<b>${key}</b>" ลงใน <b>Bucket [${finalIdx}]</b> เรียบร้อย`,
+      vars: { sum_ascii: hashVal, table_size: tableSize, slot_index: finalIdx },
+      visualData: { key: key, targetSlot: finalIdx, buckets: [...buckets], op: 'complete' }
+    });
+
+    return steps;
+  }
+
+  function renderHash(container, visualData) {
+    const { key, char, ord, sum, targetSlot, buckets, tableSize } = visualData;
+    let html = `
+      <div class="hash-sim-container">
+        <div class="hash-calc-card">
+          <div style="color:#a5b4fc; margin-bottom: 6px;">📐 <b>สูตรการคำนวณตาม Exams/Hash.py:</b> <code>hash_val = sum(ord(char)) % table_size</code></div>
+          <div style="color:#e2e8f0;">Key: <span style="color:#38bdf8; font-weight:700;">"${key}"</span> ${char ? `| ประมวลผล: <span style="color:#f59e0b; font-weight:700;">'${char}' (ASCII: ${ord})</span>` : ''} | ผลรวม: <span style="color:#34d399; font-weight:700;">${sum || 0}</span></div>
+        </div>
+        <div class="hash-table-grid">
+    `;
+
+    for (let i = 0; i < (tableSize || 10); i++) {
+      const isTarget = i === targetSlot;
+      html += `
+        <div class="hash-bucket ${isTarget ? 'is-target' : ''}">
+          <div class="hash-bucket-idx">Bucket [${i}]</div>
+          <div class="hash-bucket-val">${buckets && buckets[i] ? buckets[i] : '<span style="color:#475569; font-weight:normal;">Empty</span>'}</div>
+        </div>
+      `;
+    }
+
+    html += '</div></div>';
+    container.innerHTML = html;
+  }
+
+  // ========================================================
+  // Python Code Snippets for Live Sync (Matches Exams/*.py)
+  // ========================================================
+  const EXAM_CODE_SNIPPETS = {
+    assign3_heap: {
+      filename: 'Exams/Heap.py',
+      lines: [
+        '# Exams/Heap.py — Binary Min-Heap Implementation',
+        'class BinaryHeap:',
+        '    def __init__(self, capacity = 100):',
+        '        self.array = [None] * (capacity + 1)',
+        '        self.currentSize = 0',
+        '',
+        '    def insert(self, x):',
+        '        self.currentSize += 1',
+        '        hole = self.currentSize',
+        '        while hole > 1 and x < self.array[hole // 2]:',
+        '            self.array[hole] = self.array[hole // 2]',
+        '            hole //= 2',
+        '        self.array[hole] = x',
+        '',
+        '    def delete_min(self):',
+        '        min_item = self.array[1]',
+        '        self.array[1] = self.array[self.currentSize]',
+        '        self.currentSize -= 1',
+        '        self._percolate_down(1)',
+        '        return min_item',
+        '',
+        '    def _percolate_down(self, hole):',
+        '        temp = self.array[hole]',
+        '        while hole * 2 <= self.currentSize:',
+        '            child = hole * 2',
+        '            if child != self.currentSize and self.array[child + 1] < self.array[child]:',
+        '                child += 1',
+        '            if self.array[child] < temp:',
+        '                self.array[hole] = self.array[child]',
+        '            else:',
+        '                break',
+        '            hole = child',
+        '        self.array[hole] = temp'
+      ]
+    },
+    lecture5_bst_delete: {
+      filename: 'Exams/BinarySearchTrees.py',
+      lines: [
+        '# Exams/BinarySearchTrees.py — BST Node Deletion',
+        'class BinarySearchTree:',
+        '    def delete(self, root, key):',
+        '        if root is None: return root',
+        '        if key < root.val:',
+        '            root.left = self.delete(root.left, key)',
+        '        elif key > root.val:',
+        '            root.right = self.delete(root.right, key)',
+        '        else:',
+        '            # Case 1 & 2: 0 or 1 child',
+        '            if root.left is None: return root.right',
+        '            if root.right is None: return root.left',
+        '            # Case 3: 2 children -> In-order Successor',
+        '            temp = self.find_min(root.right)',
+        '            root.val = temp.val',
+        '            root.right = self.delete(root.right, temp.val)',
+        '        return root'
+      ]
+    },
+    stack_postfix: {
+      filename: 'Exams/InfixToPostFix.py',
+      lines: [
+        '# Exams/InfixToPostFix.py — Stack Evaluation',
+        'class Stack:',
+        '    def eval_postfix(tokens):',
+        '        stack = []',
+        '        for token in tokens:',
+        '            if token.isdigit():',
+        '                stack.append(int(token))',
+        '            else:',
+        '                b = stack.pop()',
+        '                a = stack.pop()',
+        '                if token == "+": stack.append(a + b)',
+        '                elif token == "-": stack.append(a - b)',
+        '                elif token == "*": stack.append(a * b)',
+        '                elif token == "/": stack.append(a // b)',
+        '        return stack.pop()'
+      ]
+    },
+    assign1_linkedlist: {
+      filename: 'Exams/LinkedList/612037.py',
+      lines: [
+        '# Exams/LinkedList/612037.py — Singly Linked List',
+        'class LinkedList:',
+        '    def delete(self, item):',
+        '        curr = self.head',
+        '        prev = None',
+        '        while curr and curr.get_data() != item:',
+        '            prev = curr',
+        '            curr = curr.get_next()',
+        '        if not curr: return False',
+        '        if not prev: self.head = curr.get_next()',
+        '        else: prev.set_next(curr.get_next())',
+        '        return True'
+      ]
+    },
+    exam_hash: {
+      filename: 'Exams/Hash.py',
+      lines: [
+        '# Exams/Hash.py — ASCII Sum & Modulo Hash Function',
+        'def hash(key, table_size):',
+        '    hash_val = 0',
+        '    for char in key:',
+        '        hash_val += ord(char)',
+        '        print(f"-{ord(char)}")',
+        '    return hash_val % table_size',
+        '',
+        'if __name__ == "__main__":',
+        '    print(hash("AB", 10))'
+      ]
+    }
+  };
+
   return {
     getStepsForExercise: function (exId) {
       if (exId === 'assign1_linkedlist') return createLinkedListSteps(window.DSA_EXERCISES[0].defaultData);
       if (exId === 'test1_queue') return createQueueSteps();
       if (exId === 'lecture5_bst_delete') return createBstSteps();
-      if (exId === 'assign3_heap') return createHeapSteps();
+      if (exId === 'assign3_heap') return createHeapDefaultSteps();
       if (exId === 'test2_sorting') return createSortingSteps();
       if (exId === 'assign4_dijkstra') return createDijkstraSteps();
       if (exId === 'stack_postfix') return createStackSteps();
+      if (exId === 'exam_hash') return createHashSteps();
       return createLinkedListSteps();
+    },
+
+    executeDynamicAction: function (exId, action, val) {
+      if (exId === 'assign3_heap') {
+        if (action === 'insert') return createDynamicHeapInsertSteps(val);
+        if (action === 'delete') return createDynamicHeapDeleteMinSteps();
+        if (action === 'search') return createDynamicHeapFindMinSteps();
+        if (action === 'preset') return resetDynamicHeapToExam();
+        if (action === 'clear') { setDynamicHeap([0]); return createHeapDefaultSteps(); }
+        if (action === 'random') {
+          // Generate 8-11 sorted random values into heap
+          const nums = [];
+          const count = 7 + Math.floor(Math.random() * 4);
+          for (let k = 0; k < count; k++) {
+            nums.push(Math.floor(Math.random() * 80) + 10);
+          }
+          // build heap bottom up
+          setDynamicHeap([0, ...nums]);
+          return createHeapDefaultSteps();
+        }
+      }
+
+      if (exId === 'exam_hash') {
+        if (action === 'insert' || action === 'search') {
+          return createHashSteps(val || 'HELLO', 10);
+        }
+        if (action === 'preset') return createHashSteps('AB', 10);
+      }
+
+      if (exId === 'lecture5_bst_delete') {
+        if (action === 'preset') return createBstSteps();
+      }
+
+      if (exId === 'stack_postfix') {
+        if (action === 'preset') return createStackSteps();
+      }
+
+      return null;
+    },
+
+    getCodeSnippetForExercise: function (exId) {
+      return EXAM_CODE_SNIPPETS[exId] || EXAM_CODE_SNIPPETS.assign3_heap;
     },
 
     renderVisualizer: function (container, exType, visualData) {
@@ -964,6 +1402,7 @@ window.DsaVisualizers = (function () {
       else if (exType === 'sorting') renderSorting(container, visualData);
       else if (exType === 'dijkstra') renderDijkstra(container, visualData);
       else if (exType === 'stack') renderStack(container, visualData);
+      else if (exType === 'hash') renderHash(container, visualData);
       else renderLinkedList(container, visualData);
     }
   };
