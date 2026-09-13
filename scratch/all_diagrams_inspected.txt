@@ -1,0 +1,509 @@
+=== DIAGRAM #01 | Doc: Index | IndexInDoc: 1 ===
+  graph TD
+      Root["📚 Data Structures & Algorithms (DSA)"] --> M1["01 - บทที่ 1 Introduction & Analysis"]
+      Root --> M2["02 - บทที่ 2 Review Python & OOP"]
+      Root --> M3["03 - บทที่ 3 Linked Lists"]
+      Root --> M4["04 - บทที่ 4 Stacks & Queues"]
+      Root --> M5["05 - บทที่ 5 Trees & BST"]
+      Root --> M6["06 - บทที่ 6 Hashing"]
+      Root --> M7["07 - บทที่ 7 Priority Queue & Heap"]
+      Root --> M8["08 - บทที่ 8 Sorting"]
+      Root --> M9["09 - บทที่ 9 Graph"]
+  ... (21 more lines)
+
+=== DIAGRAM #02 | Doc: 01.1 - Introduction to Data Structures & Algorithm Analysis | IndexInDoc: 1 ===
+  graph TD
+      ADT["Abstract Data Type (ADT) - แนวคิดทางตรรกศาสตร์ (What to do?)"] --> Operations["ระบุเฉพาะ Operations เช่น insert(), delete(), search()"]
+      ADT --> Implementation["Implementation - การเขียนโค้ดจริง (How to do?)"]
+      Implementation --> DS1["Data Structure A: Array Implementation"]
+      Implementation --> DS2["Data Structure B: Linked List Implementation"]
+
+=== DIAGRAM #03 | Doc: 01.1 - Introduction to Data Structures & Algorithm Analysis | IndexInDoc: 2 ===
+  graph LR
+      O_Notation["Big-O Notation: O(f(N))"] --> WorstCase["Upper Bound (Worst-Case) - ขอบเขตบนสุด (ออกสอบบ่อยที่สุด)"]
+      Omega_Notation["Big-Omega: Ω(f(N))"] --> BestCase["Lower Bound (Best-Case) - ขอบเขตล่างสุด"]
+      Theta_Notation["Big-Theta: Θ(f(N))"] --> TightBound["Tight Bound - ขอบเขตที่กระชับเป๊ะทั้งบนและล่าง"]
+
+=== DIAGRAM #04 | Doc: 01.1 - Introduction to Data Structures & Algorithm Analysis | IndexInDoc: 3 ===
+  graph TD
+      O1["O(1) Constant - Constant Time e.g. Array Index Access"]
+      OlogN["O(log N) Logarithmic - e.g. Binary Search, BST Search"]
+      ON["O(N) Linear - e.g. Single Loop, Linear Search"]
+      ONlogN["O(N log N) Log-linear - e.g. Merge Sort, Quick Sort (Avg)"]
+      ON2["O(N^2) Quadratic - e.g. Nested Loops, Bubble Sort"]
+      O2N["O(2^N) Exponential - e.g. Recursive Fibonacci, Subsets"]
+
+=== DIAGRAM #05 | Doc: 02.1 - Python Review & Object-Oriented Programming (OOP) | IndexInDoc: 1 ===
+  graph LR
+      VarA["Variable: a = [1, 2, 3]"] -->|Reference Pointer| ListObj["PyList Object at 0x7f8a"]
+      VarB["Variable: b = a"] -->|Reference Pointer| ListObj
+      
+      Mutate["b.append(4)"] --> Result["ทั้ง a และ b เห็นเป็น [1, 2, 3, 4] เพราะชี้ที่เดียวกัน!"]
+
+=== DIAGRAM #06 | Doc: 02.1 - Python Review & Object-Oriented Programming (OOP) | IndexInDoc: 2 ===
+  graph TD
+      OOP["4 Pillars of OOP in Python"] --> Encapsulation["1. Encapsulation (การห่อหุ้มซ่อนข้อมูล _ / __)"]
+      OOP --> Abstraction["2. Abstraction (การซ่อนความซับซ้อนภายใน)"]
+      OOP --> Inheritance["3. Inheritance (การสืบทอดคลาสลูก super())"]
+      OOP --> Polymorphism["4. Polymorphism (การพหุรูปร่าง / Method Overriding)"]
+
+=== DIAGRAM #07 | Doc: 02.1 - Python Review & Object-Oriented Programming (OOP) | IndexInDoc: 3 ===
+  classDiagram
+      class Person {
+          -String __name
+          +setName(name)
+          +getName() String
+          +toString() String
+      }
+      class Student {
+          -float __gpa
+          +setGpa(gpa)
+  ... (4 more lines)
+
+=== DIAGRAM #08 | Doc: 03.1 - Linked Lists (Singly, Doubly, Circular) | IndexInDoc: 1 ===
+  graph LR
+      subgraph HeadPtr ["ตัวแปรชี้จุดเริ่มต้น"]
+          Head["📍 head = 0x100"]
+      end
+  
+      subgraph Node1 ["Node @ 0x100"]
+          direction LR
+          D1["Data: 10"] --- P1["next: 0x240"]
+      end
+  
+  ... (16 more lines)
+
+=== DIAGRAM #09 | Doc: 03.1 - Linked Lists (Singly, Doubly, Circular) | IndexInDoc: 2 ===
+  graph LR
+      subgraph DNode1 ["Node 1 @ 0x100"]
+          direction LR
+          DP1["prev: None"] --- DD1["Data: 10"] --- DN1["next: 0x240"]
+      end
+  
+      subgraph DNode2 ["Node 2 @ 0x240"]
+          direction LR
+          DP2["prev: 0x100"] --- DD2["Data: 20"] --- DN2["next: 0x380"]
+      end
+  ... (10 more lines)
+
+=== DIAGRAM #10 | Doc: 03.1 - Linked Lists (Singly, Doubly, Circular) | IndexInDoc: 3 ===
+  graph LR
+      CHead["📍 head"] --> CN1
+      subgraph CN1 ["Node 1 (Data: 10)"]
+          CP1["next"]
+      end
+      subgraph CN2 ["Node 2 (Data: 20)"]
+          CP2["next"]
+      end
+      subgraph CN3 ["Node 3 (Data: 30)"]
+          CP3["next"]
+  ... (5 more lines)
+
+=== DIAGRAM #11 | Doc: 03.1 - Linked Lists (Singly, Doubly, Circular) | IndexInDoc: 4 ===
+  graph TD
+      subgraph BeforeInsert ["1. สถานะเดิม: head ชี้ที่ Node(10)"]
+          H1["head"] --> A10["Node(10)"] --> A20["Node(20)"]
+      end
+  
+      subgraph StepConnect ["2. สั่ง new_node.next = self.head"]
+          NewN["new_node(5)"] -- "new_node.next" --> A10B["Node(10)"]
+          H2["head"] --> A10B
+      end
+  
+  ... (3 more lines)
+
+=== DIAGRAM #12 | Doc: 03.1 - Linked Lists (Singly, Doubly, Circular) | IndexInDoc: 5 ===
+  graph LR
+      subgraph Traversal ["1. วนลูปค้นหาเป้าหมาย (ต้องการลบ Data: 20)"]
+          P_curr["📍 prev"] --> N_10["Node(10)"]
+          C_curr["📍 curr"] --> N_20["Node(20) [Target!]"]
+          N_10 --> N_20 --> N_30["Node(30)"]
+      end
+  
+      subgraph Bypass ["2. ทำงาน: prev.next = curr.next (ข้าม Node 20)"]
+          N_10B["Node(10)"] -- "prev.next ชี้ข้ามไป Node(30)" --> N_30B["Node(30)"]
+          N_20B["Node(20) [ถูกตัดออกจากสายโยง]"] -. "หลุดจากการอ้างอิง" .-> N_30B
+  ... (5 more lines)
+
+=== DIAGRAM #13 | Doc: 03.1 - Linked Lists (Singly, Doubly, Circular) | IndexInDoc: 6 ===
+  graph LR
+      subgraph DLL_Step ["การปรับเปลี่ยนพอยน์เตอร์ 4 สเต็ปของ Doubly Linked List"]
+          CurrNode["curr"]
+          NewNode["new_node"]
+          NextNode["curr.next"]
+  
+          CurrNode -- "4. curr.next = new_node" --> NewNode
+          NewNode -- "2. new_node.prev = curr" --> CurrNode
+          NewNode -- "1. new_node.next = curr.next" --> NextNode
+          NextNode -- "3. curr.next.prev = new_node" --> NewNode
+  ... (1 more lines)
+
+=== DIAGRAM #14 | Doc: 03.1 - Linked Lists (Singly, Doubly, Circular) | IndexInDoc: 7 ===
+  graph LR
+      H["head"] --> N6["[7]"]
+      N6 --> N2["[1]"]
+      N2 --> N3["[2]"]
+      N3 --> N4["[3]"]
+      N4 --> N5["[6]"]
+      N5 --> N1["[0]"]
+      N1 --> Null["None"]
+
+=== DIAGRAM #15 | Doc: 03.1 - Linked Lists (Singly, Doubly, Circular) | IndexInDoc: 8 ===
+  graph LR
+      subgraph Target ["เป้าหมายหลังสลับ: 1 -> 4 -> 3 -> 2 -> 5"]
+          N1["Node 1 (head)"] --> N4["Node 4"]
+          N4 --> N3["Node 3"]
+          N3 --> N2["Node 2"]
+          N2 --> N5["Node 5"]
+      end
+
+=== DIAGRAM #16 | Doc: 04.1 - Stacks & Applications (Infix, Postfix, Parentheses) | IndexInDoc: 1 ===
+  graph TD
+      subgraph STACK_OPS ["การทำงานของ Stack (LIFO)"]
+          direction TB
+          PushOp["📥 push(30)"] --> TopNode["[ 30 ]  <-- TOP (จุดเข้า/ออก)"]
+          TopNode --> MidNode["[ 20 ]"]
+          MidNode --> BotNode["[ 10 ]  <-- BOTTOM (ก้นสแตก)"]
+          TopNode -.-> PopOp["📤 pop() -> คืนค่า 30"]
+      end
+
+=== DIAGRAM #17 | Doc: 05.1 - Tree Terminology & Binary Trees | IndexInDoc: 1 ===
+  graph TD
+      A["Root: A (Depth=0, Height=2)"] --> B["B (Internal Node)"]
+      A --> C["C (Internal Node)"]
+      B --> D["D (Leaf, Depth=2)"]
+      B --> E["E (Leaf, Depth=2)"]
+      C --> F["F (Leaf, Depth=2)"]
+
+=== DIAGRAM #18 | Doc: 05.1 - Tree Terminology & Binary Trees | IndexInDoc: 2 ===
+  graph TD
+      subgraph FullBT ["Full Binary Tree"]
+          F_A["A"] --> F_B["B"] & F_C["C"]
+          F_B --> F_D["D"] & F_E["E"]
+      end
+  
+      subgraph CompleteBT ["Complete Binary Tree"]
+          C_A["A"] --> C_B["B"] & C_C["C"]
+          C_B --> C_D["D"] & C_E["E"]
+          C_C --> C_F["F"]
+  ... (1 more lines)
+
+=== DIAGRAM #19 | Doc: 05.1 - Tree Terminology & Binary Trees | IndexInDoc: 3 ===
+  graph TD
+      Traversals["Tree Traversals"] --> DepthFirst["Depth-First Traversals (DFS)"]
+      Traversals --> BreadthFirst["Breadth-First Traversal (BFS)"]
+  
+      DepthFirst --> Preorder["Preorder: Root -> Left -> Right"]
+      DepthFirst --> Inorder["Inorder: Left -> Root -> Right"]
+      DepthFirst --> Postorder["Postorder: Left -> Right -> Root"]
+      BreadthFirst --> LevelOrder["Level-order: ทีละชั้นจากบนลงล่าง"]
+
+=== DIAGRAM #20 | Doc: 05.1 - Tree Terminology & Binary Trees | IndexInDoc: 4 ===
+  graph TD
+      A["Node A (Root)"] --> B["Node B"]
+      A --> C["Node C"]
+      A --> D["Node D"]
+      A --> E["Node E"]
+      A --> F["Node F"]
+      A --> G["Node G"]
+      E --> I["Node I"]
+      E --> J["Node J"]
+      J --> P["Node P"]
+  ... (1 more lines)
+
+=== DIAGRAM #21 | Doc: 05.1 - Tree Terminology & Binary Trees | IndexInDoc: 5 ===
+  graph TD
+      N10["10 (Root)"] --> N3["3"]
+      N10 --> N19["19"]
+      N3 --> N8["8"]
+      N3 --> N5["5"]
+      N19 --> N15["15"]
+      N19 --> N24["24"]
+
+=== DIAGRAM #22 | Doc: 05.1 - Tree Terminology & Binary Trees | IndexInDoc: 6 ===
+  graph TD
+      T1["1 (Root)"]
+      T6["6"]
+      T7["7"]
+      T8["8"]
+      T1 -->|กิ่งขวา| T6
+      T6 -->|กิ่งขวา| T7
+      T7 -->|กิ่งซ้าย| T8
+
+=== DIAGRAM #23 | Doc: 05.1 - Tree Terminology & Binary Trees | IndexInDoc: 7 ===
+  graph TD
+      PlusRoot["+ (Root กลาง)"]
+      SubLeft["+"]
+      SubRight["*"]
+      
+      PlusRoot --> SubLeft
+      PlusRoot --> SubRight
+      
+      SubLeft --> A["a"]
+      SubLeft --> MulBC["*"]
+  ... (10 more lines)
+
+=== DIAGRAM #24 | Doc: 05.1 - Tree Terminology & Binary Trees | IndexInDoc: 8 ===
+  graph TD
+      R2["2 (Root)"] --> L3["3"]
+      R2 --> R3["3"]
+      R3 --> RL2["2"]
+      R3 --> RR0["0"]
+
+=== DIAGRAM #25 | Doc: 05.2 - Binary Search Trees (BST) & Insertion | IndexInDoc: 1 ===
+  graph TD
+      Root["6 (Root)"] --> L["4 (4 < 6)"]
+      Root --> R["7 (7 > 6)"]
+      L --> LL["3 (3 < 4)"]
+      L --> LR["5 (5 > 4)"]
+      LL --> LLL["2 (2 < 3)"]
+      LLL --> LLLL["1 (1 < 2)"]
+
+=== DIAGRAM #26 | Doc: 05.2 - Binary Search Trees (BST) & Insertion | IndexInDoc: 2 ===
+  graph TD
+      N6["6 (Root)"] --> N2["2"]
+      N6 --> N8["8"]
+      N2 --> N1["1"]
+      N2 --> N4["4"]
+      N4 --> N3["3"]
+      
+      style N4 stroke:#f59e0b,stroke-width:2px
+
+=== DIAGRAM #27 | Doc: 05.2 - Binary Search Trees (BST) & Insertion | IndexInDoc: 3 ===
+  graph TD
+      N6["6"] --> N2["2"]
+      N6 --> N8["8"]
+      N2 --> N1["1"]
+      N2 --> N4["4"]
+      N4 --> N3["3"]
+      N4 -->|แทรกใหม่รอบที่ 3| N5["5 (โหนดใหม่)"]
+      
+      style N5 fill:#10b981,stroke:#059669,stroke-width:3px,color:#fff
+
+=== DIAGRAM #28 | Doc: 05.3 - Binary Search Tree Removal (Node Deletion Cases) | IndexInDoc: 1 ===
+  graph TD
+      DeleteNode["ต้องการลบโหนด X"] --> CheckChild{"นับจำนวน Child ของ X"}
+      CheckChild -->|0 Child| Case1["Case 1: Leaf Node<br/>(ไม่มีลูกเลย)"]
+      CheckChild -->|1 Child| Case2["Case 2: Single Child<br/>(มีลูกข้างเดียว ซ้ายหรือขวา)"]
+      CheckChild -->|2 Children| Case3["Case 3: Two Children<br/>(มีลูกครบทั้ง 2 ข้าง)"]
+  
+      Case1 --> Action1["ตัดการเชื่อมต่อทันที<br/>คืนค่า None ให้ Parent"]
+      Case2 --> Action2["Bypass ให้ Parent ข้ามไปชี้ที่ลูกตัวเดียวของ X โดยตรง"]
+      Case3 --> Action3["หา Inorder Successor (ตัวน้อยสุดใน Subtree ขวา)<br/>ก๊อปปี้ค่ามาทับ แล้วลบ Successor ตัวเดิมทิ้ง"]
+
+=== DIAGRAM #29 | Doc: 05.3 - Binary Search Tree Removal (Node Deletion Cases) | IndexInDoc: 2 ===
+  graph TD
+      subgraph BeforeDelete ["ก่อนลบโหนด 4"]
+          R_6["6"] --> N_4["4 (เป้าหมายที่จะลบ)"]
+          R_6 --> N_7["7"]
+          N_4 --> N_3["3"]
+          N_4 --> N_5["5 (Inorder Successor!)"]
+          N_3 --> N_2["2"]
+          N_2 --> N_1["1"]
+      end
+  
+  ... (7 more lines)
+
+=== DIAGRAM #30 | Doc: 05.3 - Binary Search Tree Removal (Node Deletion Cases) | IndexInDoc: 3 ===
+  graph TD
+      N6["6 (Root)"] --> N2["2"]
+      N6 --> N8["8"]
+      N2 --> N1["1"]
+      N2 --> N4["4 (โหนดที่ต้องการลบ)"]
+      N4 --> N3["3 (ลูกซ้าย)"]
+      
+      style N4 fill:#ef4444,stroke:#b91c1c,color:#fff
+
+=== DIAGRAM #31 | Doc: 05.3 - Binary Search Tree Removal (Node Deletion Cases) | IndexInDoc: 4 ===
+  graph TD
+      N6["6 (Root)"] --> N2["2 (โหนดที่จะลบ - มีลูก 2 ข้าง)"]
+      N6 --> N8["8"]
+      N2 --> N1["1 (ลูกซ้าย)"]
+      N2 --> N5["5 (ลูกขวา)"]
+      N5 --> N3["3 (Successor Candidate)"]
+      N3 --> N4["4"]
+      
+      style N2 fill:#ef4444,stroke:#b91c1c,color:#fff
+      style N3 fill:#10b981,stroke:#059669,color:#fff
+
+=== DIAGRAM #32 | Doc: 05.3 - Binary Search Tree Removal (Node Deletion Cases) | IndexInDoc: 5 ===
+  graph TD
+      N6["6 (Root)"] --> N3_new["3 (Successor ถูกยกขึ้นมาแทน 2)"]
+      N6 --> N8["8"]
+      N3_new --> N1["1"]
+      N3_new --> N5["5"]
+      N5 --> N4["4 (โหนด 4 เชื่อมตรงกับ 5)"]
+      
+      style N3_new fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff
+
+=== DIAGRAM #33 | Doc: 06.1 - Hash Tables & Collision Resolution Strategies | IndexInDoc: 1 ===
+  graph TD
+      OpenAddr["Open Addressing Strategies"] --> LP["1. Linear Probing<br/>h(k, i) = (h(k) + i) mod M"]
+      OpenAddr --> QP["2. Quadratic Probing<br/>h(k, i) = (h(k) + i^2) mod M"]
+      OpenAddr --> DH["3. Double Hashing<br/>h(k, i) = (h1(k) + i * h2(k)) mod M"]
+  
+      LP --> ProblemLP["เกิดปัญหา Primary Clustering<br/>(ข้อมูลเกาะกลุ่มเป็นแถวยาว)"]
+      QP --> ProblemQP["แก้ Primary Clustering ได้<br/>แต่อาจเกิด Secondary Clustering"]
+      DH --> BestDH["ดีที่สุด! ก้าวกระโดดขึ้นกับค่า Key<br/>ขจัดปัญหา Clustering ได้เกลี้ยง"]
+
+=== DIAGRAM #34 | Doc: 07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap) | IndexInDoc: 1 ===
+  graph TD
+      Root["13 (Min-Heap Root: ค่าน้อยสุด)"] --> L["14"]
+      Root --> R["16"]
+      L --> LL["24"]
+      L --> LR["21"]
+      R --> RL["19"]
+      R --> RR["68"]
+
+=== DIAGRAM #35 | Doc: 07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap) | IndexInDoc: 2 ===
+  graph TD
+      H13["[1] 13 (Root)"] --> H21["[2] 21"]
+      H13 --> H16["[3] 16"]
+      H21 --> H24["[4] 24"]
+      H21 --> H31["[5] 31"]
+      H16 --> H19["[6] 19"]
+      H16 --> H68["[7] 68"]
+      H24 --> H65["[8] 65"]
+      H24 --> H26["[9] 26"]
+      H31 --> H32["[10] 32"]
+  ... (3 more lines)
+
+=== DIAGRAM #36 | Doc: 08.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick) | IndexInDoc: 1 ===
+  graph TD
+      SortingAlgo["Sorting Algorithms"] --> SimpleSorts["กลุ่มพื้นฐาน O(N^2)"]
+      SortingAlgo --> DivideConquer["กลุ่มแบ่งแยกและเอาชนะ O(N log N)"]
+  
+      SimpleSorts --> Bubble["Bubble Sort<br/>(สลับคู่ที่ติดกัน ลอยตัวมากสุดไปขวาสุด)"]
+      SimpleSorts --> Selection["Selection Sort<br/>(เลือกค่าน้อยสุดมาสลับกับตำแหน่งแรก)"]
+      SimpleSorts --> Insertion["Insertion Sort<br/>(หยิบทีละตัวแล้วแทรกในส่วนที่เรียงแล้ว)"]
+  
+      DivideConquer --> Merge["Merge Sort<br/>(Stable, ใช้ Memory เพิ่ม O(N))"]
+      DivideConquer --> Quick["Quick Sort<br/>(In-place, แบ่งส่วนด้วย Pivot)"]
+
+=== DIAGRAM #37 | Doc: 09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort) | IndexInDoc: 1 ===
+  graph LR
+      subgraph Digraph ["Directed Graph"]
+          A["A"] --> B["B"]
+          A --> C["C"]
+          B --> C
+      end
+
+=== DIAGRAM #38 | Doc: 09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort) | IndexInDoc: 2 ===
+  graph TD
+      Traversals["Graph Traversals"] --> BFS["Breadth-First Search (BFS)"]
+      Traversals --> DFS["Depth-First Search (DFS)"]
+  
+      BFS --> QueueUsed["ใช้ Queue (FIFO) - ท่องไปทีละระดับความกว้าง"]
+      BFS --> ShortestUnweighted["หา Shortest Path ใน Unweighted Graph ได้!"]
+  
+      DFS --> StackUsed["ใช้ Stack (LIFO) / Recursion - เจาะลึกลงไปให้สุดสาย"]
+      DFS --> CycleTopological["ใช้ตรวจจับ Cycle และทำ Topological Sort"]
+
+=== DIAGRAM #39 | Doc: 09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort) | IndexInDoc: 3 ===
+  graph LR
+      CS101["CS101 (Indegree=0)"] --> CS102["CS102 (Indegree=1)"]
+      CS101 --> Math101["Math101 (Indegree=0)"]
+      CS102 & Math101 --> CS201["CS201 (Indegree=2)"]
+
+=== DIAGRAM #40 | Doc: 09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort) | IndexInDoc: 4 ===
+  graph LR
+      A --- B
+      B --- C
+      C --- D
+      D --- A
+
+=== DIAGRAM #41 | Doc: 09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort) | IndexInDoc: 5 ===
+  graph TD
+      V1["v1 (In=0)"] --> V2["v2"]
+      V1 --> V3["v3"]
+      V1 --> V4["v4"]
+      V2 --> V4
+      V2 --> V5["v5"]
+      V3 --> V6["v6"]
+      V4 --> V3
+      V4 --> V6
+      V4 --> V7["v7"]
+  ... (3 more lines)
+
+=== DIAGRAM #42 | Doc: 10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path) | IndexInDoc: 1 ===
+  graph TD
+      ShortestPathAlg["Shortest Path Algorithms"] --> Unweighted["Unweighted Graph (น้ำหนักเท่ากันทุกเส้น)"]
+      ShortestPathAlg --> Weighted["Weighted Graph (น้ำหนักไม่เท่ากัน >= 0)"]
+  
+      Unweighted --> BFS_Alg["BFS Algorithm: O(V + E)"]
+      Weighted --> Dijkstra_Alg["Dijkstra's Algorithm: O((V + E) log V)"]
+
+=== DIAGRAM #43 | Doc: 10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path) | IndexInDoc: 2 ===
+  graph TD
+      Init["1. Set dist[source]=0, dist[v]=infinity, visited=set()"] --> PopMin["2. Pop node u with smallest dist[u] from Min-Heap"]
+      PopMin --> CheckVisited{"Is u visited?"}
+      CheckVisited -->|Yes| PopMin
+      CheckVisited -->|No| AddVisited["3. Add u to visited set"]
+      AddVisited --> RelaxEdges["4. Relaxation: For each neighbor v with weight w:
+      if dist[u] + w < dist[v]:
+          dist[v] = dist[u] + w
+          parent[v] = u
+          push (dist[v], v) to Min-Heap"]
+  ... (3 more lines)
+
+=== DIAGRAM #44 | Doc: 10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path) | IndexInDoc: 3 ===
+  graph TD
+      v1["v1"] --> v2["v2"]
+      v1 --> v4["v4"]
+      v2 --> v4
+      v2 --> v5["v5"]
+      v3["v3 (Start)"] --> v1
+      v3 --> v6["v6"]
+      v4 --> v3
+      v4 --> v6
+      v4 --> v5
+  ... (3 more lines)
+
+=== DIAGRAM #45 | Doc: 11.6 - Final Exam Real Classroom Prep & Solutions | IndexInDoc: 1 ===
+  mindmap
+    root((5 กับดักข้อสอบปลายภาค))
+      Trap 1: การนับ Collision
+        ห้ามนับรอบ Resolve รวม
+        ชน 7 ครั้ง แก้ 7 ครั้ง ตอบ 7!
+        ตอบ 14 = 0 คะแนนทันที
+      Trap 2: Wrap Around Modulo
+        สูตร Probing ต้องใส่ mod TableSize เสมอ
+        เช่น H + i^2 mod TableSize
+      Trap 3: พารามิเตอร์ R ใน Double Hash
+  ... (8 more lines)
+
+=== DIAGRAM #46 | Doc: 11.6 - Final Exam Real Classroom Prep & Solutions | IndexInDoc: 2 ===
+  graph TD
+      subgraph Hash_Simulation["การจำลองการชนใน Linear Probing"]
+          K89["89 mod 10 = 9 (ช่อง 9 ว่าง) -> ชน 0"]
+          K18["18 mod 10 = 8 (ช่อง 8 ว่าง) -> ชน 0"]
+          K49["49 mod 10 = 9 (ชน 89!) -> Probing ช่อง 0 -> ชน 1"]
+          K58["58 mod 10 = 8 (ชน 18, 89, 49) -> Probing ช่อง 1 -> ชน 3"]
+          K69["69 mod 10 = 9 (ชน 89, 49, 58) -> Probing ช่อง 2 -> ชน 3"]
+      end
+
+=== DIAGRAM #47 | Doc: 11.6 - Final Exam Real Classroom Prep & Solutions | IndexInDoc: 3 ===
+  graph TD
+      N1["[1] 13"] --> N2["[2] 21"]
+      N1 --> N3["[3] 16"]
+      N2 --> N4["[4] 24"]
+      N2 --> N5["[5] 31"]
+      N3 --> N6["[6] 19"]
+      N3 --> N7["[7] 68"]
+      N4 --> N8["[8] 65"]
+      N4 --> N9["[9] 26"]
+      N5 --> N10["[10] 32"]
+
+=== DIAGRAM #48 | Doc: 11.6 - Final Exam Real Classroom Prep & Solutions | IndexInDoc: 4 ===
+  graph LR
+      V1((v1)) -- 2 --> V2((v2))
+      V1 -- 4 --> V4((v4))
+      V2 -- 3 --> V4((v4))
+      V2 -- 10 --> V5((v5))
+      V4 -- 2 --> V3((v3))
+      V4 -- 7 --> V5((v5))
+      V3 -- 5 --> V5((v5))
+  
+      style V1 fill:#c8e6c9,stroke:#2e7d32
+  ... (1 more lines)
+

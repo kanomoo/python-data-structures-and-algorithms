@@ -1,0 +1,242 @@
+[
+  {
+    "docId": "Index",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    Root[\"📚 Data Structures & Algorithms (DSA)\"] --> M1[\"01 - บทที่ 1 Introduction & Analysis\"]\r\n    Root --> M2[\"02 - บทที่ 2 Review Python & OOP\"]\r\n    Root --> M3[\"03 - บทที่ 3 Linked Lists\"]\r\n    Root --> M4[\"04 - บทที่ 4 Stacks & Queues\"]\r\n    Root --> M5[\"05 - บทที่ 5 Trees & BST\"]\r\n    Root --> M6[\"06 - บทที่ 6 Hashing\"]\r\n    Root --> M7[\"07 - บทที่ 7 Priority Queue & Heap\"]\r\n    Root --> M8[\"08 - บทที่ 8 Sorting\"]\r\n    Root --> M9[\"09 - บทที่ 9 Graph\"]\r\n    Root --> M10[\"10 - บทที่ 10 Shortest Path\"]\r\n    Root --> M11[\"11 - คลังข้อสอบ & Practice\"]\r\n\r\n    M1 --> M1_1[\"01.1 - Introduction to DSA & Big-O\"]\r\n    M2 --> M2_1[\"02.1 - Python Review & OOP\"]\r\n    M3 --> M3_1[\"03.1 - Linked Lists\"]\r\n    M4 --> M4_1[\"04.1 - Stacks & Infix-Postfix\"]\r\n    M4 --> M4_2[\"04.2 - Queues & Circular Array\"]\r\n    M5 --> M5_1[\"05.1 - Binary Trees\"]\r\n    M5 --> M5_2[\"05.2 - BST Search & Insertion\"]\r\n    M5 --> M5_3[\"05.3 - BST Deletion Cases\"]\r\n    M6 --> M6_1[\"06.1 - Hash Tables & Collisions\"]\r\n    M7 --> M7_1[\"07.1 - Priority Queue & Heaps\"]\r\n    M8 --> M8_1[\"08.1 - Sorting Algorithms\"]\r\n    M9 --> M9_1[\"09.1 - Graph BFS & DFS\"]\r\n    M10 --> M10_1[\"10.1 - Shortest Path (Dijkstra)\"]\r\n    M11 --> M11_1[\"11.1 - Midterm Real Exam Mock\"]\r\n    M11 --> M11_2[\"11.2 - Predicted Midterm 2026\"]\r\n    M11 --> M11_3[\"11.3 - Stack Practice Problems\"]\r\n    M11 --> M11_4[\"11.4 - Queue Practice Problems\"]\r\n    M11 --> M11_5[\"11.5 - Comprehensive Exam Questions\"]"
+  },
+  {
+    "docId": "01.1 - Introduction to Data Structures & Algorithm Analysis",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    ADT[\"Abstract Data Type (ADT) - แนวคิดทางตรรกศาสตร์ (What to do?)\"] --> Operations[\"ระบุเฉพาะ Operations เช่น insert(), delete(), search()\"]\r\n    ADT --> Implementation[\"Implementation - การเขียนโค้ดจริง (How to do?)\"]\r\n    Implementation --> DS1[\"Data Structure A: Array Implementation\"]\r\n    Implementation --> DS2[\"Data Structure B: Linked List Implementation\"]"
+  },
+  {
+    "docId": "01.1 - Introduction to Data Structures & Algorithm Analysis",
+    "indexInDoc": 2,
+    "code": "graph LR\r\n    O_Notation[\"Big-O Notation: O(f(N))\"] --> WorstCase[\"Upper Bound (Worst-Case) - ขอบเขตบนสุด (ออกสอบบ่อยที่สุด)\"]\r\n    Omega_Notation[\"Big-Omega: Ω(f(N))\"] --> BestCase[\"Lower Bound (Best-Case) - ขอบเขตล่างสุด\"]\r\n    Theta_Notation[\"Big-Theta: Θ(f(N))\"] --> TightBound[\"Tight Bound - ขอบเขตที่กระชับเป๊ะทั้งบนและล่าง\"]"
+  },
+  {
+    "docId": "01.1 - Introduction to Data Structures & Algorithm Analysis",
+    "indexInDoc": 3,
+    "code": "graph TD\r\n    O1[\"O(1) Constant - Constant Time e.g. Array Index Access\"]\r\n    OlogN[\"O(log N) Logarithmic - e.g. Binary Search, BST Search\"]\r\n    ON[\"O(N) Linear - e.g. Single Loop, Linear Search\"]\r\n    ONlogN[\"O(N log N) Log-linear - e.g. Merge Sort, Quick Sort (Avg)\"]\r\n    ON2[\"O(N^2) Quadratic - e.g. Nested Loops, Bubble Sort\"]\r\n    O2N[\"O(2^N) Exponential - e.g. Recursive Fibonacci, Subsets\"]"
+  },
+  {
+    "docId": "02.1 - Python Review & Object-Oriented Programming (OOP)",
+    "indexInDoc": 1,
+    "code": "graph LR\r\n    VarA[\"Variable: a = [1, 2, 3]\"] -->|Reference Pointer| ListObj[\"PyList Object at 0x7f8a\"]\r\n    VarB[\"Variable: b = a\"] -->|Reference Pointer| ListObj\r\n    \r\n    Mutate[\"b.append(4)\"] --> Result[\"ทั้ง a และ b เห็นเป็น [1, 2, 3, 4] เพราะชี้ที่เดียวกัน!\"]"
+  },
+  {
+    "docId": "02.1 - Python Review & Object-Oriented Programming (OOP)",
+    "indexInDoc": 2,
+    "code": "graph TD\r\n    OOP[\"4 Pillars of OOP in Python\"] --> Encapsulation[\"1. Encapsulation (การห่อหุ้มซ่อนข้อมูล _ / __)\"]\r\n    OOP --> Abstraction[\"2. Abstraction (การซ่อนความซับซ้อนภายใน)\"]\r\n    OOP --> Inheritance[\"3. Inheritance (การสืบทอดคลาสลูก super())\"]\r\n    OOP --> Polymorphism[\"4. Polymorphism (การพหุรูปร่าง / Method Overriding)\"]"
+  },
+  {
+    "docId": "02.1 - Python Review & Object-Oriented Programming (OOP)",
+    "indexInDoc": 3,
+    "code": "classDiagram\r\n    class Person {\r\n        -String __name\r\n        +setName(name)\r\n        +getName() String\r\n        +toString() String\r\n    }\r\n    class Student {\r\n        -float __gpa\r\n        +setGpa(gpa)\r\n        +getGpa() float\r\n        +toString() String\r\n    }\r\n    Person <|-- Student : Inheritance (is-a)"
+  },
+  {
+    "docId": "03.1 - Linked Lists (Singly, Doubly, Circular)",
+    "indexInDoc": 1,
+    "code": "graph LR\r\n    subgraph HeadPtr [\"ตัวแปรชี้จุดเริ่มต้น\"]\r\n        Head[\"📍 head = 0x100\"]\r\n    end\r\n\r\n    subgraph Node1 [\"Node @ 0x100\"]\r\n        direction LR\r\n        D1[\"Data: 10\"] --- P1[\"next: 0x240\"]\r\n    end\r\n\r\n    subgraph Node2 [\"Node @ 0x240\"]\r\n        direction LR\r\n        D2[\"Data: 20\"] --- P2[\"next: 0x380\"]\r\n    end\r\n\r\n    subgraph Node3 [\"Node @ 0x380\"]\r\n        direction LR\r\n        D3[\"Data: 30\"] --- P3[\"next: None\"]\r\n    end\r\n\r\n    NullNode[\"🚫 None (จุดสิ้นสุด List)\"]\r\n\r\n    Head --> Node1\r\n    P1 --> Node2\r\n    P2 --> Node3\r\n    P3 --> NullNode"
+  },
+  {
+    "docId": "03.1 - Linked Lists (Singly, Doubly, Circular)",
+    "indexInDoc": 2,
+    "code": "graph LR\r\n    subgraph DNode1 [\"Node 1 @ 0x100\"]\r\n        direction LR\r\n        DP1[\"prev: None\"] --- DD1[\"Data: 10\"] --- DN1[\"next: 0x240\"]\r\n    end\r\n\r\n    subgraph DNode2 [\"Node 2 @ 0x240\"]\r\n        direction LR\r\n        DP2[\"prev: 0x100\"] --- DD2[\"Data: 20\"] --- DN2[\"next: 0x380\"]\r\n    end\r\n\r\n    subgraph DNode3 [\"Node 3 @ 0x380\"]\r\n        direction LR\r\n        DP3[\"prev: 0x240\"] --- DD3[\"Data: 30\"] --- DN3[\"next: None\"]\r\n    end\r\n\r\n    DN1 ==> DP2\r\n    DP2 ==> DN1\r\n    DN2 ==> DP3\r\n    DP3 ==> DN2"
+  },
+  {
+    "docId": "03.1 - Linked Lists (Singly, Doubly, Circular)",
+    "indexInDoc": 3,
+    "code": "graph LR\r\n    CHead[\"📍 head\"] --> CN1\r\n    subgraph CN1 [\"Node 1 (Data: 10)\"]\r\n        CP1[\"next\"]\r\n    end\r\n    subgraph CN2 [\"Node 2 (Data: 20)\"]\r\n        CP2[\"next\"]\r\n    end\r\n    subgraph CN3 [\"Node 3 (Data: 30)\"]\r\n        CP3[\"next\"]\r\n    end\r\n\r\n    CP1 --> CN2\r\n    CP2 --> CN3\r\n    CP3 -- \"next วนกลับมาชี้ Node 1\" --> CN1"
+  },
+  {
+    "docId": "03.1 - Linked Lists (Singly, Doubly, Circular)",
+    "indexInDoc": 4,
+    "code": "graph TD\r\n    subgraph BeforeInsert [\"1. สถานะเดิม: head ชี้ที่ Node(10)\"]\r\n        H1[\"head\"] --> A10[\"Node(10)\"] --> A20[\"Node(20)\"]\r\n    end\r\n\r\n    subgraph StepConnect [\"2. สั่ง new_node.next = self.head\"]\r\n        NewN[\"new_node(5)\"] -- \"new_node.next\" --> A10B[\"Node(10)\"]\r\n        H2[\"head\"] --> A10B\r\n    end\r\n\r\n    subgraph AfterInsert [\"3. สั่ง self.head = new_node\"]\r\n        H3[\"head\"] --> NewN2[\"new_node(5)\"] --> A10C[\"Node(10)\"] --> A20C[\"Node(20)\"]\r\n    end"
+  },
+  {
+    "docId": "03.1 - Linked Lists (Singly, Doubly, Circular)",
+    "indexInDoc": 5,
+    "code": "graph LR\r\n    subgraph Traversal [\"1. วนลูปค้นหาเป้าหมาย (ต้องการลบ Data: 20)\"]\r\n        P_curr[\"📍 prev\"] --> N_10[\"Node(10)\"]\r\n        C_curr[\"📍 curr\"] --> N_20[\"Node(20) [Target!]\"]\r\n        N_10 --> N_20 --> N_30[\"Node(30)\"]\r\n    end\r\n\r\n    subgraph Bypass [\"2. ทำงาน: prev.next = curr.next (ข้าม Node 20)\"]\r\n        N_10B[\"Node(10)\"] -- \"prev.next ชี้ข้ามไป Node(30)\" --> N_30B[\"Node(30)\"]\r\n        N_20B[\"Node(20) [ถูกตัดออกจากสายโยง]\"] -. \"หลุดจากการอ้างอิง\" .-> N_30B\r\n    end\r\n\r\n    subgraph Result [\"3. ผลลัพธ์สุดท้ายในหน่วยความจำ\"]\r\n        H_res[\"head\"] --> N_10C[\"Node(10)\"] --> N_30C[\"Node(30)\"] --> N_None[\"None\"]\r\n    end"
+  },
+  {
+    "docId": "03.1 - Linked Lists (Singly, Doubly, Circular)",
+    "indexInDoc": 6,
+    "code": "graph LR\r\n    subgraph DLL_Step [\"การปรับเปลี่ยนพอยน์เตอร์ 4 สเต็ปของ Doubly Linked List\"]\r\n        CurrNode[\"curr\"]\r\n        NewNode[\"new_node\"]\r\n        NextNode[\"curr.next\"]\r\n\r\n        CurrNode -- \"4. curr.next = new_node\" --> NewNode\r\n        NewNode -- \"2. new_node.prev = curr\" --> CurrNode\r\n        NewNode -- \"1. new_node.next = curr.next\" --> NextNode\r\n        NextNode -- \"3. curr.next.prev = new_node\" --> NewNode\r\n    end"
+  },
+  {
+    "docId": "03.1 - Linked Lists (Singly, Doubly, Circular)",
+    "indexInDoc": 7,
+    "code": "graph LR\r\n    H[\"head\"] --> N6[\"[7]\"]\r\n    N6 --> N2[\"[1]\"]\r\n    N2 --> N3[\"[2]\"]\r\n    N3 --> N4[\"[3]\"]\r\n    N4 --> N5[\"[6]\"]\r\n    N5 --> N1[\"[0]\"]\r\n    N1 --> Null[\"None\"]"
+  },
+  {
+    "docId": "03.1 - Linked Lists (Singly, Doubly, Circular)",
+    "indexInDoc": 8,
+    "code": "graph LR\r\n    subgraph Target [\"เป้าหมายหลังสลับ: 1 -> 4 -> 3 -> 2 -> 5\"]\r\n        N1[\"Node 1 (head)\"] --> N4[\"Node 4\"]\r\n        N4 --> N3[\"Node 3\"]\r\n        N3 --> N2[\"Node 2\"]\r\n        N2 --> N5[\"Node 5\"]\r\n    end"
+  },
+  {
+    "docId": "04.1 - Stacks & Applications (Infix, Postfix, Parentheses)",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    subgraph STACK_OPS [\"การทำงานของ Stack (LIFO)\"]\r\n        direction TB\r\n        PushOp[\"📥 push(30)\"] --> TopNode[\"[ 30 ]  <-- TOP (จุดเข้า/ออก)\"]\r\n        TopNode --> MidNode[\"[ 20 ]\"]\r\n        MidNode --> BotNode[\"[ 10 ]  <-- BOTTOM (ก้นสแตก)\"]\r\n        TopNode -.-> PopOp[\"📤 pop() -> คืนค่า 30\"]\r\n    end"
+  },
+  {
+    "docId": "05.1 - Tree Terminology & Binary Trees",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    A[\"Root: A (Depth=0, Height=2)\"] --> B[\"B (Internal Node)\"]\r\n    A --> C[\"C (Internal Node)\"]\r\n    B --> D[\"D (Leaf, Depth=2)\"]\r\n    B --> E[\"E (Leaf, Depth=2)\"]\r\n    C --> F[\"F (Leaf, Depth=2)\"]"
+  },
+  {
+    "docId": "05.1 - Tree Terminology & Binary Trees",
+    "indexInDoc": 2,
+    "code": "graph TD\r\n    subgraph FullBT [\"Full Binary Tree\"]\r\n        F_A[\"A\"] --> F_B[\"B\"] & F_C[\"C\"]\r\n        F_B --> F_D[\"D\"] & F_E[\"E\"]\r\n    end\r\n\r\n    subgraph CompleteBT [\"Complete Binary Tree\"]\r\n        C_A[\"A\"] --> C_B[\"B\"] & C_C[\"C\"]\r\n        C_B --> C_D[\"D\"] & C_E[\"E\"]\r\n        C_C --> C_F[\"F\"]\r\n    end"
+  },
+  {
+    "docId": "05.1 - Tree Terminology & Binary Trees",
+    "indexInDoc": 3,
+    "code": "graph TD\r\n    Traversals[\"Tree Traversals\"] --> DepthFirst[\"Depth-First Traversals (DFS)\"]\r\n    Traversals --> BreadthFirst[\"Breadth-First Traversal (BFS)\"]\r\n\r\n    DepthFirst --> Preorder[\"Preorder: Root -> Left -> Right\"]\r\n    DepthFirst --> Inorder[\"Inorder: Left -> Root -> Right\"]\r\n    DepthFirst --> Postorder[\"Postorder: Left -> Right -> Root\"]\r\n    BreadthFirst --> LevelOrder[\"Level-order: ทีละชั้นจากบนลงล่าง\"]"
+  },
+  {
+    "docId": "05.1 - Tree Terminology & Binary Trees",
+    "indexInDoc": 4,
+    "code": "graph TD\r\n    A[\"Node A (Root)\"] --> B[\"Node B\"]\r\n    A --> C[\"Node C\"]\r\n    A --> D[\"Node D\"]\r\n    A --> E[\"Node E\"]\r\n    A --> F[\"Node F\"]\r\n    A --> G[\"Node G\"]\r\n    E --> I[\"Node I\"]\r\n    E --> J[\"Node J\"]\r\n    J --> P[\"Node P\"]\r\n    J --> Q[\"Node Q\"]"
+  },
+  {
+    "docId": "05.1 - Tree Terminology & Binary Trees",
+    "indexInDoc": 5,
+    "code": "graph TD\r\n    N10[\"10 (Root)\"] --> N3[\"3\"]\r\n    N10 --> N19[\"19\"]\r\n    N3 --> N8[\"8\"]\r\n    N3 --> N5[\"5\"]\r\n    N19 --> N15[\"15\"]\r\n    N19 --> N24[\"24\"]"
+  },
+  {
+    "docId": "05.1 - Tree Terminology & Binary Trees",
+    "indexInDoc": 6,
+    "code": "graph TD\r\n    T1[\"1 (Root)\"]\r\n    T6[\"6\"]\r\n    T7[\"7\"]\r\n    T8[\"8\"]\r\n    T1 -->|กิ่งขวา| T6\r\n    T6 -->|กิ่งขวา| T7\r\n    T7 -->|กิ่งซ้าย| T8"
+  },
+  {
+    "docId": "05.1 - Tree Terminology & Binary Trees",
+    "indexInDoc": 7,
+    "code": "graph TD\r\n    PlusRoot[\"+ (Root กลาง)\"]\r\n    SubLeft[\"+\"]\r\n    SubRight[\"*\"]\r\n    \r\n    PlusRoot --> SubLeft\r\n    PlusRoot --> SubRight\r\n    \r\n    SubLeft --> A[\"a\"]\r\n    SubLeft --> MulBC[\"*\"]\r\n    MulBC --> B[\"b\"]\r\n    MulBC --> C[\"c\"]\r\n    \r\n    SubRight --> PlusDEF[\"+\"]\r\n    SubRight --> G[\"g\"]\r\n    \r\n    PlusDEF --> MulDE[\"*\"]\r\n    PlusDEF --> F[\"f\"]\r\n    MulDE --> D[\"d\"]\r\n    MulDE --> E[\"e\"]"
+  },
+  {
+    "docId": "05.1 - Tree Terminology & Binary Trees",
+    "indexInDoc": 8,
+    "code": "graph TD\r\n    R2[\"2 (Root)\"] --> L3[\"3\"]\r\n    R2 --> R3[\"3\"]\r\n    R3 --> RL2[\"2\"]\r\n    R3 --> RR0[\"0\"]"
+  },
+  {
+    "docId": "05.2 - Binary Search Trees (BST) & Insertion",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    Root[\"6 (Root)\"] --> L[\"4 (4 < 6)\"]\r\n    Root --> R[\"7 (7 > 6)\"]\r\n    L --> LL[\"3 (3 < 4)\"]\r\n    L --> LR[\"5 (5 > 4)\"]\r\n    LL --> LLL[\"2 (2 < 3)\"]\r\n    LLL --> LLLL[\"1 (1 < 2)\"]"
+  },
+  {
+    "docId": "05.2 - Binary Search Trees (BST) & Insertion",
+    "indexInDoc": 2,
+    "code": "graph TD\r\n    N6[\"6 (Root)\"] --> N2[\"2\"]\r\n    N6 --> N8[\"8\"]\r\n    N2 --> N1[\"1\"]\r\n    N2 --> N4[\"4\"]\r\n    N4 --> N3[\"3\"]\r\n    \r\n    style N4 stroke:#f59e0b,stroke-width:2px"
+  },
+  {
+    "docId": "05.2 - Binary Search Trees (BST) & Insertion",
+    "indexInDoc": 3,
+    "code": "graph TD\r\n    N6[\"6\"] --> N2[\"2\"]\r\n    N6 --> N8[\"8\"]\r\n    N2 --> N1[\"1\"]\r\n    N2 --> N4[\"4\"]\r\n    N4 --> N3[\"3\"]\r\n    N4 -->|แทรกใหม่รอบที่ 3| N5[\"5 (โหนดใหม่)\"]\r\n    \r\n    style N5 fill:#10b981,stroke:#059669,stroke-width:3px,color:#fff"
+  },
+  {
+    "docId": "05.3 - Binary Search Tree Removal (Node Deletion Cases)",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    DeleteNode[\"ต้องการลบโหนด X\"] --> CheckChild{\"นับจำนวน Child ของ X\"}\r\n    CheckChild -->|0 Child| Case1[\"Case 1: Leaf Node<br/>(ไม่มีลูกเลย)\"]\r\n    CheckChild -->|1 Child| Case2[\"Case 2: Single Child<br/>(มีลูกข้างเดียว ซ้ายหรือขวา)\"]\r\n    CheckChild -->|2 Children| Case3[\"Case 3: Two Children<br/>(มีลูกครบทั้ง 2 ข้าง)\"]\r\n\r\n    Case1 --> Action1[\"ตัดการเชื่อมต่อทันที<br/>คืนค่า None ให้ Parent\"]\r\n    Case2 --> Action2[\"Bypass ให้ Parent ข้ามไปชี้ที่ลูกตัวเดียวของ X โดยตรง\"]\r\n    Case3 --> Action3[\"หา Inorder Successor (ตัวน้อยสุดใน Subtree ขวา)<br/>ก๊อปปี้ค่ามาทับ แล้วลบ Successor ตัวเดิมทิ้ง\"]"
+  },
+  {
+    "docId": "05.3 - Binary Search Tree Removal (Node Deletion Cases)",
+    "indexInDoc": 2,
+    "code": "graph TD\r\n    subgraph BeforeDelete [\"ก่อนลบโหนด 4\"]\r\n        R_6[\"6\"] --> N_4[\"4 (เป้าหมายที่จะลบ)\"]\r\n        R_6 --> N_7[\"7\"]\r\n        N_4 --> N_3[\"3\"]\r\n        N_4 --> N_5[\"5 (Inorder Successor!)\"]\r\n        N_3 --> N_2[\"2\"]\r\n        N_2 --> N_1[\"1\"]\r\n    end\r\n\r\n    subgraph AfterDelete [\"หลังลบโหนด 4 (ก๊อปปี้ 5 มาแทน)\"]\r\n        R2_6[\"6\"] --> N2_5[\"5 (นำค่า Successor มาแทนที่)\"]\r\n        R2_6 --> N2_7[\"7\"]\r\n        N2_5 --> N2_3[\"3\"]\r\n        N2_3 --> N2_2[\"2\"]\r\n        N2_2 --> N2_1[\"1\"]\r\n    end"
+  },
+  {
+    "docId": "05.3 - Binary Search Tree Removal (Node Deletion Cases)",
+    "indexInDoc": 3,
+    "code": "graph TD\r\n    N6[\"6 (Root)\"] --> N2[\"2\"]\r\n    N6 --> N8[\"8\"]\r\n    N2 --> N1[\"1\"]\r\n    N2 --> N4[\"4 (โหนดที่ต้องการลบ)\"]\r\n    N4 --> N3[\"3 (ลูกซ้าย)\"]\r\n    \r\n    style N4 fill:#ef4444,stroke:#b91c1c,color:#fff"
+  },
+  {
+    "docId": "05.3 - Binary Search Tree Removal (Node Deletion Cases)",
+    "indexInDoc": 4,
+    "code": "graph TD\r\n    N6[\"6 (Root)\"] --> N2[\"2 (โหนดที่จะลบ - มีลูก 2 ข้าง)\"]\r\n    N6 --> N8[\"8\"]\r\n    N2 --> N1[\"1 (ลูกซ้าย)\"]\r\n    N2 --> N5[\"5 (ลูกขวา)\"]\r\n    N5 --> N3[\"3 (Successor Candidate)\"]\r\n    N3 --> N4[\"4\"]\r\n    \r\n    style N2 fill:#ef4444,stroke:#b91c1c,color:#fff\r\n    style N3 fill:#10b981,stroke:#059669,color:#fff"
+  },
+  {
+    "docId": "05.3 - Binary Search Tree Removal (Node Deletion Cases)",
+    "indexInDoc": 5,
+    "code": "graph TD\r\n    N6[\"6 (Root)\"] --> N3_new[\"3 (Successor ถูกยกขึ้นมาแทน 2)\"]\r\n    N6 --> N8[\"8\"]\r\n    N3_new --> N1[\"1\"]\r\n    N3_new --> N5[\"5\"]\r\n    N5 --> N4[\"4 (โหนด 4 เชื่อมตรงกับ 5)\"]\r\n    \r\n    style N3_new fill:#10b981,stroke:#059669,stroke-width:2px,color:#fff"
+  },
+  {
+    "docId": "06.1 - Hash Tables & Collision Resolution Strategies",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    OpenAddr[\"Open Addressing Strategies\"] --> LP[\"1. Linear Probing<br/>h(k, i) = (h(k) + i) mod M\"]\r\n    OpenAddr --> QP[\"2. Quadratic Probing<br/>h(k, i) = (h(k) + i^2) mod M\"]\r\n    OpenAddr --> DH[\"3. Double Hashing<br/>h(k, i) = (h1(k) + i * h2(k)) mod M\"]\r\n\r\n    LP --> ProblemLP[\"เกิดปัญหา Primary Clustering<br/>(ข้อมูลเกาะกลุ่มเป็นแถวยาว)\"]\r\n    QP --> ProblemQP[\"แก้ Primary Clustering ได้<br/>แต่อาจเกิด Secondary Clustering\"]\r\n    DH --> BestDH[\"ดีที่สุด! ก้าวกระโดดขึ้นกับค่า Key<br/>ขจัดปัญหา Clustering ได้เกลี้ยง\"]"
+  },
+  {
+    "docId": "07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap)",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    Root[\"13 (Min-Heap Root: ค่าน้อยสุด)\"] --> L[\"14\"]\r\n    Root --> R[\"16\"]\r\n    L --> LL[\"24\"]\r\n    L --> LR[\"21\"]\r\n    R --> RL[\"19\"]\r\n    R --> RR[\"68\"]"
+  },
+  {
+    "docId": "07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap)",
+    "indexInDoc": 2,
+    "code": "graph TD\r\n    H13[\"[1] 13 (Root)\"] --> H21[\"[2] 21\"]\r\n    H13 --> H16[\"[3] 16\"]\r\n    H21 --> H24[\"[4] 24\"]\r\n    H21 --> H31[\"[5] 31\"]\r\n    H16 --> H19[\"[6] 19\"]\r\n    H16 --> H68[\"[7] 68\"]\r\n    H24 --> H65[\"[8] 65\"]\r\n    H24 --> H26[\"[9] 26\"]\r\n    H31 --> H32[\"[10] 32\"]\r\n    H31 -.->|ตำแหน่งใหม่ [11]| Hole[\"[11] hole = 14?\"]\r\n    \r\n    style Hole fill:#f59e0b,stroke:#d97706,color:#fff"
+  },
+  {
+    "docId": "08.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick)",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    SortingAlgo[\"Sorting Algorithms\"] --> SimpleSorts[\"กลุ่มพื้นฐาน O(N^2)\"]\r\n    SortingAlgo --> DivideConquer[\"กลุ่มแบ่งแยกและเอาชนะ O(N log N)\"]\r\n\r\n    SimpleSorts --> Bubble[\"Bubble Sort<br/>(สลับคู่ที่ติดกัน ลอยตัวมากสุดไปขวาสุด)\"]\r\n    SimpleSorts --> Selection[\"Selection Sort<br/>(เลือกค่าน้อยสุดมาสลับกับตำแหน่งแรก)\"]\r\n    SimpleSorts --> Insertion[\"Insertion Sort<br/>(หยิบทีละตัวแล้วแทรกในส่วนที่เรียงแล้ว)\"]\r\n\r\n    DivideConquer --> Merge[\"Merge Sort<br/>(Stable, ใช้ Memory เพิ่ม O(N))\"]\r\n    DivideConquer --> Quick[\"Quick Sort<br/>(In-place, แบ่งส่วนด้วย Pivot)\"]"
+  },
+  {
+    "docId": "09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort)",
+    "indexInDoc": 1,
+    "code": "graph LR\r\n    subgraph Digraph [\"Directed Graph\"]\r\n        A[\"A\"] --> B[\"B\"]\r\n        A --> C[\"C\"]\r\n        B --> C\r\n    end"
+  },
+  {
+    "docId": "09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort)",
+    "indexInDoc": 2,
+    "code": "graph TD\r\n    Traversals[\"Graph Traversals\"] --> BFS[\"Breadth-First Search (BFS)\"]\r\n    Traversals --> DFS[\"Depth-First Search (DFS)\"]\r\n\r\n    BFS --> QueueUsed[\"ใช้ Queue (FIFO) - ท่องไปทีละระดับความกว้าง\"]\r\n    BFS --> ShortestUnweighted[\"หา Shortest Path ใน Unweighted Graph ได้!\"]\r\n\r\n    DFS --> StackUsed[\"ใช้ Stack (LIFO) / Recursion - เจาะลึกลงไปให้สุดสาย\"]\r\n    DFS --> CycleTopological[\"ใช้ตรวจจับ Cycle และทำ Topological Sort\"]"
+  },
+  {
+    "docId": "09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort)",
+    "indexInDoc": 3,
+    "code": "graph LR\r\n    CS101[\"CS101 (Indegree=0)\"] --> CS102[\"CS102 (Indegree=1)\"]\r\n    CS101 --> Math101[\"Math101 (Indegree=0)\"]\r\n    CS102 & Math101 --> CS201[\"CS201 (Indegree=2)\"]"
+  },
+  {
+    "docId": "09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort)",
+    "indexInDoc": 4,
+    "code": "graph LR\r\n    A --- B\r\n    B --- C\r\n    C --- D\r\n    D --- A"
+  },
+  {
+    "docId": "09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort)",
+    "indexInDoc": 5,
+    "code": "graph TD\r\n    V1[\"v1 (In=0)\"] --> V2[\"v2\"]\r\n    V1 --> V3[\"v3\"]\r\n    V1 --> V4[\"v4\"]\r\n    V2 --> V4\r\n    V2 --> V5[\"v5\"]\r\n    V3 --> V6[\"v6\"]\r\n    V4 --> V3\r\n    V4 --> V6\r\n    V4 --> V7[\"v7\"]\r\n    V5 --> V4\r\n    V5 --> V7\r\n    V7 --> V6"
+  },
+  {
+    "docId": "10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path)",
+    "indexInDoc": 1,
+    "code": "graph TD\r\n    ShortestPathAlg[\"Shortest Path Algorithms\"] --> Unweighted[\"Unweighted Graph (น้ำหนักเท่ากันทุกเส้น)\"]\r\n    ShortestPathAlg --> Weighted[\"Weighted Graph (น้ำหนักไม่เท่ากัน >= 0)\"]\r\n\r\n    Unweighted --> BFS_Alg[\"BFS Algorithm: O(V + E)\"]\r\n    Weighted --> Dijkstra_Alg[\"Dijkstra's Algorithm: O((V + E) log V)\"]"
+  },
+  {
+    "docId": "10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path)",
+    "indexInDoc": 2,
+    "code": "graph TD\r\n    Init[\"1. Set dist[source]=0, dist[v]=infinity, visited=set()\"] --> PopMin[\"2. Pop node u with smallest dist[u] from Min-Heap\"]\r\n    PopMin --> CheckVisited{\"Is u visited?\"}\r\n    CheckVisited -->|Yes| PopMin\r\n    CheckVisited -->|No| AddVisited[\"3. Add u to visited set\"]\r\n    AddVisited --> RelaxEdges[\"4. Relaxation: For each neighbor v with weight w:\r\n    if dist[u] + w < dist[v]:\r\n        dist[v] = dist[u] + w\r\n        parent[v] = u\r\n        push (dist[v], v) to Min-Heap\"]\r\n    RelaxEdges --> Repeat{\"Is Priority Queue empty?\"}\r\n    Repeat -->|No| PopMin\r\n    Repeat -->|Yes| Done[\"Done! Output dist array & paths\"]"
+  },
+  {
+    "docId": "10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path)",
+    "indexInDoc": 3,
+    "code": "graph TD\r\n    v1[\"v1\"] --> v2[\"v2\"]\r\n    v1 --> v4[\"v4\"]\r\n    v2 --> v4\r\n    v2 --> v5[\"v5\"]\r\n    v3[\"v3 (Start)\"] --> v1\r\n    v3 --> v6[\"v6\"]\r\n    v4 --> v3\r\n    v4 --> v6\r\n    v4 --> v5\r\n    v4 --> v7[\"v7\"]\r\n    v5 --> v7\r\n    v7 --> v6"
+  },
+  {
+    "docId": "11.6 - Final Exam Real Classroom Prep & Solutions",
+    "indexInDoc": 1,
+    "code": "mindmap\n  root((5 กับดักข้อสอบปลายภาค))\n    Trap 1: การนับ Collision\n      ห้ามนับรอบ Resolve รวม\n      ชน 7 ครั้ง แก้ 7 ครั้ง ตอบ 7!\n      ตอบ 14 = 0 คะแนนทันที\n    Trap 2: Wrap Around Modulo\n      สูตร Probing ต้องใส่ mod TableSize เสมอ\n      เช่น H + i^2 mod TableSize\n    Trap 3: พารามิเตอร์ R ใน Double Hash\n      R คือ Prime สูงสุดที่น้อยกว่า TableSize\n      ห้ามจำตายตัวว่าเป็น 7\n    Trap 4: สูตร Rehashing\n      Load Factor เกิน 50% หรือ 70%\n      ขนาดใหม่คือ Prime แรกที่มากกว่า 2 x TableSize\n    Trap 5: สูตร Heap Index ใน Array\n      Root เริ่มที่ 1\n      Parent = floor i / 2 ปัดเศษทิ้งเสมอ"
+  },
+  {
+    "docId": "11.6 - Final Exam Real Classroom Prep & Solutions",
+    "indexInDoc": 2,
+    "code": "graph TD\n    subgraph Hash_Simulation[\"การจำลองการชนใน Linear Probing\"]\n        K89[\"89 mod 10 = 9 (ช่อง 9 ว่าง) -> ชน 0\"]\n        K18[\"18 mod 10 = 8 (ช่อง 8 ว่าง) -> ชน 0\"]\n        K49[\"49 mod 10 = 9 (ชน 89!) -> Probing ช่อง 0 -> ชน 1\"]\n        K58[\"58 mod 10 = 8 (ชน 18, 89, 49) -> Probing ช่อง 1 -> ชน 3\"]\n        K69[\"69 mod 10 = 9 (ชน 89, 49, 58) -> Probing ช่อง 2 -> ชน 3\"]\n    end"
+  },
+  {
+    "docId": "11.6 - Final Exam Real Classroom Prep & Solutions",
+    "indexInDoc": 3,
+    "code": "graph TD\n    N1[\"[1] 13\"] --> N2[\"[2] 21\"]\n    N1 --> N3[\"[3] 16\"]\n    N2 --> N4[\"[4] 24\"]\n    N2 --> N5[\"[5] 31\"]\n    N3 --> N6[\"[6] 19\"]\n    N3 --> N7[\"[7] 68\"]\n    N4 --> N8[\"[8] 65\"]\n    N4 --> N9[\"[9] 26\"]\n    N5 --> N10[\"[10] 32\"]"
+  },
+  {
+    "docId": "11.6 - Final Exam Real Classroom Prep & Solutions",
+    "indexInDoc": 4,
+    "code": "graph LR\n    V1((v1)) -- 2 --> V2((v2))\n    V1 -- 4 --> V4((v4))\n    V2 -- 3 --> V4((v4))\n    V2 -- 10 --> V5((v5))\n    V4 -- 2 --> V3((v3))\n    V4 -- 7 --> V5((v5))\n    V3 -- 5 --> V5((v5))\n\n    style V1 fill:#c8e6c9,stroke:#2e7d32\n    style V5 fill:#ffcdd2,stroke:#c62828"
+  }
+]

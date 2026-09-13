@@ -1,0 +1,3 @@
+[    1350ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8080/favicon.ico:0
+[    3037ms] [LOG] Pyodide WASM loaded successfully in Wiki @ http://localhost:8080/Wiki/app.js:957
+[   99530ms] [LOG] Pyodide WASM loaded successfully in Wiki @ http://localhost:8080/Wiki/app.js:957
