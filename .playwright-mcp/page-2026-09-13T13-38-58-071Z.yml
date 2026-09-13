@@ -1,0 +1,345 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link "DSA Wiki Python DSA" [ref=f1e4] [cursor=pointer]:
+      - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+      - generic [ref=f1e9]: DSA Wiki
+      - generic [ref=f1e10]: Python DSA
+    - button "ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง... Ctrl K" [ref=f1e12] [cursor=pointer]:
+      - generic [ref=f1e13]: ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง...
+      - generic [ref=f1e18]: Ctrl K
+    - generic [ref=f1e19]:
+      - generic "ปรับขนาดตัวอักษรสำหรับอ่าน" [ref=f1e20]:
+        - button "A-" [ref=f1e21] [cursor=pointer]
+        - button "A+" [ref=f1e22] [cursor=pointer]
+      - button "☀️" [ref=f1e23] [cursor=pointer]
+      - link "🔬 ห้องทดลอง DSA Lab" [ref=f1e24] [cursor=pointer]:
+        - /url: ../DsaLab/index.html
+        - generic [ref=f1e25]: 🔬
+        - generic [ref=f1e26]: ห้องทดลอง DSA Lab
+  - generic [ref=f1e27]:
+    - complementary [ref=f1e28]:
+      - generic [ref=f1e29]:
+        - button "📚 บทเรียน (1-10)" [ref=f1e30] [cursor=pointer]
+        - button "🎯 โซนเตรียมสอบ" [ref=f1e31] [cursor=pointer]
+      - generic [ref=f1e32]:
+        - generic [ref=f1e1306]:
+          - generic [ref=f1e1307]: 🏁 ข้อสอบปลายภาค & กับดักอาจารย์ (Final Exam 2568)
+          - link "ยังไม่ได้อ่าน 🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568) ⏱️ 27 นาที · 24 หัวข้อ" [ref=f1e1310] [cursor=pointer]:
+            - /url: "#/11.6%20-%20Final%20Exam%20Real%20Classroom%20Prep%20%26%20Solutions"
+            - generic "ยังไม่ได้อ่าน" [ref=f1e1311]
+            - generic [ref=f1e1312]:
+              - generic [ref=f1e1313]: 🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)
+              - generic [ref=f1e1314]: ⏱️ 27 นาที · 24 หัวข้อ
+        - generic [ref=f1e1315]:
+          - generic [ref=f1e1316]: 🎯 ข้อสอบจำลองกลางภาค & ตะลุยโจทย์ (Midterm Mock)
+          - generic [ref=f1e1318]:
+            - link "ยังไม่ได้อ่าน 🎯 ข้อสอบจริง Midterm Real Mock (2026) ⏱️ 37 นาที · 0 หัวข้อ" [ref=f1e1319] [cursor=pointer]:
+              - /url: "#/11.1%20-%20Midterm%20Real%20Exam%20Mock%20%26%20Solutions"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e1320]
+              - generic [ref=f1e1321]:
+                - generic [ref=f1e1322]: 🎯 ข้อสอบจริง Midterm Real Mock (2026)
+                - generic [ref=f1e1323]: ⏱️ 37 นาที · 0 หัวข้อ
+            - link "ยังไม่ได้อ่าน 🎯 ข้อสอบเก็ง Predicted Midterm 2026 ⏱️ 20 นาที · 0 หัวข้อ" [ref=f1e1324] [cursor=pointer]:
+              - /url: "#/11.2%20-%20Predicted%20Midterm%20Exam%202026%20Comprehensive"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e1325]
+              - generic [ref=f1e1326]:
+                - generic [ref=f1e1327]: 🎯 ข้อสอบเก็ง Predicted Midterm 2026
+                - generic [ref=f1e1328]: ⏱️ 20 นาที · 0 หัวข้อ
+            - link "ยังไม่ได้อ่าน 🎯 ตะลุยคลังข้อสอบ 20 ข้อ + ทบทวน ⏱️ 14 นาที · 0 หัวข้อ" [ref=f1e1329] [cursor=pointer]:
+              - /url: "#/11.5%20-%20Comprehensive%20Exam%20Questions%2C%20Tracing%20%26%20Python%20Solutions"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e1330]
+              - generic [ref=f1e1331]:
+                - generic [ref=f1e1332]: 🎯 ตะลุยคลังข้อสอบ 20 ข้อ + ทบทวน
+                - generic [ref=f1e1333]: ⏱️ 14 นาที · 0 หัวข้อ
+        - generic [ref=f1e1334]:
+          - generic [ref=f1e1335]: 🥞 โจทย์เจาะลึกเฉพาะเรื่อง (Topic Drills)
+          - generic [ref=f1e1337]:
+            - link "ยังไม่ได้อ่าน 🎯 เจาะข้อสอบ Stack Practice (Exam Style) ⏱️ 21 นาที · 0 หัวข้อ" [ref=f1e1338] [cursor=pointer]:
+              - /url: "#/11.3%20-%20Stack%20Practice%20Exam%20Problems%20%26%20Solutions"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e1339]
+              - generic [ref=f1e1340]:
+                - generic [ref=f1e1341]: 🎯 เจาะข้อสอบ Stack Practice (Exam Style)
+                - generic [ref=f1e1342]: ⏱️ 21 นาที · 0 หัวข้อ
+            - link "ยังไม่ได้อ่าน 🎯 เจาะข้อสอบ Queue Practice (Exam Style) ⏱️ 8 นาที · 0 หัวข้อ" [ref=f1e1343] [cursor=pointer]:
+              - /url: "#/11.4%20-%20Queue%20Practice%20Exam%20Problems%20%26%20Solutions"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e1344]
+              - generic [ref=f1e1345]:
+                - generic [ref=f1e1346]: 🎯 เจาะข้อสอบ Queue Practice (Exam Style)
+                - generic [ref=f1e1347]: ⏱️ 8 นาที · 0 หัวข้อ
+        - generic [ref=f1e1348]:
+          - generic [ref=f1e1349]: 📖 สารบัญและสรุปสูตร (Reference & Cheat Sheet)
+          - generic [ref=f1e1351]:
+            - link "ยังไม่ได้อ่าน ⚡ ตารางสรุป Big-O & คำศัพท์ (Cheat Sheet) ⏱️ 6 นาที · 0 หัวข้อ" [ref=f1e1352] [cursor=pointer]:
+              - /url: "#/Glossary%20%26%20Complexity%20Cheat%20Sheet"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e1353]
+              - generic [ref=f1e1354]:
+                - generic [ref=f1e1355]: ⚡ ตารางสรุป Big-O & คำศัพท์ (Cheat Sheet)
+                - generic [ref=f1e1356]: ⏱️ 6 นาที · 0 หัวข้อ
+            - link "ยังไม่ได้อ่าน 📌 สารบัญภาพรวม (Master Index) ⏱️ 10 นาที · 0 หัวข้อ" [ref=f1e1357] [cursor=pointer]:
+              - /url: "#/Index"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e1358]
+              - generic [ref=f1e1359]:
+                - generic [ref=f1e1360]: 📌 สารบัญภาพรวม (Master Index)
+                - generic [ref=f1e1361]: ⏱️ 10 นาที · 0 หัวข้อ
+    - main [ref=f1e138]:
+      - generic [ref=f1e139]:
+        - generic [ref=f1e140]:
+          - navigation [ref=f1e141]:
+            - link "สารานุกรม" [ref=f1e142] [cursor=pointer]:
+              - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+            - generic [ref=f1e143]: /
+            - generic [ref=f1e144]: สารบัญและสรุปสูตร (Reference & Cheat Sheet)
+            - generic [ref=f1e145]: /
+            - generic "📌 สารบัญภาพรวม (Master Index)" [ref=f1e1362]
+          - heading "📚 Data Structures & Algorithms (DSA) Master Wiki" [level=1] [ref=f1e1363]
+          - generic [ref=f1e148]:
+            - generic [ref=f1e149]:
+              - generic [ref=f1e1364]: ⏱️ อ่านประมาณ 10 นาที
+              - generic [ref=f1e1365]: 📝 5,819 ตัวอักษร
+            - button "○ ทำเครื่องหมายว่าอ่านแล้ว" [ref=f1e152] [cursor=pointer]:
+              - generic [ref=f1e1366]: ○
+              - text: ทำเครื่องหมายว่าอ่านแล้ว
+        - article [ref=f1e154]:
+          - generic [ref=f1e1367]:
+            - generic [ref=f1e1368]:
+              - generic [ref=f1e1369]: 📌
+              - generic [ref=f1e1370]: บันทึก (Note)
+            - paragraph [ref=f1e1372]:
+              - text: คลังความรู้นี้ถูกจัดทำขึ้นสำหรับการศึกษาวิจัยและการเตรียมตัวสอบวิชา
+              - strong [ref=f1e1373]: Data Structures & Algorithms in Python
+              - text: อย่างลึกซึ้ง อ้างอิงจากสไลด์การสอน โค้ดตัวอย่าง และแนวข้อสอบจริง ครอบคลุมตั้งแต่พื้นฐาน OOP, Linear Data Structures, Trees, Binary Search Trees, Heaps, Hashing, Sorting ไปจนถึง Graph Algorithms
+          - separator [ref=f1e1374]
+          - heading "🗺️ DSA Knowledge Map (แผนผังเชื่อมโยงเนื้อหาตามบทเรียน)" [level=2] [ref=f1e1375]
+          - generic [ref=f1e1377]:
+            - generic [ref=f1e1378]:
+              - generic [ref=f1e1383]: DSA STUDIO ARCHITECTURE
+              - generic [ref=f1e1384]: 🗺️ Shortest Path & Dijkstra Algorithm Flow Architecture
+            - generic [ref=f1e1385]:
+              - link "⚡ เปิดใน DSA Lab" [ref=f1e1386] [cursor=pointer]:
+                - /url: ../DsaLab/index.html
+              - button "🔍 ขยายภาพ" [ref=f1e1387] [cursor=pointer]
+          - separator [ref=f1e1389]
+          - heading "📚 รายละเอียดโครงสร้างหมวดหมู่ใน Obsidian Wiki" [level=2] [ref=f1e1390]
+          - 'heading "🏛️ บทที่ 1: Introduction & Algorithm Analysis (บทนำและการวิเคราะห์อัลกอริทึม)" [level=3] [ref=f1e1391]'
+          - list [ref=f1e1392]:
+            - listitem [ref=f1e1393]:
+              - link "📄 01.1 - Introduction to Data Structures & Algorithm Analysis" [ref=f1e1394] [cursor=pointer]:
+                - /url: "#/01.1%20-%20Introduction%20to%20Data%20Structures%20%26%20Algorithm%20Analysis"
+              - text: ": ความหมายของ Data Structure, ADT, และการวิเคราะห์ความเร็ว Big-O ("
+              - generic [ref=f1e1396]:
+                - math [ref=f1e1398]:
+                  - generic [ref=f1e1400]:
+                    - generic [ref=f1e1401]: O
+                    - generic [ref=f1e1402]: ","
+                    - generic [ref=f1e1403]: Ω
+                    - generic [ref=f1e1404]: ","
+                    - generic [ref=f1e1405]: Θ
+                - generic [ref=f1e1406]: O, Ω, Θ
+              - text: )
+          - 'heading "🐍 บทที่ 2: Review Python & OOP (ทบทวน Python และการเขียนโปรแกรมเชิงวัตถุ)" [level=3] [ref=f1e1408]'
+          - list [ref=f1e1409]:
+            - listitem [ref=f1e1410]:
+              - link "📄 02.1 - Python Review & Object-Oriented Programming (OOP)" [ref=f1e1411] [cursor=pointer]:
+                - /url: "#/02.1%20-%20Python%20Review%20%26%20Object-Oriented%20Programming%20(OOP)"
+              - text: ": คลาส, วัตถุ,"
+              - code [ref=f1e1412]: __init__
+              - text: ", Special Methods, การอ้างอิงหน่วยความจำ (Memory References), และหลักการ OOP 4 ประการ"
+          - 'heading "🔗 บทที่ 3: Linked Lists (รายการโยง)" [level=3] [ref=f1e1413]'
+          - list [ref=f1e1414]:
+            - listitem [ref=f1e1415]:
+              - link "📄 03.1 - Linked Lists (Singly, Doubly, Circular)" [ref=f1e1416] [cursor=pointer]:
+                - /url: "#/03.1%20-%20Linked%20Lists%20(Singly%2C%20Doubly%2C%20Circular)"
+              - text: ": Singly Linked List, Doubly Linked List, Circular Linked List, Pointer Transitions และโค้ด Python"
+          - 'heading "🥞 บทที่ 4: Stacks & Queues (สแตกและคิว)" [level=3] [ref=f1e1417]'
+          - list [ref=f1e1418]:
+            - listitem [ref=f1e1419]:
+              - link "📄 04.1 - Stacks & Applications (Infix, Postfix, Parentheses)" [ref=f1e1420] [cursor=pointer]:
+                - /url: "#/04.1%20-%20Stacks%20%26%20Applications%20(Infix%2C%20Postfix%2C%20Parentheses)"
+              - text: ": Stack ADT (LIFO), การเช็กวงเล็บสมดุล, อัลกอริทึมแปลง Infix เป็น Postfix และการประมวลผล Postfix"
+            - listitem [ref=f1e1421]:
+              - link "📄 04.2 - Queues & Circular Array Queues" [ref=f1e1422] [cursor=pointer]:
+                - /url: "#/04.2%20-%20Queues%20%26%20Circular%20Array%20Queues"
+              - text: ": Queue ADT (FIFO), Array Queue, Circular Array Queue ("
+              - code [ref=f1e1423]: (rear+1)%capacity
+              - text: ), และ Double-ended Queue (Deque)
+          - 'heading "🌲 บทที่ 5: Trees & Binary Search Trees (ต้นไม้และต้นไม้ค้นหาทวิภาค)" [level=3] [ref=f1e1424]'
+          - list [ref=f1e1425]:
+            - listitem [ref=f1e1426]:
+              - link "📄 05.1 - Tree Terminology & Binary Trees" [ref=f1e1427] [cursor=pointer]:
+                - /url: "#/05.1%20-%20Tree%20Terminology%20%26%20Binary%20Trees"
+              - text: ": คำศัพท์เกี่ยวกับต้นไม้ (Root, Leaf, Height, Depth), สถาปัตยกรรม Binary Tree, และ Tree Traversals (Preorder, Inorder, Postorder, Level-order)"
+            - listitem [ref=f1e1428]:
+              - link "📄 05.2 - Binary Search Trees (BST) & Insertion" [ref=f1e1429] [cursor=pointer]:
+                - /url: "#/05.2%20-%20Binary%20Search%20Trees%20(BST)%20%26%20Insertion"
+              - text: ": BST Property ("
+              - generic [ref=f1e1431]:
+                - math [ref=f1e1433]:
+                  - generic [ref=f1e1435]:
+                    - generic [ref=f1e1436]: L
+                    - generic [ref=f1e1437]: <
+                    - generic [ref=f1e1438]: "N"
+                    - generic [ref=f1e1439]: o
+                    - generic [ref=f1e1440]: d
+                    - generic [ref=f1e1441]: e
+                    - generic [ref=f1e1442]: <
+                    - generic [ref=f1e1443]: R
+                - generic [ref=f1e1444]:
+                  - generic [ref=f1e1445]: L <
+                  - generic [ref=f1e1446]: Node <
+                  - generic [ref=f1e1447]: R
+              - text: ), อัลกอริทึมค้นหา, การแทรกโหนด (Insertion), และการหา Min/Max
+            - listitem [ref=f1e1448]:
+              - link "📄 05.3 - Binary Search Tree Removal (Node Deletion Cases)" [ref=f1e1449] [cursor=pointer]:
+                - /url: "#/05.3%20-%20Binary%20Search%20Tree%20Removal%20(Node%20Deletion%20Cases)"
+              - text: ": อัลกอริทึมการลบโหนดออกจาก BST แบบละเอียด 3 กรณี (Leaf, 1 Child, 2 Children / Inorder Successor)"
+          - 'heading "#️⃣ บทที่ 6: Hashing & Hash Tables (ตารางแฮชและการจัดการการชน)" [level=3] [ref=f1e1450]'
+          - list [ref=f1e1451]:
+            - listitem [ref=f1e1452]:
+              - link "📄 06.1 - Hash Tables & Collision Resolution Strategies" [ref=f1e1453] [cursor=pointer]:
+                - /url: "#/06.1%20-%20Hash%20Tables%20%26%20Collision%20Resolution%20Strategies"
+              - text: ": Hash Functions, Collision Handling (Linear Probing, Quadratic Probing, Double Hashing, Separate Chaining), Load Factor ("
+              - generic [ref=f1e1455]:
+                - math [ref=f1e1457]:
+                  - generic [ref=f1e1458]: λ
+                - generic [ref=f1e1461]: λ
+              - text: ), และ Rehashing
+          - 'heading "⚡ บทที่ 7: Priority Queue & Binary Heap (คิวบุริมภาพและฮีป)" [level=3] [ref=f1e1463]'
+          - list [ref=f1e1464]:
+            - listitem [ref=f1e1465]:
+              - link "📄 07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap)" [ref=f1e1466] [cursor=pointer]:
+                - /url: "#/07.1%20-%20Priority%20Queue%20%26%20Binary%20Heaps%20(Min-Heap%2C%20Max-Heap)"
+              - text: ": Priority Queue ADT, Complete Binary Tree Array Indexing ("
+              - code [ref=f1e1467]: parent=i//2
+              - text: ","
+              - code [ref=f1e1468]: left=2i
+              - text: ","
+              - code [ref=f1e1469]: right=2i+1
+              - text: ), Percolate Up, Percolate Down, และ Heapify (
+              - generic [ref=f1e1471]:
+                - math [ref=f1e1473]:
+                  - generic [ref=f1e1475]:
+                    - generic [ref=f1e1476]: O
+                    - generic [ref=f1e1477]: (
+                    - generic [ref=f1e1478]: "N"
+                    - generic [ref=f1e1479]: )
+                - generic [ref=f1e1480]: O(N)
+              - text: )
+          - 'heading "🔀 บทที่ 8: Sorting Algorithms (อัลกอริทึมการเรียงลำดับ)" [level=3] [ref=f1e1482]'
+          - list [ref=f1e1483]:
+            - listitem [ref=f1e1484]:
+              - link "📄 08.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick)" [ref=f1e1485] [cursor=pointer]:
+                - /url: "#/08.1%20-%20Sorting%20Algorithms%20(Bubble%2C%20Selection%2C%20Insertion%2C%20Merge%2C%20Quick)"
+              - text: ": การเรียงลำดับ 6 อัลกอริทึม, เปรียบเทียบความเร็ว, Stability, In-place, และตาราง Trace State"
+          - 'heading "🌐 บทที่ 9: Graph (โครงสร้างข้อมูลกราฟและการท่องกราฟ)" [level=3] [ref=f1e1486]'
+          - list [ref=f1e1487]:
+            - listitem [ref=f1e1488]:
+              - link "📄 09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort)" [ref=f1e1489] [cursor=pointer]:
+                - /url: "#/09.1%20-%20Graph%20Fundamentals%20%26%20Traversals%20(BFS%2C%20DFS%2C%20Topological%20Sort)"
+              - text: ": โครงสร้างกราฟ, Adjacency Matrix vs List, BFS, DFS, และ Topological Sorting (Indegree Array)"
+          - 'heading "🚀 บทที่ 10: Shortest Path Algorithms (วิถีสั้นสุด)" [level=3] [ref=f1e1490]'
+          - list [ref=f1e1491]:
+            - listitem [ref=f1e1492]:
+              - link "📄 10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path)" [ref=f1e1493] [cursor=pointer]:
+                - /url: "#/10.1%20-%20Shortest%20Path%20Algorithms%20(Dijkstra%2C%20Unweighted%20Shortest%20Path)"
+              - text: ": Unweighted Shortest Path (BFS) และ Dijkstra's Algorithm (Priority Queue) พร้อมตาราง Trace ทีละสเต็ป"
+          - 'heading "🎯 โซนเตรียมสอบ: Exam Preparation & Practice (คลังข้อสอบและการจำลองสอบ)" [level=3] [ref=f1e1494]'
+          - list [ref=f1e1495]:
+            - listitem [ref=f1e1496]:
+              - text: 🏁
+              - strong [ref=f1e1497]:
+                - link "📄 11.6 - Final Exam Real Classroom Prep & Solutions" [ref=f1e1498] [cursor=pointer]:
+                  - /url: "#/11.6%20-%20Final%20Exam%20Real%20Classroom%20Prep%20%26%20Solutions"
+              - text: ": เจาะลึกแนวข้อสอบปลายภาค 2568 (Hashing, Binary Heap, Sorting, Graphs, Dijkstra และ 5 กับดักอาจารย์)"
+            - listitem [ref=f1e1499]:
+              - link "📄 11.1 - Midterm Real Exam Mock & Solutions" [ref=f1e1500] [cursor=pointer]:
+                - /url: "#/11.1%20-%20Midterm%20Real%20Exam%20Mock%20%26%20Solutions"
+              - text: ": แนวข้อสอบจริงกลางภาค 20 ข้อ พร้อมเฉลยละเอียด"
+            - listitem [ref=f1e1501]:
+              - link "📄 11.2 - Predicted Midterm Exam 2026 Comprehensive" [ref=f1e1502] [cursor=pointer]:
+                - /url: "#/11.2%20-%20Predicted%20Midterm%20Exam%202026%20Comprehensive"
+              - text: ": ข้อสอบเก็งกลางภาคปี 2026 ครบทุกเรื่อง"
+            - listitem [ref=f1e1503]:
+              - link "📄 11.3 - Stack Practice Exam Problems & Solutions" [ref=f1e1504] [cursor=pointer]:
+                - /url: "#/11.3%20-%20Stack%20Practice%20Exam%20Problems%20%26%20Solutions"
+              - text: ": รวมโจทย์เจาะลึกเรื่อง Stack และ Infix/Postfix"
+            - listitem [ref=f1e1505]:
+              - link "📄 11.4 - Queue Practice Exam Problems & Solutions" [ref=f1e1506] [cursor=pointer]:
+                - /url: "#/11.4%20-%20Queue%20Practice%20Exam%20Problems%20%26%20Solutions"
+              - text: ": รวมโจทย์เจาะลึกเรื่อง Queue และ Circular Queue"
+            - listitem [ref=f1e1507]:
+              - link "📄 11.5 - Comprehensive Exam Questions, Tracing & Python Solutions" [ref=f1e1508] [cursor=pointer]:
+                - /url: "#/11.5%20-%20Comprehensive%20Exam%20Questions%2C%20Tracing%20%26%20Python%20Solutions"
+              - text: ": ตะลุยโจทย์ข้อสอบใหญ่ พร้อมตาราง Trace State และโค้ด Python"
+          - separator [ref=f1e1509]
+          - generic [ref=f1e1510]:
+            - generic [ref=f1e1511]:
+              - generic [ref=f1e1512]: ✨
+              - generic [ref=f1e1513]: ข้อแนะนำ (Tip)
+            - paragraph [ref=f1e1515]:
+              - strong [ref=f1e1516]: คำแนะนำใน Obsidian
+              - text: ": คุณสามารถกด"
+              - code [ref=f1e1517]: Ctrl + Click
+              - text: หรือ
+              - code [ref=f1e1518]: Cmd + Click
+              - text: ที่ลิงก์
+              - code [ref=f1e1519]: <a href="#/%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2" class="wiki-link" data-doc="ชื่อหน้า" data-anchor="">📄 ชื่อหน้า</a>
+              - text: เพื่อเปิดหน้าโน้ตย่อยขึ้นมาอ่าน ทบทวน หรือดูโค้ดได้อย่างรวดเร็ว!
+        - link "← บทก่อนหน้า ⚡ ตารางสรุป Big-O & คำศัพท์ (Cheat Sheet)" [ref=f1e1520] [cursor=pointer]:
+          - /url: "#/Glossary%20%26%20Complexity%20Cheat%20Sheet"
+          - generic [ref=f1e1521]: ← บทก่อนหน้า
+          - generic [ref=f1e1522]: ⚡ ตารางสรุป Big-O & คำศัพท์ (Cheat Sheet)
+    - complementary [ref=f1e1283]:
+      - generic [ref=f1e1284]: สารบัญในหน้านี้
+      - list [ref=f1e1285]:
+        - listitem [ref=f1e1523]:
+          - link "🗺️ DSA Knowledge Map (แผนผังเชื่อมโยงเนื้อหาตามบทเรียน)" [ref=f1e1524] [cursor=pointer]:
+            - /url: "#-dsa-knowledge-map-แผนผังเชื่อมโยงเนื้อหาตามบทเรียน"
+        - listitem [ref=f1e1525]:
+          - link "รายละเอียดโครงสร้างหมวดหมู่ใน Obsidian Wiki" [ref=f1e1526] [cursor=pointer]:
+            - /url: "#-รายละเอียดโครงสร้างหมวดหมู่ใน-obsidian-wiki"
+        - listitem [ref=f1e1527]:
+          - 'link "บทที่ 1: Introduction & Algorithm Analysis (บทนำและการวิเคราะห์อัลกอริทึม)" [ref=f1e1528] [cursor=pointer]':
+            - /url: "#-บทที่-1-introduction-algorithm-analysis-บทนำและการวิเคราะห์อัลกอริทึม"
+        - listitem [ref=f1e1529]:
+          - 'link "🐍 บทที่ 2: Review Python & OOP (ทบทวน Python และการเขียนโปรแกรมเชิงวัตถุ)" [ref=f1e1530] [cursor=pointer]':
+            - /url: "#-บทที่-2-review-python-oop-ทบทวน-python-และการเขียนโปรแกรมเชิงวัตถุ"
+        - listitem [ref=f1e1531]:
+          - 'link "🔗 บทที่ 3: Linked Lists (รายการโยง)" [ref=f1e1532] [cursor=pointer]':
+            - /url: "#-บทที่-3-linked-lists-รายการโยง"
+        - listitem [ref=f1e1533]:
+          - 'link "🥞 บทที่ 4: Stacks & Queues (สแตกและคิว)" [ref=f1e1534] [cursor=pointer]':
+            - /url: "#-บทที่-4-stacks-queues-สแตกและคิว"
+        - listitem [ref=f1e1535]:
+          - 'link "🌲 บทที่ 5: Trees & Binary Search Trees (ต้นไม้และต้นไม้ค้นหาทวิภาค)" [ref=f1e1536] [cursor=pointer]':
+            - /url: "#-บทที่-5-trees-binary-search-trees-ต้นไม้และต้นไม้ค้นหาทวิภาค"
+        - listitem [ref=f1e1537]:
+          - 'link "#️⃣ บทที่ 6: Hashing & Hash Tables (ตารางแฮชและการจัดการการชน)" [ref=f1e1538] [cursor=pointer]':
+            - /url: "#-บทที่-6-hashing-hash-tables-ตารางแฮชและการจัดการการชน"
+        - listitem [ref=f1e1539]:
+          - 'link "⚡ บทที่ 7: Priority Queue & Binary Heap (คิวบุริมภาพและฮีป)" [ref=f1e1540] [cursor=pointer]':
+            - /url: "#-บทที่-7-priority-queue-binary-heap-คิวบุริมภาพและฮีป"
+        - listitem [ref=f1e1541]:
+          - 'link "บทที่ 8: Sorting Algorithms (อัลกอริทึมการเรียงลำดับ)" [ref=f1e1542] [cursor=pointer]':
+            - /url: "#-บทที่-8-sorting-algorithms-อัลกอริทึมการเรียงลำดับ"
+        - listitem [ref=f1e1543]:
+          - 'link "🌐 บทที่ 9: Graph (โครงสร้างข้อมูลกราฟและการท่องกราฟ)" [ref=f1e1544] [cursor=pointer]':
+            - /url: "#-บทที่-9-graph-โครงสร้างข้อมูลกราฟและการท่องกราฟ"
+        - listitem [ref=f1e1545]:
+          - 'link "🚀 บทที่ 10: Shortest Path Algorithms (วิถีสั้นสุด)" [ref=f1e1546] [cursor=pointer]':
+            - /url: "#-บทที่-10-shortest-path-algorithms-วิถีสั้นสุด"
+        - listitem [ref=f1e1547]:
+          - 'link "🎯 โซนเตรียมสอบ: Exam Preparation & Practice (คลังข้อสอบและการจำลองสอบ)" [ref=f1e1548] [cursor=pointer]':
+            - /url: "#-โซนเตรียมสอบ-exam-preparation-practice-คลังข้อสอบและการจำลองสอบ"
+  - generic:
+    - generic:
+      - generic:
+        - textbox "พิมพ์ค้นหา เช่น Linked List, Heap, BST, Big-O, Dijkstra, Midterm..."
+        - button "ESC"
+  - generic:
+    - generic:
+      - generic: 📊 แผนผังแบบขยายเต็มจอ (Mermaid Diagram)
+      - generic:
+        - button "➖ ย่อ"
+        - button "1:1"
+        - button "➕ ขยาย"
+        - button "✕ ปิด"

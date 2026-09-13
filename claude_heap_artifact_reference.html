@@ -1,0 +1,1220 @@
+<!DOCTYPE html><html lang="th"><head>
+    <script>
+      (function() {
+        // Capture host references before any artifact code runs: Window.parent
+        // is [Replaceable] (a top-level `var parent` in artifact code would
+        // replace the accessor with a data property), and a top-level
+        // `const crypto` would shadow the global — either would otherwise
+        // silently break the bridge for artifacts that worked before.
+        const realParent = window.parent;
+        const cryptoObj = window.crypto;
+        // html-to-image is only used by takeScreenshot: fetched on first use, not as a
+        // parser-blocking tag. Native fetch, captured before the proxy override below.
+        const realFetch = typeof window.fetch === 'function' ? window.fetch.bind(window) : null;
+        const HTML_TO_IMAGE_SRC = "https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.13/html-to-image.min.js";
+        const HTML_TO_IMAGE_INTEGRITY = "sha512-iZ2ORl595Wx6miw+GuadDet4WQbdSWS3JLMoNfY8cRGoEFy6oT3G9IbcrBeL6AfkgpA51ETt/faX6yLV+/gFJg==";
+        let htmlToImageLoad = null;
+        const loadHtmlToImage = () => {
+          if (!htmlToImageLoad) {
+            htmlToImageLoad = (realFetch
+              ? realFetch(HTML_TO_IMAGE_SRC, { integrity: HTML_TO_IMAGE_INTEGRITY, credentials: 'omit', referrerPolicy: 'no-referrer' })
+              : Promise.reject(new Error('fetch unavailable'))
+            )
+              .then((res) => {
+                if (!res.ok) throw new Error('html-to-image failed to load (' + res.status + ')');
+                return res.text();
+              })
+              .then((source) => {
+                // UMD bundle: hide the artifact's AMD/CommonJS globals so it takes the
+                // window-global branch; inline script text runs synchronously on insert.
+                const hidden = ['define', 'module', 'exports'].map((k) => {
+                  const entry = { k, own: Object.prototype.hasOwnProperty.call(window, k), v: window[k] };
+                  try { window[k] = undefined; } catch (e) {}
+                  return entry;
+                });
+                try {
+                  const el = document.createElement('script');
+                  el.text = source;
+                  (document.head || document.documentElement).appendChild(el);
+                } finally {
+                  hidden.forEach(({ k, own, v }) => {
+                    try { if (own) { window[k] = v; } else { delete window[k]; } } catch (e) {}
+                  });
+                }
+                if (!window.htmlToImage) throw new Error('html-to-image unavailable after load');
+                return window.htmlToImage;
+              });
+            // A failed load may be transient; let the next screenshot retry.
+            htmlToImageLoad.catch(() => { htmlToImageLoad = null; });
+          }
+          return htmlToImageLoad;
+        };
+        // crypto.randomUUID exists only in Secure Contexts; fall back to a
+        // unique non-crypto id elsewhere (http://LAN-IP dev flows) —
+        // uniqueness is what the bridge needs, unpredictability is
+        // defense-in-depth on top of the source guards.
+        const newRequestId =
+          cryptoObj && typeof cryptoObj.randomUUID === "function"
+            ? function () { return cryptoObj.randomUUID(); }
+            : function () { return Date.now() + "-" + Math.random(); };
+        const originalConsole = window.console;
+        window.console = {
+          log: (...args) => {
+            originalConsole.log(...args);
+            realParent.postMessage({ type: 'console', message: args.join(' ') }, '*');
+          },
+          error: (...args) => {
+            originalConsole.error(...args);
+            realParent.postMessage({ type: 'console', message: 'Error: ' + args.join(' ') }, '*');
+          },
+          warn: (...args) => {
+            originalConsole.warn(...args);
+            realParent.postMessage({ type: 'console', message: 'Warning: ' + args.join(' ') }, '*');
+          }
+        };
+
+        // Bridge request ids are crypto-random (not sequential) so they
+        // cannot be predicted by other frames in the tab.
+        let callbacksMap = new Map();
+        let streamControllers = new Map();
+        
+        window.claude = {
+          complete: (prompt) => {
+            return new Promise((resolve, reject) => {
+              const id = newRequestId();
+              callbacksMap.set(id, { resolve, reject });
+              realParent.postMessage({ type: 'claudeComplete', id, prompt }, '*');
+            });
+          }
+        };
+
+        window.storage = {
+          get: (key, shared = false) => {
+            return new Promise((resolve, reject) => {
+              const id = newRequestId();
+              callbacksMap.set(id, { resolve, reject });
+              realParent.postMessage({ type: 'storageGet', id, key, shared }, '*');
+            });
+          },
+          set: (key, value, shared = false) => {
+            return new Promise((resolve, reject) => {
+              const id = newRequestId();
+              callbacksMap.set(id, { resolve, reject });
+              realParent.postMessage({ type: 'storageSet', id, key, value, shared }, '*');
+            });
+          },
+          delete: (key, shared = false) => {
+            return new Promise((resolve, reject) => {
+              const id = newRequestId();
+              callbacksMap.set(id, { resolve, reject });
+              realParent.postMessage({ type: 'storageDelete', id, key, shared }, '*');
+            });
+          },
+          list: (prefix, shared = false) => {
+            return new Promise((resolve, reject) => {
+              const id = newRequestId();
+              callbacksMap.set(id, { resolve, reject });
+              realParent.postMessage({ type: 'storageList', id, prefix, shared }, '*');
+            });
+          }
+        };
+
+        let pendingBlobs = new Map();
+        URL.createObjectURL = (blob) => {
+          // Store the blob and create an ID and URL for it
+          const blobId = `blob-${Date.now()}-${Math.random()}`;
+          pendingBlobs.set(blobId, blob);
+          return `blob-request://${blobId}`;
+        };
+
+        URL.revokeObjectURL = (url) => {
+          // Remove the blob from our store
+          const blobId = url.replace("blob-request://", "");
+          pendingBlobs.delete(blobId);
+        };
+
+        const getBlobFromURL = (url) => {
+          const blobId = url.replace("blob-request://", "");
+          return pendingBlobs.get(blobId);
+        };
+
+        // Override global fetch with streaming support
+        window.fetch = (url, init = {}) => {
+          return new Promise((resolve, reject) => {
+            const id = newRequestId();
+            const channelId = `fetch-${id}-${Date.now()}`;
+            
+            callbacksMap.set(id, { 
+              resolve: (response) => {
+                // Null-body statuses: Response(stream, {status: 204}) throws
+                // per the Fetch spec, which would escape this resolver and
+                // hang the artifact's await forever.
+                if (response.status === 204 || response.status === 205 || response.status === 304) {
+                  try {
+                    resolve(new Response(null, {
+                      status: response.status,
+                      statusText: response.statusText,
+                      headers: response.headers
+                    }));
+                  } catch (err) {
+                    // Invalid statusText/header bytes can throw here too.
+                    reject(new TypeError(
+                      'Bridge fetch: unconstructable response (status ' + response.status + ')'
+                    ));
+                  }
+                  return;
+                }
+                // Create a ReadableStream for the response body
+                const stream = new ReadableStream({
+                  start(controller) {
+                    streamControllers.set(channelId, controller);
+                  },
+                  cancel() {
+                    streamControllers.delete(channelId);
+                  }
+                });
+                
+                // Create and return the Response with the stream. Response()
+                // requires status in [200, 599]; an opaque/no-cors fetch
+                // forwards status 0, which would throw here and escape the
+                // resolver, hanging the artifact's await. Surface it as a
+                // network-error-shaped rejection instead.
+                try {
+                  resolve(new Response(stream, {
+                    status: response.status,
+                    statusText: response.statusText,
+                    headers: response.headers
+                  }));
+                } catch (err) {
+                  streamControllers.delete(channelId);
+                  reject(new TypeError(
+                    'Bridge fetch: unconstructable response (status ' + response.status + ')'
+                  ));
+                }
+              },
+              reject,
+              channelId
+            });
+            
+            realParent.postMessage({
+              type: 'proxyFetch',
+              id,
+              url,
+              init,
+              channelId
+            }, '*');
+          });
+        };
+
+        window.addEventListener('message', async (event) => {
+          // Only the embedding parent may drive the bridge — sibling and
+          // nested frames can also postMessage into this window.
+          if (event.source !== realParent) return;
+          if (event.data.type === 'takeScreenshot') {
+            // Echo the request's nonce so the requester can correlate the
+            // reply to ITS request — a reply without the expected nonce
+            // (e.g. from a stale pre-remount artifact) is ignored upstream.
+            const screenshotNonce = event.data.nonce;
+            const rootElement = document.getElementById('artifacts-component-root-html');
+            if (!rootElement) {
+              realParent.postMessage({
+                type: 'screenshotError',
+                nonce: screenshotNonce,
+                error: new Error('Root element not found'),
+              }, '*');
+              return;
+            }
+            // Catch CDN load failures and toPng errors so the parent always
+            // gets a response instead of hanging forever.
+            try {
+              const htmlToImage = await loadHtmlToImage();
+              const screenshot = await htmlToImage.toPng(rootElement, {
+                imagePlaceholder:
+                  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAA1JREFUGFdjePDgwX8ACOQDoNsk0PMAAAAASUVORK5CYII=",
+              });
+              realParent.postMessage({
+                type: 'screenshotData',
+                nonce: screenshotNonce,
+                data: screenshot,
+              }, '*');
+            } catch (err) {
+              realParent.postMessage({
+                type: 'screenshotError',
+                nonce: screenshotNonce,
+                error: err instanceof Error ? err : new Error(String(err)),
+              }, '*');
+            }
+          } else if (event.data.type === 'claudeComplete') {
+            const callback = callbacksMap.get(event.data.id);
+            if (!callback) return;
+            if (event.data.error) {
+              callback.reject(new Error(event.data.error));
+            } else {
+              callback.resolve(event.data.completion);
+            }
+            callbacksMap.delete(event.data.id);
+          } else if (event.data.type === 'proxyFetchResponse') {
+            const callback = callbacksMap.get(event.data.id);
+            if (!callback) return;
+            if (event.data.error) {
+              callback.reject(new Error(event.data.error));
+              callbacksMap.delete(event.data.id);
+            } else {
+              // Initial response with headers, status, etc.
+              callback.resolve({
+                status: event.data.status,
+                statusText: event.data.statusText,
+                headers: event.data.headers
+              });
+              // Don't delete the callback yet if streaming
+              if (!event.data.body) {
+                callbacksMap.delete(event.data.id);
+              }
+            }
+          } else if (event.data.type === 'proxyFetchStream') {
+            // Handle streaming data chunks
+            const controller = streamControllers.get(event.data.channelId);
+            if (controller) {
+              if (event.data.error) {
+                controller.error(new Error(event.data.error));
+                streamControllers.delete(event.data.channelId);
+              } else if (event.data.done) {
+                controller.close();
+                streamControllers.delete(event.data.channelId);
+                // Clean up the callback
+                const callback = Array.from(callbacksMap.entries()).find(
+                  ([_, value]) => value.channelId === event.data.channelId
+                );
+                if (callback) {
+                  callbacksMap.delete(callback[0]);
+                }
+              } else if (event.data.chunk) {
+                controller.enqueue(new Uint8Array(event.data.chunk));
+              }
+            }
+          } else if (event.data.type === 'storageGet') {
+            const callback = callbacksMap.get(event.data.id);
+            if (!callback) return;
+            if (event.data.error) {
+              callback.reject(new Error(event.data.error));
+            } else {
+              callback.resolve(event.data.result);
+            }
+            callbacksMap.delete(event.data.id);
+          } else if (event.data.type === 'storageSet') {
+            const callback = callbacksMap.get(event.data.id);
+            if (!callback) return;
+            if (event.data.error) {
+              callback.reject(new Error(event.data.error));
+            } else {
+              callback.resolve(event.data.result);
+            }
+            callbacksMap.delete(event.data.id);
+          } else if (event.data.type === 'storageDelete') {
+            const callback = callbacksMap.get(event.data.id);
+            if (!callback) return;
+            if (event.data.error) {
+              callback.reject(new Error(event.data.error));
+            } else {
+              callback.resolve(event.data.result);
+            }
+            callbacksMap.delete(event.data.id);
+          } else if (event.data.type === 'storageList') {
+            const callback = callbacksMap.get(event.data.id);
+            if (!callback) return;
+            if (event.data.error) {
+              callback.reject(new Error(event.data.error));
+            } else {
+              callback.resolve(event.data.result);
+            }
+            callbacksMap.delete(event.data.id);
+          }
+        });
+
+        window.addEventListener('click', (event) => {
+          const isEl = event.target instanceof HTMLElement;
+          if (!isEl) return;
+    
+          // find ancestor links
+          const linkEl = event.target.closest("a");
+          if (!linkEl || !linkEl.href) return;
+    
+          event.preventDefault();
+          event.stopImmediatePropagation();
+    
+          if (linkEl.href.startsWith("blob-request:")) {
+            const blob = getBlobFromURL(linkEl.href);
+            if (!blob) return;
+            void blob.arrayBuffer().then((data) => {
+              realParent.postMessage({
+                type: "downloadFile",
+                filename: linkEl.download,
+                data,
+                mimeType: blob.type || "application/octet-stream",
+              });
+            });
+          } else if (linkEl.href.startsWith("data:")) {
+            const [header, base64Data] = linkEl.href.split(",");
+            const mimeMatch = header.match(/data:([^;]+)/);
+            const mimeType = mimeMatch ? mimeMatch[1] : "application/octet-stream";
+            const binaryString = atob(base64Data);
+            const data = Uint8Array.from(binaryString, (c) =>
+              c.charCodeAt(0),
+            ).buffer;
+            realParent.postMessage({
+              type: "downloadFile",
+              filename: linkEl.download,
+              data,
+              mimeType,
+            });
+          } else {
+            let linkUrl;
+            try {
+              linkUrl = new URL(linkEl.href);
+            } catch (error) {
+              return;
+            }
+    
+            if (linkUrl.hostname === window.location.hostname) return;
+      
+            realParent.postMessage({
+              type: 'openExternal',
+              href: linkEl.href,
+            }, '*');
+          }
+      });
+
+        const originalOpen = window.open;
+        window.open = function (url) {
+          realParent.postMessage({
+            type: "openExternal",
+            href: url,
+          }, "*");
+        };
+
+        window.addEventListener('error', (event) => {
+          realParent.postMessage({ type: 'console', message: 'Uncaught Error: ' + event.message }, '*');
+        });
+      })();
+    </script>
+  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binary Heap — หลักการ + Debugger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&amp;family=IBM+Plex+Sans+Thai:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#14151b; --panel:#1b1d25; --panel-alt:#20222c; --border:#2d303c;
+    --text:#e9e7e1; --muted:#8b8fa3;
+    --amber:#f5a623; --cyan:#4fd1e8; --rose:#ff6b81; --green:#4ade80; --violet:#b794f6;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 500px at 15% -10%, rgba(79,209,232,0.07), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(245,166,35,0.06), transparent 60%),
+      var(--bg);
+    color:var(--text); font-family:'IBM Plex Sans Thai', sans-serif; line-height:1.7; padding-bottom:60px;
+  }
+  h1,h2,h3{font-family:'Chakra Petch', sans-serif; letter-spacing:0.01em; margin:0;}
+  code, .mono{font-family:'JetBrains Mono', monospace;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
+
+  /* ---------- sticky nav ---------- */
+  .toc{
+    position:sticky; top:0; z-index:50; background:rgba(20,21,27,0.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border); padding:12px 20px;
+  }
+  .toc-inner{max-width:1180px; margin:0 auto; display:flex; gap:6px; overflow-x:auto; align-items:center;}
+  .toc a{
+    font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--muted); text-decoration:none;
+    padding:7px 12px; border-radius:8px; white-space:nowrap; border:1px solid transparent;
+  }
+  .toc a:hover{color:var(--text); border-color:var(--border); background:var(--panel-alt);}
+
+  /* ---------- header ---------- */
+  header{padding:56px 20px 34px; text-align:center; border-bottom:1px solid var(--border);}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    color:var(--amber); border:1px solid rgba(245,166,35,0.35); background:rgba(245,166,35,0.08);
+    padding:5px 12px; border-radius:20px; margin-bottom:18px;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--amber); box-shadow:0 0 8px var(--amber);}
+  header h1{font-size:clamp(28px,4.2vw,44px); font-weight:700;}
+  header h1 span{color:var(--cyan);}
+  header p.sub{max-width:700px; margin:16px auto 0; color:var(--muted); font-size:15.5px;}
+
+  section{padding:50px 0; border-bottom:1px solid var(--border);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{margin-bottom:24px;}
+  .section-head .tag{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--cyan); text-transform:uppercase; letter-spacing:0.08em;}
+  .section-head h2{font-size:26px; margin-top:6px;}
+  .section-head p{color:var(--muted); font-size:14.5px; max-width:760px; margin-top:8px;}
+
+  /* ---------- article blocks ---------- */
+  .article h3{font-size:18.5px; color:var(--text); margin:30px 0 10px; display:flex; align-items:center; gap:10px;}
+  .article h3 .num{
+    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--bg); background:var(--cyan);
+    width:24px; height:24px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .article p{color:#c7cad6; font-size:14.8px; max-width:820px;}
+  .article p b{color:var(--text);}
+  .article ul{color:#c7cad6; font-size:14.8px; max-width:820px; padding-left:20px;}
+  .article ul li{margin-bottom:4px;}
+
+  .cards{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;}
+  @media(max-width:760px){.cards{grid-template-columns:1fr;}}
+  .card{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:20px 22px; position:relative; overflow:hidden;}
+  .card::before{content:""; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--cyan);}
+  .card.amber::before{background:var(--amber);}
+  .card h4{font-size:16px; margin-bottom:8px; font-family:'Chakra Petch',sans-serif;}
+  .card p{color:var(--muted); font-size:13.8px; margin:0;}
+  .formula{margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;}
+  .pill{font-family:'JetBrains Mono',monospace; font-size:12.5px; background:var(--panel-alt); border:1px solid var(--border); padding:4px 10px; border-radius:8px; color:var(--text);}
+
+  /* comparison table */
+  table.cmp{width:100%; border-collapse:collapse; margin-top:14px; font-size:13.5px; max-width:820px;}
+  table.cmp th, table.cmp td{border:1px solid var(--border); padding:10px 12px; text-align:left;}
+  table.cmp th{background:var(--panel-alt); font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--cyan); text-transform:uppercase;}
+  table.cmp td{color:#c7cad6;}
+  table.cmp td.hl{color:var(--green); font-weight:600;}
+  table.cmp td.bad{color:var(--rose);}
+
+  /* ADT box diagram */
+  .adt-diagram{display:flex; align-items:center; justify-content:center; gap:0; margin:20px 0; flex-wrap:wrap;}
+  .adt-arrow{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--muted); display:flex; flex-direction:column; align-items:center; gap:4px;}
+  .adt-box{
+    font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:16px; color:var(--text);
+    border:1.5px solid var(--cyan); border-radius:12px; padding:22px 34px; background:var(--panel-alt); margin:0 8px;
+  }
+  .adt-line{width:60px; height:2px; background:var(--border); position:relative;}
+
+  /* ---------- tabs ---------- */
+  .tabs{display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap;}
+  .tab-btn{
+    font-family:'JetBrains Mono',monospace; font-size:13.5px; padding:10px 18px; border-radius:10px;
+    border:1px solid var(--border); background:var(--panel); color:var(--muted); cursor:pointer; transition:all .15s ease;
+  }
+  .tab-btn.active{color:var(--bg); background:var(--cyan); border-color:var(--cyan); font-weight:600;}
+  .tab-btn:hover:not(.active){border-color:var(--cyan); color:var(--text);}
+
+  /* ---------- debugger ---------- */
+  .debugger{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:22px;}
+  .dbg-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:18px;}
+  @media(max-width:900px){.dbg-grid{grid-template-columns:1fr;}}
+  .panel-box{background:var(--panel-alt); border:1px solid var(--border); border-radius:12px; padding:16px;}
+  .panel-title{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px; display:flex; justify-content:space-between;}
+
+  svg.tree{width:100%; height:auto; display:block;}
+  .node-text{font-family:'JetBrains Mono',monospace; font-weight:600; font-size:15px; fill:var(--text); text-anchor:middle; dominant-baseline:middle;}
+  .node-idx{font-family:'JetBrains Mono',monospace; font-size:9.5px; fill:var(--muted); text-anchor:middle;}
+  .edge{stroke:var(--border); stroke-width:2;}
+
+  .array-row{display:flex; gap:5px; overflow-x:auto; padding-bottom:6px; margin-top:14px;}
+  .abox{
+    min-width:40px; height:40px; border-radius:8px; border:2px solid var(--border); display:flex; align-items:center;
+    justify-content:center; font-family:'JetBrains Mono',monospace; font-size:13.5px; font-weight:600; color:var(--muted);
+    position:relative; flex-shrink:0; background:var(--panel);
+  }
+  .abox .aidx{position:absolute; top:-17px; font-size:9px; color:var(--muted);}
+  .abox.hole{border-color:var(--amber); color:var(--amber); border-style:dashed; background:rgba(245,166,35,0.08);}
+  .abox.compare{border-color:var(--cyan); color:var(--cyan); background:rgba(79,209,232,0.08);}
+  .abox.compare2{border-color:var(--cyan); color:var(--cyan); background:rgba(79,209,232,0.04); border-style:dotted;}
+  .abox.moved{border-color:var(--green); color:var(--green); background:rgba(74,222,128,0.1);}
+  .abox.final{border-color:var(--violet); color:var(--violet); background:rgba(183,148,246,0.12);}
+  .abox.dead{opacity:0.22;}
+
+  .code-block{font-family:'JetBrains Mono',monospace; font-size:12.6px; overflow-x:auto;}
+  .code-line{display:flex; gap:12px; padding:2.5px 8px; border-radius:5px; white-space:pre; color:#c7cad6;}
+  .code-line .ln{color:#565a6b; min-width:16px; text-align:right; user-select:none;}
+  .code-line.active{background:rgba(79,209,232,0.14); color:var(--text); box-shadow:inset 3px 0 0 var(--cyan);}
+
+  .watch-list{display:flex; flex-direction:column; gap:6px; font-family:'JetBrains Mono',monospace; font-size:12.6px;}
+  .watch-item{display:flex; justify-content:space-between; border-bottom:1px dashed var(--border); padding:4px 2px;}
+  .watch-item .k{color:var(--muted);}
+  .watch-item .v{color:var(--amber); font-weight:600;}
+
+  .insert-badge{
+    display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12.5px;
+    background:rgba(183,148,246,0.12); border:1px solid rgba(183,148,246,0.4); color:var(--violet);
+    padding:6px 12px; border-radius:20px; margin-top:14px;
+  }
+
+  .narration{margin-top:14px; padding:14px 16px; background:var(--panel-alt); border:1px solid var(--border); border-left:3px solid var(--cyan); border-radius:10px; font-size:14px; min-height:26px;}
+
+  .controls{display:flex; align-items:center; gap:8px; margin-top:18px; flex-wrap:wrap;}
+  .ctrl-btn{font-family:'JetBrains Mono',monospace; font-size:12.6px; padding:9px 14px; border-radius:9px; border:1px solid var(--border); background:var(--panel-alt); color:var(--text); cursor:pointer;}
+  .ctrl-btn:hover{border-color:var(--cyan);}
+  .ctrl-btn:disabled{opacity:0.35; cursor:not-allowed;}
+  .ctrl-btn.primary{background:var(--cyan); color:var(--bg); border-color:var(--cyan); font-weight:600;}
+  .ctrl-btn.ghost{background:transparent;}
+  .step-counter{font-family:'JetBrains Mono',monospace; font-size:12.6px; color:var(--muted); margin-left:auto;}
+  .progress-track{height:4px; background:var(--panel-alt); border-radius:2px; margin-top:12px; overflow:hidden; border:1px solid var(--border);}
+  .progress-fill{height:100%; background:linear-gradient(90deg, var(--cyan), var(--amber)); transition:width .2s ease;}
+
+  .console{margin-top:20px; background:#101116; border:1px solid var(--border); border-radius:12px; padding:14px 16px; max-height:220px; overflow-y:auto; font-family:'JetBrains Mono',monospace; font-size:12.2px;}
+  .console-title{color:var(--muted); text-transform:uppercase; letter-spacing:.08em; font-size:11px; margin-bottom:8px;}
+  .console-line{padding:3px 0; color:#7d8195; border-bottom:1px solid #1b1d24;}
+  .console-line b{color:var(--cyan); font-weight:600;}
+  .console-line.current{color:var(--text);}
+  .console-line.marker{color:var(--violet);}
+
+  .legend{display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; font-size:12px; color:var(--muted);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .legend i{width:11px; height:11px; border-radius:3px; display:inline-block; border:2px solid;}
+  .legend i.hole{border-color:var(--amber); border-style:dashed;}
+  .legend i.compare{border-color:var(--cyan);}
+  .legend i.moved{border-color:var(--green);}
+  .legend i.final{border-color:var(--violet);}
+
+  footer{text-align:center; color:var(--muted); font-size:13px; padding:40px 20px 10px;}
+</style>
+</head>
+<body id="artifacts-component-root-html">
+
+<nav class="toc"><div class="toc-inner">
+  <a href="#principle">① หลักการ</a>
+  <a href="#build">② สร้าง Heap ทีละตัว</a>
+  <a href="#demo">③ Insert / DeleteMin เดี่ยว</a>
+</div></nav>
+
+<header>
+  <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — LECTURE 8</div>
+  <h1>Binary <span>Heap</span> ตั้งแต่ต้นจนจบ</h1>
+  <p class="sub">อธิบายหลักการ Priority Queue / Binary Heap ทีละขั้น แล้วไล่โค้ด <span class="mono">insert()</span>
+  และ <span class="mono">deleteMin()</span> แบบ debugger จริง — รวมถึงตัวอย่างสร้าง heap ขึ้นมาใหม่โดย insert
+  ทีละตัวจากค่า <span class="mono">13, 21, 16, 24, 31, 19, 68, 65, 26, 32</span></p>
+</header>
+
+<div class="wrap">
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1: PRINCIPLE ARTICLE                                  -->
+  <!-- ============================================================ -->
+  <section id="principle">
+    <div class="section-head">
+      <div class="tag">01 — หลักการ</div>
+      <h2>Priority Queue (Heap) คืออะไร และทำไมต้องใช้ Tree</h2>
+      <p>ไล่อ่านตั้งแต่ concept ไปจนถึงโค้ดจริง 6 หัวข้อ</p>
+    </div>
+
+    <div class="article">
+      <h3><span class="num">1</span>Priority Queue คือ ADT ที่ "ดึงตัวสำคัญสุดออกก่อนเสมอ"</h3>
+      <p>Priority Queue ไม่ใช่ FIFO queue ธรรมดา แต่เป็นโครงสร้างข้อมูลที่รองรับอย่างน้อย 2 operation:
+      <b>insert</b> (เหมือน enqueue) และ <b>deleteMin</b> (ค้นหา คืนค่า และลบสมาชิกที่ค่าน้อยที่สุดออก — เหมือน dequeue
+      แต่ดึง "ตัวเล็กสุด" แทนที่จะดึง "ตัวแรกสุด")</p>
+      <div class="adt-diagram">
+        <span class="adt-arrow">deleteMin<div class="adt-line" style="background:linear-gradient(90deg,var(--border),var(--cyan))"></div></span>
+        <div class="adt-box">Priority Queue</div>
+        <span class="adt-arrow">insert<div class="adt-line" style="background:linear-gradient(90deg,var(--cyan),var(--border))"></div></span>
+      </div>
+      <p>ใช้งานจริงใน: คิวเครื่องพิมพ์ (งานสำคัญพิมพ์ก่อน), การจัดคิว process ของ OS, และ graph algorithm หลายตัว
+      (เช่น Dijkstra's shortest path)</p>
+
+      <h3><span class="num">2</span>ทำไมไม่ใช้ list ธรรมดา — ต้องมี Binary Heap</h3>
+      <p>ถ้า implement ตรงไปตรงมาด้วย list จะเจอปัญหา insert เร็วแล้ว deleteMin ช้า หรือกลับกันเสมอ
+      Binary Heap คือ compromise ที่ทำให้ทั้งสอง operation เร็วพร้อมกัน:</p>
+      <table class="cmp">
+        <tbody><tr><th>วิธี implement</th><th>insert</th><th>deleteMin</th></tr>
+        <tr><td>List ไม่เรียงลำดับ</td><td class="hl">O(1)</td><td class="bad">O(N) — ต้องไล่หาตัวน้อยสุดทั้ง list</td></tr>
+        <tr><td>List เรียงลำดับอยู่แล้ว</td><td class="bad">O(N) — ต้องเลื่อนหาตำแหน่งแทรก</td><td class="hl">O(1)</td></tr>
+        <tr><td><b>Binary Heap</b></td><td class="hl">O(log N)</td><td class="hl">O(log N)</td></tr>
+      </tbody></table>
+      <p>Binary Heap เป็นแค่หนึ่งในหลายวิธี (ยังมี d-Heap, Leftist Heap, Binomial Heap, Fibonacci Heap) แต่เป็นแบบที่ใช้บ่อยที่สุด
+      เพราะ implement ง่ายและมี constant factor ต่ำ</p>
+
+      <h3><span class="num">3</span>คุณสมบัติที่ 1 — Structure Property</h3>
+      <p>Binary Heap ต้องเป็น <b>complete binary tree</b>: เติมเต็มทุกชั้นจากซ้ายไปขวา ห้ามมีช่องว่างระหว่างทาง
+      คุณสมบัตินี้ทำให้ tree มีรูปแบบตายตัว จึงแทนด้วย <b>array</b> ได้พอดีโดยไม่ต้องเก็บ pointer ซ้าย/ขวา/พ่อเลย</p>
+      <div class="cards">
+        <div class="card">
+          <h4 style="color:var(--cyan)">การแปลง index ↔ ตำแหน่งใน tree</h4>
+          <p>สำหรับสมาชิกที่ตำแหน่ง <span class="mono">i</span> ใน array (เริ่มนับที่ index 1 เพราะ index 0 ไม่ใช้งาน)</p>
+          <div class="formula">
+            <span class="pill">left child = 2i</span>
+            <span class="pill">right child = 2i+1</span>
+            <span class="pill">parent = i // 2</span>
+          </div>
+        </div>
+        <div class="card amber">
+          <h4 style="color:var(--amber)">ทำไมความสูงเป็น O(log N)</h4>
+          <p>ถ้า heap สูง h ชั้น จะมีสมาชิกได้ระหว่าง 2ʰ ถึง 2ʰ⁺¹−1 ตัว เพราะ tree เติมเต็มแน่นทุกชั้น
+          ดังนั้นความสูงของ heap ที่มี N ตัวจึงเป็น <span class="mono">O(log N)</span> — นี่คือเหตุผลที่ insert/deleteMin เร็ว
+          เพราะแค่เดินขึ้น-ลงตามความสูงของ tree เท่านั้น</p>
+        </div>
+      </div>
+
+      <h3><span class="num">4</span>คุณสมบัติที่ 2 — Heap-Order Property</h3>
+      <p><b>ค่าของพ่อ ≤ ค่าของลูกเสมอ</b> (สำหรับ min-heap) ทุกโหนดยกเว้น root ผลที่ตามมาคือ
+      <b>ค่าน้อยที่สุดของทั้งต้นไม้อยู่ที่ root เสมอ</b> (<span class="mono">array[1]</span>) — deleteMin จึงรู้ตำแหน่งคำตอบทันที
+      โดยไม่ต้องค้นหาเลย</p>
+
+      <h3><span class="num">5</span>Insert — ใส่ค่าใหม่โดยไม่ทำลาย heap property</h3>
+      <p>หลักการคือสร้าง "ช่องว่าง (hole)" ที่ตำแหน่งถัดไปสุดท้ายของ array (รักษา structure property) แล้วเทียบค่าใหม่กับพ่อของ hole
+      ไปเรื่อยๆ ถ้าค่าใหม่ <b>น้อยกว่า</b> พ่อ แสดงว่าผิด heap-order → ย้ายพ่อลงมาแทนที่ hole แล้วขยับ hole ขึ้นไปแทนตำแหน่งพ่อ
+      (เรียกว่า <b>percolate up</b>) ทำซ้ำจนกว่าค่าใหม่จะไม่เล็กกว่าพ่อ แล้วค่อยใส่ค่าจริงลงใน hole</p>
+      <ul>
+        <li>สร้าง hole ที่ตำแหน่ง <span class="mono">currentSize</span> หลังเพิ่มขนาด</li>
+        <li>วนเทียบ <span class="mono">x &lt; array[hole // 2]</span> — ถ้าจริง ย้ายพ่อลงมา แล้ว <span class="mono">hole //= 2</span></li>
+        <li>ออกจากลูปเมื่อ hole ถึง root หรือค่าใหม่ไม่เล็กกว่าพ่อแล้ว</li>
+        <li>ใส่ค่าจริงที่ hole สุดท้าย</li>
+      </ul>
+
+      <h3><span class="num">6</span>deleteMin — ดึงตัวน้อยสุดออกโดยไม่ทำลาย heap property</h3>
+      <p>เก็บค่า root ไว้เป็นคำตอบ แล้วเอา element ตัวสุดท้ายของ array มาใส่ที่ root แทน (รักษา structure property)
+      ค่าที่ย้ายมาอาจใหญ่เกินไปจนผิด heap-order → เทียบกับ <b>ลูกที่มีค่าน้อยกว่า</b> ระหว่างลูกซ้ายกับลูกขวา ถ้า root ใหญ่กว่า
+      ให้สลับค่าลงไป (เรียกว่า <b>percolate down</b>) ทำซ้ำจนกว่าจะไม่ผิด heap-order หรือไม่มีลูกแล้ว</p>
+      <p style="color:var(--muted); font-size:13.5px;">เลื่อนลงไปด้านล่างเพื่อดู insert/deleteMin ทำงานจริงแบบ debugger ทีละบรรทัด 👇</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2: BUILD FROM SCRATCH                                 -->
+  <!-- ============================================================ -->
+  <section id="build">
+    <div class="section-head">
+      <div class="tag">02 — build from empty</div>
+      <h2>สร้าง Heap ขึ้นใหม่ด้วยการ insert ทีละตัว</h2>
+      <p>เริ่มจาก heap ว่างเปล่า แล้ว insert ค่าตามลำดับ
+      <span class="mono pill">13 → 21 → 16 → 24 → 31 → 19 → 68 → 65 → 26 → 32</span>
+      แต่ละตัวจะผ่านขั้นตอน percolate-up ของตัวเอง กด "ตัวถัดไป ⏭" เพื่อข้ามไปดู insert ตัวต่อไปเลย
+      หรือกด Next ทีละบรรทัดเพื่อดูรายละเอียด</p>
+    </div>
+    <div class="debugger" id="buildDebugger">
+    <div class="dbg-grid">
+      <div>
+        <div class="panel-box">
+          <div class="panel-title"><span>Tree View</span><span id="bld_sizeTag" class="mono">currentSize = 0</span></div>
+          <svg class="tree" id="bld_treeSvg" viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+        <div class="panel-box" style="margin-top:14px;">
+          <div class="panel-title"><span>Array View</span><span class="mono">index 0 ไม่ใช้งาน</span></div>
+          <div class="array-row" id="bld_arrayRow"><div class="abox dead"><span class="aidx">0</span>·</div></div>
+          <div class="legend">
+            <span><i class="hole"></i> hole (ตำแหน่งว่าง)</span>
+            <span><i class="compare"></i> กำลังเปรียบเทียบ</span>
+            <span><i class="moved"></i> เพิ่งย้ายค่า</span>
+            <span><i class="final"></i> ค่าสุดท้ายที่วาง</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="panel-box">
+          <div class="panel-title"><span>Source</span><span class="mono">python</span></div>
+          <div class="code-block" id="bld_codeBlock"><div class="code-line active"><span class="ln">1</span><span>def insert(self, x):</span></div><div class="code-line"><span class="ln">2</span><span>    if self.is_full():</span></div><div class="code-line"><span class="ln">3</span><span>        return</span></div><div class="code-line"><span class="ln">4</span><span>    self.currentSize += 1</span></div><div class="code-line"><span class="ln">5</span><span>    hole = self.currentSize</span></div><div class="code-line"><span class="ln">6</span><span>    while hole &gt; 1 and x &lt; self.array[hole // 2]:</span></div><div class="code-line"><span class="ln">7</span><span>        self.array[hole] = self.array[hole // 2]</span></div><div class="code-line"><span class="ln">8</span><span>        hole //= 2</span></div><div class="code-line"><span class="ln">9</span><span>    self.array[hole] = x</span></div></div>
+        </div>
+        <div class="panel-box" style="margin-top:14px;">
+          <div class="panel-title">Watch</div>
+          <div class="watch-list" id="bld_watchList"><div class="watch-item"><span class="k">—</span><span class="v">ยังไม่มีตัวแปร</span></div></div>
+        </div>
+        <div id="bld_badgeSlot"></div>
+        <div class="narration" id="bld_narration">เริ่มต้น: heap ว่างเปล่า (currentSize = 0) — เตรียม insert ทั้งหมด 10 ค่า</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="ctrl-btn" id="bld_resetBtn">⟲ Reset</button>
+      <button class="ctrl-btn ghost" id="bld_prevJump">⏮ ตัวก่อนหน้า</button>
+      <button class="ctrl-btn" id="bld_prevBtn" disabled="">◀ Prev</button>
+      <button class="ctrl-btn primary" id="bld_nextBtn">Next ▶</button>
+      <button class="ctrl-btn ghost" id="bld_nextJump">ตัวถัดไป ⏭</button>
+      <button class="ctrl-btn" id="bld_playBtn">▶ Auto Play</button>
+      <span class="step-counter" id="bld_stepCounter">Step 0 / 59</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="bld_progressFill" style="width:0%"></div></div>
+    <div class="console">
+      <div class="console-title">Debug Console</div>
+      <div id="bld_consoleLog"><div class="console-line current marker"><b>[step 0]</b> เริ่มต้น: heap ว่างเปล่า (currentSize = 0) — เตรียม insert ทั้งหมด 10 ค่า</div></div>
+    </div>
+  </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3: SINGLE INSERT / DELETEMIN DEMO                     -->
+  <!-- ============================================================ -->
+  <section id="demo">
+    <div class="section-head">
+      <div class="tag">03 — single-op demo</div>
+      <h2>Insert(14) และ deleteMin() บน heap 10 ตัวที่สร้างเสร็จแล้ว</h2>
+      <p>ใช้ heap ผลลัพธ์จากขั้นตอนด้านบน <span class="mono pill">[13, 21, 16, 24, 31, 19, 68, 65, 26, 32]</span>
+      เป็นจุดเริ่มต้น</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="insert">insert(14)</button>
+      <button class="tab-btn" data-tab="delete">deleteMin()</button>
+    </div>
+    <div class="debugger" id="demoDebugger">
+    <div class="dbg-grid">
+      <div>
+        <div class="panel-box">
+          <div class="panel-title"><span>Tree View</span><span id="demo_sizeTag" class="mono">currentSize = 10</span></div>
+          <svg class="tree" id="demo_treeSvg" viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg"><line class="edge" x1="380" y1="46" x2="210" y2="141"></line><line class="edge" x1="380" y1="46" x2="550" y2="141"></line><line class="edge" x1="210" y1="141" x2="125" y2="236"></line><line class="edge" x1="210" y1="141" x2="295" y2="236"></line><line class="edge" x1="550" y1="141" x2="465" y2="236"></line><line class="edge" x1="550" y1="141" x2="635" y2="236"></line><line class="edge" x1="125" y1="236" x2="82.5" y2="331"></line><line class="edge" x1="125" y1="236" x2="167.5" y2="331"></line><line class="edge" x1="295" y1="236" x2="252.5" y2="331"></line><g><circle cx="380" cy="46" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="380" y="47">13</text>
+        <text class="node-idx" x="380" y="16">[1]</text></g><g><circle cx="210" cy="141" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="210" y="142">21</text>
+        <text class="node-idx" x="210" y="111">[2]</text></g><g><circle cx="550" cy="141" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="550" y="142">16</text>
+        <text class="node-idx" x="550" y="111">[3]</text></g><g><circle cx="125" cy="236" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="125" y="237">24</text>
+        <text class="node-idx" x="125" y="206">[4]</text></g><g><circle cx="295" cy="236" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="295" y="237">31</text>
+        <text class="node-idx" x="295" y="206">[5]</text></g><g><circle cx="465" cy="236" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="465" y="237">19</text>
+        <text class="node-idx" x="465" y="206">[6]</text></g><g><circle cx="635" cy="236" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="635" y="237">68</text>
+        <text class="node-idx" x="635" y="206">[7]</text></g><g><circle cx="82.5" cy="331" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="82.5" y="332">65</text>
+        <text class="node-idx" x="82.5" y="301">[8]</text></g><g><circle cx="167.5" cy="331" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="167.5" y="332">26</text>
+        <text class="node-idx" x="167.5" y="301">[9]</text></g><g><circle cx="252.5" cy="331" r="22" fill="#20222c" stroke="#3a3d4b" stroke-width="2" stroke-dasharray=""></circle>
+        <text class="node-text" x="252.5" y="332">32</text>
+        <text class="node-idx" x="252.5" y="301">[10]</text></g></svg>
+        </div>
+        <div class="panel-box" style="margin-top:14px;">
+          <div class="panel-title"><span>Array View</span><span class="mono">index 0 ไม่ใช้งาน</span></div>
+          <div class="array-row" id="demo_arrayRow"><div class="abox dead"><span class="aidx">0</span>·</div><div class="abox"><span class="aidx">1</span>13</div><div class="abox"><span class="aidx">2</span>21</div><div class="abox"><span class="aidx">3</span>16</div><div class="abox"><span class="aidx">4</span>24</div><div class="abox"><span class="aidx">5</span>31</div><div class="abox"><span class="aidx">6</span>19</div><div class="abox"><span class="aidx">7</span>68</div><div class="abox"><span class="aidx">8</span>65</div><div class="abox"><span class="aidx">9</span>26</div><div class="abox"><span class="aidx">10</span>32</div></div>
+          <div class="legend">
+            <span><i class="hole"></i> hole (ตำแหน่งว่าง)</span>
+            <span><i class="compare"></i> กำลังเปรียบเทียบ</span>
+            <span><i class="moved"></i> เพิ่งย้ายค่า</span>
+            <span><i class="final"></i> ค่าสุดท้ายที่วาง</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="panel-box">
+          <div class="panel-title"><span>Source</span><span class="mono">python</span></div>
+          <div class="code-block" id="demo_codeBlock"><div class="code-line"><span class="ln">1</span><span>def insert(self, x):</span></div><div class="code-line active"><span class="ln">2</span><span>    if self.is_full():</span></div><div class="code-line"><span class="ln">3</span><span>        return</span></div><div class="code-line"><span class="ln">4</span><span>    self.currentSize += 1</span></div><div class="code-line"><span class="ln">5</span><span>    hole = self.currentSize</span></div><div class="code-line"><span class="ln">6</span><span>    while hole &gt; 1 and x &lt; self.array[hole // 2]:</span></div><div class="code-line"><span class="ln">7</span><span>        self.array[hole] = self.array[hole // 2]</span></div><div class="code-line"><span class="ln">8</span><span>        hole //= 2</span></div><div class="code-line"><span class="ln">9</span><span>    self.array[hole] = x</span></div></div>
+        </div>
+        <div class="panel-box" style="margin-top:14px;">
+          <div class="panel-title">Watch</div>
+          <div class="watch-list" id="demo_watchList"><div class="watch-item"><span class="k">x</span><span class="v">14</span></div></div>
+        </div>
+        <div id="demo_badgeSlot"></div>
+        <div class="narration" id="demo_narration">ตรวจสอบ is_full() → heap ยังไม่เต็ม ข้ามเงื่อนไขนี้ไป</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="ctrl-btn" id="demo_resetBtn">⟲ Reset</button>
+      
+      <button class="ctrl-btn" id="demo_prevBtn" disabled="">◀ Prev</button>
+      <button class="ctrl-btn primary" id="demo_nextBtn">Next ▶</button>
+      
+      <button class="ctrl-btn" id="demo_playBtn">▶ Auto Play</button>
+      <span class="step-counter" id="demo_stepCounter">Step 0 / 13</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="demo_progressFill" style="width:0%"></div></div>
+    <div class="console">
+      <div class="console-title">Debug Console</div>
+      <div id="demo_consoleLog"><div class="console-line current marker"><b>[step 0]</b> ตรวจสอบ is_full() → heap ยังไม่เต็ม ข้ามเงื่อนไขนี้ไป</div></div>
+    </div>
+  </div>
+  </section>
+
+</div>
+
+<footer>ทำจากตัวอย่างในเอกสาร Lecture 8 / 8.1 — Data Structures and Algorithms · Pradit Pitaksathienkul</footer>
+
+<script>
+/* ================================================================
+   CORE ALGORITHM SIMULATION (generic, chain-able)
+================================================================ */
+function insertOnce(array, currentSize, x, meta){
+  // array: full array incl. index 0 (unused). returns {trace, array, currentSize}
+  array = array.slice();
+  const trace = [];
+  function snap(line, note, highlights, watch, boundary){
+    trace.push({ line, note, watch: Object.assign({}, watch), array: array.slice(), currentSize,
+      highlights: highlights||[], meta: meta||null, boundary: !!boundary });
+  }
+
+  snap(2, `ตรวจสอบ is_full() → heap ยังไม่เต็ม ข้ามเงื่อนไขนี้ไป`, [], {x}, true);
+
+  currentSize += 1;
+  while(array.length <= currentSize) array.push(null);
+  snap(4, `currentSize += 1  →  currentSize = ${currentSize}`, [], {x, currentSize});
+
+  let hole = currentSize;
+  array[hole] = null;
+  snap(5, `hole = currentSize = ${hole}  (สร้างช่องว่างที่ตำแหน่งสุดท้ายของ array)`, [{index:hole,type:'hole'}], {x, currentSize, hole});
+
+  while(true){
+    const condA = hole > 1;
+    snap(6, `ตรวจ while: hole > 1  →  ${hole} > 1  =  ${condA}`, [{index:hole,type:'hole'}], {x, currentSize, hole});
+    if(!condA) break;
+    const parent = Math.floor(hole/2);
+    const condB = x < array[parent];
+    snap(6, `เปรียบเทียบ x < array[hole // 2]  →  ${x} < array[${parent}] (${array[parent]})  =  ${condB}`,
+      [{index:hole,type:'hole'},{index:parent,type:'compare'}], {x, currentSize, hole, "parent(hole//2)":parent});
+    if(!condB) break;
+    array[hole] = array[parent];
+    snap(7, `array[hole] = array[hole // 2]  →  ย้ายค่า ${array[parent]} จากตำแหน่ง ${parent} มาไว้ที่ ${hole}`,
+      [{index:hole,type:'moved'},{index:parent,type:'compare'}], {x, currentSize, hole, "parent(hole//2)":parent});
+    array[parent] = null;
+    hole = parent;
+    snap(8, `hole //= 2  →  hole = ${hole}  (ช่องว่างขยับขึ้นไปแทนตำแหน่งพ่อ)`, [{index:hole,type:'hole'}], {x, currentSize, hole});
+  }
+
+  array[hole] = x;
+  snap(9, `array[hole] = x  →  ใส่ค่า ${x} ที่ตำแหน่ง ${hole}  ✔ จบการ insert ค่านี้`, [{index:hole,type:'final'}], {x, currentSize, hole});
+
+  return { trace, array, currentSize };
+}
+
+function traceBuildFromScratch(values){
+  let array = [null];
+  let currentSize = 0;
+  let full = [];
+  const markers = [];
+  full.push({ line:1, note:`เริ่มต้น: heap ว่างเปล่า (currentSize = 0) — เตรียม insert ทั้งหมด ${values.length} ค่า`,
+    watch:{}, array: array.slice(), currentSize:0, highlights:[], meta:null, boundary:true });
+  values.forEach((v,i)=>{
+    markers.push(full.length);
+    const res = insertOnce(array, currentSize, v, {num:i+1, total:values.length, value:v});
+    res.trace[0].boundary = true;
+    full = full.concat(res.trace);
+    array = res.array; currentSize = res.currentSize;
+  });
+  return { trace: full, markers };
+}
+
+function traceInsertSingle(initArray, initSize, x){
+  const res = insertOnce(initArray, initSize, x, null);
+  return res.trace;
+}
+
+function traceDeleteMin(initArray, initSize){
+  const trace = [];
+  let array = initArray.slice();
+  let currentSize = initSize;
+  function snap(line, note, highlights, watch){
+    trace.push({ line, note, watch: Object.assign({}, watch), array: array.slice(), currentSize, highlights: highlights||[] });
+  }
+  const min_item = array[1];
+  snap(2, `min_item = array[1]  →  min_item = ${min_item}`, [{index:1,type:'final'}], {min_item});
+  array[1] = array[currentSize];
+  snap(3, `array[1] = array[currentSize]  →  นำค่า ${array[1]} (ตำแหน่งสุดท้าย ${currentSize}) มาไว้ที่ root`, [{index:1,type:'hole'}], {min_item});
+  currentSize -= 1;
+  snap(4, `currentSize -= 1  →  currentSize = ${currentSize}`, [{index:1,type:'hole'}], {min_item, currentSize});
+  snap(5, `เรียก self._percolate_down(1)`, [{index:1,type:'hole'}], {min_item, currentSize});
+  let hole = 1;
+  let temp = array[hole];
+  snap(9, `temp = array[hole]  →  temp = ${temp}`, [{index:hole,type:'hole'}], {min_item, currentSize, hole, temp});
+  while(true){
+    const condA = hole*2 <= currentSize;
+    snap(10, `ตรวจ while: hole*2 <= currentSize  →  ${hole*2} <= ${currentSize}  =  ${condA}`, [{index:hole,type:'hole'}], {min_item, currentSize, hole, temp});
+    if(!condA) break;
+    let child = hole*2;
+    snap(11, `child = hole*2  →  child = ${child}  (ลูกซ้าย)`, [{index:hole,type:'hole'},{index:child,type:'compare'}], {min_item, currentSize, hole, child, temp});
+    const rightExists = (child+1) <= currentSize;
+    const condC = rightExists && (child !== currentSize) && (array[child+1] < array[child]);
+    snap(12, `เช็คลูกขวา: child != currentSize (${child}!=${currentSize}) และ array[${child+1}]=${rightExists?array[child+1]:'—'} < array[${child}]=${array[child]}  →  ${condC}`,
+      [{index:hole,type:'hole'},{index:child,type:'compare'},{index:rightExists?child+1:null,type:'compare2'}], {min_item, currentSize, hole, child, temp});
+    if(condC){ child += 1; snap(13, `child += 1  →  child = ${child}  (ลูกขวาน้อยกว่า จึงเลือกลูกขวา)`, [{index:hole,type:'hole'},{index:child,type:'compare'}], {min_item, currentSize, hole, child, temp}); }
+    const condD = array[child] < temp;
+    snap(14, `ตรวจ: array[child]=${array[child]} < temp=${temp}  →  ${condD}`, [{index:hole,type:'hole'},{index:child,type:'compare'}], {min_item, currentSize, hole, child, temp});
+    if(condD){
+      array[hole] = array[child];
+      snap(15, `array[hole] = array[child]  →  ย้าย ${array[child]} ขึ้นไปที่ตำแหน่ง ${hole}`, [{index:hole,type:'moved'},{index:child,type:'compare'}], {min_item, currentSize, hole, child, temp});
+      array[child] = null;
+      hole = child;
+      snap(18, `hole = child  →  hole = ${hole}  (ช่องว่างขยับลงมาแทนตำแหน่งลูก)`, [{index:hole,type:'hole'}], {min_item, currentSize, hole, temp});
+    } else {
+      snap(17, `array[child] ไม่น้อยกว่า temp  →  break ออกจาก while loop`, [{index:hole,type:'hole'},{index:child,type:'compare'}], {min_item, currentSize, hole, child, temp});
+      break;
+    }
+  }
+  array[hole] = temp;
+  snap(19, `array[hole] = temp  →  ใส่ค่า ${temp} กลับที่ตำแหน่ง ${hole}  ✔ จบ _percolate_down()`, [{index:hole,type:'final'}], {min_item, currentSize, hole, temp});
+  snap(6, `return min_item  →  คืนค่า ${min_item} เป็นผลลัพธ์ของ deleteMin()`, [], {min_item, currentSize});
+  return trace;
+}
+
+/* ================================================================
+   CODE TEXT
+================================================================ */
+const INSERT_CODE = [
+  "def insert(self, x):",
+  "    if self.is_full():",
+  "        return",
+  "    self.currentSize += 1",
+  "    hole = self.currentSize",
+  "    while hole > 1 and x < self.array[hole // 2]:",
+  "        self.array[hole] = self.array[hole // 2]",
+  "        hole //= 2",
+  "    self.array[hole] = x"
+];
+const DELETE_CODE = [
+  "def delete_min(self):",
+  "    min_item = self.array[1]",
+  "    self.array[1] = self.array[self.currentSize]",
+  "    self.currentSize -= 1",
+  "    self._percolate_down(1)",
+  "    return min_item",
+  "",
+  "def _percolate_down(self, hole):",
+  "    temp = self.array[hole]",
+  "    while hole * 2 <= self.currentSize:",
+  "        child = hole * 2",
+  "        if child != self.currentSize and self.array[child+1] < self.array[child]:",
+  "            child += 1",
+  "        if self.array[child] < temp:",
+  "            self.array[hole] = self.array[child]",
+  "        else:",
+  "            break",
+  "        hole = child",
+  "    self.array[hole] = temp"
+];
+
+/* ================================================================
+   REUSABLE DEBUGGER WIDGET FACTORY
+================================================================ */
+function buildDebuggerWidget(container, opts){
+  // opts: { getCode(mode), tabs (optional array of {key,label}), buildTrace(key) -> {trace, markers} or trace, showJump }
+  container.innerHTML = `
+    <div class="dbg-grid">
+      <div>
+        <div class="panel-box">
+          <div class="panel-title"><span>Tree View</span><span id="${opts.id}_sizeTag" class="mono">currentSize = 0</span></div>
+          <svg class="tree" id="${opts.id}_treeSvg" viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+        <div class="panel-box" style="margin-top:14px;">
+          <div class="panel-title"><span>Array View</span><span class="mono">index 0 ไม่ใช้งาน</span></div>
+          <div class="array-row" id="${opts.id}_arrayRow"></div>
+          <div class="legend">
+            <span><i class="hole"></i> hole (ตำแหน่งว่าง)</span>
+            <span><i class="compare"></i> กำลังเปรียบเทียบ</span>
+            <span><i class="moved"></i> เพิ่งย้ายค่า</span>
+            <span><i class="final"></i> ค่าสุดท้ายที่วาง</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="panel-box">
+          <div class="panel-title"><span>Source</span><span class="mono">python</span></div>
+          <div class="code-block" id="${opts.id}_codeBlock"></div>
+        </div>
+        <div class="panel-box" style="margin-top:14px;">
+          <div class="panel-title">Watch</div>
+          <div class="watch-list" id="${opts.id}_watchList"></div>
+        </div>
+        <div id="${opts.id}_badgeSlot"></div>
+        <div class="narration" id="${opts.id}_narration">กด "Next" เพื่อเริ่มไล่ทีละบรรทัด</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button class="ctrl-btn" id="${opts.id}_resetBtn">⟲ Reset</button>
+      ${opts.showJump ? `<button class="ctrl-btn ghost" id="${opts.id}_prevJump">⏮ ตัวก่อนหน้า</button>` : ''}
+      <button class="ctrl-btn" id="${opts.id}_prevBtn">◀ Prev</button>
+      <button class="ctrl-btn primary" id="${opts.id}_nextBtn">Next ▶</button>
+      ${opts.showJump ? `<button class="ctrl-btn ghost" id="${opts.id}_nextJump">ตัวถัดไป ⏭</button>` : ''}
+      <button class="ctrl-btn" id="${opts.id}_playBtn">▶ Auto Play</button>
+      <span class="step-counter" id="${opts.id}_stepCounter">Step 0 / 0</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="${opts.id}_progressFill" style="width:0%"></div></div>
+    <div class="console">
+      <div class="console-title">Debug Console</div>
+      <div id="${opts.id}_consoleLog"></div>
+    </div>
+  `;
+
+  const st = { mode: opts.defaultMode, trace: [], markers:[0], idx: 0, playing: false, timer: null };
+
+  function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function renderTree(step){
+    const svg = document.getElementById(`${opts.id}_treeSvg`);
+    const size = step.currentSize;
+    const values = step.array;
+    const highlightMap = {};
+    step.highlights.forEach(h => { if(h.index!=null) highlightMap[h.index] = h.type; });
+    const W = 760, marginX = 40;
+    const nodes = [];
+    for(let i=1;i<=size;i++){
+      const depth = Math.floor(Math.log2(i));
+      const levelStart = Math.pow(2,depth);
+      const posInLevel = i - levelStart;
+      const x = marginX + (posInLevel+0.5) * (W-2*marginX)/levelStart;
+      const y = 46 + depth*95;
+      nodes.push({i, x, y, val: values[i]});
+    }
+    let edges = '';
+    nodes.forEach(n=>{
+      const p = Math.floor(n.i/2);
+      if(p>=1){ const pn = nodes.find(nn=>nn.i===p); if(pn) edges += `<line class="edge" x1="${pn.x}" y1="${pn.y}" x2="${n.x}" y2="${n.y}"/>`; }
+    });
+    let circles = '';
+    nodes.forEach(n=>{
+      const type = highlightMap[n.i];
+      let stroke = '#3a3d4b', fill='#20222c', dash='';
+      if(type==='hole'){ stroke='var(--amber)'; fill='rgba(245,166,35,0.12)'; dash='6,4'; }
+      else if(type==='compare'){ stroke='var(--cyan)'; fill='rgba(79,209,232,0.12)'; }
+      else if(type==='compare2'){ stroke='var(--cyan)'; fill='rgba(79,209,232,0.05)'; dash='3,3'; }
+      else if(type==='moved'){ stroke='var(--green)'; fill='rgba(74,222,128,0.14)'; }
+      else if(type==='final'){ stroke='var(--violet)'; fill='rgba(183,148,246,0.18)'; }
+      const label = (n.val===null || n.val===undefined) ? '∅' : n.val;
+      circles += `<g><circle cx="${n.x}" cy="${n.y}" r="22" fill="${fill}" stroke="${stroke}" stroke-width="2" stroke-dasharray="${dash}"/>
+        <text class="node-text" x="${n.x}" y="${n.y+1}">${label}</text>
+        <text class="node-idx" x="${n.x}" y="${n.y-30}">[${n.i}]</text></g>`;
+    });
+    svg.innerHTML = edges + circles;
+    document.getElementById(`${opts.id}_sizeTag`).textContent = `currentSize = ${size}`;
+  }
+
+  function renderArray(step){
+    const row = document.getElementById(`${opts.id}_arrayRow`);
+    const highlightMap = {};
+    step.highlights.forEach(h => { if(h.index!=null) highlightMap[h.index] = h.type; });
+    const maxIdx = Math.max(step.array.length-1, step.currentSize);
+    let html = '';
+    for(let i=0;i<=maxIdx;i++){
+      if(i===0){ html += `<div class="abox dead"><span class="aidx">0</span>·</div>`; continue; }
+      const val = step.array[i];
+      const type = highlightMap[i];
+      let cls = 'abox';
+      if(i>step.currentSize) cls += ' dead';
+      if(type) cls += ' ' + type;
+      const label = (val===null||val===undefined) ? (i<=step.currentSize? '∅':'') : val;
+      html += `<div class="${cls}"><span class="aidx">${i}</span>${label}</div>`;
+    }
+    row.innerHTML = html;
+  }
+
+  function renderCode(step){
+    const code = opts.getCode(st.mode);
+    const box = document.getElementById(`${opts.id}_codeBlock`);
+    let html = '';
+    code.forEach((line, i)=>{
+      const lineNo = i+1;
+      const active = lineNo === step.line;
+      html += `<div class="code-line${active?' active':''}"><span class="ln">${lineNo}</span><span>${escapeHtml(line)}</span></div>`;
+    });
+    box.innerHTML = html;
+    const activeEl = box.querySelector('.active');
+    if(activeEl) activeEl.scrollIntoView({block:'nearest'});
+  }
+
+  function renderWatch(step){
+    const list = document.getElementById(`${opts.id}_watchList`);
+    const entries = Object.entries(step.watch);
+    if(entries.length===0){ list.innerHTML = `<div class="watch-item"><span class="k">—</span><span class="v">ยังไม่มีตัวแปร</span></div>`; return; }
+    list.innerHTML = entries.map(([k,v])=>`<div class="watch-item"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('');
+  }
+
+  function renderBadge(step){
+    const slot = document.getElementById(`${opts.id}_badgeSlot`);
+    if(step.meta){
+      slot.innerHTML = `<div class="insert-badge">🔧 กำลังแทรกตัวที่ ${step.meta.num} / ${step.meta.total} : ค่า ${step.meta.value}</div>`;
+    } else { slot.innerHTML = ''; }
+  }
+
+  function renderConsole(){
+    const log = document.getElementById(`${opts.id}_consoleLog`);
+    let html = '';
+    st.trace.forEach((s,i)=>{
+      if(i>st.idx) return;
+      const cur = i===st.idx ? ' current' : '';
+      const mk = s.boundary ? ' marker' : '';
+      html += `<div class="console-line${cur}${mk}"><b>[step ${i}]</b> ${s.note}</div>`;
+    });
+    log.innerHTML = html;
+    log.scrollTop = log.scrollHeight;
+  }
+
+  function render(){
+    const step = st.trace[st.idx];
+    renderTree(step); renderArray(step); renderCode(step); renderWatch(step); renderBadge(step);
+    document.getElementById(`${opts.id}_narration`).textContent = step.note;
+    document.getElementById(`${opts.id}_stepCounter`).textContent = `Step ${st.idx} / ${st.trace.length-1}`;
+    document.getElementById(`${opts.id}_progressFill`).style.width = `${st.trace.length>1 ? (st.idx/(st.trace.length-1))*100 : 0}%`;
+    document.getElementById(`${opts.id}_prevBtn`).disabled = st.idx===0;
+    document.getElementById(`${opts.id}_nextBtn`).disabled = st.idx===st.trace.length-1;
+    renderConsole();
+  }
+
+  function stopPlay(){
+    st.playing = false; clearInterval(st.timer);
+    document.getElementById(`${opts.id}_playBtn`).textContent = '▶ Auto Play';
+  }
+
+  function setMode(mode){
+    st.mode = mode;
+    const res = opts.buildTrace(mode);
+    if(Array.isArray(res)){ st.trace = res; st.markers = [0]; }
+    else { st.trace = res.trace; st.markers = res.markers && res.markers.length ? res.markers : [0]; }
+    st.idx = 0; stopPlay(); render();
+  }
+
+  document.getElementById(`${opts.id}_nextBtn`).addEventListener('click', ()=>{
+    if(st.idx < st.trace.length-1){ st.idx++; render(); }
+    if(st.idx === st.trace.length-1) stopPlay();
+  });
+  document.getElementById(`${opts.id}_prevBtn`).addEventListener('click', ()=>{
+    if(st.idx > 0){ st.idx--; render(); }
+  });
+  document.getElementById(`${opts.id}_resetBtn`).addEventListener('click', ()=>{ st.idx = 0; stopPlay(); render(); });
+  document.getElementById(`${opts.id}_playBtn`).addEventListener('click', ()=>{
+    if(st.playing){ stopPlay(); return; }
+    st.playing = true;
+    document.getElementById(`${opts.id}_playBtn`).textContent = '⏸ Pause';
+    st.timer = setInterval(()=>{
+      if(st.idx < st.trace.length-1){ st.idx++; render(); } else { stopPlay(); }
+    }, 1300);
+  });
+  if(opts.showJump){
+    document.getElementById(`${opts.id}_nextJump`).addEventListener('click', ()=>{
+      const nxt = st.markers.find(m => m > st.idx);
+      st.idx = nxt !== undefined ? nxt : st.trace.length-1;
+      stopPlay(); render();
+    });
+    document.getElementById(`${opts.id}_prevJump`).addEventListener('click', ()=>{
+      const past = st.markers.filter(m => m < st.idx);
+      st.idx = past.length ? past[past.length-1] : 0;
+      stopPlay(); render();
+    });
+  }
+
+  return { setMode };
+}
+
+/* ================================================================
+   INIT: BUILD-FROM-SCRATCH WIDGET
+================================================================ */
+const BUILD_VALUES = [13, 21, 16, 24, 31, 19, 68, 65, 26, 32];
+const buildWidget = buildDebuggerWidget(document.getElementById('buildDebugger'), {
+  id: 'bld',
+  defaultMode: 'build',
+  showJump: true,
+  getCode: () => INSERT_CODE,
+  buildTrace: () => traceBuildFromScratch(BUILD_VALUES)
+});
+buildWidget.setMode('build');
+
+/* ================================================================
+   INIT: SINGLE INSERT / DELETEMIN WIDGET
+================================================================ */
+const INIT_ARRAY = [null,13,21,16,24,31,19,68,65,26,32];
+const INIT_SIZE = 10;
+const demoWidget = buildDebuggerWidget(document.getElementById('demoDebugger'), {
+  id: 'demo',
+  defaultMode: 'insert',
+  showJump: false,
+  getCode: (mode) => mode==='insert' ? INSERT_CODE : DELETE_CODE,
+  buildTrace: (mode) => mode==='insert' ? traceInsertSingle(INIT_ARRAY, INIT_SIZE, 14) : traceDeleteMin(INIT_ARRAY, INIT_SIZE)
+});
+demoWidget.setMode('insert');
+
+document.querySelectorAll('.tabs .tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const tabRow = btn.parentElement;
+    tabRow.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    demoWidget.setMode(btn.dataset.tab);
+  });
+});
+</script>
+
+
+</body></html>

@@ -1,0 +1,317 @@
+- generic [active] [ref=f3e1]:
+  - heading "Automated BST & Heap Interactive Studio Test" [level=1] [ref=f3e2]
+  - generic [ref=f3e3]: TESTS PASSED (100%)
+  - generic [ref=f3e4]:
+    - heading "🌲 2. อัลกอริทึมของ BST" [level=2] [ref=f3e5]
+    - generic [ref=f3e6]:
+      - generic [ref=f3e7]:
+        - generic [ref=f3e8]:
+          - generic [ref=f3e9]: "Chapter 5: Trees & BST"
+          - heading "🌲 Interactive BST Studio (ห้องทดลองและตัวตรวจสอบต้นไม้ค้นหาทวิภาค)" [level=3] [ref=f3e10]
+        - generic [ref=f3e11]: สเต็ป 1 / 5
+      - generic [ref=f3e12]:
+        - generic [ref=f3e13]:
+          - generic [ref=f3e14]: "ตัวเลข (Number):"
+          - spinbutton [ref=f3e15]: "45"
+        - generic [ref=f3e16]:
+          - button "➕ แทรก (Insert)" [ref=f3e17] [cursor=pointer]
+          - button "🔍 ค้นหา (Search)" [ref=f3e18] [cursor=pointer]
+          - button "🗑️ ลบ (Delete 3 Cases)" [ref=f3e19] [cursor=pointer]
+          - button "🔄 โครงสร้างเดิม" [ref=f3e20] [cursor=pointer]
+      - generic [ref=f3e22]:
+        - img [ref=f3e23]:
+          - generic [ref=f3e30]: "50"
+          - generic [ref=f3e33]: "30"
+          - generic [ref=f3e36]: "20"
+          - generic [ref=f3e39]: "40"
+          - generic [ref=f3e42]: "70"
+          - generic [ref=f3e45]: "60"
+          - generic [ref=f3e48]: "80"
+        - generic [ref=f3e51]:
+          - generic [ref=f3e52]: "Inorder Traversal (Sorted):"
+          - generic [ref=f3e53]: "[ 20, 30, 40, 50, 60, 70, 80 ]"
+      - generic [ref=f3e54]:
+        - generic [ref=f3e55]:
+          - generic [ref=f3e56]:
+            - generic [ref=f3e57]: "สเต็ป 1: เริ่มค้นหาตำแหน่งแทรกค่า 45 จาก Root"
+            - generic [ref=f3e58]: ▶ Line 4
+          - generic [ref=f3e59]: เริ่มต้นตรวจสอบที่รากต้นไม้ (Root = 50)
+          - generic [ref=f3e60]:
+            - button "⏮️ ย้อนสเต็ป" [disabled] [ref=f3e61]
+            - button "▶ เล่น (Play)" [ref=f3e62] [cursor=pointer]
+            - button "⏭️ สเต็ปถัดไป" [ref=f3e63] [cursor=pointer]
+          - generic [ref=f3e64]:
+            - generic [ref=f3e65]: "🔍 ตัวแปรขณะรัน (Live Variables Watch):"
+            - table [ref=f3e66]:
+              - rowgroup [ref=f3e67]:
+                - row [ref=f3e68]:
+                  - columnheader "ตัวแปร (Variable)" [ref=f3e69]
+                  - columnheader "ค่าในหน่วยความจำ (Value)" [ref=f3e70]
+              - rowgroup [ref=f3e71]:
+                - row [ref=f3e72]:
+                  - cell "insert_val" [ref=f3e73]
+                  - cell "45" [ref=f3e74]
+                - row [ref=f3e75]:
+                  - cell "curr" [ref=f3e76]
+                  - cell "50" [ref=f3e77]
+        - generic [ref=f3e78]:
+          - generic [ref=f3e79]:
+            - generic [ref=f3e80]:
+              - generic [ref=f3e81]: 🐍
+              - generic [ref=f3e82]: Python Algorithm Code Debugger
+            - generic [ref=f3e83]: Step Debug
+          - generic [ref=f3e85]:
+            - generic [ref=f3e86]:
+              - generic [ref=f3e87]: "1"
+              - generic [ref=f3e88]: "def insert(self, current, val):"
+              - generic [ref=f3e89]: ◀
+            - generic [ref=f3e90]:
+              - generic [ref=f3e91]: "2"
+              - generic [ref=f3e92]: "if current is None: return Node(val)"
+              - generic [ref=f3e93]: ◀
+            - generic [ref=f3e94]:
+              - generic [ref=f3e95]: "3"
+              - generic [ref=f3e96]: "if val < current.value:"
+              - generic [ref=f3e97]: ◀
+            - generic [ref=f3e98]:
+              - generic [ref=f3e99]: "4"
+              - generic [ref=f3e100]: current.left = self.insert(current.left, val)
+              - generic [ref=f3e101]: ◀
+            - generic [ref=f3e102]:
+              - generic [ref=f3e103]: "5"
+              - generic [ref=f3e104]: "elif val > current.value:"
+              - generic [ref=f3e105]: ◀
+            - generic [ref=f3e106]:
+              - generic [ref=f3e107]: "6"
+              - generic [ref=f3e108]: current.right = self.insert(current.right, val)
+              - generic [ref=f3e109]: ◀
+            - generic [ref=f3e110]:
+              - generic [ref=f3e111]: "7"
+              - generic [ref=f3e112]: return current
+              - generic [ref=f3e113]: ◀
+            - generic [ref=f3e114]:
+              - generic [ref=f3e115]: "8"
+              - generic [ref=f3e116]: ◀
+            - generic [ref=f3e117]:
+              - generic [ref=f3e118]: "9"
+              - generic [ref=f3e119]: "def delete(self, current, val):"
+              - generic [ref=f3e120]: ◀
+            - generic [ref=f3e121]:
+              - generic [ref=f3e122]: "10"
+              - generic [ref=f3e123]: "if val < current.value: current.left = self.delete(current.left, val)"
+              - generic [ref=f3e124]: ◀
+            - generic [ref=f3e125]:
+              - generic [ref=f3e126]: "11"
+              - generic [ref=f3e127]: "elif val > current.value: current.right = self.delete(current.right, val)"
+              - generic [ref=f3e128]: ◀
+            - generic [ref=f3e129]:
+              - generic [ref=f3e130]: "12"
+              - generic [ref=f3e131]: "else:"
+              - generic [ref=f3e132]: ◀
+            - generic [ref=f3e133]:
+              - generic [ref=f3e134]: "13"
+              - generic [ref=f3e135]: "if current.left is None: return current.right"
+              - generic [ref=f3e136]: ◀
+            - generic [ref=f3e137]:
+              - generic [ref=f3e138]: "14"
+              - generic [ref=f3e139]: "if current.right is None: return current.left"
+              - generic [ref=f3e140]: ◀
+            - generic [ref=f3e141]:
+              - generic [ref=f3e142]: "15"
+              - generic [ref=f3e143]: "succ = self.min_node(current.right) # Inorder Successor"
+              - generic [ref=f3e144]: ◀
+            - generic [ref=f3e145]:
+              - generic [ref=f3e146]: "16"
+              - generic [ref=f3e147]: current.value = succ.value
+              - generic [ref=f3e148]: ◀
+            - generic [ref=f3e149]:
+              - generic [ref=f3e150]: "17"
+              - generic [ref=f3e151]: current.right = self.delete(current.right, succ.value)
+              - generic [ref=f3e152]: ◀
+            - generic [ref=f3e153]:
+              - generic [ref=f3e154]: "18"
+              - generic [ref=f3e155]: return current
+              - generic [ref=f3e156]: ◀
+  - generic [ref=f3e157]:
+    - heading "🏛️ 1. กายวิภาคและโครงสร้างของ Binary Heap" [level=2] [ref=f3e158]
+    - generic [ref=f3e159]:
+      - generic [ref=f3e160]:
+        - generic [ref=f3e161]:
+          - generic [ref=f3e162]: "Chapter 7: Binary Heap"
+          - heading "⚡ Interactive Min-Heap Studio (ตัวจำลองฮีปและดีบักเกอร์ Percolate Up/Down)" [level=3] [ref=f3e163]
+        - generic [ref=f3e164]: สเต็ป 1 / 6
+      - generic [ref=f3e165]:
+        - generic [ref=f3e166]:
+          - generic [ref=f3e167]: "ตัวเลข (Number):"
+          - spinbutton [ref=f3e168]: "14"
+        - generic [ref=f3e169]:
+          - button "➕ แทรก (Percolate Up)" [ref=f3e170] [cursor=pointer]
+          - button "🗑️ ดึงค่าต่ำสุด Delete Min" [ref=f3e171] [cursor=pointer]
+          - button "🔄 รีเซ็ต Preset" [ref=f3e172] [cursor=pointer]
+      - generic [ref=f3e174]:
+        - generic [ref=f3e176]:
+          - generic [ref=f3e177]:
+            - generic [ref=f3e178]: "0"
+            - generic [ref=f3e179]: —
+          - generic [ref=f3e180]:
+            - generic [ref=f3e181]: "1"
+            - generic [ref=f3e182]: "13"
+          - generic [ref=f3e183]:
+            - generic [ref=f3e184]: "2"
+            - generic [ref=f3e185]: "21"
+          - generic [ref=f3e186]:
+            - generic [ref=f3e187]: "3"
+            - generic [ref=f3e188]: "16"
+          - generic [ref=f3e189]:
+            - generic [ref=f3e190]: "4"
+            - generic [ref=f3e191]: "24"
+          - generic [ref=f3e192]:
+            - generic [ref=f3e193]: "5"
+            - generic [ref=f3e194]: "31"
+            - generic [ref=f3e195]: parent
+          - generic [ref=f3e196]:
+            - generic [ref=f3e197]: "6"
+            - generic [ref=f3e198]: "19"
+          - generic [ref=f3e199]:
+            - generic [ref=f3e200]: "7"
+            - generic [ref=f3e201]: "68"
+          - generic [ref=f3e202]:
+            - generic [ref=f3e203]: "8"
+            - generic [ref=f3e204]: "65"
+          - generic [ref=f3e205]:
+            - generic [ref=f3e206]: "9"
+            - generic [ref=f3e207]: "26"
+          - generic [ref=f3e208]:
+            - generic [ref=f3e209]: "10"
+            - generic [ref=f3e210]: "32"
+          - generic [ref=f3e211]:
+            - generic [ref=f3e212]: "11"
+            - generic [ref=f3e213]: "14"
+            - generic [ref=f3e214]: hole
+        - img [ref=f3e215]:
+          - generic [ref=f3e226]:
+            - generic [ref=f3e228]: "13"
+            - generic [ref=f3e229]: "[1]"
+          - generic [ref=f3e230]:
+            - generic [ref=f3e232]: "21"
+            - generic [ref=f3e233]: "[2]"
+          - generic [ref=f3e234]:
+            - generic [ref=f3e236]: "16"
+            - generic [ref=f3e237]: "[3]"
+          - generic [ref=f3e238]:
+            - generic [ref=f3e240]: "24"
+            - generic [ref=f3e241]: "[4]"
+          - generic [ref=f3e242]:
+            - generic [ref=f3e244]: "31"
+            - generic [ref=f3e245]: "[5]"
+          - generic [ref=f3e246]:
+            - generic [ref=f3e248]: "19"
+            - generic [ref=f3e249]: "[6]"
+          - generic [ref=f3e250]:
+            - generic [ref=f3e252]: "68"
+            - generic [ref=f3e253]: "[7]"
+          - generic [ref=f3e254]:
+            - generic [ref=f3e256]: "65"
+            - generic [ref=f3e257]: "[8]"
+          - generic [ref=f3e258]:
+            - generic [ref=f3e260]: "26"
+            - generic [ref=f3e261]: "[9]"
+          - generic [ref=f3e262]:
+            - generic [ref=f3e264]: "32"
+            - generic [ref=f3e265]: "[10]"
+          - generic [ref=f3e266]:
+            - generic [ref=f3e268]: "14"
+            - generic [ref=f3e269]: "[11]"
+      - generic [ref=f3e270]:
+        - generic [ref=f3e271]:
+          - generic [ref=f3e272]:
+            - generic [ref=f3e273]: "สเต็ป 1: เพิ่มขนาด currentSize และวาง 14 ไว้ที่ก้นฮีป"
+            - generic [ref=f3e274]: ▶ Line 5
+          - generic [ref=f3e275]: currentSize เพิ่มเป็น 11 กำหนดช่องว่าง hole = 11 บรรจุค่า 14
+          - generic [ref=f3e276]:
+            - button "⏮️ ย้อนสเต็ป" [disabled] [ref=f3e277]
+            - button "▶ เล่น (Play)" [ref=f3e278] [cursor=pointer]
+            - button "⏭️ สเต็ปถัดไป" [ref=f3e279] [cursor=pointer]
+          - generic [ref=f3e280]:
+            - generic [ref=f3e281]: "🔍 ตัวแปรขณะรัน (Live Variables Watch):"
+            - table [ref=f3e282]:
+              - rowgroup [ref=f3e283]:
+                - row [ref=f3e284]:
+                  - columnheader "ตัวแปร (Variable)" [ref=f3e285]
+                  - columnheader "ค่าในหน่วยความจำ (Value)" [ref=f3e286]
+              - rowgroup [ref=f3e287]:
+                - row [ref=f3e288]:
+                  - cell "insert" [ref=f3e289]
+                  - cell "14" [ref=f3e290]
+                - row [ref=f3e291]:
+                  - cell "hole" [ref=f3e292]
+                  - cell "11" [ref=f3e293]
+                - row [ref=f3e294]:
+                  - cell "parent_idx" [ref=f3e295]
+                  - cell "5" [ref=f3e296]
+                - row [ref=f3e297]:
+                  - cell "array[parent]" [ref=f3e298]
+                  - cell "31" [ref=f3e299]
+        - generic [ref=f3e300]:
+          - generic [ref=f3e301]:
+            - generic [ref=f3e302]:
+              - generic [ref=f3e303]: 🐍
+              - generic [ref=f3e304]: Python Algorithm Code Debugger
+            - generic [ref=f3e305]: Step Debug
+          - generic [ref=f3e307]:
+            - generic [ref=f3e308]:
+              - generic [ref=f3e309]: "1"
+              - generic [ref=f3e310]: "def insert(self, x):"
+              - generic [ref=f3e311]: ◀
+            - generic [ref=f3e312]:
+              - generic [ref=f3e313]: "2"
+              - generic [ref=f3e314]: self.currentSize += 1
+              - generic [ref=f3e315]: ◀
+            - generic [ref=f3e316]:
+              - generic [ref=f3e317]: "3"
+              - generic [ref=f3e318]: hole = self.currentSize
+              - generic [ref=f3e319]: ◀
+            - generic [ref=f3e320]:
+              - generic [ref=f3e321]: "4"
+              - generic [ref=f3e322]: "while hole > 1 and x < self.array[hole // 2]:"
+              - generic [ref=f3e323]: ◀
+            - generic [ref=f3e324]:
+              - generic [ref=f3e325]: "5"
+              - generic [ref=f3e326]: "self.array[hole] = self.array[hole // 2] # ดึง Parent ลงมา"
+              - generic [ref=f3e327]: ◀
+            - generic [ref=f3e328]:
+              - generic [ref=f3e329]: "6"
+              - generic [ref=f3e330]: hole //= 2
+              - generic [ref=f3e331]: ◀
+            - generic [ref=f3e332]:
+              - generic [ref=f3e333]: "7"
+              - generic [ref=f3e334]: "self.array[hole] = x # บรรจุค่าลงใน hole"
+              - generic [ref=f3e335]: ◀
+            - generic [ref=f3e336]:
+              - generic [ref=f3e337]: "8"
+              - generic [ref=f3e338]: ◀
+            - generic [ref=f3e339]:
+              - generic [ref=f3e340]: "9"
+              - generic [ref=f3e341]: "def delete_min(self):"
+              - generic [ref=f3e342]: ◀
+            - generic [ref=f3e343]:
+              - generic [ref=f3e344]: "10"
+              - generic [ref=f3e345]: min_item = self.array[1]
+              - generic [ref=f3e346]: ◀
+            - generic [ref=f3e347]:
+              - generic [ref=f3e348]: "11"
+              - generic [ref=f3e349]: self.array[1] = self.array[self.currentSize]
+              - generic [ref=f3e350]: ◀
+            - generic [ref=f3e351]:
+              - generic [ref=f3e352]: "12"
+              - generic [ref=f3e353]: self.currentSize -= 1
+              - generic [ref=f3e354]: ◀
+            - generic [ref=f3e355]:
+              - generic [ref=f3e356]: "13"
+              - generic [ref=f3e357]: self._percolate_down(1)
+              - generic [ref=f3e358]: ◀
+            - generic [ref=f3e359]:
+              - generic [ref=f3e360]: "14"
+              - generic [ref=f3e361]: return min_item
+              - generic [ref=f3e362]: ◀
+  - generic [ref=f3e363]: "1. Mounting BST Widget... ✅ BST widget mounted 2. Inserting value 45 into BST... BST Step 1: เริ่มต้นตรวจสอบที่รากต้นไม้ (Root = 50) 3. Mounting Heap Widget... ✅ Min-Heap widget mounted 4. Inserting value 14 into Min-Heap (Percolate Up)... Heap Step 1: currentSize เพิ่มเป็น 11 กำหนดช่องว่าง hole = 11 บรรจุค่า 14 🎉 ALL BST & HEAP TESTS PASSED (100%)"

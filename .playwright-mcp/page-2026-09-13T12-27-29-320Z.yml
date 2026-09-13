@@ -1,0 +1,291 @@
+- generic [ref=f38e1]:
+  - navigation [ref=f38e2]:
+    - generic [ref=f38e3]:
+      - link "⚡ DSA LAB STUDIO v3.0" [ref=f38e4] [cursor=pointer]:
+        - /url: ../index.html
+        - generic [ref=f38e5]: ⚡
+        - generic [ref=f38e6]: DSA LAB STUDIO
+        - generic [ref=f38e7]: v3.0
+      - generic [ref=f38e8]:
+        - button "🌲 Binary Heap (Priority Queue)" [ref=f38e9] [cursor=pointer]:
+          - generic [ref=f38e10]: 🌲
+          - text: Binary Heap (Priority Queue)
+        - button "🌿 Binary Search Tree (BST)" [ref=f38e11] [cursor=pointer]:
+          - generic [ref=f38e12]: 🌿
+          - text: Binary Search Tree (BST)
+        - button "⚡ Hash Table & Collisions" [active] [ref=f38e13] [cursor=pointer]:
+          - generic [ref=f38e14]: ⚡
+          - text: Hash Table & Collisions
+        - 'button "🥞 Stack: Infix to Postfix" [ref=f38e15] [cursor=pointer]':
+          - generic [ref=f38e16]: 🥞
+          - text: "Stack: Infix to Postfix"
+      - generic [ref=f38e17]:
+        - link "📚 สารานุกรม Wiki" [ref=f38e18] [cursor=pointer]:
+          - /url: ../Wiki/index.html
+          - generic [ref=f38e19]: 📚
+          - text: สารานุกรม Wiki
+        - link "🏠 Home" [ref=f38e20] [cursor=pointer]:
+          - /url: ../index.html
+          - generic [ref=f38e21]: 🏠
+          - text: Home
+  - navigation [ref=f38e22]:
+    - generic [ref=f38e23]:
+      - link "① หลักการ & Load Factor" [ref=f38e1398] [cursor=pointer]:
+        - /url: "#hash-principle"
+      - link "② Separate Chaining" [ref=f38e1399] [cursor=pointer]:
+        - /url: "#hash-chaining"
+      - link "③ Linear Probing" [ref=f38e1400] [cursor=pointer]:
+        - /url: "#hash-probing"
+  - generic [ref=f38e1401]:
+    - banner [ref=f38e1402]:
+      - generic [ref=f38e1403]: DATA STRUCTURES & ALGORITHMS — LECTURE 6 / EXAMS
+      - heading "Hash Table & Collision Resolution" [level=1] [ref=f38e1405]
+      - paragraph [ref=f38e1406]: เข้าใจฟังก์ชันแฮช h(k) = k mod M, อัตราส่วนความหนาแน่น Load Factor λ = N / M และการแก้ปัญหาการชนกันของข้อมูลด้วยทั้ง Separate Chaining และ Open Addressing (Linear Probing)
+    - generic [ref=f38e1407]:
+      - generic [ref=f38e1408]:
+        - generic [ref=f38e1409]:
+          - generic [ref=f38e1410]: 01 — หลักการ
+          - heading "ทำไมต้องแฮช และจัดการการชนอย่างไร" [level=2] [ref=f38e1411]
+          - paragraph [ref=f38e1412]: เปรียบเทียบกลยุทธ์การแก้ปัญหาการชน (Collision Resolution Strategies)
+        - generic [ref=f38e1413]:
+          - heading "1 Hash Function & Load Factor (λ)" [level=3] [ref=f38e1414]:
+            - generic [ref=f38e1415]: "1"
+            - text: Hash Function & Load Factor (λ)
+          - paragraph [ref=f38e1416]: ฟังก์ชันแฮชแปลงคีย์ใดๆ ให้เป็นดัชนี Array ระหว่าง 0 .. M - 1 โดย λ = N / M บอกถึงความหนาแน่นของตาราง เมื่อข้อมูลสองค่าแฮชได้ช่องเดียวกันจะเกิด Collision (การชน)
+          - generic [ref=f38e1417]:
+            - generic [ref=f38e1418]:
+              - heading "Separate Chaining" [level=4] [ref=f38e1419]
+              - paragraph [ref=f38e1420]: แต่ละช่องในตารางเก็บหัวพอยน์เตอร์ของ Linked List ถ้าข้อมูลชนกันจะนำไปต่อท้ายหรือใส่หัวแถว ข้อดีคือ $\lambda$ เกิน 1 ได้
+            - generic [ref=f38e1421]:
+              - heading "Open Addressing (Linear Probing)" [level=4] [ref=f38e1422]
+              - paragraph [ref=f38e1423]: "เก็บข้อมูลในตัวตารางโดยตรง ถ้าเกิดชนกันจะขยับหาช่องว่างถัดไปทีละ 1 ช่อง: h(k, i) = (h(k) + i) mod M ข้อควรระวังคือเกิด Primary Clustering"
+      - generic [ref=f38e1424]:
+        - generic [ref=f38e1425]:
+          - generic [ref=f38e1426]: 02 — separate chaining demo
+          - heading "จำลอง Separate Chaining (ตารางขนาด M = 10)" [level=2] [ref=f38e1427]
+          - paragraph [ref=f38e1428]:
+            - text: "แทรกชุดข้อมูลข้อสอบ:"
+            - generic [ref=f38e1429]: 15 → 25 → 35 → 12 → 22 → 45
+            - text: สังเกตการต่อ Linked List ที่ช่องแฮชเดียวกัน
+        - generic [ref=f38e1430]:
+          - generic [ref=f38e1431]:
+            - generic [ref=f38e1432]:
+              - generic [ref=f38e1433]:
+                - generic [ref=f38e1434]:
+                  - generic [ref=f38e1435]: Bucket & Linked List Chains
+                  - generic [ref=f38e1436]: currentSize = 0
+                - img [ref=f38e1437]:
+                  - generic [ref=f38e1439]: "[0]"
+                  - generic [ref=f38e1441]: "[1]"
+                  - generic [ref=f38e1443]: "[2]"
+                  - generic [ref=f38e1445]: "[3]"
+                  - generic [ref=f38e1447]: "[4]"
+                  - generic [ref=f38e1449]: "[5]"
+                  - generic [ref=f38e1451]: "[6]"
+                  - generic [ref=f38e1453]: "[7]"
+                  - generic [ref=f38e1455]: "[8]"
+                  - generic [ref=f38e1457]: "[9]"
+              - generic [ref=f38e1458]:
+                - generic [ref=f38e1459]:
+                  - generic [ref=f38e1460]: Hash Buckets (M = 10)
+                  - generic [ref=f38e1461]: h(k) = k % 10
+                - generic [ref=f38e1462]:
+                  - generic [ref=f38e1463]:
+                    - generic [ref=f38e1464]: "0"
+                    - text: ·
+                  - generic [ref=f38e1465]:
+                    - generic [ref=f38e1466]: "1"
+                    - text: ·
+                  - generic [ref=f38e1467]:
+                    - generic [ref=f38e1468]: "2"
+                    - text: ·
+                  - generic [ref=f38e1469]:
+                    - generic [ref=f38e1470]: "3"
+                    - text: ·
+                  - generic [ref=f38e1471]:
+                    - generic [ref=f38e1472]: "4"
+                    - text: ·
+                  - generic [ref=f38e1473]:
+                    - generic [ref=f38e1474]: "5"
+                    - text: ·
+                  - generic [ref=f38e1475]:
+                    - generic [ref=f38e1476]: "6"
+                    - text: ·
+                  - generic [ref=f38e1477]:
+                    - generic [ref=f38e1478]: "7"
+                    - text: ·
+                  - generic [ref=f38e1479]:
+                    - generic [ref=f38e1480]: "8"
+                    - text: ·
+                  - generic [ref=f38e1481]:
+                    - generic [ref=f38e1482]: "9"
+                    - text: ·
+                - generic [ref=f38e1483]:
+                  - generic [ref=f38e1484]: hole (ตำแหน่งว่าง)
+                  - generic [ref=f38e1486]: กำลังเปรียบเทียบ
+                  - generic [ref=f38e1488]: เพิ่งย้ายค่า
+                  - generic [ref=f38e1490]: ค่าสุดท้ายที่วาง
+            - generic [ref=f38e1492]:
+              - generic [ref=f38e1493]:
+                - generic [ref=f38e1494]:
+                  - generic [ref=f38e1495]: Source Code
+                  - generic [ref=f38e1496]: python
+                - generic [ref=f38e1497]:
+                  - generic [ref=f38e1498]:
+                    - generic [ref=f38e1499]: "1"
+                    - generic [ref=f38e1500]: "def insert_chain(self, key):"
+                  - generic [ref=f38e1501]:
+                    - generic [ref=f38e1502]: "2"
+                    - generic [ref=f38e1503]: index = key % self.table_size
+                  - generic [ref=f38e1504]:
+                    - generic [ref=f38e1505]: "3"
+                    - generic [ref=f38e1506]: bucket = self.table[index]
+                  - generic [ref=f38e1507]:
+                    - generic [ref=f38e1508]: "4"
+                    - generic [ref=f38e1509]: "for node in bucket:"
+                  - generic [ref=f38e1510]:
+                    - generic [ref=f38e1511]: "5"
+                    - generic [ref=f38e1512]: "if node.key == key: return # Key exists"
+                  - generic [ref=f38e1513]:
+                    - generic [ref=f38e1514]: "6"
+                    - generic [ref=f38e1515]: "bucket.append(key) # Collision chained!"
+                  - generic [ref=f38e1516]:
+                    - generic [ref=f38e1517]: "7"
+                    - generic [ref=f38e1518]: self.num_elements += 1
+              - generic [ref=f38e1519]:
+                - generic [ref=f38e1520]: Watch Variables
+                - generic [ref=f38e1521]:
+                  - generic [ref=f38e1522]:
+                    - generic [ref=f38e1523]: M
+                    - generic [ref=f38e1524]: "10"
+                  - generic [ref=f38e1525]:
+                    - generic [ref=f38e1526]: total_keys
+                    - generic [ref=f38e1527]: "6"
+              - generic [ref=f38e1528]: "เริ่มต้น: ตาราง Hash Table ว่างเปล่า ขนาด M = 10 (Index 0 .. 9)"
+          - generic [ref=f38e1529]:
+            - button "⟲ Reset" [ref=f38e1530] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f38e1531]
+            - button "Next ▶" [ref=f38e1532] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f38e1533] [cursor=pointer]
+            - generic [ref=f38e1534]: Step 0 / 16
+          - generic [ref=f38e1536]:
+            - generic [ref=f38e1537]: Debug Console
+            - generic [ref=f38e1538]: "[step 0] เริ่มต้น: ตาราง Hash Table ว่างเปล่า ขนาด M = 10 (Index 0 .. 9)"
+      - generic [ref=f38e1540]:
+        - generic [ref=f38e1541]:
+          - generic [ref=f38e1542]: 03 — linear probing demo
+          - heading "จำลอง Linear Probing (Open Addressing)" [level=2] [ref=f38e1543]
+          - paragraph [ref=f38e1544]: แทรกข้อมูลชุดเดิมสังเกตการวิ่งไล่หาช่องว่าง (Probing Steps) เมื่อเกิดการชนที่ Index เดียวกัน
+        - generic [ref=f38e1545]:
+          - generic [ref=f38e1546]:
+            - generic [ref=f38e1547]:
+              - generic [ref=f38e1548]:
+                - generic [ref=f38e1549]:
+                  - generic [ref=f38e1550]: Open Addressing Memory View
+                  - generic [ref=f38e1551]: currentSize = 9
+                - img [ref=f38e1552]:
+                  - generic [ref=f38e1561]:
+                    - generic [ref=f38e1563]: ∅
+                    - generic [ref=f38e1564]: "[1]"
+                  - generic [ref=f38e1565]:
+                    - generic [ref=f38e1567]: ∅
+                    - generic [ref=f38e1568]: "[2]"
+                  - generic [ref=f38e1569]:
+                    - generic [ref=f38e1571]: ∅
+                    - generic [ref=f38e1572]: "[3]"
+                  - generic [ref=f38e1573]:
+                    - generic [ref=f38e1575]: ∅
+                    - generic [ref=f38e1576]: "[4]"
+                  - generic [ref=f38e1577]:
+                    - generic [ref=f38e1579]: ∅
+                    - generic [ref=f38e1580]: "[5]"
+                  - generic [ref=f38e1581]:
+                    - generic [ref=f38e1583]: ∅
+                    - generic [ref=f38e1584]: "[6]"
+                  - generic [ref=f38e1585]:
+                    - generic [ref=f38e1587]: ∅
+                    - generic [ref=f38e1588]: "[7]"
+                  - generic [ref=f38e1589]:
+                    - generic [ref=f38e1591]: ∅
+                    - generic [ref=f38e1592]: "[8]"
+                  - generic [ref=f38e1593]:
+                    - generic [ref=f38e1595]: ∅
+                    - generic [ref=f38e1596]: "[9]"
+              - generic [ref=f38e1597]:
+                - generic [ref=f38e1598]:
+                  - generic [ref=f38e1599]: Table Slots [0 .. 9]
+                  - generic [ref=f38e1600]: index 0 ไม่ใช้งาน
+                - generic [ref=f38e1601]:
+                  - generic [ref=f38e1602]:
+                    - generic [ref=f38e1603]: "0"
+                    - text: ·
+                  - generic [ref=f38e1604]: "1"
+                  - generic [ref=f38e1606]: "2"
+                  - generic [ref=f38e1608]: "3"
+                  - generic [ref=f38e1610]: "4"
+                  - generic [ref=f38e1612]: "5"
+                  - generic [ref=f38e1614]: "6"
+                  - generic [ref=f38e1616]: "7"
+                  - generic [ref=f38e1618]: "8"
+                  - generic [ref=f38e1620]: "9"
+                - generic [ref=f38e1622]:
+                  - generic [ref=f38e1623]: hole (ตำแหน่งว่าง)
+                  - generic [ref=f38e1625]: กำลังเปรียบเทียบ
+                  - generic [ref=f38e1627]: เพิ่งย้ายค่า
+                  - generic [ref=f38e1629]: ค่าสุดท้ายที่วาง
+            - generic [ref=f38e1631]:
+              - generic [ref=f38e1632]:
+                - generic [ref=f38e1633]:
+                  - generic [ref=f38e1634]: Source Code
+                  - generic [ref=f38e1635]: python
+                - generic [ref=f38e1636]:
+                  - generic [ref=f38e1637]:
+                    - generic [ref=f38e1638]: "1"
+                    - generic [ref=f38e1639]: "def insert_linear(self, key):"
+                  - generic [ref=f38e1640]:
+                    - generic [ref=f38e1641]: "2"
+                    - generic [ref=f38e1642]: base_idx = key % self.table_size
+                  - generic [ref=f38e1643]:
+                    - generic [ref=f38e1644]: "3"
+                    - generic [ref=f38e1645]: "for i in range(self.table_size):"
+                  - generic [ref=f38e1646]:
+                    - generic [ref=f38e1647]: "4"
+                    - generic [ref=f38e1648]: idx = (base_idx + i) % self.table_size
+                  - generic [ref=f38e1649]:
+                    - generic [ref=f38e1650]: "5"
+                    - generic [ref=f38e1651]: "if self.table[idx] is None:"
+                  - generic [ref=f38e1652]:
+                    - generic [ref=f38e1653]: "6"
+                    - generic [ref=f38e1654]: "self.table[idx] = key # Placed successfully"
+                  - generic [ref=f38e1655]:
+                    - generic [ref=f38e1656]: "7"
+                    - generic [ref=f38e1657]: return True
+                  - generic [ref=f38e1658]:
+                    - generic [ref=f38e1659]: "8"
+                    - generic [ref=f38e1660]: "# Collision occurred -> probe next slot"
+              - generic [ref=f38e1661]:
+                - generic [ref=f38e1662]: Watch Variables
+                - generic [ref=f38e1663]:
+                  - generic [ref=f38e1664]:
+                    - generic [ref=f38e1665]: M
+                    - generic [ref=f38e1666]: "10"
+                  - generic [ref=f38e1667]:
+                    - generic [ref=f38e1668]: keys_count
+                    - generic [ref=f38e1669]: "6"
+              - generic [ref=f38e1670]: "เริ่มต้น: ตาราง Open Addressing ขนาด M = 10"
+          - generic [ref=f38e1671]:
+            - button "⟲ Reset" [ref=f38e1672] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f38e1673]
+            - button "Next ▶" [ref=f38e1674] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f38e1675] [cursor=pointer]
+            - generic [ref=f38e1676]: Step 0 / 19
+          - generic [ref=f38e1678]:
+            - generic [ref=f38e1679]: Debug Console
+            - generic [ref=f38e1680]: "[step 0] เริ่มต้น: ตาราง Open Addressing ขนาด M = 10"
+  - contentinfo [ref=f38e431]:
+    - generic [ref=f38e432]:
+      - paragraph [ref=f38e433]: DSA Lab Studio — Interactive Visual Debugger & Knowledge Hub
+      - paragraph [ref=f38e434]:
+        - text: สร้างขึ้นตามแนวทางเอกสารคำสอนและข้อสอบวิชา Data Structures and Algorithms · เชื่อมโยงกับ
+        - link "DSA Wiki สารานุกรม 10 บท" [ref=f38e435] [cursor=pointer]:
+          - /url: ../Wiki/index.html

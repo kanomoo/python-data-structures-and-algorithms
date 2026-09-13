@@ -1,0 +1,332 @@
+- generic [ref=f38e1]:
+  - navigation [ref=f38e2]:
+    - generic [ref=f38e3]:
+      - link "⚡ DSA LAB STUDIO v3.0" [ref=f38e4] [cursor=pointer]:
+        - /url: ../index.html
+        - generic [ref=f38e5]: ⚡
+        - generic [ref=f38e6]: DSA LAB STUDIO
+        - generic [ref=f38e7]: v3.0
+      - generic [ref=f38e8]:
+        - button "🌲 Binary Heap (Priority Queue)" [ref=f38e9] [cursor=pointer]:
+          - generic [ref=f38e10]: 🌲
+          - text: Binary Heap (Priority Queue)
+        - button "🌿 Binary Search Tree (BST)" [active] [ref=f38e11] [cursor=pointer]:
+          - generic [ref=f38e12]: 🌿
+          - text: Binary Search Tree (BST)
+        - button "⚡ Hash Table & Collisions" [ref=f38e13] [cursor=pointer]:
+          - generic [ref=f38e14]: ⚡
+          - text: Hash Table & Collisions
+        - 'button "🥞 Stack: Infix to Postfix" [ref=f38e15] [cursor=pointer]':
+          - generic [ref=f38e16]: 🥞
+          - text: "Stack: Infix to Postfix"
+      - generic [ref=f38e17]:
+        - link "📚 สารานุกรม Wiki" [ref=f38e18] [cursor=pointer]:
+          - /url: ../Wiki/index.html
+          - generic [ref=f38e19]: 📚
+          - text: สารานุกรม Wiki
+        - link "🏠 Home" [ref=f38e20] [cursor=pointer]:
+          - /url: ../index.html
+          - generic [ref=f38e21]: 🏠
+          - text: Home
+  - navigation [ref=f38e22]:
+    - generic [ref=f38e23]:
+      - link "① หลักการ & Invariant" [ref=f38e856] [cursor=pointer]:
+        - /url: "#bst-principle"
+      - link "② สร้าง BST ทีละตัว" [ref=f38e857] [cursor=pointer]:
+        - /url: "#bst-build"
+      - link "③ Insert / Search / Delete 3 เคส" [ref=f38e858] [cursor=pointer]:
+        - /url: "#bst-demo"
+  - generic [ref=f38e859]:
+    - banner [ref=f38e860]:
+      - generic [ref=f38e861]: DATA STRUCTURES & ALGORITHMS — LECTURE 5 / EXAMS
+      - heading "Binary Search Tree (BST) ตั้งแต่ต้นจนจบ" [level=1] [ref=f38e863]
+      - paragraph [ref=f38e864]: ทำความเข้าใจ BST Property อย่างลึกซึ้ง พร้อมการจำลอง insert(), search(), และ delete() ครบทั้ง 3 กรณีสำคัญ (Leaf, One Child, Two Children พร้อม In-order Successor)
+    - generic [ref=f38e865]:
+      - generic [ref=f38e866]:
+        - generic [ref=f38e867]:
+          - generic [ref=f38e868]: 01 — หลักการ
+          - heading "BST Invariant & โครงสร้างข้อมูลแบบต้นไม้ค้นหา" [level=2] [ref=f38e869]
+          - paragraph [ref=f38e870]: คุณสมบัติที่ทำให้ BST สามารถค้นหา แทรก และลบข้อมูลได้รวดเร็วเฉลี่ย $O(\log N)$
+        - generic [ref=f38e871]:
+          - heading "1 กฎเหล็กของ BST Invariant" [level=3] [ref=f38e872]:
+            - generic [ref=f38e873]: "1"
+            - text: กฎเหล็กของ BST Invariant
+          - paragraph [ref=f38e874]: "ในทุกโหนด root ของ BST: ทุกค่าใน Subtree ซ้าย ต้องน้อยกว่า Root (Left < Root) และทุกค่าใน Subtree ขวา ต้องมากกว่า Root (Root < Right) ผลลัพธ์ทำให้การท่องแบบ In-Order Traversal (Left → Root → Right) จะได้ข้อมูลเรียงลำดับจากน้อยไปมากเสมอ!"
+          - heading "2 การลบโหนด (Deletion) ครบทั้ง 3 กรณี" [level=3] [ref=f38e875]:
+            - generic [ref=f38e876]: "2"
+            - text: การลบโหนด (Deletion) ครบทั้ง 3 กรณี
+          - generic [ref=f38e877]:
+            - generic [ref=f38e878]:
+              - 'heading "กรณีที่ 1: โหนดใบ (Leaf Node)" [level=4] [ref=f38e879]'
+              - paragraph [ref=f38e880]: โหนดที่ต้องการลบไม่มีลูกเลย → ปลดตัวชี้จากโหนดพ่อเป็น None ได้ทันที ทำงานในเวลา $O(h)$
+            - generic [ref=f38e881]:
+              - 'heading "กรณีที่ 2: มีลูกเพียง 1 ข้าง" [level=4] [ref=f38e882]'
+              - paragraph [ref=f38e883]: ยกโหนดลูกเพียงข้างเดียวนั้นขึ้นมาแทนที่ตำแหน่งโหนดที่ถูกลบได้โดยตรง
+          - generic [ref=f38e884]:
+            - 'heading "กรณีที่ 3: มีลูกทั้ง 2 ข้าง (ออกสอบบ่อยที่สุด!)" [level=4] [ref=f38e885]'
+            - paragraph [ref=f38e886]: ค้นหา In-Order Successor (ค่าน้อยที่สุดใน Subtree ขวา) หรือ In-Order Predecessor (ค่ามากที่สุดใน Subtree ซ้าย) นำค่านั้นมาเขียนทับที่โหนดเดิม จากนั้นเรียกคำสั่ง Delete แบบ Recursive เพื่อลบโหนด Successor นั้นทิ้ง ซึ่งจะแปลงเป็นกรณีที่ 1 หรือ 2 เสมอ
+      - generic [ref=f38e887]:
+        - generic [ref=f38e888]:
+          - generic [ref=f38e889]: 02 — build step-by-step
+          - heading "สร้าง BST ด้วยการแทรกตามลำดับข้อสอบ" [level=2] [ref=f38e890]
+          - paragraph [ref=f38e891]:
+            - text: แทรกค่าตามลำดับ
+            - generic [ref=f38e892]: 25 → 15 → 35 → 10 → 20 → 30 → 40
+            - text: สังเกตการเปรียบเทียบซ้าย/ขวา
+        - generic [ref=f38e893]:
+          - generic [ref=f38e894]:
+            - generic [ref=f38e895]:
+              - generic [ref=f38e897]:
+                - generic [ref=f38e898]: BST Tree View
+                - generic [ref=f38e899]: Nodes = 0
+              - generic [ref=f38e901]:
+                - generic [ref=f38e902]:
+                  - generic [ref=f38e903]: In-Order Traversal Representation
+                  - generic [ref=f38e904]: left < root < right
+                - generic [ref=f38e906]:
+                  - generic [ref=f38e907]: In-order
+                  - text: ·
+                - generic [ref=f38e908]:
+                  - generic [ref=f38e909]: hole (ตำแหน่งว่าง)
+                  - generic [ref=f38e911]: กำลังเปรียบเทียบ
+                  - generic [ref=f38e913]: เพิ่งย้ายค่า
+                  - generic [ref=f38e915]: ค่าสุดท้ายที่วาง
+            - generic [ref=f38e917]:
+              - generic [ref=f38e918]:
+                - generic [ref=f38e919]:
+                  - generic [ref=f38e920]: Source Code
+                  - generic [ref=f38e921]: python
+                - generic [ref=f38e922]:
+                  - generic [ref=f38e923]:
+                    - generic [ref=f38e924]: "1"
+                    - generic [ref=f38e925]: "def insert(self, root, val):"
+                  - generic [ref=f38e926]:
+                    - generic [ref=f38e927]: "2"
+                    - generic [ref=f38e928]: "if not root: return TreeNode(val)"
+                  - generic [ref=f38e929]:
+                    - generic [ref=f38e930]: "3"
+                    - generic [ref=f38e931]: "if val < root.val:"
+                  - generic [ref=f38e932]:
+                    - generic [ref=f38e933]: "4"
+                    - generic [ref=f38e934]: root.left = self.insert(root.left, val)
+                  - generic [ref=f38e935]:
+                    - generic [ref=f38e936]: "5"
+                    - generic [ref=f38e937]: "elif val > root.val:"
+                  - generic [ref=f38e938]:
+                    - generic [ref=f38e939]: "6"
+                    - generic [ref=f38e940]: root.right = self.insert(root.right, val)
+                  - generic [ref=f38e941]:
+                    - generic [ref=f38e942]: "7"
+                    - generic [ref=f38e943]: return root
+                  - generic [ref=f38e944]: "8"
+                  - generic [ref=f38e946]:
+                    - generic [ref=f38e947]: "9"
+                    - generic [ref=f38e948]: "def delete(self, root, key):"
+                  - generic [ref=f38e949]:
+                    - generic [ref=f38e950]: "10"
+                    - generic [ref=f38e951]: "if not root: return None"
+                  - generic [ref=f38e952]:
+                    - generic [ref=f38e953]: "11"
+                    - generic [ref=f38e954]: "if key < root.val:"
+                  - generic [ref=f38e955]:
+                    - generic [ref=f38e956]: "12"
+                    - generic [ref=f38e957]: root.left = self.delete(root.left, key)
+                  - generic [ref=f38e958]:
+                    - generic [ref=f38e959]: "13"
+                    - generic [ref=f38e960]: "elif key > root.val:"
+                  - generic [ref=f38e961]:
+                    - generic [ref=f38e962]: "14"
+                    - generic [ref=f38e963]: root.right = self.delete(root.right, key)
+                  - generic [ref=f38e964]:
+                    - generic [ref=f38e965]: "15"
+                    - generic [ref=f38e966]: "else: # Found key"
+                  - generic [ref=f38e967]:
+                    - generic [ref=f38e968]: "16"
+                    - generic [ref=f38e969]: "if not root.left: return root.right # Case 1 & 2"
+                  - generic [ref=f38e970]:
+                    - generic [ref=f38e971]: "17"
+                    - generic [ref=f38e972]: "if not root.right: return root.left"
+                  - generic [ref=f38e973]:
+                    - generic [ref=f38e974]: "18"
+                    - generic [ref=f38e975]: "# Case 3: 2 children -> Find In-order Successor"
+                  - generic [ref=f38e976]:
+                    - generic [ref=f38e977]: "19"
+                    - generic [ref=f38e978]: succ = self.find_min(root.right)
+                  - generic [ref=f38e979]:
+                    - generic [ref=f38e980]: "20"
+                    - generic [ref=f38e981]: root.val = succ.val
+                  - generic [ref=f38e982]:
+                    - generic [ref=f38e983]: "21"
+                    - generic [ref=f38e984]: root.right = self.delete(root.right, succ.val)
+                  - generic [ref=f38e985]:
+                    - generic [ref=f38e986]: "22"
+                    - generic [ref=f38e987]: return root
+              - generic [ref=f38e988]:
+                - generic [ref=f38e989]: Watch Variables
+                - generic [ref=f38e991]:
+                  - generic [ref=f38e992]: —
+                  - generic [ref=f38e993]: ยังไม่มีตัวแปร
+              - generic [ref=f38e994]: "เริ่มต้น: ต้นไม้ BST ว่างเปล่า (Empty Tree) — เตรียม insert ทั้งหมด 7 ค่า"
+          - generic [ref=f38e995]:
+            - button "⟲ Reset" [ref=f38e996] [cursor=pointer]
+            - button "⏮ ตัวก่อนหน้า" [ref=f38e997] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f38e998]
+            - button "Next ▶" [ref=f38e999] [cursor=pointer]
+            - button "ตัวถัดไป ⏭" [ref=f38e1000] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f38e1001] [cursor=pointer]
+            - generic [ref=f38e1002]: Step 0 / 34
+          - generic [ref=f38e1004]:
+            - generic [ref=f38e1005]: Debug Console
+            - generic [ref=f38e1006]: "[step 0] เริ่มต้น: ต้นไม้ BST ว่างเปล่า (Empty Tree) — เตรียม insert ทั้งหมด 7 ค่า"
+      - generic [ref=f38e1008]:
+        - generic [ref=f38e1009]:
+          - generic [ref=f38e1010]: 03 — operations demo
+          - 'heading "เจาะลึก Operation: Insert, Search, และ Delete 3 เคส" [level=2] [ref=f38e1011]'
+          - paragraph [ref=f38e1012]: ทดลองดูขั้นตอนวิธีแบบ Step-by-Step แต่ละกรณี
+        - generic [ref=f38e1013]:
+          - button "insert(18)" [ref=f38e1014] [cursor=pointer]
+          - button "search(30)" [ref=f38e1015] [cursor=pointer]
+          - 'button "delete(10) [เคส 1: Leaf]" [ref=f38e1016] [cursor=pointer]'
+          - 'button "delete(35) [เคส 2: 1 Child]" [ref=f38e1017] [cursor=pointer]'
+          - 'button "delete(25) [เคส 3: 2 Children (Successor)]" [ref=f38e1018] [cursor=pointer]'
+        - generic [ref=f38e1019]:
+          - generic [ref=f38e1020]:
+            - generic [ref=f38e1021]:
+              - generic [ref=f38e1022]:
+                - generic [ref=f38e1023]:
+                  - generic [ref=f38e1024]: BST Operations Tree
+                  - generic [ref=f38e1025]: Nodes = 7
+                - img [ref=f38e1026]:
+                  - generic [ref=f38e1033]: "25"
+                  - generic [ref=f38e1036]: "15"
+                  - generic [ref=f38e1039]: "10"
+                  - generic [ref=f38e1042]: "20"
+                  - generic [ref=f38e1045]: "35"
+                  - generic [ref=f38e1048]: "30"
+                  - generic [ref=f38e1051]: "40"
+              - generic [ref=f38e1054]:
+                - generic [ref=f38e1055]:
+                  - generic [ref=f38e1056]: In-Order Traversal
+                  - generic [ref=f38e1057]: index 0 ไม่ใช้งาน
+                - generic [ref=f38e1058]:
+                  - generic [ref=f38e1059]:
+                    - generic [ref=f38e1060]: In-order
+                    - text: ·
+                  - generic [ref=f38e1061]:
+                    - generic [ref=f38e1062]: "1"
+                    - text: "10"
+                  - generic [ref=f38e1063]:
+                    - generic [ref=f38e1064]: "2"
+                    - text: "15"
+                  - generic [ref=f38e1065]:
+                    - generic [ref=f38e1066]: "3"
+                    - text: "20"
+                  - generic [ref=f38e1067]:
+                    - generic [ref=f38e1068]: "4"
+                    - text: "25"
+                  - generic [ref=f38e1069]:
+                    - generic [ref=f38e1070]: "5"
+                    - text: "30"
+                  - generic [ref=f38e1071]:
+                    - generic [ref=f38e1072]: "6"
+                    - text: "35"
+                  - generic [ref=f38e1073]:
+                    - generic [ref=f38e1074]: "7"
+                    - text: "40"
+                - generic [ref=f38e1075]:
+                  - generic [ref=f38e1076]: hole (ตำแหน่งว่าง)
+                  - generic [ref=f38e1078]: กำลังเปรียบเทียบ
+                  - generic [ref=f38e1080]: เพิ่งย้ายค่า
+                  - generic [ref=f38e1082]: ค่าสุดท้ายที่วาง
+            - generic [ref=f38e1084]:
+              - generic [ref=f38e1085]:
+                - generic [ref=f38e1086]:
+                  - generic [ref=f38e1087]: Source Code
+                  - generic [ref=f38e1088]: python
+                - generic [ref=f38e1089]:
+                  - generic [ref=f38e1090]:
+                    - generic [ref=f38e1091]: "1"
+                    - generic [ref=f38e1092]: "def insert(self, root, val):"
+                  - generic [ref=f38e1093]:
+                    - generic [ref=f38e1094]: "2"
+                    - generic [ref=f38e1095]: "if not root: return TreeNode(val)"
+                  - generic [ref=f38e1096]:
+                    - generic [ref=f38e1097]: "3"
+                    - generic [ref=f38e1098]: "if val < root.val:"
+                  - generic [ref=f38e1099]:
+                    - generic [ref=f38e1100]: "4"
+                    - generic [ref=f38e1101]: root.left = self.insert(root.left, val)
+                  - generic [ref=f38e1102]:
+                    - generic [ref=f38e1103]: "5"
+                    - generic [ref=f38e1104]: "elif val > root.val:"
+                  - generic [ref=f38e1105]:
+                    - generic [ref=f38e1106]: "6"
+                    - generic [ref=f38e1107]: root.right = self.insert(root.right, val)
+                  - generic [ref=f38e1108]:
+                    - generic [ref=f38e1109]: "7"
+                    - generic [ref=f38e1110]: return root
+                  - generic [ref=f38e1111]: "8"
+                  - generic [ref=f38e1113]:
+                    - generic [ref=f38e1114]: "9"
+                    - generic [ref=f38e1115]: "def delete(self, root, key):"
+                  - generic [ref=f38e1116]:
+                    - generic [ref=f38e1117]: "10"
+                    - generic [ref=f38e1118]: "if not root: return None"
+                  - generic [ref=f38e1119]:
+                    - generic [ref=f38e1120]: "11"
+                    - generic [ref=f38e1121]: "if key < root.val:"
+                  - generic [ref=f38e1122]:
+                    - generic [ref=f38e1123]: "12"
+                    - generic [ref=f38e1124]: root.left = self.delete(root.left, key)
+                  - generic [ref=f38e1125]:
+                    - generic [ref=f38e1126]: "13"
+                    - generic [ref=f38e1127]: "elif key > root.val:"
+                  - generic [ref=f38e1128]:
+                    - generic [ref=f38e1129]: "14"
+                    - generic [ref=f38e1130]: root.right = self.delete(root.right, key)
+                  - generic [ref=f38e1131]:
+                    - generic [ref=f38e1132]: "15"
+                    - generic [ref=f38e1133]: "else: # Found key"
+                  - generic [ref=f38e1134]:
+                    - generic [ref=f38e1135]: "16"
+                    - generic [ref=f38e1136]: "if not root.left: return root.right # Case 1 & 2"
+                  - generic [ref=f38e1137]:
+                    - generic [ref=f38e1138]: "17"
+                    - generic [ref=f38e1139]: "if not root.right: return root.left"
+                  - generic [ref=f38e1140]:
+                    - generic [ref=f38e1141]: "18"
+                    - generic [ref=f38e1142]: "# Case 3: 2 children -> Find In-order Successor"
+                  - generic [ref=f38e1143]:
+                    - generic [ref=f38e1144]: "19"
+                    - generic [ref=f38e1145]: succ = self.find_min(root.right)
+                  - generic [ref=f38e1146]:
+                    - generic [ref=f38e1147]: "20"
+                    - generic [ref=f38e1148]: root.val = succ.val
+                  - generic [ref=f38e1149]:
+                    - generic [ref=f38e1150]: "21"
+                    - generic [ref=f38e1151]: root.right = self.delete(root.right, succ.val)
+                  - generic [ref=f38e1152]:
+                    - generic [ref=f38e1153]: "22"
+                    - generic [ref=f38e1154]: return root
+              - generic [ref=f38e1155]:
+                - generic [ref=f38e1156]: Watch Variables
+                - generic [ref=f38e1158]:
+                  - generic [ref=f38e1159]: val
+                  - generic [ref=f38e1160]: "18"
+              - generic [ref=f38e1161]: เรียก insert(root, 18) เริ่มเปรียบเทียบที่ Root (25)
+          - generic [ref=f38e1162]:
+            - button "⟲ Reset" [ref=f38e1163] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f38e1164]
+            - button "Next ▶" [ref=f38e1165] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f38e1166] [cursor=pointer]
+            - generic [ref=f38e1167]: Step 0 / 3
+          - generic [ref=f38e1169]:
+            - generic [ref=f38e1170]: Debug Console
+            - generic [ref=f38e1171]: "[step 0] เรียก insert(root, 18) เริ่มเปรียบเทียบที่ Root (25)"
+  - contentinfo [ref=f38e431]:
+    - generic [ref=f38e432]:
+      - paragraph [ref=f38e433]: DSA Lab Studio — Interactive Visual Debugger & Knowledge Hub
+      - paragraph [ref=f38e434]:
+        - text: สร้างขึ้นตามแนวทางเอกสารคำสอนและข้อสอบวิชา Data Structures and Algorithms · เชื่อมโยงกับ
+        - link "DSA Wiki สารานุกรม 10 บท" [ref=f38e435] [cursor=pointer]:
+          - /url: ../Wiki/index.html

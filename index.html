@@ -4,24 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python Data Structures & Algorithms — Knowledge Hub & Interactive Studio</title>
-  <meta name="description" content="ระบบสารานุกรมความรู้และห้องปฏิบัติการเขียนโค้ด ดีบักเกอร์แสดงภาพเคลื่อนไหว (Interactive Visual Debugger) สำหรับวิชาโครงสร้างข้อมูลและขั้นตอนวิธี" />
+  <meta name="description" content="ระบบสารานุกรมความรู้และห้องปฏิบัติการ Interactive Visual Debugger สำหรับวิชาโครงสร้างข้อมูลและขั้นตอนวิธี" />
+
+  <!-- Fonts: Chakra Petch, IBM Plex Sans Thai, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="Wiki/vendor/katex/katex.min.css" />
 
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: #0f172a;
-      --card-hover: #162038;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(99, 102, 241, 0.4);
-      --text-main: #f8fafc;
-      --text-sub: #94a3b8;
-      --brand: #6366f1;
-      --cyan: #06b6d4;
-      --emerald: #10b981;
-      --amber: #f59e0b;
+      --bg: #14151b;
+      --card-bg: #1b1d25;
+      --card-hover: #20222c;
+      --border: #2d303c;
+      --border-hover: #4fd1e8;
+      --text-main: #e9e7e1;
+      --text-sub: #8b8fa3;
+      --brand: #4fd1e8;
+      --cyan: #4fd1e8;
+      --emerald: #4ade80;
+      --amber: #f5a623;
+      --rose: #ff6b81;
+      --violet: #b794f6;
     }
 
     * {
@@ -31,24 +38,34 @@
     }
 
     body {
-      font-family: 'Noto Sans Thai', sans-serif;
+      font-family: 'IBM Plex Sans Thai', sans-serif;
       background-color: var(--bg);
+      background:
+        radial-gradient(1200px 500px at 15% -10%, rgba(79, 209, 232, 0.08), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, rgba(245, 166, 35, 0.07), transparent 60%),
+        var(--bg);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 36px 20px;
+      padding: 44px 20px;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Chakra Petch', sans-serif;
+      letter-spacing: 0.015em;
     }
 
     .hero-glow {
       position: absolute;
-      width: 650px;
-      height: 650px;
+      width: 700px;
+      height: 700px;
       background: radial-gradient(circle, rgba(99, 102, 241, 0.16) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 70%);
-      top: 35%;
+      top: 30%;
       left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
@@ -58,7 +75,7 @@
     .container {
       position: relative;
       z-index: 1;
-      max-width: 980px;
+      max-width: 1040px;
       width: 100%;
       text-align: center;
     }
@@ -67,23 +84,24 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 6px 18px;
       background: rgba(99, 102, 241, 0.12);
-      border: 1px solid rgba(99, 102, 241, 0.3);
+      border: 1px solid rgba(99, 102, 241, 0.35);
       border-radius: 999px;
       font-size: 13px;
-      color: #a5b4fc;
-      font-weight: 600;
-      margin-bottom: 20px;
+      color: #c7d2fe;
+      font-weight: 700;
+      margin-bottom: 22px;
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
     }
 
     h1 {
-      font-size: clamp(2.2rem, 5.5vw, 3.3rem);
+      font-size: clamp(2.3rem, 5.5vw, 3.4rem);
       font-weight: 800;
-      letter-spacing: -0.5px;
-      line-height: 1.2;
+      letter-spacing: -0.8px;
+      line-height: 1.18;
       margin-bottom: 16px;
-      background: linear-gradient(135deg, #ffffff 35%, #a5b4fc 70%, #38bdf8 100%);
+      background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 70%, #38bdf8 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -92,7 +110,7 @@
     p.subtitle {
       font-size: clamp(1rem, 2.5vw, 1.15rem);
       color: var(--text-sub);
-      max-width: 720px;
+      max-width: 740px;
       margin: 0 auto 44px auto;
       line-height: 1.7;
     }
@@ -102,10 +120,10 @@
       grid-template-columns: 1fr 1fr;
       gap: 24px;
       text-align: left;
-      margin-bottom: 32px;
+      margin-bottom: 36px;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 780px) {
       .hub-grid {
         grid-template-columns: 1fr;
       }
@@ -120,16 +138,17 @@
       color: inherit;
       display: flex;
       flex-direction: column;
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
     .hub-card:hover {
       background: var(--card-hover);
       border-color: var(--border-hover);
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 24px rgba(99, 102, 241, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 24px rgba(99, 102, 241, 0.25);
     }
 
     .card-icon-box {
@@ -141,20 +160,21 @@
       justify-content: center;
       font-size: 26px;
       margin-bottom: 20px;
-      background: rgba(99, 102, 241, 0.12);
-      border: 1px solid rgba(99, 102, 241, 0.25);
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
 
     .hub-card.dsa-lab .card-icon-box {
-      background: rgba(6, 182, 212, 0.12);
-      border-color: rgba(6, 182, 212, 0.25);
+      background: rgba(6, 182, 212, 0.15);
+      border-color: rgba(6, 182, 212, 0.35);
     }
 
     .card-title {
-      font-size: 1.4rem;
+      font-size: 1.38rem;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 10px;
+      letter-spacing: -0.3px;
     }
 
     .card-desc {
@@ -168,15 +188,24 @@
     .card-features {
       list-style: none;
       margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .card-features li {
-      font-size: 13px;
+      font-size: 13.5px;
       color: #cbd5e1;
-      margin-bottom: 8px;
       display: flex;
-      align-items: center;
-      gap: 8px;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .feat-check {
+      color: var(--emerald);
+      font-weight: 800;
+      flex-shrink: 0;
     }
 
     .card-btn {
@@ -188,7 +217,7 @@
       padding: 12px;
       border-radius: 10px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--border);
       color: var(--text-main);
@@ -207,12 +236,12 @@
       border-color: #06b6d4;
     }
 
-    /* Assignment Quick Showcase Grid */
+    /* Section Headers */
     .section-title {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--text-main);
-      margin: 12px 0 16px 0;
+      margin: 20px 0 16px 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -221,7 +250,7 @@
 
     .assignment-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 14px;
       text-align: left;
     }
@@ -230,7 +259,7 @@
       background: rgba(15, 23, 42, 0.65);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 16px 14px;
+      padding: 16px 16px;
       text-decoration: none;
       color: inherit;
       transition: all 0.2s ease;
@@ -240,9 +269,10 @@
     }
 
     .assign-card:hover {
-      background: rgba(22, 32, 56, 0.9);
-      border-color: rgba(99, 102, 241, 0.4);
+      background: rgba(22, 32, 56, 0.95);
+      border-color: rgba(99, 102, 241, 0.45);
       transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
     .assign-tag {
@@ -255,13 +285,14 @@
 
     .assign-name {
       font-size: 13.5px;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--text-main);
     }
 
     .assign-sub {
       font-size: 12px;
       color: var(--text-sub);
+      line-height: 1.4;
     }
 
     footer {
@@ -282,8 +313,8 @@
 
     <h1>Python Data Structures & Algorithms</h1>
     <p class="subtitle">
-      ศูนย์รวมเนื้อหาบทเรียนและการบ้านวิชา DSA อย่างละเอียด<br />
-      พร้อมระบบรันโค้ด Python จริงในเบราว์เซอร์ และ <b>Interactive Visual Debugger</b> จำลองการทำงานทีละสเต็ป
+      ศูนย์รวมเนื้อหาบทเรียนและการบ้านวิชา DSA อย่างละเอียดระดับเวิลด์คลาส<br />
+      พร้อม <b>Interactive Visual Debugger</b> จำลองขั้นตอนวิธีทีละสเต็ป และระบบรันโค้ด Python ในเบราว์เซอร์
     </p>
 
     <div class="hub-grid">
@@ -292,14 +323,14 @@
         <div class="card-icon-box">📚</div>
         <h2 class="card-title">สารานุกรม DSA Wiki</h2>
         <p class="card-desc">
-          รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แผนผัง Mermaid, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K)
+          รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แบบจำลองโครงสร้างสถาปัตยกรรม DSA Studio Visual Models, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K)
         </p>
         <ul class="card-features">
-          <li>✓ บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก</li>
-          <li>✓ 🏁 <b>โซนเตรียมสอบปลายภาค 2568</b>: สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์</li>
-          <li>✓ 🎯 ตะลุยโจทย์ข้อสอบเก่า Midterm & Mock Exam เสมือนจริง</li>
-          <li>✓ ตารางสรุป Time & Space Complexity Cheat Sheet</li>
-          <li>✓ ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที</li>
+          <li><span class="feat-check">✓</span><span>บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก</span></li>
+          <li><span class="feat-check">✓</span><span>🏁 <b>โซนเตรียมสอบปลายภาค</b>: สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์</span></li>
+          <li><span class="feat-check">✓</span><span>🎯 ตะลุยโจทย์ข้อสอบจริง Midterm & Mock Exam เสมือนจริง</span></li>
+          <li><span class="feat-check">✓</span><span>ตารางสรุป Time & Space Complexity Cheat Sheet</span></li>
+          <li><span class="feat-check">✓</span><span>ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที</span></li>
         </ul>
         <div class="card-btn">
           <span>📖 เปิดสารานุกรม Wiki</span>
@@ -308,18 +339,18 @@
       </a>
 
       <!-- Card 2: DSA Lab Studio -->
-      <a href="DsaLab/index.html" class="hub-card dsa-lab">
+      <a href="DsaLab/index.html?ex=assign3_heap" class="hub-card dsa-lab">
         <div class="card-icon-box">🔬</div>
         <h2 class="card-title">ห้องทดลอง DSA Lab & Interactive Studio</h2>
         <p class="card-desc">
-          สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง สามารถกรอกค่าทดสอบได้เอง พร้อม Live Python Code Sync
+          สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง กรอกค่าทดสอบได้อิสระ พร้อม Live Python Code Sync
         </p>
         <ul class="card-features">
-          <li>✓ รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม)</li>
-          <li>✓ <b>Interactive Action Deck</b>: กรอกค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ</li>
-          <li>✓ <b>Live Code Sync</b>: ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์</li>
-          <li>✓ แอนิเมชันคู่ขนาน <b>Tree Structure View & 1-Based Array Index View</b></li>
-          <li>✓ ชิปคำนวณสูตรคณิตศาสตร์: Parent $\lfloor i/2 \rfloor$, Left $2i$, Right $2i+1$</li>
+          <li><span class="feat-check">✓</span><span><b>Interactive Action Deck</b>: ใส่ค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ</span></li>
+          <li><span class="feat-check">✓</span><span><b>Live Code Sync</b>: ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์</span></li>
+          <li><span class="feat-check">✓</span><span>แอนิเมชันคู่ขนาน <b>Complete Binary Tree View & 1-Based Array Index View</b></span></li>
+          <li><span class="feat-check">✓</span><span>ชิปสูตรคณิตศาสตร์: Parent $\lfloor i/2 \rfloor$, Left $2i$, Right $2i+1$</span></li>
+          <li><span class="feat-check">✓</span><span>รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม)</span></li>
         </ul>
         <div class="card-btn">
           <span>🚀 เข้าสู่ห้องทดลอง DSA Lab</span>
@@ -335,8 +366,8 @@
     </div>
 
     <div class="assignment-strip" style="margin-bottom: 28px;">
-      <a href="Wiki/index.html#/11.6 - Final Exam Real Classroom Prep & Solutions" class="assign-card" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.08);">
-        <span class="assign-tag" style="color: #f87171;">Final Exam 2568</span>
+      <a href="Wiki/index.html#/11.6 - Final Exam Real Classroom Prep & Solutions" class="assign-card" style="border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.08);">
+        <span class="assign-tag" style="color: #f87171;">Final Exam</span>
         <div class="assign-name">🏁 เจาะลึกแนวข้อสอบปลายภาค & กับดักอาจารย์</div>
         <div class="assign-sub">สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs & Dijkstra</div>
       </a>
@@ -369,38 +400,43 @@
 
       <a href="DsaLab/index.html?ex=exam_hash" class="assign-card" style="border-color: rgba(6, 182, 212, 0.35);">
         <span class="assign-tag" style="color: #06b6d4;">Exams/Hash.py</span>
-        <div class="assign-name">🔑 Hash Table & ASCII Modulo</div>
-        <div class="assign-sub">คำนวณ ord(char) และจำลองลง Bucket ตารางแฮช</div>
+        <div class="assign-name">🔑 Hash Table & Collisions</div>
+        <div class="assign-sub">จำลอง Separate Chaining & Linear Probing พร้อม Load Factor</div>
       </a>
 
-      <a href="DsaLab/index.html?ex=lecture5_bst_delete" class="assign-card">
-        <span class="assign-tag">Exams/BST</span>
-        <div class="assign-name">🌲 BST Delete (2 Children)</div>
+      <a href="DsaLab/index.html?ex=lecture5_bst_delete" class="assign-card" style="border-color: rgba(16, 185, 129, 0.35);">
+        <span class="assign-tag" style="color: #34d399;">Exams/BST</span>
+        <div class="assign-name">🌲 BST Deletion 3 Cases</div>
         <div class="assign-sub">จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor</div>
       </a>
 
-      <a href="DsaLab/index.html?ex=stack_postfix" class="assign-card">
-        <span class="assign-tag">Exams/Postfix</span>
-        <div class="assign-name">🥞 Stack Postfix Evaluator</div>
-        <div class="assign-sub">จำลองการประเมินค่านิพจน์ด้วย Stack ทีละโทเค็น</div>
-      </a>
-
-      <a href="DsaLab/index.html?ex=assign1_linkedlist" class="assign-card">
-        <span class="assign-tag">Assignment 1</span>
-        <div class="assign-name">🔗 Singly Linked List</div>
-        <div class="assign-sub">จำลองข้อมูลนักศึกษา, การแทรก, ลบ, และท่องโหนด</div>
-      </a>
-
-      <a href="DsaLab/index.html?ex=assign4_dijkstra" class="assign-card">
-        <span class="assign-tag">Assignment 4</span>
-        <div class="assign-name">🗺️ Shortest Path (Dijkstra)</div>
-        <div class="assign-sub">กราฟจุดยอด $v_1-v_7$ พร้อมตารางคำนวณ Known & dv ทีละสเต็ป</div>
+      <a href="DsaLab/index.html?ex=stack_postfix" class="assign-card" style="border-color: rgba(168, 85, 247, 0.35);">
+        <span class="assign-tag" style="color: #c084fc;">Exams/Postfix</span>
+        <div class="assign-name">🥞 Stack: Infix to Postfix</div>
+        <div class="assign-sub">จำลอง Operator Stack และ Precedence Hierarchy ทีละโทเค็น</div>
       </a>
     </div>
 
     <footer>
-      Python Data Structures & Algorithms Knowledge Base & Interactive Studio — พัฒนาเพื่อการเรียนรู้อย่างมีประสิทธิภาพสูงสุด
+      Python Data Structures & Algorithms Knowledge Base & Interactive Studio — ยกระดับการเรียนรู้ด้วยมาตรฐานระดับเวิลด์คลาส
     </footer>
   </div>
+
+  <!-- KaTeX Vendor Scripts -->
+  <script src="Wiki/vendor/katex/katex.min.js"></script>
+  <script src="Wiki/vendor/katex/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.renderMathInElement) {
+        window.renderMathInElement(document.body, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
 </body>
 </html>

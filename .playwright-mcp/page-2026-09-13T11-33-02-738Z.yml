@@ -1,0 +1,100 @@
+- generic [ref=f2e2]:
+  - generic [ref=f2e3]:
+    - generic [ref=f2e4]: ⚡
+    - generic [ref=f2e5]: ระบบสารานุกรมความรู้และห้องปฏิบัติการภาษา Python DSA
+  - heading "Python Data Structures & Algorithms" [level=1] [ref=f2e6]
+  - paragraph [ref=f2e7]: ศูนย์รวมเนื้อหาบทเรียนและการบ้านวิชา DSA อย่างละเอียด พร้อมระบบรันโค้ด Python จริงในเบราว์เซอร์ และ Interactive Visual Debugger จำลองการทำงานทีละสเต็ป
+  - generic [ref=f2e8]:
+    - 'link "📚 สารานุกรม DSA Wiki รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แผนผัง Mermaid, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K) ✓ บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก ✓ 🏁 โซนเตรียมสอบปลายภาค 2568 : สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์ ✓ 🎯 ตะลุยโจทย์ข้อสอบเก่า Midterm & Mock Exam เสมือนจริง ✓ ตารางสรุป Time & Space Complexity Cheat Sheet ✓ ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที 📖 เปิดสารานุกรม Wiki →" [ref=f2e9] [cursor=pointer]':
+      - /url: Wiki/index.html
+      - generic [ref=f2e10]: 📚
+      - heading "สารานุกรม DSA Wiki" [level=2] [ref=f2e11]
+      - paragraph [ref=f2e12]: รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แผนผัง Mermaid, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K)
+      - list [ref=f2e13]:
+        - listitem [ref=f2e14]: ✓ บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก
+        - listitem [ref=f2e15]:
+          - text: ✓ 🏁
+          - generic [ref=f2e16]: โซนเตรียมสอบปลายภาค 2568
+          - text: ": สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์"
+        - listitem [ref=f2e17]: ✓ 🎯 ตะลุยโจทย์ข้อสอบเก่า Midterm & Mock Exam เสมือนจริง
+        - listitem [ref=f2e18]: ✓ ตารางสรุป Time & Space Complexity Cheat Sheet
+        - listitem [ref=f2e19]: ✓ ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที
+      - generic [ref=f2e20]:
+        - generic [ref=f2e21]: 📖 เปิดสารานุกรม Wiki
+        - generic [ref=f2e22]: →
+    - 'link "🔬 ห้องทดลอง DSA Lab & Interactive Studio สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง สามารถกรอกค่าทดสอบได้เอง พร้อม Live Python Code Sync ✓ รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม) ✓ Interactive Action Deck : กรอกค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ ✓ Live Code Sync : ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์ ✓ แอนิเมชันคู่ขนาน Tree Structure View & 1-Based Array Index View ✓ ชิปคำนวณสูตรคณิตศาสตร์: Parent $\\lfloor i/2 \\rfloor$, Left $2i$, Right $2i+1$ 🚀 เข้าสู่ห้องทดลอง DSA Lab →" [ref=f2e23] [cursor=pointer]':
+      - /url: DsaLab/index.html
+      - generic [ref=f2e24]: 🔬
+      - heading "ห้องทดลอง DSA Lab & Interactive Studio" [level=2] [ref=f2e25]
+      - paragraph [ref=f2e26]: สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง สามารถกรอกค่าทดสอบได้เอง พร้อม Live Python Code Sync
+      - list [ref=f2e27]:
+        - listitem [ref=f2e28]: ✓ รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม)
+        - listitem [ref=f2e29]:
+          - text: ✓
+          - generic [ref=f2e30]: Interactive Action Deck
+          - text: ": กรอกค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ"
+        - listitem [ref=f2e31]:
+          - text: ✓
+          - generic [ref=f2e32]: Live Code Sync
+          - text: ": ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์"
+        - listitem [ref=f2e33]:
+          - text: ✓ แอนิเมชันคู่ขนาน
+          - generic [ref=f2e34]: Tree Structure View & 1-Based Array Index View
+        - listitem [ref=f2e35]: "✓ ชิปคำนวณสูตรคณิตศาสตร์: Parent $\\lfloor i/2 \\rfloor$, Left $2i$, Right $2i+1$"
+      - generic [ref=f2e36]:
+        - generic [ref=f2e37]: 🚀 เข้าสู่ห้องทดลอง DSA Lab
+        - generic [ref=f2e38]: →
+  - generic [ref=f2e39]:
+    - generic [ref=f2e40]: 🏁
+    - generic [ref=f2e41]: โซนเตรียมสอบปลายภาค & จำลองสอบเสมือนจริง (Final & Midterm Exam Zone)
+  - generic [ref=f2e42]:
+    - link "Final Exam 2568 🏁 เจาะลึกแนวข้อสอบปลายภาค & กับดักอาจารย์ สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs & Dijkstra" [ref=f2e43] [cursor=pointer]:
+      - /url: Wiki/index.html#/11.6 - Final Exam Real Classroom Prep & Solutions
+      - generic [ref=f2e44]: Final Exam 2568
+      - generic [ref=f2e45]: 🏁 เจาะลึกแนวข้อสอบปลายภาค & กับดักอาจารย์
+      - generic [ref=f2e46]: สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs & Dijkstra
+    - 'link "Midterm Exam 🎯 ข้อสอบจริง Midterm Mock & Solutions เฉลยข้อสอบจริง 20 ข้อ: LinkedList, Stacks, Queues, BST Deletion" [ref=f2e47] [cursor=pointer]':
+      - /url: Wiki/index.html#/11.1 - Midterm Real Exam Mock & Solutions
+      - generic [ref=f2e48]: Midterm Exam
+      - generic [ref=f2e49]: 🎯 ข้อสอบจริง Midterm Mock & Solutions
+      - generic [ref=f2e50]: "เฉลยข้อสอบจริง 20 ข้อ: LinkedList, Stacks, Queues, BST Deletion"
+    - link "Quick Cheat Sheet ⚡ ตารางสรุป Big-O & Complexity ทุกบท ทบทวนสูตรคำนวณ ความเร็ว Best/Avg/Worst และ Memory Space" [ref=f2e51] [cursor=pointer]:
+      - /url: Wiki/index.html#/Glossary & Complexity Cheat Sheet
+      - generic [ref=f2e52]: Quick Cheat Sheet
+      - generic [ref=f2e53]: ⚡ ตารางสรุป Big-O & Complexity ทุกบท
+      - generic [ref=f2e54]: ทบทวนสูตรคำนวณ ความเร็ว Best/Avg/Worst และ Memory Space
+  - generic [ref=f2e55]:
+    - generic [ref=f2e56]: 🎯
+    - generic [ref=f2e57]: แบบจำลอง Interactive จากข้อสอบจริง (คลิกเพื่อทดสอบทันที)
+  - generic [ref=f2e58]:
+    - link "Exams/Heap.py 🔺 Binary Min-Heap Studio Interactive Percolate Up & Down ใส่ค่าเองได้อิสระ" [ref=f2e59] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=assign3_heap
+      - generic [ref=f2e60]: Exams/Heap.py
+      - generic [ref=f2e61]: 🔺 Binary Min-Heap Studio
+      - generic [ref=f2e62]: Interactive Percolate Up & Down ใส่ค่าเองได้อิสระ
+    - link "Exams/Hash.py 🔑 Hash Table & ASCII Modulo คำนวณ ord(char) และจำลองลง Bucket ตารางแฮช" [ref=f2e63] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=exam_hash
+      - generic [ref=f2e64]: Exams/Hash.py
+      - generic [ref=f2e65]: 🔑 Hash Table & ASCII Modulo
+      - generic [ref=f2e66]: คำนวณ ord(char) และจำลองลง Bucket ตารางแฮช
+    - link "Exams/BST 🌲 BST Delete (2 Children) จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor" [ref=f2e67] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=lecture5_bst_delete
+      - generic [ref=f2e68]: Exams/BST
+      - generic [ref=f2e69]: 🌲 BST Delete (2 Children)
+      - generic [ref=f2e70]: จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor
+    - link "Exams/Postfix 🥞 Stack Postfix Evaluator จำลองการประเมินค่านิพจน์ด้วย Stack ทีละโทเค็น" [ref=f2e71] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=stack_postfix
+      - generic [ref=f2e72]: Exams/Postfix
+      - generic [ref=f2e73]: 🥞 Stack Postfix Evaluator
+      - generic [ref=f2e74]: จำลองการประเมินค่านิพจน์ด้วย Stack ทีละโทเค็น
+    - link "Assignment 1 🔗 Singly Linked List จำลองข้อมูลนักศึกษา, การแทรก, ลบ, และท่องโหนด" [ref=f2e75] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=assign1_linkedlist
+      - generic [ref=f2e76]: Assignment 1
+      - generic [ref=f2e77]: 🔗 Singly Linked List
+      - generic [ref=f2e78]: จำลองข้อมูลนักศึกษา, การแทรก, ลบ, และท่องโหนด
+    - link "Assignment 4 🗺️ Shortest Path (Dijkstra) กราฟจุดยอด $v_1-v_7$ พร้อมตารางคำนวณ Known & dv ทีละสเต็ป" [ref=f2e79] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=assign4_dijkstra
+      - generic [ref=f2e80]: Assignment 4
+      - generic [ref=f2e81]: 🗺️ Shortest Path (Dijkstra)
+      - generic [ref=f2e82]: กราฟจุดยอด $v_1-v_7$ พร้อมตารางคำนวณ Known & dv ทีละสเต็ป
+  - contentinfo [ref=f2e83]: Python Data Structures & Algorithms Knowledge Base & Interactive Studio — พัฒนาเพื่อการเรียนรู้อย่างมีประสิทธิภาพสูงสุด

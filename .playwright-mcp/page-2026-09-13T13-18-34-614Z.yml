@@ -1,0 +1,452 @@
+- generic [active] [ref=f44e1]:
+  - navigation [ref=f44e2]:
+    - generic [ref=f44e3]:
+      - link "⚡ DSA LAB STUDIO v3.0" [ref=f44e4] [cursor=pointer]:
+        - /url: ../index.html
+        - generic [ref=f44e5]: ⚡
+        - generic [ref=f44e6]: DSA LAB STUDIO
+        - generic [ref=f44e7]: v3.0
+      - generic [ref=f44e8]:
+        - button "Scroll left" [ref=f44e9] [cursor=pointer]: ‹
+        - generic [ref=f44e10]:
+          - button "🌲 Binary Heap (Priority Queue)" [ref=f44e11] [cursor=pointer]:
+            - generic [ref=f44e12]: 🌲
+            - text: Binary Heap (Priority Queue)
+          - button "🌿 Binary Search Tree (BST)" [ref=f44e13] [cursor=pointer]:
+            - generic [ref=f44e14]: 🌿
+            - text: Binary Search Tree (BST)
+          - button "⚡ Hash Table & Collisions" [ref=f44e15] [cursor=pointer]:
+            - generic [ref=f44e16]: ⚡
+            - text: Hash Table & Collisions
+          - 'button "🥞 Stack: Infix to Postfix" [ref=f44e17] [cursor=pointer]':
+            - generic [ref=f44e18]: 🥞
+            - text: "Stack: Infix to Postfix"
+        - button "Scroll right" [ref=f44e19] [cursor=pointer]: ›
+      - generic [ref=f44e20]:
+        - link "📚 สารานุกรม Wiki" [ref=f44e21] [cursor=pointer]:
+          - /url: ../Wiki/index.html
+          - generic [ref=f44e22]: 📚
+          - text: สารานุกรม Wiki
+        - link "🏠 Home" [ref=f44e23] [cursor=pointer]:
+          - /url: ../index.html
+          - generic [ref=f44e24]: 🏠
+          - text: Home
+  - navigation [ref=f44e25]:
+    - generic [ref=f44e26]:
+      - link "① หลักการ Priority Queue" [ref=f44e27] [cursor=pointer]:
+        - /url: "#heap-principle"
+      - link "② สร้าง Heap ทีละตัว (10 ตัว)" [ref=f44e28] [cursor=pointer]:
+        - /url: "#heap-build"
+      - link "③ Insert(14) & DeleteMin() เดี่ยว" [ref=f44e29] [cursor=pointer]:
+        - /url: "#heap-demo"
+      - link "④ Interactive Sandbox" [ref=f44e30] [cursor=pointer]:
+        - /url: "#heap-sandbox"
+  - generic [ref=f44e31]:
+    - banner [ref=f44e32]:
+      - generic [ref=f44e33]: DATA STRUCTURES & ALGORITHMS — LECTURE 8 / EXAMS
+      - heading "Binary Heap ตั้งแต่ต้นจนจบ" [level=1] [ref=f44e35]
+      - paragraph [ref=f44e36]: อธิบายหลักการ Priority Queue / Binary Heap ทีละขั้น พร้อมไล่โค้ด insert() และ deleteMin() แบบ Step-by-Step Interactive Debugger จริง — รวมทั้งตัวอย่างสร้าง heap จากชุดข้อสอบ [13, 21, 16, 24, 31, 19, 68, 65, 26, 32]
+    - generic [ref=f44e37]:
+      - generic [ref=f44e38]:
+        - generic [ref=f44e39]:
+          - generic [ref=f44e40]: 01 — หลักการ
+          - heading "Priority Queue (Heap) คืออะไร และทำไมต้องใช้ Tree" [level=2] [ref=f44e41]
+          - paragraph [ref=f44e42]: ไล่อ่านตั้งแต่ concept ไปจนถึงโครงสร้างข้อมูลจริง 6 หัวข้อสำคัญที่ออกสอบบ่อยที่สุด
+        - generic [ref=f44e43]:
+          - heading "1 Priority Queue คือ ADT ที่ \"ดึงตัวสำคัญสุดออกก่อนเสมอ\"" [level=3] [ref=f44e44]:
+            - generic [ref=f44e45]: "1"
+            - text: Priority Queue คือ ADT ที่ "ดึงตัวสำคัญสุดออกก่อนเสมอ"
+          - paragraph [ref=f44e46]: "Priority Queue ไม่ใช่ FIFO Queue ธรรมดา แต่เป็นโครงสร้างข้อมูลที่รองรับอย่างน้อย 2 operation สำคัญ: insert (เหมือน enqueue) และ deleteMin (ค้นหา คืนค่า และลบสมาชิกที่ค่าน้อยที่สุดออก — เหมือน dequeue แต่ดึง \"ตัวเล็กสุด\" แทนที่จะดึง \"ตัวแรกสุด\")"
+          - generic [ref=f44e47]:
+            - generic [ref=f44e48]: deleteMin()
+            - generic [ref=f44e50]: Priority Queue
+            - generic [ref=f44e51]: insert(x)
+          - paragraph [ref=f44e53]: "ใช้งานจริงใน: คิวเครื่องพิมพ์ (งานสำคัญพิมพ์ก่อน), การจัดคิว process ของ OS Scheduler, และ Graph Algorithm หัวใจสำคัญอย่าง Dijkstra's Shortest Path และ Prim's MST"
+          - heading "2 ทำไมไม่ใช้ list ธรรมดา — ทำไมต้องมี Binary Heap" [level=3] [ref=f44e54]:
+            - generic [ref=f44e55]: "2"
+            - text: ทำไมไม่ใช้ list ธรรมดา — ทำไมต้องมี Binary Heap
+          - paragraph [ref=f44e56]: "ถ้า implement ตรงไปตรงมาด้วย List ธรรมดา จะเจอปัญหา Trade-off ร้ายแรง: ถ้า insert เร็ว deleteMin จะช้ามาก หรือถ้า deleteMin เร็ว insert จะช้ามาก Binary Heap คือ Compromise ที่ทำให้ทั้งสอง operation เร็วระดับ logarithmic time พร้อมกัน:"
+          - table [ref=f44e57]:
+            - rowgroup [ref=f44e58]:
+              - row [ref=f44e59]:
+                - columnheader "วิธี implement" [ref=f44e60]
+                - columnheader "insert" [ref=f44e61]
+                - columnheader "deleteMin" [ref=f44e62]
+              - row [ref=f44e63]:
+                - cell "List ไม่เรียงลำดับ (Unsorted List)" [ref=f44e64]
+                - cell "O(1)" [ref=f44e65]
+                - cell "O(N) — ต้องไล่หาตัวน้อยสุดทั้ง list" [ref=f44e66]
+              - row [ref=f44e67]:
+                - cell "List เรียงลำดับแล้ว (Sorted List)" [ref=f44e68]
+                - cell "O(N) — ต้องเลื่อนขยับหาตำแหน่งแทรก" [ref=f44e69]
+                - cell "O(1)" [ref=f44e70]
+              - row [ref=f44e71]:
+                - cell "Binary Heap (Array-Based)" [ref=f44e72]
+                - cell "O(log N)" [ref=f44e73]
+                - cell "O(log N)" [ref=f44e74]
+          - heading "3 คุณสมบัติที่ 1 — Structure Property (Complete Binary Tree)" [level=3] [ref=f44e75]:
+            - generic [ref=f44e76]: "3"
+            - text: คุณสมบัติที่ 1 — Structure Property (Complete Binary Tree)
+          - paragraph [ref=f44e77]: "Binary Heap ต้องเป็น Complete Binary Tree: เติมเต็มแน่นทุกชั้นจากซ้ายไปขวา ห้ามมีช่องว่างระหว่างทาง คุณสมบัตินี้ทำให้ tree มีรูปแบบคงที่ตายตัว จึงแทนด้วย Array 1-Based Indexing ได้สมบูรณ์แบบโดยไม่ต้องเก็บ Pointer ซ้าย/ขวา/พ่อ ให้เปลืองหน่วยความจำเลย"
+          - generic [ref=f44e78]:
+            - generic [ref=f44e79]:
+              - heading "สูตรคำนวณ Index ↔ ตำแหน่งใน Tree" [level=4] [ref=f44e80]
+              - paragraph [ref=f44e81]: "สำหรับสมาชิกที่ตำแหน่ง i ใน array (เริ่มนับที่ index 1 เพราะ index 0 เว้นว่างไว้เป็น Sentinel):"
+              - generic [ref=f44e82]:
+                - generic [ref=f44e83]: Left Child = 2i
+                - generic [ref=f44e84]: Right Child = 2i + 1
+                - generic [ref=f44e85]: Parent = i // 2
+            - generic [ref=f44e86]:
+              - heading "ทำไมความสูงจึงเป็น O(log N)" [level=4] [ref=f44e87]
+              - paragraph [ref=f44e88]: ถ้า Heap สูง h ชั้น จะมีสมาชิกได้แน่นขนัดระหว่าง 2ʰ ถึง 2ʰ⁺¹−1 ตัว ดังนั้นความสูงของ Heap ที่มี N ตัวจึงการันตีเป็น O(log N) เสมอ — นี่คือเหตุผลที่ insert และ deleteMin ทำงานได้รวดเร็วอย่างยิ่ง
+          - heading "4 คุณสมบัติที่ 2 — Heap-Order Property (Min-Heap vs Max-Heap)" [level=3] [ref=f44e89]:
+            - generic [ref=f44e90]: "4"
+            - text: คุณสมบัติที่ 2 — Heap-Order Property (Min-Heap vs Max-Heap)
+          - paragraph [ref=f44e91]: ค่าของพ่อ ≤ ค่าของลูกเสมอ (สำหรับ Min-Heap) ในทุกโหนดยกเว้น root ผลที่ตามมาคือ ค่าน้อยที่สุดของทั้งต้นไม้อยู่ที่ Root เสมอ (array[1]) — การค้นหาค่าต่ำสุดจึงทำได้ในเวลา O(1) ทันทีโดยไม่ต้องค้นหา!
+          - heading "5 Insert Operation — Percolate Up" [level=3] [ref=f44e92]:
+            - generic [ref=f44e93]: "5"
+            - text: Insert Operation — Percolate Up
+          - paragraph [ref=f44e94]: หลักการคือสร้าง "ช่องว่าง (Hole)" ที่ตำแหน่งถัดไปสุดท้ายของ Array เพื่อรักษา Structure Property ก่อน แล้ววนลูปเปรียบเทียบค่าใหม่กับพ่อของ Hole ถ้าค่าใหม่ น้อยกว่าพ่อ แสดงว่าผิด Heap-Order → ดึงพ่อลงมาแทนที่ แล้วเลื่อน Hole ขึ้นไปแทนตำแหน่งพ่อ (Percolate Up) ทำซ้ำจนกว่าจะไม่ผิดเงื่อนไข แล้วค่อยใส่ค่าจริงลงไป
+          - heading "6 deleteMin Operation — Percolate Down" [level=3] [ref=f44e95]:
+            - generic [ref=f44e96]: "6"
+            - text: deleteMin Operation — Percolate Down
+          - paragraph [ref=f44e97]: เก็บค่าที่ Root (array[1]) ไว้เป็นผลลัพธ์ แล้วนำค่าที่ตำแหน่งสุดท้ายของ Heap มาวางไว้ที่ Root ชั่วคราว (พร้อมลดขนาด currentSize -= 1) จากนั้นเลื่อนค่าลงไปเปรียบเทียบกับ ลูกที่มีค่าน้อยกว่า ระหว่างลูกซ้ายและลูกขวา ถ้าค่าใหญ่กว่าลูก ให้สลับค่าลูกขึ้นมา แล้วขยับ Hole ลงไป (Percolate Down) จนกระทั่งได้ตำแหน่งที่ถูกต้องสมบูรณ์
+      - generic [ref=f44e98]:
+        - generic [ref=f44e99]:
+          - generic [ref=f44e100]: 02 — build from empty
+          - heading "สร้าง Heap ขึ้นใหม่ด้วยการ insert ทีละตัว" [level=2] [ref=f44e101]
+          - paragraph [ref=f44e102]:
+            - text: "เริ่มจาก Heap ว่างเปล่า แล้ว insert ค่าตามลำดับข้อสอบ:"
+            - generic [ref=f44e103]: 13 → 21 → 16 → 24 → 31 → 19 → 68 → 65 → 26 → 32
+            - text: แต่ละตัวจะผ่านกระบวนการ Percolate Up ของตัวเอง กดปุ่ม "ตัวถัดไป ⏭" เพื่อข้ามดูผลลัพธ์ของแต่ละโหนด หรือกด "Next ▶" เพื่อไล่ทีละบรรทัด
+        - generic [ref=f44e104]:
+          - generic [ref=f44e106]:
+            - button "⟲ Reset" [ref=f44e107] [cursor=pointer]
+            - button "⏮ ตัวก่อนหน้า" [ref=f44e108] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f44e109]
+            - button "Next ▶" [ref=f44e110] [cursor=pointer]
+            - button "ตัวถัดไป ⏭" [ref=f44e111] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f44e112] [cursor=pointer]
+            - generic [ref=f44e113]: Step 0 / 59
+            - generic [ref=f44e114]:
+              - text: "คีย์ลัด:"
+              - generic [ref=f44e115]: Space
+              - text: หรือ
+              - generic [ref=f44e116]: →
+          - generic [ref=f44e118]:
+            - generic [ref=f44e119]:
+              - generic [ref=f44e121]:
+                - generic [ref=f44e122]: Tree View
+                - generic [ref=f44e123]: currentSize = 0
+              - generic [ref=f44e125]:
+                - generic [ref=f44e126]:
+                  - generic [ref=f44e127]: Array View
+                  - generic [ref=f44e128]: index 0 ไม่ใช้งาน
+                - generic [ref=f44e130]:
+                  - generic [ref=f44e131]: "0"
+                  - text: ·
+                - generic [ref=f44e132]:
+                  - generic [ref=f44e133]: hole (ตำแหน่งว่าง)
+                  - generic [ref=f44e135]: กำลังเปรียบเทียบ
+                  - generic [ref=f44e137]: เพิ่งย้ายค่า
+                  - generic [ref=f44e139]: ค่าสุดท้ายที่วาง
+            - generic [ref=f44e141]:
+              - generic [ref=f44e142]:
+                - generic [ref=f44e143]:
+                  - generic [ref=f44e144]: Source Code
+                  - generic [ref=f44e145]: python
+                - generic [ref=f44e146]:
+                  - generic [ref=f44e147]:
+                    - generic [ref=f44e148]: "1"
+                    - generic [ref=f44e149]: "def insert(self, x):"
+                  - generic [ref=f44e150]:
+                    - generic [ref=f44e151]: "2"
+                    - generic [ref=f44e152]: "if self.is_full():"
+                  - generic [ref=f44e153]:
+                    - generic [ref=f44e154]: "3"
+                    - generic [ref=f44e155]: return
+                  - generic [ref=f44e156]:
+                    - generic [ref=f44e157]: "4"
+                    - generic [ref=f44e158]: self.currentSize += 1
+                  - generic [ref=f44e159]:
+                    - generic [ref=f44e160]: "5"
+                    - generic [ref=f44e161]: hole = self.currentSize
+                  - generic [ref=f44e162]:
+                    - generic [ref=f44e163]: "6"
+                    - generic [ref=f44e164]: "while hole > 1 and x < self.array[hole // 2]:"
+                  - generic [ref=f44e165]:
+                    - generic [ref=f44e166]: "7"
+                    - generic [ref=f44e167]: self.array[hole] = self.array[hole // 2]
+                  - generic [ref=f44e168]:
+                    - generic [ref=f44e169]: "8"
+                    - generic [ref=f44e170]: hole //= 2
+                  - generic [ref=f44e171]:
+                    - generic [ref=f44e172]: "9"
+                    - generic [ref=f44e173]: self.array[hole] = x
+              - generic [ref=f44e174]:
+                - generic [ref=f44e175]: Watch Variables
+                - generic [ref=f44e177]:
+                  - generic [ref=f44e178]: —
+                  - generic [ref=f44e179]: ยังไม่มีตัวแปร
+              - generic [ref=f44e180]: ⚡ พร้อมดำเนินการสเต็ปถัดไป
+              - generic [ref=f44e183]: "เริ่มต้น: heap ว่างเปล่า (currentSize = 0) — เตรียม insert ทั้งหมด 10 ค่า"
+          - generic [ref=f44e184]:
+            - button "⟲ Reset" [ref=f44e185] [cursor=pointer]
+            - button "⏮ ตัวก่อนหน้า" [ref=f44e186] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f44e187]
+            - button "Next ▶" [ref=f44e188] [cursor=pointer]
+            - button "ตัวถัดไป ⏭" [ref=f44e189] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f44e190] [cursor=pointer]
+            - text: Step 0 / 59
+          - generic [ref=f44e191]:
+            - generic [ref=f44e192]: Debug Console
+            - generic [ref=f44e193]: "[step 0] เริ่มต้น: heap ว่างเปล่า (currentSize = 0) — เตรียม insert ทั้งหมด 10 ค่า"
+      - generic [ref=f44e195]:
+        - generic [ref=f44e196]:
+          - generic [ref=f44e197]: 03 — single-op demo
+          - heading "Insert(14) และ deleteMin() บน Heap 10 ตัวที่สร้างเสร็จแล้ว" [level=2] [ref=f44e198]
+          - paragraph [ref=f44e199]:
+            - text: ใช้ Heap ผลลัพธ์สมบูรณ์จากขั้นตอนด้านบน
+            - generic [ref=f44e200]: "[13, 21, 16, 24, 31, 19, 68, 65, 26, 32]"
+            - text: เป็นสถานะเริ่มต้น
+        - generic [ref=f44e201]:
+          - button "insert(14)" [ref=f44e202] [cursor=pointer]
+          - button "deleteMin()" [ref=f44e203] [cursor=pointer]
+        - generic [ref=f44e204]:
+          - generic [ref=f44e206]:
+            - button "⟲ Reset" [ref=f44e207] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f44e208]
+            - button "Next ▶" [ref=f44e209] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f44e210] [cursor=pointer]
+            - generic [ref=f44e211]: Step 0 / 13
+            - generic [ref=f44e212]:
+              - text: "คีย์ลัด:"
+              - generic [ref=f44e213]: Space
+              - text: หรือ
+              - generic [ref=f44e214]: →
+          - generic [ref=f44e216]:
+            - generic [ref=f44e217]:
+              - generic [ref=f44e218]:
+                - generic [ref=f44e219]:
+                  - generic [ref=f44e220]: Tree View
+                  - generic [ref=f44e221]: currentSize = 10
+                - img [ref=f44e222]:
+                  - generic [ref=f44e232]:
+                    - generic [ref=f44e234]: "13"
+                    - generic [ref=f44e235]: "[1]"
+                  - generic [ref=f44e236]:
+                    - generic [ref=f44e238]: "21"
+                    - generic [ref=f44e239]: "[2]"
+                  - generic [ref=f44e240]:
+                    - generic [ref=f44e242]: "16"
+                    - generic [ref=f44e243]: "[3]"
+                  - generic [ref=f44e244]:
+                    - generic [ref=f44e246]: "24"
+                    - generic [ref=f44e247]: "[4]"
+                  - generic [ref=f44e248]:
+                    - generic [ref=f44e250]: "31"
+                    - generic [ref=f44e251]: "[5]"
+                  - generic [ref=f44e252]:
+                    - generic [ref=f44e254]: "19"
+                    - generic [ref=f44e255]: "[6]"
+                  - generic [ref=f44e256]:
+                    - generic [ref=f44e258]: "68"
+                    - generic [ref=f44e259]: "[7]"
+                  - generic [ref=f44e260]:
+                    - generic [ref=f44e262]: "65"
+                    - generic [ref=f44e263]: "[8]"
+                  - generic [ref=f44e264]:
+                    - generic [ref=f44e266]: "26"
+                    - generic [ref=f44e267]: "[9]"
+                  - generic [ref=f44e268]:
+                    - generic [ref=f44e270]: "32"
+                    - generic [ref=f44e271]: "[10]"
+              - generic [ref=f44e272]:
+                - generic [ref=f44e273]:
+                  - generic [ref=f44e274]: Array View
+                  - generic [ref=f44e275]: index 0 ไม่ใช้งาน
+                - generic [ref=f44e276]:
+                  - generic [ref=f44e277]:
+                    - generic [ref=f44e278]: "0"
+                    - text: ·
+                  - generic [ref=f44e279]:
+                    - generic [ref=f44e280]: "1"
+                    - text: "13"
+                  - generic [ref=f44e281]:
+                    - generic [ref=f44e282]: "2"
+                    - text: "21"
+                  - generic [ref=f44e283]:
+                    - generic [ref=f44e284]: "3"
+                    - text: "16"
+                  - generic [ref=f44e285]:
+                    - generic [ref=f44e286]: "4"
+                    - text: "24"
+                  - generic [ref=f44e287]:
+                    - generic [ref=f44e288]: "5"
+                    - text: "31"
+                  - generic [ref=f44e289]:
+                    - generic [ref=f44e290]: "6"
+                    - text: "19"
+                  - generic [ref=f44e291]:
+                    - generic [ref=f44e292]: "7"
+                    - text: "68"
+                  - generic [ref=f44e293]:
+                    - generic [ref=f44e294]: "8"
+                    - text: "65"
+                  - generic [ref=f44e295]:
+                    - generic [ref=f44e296]: "9"
+                    - text: "26"
+                  - generic [ref=f44e297]:
+                    - generic [ref=f44e298]: "10"
+                    - text: "32"
+                - generic [ref=f44e299]:
+                  - generic [ref=f44e300]: hole (ตำแหน่งว่าง)
+                  - generic [ref=f44e302]: กำลังเปรียบเทียบ
+                  - generic [ref=f44e304]: เพิ่งย้ายค่า
+                  - generic [ref=f44e306]: ค่าสุดท้ายที่วาง
+            - generic [ref=f44e308]:
+              - generic [ref=f44e309]:
+                - generic [ref=f44e310]:
+                  - generic [ref=f44e311]: Source Code
+                  - generic [ref=f44e312]: python
+                - generic [ref=f44e313]:
+                  - generic [ref=f44e314]:
+                    - generic [ref=f44e315]: "1"
+                    - generic [ref=f44e316]: "def insert(self, x):"
+                  - generic [ref=f44e317]:
+                    - generic [ref=f44e318]: "2"
+                    - generic [ref=f44e319]: "if self.is_full():"
+                  - generic [ref=f44e320]:
+                    - generic [ref=f44e321]: "3"
+                    - generic [ref=f44e322]: return
+                  - generic [ref=f44e323]:
+                    - generic [ref=f44e324]: "4"
+                    - generic [ref=f44e325]: self.currentSize += 1
+                  - generic [ref=f44e326]:
+                    - generic [ref=f44e327]: "5"
+                    - generic [ref=f44e328]: hole = self.currentSize
+                  - generic [ref=f44e329]:
+                    - generic [ref=f44e330]: "6"
+                    - generic [ref=f44e331]: "while hole > 1 and x < self.array[hole // 2]:"
+                  - generic [ref=f44e332]:
+                    - generic [ref=f44e333]: "7"
+                    - generic [ref=f44e334]: self.array[hole] = self.array[hole // 2]
+                  - generic [ref=f44e335]:
+                    - generic [ref=f44e336]: "8"
+                    - generic [ref=f44e337]: hole //= 2
+                  - generic [ref=f44e338]:
+                    - generic [ref=f44e339]: "9"
+                    - generic [ref=f44e340]: self.array[hole] = x
+              - generic [ref=f44e341]:
+                - generic [ref=f44e342]: Watch Variables
+                - generic [ref=f44e344]:
+                  - generic [ref=f44e345]: x
+                  - generic [ref=f44e346]: "14"
+              - generic [ref=f44e347]: "🔧 กำลังดำเนินการ: insert(14) เดี่ยว"
+              - generic [ref=f44e349]: ตรวจสอบ is_full() → heap ยังไม่เต็ม ข้ามเงื่อนไขนี้ไป
+          - generic [ref=f44e350]:
+            - button "⟲ Reset" [ref=f44e351] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f44e352]
+            - button "Next ▶" [ref=f44e353] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f44e354] [cursor=pointer]
+            - text: Step 0 / 13
+          - generic [ref=f44e355]:
+            - generic [ref=f44e356]: Debug Console
+            - generic [ref=f44e357]: "[step 0] ตรวจสอบ is_full() → heap ยังไม่เต็ม ข้ามเงื่อนไขนี้ไป"
+      - generic [ref=f44e359]:
+        - generic [ref=f44e360]:
+          - generic [ref=f44e361]: 04 — custom sandbox
+          - heading "ทดลองใช้งาน Binary Heap Sandbox ตามใจชอบ" [level=2] [ref=f44e362]
+          - paragraph [ref=f44e363]: ใส่ตัวเลขที่ต้องการแทรก หรือกดเรียกใช้งาน deleteMin() เพื่อสังเกตการณ์ทำงานแบบเรียลไทม์
+        - generic [ref=f44e364]:
+          - generic [ref=f44e365]:
+            - generic [ref=f44e366]:
+              - generic [ref=f44e367]: "ค่าตัวเลข:"
+              - spinbutton "ค่าตัวเลข:" [ref=f44e368]: "14"
+            - generic [ref=f44e369]:
+              - button "➕ insert(val)" [ref=f44e370] [cursor=pointer]
+              - button "➖ deleteMin()" [ref=f44e371] [cursor=pointer]
+              - button "🔄 คืนค่าข้อสอบ 10 ตัว" [ref=f44e372] [cursor=pointer]
+              - button "🎲 สุ่มค่าใหม่" [ref=f44e373] [cursor=pointer]
+              - button "🗑️ ล้างทั้งหมด" [ref=f44e374] [cursor=pointer]
+          - generic [ref=f44e375]:
+            - generic [ref=f44e376]:
+              - generic [ref=f44e377]: Live Tree View
+              - generic [ref=f44e378]: currentSize = 10
+            - img [ref=f44e379]:
+              - generic [ref=f44e389]:
+                - generic [ref=f44e391]: "13"
+                - generic [ref=f44e392]: "[1]"
+              - generic [ref=f44e393]:
+                - generic [ref=f44e395]: "21"
+                - generic [ref=f44e396]: "[2]"
+              - generic [ref=f44e397]:
+                - generic [ref=f44e399]: "16"
+                - generic [ref=f44e400]: "[3]"
+              - generic [ref=f44e401]:
+                - generic [ref=f44e403]: "24"
+                - generic [ref=f44e404]: "[4]"
+              - generic [ref=f44e405]:
+                - generic [ref=f44e407]: "31"
+                - generic [ref=f44e408]: "[5]"
+              - generic [ref=f44e409]:
+                - generic [ref=f44e411]: "19"
+                - generic [ref=f44e412]: "[6]"
+              - generic [ref=f44e413]:
+                - generic [ref=f44e415]: "68"
+                - generic [ref=f44e416]: "[7]"
+              - generic [ref=f44e417]:
+                - generic [ref=f44e419]: "65"
+                - generic [ref=f44e420]: "[8]"
+              - generic [ref=f44e421]:
+                - generic [ref=f44e423]: "26"
+                - generic [ref=f44e424]: "[9]"
+              - generic [ref=f44e425]:
+                - generic [ref=f44e427]: "32"
+                - generic [ref=f44e428]: "[10]"
+          - generic [ref=f44e429]:
+            - generic [ref=f44e430]:
+              - generic [ref=f44e431]: Live Array View (1-based index)
+              - generic [ref=f44e432]: array[1 .. N]
+            - generic [ref=f44e433]:
+              - generic [ref=f44e434]:
+                - generic [ref=f44e435]: "0"
+                - text: ·
+              - generic [ref=f44e436]:
+                - generic [ref=f44e437]: "1"
+                - text: "13"
+              - generic [ref=f44e438]:
+                - generic [ref=f44e439]: "2"
+                - text: "21"
+              - generic [ref=f44e440]:
+                - generic [ref=f44e441]: "3"
+                - text: "16"
+              - generic [ref=f44e442]:
+                - generic [ref=f44e443]: "4"
+                - text: "24"
+              - generic [ref=f44e444]:
+                - generic [ref=f44e445]: "5"
+                - text: "31"
+              - generic [ref=f44e446]:
+                - generic [ref=f44e447]: "6"
+                - text: "19"
+              - generic [ref=f44e448]:
+                - generic [ref=f44e449]: "7"
+                - text: "68"
+              - generic [ref=f44e450]:
+                - generic [ref=f44e451]: "8"
+                - text: "65"
+              - generic [ref=f44e452]:
+                - generic [ref=f44e453]: "9"
+                - text: "26"
+              - generic [ref=f44e454]:
+                - generic [ref=f44e455]: "10"
+                - text: "32"
+          - generic [ref=f44e456]: "เริ่มต้น: Heap ตัวอย่างจากข้อสอบ (10 โหนด)"
+  - contentinfo [ref=f44e457]:
+    - generic [ref=f44e458]:
+      - paragraph [ref=f44e459]: DSA Lab Studio — Interactive Visual Debugger & Knowledge Hub
+      - paragraph [ref=f44e460]:
+        - text: สร้างขึ้นตามแนวทางเอกสารคำสอนและข้อสอบวิชา Data Structures and Algorithms · เชื่อมโยงกับ
+        - link "DSA Wiki สารานุกรม 10 บท" [ref=f44e461] [cursor=pointer]:
+          - /url: ../Wiki/index.html

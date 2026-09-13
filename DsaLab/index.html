@@ -1,313 +1,408 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DSA Lab Studio — ห้องทดลองและ Interactive Visual Debugger ภาษา Python</title>
-  <meta name="description" content="ห้องปฏิบัติการเขียนโค้ด Python และ Visual Debugger จำลองขั้นตอนวิธีและโครงสร้างข้อมูลแบบมีภาพเคลื่อนไหวทีละสเต็ป" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Lab Studio — Interactive Visual Debugger</title>
+  <meta name="description" content="ห้องปฏิบัติการ Interactive Visual Debugger จำลองขั้นตอนวิธีและโครงสร้างข้อมูลแบบ Step-by-Step คุณภาพระดับเวิลด์คลาส">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Google Fonts: Chakra Petch (Titles), IBM Plex Sans Thai (Body), JetBrains Mono (Code) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- App CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
 
-<div id="app-container">
-  <!-- Mobile Sidebar Backdrop -->
-  <div id="sidebar-overlay" class="sidebar-overlay" style="display:none;"></div>
-
-  <!-- Left Sidebar: Curriculum & Exercises -->
-  <aside id="sidebar">
-    <div class="sidebar-header">
-      <div class="logo-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="16 18 22 12 16 6"></polyline>
-          <polyline points="8 6 2 12 8 18"></polyline>
-        </svg>
-      </div>
-      <div class="brand-info">
-        <h1>DSA Lab Studio</h1>
-        <p>Interactive Debugger & Python Runner</p>
-      </div>
-    </div>
-
-    <!-- Category Tabs -->
-    <div class="sidebar-tabs">
-      <button id="tab-exam" class="side-tab-btn active" data-cat="exam" title="การบ้านและโจทย์ในคาบ (Assignments 1-4 & Test Programs)">
-        🎯 ข้อสอบ/การบ้าน
-      </button>
-      <button id="tab-linear" class="side-tab-btn" data-cat="linear" title="โครงสร้างข้อมูลเชิงเส้น (Linked List, Stack, Queue)">
-        🧱 เชิงเส้น
-      </button>
-      <button id="tab-trees" class="side-tab-btn" data-cat="tree-hash" title="ต้นไม้และฮีป (BST, Heap, Hashing)">
-        🌳 ต้นไม้ & ฮีป
-      </button>
-    </div>
-
-    <!-- Exercises List Container -->
-    <div id="exercises-container" class="sidebar-content">
-      <!-- Dynamically injected by app.js -->
-    </div>
-
-    <!-- Sidebar Footer -->
-    <div class="sidebar-footer">
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span class="status-dot"></span>
-        <span id="engine-status-text">Python Engine พร้อมทำงาน</span>
-      </div>
-      <a href="../Wiki/index.html#/Glossary & Complexity Cheat Sheet" target="_blank" style="color: inherit; text-decoration: none;" title="เปิดดูตารางสรุปสูตรและ Big-O">
-        สูตร 💡
+  <!-- ================================================================ -->
+  <!-- TOP GLOBAL NAV BAR                                                -->
+  <!-- ================================================================ -->
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <a href="../index.html" class="brand-badge">
+        <div class="brand-icon">⚡</div>
+        <span>DSA LAB STUDIO</span>
+        <span class="badge-sub">v3.0</span>
       </a>
-    </div>
-  </aside>
 
-  <!-- Resizer 1: Sidebar & Workspace -->
-  <div id="resizer-sidebar" class="resizer-horizontal" title="ลากเพื่อปรับขนาดความกว้างเมนู"></div>
-
-  <!-- Main Workspace -->
-  <main id="workspace">
-    <!-- Top Navigation Bar -->
-    <header class="top-nav-bar">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <button id="btn-toggle-sidebar" class="btn btn-ghost" style="padding: 4px 8px;" title="เปิด/ปิด แถบสารบัญ">
-          ☰
-        </button>
-        <div class="breadcrumbs">
-          <span id="crumb-module">Assignment</span>
-          <span>/</span>
-          <span id="crumb-exercise" class="active-crumb">Linked List</span>
+      <!-- Topic Switcher Scroller with Slide Arrows & Visible Slide Bar -->
+      <div class="topic-nav-scroller">
+        <button class="scroll-arrow-btn scroll-arrow-left" id="pillsScrollLeft" title="เลื่อนแถบไปทางซ้าย" aria-label="Scroll left">‹</button>
+        <div class="topic-pills" id="topicPills">
+          <button class="topic-pill active" data-topic="heap">
+            <span>🌲</span> Binary Heap (Priority Queue)
+          </button>
+          <button class="topic-pill" data-topic="bst">
+            <span>🌿</span> Binary Search Tree (BST)
+          </button>
+          <button class="topic-pill" data-topic="hash">
+            <span>⚡</span> Hash Table &amp; Collisions
+          </button>
+          <button class="topic-pill" data-topic="stack">
+            <span>🥞</span> Stack: Infix to Postfix
+          </button>
         </div>
+        <button class="scroll-arrow-btn scroll-arrow-right" id="pillsScrollRight" title="เลื่อนแถบไปทางขวา" aria-label="Scroll right">›</button>
       </div>
 
-      <div class="top-actions">
-        <a href="../Wiki/index.html" class="btn btn-ghost" title="เปิดอ่านสารานุกรมความรู้ DSA Wiki" style="text-decoration: none; color: inherit;">
-          <span>📚</span>
-          <span>สารานุกรม Wiki</span>
+      <!-- Right Nav Actions -->
+      <div class="nav-actions">
+        <a href="../Wiki/index.html" class="nav-link-btn highlight" title="เปิดสารานุกรมความรู้ DSA Wiki">
+          <span>📚</span> สารานุกรม Wiki
         </a>
-        <button id="btn-reset-code" class="btn btn-ghost" title="โหลดโค้ดตั้งต้นเฉพาะข้อนี้">
-          <span>🔄</span>
-          <span>รีเซ็ตโจทย์นี้</span>
-        </button>
-        <button id="btn-run-python" class="btn btn-primary" title="รันโค้ด Python ในเบราว์เซอร์ (Ctrl + Enter)">
-          <span>▶️</span>
-          <span>รันโปรแกรม (Ctrl+Enter)</span>
-        </button>
+        <a href="../index.html" class="nav-link-btn" title="กลับหน้าแรก Portal">
+          <span>🏠</span> Home
+        </a>
       </div>
+    </div>
+  </nav>
+
+  <!-- ================================================================ -->
+  <!-- SUB-TOC STICKY BAR (DYNAMIC PER TOPIC)                           -->
+  <!-- ================================================================ -->
+  <nav class="sub-toc" id="subToc">
+    <div class="sub-toc-inner" id="subTocLinks">
+      <a href="#heap-principle">① หลักการ Priority Queue</a>
+      <a href="#heap-build">② สร้าง Heap ทีละตัว (10 ตัว)</a>
+      <a href="#heap-demo">③ Insert(14) & DeleteMin() เดี่ยว</a>
+      <a href="#heap-sandbox">④ Interactive Sandbox</a>
+    </div>
+  </nav>
+
+  <!-- ================================================================ -->
+  <!-- TOPIC 1: BINARY HEAP (PRIORITY QUEUE)                            -->
+  <!-- ================================================================ -->
+  <div id="topic-heap" class="topic-view active">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — LECTURE 8 / EXAMS</div>
+      <h1>Binary <span class="highlight-cyan">Heap</span> ตั้งแต่ต้นจนจบ</h1>
+      <p class="sub">อธิบายหลักการ Priority Queue / Binary Heap ทีละขั้น พร้อมไล่โค้ด <span class="mono">insert()</span>
+      และ <span class="mono">deleteMin()</span> แบบ Step-by-Step Interactive Debugger จริง — รวมทั้งตัวอย่างสร้าง heap จากชุดข้อสอบ
+      <span class="mono">[13, 21, 16, 24, 31, 19, 68, 65, 26, 32]</span></p>
     </header>
 
-    <!-- Mobile View Switcher -->
-    <div id="mobile-view-tabs" class="mobile-view-tabs">
-      <button id="m-tab-theory" class="mobile-tab-btn active">📖 คำอธิบายโจทย์</button>
-      <button id="m-tab-studio" class="mobile-tab-btn">💻 โค้ด & เครื่องมือจำลอง</button>
-    </div>
-
-    <!-- Split Content View -->
-    <div id="split-content" class="split-content view-theory">
-      <!-- Left Panel: Theory & Assignment Guide -->
-      <section id="theory-panel" class="theory-panel">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-          <h2 id="theory-title" class="theory-title">หัวข้อแบบฝึกหัด</h2>
-          <span id="theory-badge" class="ex-badge">Basic</span>
+    <div class="wrap">
+      <!-- SECTION 1: PRINCIPLE ARTICLE -->
+      <section id="heap-principle">
+        <div class="section-head">
+          <div class="tag">01 — หลักการ</div>
+          <h2>Priority Queue (Heap) คืออะไร และทำไมต้องใช้ Tree</h2>
+          <p>ไล่อ่านตั้งแต่ concept ไปจนถึงโครงสร้างข้อมูลจริง 6 หัวข้อสำคัญที่ออกสอบบ่อยที่สุด</p>
         </div>
-        <div id="theory-body" class="theory-body">
-          <!-- Theory content injected dynamically -->
+
+        <div class="article">
+          <h3><span class="num">1</span>Priority Queue คือ ADT ที่ "ดึงตัวสำคัญสุดออกก่อนเสมอ"</h3>
+          <p>Priority Queue ไม่ใช่ FIFO Queue ธรรมดา แต่เป็นโครงสร้างข้อมูลที่รองรับอย่างน้อย 2 operation สำคัญ:
+          <b>insert</b> (เหมือน enqueue) และ <b>deleteMin</b> (ค้นหา คืนค่า และลบสมาชิกที่ค่าน้อยที่สุดออก — เหมือน dequeue
+          แต่ดึง "ตัวเล็กสุด" แทนที่จะดึง "ตัวแรกสุด")</p>
+          <div class="adt-diagram">
+            <span class="adt-arrow">deleteMin()<div class="adt-line" style="background:linear-gradient(90deg,var(--border),var(--cyan))"></div></span>
+            <div class="adt-box">Priority Queue</div>
+            <span class="adt-arrow">insert(x)<div class="adt-line" style="background:linear-gradient(90deg,var(--cyan),var(--border))"></div></span>
+          </div>
+          <p>ใช้งานจริงใน: คิวเครื่องพิมพ์ (งานสำคัญพิมพ์ก่อน), การจัดคิว process ของ OS Scheduler, และ Graph Algorithm หัวใจสำคัญอย่าง Dijkstra's Shortest Path และ Prim's MST</p>
+
+          <h3><span class="num">2</span>ทำไมไม่ใช้ list ธรรมดา — ทำไมต้องมี Binary Heap</h3>
+          <p>ถ้า implement ตรงไปตรงมาด้วย List ธรรมดา จะเจอปัญหา Trade-off ร้ายแรง: ถ้า insert เร็ว deleteMin จะช้ามาก หรือถ้า deleteMin เร็ว insert จะช้ามาก
+          Binary Heap คือ Compromise ที่ทำให้ทั้งสอง operation เร็วระดับ logarithmic time พร้อมกัน:</p>
+          <table class="cmp">
+            <tbody>
+              <tr><th>วิธี implement</th><th>insert</th><th>deleteMin</th></tr>
+              <tr><td>List ไม่เรียงลำดับ (Unsorted List)</td><td class="hl">O(1)</td><td class="bad">O(N) — ต้องไล่หาตัวน้อยสุดทั้ง list</td></tr>
+              <tr><td>List เรียงลำดับแล้ว (Sorted List)</td><td class="bad">O(N) — ต้องเลื่อนขยับหาตำแหน่งแทรก</td><td class="hl">O(1)</td></tr>
+              <tr><td><b>Binary Heap (Array-Based)</b></td><td class="hl">O(log N)</td><td class="hl">O(log N)</td></tr>
+            </tbody>
+          </table>
+
+          <h3><span class="num">3</span>คุณสมบัติที่ 1 — Structure Property (Complete Binary Tree)</h3>
+          <p>Binary Heap ต้องเป็น <b>Complete Binary Tree</b>: เติมเต็มแน่นทุกชั้นจากซ้ายไปขวา ห้ามมีช่องว่างระหว่างทาง
+          คุณสมบัตินี้ทำให้ tree มีรูปแบบคงที่ตายตัว จึงแทนด้วย <b>Array 1-Based Indexing</b> ได้สมบูรณ์แบบโดยไม่ต้องเก็บ Pointer ซ้าย/ขวา/พ่อ ให้เปลืองหน่วยความจำเลย</p>
+          <div class="cards">
+            <div class="card">
+              <h4 style="color:var(--cyan)">สูตรคำนวณ Index ↔ ตำแหน่งใน Tree</h4>
+              <p>สำหรับสมาชิกที่ตำแหน่ง <span class="mono">i</span> ใน array (เริ่มนับที่ index 1 เพราะ index 0 เว้นว่างไว้เป็น Sentinel):</p>
+              <div class="formula">
+                <span class="pill highlight">Left Child = 2i</span>
+                <span class="pill highlight">Right Child = 2i + 1</span>
+                <span class="pill highlight">Parent = i // 2</span>
+              </div>
+            </div>
+            <div class="card amber">
+              <h4 style="color:var(--amber)">ทำไมความสูงจึงเป็น O(log N)</h4>
+              <p>ถ้า Heap สูง h ชั้น จะมีสมาชิกได้แน่นขนัดระหว่าง 2ʰ ถึง 2ʰ⁺¹−1 ตัว
+              ดังนั้นความสูงของ Heap ที่มี N ตัวจึงการันตีเป็น <span class="mono">O(log N)</span> เสมอ — นี่คือเหตุผลที่ insert และ deleteMin ทำงานได้รวดเร็วอย่างยิ่ง</p>
+            </div>
+          </div>
+
+          <h3><span class="num">4</span>คุณสมบัติที่ 2 — Heap-Order Property (Min-Heap vs Max-Heap)</h3>
+          <p><b>ค่าของพ่อ ≤ ค่าของลูกเสมอ</b> (สำหรับ Min-Heap) ในทุกโหนดยกเว้น root ผลที่ตามมาคือ
+          <b>ค่าน้อยที่สุดของทั้งต้นไม้อยู่ที่ Root เสมอ</b> (<span class="mono">array[1]</span>) — การค้นหาค่าต่ำสุดจึงทำได้ในเวลา <span class="mono">O(1)</span> ทันทีโดยไม่ต้องค้นหา!</p>
+
+          <h3><span class="num">5</span>Insert Operation — Percolate Up</h3>
+          <p>หลักการคือสร้าง "ช่องว่าง (Hole)" ที่ตำแหน่งถัดไปสุดท้ายของ Array เพื่อรักษา Structure Property ก่อน แล้ววนลูปเปรียบเทียบค่าใหม่กับพ่อของ Hole
+          ถ้าค่าใหม่ <b>น้อยกว่าพ่อ</b> แสดงว่าผิด Heap-Order → ดึงพ่อลงมาแทนที่ แล้วเลื่อน Hole ขึ้นไปแทนตำแหน่งพ่อ (<b>Percolate Up</b>) ทำซ้ำจนกว่าจะไม่ผิดเงื่อนไข แล้วค่อยใส่ค่าจริงลงไป</p>
+
+          <h3><span class="num">6</span>deleteMin Operation — Percolate Down</h3>
+          <p>เก็บค่าที่ Root (<span class="mono">array[1]</span>) ไว้เป็นผลลัพธ์ แล้วนำค่าที่ตำแหน่งสุดท้ายของ Heap มาวางไว้ที่ Root ชั่วคราว (พร้อมลดขนาด <span class="mono">currentSize -= 1</span>)
+          จากนั้นเลื่อนค่าลงไปเปรียบเทียบกับ <b>ลูกที่มีค่าน้อยกว่า</b> ระหว่างลูกซ้ายและลูกขวา ถ้าค่าใหญ่กว่าลูก ให้สลับค่าลูกขึ้นมา แล้วขยับ Hole ลงไป (<b>Percolate Down</b>) จนกระทั่งได้ตำแหน่งที่ถูกต้องสมบูรณ์</p>
         </div>
       </section>
 
-      <!-- Resizer 2: Theory & Studio -->
-      <div id="resizer-theory" class="resizer-horizontal" title="ลากเพื่อปรับขนาด"></div>
-
-      <!-- Right Panel: Code Editor + Visualizer/Result -->
-      <section id="studio-panel" class="studio-panel">
-        <!-- Editor Area -->
-        <div id="editor-wrapper" class="editor-wrapper">
-          <div class="editor-header">
-            <div class="editor-tabs-list">
-              <button class="editor-tab active" id="tab-main-py">main.py</button>
-            </div>
-            <div class="editor-toolbar">
-              <span id="editor-cursor-pos" style="font-size: 0.72rem; color: var(--text-muted); margin-right: 6px;">Ln 1, Col 1</span>
-              <button id="btn-copy-code" class="tool-btn" title="คัดลอกโค้ด">คัดลอก (Copy)</button>
-              <button id="btn-clear-code" class="tool-btn" title="ล้างกล่องโค้ด">ล้าง (Clear)</button>
-            </div>
-          </div>
-
-          <div class="editor-body">
-            <textarea id="python-editor" class="code-textarea" spellcheck="false" placeholder="เขียนโค้ด Python ที่นี่ (รองรับ Tab, Indent, และกด Ctrl+Enter เพื่อรัน)..."></textarea>
-          </div>
+      <!-- SECTION 2: BUILD FROM SCRATCH -->
+      <section id="heap-build">
+        <div class="section-head">
+          <div class="tag">02 — build from empty</div>
+          <h2>สร้าง Heap ขึ้นใหม่ด้วยการ insert ทีละตัว</h2>
+          <p>เริ่มจาก Heap ว่างเปล่า แล้ว insert ค่าตามลำดับข้อสอบ:
+          <span class="mono pill highlight">13 → 21 → 16 → 24 → 31 → 19 → 68 → 65 → 26 → 32</span>
+          แต่ละตัวจะผ่านกระบวนการ Percolate Up ของตัวเอง กดปุ่ม <b>"ตัวถัดไป ⏭"</b> เพื่อข้ามดูผลลัพธ์ของแต่ละโหนด หรือกด <b>"Next ▶"</b> เพื่อไล่ทีละบรรทัด</p>
         </div>
+        <div class="debugger" id="heapBuildDebugger"></div>
+      </section>
 
-        <!-- Resizer 3: Editor & Result/Visualizer -->
-        <div id="resizer-editor" class="resizer-vertical" title="ลากเพื่อปรับขนาดบน-ล่าง"></div>
+      <!-- SECTION 3: SINGLE INSERT / DELETEMIN DEMO -->
+      <section id="heap-demo">
+        <div class="section-head">
+          <div class="tag">03 — single-op demo</div>
+          <h2>Insert(14) และ deleteMin() บน Heap 10 ตัวที่สร้างเสร็จแล้ว</h2>
+          <p>ใช้ Heap ผลลัพธ์สมบูรณ์จากขั้นตอนด้านบน <span class="mono pill">[13, 21, 16, 24, 31, 19, 68, 65, 26, 32]</span> เป็นสถานะเริ่มต้น</p>
+        </div>
+        <div class="tabs">
+          <button class="tab-btn active" data-heap-demo="insert">insert(14)</button>
+          <button class="tab-btn" data-heap-demo="delete">deleteMin()</button>
+        </div>
+        <div class="debugger" id="heapSingleDebugger"></div>
+      </section>
 
-        <!-- Result / Visualizer Area -->
-        <div id="result-wrapper" class="result-wrapper">
-          <div class="result-header">
-            <div class="result-view-tabs">
-              <button id="rtab-visualizer" class="rtab-btn active">
-                <span>🕹️</span>
-                <span>Interactive Debugger</span>
-              </button>
-              <button id="rtab-console" class="rtab-btn">
-                <span>💻</span>
-                <span>Console Output</span>
-              </button>
-              <button id="rtab-watch" class="rtab-btn">
-                <span>🔍</span>
-                <span>Variables Watch</span>
-              </button>
+      <!-- SECTION 4: INTERACTIVE HEAP SANDBOX -->
+      <section id="heap-sandbox">
+        <div class="section-head">
+          <div class="tag">04 — custom sandbox</div>
+          <h2>ทดลองใช้งาน Binary Heap Sandbox ตามใจชอบ</h2>
+          <p>ใส่ตัวเลขที่ต้องการแทรก หรือกดเรียกใช้งาน <span class="mono">deleteMin()</span> เพื่อสังเกตการณ์ทำงานแบบเรียลไทม์</p>
+        </div>
+        <div class="sandbox-box">
+          <div class="sandbox-toolbar">
+            <div class="sandbox-input-group">
+              <label for="heapCustomVal">ค่าตัวเลข:</label>
+              <input type="number" id="heapCustomVal" class="sandbox-input" value="14" placeholder="ใส่ตัวเลข">
             </div>
-            <div style="font-size: 0.75rem; color: var(--text-muted);" id="exec-status">
-              พร้อมทำงาน
+            <div class="sandbox-actions">
+              <button id="btnHeapInsert" class="sandbox-btn btn-cyan">➕ insert(val)</button>
+              <button id="btnHeapDeleteMin" class="sandbox-btn btn-rose">➖ deleteMin()</button>
+              <button id="btnHeapResetExam" class="sandbox-btn">🔄 คืนค่าข้อสอบ 10 ตัว</button>
+              <button id="btnHeapRandom" class="sandbox-btn">🎲 สุ่มค่าใหม่</button>
+              <button id="btnHeapClear" class="sandbox-btn">🗑️ ล้างทั้งหมด</button>
             </div>
           </div>
-
-          <div class="result-body-container">
-            <!-- 1. Visualizer View -->
-            <div id="pane-visualizer" style="display: flex; flex-direction: column; flex: 1; overflow: auto;">
-              <!-- Interactive Action Deck (Claude Artifact Inspired) -->
-              <div id="interactive-action-deck" class="interactive-action-deck">
-                <div class="deck-main-actions">
-                  <div class="deck-input-group">
-                    <span class="deck-input-label">ค่า (Value):</span>
-                    <input type="text" id="deck-val-input" class="deck-input" placeholder="เช่น 25, 8" value="25" />
-                  </div>
-                  <button id="deck-btn-insert" class="deck-btn deck-btn-primary" title="แทรกค่าใหม่และจำลองขั้นตอนแบบเรียลไทม์">
-                    <span>➕</span>
-                    <span id="deck-lbl-insert">Insert</span>
-                  </button>
-                  <button id="deck-btn-delete" class="deck-btn deck-btn-danger" title="ลบค่าหัวแถว (Delete Min / Delete Root)">
-                    <span>➖</span>
-                    <span id="deck-lbl-delete">Delete Min</span>
-                  </button>
-                  <button id="deck-btn-search" class="deck-btn deck-btn-secondary" title="ค้นหาค่า / Find Min">
-                    <span>🔍</span>
-                    <span id="deck-lbl-search">Find Min</span>
-                  </button>
-                </div>
-                <div class="deck-extra-actions">
-                  <button id="deck-btn-random" class="deck-btn deck-btn-ghost" title="สุ่มชุดข้อมูลใหม่">
-                    <span>🎲</span>
-                    <span>Random</span>
-                  </button>
-                  <button id="deck-btn-preset-exam" class="deck-btn deck-btn-ghost" title="โหลดข้อมูลตัวอย่างตามข้อสอบ Exams">
-                    <span>📝</span>
-                    <span>Exams Preset</span>
-                  </button>
-                  <button id="deck-btn-clear" class="deck-btn deck-btn-ghost" title="ล้างข้อมูล">
-                    <span>🧹</span>
-                    <span>Clear</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Real-time Math Formulas & State Badges Strip -->
-              <div id="deck-formula-strip" class="deck-formula-strip">
-                <div class="formula-chip op-chip" id="chip-op">
-                  <span class="chip-dot"></span>
-                  <span id="chip-op-text">Min-Heap Active</span>
-                </div>
-                <div class="formula-chip" id="chip-formula-parent" title="สูตรหาโหนดแม่ Parent">
-                  <span class="chip-k">Parent:</span>
-                  <span class="chip-v" id="chip-parent-val">⌊i / 2⌋</span>
-                </div>
-                <div class="formula-chip" id="chip-formula-left" title="สูตรหาลูกซ้าย Left Child">
-                  <span class="chip-k">Left:</span>
-                  <span class="chip-v" id="chip-left-val">2i</span>
-                </div>
-                <div class="formula-chip" id="chip-formula-right" title="สูตรหาลูกขวา Right Child">
-                  <span class="chip-k">Right:</span>
-                  <span class="chip-v" id="chip-right-val">2i + 1</span>
-                </div>
-                <div class="formula-chip stat-chip" id="chip-condition">
-                  <span class="chip-k">สถานะ:</span>
-                  <span class="chip-v" id="chip-cond-val">พร้อมทำงาน</span>
-                </div>
-              </div>
-
-              <!-- Step Debugger Controls Bar -->
-              <div class="debugger-controls-bar">
-                <div class="debug-btn-group">
-                  <button id="dbg-play-btn" class="dbg-btn play" title="เล่นต่อเนื่องอัตโนมัติ">▶ เล่น (Play)</button>
-                  <button id="dbg-prev-btn" class="dbg-btn" title="ย้อนหลัง 1 สเต็ป">⏮ ถอยกลับ (Step Back)</button>
-                  <button id="dbg-next-btn" class="dbg-btn" title="ก้าวไปข้างหน้า 1 สเต็ป">⏭ ก้าวถัดไป (Step Next)</button>
-                  <button id="dbg-reset-btn" class="dbg-btn" title="รีเซ็ตสเต็ปเริ่มต้น">🔄 เริ่มใหม่ (Reset)</button>
-                </div>
-
-                <div style="display: flex; align-items: center; gap: 12px;">
-                  <span id="dbg-step-counter" class="step-indicator">Step 1 / 1</span>
-                  <div class="speed-control">
-                    <span>ความเร็ว:</span>
-                    <input id="dbg-speed-slider" type="range" min="300" max="2500" step="100" value="1000" class="speed-slider" title="ปรับความเร็วการเล่นอัตโนมัติ" />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Step Explanation Notification -->
-              <div class="step-explanation-box">
-                <span class="step-pointer-icon">👉</span>
-                <span id="dbg-explanation">กำลังเตรียมการจำลองโครงสร้างข้อมูล...</span>
-              </div>
-
-              <!-- Dynamic Graphic Canvas -->
-              <div id="visualizer-canvas">
-                <!-- Injected dynamically by visualizers.js -->
-              </div>
-
-              <!-- Live Code Synchronization Box -->
-              <div id="live-code-sync-box" class="live-code-sync-box">
-                <div class="code-sync-header">
-                  <div class="code-sync-title">
-                    <span>🐍</span>
-                    <span id="code-sync-filename">Exams/Heap.py</span>
-                    <span class="code-sync-tag">Live Sync</span>
-                  </div>
-                  <button id="btn-toggle-code-sync" class="tool-btn" title="ย่อ/ขยายกล่องโค้ด">ซ่อน/แสดงโค้ด</button>
-                </div>
-                <div class="code-sync-content" id="code-sync-content">
-                  <!-- Lines dynamically injected with .sync-line -->
-                </div>
-              </div>
+          <div class="panel-box">
+            <div class="panel-title">
+              <span>Live Tree View</span>
+              <span id="sbx_heapSizeTag" class="mono">currentSize = 10</span>
             </div>
-
-            <!-- 2. Console Output View -->
-            <div id="pane-console" style="display: none; flex: 1; flex-direction: column;">
-              <pre id="console-output"><span class="term-prompt">&gt;&gt;&gt;</span> พร้อมรันโค้ด Python... กดปุ่ม <b>"รันโปรแกรม"</b> หรือ <code>Ctrl + Enter</code></pre>
+            <svg class="tree" id="sbx_heapTreeSvg" viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
+          <div class="panel-box" style="margin-top:14px;">
+            <div class="panel-title">
+              <span>Live Array View (1-based index)</span>
+              <span class="mono">array[1 .. N]</span>
             </div>
-
-            <!-- 3. Variables Watch View -->
-            <div id="pane-watch" style="display: none; flex: 1; flex-direction: column;">
-              <div id="variables-watch">
-                <table class="watch-table">
-                  <thead>
-                    <tr>
-                      <th>ตัวแปร (Variable)</th>
-                      <th>ค่าปัจจุบัน (Current Value)</th>
-                    </tr>
-                  </thead>
-                  <tbody id="watch-tbody">
-                    <tr><td colspan="2" style="color: var(--text-muted); text-align: center;">ไม่มีค่าตัวแปรในสเต็ปนี้</td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <div class="array-row" id="sbx_heapArrayRow"></div>
+          </div>
+          <div class="narration" id="sbx_heapNarration" style="margin-top:14px;">
+            สถานะเริ่มต้น: พร้อมรับคำสั่ง insert หรือ deleteMin
           </div>
         </div>
       </section>
     </div>
-  </main>
-</div>
+  </div>
 
-<!-- Load Pyodide WebAssembly for in-browser Python execution -->
-<script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+  <!-- ================================================================ -->
+  <!-- TOPIC 2: BINARY SEARCH TREE (BST)                                -->
+  <!-- ================================================================ -->
+  <div id="topic-bst" class="topic-view">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — LECTURE 5 / EXAMS</div>
+      <h1>Binary Search <span class="highlight-green">Tree (BST)</span> ตั้งแต่ต้นจนจบ</h1>
+      <p class="sub">ทำความเข้าใจ BST Property อย่างลึกซึ้ง พร้อมการจำลอง <span class="mono">insert()</span>, <span class="mono">search()</span>,
+      และ <span class="mono">delete()</span> ครบทั้ง 3 กรณีสำคัญ (Leaf, One Child, Two Children พร้อม In-order Successor)</p>
+    </header>
 
-<!-- Application Scripts -->
-<script src="exercises.js"></script>
-<script src="visualizers.js"></script>
-<script src="app.js"></script>
+    <div class="wrap">
+      <section id="bst-principle">
+        <div class="section-head">
+          <div class="tag">01 — หลักการ</div>
+          <h2>BST Invariant &amp; โครงสร้างข้อมูลแบบต้นไม้ค้นหา</h2>
+          <p>คุณสมบัติที่ทำให้ BST สามารถค้นหา แทรก และลบข้อมูลได้รวดเร็วเฉลี่ย $O(\log N)$</p>
+        </div>
+        <div class="article">
+          <h3><span class="num">1</span>กฎเหล็กของ BST Invariant</h3>
+          <p>ในทุกโหนด <span class="mono">root</span> ของ BST:
+          ทุกค่าใน Subtree ซ้าย <b>ต้องน้อยกว่า</b> Root (<span class="mono">Left &lt; Root</span>)
+          และทุกค่าใน Subtree ขวา <b>ต้องมากกว่า</b> Root (<span class="mono">Root &lt; Right</span>)
+          ผลลัพธ์ทำให้การท่องแบบ <b>In-Order Traversal (Left → Root → Right)</b> จะได้ข้อมูลเรียงลำดับจากน้อยไปมากเสมอ!</p>
+
+          <h3><span class="num">2</span>การลบโหนด (Deletion) ครบทั้ง 3 กรณี</h3>
+          <div class="cards">
+            <div class="card">
+              <h4 style="color:var(--cyan)">กรณีที่ 1: โหนดใบ (Leaf Node)</h4>
+              <p>โหนดที่ต้องการลบไม่มีลูกเลย → ปลดตัวชี้จากโหนดพ่อเป็น <span class="mono">None</span> ได้ทันที ทำงานในเวลา $O(h)$</p>
+            </div>
+            <div class="card amber">
+              <h4 style="color:var(--amber)">กรณีที่ 2: มีลูกเพียง 1 ข้าง</h4>
+              <p>ยกโหนดลูกเพียงข้างเดียวนั้นขึ้นมาแทนที่ตำแหน่งโหนดที่ถูกลบได้โดยตรง</p>
+            </div>
+          </div>
+          <div class="card violet" style="margin-top:0;">
+            <h4 style="color:var(--violet)">กรณีที่ 3: มีลูกทั้ง 2 ข้าง (ออกสอบบ่อยที่สุด!)</h4>
+            <p>ค้นหา <b>In-Order Successor</b> (ค่าน้อยที่สุดใน Subtree ขวา) หรือ <b>In-Order Predecessor</b> (ค่ามากที่สุดใน Subtree ซ้าย)
+            นำค่านั้นมาเขียนทับที่โหนดเดิม จากนั้นเรียกคำสั่ง Delete แบบ Recursive เพื่อลบโหนด Successor นั้นทิ้ง ซึ่งจะแปลงเป็นกรณีที่ 1 หรือ 2 เสมอ</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- BST BUILD SECTION -->
+      <section id="bst-build">
+        <div class="section-head">
+          <div class="tag">02 — build step-by-step</div>
+          <h2>สร้าง BST ด้วยการแทรกตามลำดับข้อสอบ</h2>
+          <p>แทรกค่าตามลำดับ <span class="mono pill highlight">25 → 15 → 35 → 10 → 20 → 30 → 40</span> สังเกตการเปรียบเทียบซ้าย/ขวา</p>
+        </div>
+        <div class="debugger" id="bstBuildDebugger"></div>
+      </section>
+
+      <!-- BST SINGLE-OP SECTION -->
+      <section id="bst-demo">
+        <div class="section-head">
+          <div class="tag">03 — operations demo</div>
+          <h2>เจาะลึก Operation: Insert, Search, และ Delete 3 เคส</h2>
+          <p>ทดลองดูขั้นตอนวิธีแบบ Step-by-Step แต่ละกรณี</p>
+        </div>
+        <div class="tabs">
+          <button class="tab-btn active" data-bst-demo="insert">insert(18)</button>
+          <button class="tab-btn" data-bst-demo="search">search(30)</button>
+          <button class="tab-btn" data-bst-demo="del1">delete(10) [เคส 1: Leaf]</button>
+          <button class="tab-btn" data-bst-demo="del2">delete(35) [เคส 2: 1 Child]</button>
+          <button class="tab-btn" data-bst-demo="del3">delete(25) [เคส 3: 2 Children (Successor)]</button>
+        </div>
+        <div class="debugger" id="bstSingleDebugger"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- TOPIC 3: HASH TABLE & COLLISIONS                                 -->
+  <!-- ================================================================ -->
+  <div id="topic-hash" class="topic-view">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — LECTURE 6 / EXAMS</div>
+      <h1>Hash Table &amp; <span class="highlight-amber">Collision Resolution</span></h1>
+      <p class="sub">เข้าใจฟังก์ชันแฮช <span class="mono">h(k) = k mod M</span>, อัตราส่วนความหนาแน่น Load Factor <span class="mono">λ = N / M</span>
+      และการแก้ปัญหาการชนกันของข้อมูลด้วยทั้ง <b>Separate Chaining</b> และ <b>Open Addressing (Linear Probing)</b></p>
+    </header>
+
+    <div class="wrap">
+      <section id="hash-principle">
+        <div class="section-head">
+          <div class="tag">01 — หลักการ</div>
+          <h2>ทำไมต้องแฮช และจัดการการชนอย่างไร</h2>
+          <p>เปรียบเทียบกลยุทธ์การแก้ปัญหาการชน (Collision Resolution Strategies)</p>
+        </div>
+        <div class="article">
+          <h3><span class="num">1</span>Hash Function &amp; Load Factor (λ)</h3>
+          <p>ฟังก์ชันแฮชแปลงคีย์ใดๆ ให้เป็นดัชนี Array ระหว่าง <span class="mono">0 .. M - 1</span> โดย <span class="mono">λ = N / M</span>
+          บอกถึงความหนาแน่นของตาราง เมื่อข้อมูลสองค่าแฮชได้ช่องเดียวกันจะเกิด <b>Collision (การชน)</b></p>
+          <div class="cards">
+            <div class="card">
+              <h4 style="color:var(--cyan)">Separate Chaining</h4>
+              <p>แต่ละช่องในตารางเก็บหัวพอยน์เตอร์ของ Linked List ถ้าข้อมูลชนกันจะนำไปต่อท้ายหรือใส่หัวแถว ข้อดีคือ $\lambda$ เกิน 1 ได้</p>
+            </div>
+            <div class="card amber">
+              <h4 style="color:var(--amber)">Open Addressing (Linear Probing)</h4>
+              <p>เก็บข้อมูลในตัวตารางโดยตรง ถ้าเกิดชนกันจะขยับหาช่องว่างถัดไปทีละ 1 ช่อง: <span class="mono">h(k, i) = (h(k) + i) mod M</span> ข้อควรระวังคือเกิด Primary Clustering</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HASH CHAINING STEPPER -->
+      <section id="hash-chaining">
+        <div class="section-head">
+          <div class="tag">02 — separate chaining demo</div>
+          <h2>จำลอง Separate Chaining (ตารางขนาด M = 10)</h2>
+          <p>แทรกชุดข้อมูลข้อสอบ: <span class="mono pill highlight">15 → 25 → 35 → 12 → 22 → 45</span> สังเกตการต่อ Linked List ที่ช่องแฮชเดียวกัน</p>
+        </div>
+        <div class="debugger" id="hashChainingDebugger"></div>
+      </section>
+
+      <!-- HASH PROBING STEPPER -->
+      <section id="hash-probing">
+        <div class="section-head">
+          <div class="tag">03 — linear probing demo</div>
+          <h2>จำลอง Linear Probing (Open Addressing)</h2>
+          <p>แทรกข้อมูลชุดเดิมสังเกตการวิ่งไล่หาช่องว่าง (Probing Steps) เมื่อเกิดการชนที่ Index เดียวกัน</p>
+        </div>
+        <div class="debugger" id="hashProbingDebugger"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- TOPIC 4: STACK: INFIX TO POSTFIX                                 -->
+  <!-- ================================================================ -->
+  <div id="topic-stack" class="topic-view">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — LECTURE 3 / EXAMS</div>
+      <h1>Stack &amp; <span class="highlight-violet">Infix to Postfix</span> Conversion</h1>
+      <p class="sub">อัลกอริทึม Shunting-Yard สำหรับแปลงนิพจน์คณิตศาสตร์ Infix เป็น Postfix (Reverse Polish Notation)
+      โดยการจัดการลำดับความสำคัญของตัวดำเนินการ (Operator Precedence) ด้วย Stack</p>
+    </header>
+
+    <div class="wrap">
+      <section id="stack-principle">
+        <div class="section-head">
+          <div class="tag">01 — หลักการ</div>
+          <h2>ลำดับความสำคัญของตัวดำเนินการ &amp; Shunting-Yard</h2>
+          <p>กฎการ Push / Pop บน Stack เมื่ออ่านเจอ Operand, Operator, และวงเล็บ</p>
+        </div>
+        <div class="article">
+          <h3><span class="num">1</span>ตารางลำดับความสำคัญ (Precedence)</h3>
+          <table class="cmp">
+            <tbody>
+              <tr><th>ตัวดำเนินการ</th><th>ความหมาย</th><th>ระดับ Precedence</th><th>Associativity</th></tr>
+              <tr><td><span class="mono">^</span></td><td>ยกกำลัง (Exponent)</td><td class="hl">3 (สูงสุด)</td><td>ขวาไปซ้าย (Right-to-Left)</td></tr>
+              <tr><td><span class="mono">*</span>, <span class="mono">/</span></td><td>คูณ, หาร</td><td class="hl">2</td><td>ซ้ายไปขวา (Left-to-Right)</td></tr>
+              <tr><td><span class="mono">+</span>, <span class="mono">-</span></td><td>บวก, ลบ</td><td>1</td><td>ซ้ายไปขวา (Left-to-Right)</td></tr>
+              <tr><td><span class="mono">(</span></td><td>วงเล็บเปิดใน Stack</td><td>0 (ต่ำสุดเมื่ออยู่ใน Stack)</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- STACK STEPPER -->
+      <section id="stack-shunting">
+        <div class="section-head">
+          <div class="tag">02 — step-by-step conversion</div>
+          <h2>ไล่กระบวนการแปลงนิพจน์ข้อสอบทีละ Token</h2>
+          <p>นิพจน์: <span class="mono pill highlight">(A + B) * C - (D - E) * (F + G)</span></p>
+        </div>
+        <div class="debugger" id="stackShuntingDebugger"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <p>DSA Lab Studio — Interactive Visual Debugger &amp; Knowledge Hub</p>
+      <p style="margin-top:6px; color:var(--muted); font-size:12.5px;">
+        สร้างขึ้นตามแนวทางเอกสารคำสอนและข้อสอบวิชา Data Structures and Algorithms · เชื่อมโยงกับ <a href="../Wiki/index.html">DSA Wiki สารานุกรม 10 บท</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="app.js?v=10"></script>
 </body>
 </html>

@@ -1,0 +1,852 @@
+- generic [active] [ref=f46e1]:
+  - banner [ref=f46e2]:
+    - link "DSA Wiki Python DSA" [ref=f46e4] [cursor=pointer]:
+      - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+      - generic [ref=f46e9]: DSA Wiki
+      - generic [ref=f46e10]: Python DSA
+    - button "ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง... Ctrl K" [ref=f46e12] [cursor=pointer]:
+      - generic [ref=f46e13]: ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง...
+      - generic [ref=f46e18]: Ctrl K
+    - generic [ref=f46e19]:
+      - generic "ปรับขนาดตัวอักษรสำหรับอ่าน" [ref=f46e20]:
+        - button "A-" [ref=f46e21] [cursor=pointer]
+        - button "A+" [ref=f46e22] [cursor=pointer]
+      - button "☀️" [ref=f46e23] [cursor=pointer]
+      - link "🔬 ห้องทดลอง DSA Lab" [ref=f46e24] [cursor=pointer]:
+        - /url: ../DsaLab/index.html
+        - generic [ref=f46e25]: 🔬
+        - generic [ref=f46e26]: ห้องทดลอง DSA Lab
+  - generic [ref=f46e27]:
+    - complementary [ref=f46e28]:
+      - generic [ref=f46e29]:
+        - button "📚 บทเรียน (1-10)" [ref=f46e30] [cursor=pointer]
+        - button "🎯 โซนเตรียมสอบ" [ref=f46e31] [cursor=pointer]
+      - generic [ref=f46e32]:
+        - generic [ref=f46e33]:
+          - generic [ref=f46e34]: "🏛️ บทที่ 1: Introduction & Algorithm Analysis"
+          - 'link "ยังไม่ได้อ่าน บทที่ 1: บทนำ & การวิเคราะห์อัลกอริทึม (Big-O) ⏱️ 13 นาที · 0 หัวข้อ" [ref=f46e37] [cursor=pointer]':
+            - /url: "#/01.1%20-%20Introduction%20to%20Data%20Structures%20%26%20Algorithm%20Analysis"
+            - generic "ยังไม่ได้อ่าน" [ref=f46e38]
+            - generic [ref=f46e39]:
+              - generic [ref=f46e40]: "บทที่ 1: บทนำ & การวิเคราะห์อัลกอริทึม (Big-O)"
+              - generic [ref=f46e41]: ⏱️ 13 นาที · 0 หัวข้อ
+        - generic [ref=f46e42]:
+          - generic [ref=f46e43]: "🐍 บทที่ 2: Review Python & OOP"
+          - 'link "ยังไม่ได้อ่าน บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน ⏱️ 17 นาที · 0 หัวข้อ" [ref=f46e46] [cursor=pointer]':
+            - /url: "#/02.1%20-%20Python%20Review%20%26%20Object-Oriented%20Programming%20(OOP)"
+            - generic "ยังไม่ได้อ่าน" [ref=f46e47]
+            - generic [ref=f46e48]:
+              - generic [ref=f46e49]: "บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน"
+              - generic [ref=f46e50]: ⏱️ 17 นาที · 0 หัวข้อ
+        - generic [ref=f46e51]:
+          - generic [ref=f46e52]: "🔗 บทที่ 3: Linked Lists"
+          - 'link "ยังไม่ได้อ่าน บทที่ 3: Singly, Doubly & Circular Linked Lists ⏱️ 38 นาที · 0 หัวข้อ" [ref=f46e55] [cursor=pointer]':
+            - /url: "#/03.1%20-%20Linked%20Lists%20(Singly%2C%20Doubly%2C%20Circular)"
+            - generic "ยังไม่ได้อ่าน" [ref=f46e56]
+            - generic [ref=f46e57]:
+              - generic [ref=f46e58]: "บทที่ 3: Singly, Doubly & Circular Linked Lists"
+              - generic [ref=f46e59]: ⏱️ 38 นาที · 0 หัวข้อ
+        - generic [ref=f46e60]:
+          - generic [ref=f46e61]: "🥞 บทที่ 4: Stacks & Queues"
+          - generic [ref=f46e63]:
+            - 'link "ยังไม่ได้อ่าน บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix ⏱️ 28 นาที · 0 หัวข้อ" [ref=f46e64] [cursor=pointer]':
+              - /url: "#/04.1%20-%20Stacks%20%26%20Applications%20(Infix%2C%20Postfix%2C%20Parentheses)"
+              - generic "ยังไม่ได้อ่าน" [ref=f46e65]
+              - generic [ref=f46e66]:
+                - generic [ref=f46e67]: "บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix"
+                - generic [ref=f46e68]: ⏱️ 28 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 4.2: Queue & Circular Array Queue ⏱️ 21 นาที · 0 หัวข้อ" [ref=f46e69] [cursor=pointer]':
+              - /url: "#/04.2%20-%20Queues%20%26%20Circular%20Array%20Queues"
+              - generic "ยังไม่ได้อ่าน" [ref=f46e70]
+              - generic [ref=f46e71]:
+                - generic [ref=f46e72]: "บทที่ 4.2: Queue & Circular Array Queue"
+                - generic [ref=f46e73]: ⏱️ 21 นาที · 0 หัวข้อ
+        - generic [ref=f46e74]:
+          - generic [ref=f46e75]: "🌲 บทที่ 5: Trees & Binary Search Trees"
+          - generic [ref=f46e77]:
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals ⏱️ 15 นาที · 0 หัวข้อ" [ref=f46e78] [cursor=pointer]':
+              - /url: "#/05.1%20-%20Tree%20Terminology%20%26%20Binary%20Trees"
+              - generic "ยังไม่ได้อ่าน" [ref=f46e79]
+              - generic [ref=f46e80]:
+                - generic [ref=f46e81]: "บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals"
+                - generic [ref=f46e82]: ⏱️ 15 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.2: Binary Search Trees (BST) & การแทรก ⏱️ 15 นาที · 0 หัวข้อ" [ref=f46e83] [cursor=pointer]':
+              - /url: "#/05.2%20-%20Binary%20Search%20Trees%20(BST)%20%26%20Insertion"
+              - generic "ยังไม่ได้อ่าน" [ref=f46e84]
+              - generic [ref=f46e85]:
+                - generic [ref=f46e86]: "บทที่ 5.2: Binary Search Trees (BST) & การแทรก"
+                - generic [ref=f46e87]: ⏱️ 15 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี) ⏱️ 20 นาที · 0 หัวข้อ" [ref=f46e88] [cursor=pointer]':
+              - /url: "#/05.3%20-%20Binary%20Search%20Tree%20Removal%20(Node%20Deletion%20Cases)"
+              - generic "ยังไม่ได้อ่าน" [ref=f46e89]
+              - generic [ref=f46e90]:
+                - generic [ref=f46e91]: "บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี)"
+                - generic [ref=f46e92]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f46e93]:
+          - generic [ref=f46e94]: "🏷️ บทที่ 6: Hashing & Hash Tables"
+          - 'link "ยังไม่ได้อ่าน บทที่ 6: Hash Tables & Collision Resolution ⏱️ 20 นาที · 0 หัวข้อ" [ref=f46e97] [cursor=pointer]':
+            - /url: "#/06.1%20-%20Hash%20Tables%20%26%20Collision%20Resolution%20Strategies"
+            - generic "ยังไม่ได้อ่าน" [ref=f46e98]
+            - generic [ref=f46e99]:
+              - generic [ref=f46e100]: "บทที่ 6: Hash Tables & Collision Resolution"
+              - generic [ref=f46e101]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f46e102]:
+          - generic [ref=f46e103]: "⚡ บทที่ 7: Priority Queue & Binary Heap"
+          - 'link "ยังไม่ได้อ่าน บทที่ 7: Priority Queue & Binary Heaps ⏱️ 20 นาที · 0 หัวข้อ" [ref=f46e106] [cursor=pointer]':
+            - /url: "#/07.1%20-%20Priority%20Queue%20%26%20Binary%20Heaps%20(Min-Heap%2C%20Max-Heap)"
+            - generic "ยังไม่ได้อ่าน" [ref=f46e107]
+            - generic [ref=f46e108]:
+              - generic [ref=f46e109]: "บทที่ 7: Priority Queue & Binary Heaps"
+              - generic [ref=f46e110]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f46e111]:
+          - generic [ref=f46e112]: "🔀 บทที่ 8: Sorting Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 8: ขั้นตอนวิธีเรียงลำดับ (Sorting) ⏱️ 17 นาที · 0 หัวข้อ" [ref=f46e115] [cursor=pointer]':
+            - /url: "#/08.1%20-%20Sorting%20Algorithms%20(Bubble%2C%20Selection%2C%20Insertion%2C%20Merge%2C%20Quick)"
+            - generic "ยังไม่ได้อ่าน" [ref=f46e116]
+            - generic [ref=f46e117]:
+              - generic [ref=f46e118]: "บทที่ 8: ขั้นตอนวิธีเรียงลำดับ (Sorting)"
+              - generic [ref=f46e119]: ⏱️ 17 นาที · 0 หัวข้อ
+        - generic [ref=f46e120]:
+          - generic [ref=f46e121]: "🌐 บทที่ 9: Graph Traversals & Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 9: กราฟ (Graph) & BFS / DFS ⏱️ 14 นาที · 0 หัวข้อ" [ref=f46e124] [cursor=pointer]':
+            - /url: "#/09.1%20-%20Graph%20Fundamentals%20%26%20Traversals%20(BFS%2C%20DFS%2C%20Topological%20Sort)"
+            - generic "ยังไม่ได้อ่าน" [ref=f46e125]
+            - generic [ref=f46e126]:
+              - generic [ref=f46e127]: "บทที่ 9: กราฟ (Graph) & BFS / DFS"
+              - generic [ref=f46e128]: ⏱️ 14 นาที · 0 หัวข้อ
+        - generic [ref=f46e129]:
+          - generic [ref=f46e130]: "🚀 บทที่ 10: Shortest Path Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path) ⏱️ 14 นาที · 0 หัวข้อ" [ref=f46e133] [cursor=pointer]':
+            - /url: "#/10.1%20-%20Shortest%20Path%20Algorithms%20(Dijkstra%2C%20Unweighted%20Shortest%20Path)"
+            - generic "ยังไม่ได้อ่าน" [ref=f46e134]
+            - generic [ref=f46e135]:
+              - generic [ref=f46e136]: "บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path)"
+              - generic [ref=f46e137]: ⏱️ 14 นาที · 0 หัวข้อ
+    - main [ref=f46e138]:
+      - generic [ref=f46e139]:
+        - generic [ref=f46e140]:
+          - navigation [ref=f46e141]:
+            - link "สารานุกรม" [ref=f46e142] [cursor=pointer]:
+              - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+            - generic [ref=f46e143]: /
+            - generic [ref=f46e144]: "บทที่ 5: Trees & Binary Search Trees"
+            - generic [ref=f46e145]: /
+            - 'generic "บทที่ 5.2: Binary Search Trees (BST) & การแทรก" [ref=f46e1674]'
+          - heading "🌲 05.2 - Binary Search Trees (BST) & Insertion" [level=1] [ref=f46e1675]
+          - generic [ref=f46e148]:
+            - generic [ref=f46e149]:
+              - generic [ref=f46e1676]: ⏱️ อ่านประมาณ 15 นาที
+              - generic [ref=f46e1677]: 📝 8,871 ตัวอักษร
+            - button "○ ทำเครื่องหมายว่าอ่านแล้ว" [ref=f46e152] [cursor=pointer]:
+              - generic [ref=f46e1678]: ○
+              - text: ทำเครื่องหมายว่าอ่านแล้ว
+        - article [ref=f46e154]:
+          - generic [ref=f46e1679]:
+            - generic [ref=f46e1680]:
+              - generic [ref=f46e1681]:
+                - generic [ref=f46e1682]: "Chapter 5: Trees & BST"
+                - heading "🌲 Interactive BST Studio (ห้องทดลองและตัวตรวจสอบต้นไม้ค้นหาทวิภาค)" [level=3] [ref=f46e1683]
+              - generic [ref=f46e1684]: สเต็ป 1 / 1
+            - generic [ref=f46e1685]:
+              - generic [ref=f46e1686]:
+                - generic [ref=f46e1687]: "ตัวเลข (Number):"
+                - spinbutton [ref=f46e1688]: "45"
+              - generic [ref=f46e1689]:
+                - button "➕ แทรก (Insert)" [ref=f46e1690] [cursor=pointer]
+                - button "🔍 ค้นหา (Search)" [ref=f46e1691] [cursor=pointer]
+                - button "🗑️ ลบ (Delete 3 Cases)" [ref=f46e1692] [cursor=pointer]
+                - button "🔄 โครงสร้างเดิม" [ref=f46e1693] [cursor=pointer]
+            - generic [ref=f46e1695]:
+              - img [ref=f46e1696]:
+                - generic [ref=f46e1703]: "50"
+                - generic [ref=f46e1706]: "30"
+                - generic [ref=f46e1709]: "20"
+                - generic [ref=f46e1712]: "40"
+                - generic [ref=f46e1715]: "70"
+                - generic [ref=f46e1718]: "60"
+                - generic [ref=f46e1721]: "80"
+              - generic [ref=f46e1724]:
+                - generic [ref=f46e1725]: "Inorder Traversal (Sorted):"
+                - generic [ref=f46e1726]: "[ 20, 30, 40, 50, 60, 70, 80 ]"
+            - generic [ref=f46e1727]:
+              - generic [ref=f46e1728]:
+                - generic [ref=f46e1729]:
+                  - generic [ref=f46e1730]: โครงสร้างเริ่มต้น (Initial BST Preset)
+                  - generic [ref=f46e1731]: ▶ Line 1
+                - generic [ref=f46e1732]: "ต้นไม้ค้นหาแบบทวิภาค (BST) บรรจุ 7 โหนดตามกฎ: ซ้าย < พ่อ < ขวา"
+                - generic [ref=f46e1733]:
+                  - button "⏮️ ย้อนสเต็ป" [disabled] [ref=f46e1734]
+                  - button "▶ เล่น (Play)" [ref=f46e1735] [cursor=pointer]
+                  - button "⏭️ สเต็ปถัดไป" [disabled] [ref=f46e1736]
+                - generic [ref=f46e1737]:
+                  - generic [ref=f46e1738]: "🔍 ตัวแปรขณะรัน (Live Variables Watch):"
+                  - table [ref=f46e1739]:
+                    - rowgroup [ref=f46e1740]:
+                      - row [ref=f46e1741]:
+                        - columnheader "ตัวแปร (Variable)" [ref=f46e1742]
+                        - columnheader "ค่าในหน่วยความจำ (Value)" [ref=f46e1743]
+                    - rowgroup [ref=f46e1744]:
+                      - row [ref=f46e1745]:
+                        - cell "root" [ref=f46e1746]
+                        - cell "50" [ref=f46e1747]
+                      - row [ref=f46e1748]:
+                        - cell "count" [ref=f46e1749]
+                        - cell "7" [ref=f46e1750]
+              - generic [ref=f46e1751]:
+                - generic [ref=f46e1752]:
+                  - generic [ref=f46e1753]:
+                    - generic [ref=f46e1754]: 🐍
+                    - generic [ref=f46e1755]: Python Algorithm Code Debugger
+                  - generic [ref=f46e1756]: Step Debug
+                - generic [ref=f46e1758]:
+                  - generic [ref=f46e1759]:
+                    - generic [ref=f46e1760]: "1"
+                    - generic [ref=f46e1761]: "def insert(self, current, val):"
+                    - generic [ref=f46e1762]: ◀
+                  - generic [ref=f46e1763]:
+                    - generic [ref=f46e1764]: "2"
+                    - generic [ref=f46e1765]: "if current is None: return Node(val)"
+                    - generic [ref=f46e1766]: ◀
+                  - generic [ref=f46e1767]:
+                    - generic [ref=f46e1768]: "3"
+                    - generic [ref=f46e1769]: "if val < current.value:"
+                    - generic [ref=f46e1770]: ◀
+                  - generic [ref=f46e1771]:
+                    - generic [ref=f46e1772]: "4"
+                    - generic [ref=f46e1773]: current.left = self.insert(current.left, val)
+                    - generic [ref=f46e1774]: ◀
+                  - generic [ref=f46e1775]:
+                    - generic [ref=f46e1776]: "5"
+                    - generic [ref=f46e1777]: "elif val > current.value:"
+                    - generic [ref=f46e1778]: ◀
+                  - generic [ref=f46e1779]:
+                    - generic [ref=f46e1780]: "6"
+                    - generic [ref=f46e1781]: current.right = self.insert(current.right, val)
+                    - generic [ref=f46e1782]: ◀
+                  - generic [ref=f46e1783]:
+                    - generic [ref=f46e1784]: "7"
+                    - generic [ref=f46e1785]: return current
+                    - generic [ref=f46e1786]: ◀
+                  - generic [ref=f46e1787]:
+                    - generic [ref=f46e1788]: "8"
+                    - generic [ref=f46e1789]: ◀
+                  - generic [ref=f46e1790]:
+                    - generic [ref=f46e1791]: "9"
+                    - generic [ref=f46e1792]: "def delete(self, current, val):"
+                    - generic [ref=f46e1793]: ◀
+                  - generic [ref=f46e1794]:
+                    - generic [ref=f46e1795]: "10"
+                    - generic [ref=f46e1796]: "if val < current.value: current.left = self.delete(current.left, val)"
+                    - generic [ref=f46e1797]: ◀
+                  - generic [ref=f46e1798]:
+                    - generic [ref=f46e1799]: "11"
+                    - generic [ref=f46e1800]: "elif val > current.value: current.right = self.delete(current.right, val)"
+                    - generic [ref=f46e1801]: ◀
+                  - generic [ref=f46e1802]:
+                    - generic [ref=f46e1803]: "12"
+                    - generic [ref=f46e1804]: "else:"
+                    - generic [ref=f46e1805]: ◀
+                  - generic [ref=f46e1806]:
+                    - generic [ref=f46e1807]: "13"
+                    - generic [ref=f46e1808]: "if current.left is None: return current.right"
+                    - generic [ref=f46e1809]: ◀
+                  - generic [ref=f46e1810]:
+                    - generic [ref=f46e1811]: "14"
+                    - generic [ref=f46e1812]: "if current.right is None: return current.left"
+                    - generic [ref=f46e1813]: ◀
+                  - generic [ref=f46e1814]:
+                    - generic [ref=f46e1815]: "15"
+                    - generic [ref=f46e1816]: "succ = self.min_node(current.right) # Inorder Successor"
+                    - generic [ref=f46e1817]: ◀
+                  - generic [ref=f46e1818]:
+                    - generic [ref=f46e1819]: "16"
+                    - generic [ref=f46e1820]: current.value = succ.value
+                    - generic [ref=f46e1821]: ◀
+                  - generic [ref=f46e1822]:
+                    - generic [ref=f46e1823]: "17"
+                    - generic [ref=f46e1824]: current.right = self.delete(current.right, succ.value)
+                    - generic [ref=f46e1825]: ◀
+                  - generic [ref=f46e1826]:
+                    - generic [ref=f46e1827]: "18"
+                    - generic [ref=f46e1828]: return current
+                    - generic [ref=f46e1829]: ◀
+          - generic [ref=f46e1830]:
+            - generic [ref=f46e1831]:
+              - generic [ref=f46e1832]: 📌
+              - generic [ref=f46e1833]: บันทึก (Note)
+            - paragraph [ref=f46e1835]:
+              - strong [ref=f46e1836]: Binary Search Tree (BST - ต้นไม้ค้นหาแบบทวิภาค)
+              - text: "คือ Binary Tree ที่จัดระเบียบข้อมูลตามกฎ:"
+              - strong [ref=f46e1837]:
+                - text: ซ้ายน้อยกว่า โตกว่าไปขวา (
+                - generic [ref=f46e1839]:
+                  - math [ref=f46e1841]:
+                    - generic [ref=f46e1843]:
+                      - generic [ref=f46e1844]: L
+                      - generic [ref=f46e1845]: <
+                      - generic [ref=f46e1846]: Root
+                      - generic [ref=f46e1847]: <
+                      - generic [ref=f46e1848]: R
+                  - generic [ref=f46e1849]:
+                    - generic [ref=f46e1850]: L <
+                    - generic [ref=f46e1851]:
+                      - generic [ref=f46e1852]: Root
+                      - text: <
+                    - generic [ref=f46e1853]: R
+                - text: )
+              - text: อย่างเคร่งครัด ทำให้สามารถค้นหา, แทรก, และลบข้อมูลได้เร็วในเวลาเฉลี่ย
+              - generic [ref=f46e1855]:
+                - math [ref=f46e1857]:
+                  - generic [ref=f46e1859]:
+                    - generic [ref=f46e1860]: O
+                    - generic [ref=f46e1861]: (
+                    - generic [ref=f46e1862]: log
+                    - generic: ⁡
+                    - generic [ref=f46e1863]: "N"
+                    - generic [ref=f46e1864]: )
+                - generic [ref=f46e1866]:
+                  - text: O(
+                  - generic [ref=f46e1867]: log
+                  - text: N)
+          - separator [ref=f46e1868]
+          - heading "🎮 Interactive BST Studio (สตูดิโอจำลองต้นไม้ค้นหาทวิภาค)" [level=2] [ref=f46e1869]
+          - paragraph [ref=f46e1870]:
+            - text: ทดลองพิมพ์ตัวเลข เช่น
+            - code [ref=f46e1871]: 6, 7, 4, 3, 5, 2, 1
+            - text: แล้วกด
+            - strong [ref=f46e1872]: แทรก (Insert)
+            - text: ","
+            - strong [ref=f46e1873]: ค้นหา (Search)
+            - text: หรือสังเกตผลการท่อง
+            - strong [ref=f46e1874]: Inorder Traversal
+            - text: "แบบเรียลไทม์:"
+          - separator [ref=f46e1875]
+          - heading "🏛️ 1. คุณสมบัติของ BST (The Golden BST Rule)" [level=2] [ref=f46e1876]
+          - paragraph [ref=f46e1877]:
+            - text: สำหรับทุกๆ โหนด
+            - generic [ref=f46e1879]:
+              - math [ref=f46e1881]:
+                - generic [ref=f46e1882]: X
+              - generic [ref=f46e1885]: X
+            - text: "ใน BST:"
+          - list [ref=f46e1887]:
+            - listitem [ref=f46e1888]:
+              - strong [ref=f46e1889]: Left Subtree
+              - text: ": ทุกโหนดในฝั่งซ้ายของ"
+              - generic [ref=f46e1891]:
+                - math [ref=f46e1893]:
+                  - generic [ref=f46e1894]: X
+                - generic [ref=f46e1897]: X
+              - text: ต้องมีค่าน้อยกว่า
+              - generic [ref=f46e1900]:
+                - math [ref=f46e1902]:
+                  - generic [ref=f46e1903]: X
+                - generic [ref=f46e1906]: X
+              - text: เสมอ (
+              - generic [ref=f46e1909]:
+                - math [ref=f46e1911]:
+                  - generic [ref=f46e1913]:
+                    - generic [ref=f46e1914]: ∀
+                    - generic [ref=f46e1915]: "y"
+                    - generic [ref=f46e1916]: ∈
+                    - generic [ref=f46e1917]: Left
+                    - generic [ref=f46e1918]: (
+                    - generic [ref=f46e1919]: X
+                    - generic [ref=f46e1920]: )
+                    - generic [ref=f46e1921]: ","
+                    - generic [ref=f46e1922]: "y"
+                    - generic [ref=f46e1923]: <
+                    - generic [ref=f46e1924]: X
+                - generic [ref=f46e1925]:
+                  - generic [ref=f46e1926]: ∀y ∈
+                  - generic [ref=f46e1927]:
+                    - generic [ref=f46e1928]: Left
+                    - text: (X), y <
+                  - generic [ref=f46e1929]: X
+              - text: )
+            - listitem [ref=f46e1930]:
+              - strong [ref=f46e1931]: Right Subtree
+              - text: ": ทุกโหนดในฝั่งขวาของ"
+              - generic [ref=f46e1933]:
+                - math [ref=f46e1935]:
+                  - generic [ref=f46e1936]: X
+                - generic [ref=f46e1939]: X
+              - text: ต้องมีค่ามากกว่า
+              - generic [ref=f46e1942]:
+                - math [ref=f46e1944]:
+                  - generic [ref=f46e1945]: X
+                - generic [ref=f46e1948]: X
+              - text: เสมอ (
+              - generic [ref=f46e1951]:
+                - math [ref=f46e1953]:
+                  - generic [ref=f46e1955]:
+                    - generic [ref=f46e1956]: ∀
+                    - generic [ref=f46e1957]: z
+                    - generic [ref=f46e1958]: ∈
+                    - generic [ref=f46e1959]: Right
+                    - generic [ref=f46e1960]: (
+                    - generic [ref=f46e1961]: X
+                    - generic [ref=f46e1962]: )
+                    - generic [ref=f46e1963]: ","
+                    - generic [ref=f46e1964]: z
+                    - generic [ref=f46e1965]: ">"
+                    - generic [ref=f46e1966]: X
+                - generic [ref=f46e1967]:
+                  - generic [ref=f46e1968]: ∀z ∈
+                  - generic [ref=f46e1969]:
+                    - generic [ref=f46e1970]: Right
+                    - text: (X), z >
+                  - generic [ref=f46e1971]: X
+              - text: )
+            - listitem [ref=f46e1972]: ทั้ง Subtree ฝั่งซ้ายและฝั่งขวาต่างก็ต้องเป็น BST ด้วยเช่นกัน (Recursive Definition)
+          - generic [ref=f46e1973]:
+            - generic [ref=f46e1974]:
+              - generic [ref=f46e1975]:
+                - generic [ref=f46e1980]: DSA LAB MODEL
+                - generic [ref=f46e1981]: 🌲 Binary Search Tree (BST) Architecture & Inorder Property
+              - generic [ref=f46e1982]:
+                - link "⚡ เปิดใน DSA Lab" [ref=f46e1983] [cursor=pointer]:
+                  - /url: ../DsaLab/index.html#bst
+                - button "🔍 ขยายภาพ" [ref=f46e1984] [cursor=pointer]
+            - generic [ref=f46e1986]:
+              - img [ref=f46e1987]:
+                - generic [ref=f46e1995]: "6"
+                - generic [ref=f46e1996]: Root
+                - generic [ref=f46e1998]: "4"
+                - generic [ref=f46e1999]: < 6
+                - generic [ref=f46e2001]: "7"
+                - generic [ref=f46e2002]: "> 6"
+                - generic [ref=f46e2004]: "3"
+                - generic [ref=f46e2006]: "5"
+                - generic [ref=f46e2008]: "2"
+                - generic [ref=f46e2010]: "1"
+              - generic [ref=f46e2011]:
+                - generic [ref=f46e2012]: "⚖️ กฎ BST: L < Root < R"
+                - generic [ref=f46e2013]: "🔀 Inorder Traversal: [ 1 ➔ 2 ➔ 3 ➔ 4 ➔ 5 ➔ 6 ➔ 7 ] (เรียงลำดับเสมอ)"
+          - generic [ref=f46e2014]:
+            - generic [ref=f46e2015]:
+              - generic [ref=f46e2016]: ❗
+              - generic [ref=f46e2017]: สำคัญมาก (Important)
+            - generic [ref=f46e2018]:
+              - paragraph [ref=f46e2019]:
+                - strong [ref=f46e2020]: กฎเหล็กออกสอบ 100% (Inorder Traversal Magic)
+                - text: :เมื่อท่อง BST ด้วยวิธี
+                - strong [ref=f46e2021]:
+                  - text: Inorder Traversal (Left
+                  - generic [ref=f46e2023]:
+                    - math [ref=f46e2025]:
+                      - generic [ref=f46e2026]: →
+                    - generic [ref=f46e2029]: →
+                  - text: Root
+                  - generic [ref=f46e2032]:
+                    - math [ref=f46e2034]:
+                      - generic [ref=f46e2035]: →
+                    - generic [ref=f46e2038]: →
+                  - text: Right)
+                - text: ผลลัพธ์ที่ได้จะ
+                - strong [ref=f46e2040]: เรียงลำดับจากน้อยไปมาก (Sorted Order)
+                - text: เสมอ!
+              - list [ref=f46e2041]:
+                - listitem [ref=f46e2042]:
+                  - text: "จากรูปด้านบน Inorder คือ:"
+                  - code [ref=f46e2043]: 1, 2, 3, 4, 5, 6, 7
+          - separator [ref=f46e2044]
+          - heading "🔍 2. อัลกอริทึมการแทรกข้อมูล (Step-by-Step Insertion Tracing)" [level=2] [ref=f46e2045]
+          - paragraph [ref=f46e2046]:
+            - text: สมมติเราใส่ชุดข้อมูลตามข้อสอบจริงใน
+            - code [ref=f46e2047]: Exams/BinarySearchTrees.py
+            - text: ":"
+            - code [ref=f46e2048]: "[6, 7, 4, 3, 5, 2, 1]"
+          - table [ref=f46e2050]:
+            - rowgroup [ref=f46e2051]:
+              - row [ref=f46e2052]:
+                - columnheader "ลำดับที่" [ref=f46e2053]
+                - columnheader "ค่าที่แทรก" [ref=f46e2054]
+                - columnheader "เส้นทางที่เดินเปรียบเทียบ (Path Tracing)" [ref=f46e2055]
+                - columnheader "ตำแหน่งที่ลงเกาะ" [ref=f46e2056]
+            - rowgroup [ref=f46e2057]:
+              - row [ref=f46e2058]:
+                - cell "1" [ref=f46e2059]
+                - cell [ref=f46e2060]:
+                  - strong [ref=f46e2061]: "6"
+                - cell "ต้นไม้ยังว่างอยู่" [ref=f46e2062]
+                - cell [ref=f46e2063]:
+                  - text: กลายเป็น
+                  - strong [ref=f46e2064]: Root
+              - row [ref=f46e2065]:
+                - cell "2" [ref=f46e2066]
+                - cell [ref=f46e2067]:
+                  - strong [ref=f46e2068]: "7"
+                - cell [ref=f46e2069]:
+                  - text: เปรียบเทียบกับ 6
+                  - generic [ref=f46e2071]:
+                    - math [ref=f46e2073]:
+                      - generic [ref=f46e2075]:
+                        - generic [ref=f46e2076]: →
+                        - generic [ref=f46e2077]: "7"
+                        - generic [ref=f46e2078]: ">"
+                        - generic [ref=f46e2079]: "6"
+                        - generic [ref=f46e2080]: ⟹
+                    - generic [ref=f46e2081]:
+                      - generic [ref=f46e2082]: →
+                      - generic [ref=f46e2083]: 7 >
+                      - generic [ref=f46e2084]: 6 ⟹
+                  - text: ไปทางขวา
+                - cell [ref=f46e2085]:
+                  - text: เกาะเป็น
+                  - strong [ref=f46e2086]: Right Child ของ 6
+              - row [ref=f46e2087]:
+                - cell "3" [ref=f46e2088]
+                - cell [ref=f46e2089]:
+                  - strong [ref=f46e2090]: "4"
+                - cell [ref=f46e2091]:
+                  - text: เปรียบเทียบกับ 6
+                  - generic [ref=f46e2093]:
+                    - math [ref=f46e2095]:
+                      - generic [ref=f46e2097]:
+                        - generic [ref=f46e2098]: →
+                        - generic [ref=f46e2099]: "4"
+                        - generic [ref=f46e2100]: <
+                        - generic [ref=f46e2101]: "6"
+                        - generic [ref=f46e2102]: ⟹
+                    - generic [ref=f46e2103]:
+                      - generic [ref=f46e2104]: →
+                      - generic [ref=f46e2105]: 4 <
+                      - generic [ref=f46e2106]: 6 ⟹
+                  - text: ไปทางซ้าย
+                - cell [ref=f46e2107]:
+                  - text: เกาะเป็น
+                  - strong [ref=f46e2108]: Left Child ของ 6
+              - row [ref=f46e2109]:
+                - cell "4" [ref=f46e2110]
+                - cell [ref=f46e2111]:
+                  - strong [ref=f46e2112]: "3"
+                - cell [ref=f46e2113]:
+                  - text: เทียบกับ 6 (ไปซ้าย)
+                  - generic [ref=f46e2115]:
+                    - math [ref=f46e2117]:
+                      - generic [ref=f46e2118]: →
+                    - generic [ref=f46e2121]: →
+                  - text: เทียบกับ 4
+                  - generic [ref=f46e2124]:
+                    - math [ref=f46e2126]:
+                      - generic [ref=f46e2128]:
+                        - generic [ref=f46e2129]: →
+                        - generic [ref=f46e2130]: "3"
+                        - generic [ref=f46e2131]: <
+                        - generic [ref=f46e2132]: "4"
+                    - generic [ref=f46e2133]:
+                      - generic [ref=f46e2134]: →
+                      - generic [ref=f46e2135]: 3 <
+                      - generic [ref=f46e2136]: "4"
+                  - text: (ไปซ้าย)
+                - cell [ref=f46e2137]:
+                  - text: เกาะเป็น
+                  - strong [ref=f46e2138]: Left Child ของ 4
+              - row [ref=f46e2139]:
+                - cell "5" [ref=f46e2140]
+                - cell [ref=f46e2141]:
+                  - strong [ref=f46e2142]: "5"
+                - cell [ref=f46e2143]:
+                  - text: เทียบกับ 6 (ไปซ้าย)
+                  - generic [ref=f46e2145]:
+                    - math [ref=f46e2147]:
+                      - generic [ref=f46e2148]: →
+                    - generic [ref=f46e2151]: →
+                  - text: เทียบกับ 4
+                  - generic [ref=f46e2154]:
+                    - math [ref=f46e2156]:
+                      - generic [ref=f46e2158]:
+                        - generic [ref=f46e2159]: →
+                        - generic [ref=f46e2160]: "5"
+                        - generic [ref=f46e2161]: ">"
+                        - generic [ref=f46e2162]: "4"
+                    - generic [ref=f46e2163]:
+                      - generic [ref=f46e2164]: →
+                      - generic [ref=f46e2165]: 5 >
+                      - generic [ref=f46e2166]: "4"
+                  - text: (ไปขวา)
+                - cell [ref=f46e2167]:
+                  - text: เกาะเป็น
+                  - strong [ref=f46e2168]: Right Child ของ 4
+              - row [ref=f46e2169]:
+                - cell "6" [ref=f46e2170]
+                - cell [ref=f46e2171]:
+                  - strong [ref=f46e2172]: "2"
+                - cell [ref=f46e2173]:
+                  - text: เทียบ 6 (ซ้าย)
+                  - generic [ref=f46e2175]:
+                    - math [ref=f46e2177]:
+                      - generic [ref=f46e2178]: →
+                    - generic [ref=f46e2181]: →
+                  - text: เทียบ 4 (ซ้าย)
+                  - generic [ref=f46e2184]:
+                    - math [ref=f46e2186]:
+                      - generic [ref=f46e2187]: →
+                    - generic [ref=f46e2190]: →
+                  - text: เทียบ 3
+                  - generic [ref=f46e2193]:
+                    - math [ref=f46e2195]:
+                      - generic [ref=f46e2197]:
+                        - generic [ref=f46e2198]: →
+                        - generic [ref=f46e2199]: "2"
+                        - generic [ref=f46e2200]: <
+                        - generic [ref=f46e2201]: "3"
+                    - generic [ref=f46e2202]:
+                      - generic [ref=f46e2203]: →
+                      - generic [ref=f46e2204]: 2 <
+                      - generic [ref=f46e2205]: "3"
+                  - text: (ซ้าย)
+                - cell [ref=f46e2206]:
+                  - text: เกาะเป็น
+                  - strong [ref=f46e2207]: Left Child ของ 3
+              - row [ref=f46e2208]:
+                - cell "7" [ref=f46e2209]
+                - cell [ref=f46e2210]:
+                  - strong [ref=f46e2211]: "1"
+                - cell [ref=f46e2212]:
+                  - text: เทียบ 6 (ซ้าย)
+                  - generic [ref=f46e2214]:
+                    - math [ref=f46e2216]:
+                      - generic [ref=f46e2217]: →
+                    - generic [ref=f46e2220]: →
+                  - text: เทียบ 4 (ซ้าย)
+                  - generic [ref=f46e2223]:
+                    - math [ref=f46e2225]:
+                      - generic [ref=f46e2226]: →
+                    - generic [ref=f46e2229]: →
+                  - text: เทียบ 3 (ซ้าย)
+                  - generic [ref=f46e2232]:
+                    - math [ref=f46e2234]:
+                      - generic [ref=f46e2236]:
+                        - generic [ref=f46e2237]: →
+                        - generic [ref=f46e2238]: "1"
+                        - generic [ref=f46e2239]: <
+                        - generic [ref=f46e2240]: "2"
+                    - generic [ref=f46e2241]:
+                      - generic [ref=f46e2242]: →
+                      - generic [ref=f46e2243]: 1 <
+                      - generic [ref=f46e2244]: "2"
+                  - text: (ซ้าย)
+                - cell [ref=f46e2245]:
+                  - text: เกาะเป็น
+                  - strong [ref=f46e2246]: Left Child ของ 2
+          - separator [ref=f46e2247]
+          - heading "💻 3. โค้ดมาตรฐานระดับข้อสอบ (Runnable Python Implementation)" [level=2] [ref=f46e2248]
+          - paragraph [ref=f46e2249]:
+            - text: โค้ดนี้ถอดแบบมาจากชุดข้อสอบจริงใน
+            - code [ref=f46e2250]: Exams/BinarySearchTrees.py
+            - text: ":"
+          - generic [ref=f46e2251]:
+            - generic [ref=f46e2252]:
+              - generic [ref=f46e2253]: python
+              - generic [ref=f46e2254]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f46e2255] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f46e2256] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f46e2257] [cursor=pointer]
+            - code [ref=f46e2259]: "class Node: def __init__(self, value: int): self.value = value self.left = None self.right = None class BinarySearchTree: def __init__(self): self.root = None def insert(self, value: int): if self.root is None: self.root = Node(value) else: self._insert_recursive(self.root, value) def _insert_recursive(self, current_node: Node, value: int): if value < current_node.value: if current_node.left is None: current_node.left = Node(value) else: self._insert_recursive(current_node.left, value) elif value > current_node.value: if current_node.right is None: current_node.right = Node(value) else: self._insert_recursive(current_node.right, value) else: # กรณีเจอข้อมูลซ้ำ (Duplicate) ปกติในวิชาเรียนจะละเว้นไม่แทรกซ้ำ pass def search(self, value: int) -> bool: \"\"\"ค้นหาข้อมูลในเวลา O(h)\"\"\" curr = self.root while curr is not None: if curr.value == value: return True elif value < curr.value: curr = curr.left else: curr = curr.right return False def inorder(self): \"\"\"ท่องแบบ Inorder: Left -> Root -> Right (ได้ผลลัพธ์เรียงน้อยไปมาก)\"\"\" result = [] def _inorder(node): if node: _inorder(node.left) result.append(node.value) _inorder(node.right) _inorder(self.root) return result def preorder(self): \"\"\"ท่องแบบ Preorder: Root -> Left -> Right\"\"\" result = [] def _preorder(node): if node: result.append(node.value) _preorder(node.left) _preorder(node.right) _preorder(self.root) return result if __name__ == \"__main__\": bst = BinarySearchTree() # ข้อสอบจริง: แทรกชุดข้อมูล [6, 7, 4, 3, 5, 2, 1] keys = [6, 7, 4, 3, 5, 2, 1] for k in keys: bst.insert(k) print(\"🌳 ข้อมูลที่แทรก:\", keys) print(\"📋 ผลการท่อง Inorder (เรียงน้อยไปมาก):\", bst.inorder()) print(\"📋 ผลการท่อง Preorder (ตามข้อสอบ): \", bst.preorder()) print(\"🔍 ค้นหาเลข 5 ในต้นไม้:\", \"เจอ! (True)\" if bst.search(5) else \"ไม่เจอ\") print(\"🔍 ค้นหาเลข 99 ในต้นไม้:\", \"เจอ! (True)\" if bst.search(99) else \"ไม่เจอ (False)\")"
+          - separator [ref=f46e2260]
+          - separator [ref=f46e2261]
+          - heading "📝 5. คลังตัวอย่างข้อสอบ & แบบฝึกหัดในห้องเรียน (Classroom \"For Example 5.1\" Tracing)" [level=2] [ref=f46e2262]
+          - generic [ref=f46e2263]:
+            - generic [ref=f46e2264]:
+              - generic [ref=f46e2265]: 💡
+              - generic [ref=f46e2266]: เกร็ดความรู้ (Info)
+            - paragraph [ref=f46e2268]:
+              - strong [ref=f46e2269]: ที่มาของเอกสารต้นฉบับ
+              - text: ": เอกสารใบงานในห้องเรียนจริง"
+              - code [ref=f46e2270]: Lectures/Lecture 5.1 Binary Search Tree/For example Binary Search Tree std delete round 4 in insert_s step.pdf
+          - separator [ref=f46e2271]
+          - heading [level=3] [ref=f46e2272]:
+            - text: "🎯 5.1 โจทย์ For Example 5.1: การ Trace พารามิเตอร์ของ"
+            - code [ref=f46e2273]: _insert_recursive()
+          - heading "📄 โจทย์คำถาม (Problem Statement):" [level=4] [ref=f46e2274]
+          - blockquote [ref=f46e2275]:
+            - paragraph [ref=f46e2276]:
+              - text: If there is an existing
+              - code [ref=f46e2277]: BinarySearchTree
+              - text: "'s instance variable named"
+              - code [ref=f46e2278]: bst
+              - text: containing the numbers
+              - code [ref=f46e2279]: "[1, 2, 3, 4, 6, 8]"
+              - text: "(In-order traversal) as shown in the tree structure below:"
+            - paragraph [ref=f46e2280]:
+              - text: Write the steps for the
+              - code [ref=f46e2281]: _insert_recursive()
+              - text: function when inserting
+              - code [ref=f46e2282]: "5"
+              - text: into the instance variable
+              - code [ref=f46e2283]: bst
+              - text: ".In each round, write down 2 things:"
+            - list [ref=f46e2284]:
+              - listitem [ref=f46e2285]:
+                - text: What are the values of the parameters
+                - code [ref=f46e2286]: value
+                - text: and
+                - code [ref=f46e2287]: current_node
+                - text: of the
+                - code [ref=f46e2288]: _insert_recursive()
+                - text: function?
+              - listitem [ref=f46e2289]: What statements are executed under the if-else condition that is checked as true?
+          - generic [ref=f46e2291]:
+            - generic [ref=f46e2292]:
+              - generic [ref=f46e2297]: DSA STUDIO ARCHITECTURE
+              - generic [ref=f46e2298]: 🕸️ Graph Structure & Traversal Architecture
+            - generic [ref=f46e2299]:
+              - link "⚡ เปิดใน DSA Lab" [ref=f46e2300] [cursor=pointer]:
+                - /url: ../DsaLab/index.html
+              - button "🔍 ขยายภาพ" [ref=f46e2301] [cursor=pointer]
+          - separator [ref=f46e2303]
+          - heading "💻 เฉลยคำตอบทีละรอบตามเกณฑ์ตรวจของอาจารย์ (Step-by-Step Iteration Answer)" [level=4] [ref=f46e2304]
+          - table [ref=f46e2306]:
+            - rowgroup [ref=f46e2307]:
+              - row [ref=f46e2308]:
+                - columnheader "รอบที่ (Round)" [ref=f46e2309]
+                - columnheader [ref=f46e2310]:
+                  - text: ค่าพารามิเตอร์ (
+                  - code [ref=f46e2311]: value
+                  - text: ","
+                  - code [ref=f46e2312]: current_node
+                  - text: )
+                - columnheader "เงื่อนไข if-else ที่ประเมินเป็นจริง (True)" [ref=f46e2313]
+                - columnheader "ประโยคคำสั่งที่ถูกเรียกทำงาน (Executed Statement)" [ref=f46e2314]
+            - rowgroup [ref=f46e2315]:
+              - row [ref=f46e2316]:
+                - cell [ref=f46e2317]:
+                  - strong [ref=f46e2318]: Round 1
+                - cell [ref=f46e2319]:
+                  - code [ref=f46e2320]: value = 5
+                  - text: ","
+                  - code [ref=f46e2321]: current_node = 6
+                - cell [ref=f46e2322]:
+                  - code [ref=f46e2323]: value < current_node.val
+                  - text: (
+                  - generic [ref=f46e2325]:
+                    - math [ref=f46e2327]:
+                      - generic [ref=f46e2329]:
+                        - generic [ref=f46e2330]: "5"
+                        - generic [ref=f46e2331]: <
+                        - generic [ref=f46e2332]: "6"
+                    - generic [ref=f46e2333]:
+                      - generic [ref=f46e2334]: 5 <
+                      - generic [ref=f46e2335]: "6"
+                  - text: จริง)
+                - cell [ref=f46e2336]:
+                  - code [ref=f46e2337]: _insert_recursive(current_node.left, value)
+              - row [ref=f46e2338]:
+                - cell [ref=f46e2339]:
+                  - strong [ref=f46e2340]: Round 2
+                - cell [ref=f46e2341]:
+                  - code [ref=f46e2342]: value = 5
+                  - text: ","
+                  - code [ref=f46e2343]: current_node = 2
+                - cell [ref=f46e2344]:
+                  - code [ref=f46e2345]: value > current_node.val
+                  - text: (
+                  - generic [ref=f46e2347]:
+                    - math [ref=f46e2349]:
+                      - generic [ref=f46e2351]:
+                        - generic [ref=f46e2352]: "5"
+                        - generic [ref=f46e2353]: ">"
+                        - generic [ref=f46e2354]: "2"
+                    - generic [ref=f46e2355]:
+                      - generic [ref=f46e2356]: 5 >
+                      - generic [ref=f46e2357]: "2"
+                  - text: จริง)
+                - cell [ref=f46e2358]:
+                  - code [ref=f46e2359]: _insert_recursive(current_node.right, value)
+              - row [ref=f46e2360]:
+                - cell [ref=f46e2361]:
+                  - strong [ref=f46e2362]: Round 3
+                - cell [ref=f46e2363]:
+                  - code [ref=f46e2364]: value = 5
+                  - text: ","
+                  - code [ref=f46e2365]: current_node = 4
+                - cell [ref=f46e2366]:
+                  - code [ref=f46e2367]: value > current_node.val
+                  - text: (
+                  - generic [ref=f46e2369]:
+                    - math [ref=f46e2371]:
+                      - generic [ref=f46e2373]:
+                        - generic [ref=f46e2374]: "5"
+                        - generic [ref=f46e2375]: ">"
+                        - generic [ref=f46e2376]: "4"
+                    - generic [ref=f46e2377]:
+                      - generic [ref=f46e2378]: 5 >
+                      - generic [ref=f46e2379]: "4"
+                  - text: จริง)และ
+                  - code [ref=f46e2380]: "if current_node.right is None:"
+                  - text: เป็น
+                  - strong [ref=f46e2381]: "True"
+                - cell [ref=f46e2382]:
+                  - code [ref=f46e2383]: current_node.right = Node(value)
+          - generic [ref=f46e2385]:
+            - generic [ref=f46e2386]:
+              - generic [ref=f46e2391]: DSA STUDIO ARCHITECTURE
+              - generic [ref=f46e2392]: 🕸️ Graph Structure & Traversal Architecture
+            - generic [ref=f46e2393]:
+              - link "⚡ เปิดใน DSA Lab" [ref=f46e2394] [cursor=pointer]:
+                - /url: ../DsaLab/index.html
+              - button "🔍 ขยายภาพ" [ref=f46e2395] [cursor=pointer]
+          - generic [ref=f46e2397]:
+            - generic [ref=f46e2398]:
+              - generic [ref=f46e2399]: ⚠️
+              - generic [ref=f46e2400]: ข้อควรระวัง (Warning)
+            - paragraph [ref=f46e2402]:
+              - strong [ref=f46e2403]: กับดักอาจารย์ในสไลด์หน้า 3 (ขีดฆ่าเตือนใจ)
+              - text: ":ในชีทของอาจารย์มีรอยขีดฆ่าสีแดง:"
+              - code [ref=f46e2404]: "round 4: value = 5, current_node = None"
+              - strong [ref=f46e2405]: นี่คือจุดที่นักศึกษาเขียนผิดกันเยอะมาก!
+              - text: ในโค้ดแบบ Recursive ที่ตรวจสอบ
+              - code [ref=f46e2406]: "if current_node.right is None:"
+              - text: ล่วงหน้า การสร้างโหนดจะเกิดขึ้นที่รอบ 3 ทันที ไม่มีการเรียก recursive รอบที่ 4 ส่ง
+              - code [ref=f46e2407]: None
+              - text: เข้ามา!
+          - separator [ref=f46e2408]
+          - heading "🖥️ ตัวอย่างหน้าจอ Interface การจำลองการแทรกค่าใน BST (Interactive Preview)" [level=4] [ref=f46e2409]
+          - generic [ref=f46e2410]:
+            - generic [ref=f46e2411]:
+              - generic [ref=f46e2412]: console
+              - button "📋 คัดลอก" [ref=f46e2414] [cursor=pointer]
+            - code [ref=f46e2416]: "============================================================ BST RECURSIVE INSERTION TRACER ============================================================ [Target Value to Insert] 5 [Trace Round 1] current_node: 6 (Root) Evaluation: 5 < 6 -> Branch LEFT to node 2 [Trace Round 2] current_node: 2 Evaluation: 5 > 2 -> Branch RIGHT to node 4 [Trace Round 3] current_node: 4 Evaluation: 5 > 4 (Branch RIGHT) Check: node.right is None -> TRUE Action: Created Node(5) as RIGHT child of 4! ------------------------------------------------------------ [Final In-order] [ 1, 2, 3, 4, 5, 6, 8 ] (Sorted Property Verified) ============================================================"
+          - separator [ref=f46e2417]
+          - heading "🔗 ลิงก์เชื่อมโยงใน Obsidian Wiki" [level=2] [ref=f46e2418]
+          - list [ref=f46e2419]:
+            - listitem [ref=f46e2420]:
+              - text: "ก่อนหน้า:"
+              - link "📄 05.1 - Tree Terminology & Binary Trees" [ref=f46e2421] [cursor=pointer]:
+                - /url: "#/05.1%20-%20Tree%20Terminology%20%26%20Binary%20Trees"
+            - listitem [ref=f46e2422]:
+              - text: "ถัดไป (BST Deletion):"
+              - link "📄 05.3 - Binary Search Tree Removal (Node Deletion Cases)" [ref=f46e2423] [cursor=pointer]:
+                - /url: "#/05.3%20-%20Binary%20Search%20Tree%20Removal%20(Node%20Deletion%20Cases)"
+            - listitem [ref=f46e2424]:
+              - text: "ตารางความเร็วรวม:"
+              - link "📄 Glossary & Complexity Cheat Sheet" [ref=f46e2425] [cursor=pointer]:
+                - /url: "#/Glossary%20%26%20Complexity%20Cheat%20Sheet"
+            - listitem [ref=f46e2426]:
+              - text: "กลับหน้าหลัก:"
+              - link "📄 Index" [ref=f46e2427] [cursor=pointer]:
+                - /url: "#/Index"
+        - generic [ref=f46e1666]:
+          - 'link "← บทก่อนหน้า บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals" [ref=f46e2428] [cursor=pointer]':
+            - /url: "#/05.1%20-%20Tree%20Terminology%20%26%20Binary%20Trees"
+            - generic [ref=f46e2429]: ← บทก่อนหน้า
+            - generic [ref=f46e2430]: "บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals"
+          - 'link "บทถัดไป → บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี)" [ref=f46e2431] [cursor=pointer]':
+            - /url: "#/05.3%20-%20Binary%20Search%20Tree%20Removal%20(Node%20Deletion%20Cases)"
+            - generic [ref=f46e2432]: บทถัดไป →
+            - generic [ref=f46e2433]: "บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี)"
+  - generic:
+    - generic:
+      - generic:
+        - textbox "พิมพ์ค้นหา เช่น Linked List, Heap, BST, Big-O, Dijkstra, Midterm..."
+        - button "ESC"
+  - generic:
+    - generic:
+      - generic: 📊 แผนผังแบบขยายเต็มจอ (Mermaid Diagram)
+      - generic:
+        - button "➖ ย่อ"
+        - button "1:1"
+        - button "➕ ขยาย"
+        - button "✕ ปิด"

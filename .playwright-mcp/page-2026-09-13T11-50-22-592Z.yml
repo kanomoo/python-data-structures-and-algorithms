@@ -1,0 +1,233 @@
+- generic [ref=f11e2]:
+  - complementary [ref=f11e3]:
+    - generic [ref=f11e4]:
+      - generic [ref=f11e9]:
+        - heading "DSA Lab Studio" [level=2] [ref=f11e10]
+        - generic [ref=f11e11]: v2.0 • World-Class Visualizer
+      - button "✕" [ref=f11e12]
+    - generic [ref=f11e13]:
+      - button "🎯 ข้อสอบหลัก (Exams)" [ref=f11e14] [cursor=pointer]
+      - button "🧱 เชิงเส้น" [ref=f11e15] [cursor=pointer]
+      - button "📚 ทั้งหมด" [ref=f11e16] [cursor=pointer]
+    - generic [ref=f11e17]:
+      - generic [ref=f11e298] [cursor=pointer]:
+        - generic [ref=f11e299]: Assignment 1
+        - generic [ref=f11e300]: Singly Linked List (ระบบรายชื่อนักศึกษา)
+        - generic [ref=f11e301]: สร้าง Linked List จัดการข้อมูลนักศึกษา (ID, Name, GPA) พร้อมแทรกและลบโหนด
+      - generic [ref=f11e302] [cursor=pointer]:
+        - generic [ref=f11e303]: Test Program 1
+        - generic [ref=f11e304]: Circular Array Queue
+        - generic [ref=f11e305]: จำลองการทำงานของคิววงกลม (Circular Queue) พร้อมตัวชี้ front, rear และ size
+      - generic [ref=f11e306] [cursor=pointer]:
+        - generic [ref=f11e307]: Lecture 5.2
+        - generic [ref=f11e308]: BST Deletion (กรณีโหนดมีลูก 2 ตัว)
+        - generic [ref=f11e309]: ค้นหา In-order Successor (ค่าน้อยสุดในกิ่งขวา) มาแทนที่โหนดที่ถูกลบ
+      - generic [ref=f11e310] [cursor=pointer]:
+        - generic [ref=f11e311]: Assignment 3
+        - generic [ref=f11e312]: Binary Min-Heap (Percolate Up & Down)
+        - generic [ref=f11e313]: "โครงสร้างฮีปแบบ Complete Binary Tree ใน Array: Insert & DeleteMin"
+      - generic [ref=f11e314] [cursor=pointer]:
+        - generic [ref=f11e315]: Test Program 2
+        - generic [ref=f11e316]: Sorting Comparison (Bubble, Selection, Insertion, Quick)
+        - generic [ref=f11e317]: เปรียบเทียบการเรียงลำดับข้อมูล นับจำนวน Comparisons และ Swaps
+      - generic [ref=f11e318] [cursor=pointer]:
+        - generic [ref=f11e319]: Assignment 4
+        - generic [ref=f11e320]: Shortest Path (Dijkstra Algorithm)
+        - generic [ref=f11e321]: คำนวณวิถีสั้นสุดบนกราฟถ่วงน้ำหนักจุดยอด v1 - v7 ตามสไลด์การบ้าน
+    - generic [ref=f11e42]:
+      - generic [ref=f11e43]: Interactive Engine พร้อมทำงาน
+      - link "Wiki 💡" [ref=f11e46] [cursor=pointer]:
+        - /url: ../Wiki/index.html
+  - main [ref=f11e47]:
+    - generic [ref=f11e48]:
+      - generic [ref=f11e49]:
+        - button "เปิด/ปิด แถบสารบัญ (Ctrl + B)" [ref=f11e50] [cursor=pointer]
+        - generic [ref=f11e52]:
+          - generic [ref=f11e53]: "หัวข้อ:"
+          - combobox [ref=f11e54] [cursor=pointer]:
+            - option "🌲 Binary Min/Max Heap (Exams/Heap.py)"
+            - option "🌳 Binary Search Tree (BST 3 Cases)" [selected]
+            - option "⚡ Hash Table & Collisions (Exams/Hash.py)"
+            - 'option "🥞 Stack: Infix to Postfix (Exams/InfixToPostFix.py)"'
+            - option "🔗 Singly Linked List (นักศึกษา)"
+            - option "🔄 Circular Array Queue (Modulo)"
+            - option "📊 Sorting Comparison (Bubble, Selection)"
+            - option "🕸️ Dijkstra Shortest Path"
+      - generic [ref=f11e56]:
+        - button "🕹️ Studio Canvas" [ref=f11e57] [cursor=pointer]:
+          - generic [ref=f11e58]: 🕹️
+          - generic [ref=f11e59]: Studio Canvas
+        - button "🌓 Split (Canvas + Code)" [active] [ref=f11e60] [cursor=pointer]:
+          - generic [ref=f11e61]: 🌓
+          - generic [ref=f11e62]: Split (Canvas + Code)
+        - button "💻 Python IDE" [ref=f11e63] [cursor=pointer]:
+          - generic [ref=f11e64]: 💻
+          - generic [ref=f11e65]: Python IDE
+      - generic [ref=f11e66]:
+        - button "📖 ทฤษฎี" [ref=f11e67] [cursor=pointer]:
+          - generic [ref=f11e68]: 📖
+          - generic [ref=f11e69]: ทฤษฎี
+        - link "📚 Wiki" [ref=f11e70] [cursor=pointer]:
+          - /url: ../Wiki/index.html
+          - generic [ref=f11e71]: 📚
+          - generic [ref=f11e72]: Wiki
+        - link "🏠" [ref=f11e73] [cursor=pointer]:
+          - /url: ../index.html
+    - generic [ref=f11e75]:
+      - generic [ref=f11e76]:
+        - generic [ref=f11e77]:
+          - generic [ref=f11e78]:
+            - generic [ref=f11e79]:
+              - generic [ref=f11e80]: "ค่าโหนด (Node):"
+              - textbox "ค่าโหนด (Node):" [ref=f11e322]:
+                - /placeholder: เช่น 70, 80, 25
+                - text: "70"
+            - generic [ref=f11e82]:
+              - button "➕ Insert Node" [ref=f11e323] [cursor=pointer]:
+                - generic [ref=f11e84]: ➕
+                - generic [ref=f11e85]: Insert Node
+              - button "➖ Delete Node" [ref=f11e324] [cursor=pointer]:
+                - generic [ref=f11e87]: ➖
+                - generic [ref=f11e88]: Delete Node
+              - button "🔍 Search" [ref=f11e325] [cursor=pointer]:
+                - generic [ref=f11e90]: 🔍
+                - generic [ref=f11e91]: Search
+            - generic [ref=f11e95]:
+              - button "📝 Exams Preset" [ref=f11e96] [cursor=pointer]:
+                - generic [ref=f11e97]: 📝
+                - generic [ref=f11e98]: Exams Preset
+              - button "🎲 Random" [ref=f11e99] [cursor=pointer]:
+                - generic [ref=f11e100]: 🎲
+                - generic [ref=f11e101]: Random
+              - button "🧹 Clear" [ref=f11e102] [cursor=pointer]:
+                - generic [ref=f11e103]: 🧹
+                - generic [ref=f11e104]: Clear
+          - generic [ref=f11e105]:
+            - generic [ref=f11e106]: Binary Search Tree (BST Deletion 3 Cases)
+            - generic "สูตรหาโหนดแม่ Parent" [ref=f11e109]:
+              - generic [ref=f11e110]: "Parent:"
+              - generic [ref=f11e111]: Left < Node
+            - generic "สูตรหาลูกซ้าย Left Child" [ref=f11e125]:
+              - generic [ref=f11e126]: "Left:"
+              - generic [ref=f11e127]: Right > Node
+            - generic "เงื่อนไขของอัลกอริทึมในสเต็ปปัจจุบัน" [ref=f11e154]:
+              - generic [ref=f11e155]: "Condition:"
+              - generic [ref=f11e156]: สมบูรณ์ ✓
+        - generic [ref=f11e326]:
+          - generic [ref=f11e327]:
+            - generic [ref=f11e328]:
+              - generic [ref=f11e329]: "โหนดทั้งหมด:"
+              - generic [ref=f11e330]: "8"
+            - generic [ref=f11e331]:
+              - generic [ref=f11e332]: "กฎ BST:"
+              - generic [ref=f11e333]: Left < Node < Right
+            - generic [ref=f11e334]:
+              - generic [ref=f11e335]: "สถานะ:"
+              - generic [ref=f11e336]: INIT
+          - img [ref=f11e338]:
+            - generic [ref=f11e346]: "50"
+            - generic [ref=f11e348]: "30"
+            - generic [ref=f11e350]: "20"
+            - generic [ref=f11e352]: "40"
+            - generic [ref=f11e354]: "70"
+            - generic [ref=f11e356]: "60"
+            - generic [ref=f11e358]: "65"
+            - generic [ref=f11e360]: "80"
+        - generic [ref=f11e268]:
+          - generic [ref=f11e270]:
+            - generic [ref=f11e271]: Step 1 / 1
+            - generic [ref=f11e272]:
+              - text: "คีย์ลัด:"
+              - code [ref=f11e273]: Space
+              - text: เล่น/หยุด,
+              - code [ref=f11e274]: ←
+              - code [ref=f11e275]: →
+              - text: ก้าวทีละสเต็ป
+          - generic [ref=f11e278]: "🌳 Binary Search Tree (BST): โครงสร้างต้นไม้ค้นหาแบบทวิภาค (Left < Root < Right) พร้อมรองรับ Insert, Delete, Search และ Traversal แบบไดนามิก"
+          - generic [ref=f11e279]:
+            - generic [ref=f11e280]:
+              - button "◀ ก่อนหน้า" [disabled] [ref=f11e281]:
+                - generic [ref=f11e282]: ◀
+                - generic [ref=f11e283]: ก่อนหน้า
+              - button "▶ เล่นอัตโนมัติ" [ref=f11e284] [cursor=pointer]:
+                - generic [ref=f11e362]: ▶
+                - generic [ref=f11e363]: เล่นอัตโนมัติ
+              - button "ต่อไป ▶" [disabled] [ref=f11e287]:
+                - generic [ref=f11e288]: ต่อไป
+                - generic [ref=f11e289]: ▶
+              - button "🔄 เริ่มใหม่" [ref=f11e290] [cursor=pointer]:
+                - generic [ref=f11e291]: 🔄
+                - generic [ref=f11e292]: เริ่มใหม่
+            - generic [ref=f11e293]:
+              - generic [ref=f11e294]: "ความเร็ว:"
+              - slider "ปรับความเร็วการจำลองขั้นตอน" [ref=f11e295] [cursor=pointer]: "1800"
+              - generic [ref=f11e296]: 1.0x
+      - generic [ref=f11e364]:
+        - generic [ref=f11e365]:
+          - generic [ref=f11e366]:
+            - button "⚡ Exams/BinarySearchTrees.py" [ref=f11e367] [cursor=pointer]:
+              - generic [ref=f11e368]: ⚡
+              - generic [ref=f11e369]: Exams/BinarySearchTrees.py
+            - button "✏️ Python Editor" [ref=f11e370] [cursor=pointer]:
+              - generic [ref=f11e371]: ✏️
+              - generic [ref=f11e372]: Python Editor
+            - button "🔍 Watch" [ref=f11e373] [cursor=pointer]:
+              - generic [ref=f11e374]: 🔍
+              - generic [ref=f11e375]: Watch
+          - button "▶ Run (Ctrl+Enter)" [ref=f11e377] [cursor=pointer]:
+            - generic [ref=f11e378]: ▶
+            - generic [ref=f11e379]: Run (Ctrl+Enter)
+        - generic [ref=f11e380]:
+          - generic [ref=f11e381]: 💡 บรรทัดโค้ดภาษา Python ด้านล่างจะก้าวตามขั้นตอนของ Visualizer ทางด้านซ้ายโดยอัตโนมัติ
+          - generic [ref=f11e382]:
+            - generic [ref=f11e383]:
+              - generic [ref=f11e384]: "1"
+              - generic [ref=f11e385]: "# Exams/BinarySearchTrees.py — Binary Search Tree Deletion"
+            - generic [ref=f11e386]:
+              - generic [ref=f11e387]: "2"
+              - generic [ref=f11e388]: "class BinarySearchTree:"
+            - generic [ref=f11e389]:
+              - generic [ref=f11e390]: "3"
+              - generic [ref=f11e391]: "def delete(self, root, key):"
+            - generic [ref=f11e392]:
+              - generic [ref=f11e393]: "4"
+              - generic [ref=f11e394]: "if root is None: return root"
+            - generic [ref=f11e395]:
+              - generic [ref=f11e396]: "5"
+              - generic [ref=f11e397]: "if key < root.val:"
+            - generic [ref=f11e398]:
+              - generic [ref=f11e399]: "6"
+              - generic [ref=f11e400]: root.left = self.delete(root.left, key)
+            - generic [ref=f11e401]:
+              - generic [ref=f11e402]: "7"
+              - generic [ref=f11e403]: "elif key > root.val:"
+            - generic [ref=f11e404]:
+              - generic [ref=f11e405]: "8"
+              - generic [ref=f11e406]: root.right = self.delete(root.right, key)
+            - generic [ref=f11e407]:
+              - generic [ref=f11e408]: "9"
+              - generic [ref=f11e409]: "else:"
+            - generic [ref=f11e410]:
+              - generic [ref=f11e411]: "10"
+              - generic [ref=f11e412]: "# Case 1 & 2: 0 or 1 child"
+            - generic [ref=f11e413]:
+              - generic [ref=f11e414]: "11"
+              - generic [ref=f11e415]: "if root.left is None: return root.right"
+            - generic [ref=f11e416]:
+              - generic [ref=f11e417]: "12"
+              - generic [ref=f11e418]: "if root.right is None: return root.left"
+            - generic [ref=f11e419]:
+              - generic [ref=f11e420]: "13"
+              - generic [ref=f11e421]: "# Case 3: 2 children -> In-order Successor"
+            - generic [ref=f11e422]:
+              - generic [ref=f11e423]: "14"
+              - generic [ref=f11e424]: temp = self.find_min(root.right)
+            - generic [ref=f11e425]:
+              - generic [ref=f11e426]: "15"
+              - generic [ref=f11e427]: root.val = temp.val
+            - generic [ref=f11e428]:
+              - generic [ref=f11e429]: "16"
+              - generic [ref=f11e430]: root.right = self.delete(root.right, temp.val)
+            - generic [ref=f11e431]:
+              - generic [ref=f11e432]: "17"
+              - generic [ref=f11e433]: return root

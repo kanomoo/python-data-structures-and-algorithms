@@ -1,0 +1,260 @@
+- generic [ref=f12e2]:
+  - complementary [ref=f12e3]:
+    - generic [ref=f12e4]:
+      - generic [ref=f12e9]:
+        - heading "DSA Lab Studio" [level=2] [ref=f12e10]
+        - generic [ref=f12e11]: v2.0 • World-Class Visualizer
+      - button "✕" [ref=f12e12]
+    - generic [ref=f12e13]:
+      - button "🎯 ข้อสอบหลัก (Exams)" [ref=f12e14] [cursor=pointer]
+      - button "🧱 เชิงเส้น" [ref=f12e15] [cursor=pointer]
+      - button "📚 ทั้งหมด" [ref=f12e16] [cursor=pointer]
+    - generic [ref=f12e17]:
+      - generic [ref=f12e18] [cursor=pointer]:
+        - generic [ref=f12e19]: Assignment 1
+        - generic [ref=f12e20]: Singly Linked List (ระบบรายชื่อนักศึกษา)
+        - generic [ref=f12e21]: สร้าง Linked List จัดการข้อมูลนักศึกษา (ID, Name, GPA) พร้อมแทรกและลบโหนด
+      - generic [ref=f12e22] [cursor=pointer]:
+        - generic [ref=f12e23]: Test Program 1
+        - generic [ref=f12e24]: Circular Array Queue
+        - generic [ref=f12e25]: จำลองการทำงานของคิววงกลม (Circular Queue) พร้อมตัวชี้ front, rear และ size
+      - generic [ref=f12e26] [cursor=pointer]:
+        - generic [ref=f12e27]: Lecture 5.2
+        - generic [ref=f12e28]: BST Deletion (กรณีโหนดมีลูก 2 ตัว)
+        - generic [ref=f12e29]: ค้นหา In-order Successor (ค่าน้อยสุดในกิ่งขวา) มาแทนที่โหนดที่ถูกลบ
+      - generic [ref=f12e30] [cursor=pointer]:
+        - generic [ref=f12e31]: Assignment 3
+        - generic [ref=f12e32]: Binary Min-Heap (Percolate Up & Down)
+        - generic [ref=f12e33]: "โครงสร้างฮีปแบบ Complete Binary Tree ใน Array: Insert & DeleteMin"
+      - generic [ref=f12e34] [cursor=pointer]:
+        - generic [ref=f12e35]: Test Program 2
+        - generic [ref=f12e36]: Sorting Comparison (Bubble, Selection, Insertion, Quick)
+        - generic [ref=f12e37]: เปรียบเทียบการเรียงลำดับข้อมูล นับจำนวน Comparisons และ Swaps
+      - generic [ref=f12e38] [cursor=pointer]:
+        - generic [ref=f12e39]: Assignment 4
+        - generic [ref=f12e40]: Shortest Path (Dijkstra Algorithm)
+        - generic [ref=f12e41]: คำนวณวิถีสั้นสุดบนกราฟถ่วงน้ำหนักจุดยอด v1 - v7 ตามสไลด์การบ้าน
+    - generic [ref=f12e42]:
+      - generic [ref=f12e43]: CPython WASM กำลังเตรียมพร้อม...
+      - link "Wiki 💡" [ref=f12e46] [cursor=pointer]:
+        - /url: ../Wiki/index.html
+  - main [ref=f12e47]:
+    - generic [ref=f12e48]:
+      - generic [ref=f12e49]:
+        - button "เปิด/ปิด แถบสารบัญ (Ctrl + B)" [ref=f12e50] [cursor=pointer]
+        - generic [ref=f12e52]:
+          - generic [ref=f12e53]: "หัวข้อ:"
+          - combobox [ref=f12e54] [cursor=pointer]:
+            - option "🌲 Binary Min/Max Heap (Exams/Heap.py)" [selected]
+            - option "🌳 Binary Search Tree (BST 3 Cases)"
+            - option "⚡ Hash Table & Collisions (Exams/Hash.py)"
+            - 'option "🥞 Stack: Infix to Postfix (Exams/InfixToPostFix.py)"'
+            - option "🔗 Singly Linked List (นักศึกษา)"
+            - option "🔄 Circular Array Queue (Modulo)"
+            - option "📊 Sorting Comparison (Bubble, Selection)"
+            - option "🕸️ Dijkstra Shortest Path"
+      - generic [ref=f12e56]:
+        - button "🕹️ Studio Canvas" [ref=f12e57] [cursor=pointer]:
+          - generic [ref=f12e58]: 🕹️
+          - generic [ref=f12e59]: Studio Canvas
+        - button "🌓 Split (Canvas + Code)" [ref=f12e60] [cursor=pointer]:
+          - generic [ref=f12e61]: 🌓
+          - generic [ref=f12e62]: Split (Canvas + Code)
+        - button "💻 Python IDE" [ref=f12e63] [cursor=pointer]:
+          - generic [ref=f12e64]: 💻
+          - generic [ref=f12e65]: Python IDE
+      - generic [ref=f12e66]:
+        - button "📖 ทฤษฎี" [ref=f12e67] [cursor=pointer]:
+          - generic [ref=f12e68]: 📖
+          - generic [ref=f12e69]: ทฤษฎี
+        - link "📚 Wiki" [ref=f12e70] [cursor=pointer]:
+          - /url: ../Wiki/index.html
+          - generic [ref=f12e71]: 📚
+          - generic [ref=f12e72]: Wiki
+        - link "🏠" [ref=f12e73] [cursor=pointer]:
+          - /url: ../index.html
+    - generic [ref=f12e76]:
+      - generic [ref=f12e77]:
+        - generic [ref=f12e78]:
+          - generic [ref=f12e79]:
+            - generic [ref=f12e80]: "ค่าตัวเลข (Value):"
+            - textbox "ค่าตัวเลข (Value):" [ref=f12e81]:
+              - /placeholder: เช่น 25, 8, 15
+              - text: "25"
+          - generic [ref=f12e82]:
+            - button "➕ Insert" [ref=f12e83] [cursor=pointer]:
+              - generic [ref=f12e84]: ➕
+              - generic [ref=f12e85]: Insert
+            - button "➖ Delete Min" [ref=f12e86] [cursor=pointer]:
+              - generic [ref=f12e87]: ➖
+              - generic [ref=f12e88]: Delete Min
+            - button "🔍 Find Min" [ref=f12e89] [cursor=pointer]:
+              - generic [ref=f12e90]: 🔍
+              - generic [ref=f12e91]: Find Min
+            - button "🔄 Min / Max" [ref=f12e92] [cursor=pointer]:
+              - generic [ref=f12e93]: 🔄
+              - generic [ref=f12e94]: Min / Max
+          - generic [ref=f12e95]:
+            - button "📝 Exams Preset" [ref=f12e96] [cursor=pointer]:
+              - generic [ref=f12e97]: 📝
+              - generic [ref=f12e98]: Exams Preset
+            - button "🎲 Random" [ref=f12e99] [cursor=pointer]:
+              - generic [ref=f12e100]: 🎲
+              - generic [ref=f12e101]: Random
+            - button "🧹 Clear" [ref=f12e102] [cursor=pointer]:
+              - generic [ref=f12e103]: 🧹
+              - generic [ref=f12e104]: Clear
+        - generic [ref=f12e105]:
+          - generic [ref=f12e106]: Binary Min-Heap (Exams/Heap.py)
+          - generic "สูตรหาโหนดแม่ Parent" [ref=f12e109]:
+            - generic [ref=f12e110]: "Parent:"
+            - generic [ref=f12e113]:
+              - math [ref=f12e115]:
+                - generic [ref=f12e117]:
+                  - generic [ref=f12e118]: ⌊
+                  - generic [ref=f12e119]: i
+                  - generic [ref=f12e120]: /
+                  - generic [ref=f12e121]: "2"
+                  - generic [ref=f12e122]: ⌋
+              - generic [ref=f12e123]: ⌊i/2⌋
+          - generic "สูตรหาลูกซ้าย Left Child" [ref=f12e125]:
+            - generic [ref=f12e126]: "Left:"
+            - generic [ref=f12e129]:
+              - math [ref=f12e131]:
+                - generic [ref=f12e133]:
+                  - generic [ref=f12e134]: "2"
+                  - generic [ref=f12e135]: i
+              - generic [ref=f12e136]: 2i
+          - generic "สูตรหาลูกขวา Right Child" [ref=f12e138]:
+            - generic [ref=f12e139]: "Right:"
+            - generic [ref=f12e142]:
+              - math [ref=f12e144]:
+                - generic [ref=f12e146]:
+                  - generic [ref=f12e147]: "2"
+                  - generic [ref=f12e148]: i
+                  - generic [ref=f12e149]: +
+                  - generic [ref=f12e150]: "1"
+              - generic [ref=f12e151]:
+                - generic [ref=f12e152]: 2i +
+                - generic [ref=f12e153]: "1"
+          - generic "เงื่อนไขของอัลกอริทึมในสเต็ปปัจจุบัน" [ref=f12e154]:
+            - generic [ref=f12e155]: "Condition:"
+            - generic [ref=f12e156]: สมบูรณ์ ✓
+      - generic [ref=f12e158]:
+        - generic [ref=f12e159]:
+          - generic [ref=f12e160]:
+            - generic [ref=f12e161]:
+              - generic [ref=f12e162]: 📋
+              - generic [ref=f12e163]: 1-Based Array Index Representation [1 .. 11]
+            - generic [ref=f12e164]: Min-Heap (Exams/Heap.py)
+          - generic [ref=f12e165]:
+            - generic [ref=f12e166]:
+              - generic [ref=f12e167]: Sentinel
+              - generic [ref=f12e168]:
+                - generic [ref=f12e169]: None
+                - generic [ref=f12e170]: "[0]"
+            - generic [ref=f12e171]:
+              - generic [ref=f12e172]: Root
+              - generic [ref=f12e173]:
+                - generic [ref=f12e174]: "13"
+                - generic [ref=f12e175]: "[1]"
+            - generic [ref=f12e177]:
+              - generic [ref=f12e178]: "14"
+              - generic [ref=f12e179]: "[2]"
+            - generic [ref=f12e181]:
+              - generic [ref=f12e182]: "16"
+              - generic [ref=f12e183]: "[3]"
+            - generic [ref=f12e185]:
+              - generic [ref=f12e186]: "19"
+              - generic [ref=f12e187]: "[4]"
+            - generic [ref=f12e189]:
+              - generic [ref=f12e190]: "21"
+              - generic [ref=f12e191]: "[5]"
+            - generic [ref=f12e193]:
+              - generic [ref=f12e194]: "19"
+              - generic [ref=f12e195]: "[6]"
+            - generic [ref=f12e197]:
+              - generic [ref=f12e198]: "68"
+              - generic [ref=f12e199]: "[7]"
+            - generic [ref=f12e201]:
+              - generic [ref=f12e202]: "65"
+              - generic [ref=f12e203]: "[8]"
+            - generic [ref=f12e205]:
+              - generic [ref=f12e206]: "26"
+              - generic [ref=f12e207]: "[9]"
+            - generic [ref=f12e209]:
+              - generic [ref=f12e210]: "32"
+              - generic [ref=f12e211]: "[10]"
+            - generic [ref=f12e213]:
+              - generic [ref=f12e214]: "31"
+              - generic [ref=f12e215]: "[11]"
+        - generic [ref=f12e216]:
+          - generic [ref=f12e217]:
+            - generic [ref=f12e218]:
+              - generic [ref=f12e219]: 🌲
+              - generic [ref=f12e220]: Complete Binary Tree View (ความสูง 4 ชั้น)
+            - generic [ref=f12e221]: Parent = ⌊i/2⌋, Left = 2i, Right = 2i+1
+          - img [ref=f12e223]:
+            - generic [ref=f12e234]:
+              - generic: "13"
+              - generic [ref=f12e236]: idx [1]
+              - generic [ref=f12e237]: ROOT
+            - generic [ref=f12e238]:
+              - generic: "14"
+              - generic [ref=f12e240]: idx [2]
+            - generic [ref=f12e241]:
+              - generic: "16"
+              - generic [ref=f12e243]: idx [3]
+            - generic [ref=f12e244]:
+              - generic: "19"
+              - generic [ref=f12e246]: idx [4]
+            - generic [ref=f12e247]:
+              - generic: "21"
+              - generic [ref=f12e249]: idx [5]
+            - generic [ref=f12e250]:
+              - generic: "19"
+              - generic [ref=f12e252]: idx [6]
+            - generic [ref=f12e253]:
+              - generic: "68"
+              - generic [ref=f12e255]: idx [7]
+            - generic [ref=f12e256]:
+              - generic: "65"
+              - generic [ref=f12e258]: idx [8]
+            - generic [ref=f12e259]:
+              - generic: "26"
+              - generic [ref=f12e261]: idx [9]
+            - generic [ref=f12e262]:
+              - generic: "32"
+              - generic [ref=f12e264]: idx [10]
+            - generic [ref=f12e265]:
+              - generic: "31"
+              - generic [ref=f12e267]: idx [11]
+      - generic [ref=f12e268]:
+        - generic [ref=f12e270]:
+          - generic [ref=f12e271]: Step 1 / 1
+          - generic [ref=f12e272]:
+            - text: "คีย์ลัด:"
+            - code [ref=f12e273]: Space
+            - text: เล่น/หยุด,
+            - code [ref=f12e274]: ←
+            - code [ref=f12e275]: →
+            - text: ก้าวทีละสเต็ป
+        - generic [ref=f12e278]: "📌 Binary Min-Heap: โครงสร้าง Complete Binary Tree ขนาด 11 โหนด (ราก Root = 13)"
+        - generic [ref=f12e279]:
+          - generic [ref=f12e280]:
+            - button "◀ ก่อนหน้า" [disabled] [ref=f12e281]:
+              - generic [ref=f12e282]: ◀
+              - generic [ref=f12e283]: ก่อนหน้า
+            - button "▶ เล่นอัตโนมัติ" [ref=f12e284] [cursor=pointer]:
+              - generic [ref=f12e285]: ▶
+              - generic [ref=f12e286]: เล่นอัตโนมัติ
+            - button "ต่อไป ▶" [disabled] [ref=f12e287]:
+              - generic [ref=f12e288]: ต่อไป
+              - generic [ref=f12e289]: ▶
+            - button "🔄 เริ่มใหม่" [ref=f12e290] [cursor=pointer]:
+              - generic [ref=f12e291]: 🔄
+              - generic [ref=f12e292]: เริ่มใหม่
+          - generic [ref=f12e293]:
+            - generic [ref=f12e294]: "ความเร็ว:"
+            - slider "ปรับความเร็วการจำลองขั้นตอน" [ref=f12e295] [cursor=pointer]: "1800"
+            - generic [ref=f12e296]: 1.0x

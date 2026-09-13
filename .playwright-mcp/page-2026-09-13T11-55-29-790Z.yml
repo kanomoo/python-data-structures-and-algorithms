@@ -1,0 +1,317 @@
+- generic [ref=f12e2]:
+  - complementary [ref=f12e3]:
+    - generic [ref=f12e4]:
+      - generic [ref=f12e9]:
+        - heading "DSA Lab Studio" [level=2] [ref=f12e10]
+        - generic [ref=f12e11]: v2.0 • World-Class Visualizer
+      - button "✕" [ref=f12e12]
+    - generic [ref=f12e13]:
+      - button "🎯 ข้อสอบหลัก (Exams)" [ref=f12e14] [cursor=pointer]
+      - button "🧱 เชิงเส้น" [ref=f12e15] [cursor=pointer]
+      - button "📚 ทั้งหมด" [ref=f12e16] [cursor=pointer]
+    - generic [ref=f12e17]:
+      - generic [ref=f12e412] [cursor=pointer]:
+        - generic [ref=f12e413]: Assignment 1
+        - generic [ref=f12e414]: Singly Linked List (ระบบรายชื่อนักศึกษา)
+        - generic [ref=f12e415]: สร้าง Linked List จัดการข้อมูลนักศึกษา (ID, Name, GPA) พร้อมแทรกและลบโหนด
+      - generic [ref=f12e416] [cursor=pointer]:
+        - generic [ref=f12e417]: Test Program 1
+        - generic [ref=f12e418]: Circular Array Queue
+        - generic [ref=f12e419]: จำลองการทำงานของคิววงกลม (Circular Queue) พร้อมตัวชี้ front, rear และ size
+      - generic [ref=f12e420] [cursor=pointer]:
+        - generic [ref=f12e421]: Lecture 5.2
+        - generic [ref=f12e422]: BST Deletion (กรณีโหนดมีลูก 2 ตัว)
+        - generic [ref=f12e423]: ค้นหา In-order Successor (ค่าน้อยสุดในกิ่งขวา) มาแทนที่โหนดที่ถูกลบ
+      - generic [ref=f12e424] [cursor=pointer]:
+        - generic [ref=f12e425]: Assignment 3
+        - generic [ref=f12e426]: Binary Min-Heap (Percolate Up & Down)
+        - generic [ref=f12e427]: "โครงสร้างฮีปแบบ Complete Binary Tree ใน Array: Insert & DeleteMin"
+      - generic [ref=f12e428] [cursor=pointer]:
+        - generic [ref=f12e429]: Test Program 2
+        - generic [ref=f12e430]: Sorting Comparison (Bubble, Selection, Insertion, Quick)
+        - generic [ref=f12e431]: เปรียบเทียบการเรียงลำดับข้อมูล นับจำนวน Comparisons และ Swaps
+      - generic [ref=f12e432] [cursor=pointer]:
+        - generic [ref=f12e433]: Assignment 4
+        - generic [ref=f12e434]: Shortest Path (Dijkstra Algorithm)
+        - generic [ref=f12e435]: คำนวณวิถีสั้นสุดบนกราฟถ่วงน้ำหนักจุดยอด v1 - v7 ตามสไลด์การบ้าน
+    - generic [ref=f12e42]:
+      - generic [ref=f12e43]: Python 3.12 (WASM) พร้อมรัน 100%
+      - link "Wiki 💡" [ref=f12e46] [cursor=pointer]:
+        - /url: ../Wiki/index.html
+  - main [ref=f12e47]:
+    - generic [ref=f12e48]:
+      - generic [ref=f12e49]:
+        - button "เปิด/ปิด แถบสารบัญ (Ctrl + B)" [ref=f12e50] [cursor=pointer]
+        - generic [ref=f12e52]:
+          - generic [ref=f12e53]: "หัวข้อ:"
+          - combobox [ref=f12e54] [cursor=pointer]:
+            - option "🌲 Binary Min/Max Heap (Exams/Heap.py)"
+            - option "🌳 Binary Search Tree (BST 3 Cases)" [selected]
+            - option "⚡ Hash Table & Collisions (Exams/Hash.py)"
+            - 'option "🥞 Stack: Infix to Postfix (Exams/InfixToPostFix.py)"'
+            - option "🔗 Singly Linked List (นักศึกษา)"
+            - option "🔄 Circular Array Queue (Modulo)"
+            - option "📊 Sorting Comparison (Bubble, Selection)"
+            - option "🕸️ Dijkstra Shortest Path"
+      - generic [ref=f12e56]:
+        - button "🕹️ Studio Canvas" [ref=f12e57] [cursor=pointer]:
+          - generic [ref=f12e58]: 🕹️
+          - generic [ref=f12e59]: Studio Canvas
+        - button "🌓 Split (Canvas + Code)" [ref=f12e60] [cursor=pointer]:
+          - generic [ref=f12e61]: 🌓
+          - generic [ref=f12e62]: Split (Canvas + Code)
+        - button "💻 Python IDE" [ref=f12e63] [cursor=pointer]:
+          - generic [ref=f12e64]: 💻
+          - generic [ref=f12e65]: Python IDE
+      - generic [ref=f12e66]:
+        - button "📖 ทฤษฎี" [ref=f12e67] [cursor=pointer]:
+          - generic [ref=f12e68]: 📖
+          - generic [ref=f12e69]: ทฤษฎี
+        - link "📚 Wiki" [ref=f12e70] [cursor=pointer]:
+          - /url: ../Wiki/index.html
+          - generic [ref=f12e71]: 📚
+          - generic [ref=f12e72]: Wiki
+        - link "🏠" [ref=f12e73] [cursor=pointer]:
+          - /url: ../index.html
+    - generic [ref=f12e75]:
+      - generic [ref=f12e76]:
+        - generic [ref=f12e77]:
+          - generic [ref=f12e78]:
+            - generic [ref=f12e79]:
+              - generic [ref=f12e80]: "ค่าโหนด (Node):"
+              - textbox "ค่าโหนด (Node):" [ref=f12e436]:
+                - /placeholder: เช่น 70, 80, 25
+                - text: "70"
+            - generic [ref=f12e82]:
+              - button "➕ Insert Node" [ref=f12e437] [cursor=pointer]:
+                - generic [ref=f12e84]: ➕
+                - generic [ref=f12e85]: Insert Node
+              - button "➖ Delete Node" [ref=f12e438] [cursor=pointer]:
+                - generic [ref=f12e87]: ➖
+                - generic [ref=f12e88]: Delete Node
+              - button "🔍 Search" [ref=f12e439] [cursor=pointer]:
+                - generic [ref=f12e90]: 🔍
+                - generic [ref=f12e91]: Search
+            - generic [ref=f12e95]:
+              - button "📝 Exams Preset" [ref=f12e96] [cursor=pointer]:
+                - generic [ref=f12e97]: 📝
+                - generic [ref=f12e98]: Exams Preset
+              - button "🎲 Random" [ref=f12e99] [cursor=pointer]:
+                - generic [ref=f12e100]: 🎲
+                - generic [ref=f12e101]: Random
+              - button "🧹 Clear" [ref=f12e102] [cursor=pointer]:
+                - generic [ref=f12e103]: 🧹
+                - generic [ref=f12e104]: Clear
+          - generic [ref=f12e105]:
+            - generic [ref=f12e106]: Binary Search Tree (BST Deletion 3 Cases)
+            - generic "สูตรหาโหนดแม่ Parent" [ref=f12e109]:
+              - generic [ref=f12e110]: "Parent:"
+              - generic [ref=f12e111]: Left < Node
+            - generic "สูตรหาลูกซ้าย Left Child" [ref=f12e125]:
+              - generic [ref=f12e126]: "Left:"
+              - generic [ref=f12e127]: Right > Node
+            - generic "เงื่อนไขของอัลกอริทึมในสเต็ปปัจจุบัน" [ref=f12e154]:
+              - generic [ref=f12e155]: "Condition:"
+              - generic [ref=f12e156]: สมบูรณ์ ✓
+        - generic [ref=f12e440]:
+          - generic [ref=f12e441]:
+            - generic [ref=f12e442]:
+              - generic [ref=f12e443]: "โหนดทั้งหมด:"
+              - generic [ref=f12e444]: "8"
+            - generic [ref=f12e445]:
+              - generic [ref=f12e446]: "กฎ BST:"
+              - generic [ref=f12e447]: Left < Node < Right
+            - generic [ref=f12e448]:
+              - generic [ref=f12e449]: "สถานะ:"
+              - generic [ref=f12e450]: INIT
+          - img [ref=f12e452]:
+            - generic [ref=f12e460]: "50"
+            - generic [ref=f12e462]: "30"
+            - generic [ref=f12e464]: "20"
+            - generic [ref=f12e466]: "40"
+            - generic [ref=f12e468]: "70"
+            - generic [ref=f12e470]: "60"
+            - generic [ref=f12e472]: "65"
+            - generic [ref=f12e474]: "80"
+        - generic [ref=f12e268]:
+          - generic [ref=f12e270]:
+            - generic [ref=f12e271]: Step 1 / 1
+            - generic [ref=f12e272]:
+              - text: "คีย์ลัด:"
+              - code [ref=f12e273]: Space
+              - text: เล่น/หยุด,
+              - code [ref=f12e274]: ←
+              - code [ref=f12e275]: →
+              - text: ก้าวทีละสเต็ป
+          - generic [ref=f12e278]: "🌳 Binary Search Tree (BST): โครงสร้างต้นไม้ค้นหาแบบทวิภาค (Left < Root < Right) พร้อมรองรับ Insert, Delete, Search และ Traversal แบบไดนามิก"
+          - generic [ref=f12e279]:
+            - generic [ref=f12e280]:
+              - button "◀ ก่อนหน้า" [disabled] [ref=f12e281]:
+                - generic [ref=f12e282]: ◀
+                - generic [ref=f12e283]: ก่อนหน้า
+              - button "▶ เล่นอัตโนมัติ" [ref=f12e284] [cursor=pointer]:
+                - generic [ref=f12e476]: ▶
+                - generic [ref=f12e477]: เล่นอัตโนมัติ
+              - button "ต่อไป ▶" [disabled] [ref=f12e287]:
+                - generic [ref=f12e288]: ต่อไป
+                - generic [ref=f12e289]: ▶
+              - button "🔄 เริ่มใหม่" [ref=f12e290] [cursor=pointer]:
+                - generic [ref=f12e291]: 🔄
+                - generic [ref=f12e292]: เริ่มใหม่
+            - generic [ref=f12e293]:
+              - generic [ref=f12e294]: "ความเร็ว:"
+              - slider "ปรับความเร็วการจำลองขั้นตอน" [ref=f12e295] [cursor=pointer]: "1800"
+              - generic [ref=f12e296]: 1.0x
+      - generic [ref=f12e297]:
+        - generic [ref=f12e298]:
+          - generic [ref=f12e299]:
+            - button "⚡ Exams/BinarySearchTrees.py" [ref=f12e478] [cursor=pointer]:
+              - generic [ref=f12e301]: ⚡
+              - generic [ref=f12e302]: Exams/BinarySearchTrees.py
+            - button "✏️ Python Editor" [ref=f12e303] [cursor=pointer]:
+              - generic [ref=f12e304]: ✏️
+              - generic [ref=f12e305]: Python Editor
+            - button "🔍 Watch" [ref=f12e306] [cursor=pointer]:
+              - generic [ref=f12e307]: 🔍
+              - generic [ref=f12e308]: Watch
+          - button "▶ Run (Ctrl+Enter)" [ref=f12e310] [cursor=pointer]:
+            - generic [ref=f12e311]: ▶
+            - generic [ref=f12e312]: Run (Ctrl+Enter)
+        - generic [ref=f12e313]:
+          - generic [ref=f12e314]: 💡 บรรทัดโค้ดภาษา Python ด้านล่างจะก้าวตามขั้นตอนของ Visualizer ทางด้านซ้ายโดยอัตโนมัติ
+          - generic [ref=f12e315]:
+            - generic [ref=f12e479]:
+              - generic [ref=f12e480]: "1"
+              - generic [ref=f12e481]: "# Exams/BinarySearchTrees.py — Binary Search Tree Deletion"
+            - generic [ref=f12e482]:
+              - generic [ref=f12e483]: "2"
+              - generic [ref=f12e484]: "class Node:"
+            - generic [ref=f12e485]:
+              - generic [ref=f12e486]: "3"
+              - generic [ref=f12e487]: "def __init__(self, value):"
+            - generic [ref=f12e488]:
+              - generic [ref=f12e489]: "4"
+              - generic [ref=f12e490]: self.value = value
+            - generic [ref=f12e491]:
+              - generic [ref=f12e492]: "5"
+              - generic [ref=f12e493]: self.left = None
+            - generic [ref=f12e494]:
+              - generic [ref=f12e495]: "6"
+              - generic [ref=f12e496]: self.right = None
+            - generic [ref=f12e497]: "7"
+            - generic [ref=f12e499]:
+              - generic [ref=f12e500]: "8"
+              - generic [ref=f12e501]: "class BinarySearchTree:"
+            - generic [ref=f12e502]:
+              - generic [ref=f12e503]: "9"
+              - generic [ref=f12e504]: "def __init__(self):"
+            - generic [ref=f12e505]:
+              - generic [ref=f12e506]: "10"
+              - generic [ref=f12e507]: self.root = None
+            - generic [ref=f12e508]: "11"
+            - generic [ref=f12e510]:
+              - generic [ref=f12e511]: "12"
+              - generic [ref=f12e512]: "def insert(self, value):"
+            - generic [ref=f12e513]:
+              - generic [ref=f12e514]: "13"
+              - generic [ref=f12e515]: "if self.root is None: self.root = Node(value)"
+            - generic [ref=f12e516]:
+              - generic [ref=f12e517]: "14"
+              - generic [ref=f12e518]: "else: self._insert_recursive(self.root, value)"
+            - generic [ref=f12e519]: "15"
+            - generic [ref=f12e521]:
+              - generic [ref=f12e522]: "16"
+              - generic [ref=f12e523]: "def _insert_recursive(self, current_node: Node, value):"
+            - generic [ref=f12e524]:
+              - generic [ref=f12e525]: "17"
+              - generic [ref=f12e526]: "if value < current_node.value:"
+            - generic [ref=f12e527]:
+              - generic [ref=f12e528]: "18"
+              - generic [ref=f12e529]: "if current_node.left is None:"
+            - generic [ref=f12e530]:
+              - generic [ref=f12e531]: "19"
+              - generic [ref=f12e532]: current_node.left = Node(value)
+            - generic [ref=f12e533]:
+              - generic [ref=f12e534]: "20"
+              - generic [ref=f12e535]: "else:"
+            - generic [ref=f12e536]:
+              - generic [ref=f12e537]: "21"
+              - generic [ref=f12e538]: self._insert_recursive(current_node.left, value)
+            - generic [ref=f12e539]:
+              - generic [ref=f12e540]: "22"
+              - generic [ref=f12e541]: "elif value > current_node.value:"
+            - generic [ref=f12e542]:
+              - generic [ref=f12e543]: "23"
+              - generic [ref=f12e544]: "if current_node.right is None:"
+            - generic [ref=f12e545]:
+              - generic [ref=f12e546]: "24"
+              - generic [ref=f12e547]: current_node.right = Node(value)
+            - generic [ref=f12e548]:
+              - generic [ref=f12e549]: "25"
+              - generic [ref=f12e550]: "else:"
+            - generic [ref=f12e551]:
+              - generic [ref=f12e552]: "26"
+              - generic [ref=f12e553]: self._insert_recursive(current_node.right, value)
+            - generic [ref=f12e554]: "27"
+            - generic [ref=f12e556]:
+              - generic [ref=f12e557]: "28"
+              - generic [ref=f12e558]: "def delete(self, value):"
+            - generic [ref=f12e559]:
+              - generic [ref=f12e560]: "29"
+              - generic [ref=f12e561]: self.root = self._delete_recursive(self.root, value)
+            - generic [ref=f12e562]: "30"
+            - generic [ref=f12e564]:
+              - generic [ref=f12e565]: "31"
+              - generic [ref=f12e566]: "def _delete_recursive(self, current_node: Node, value):"
+            - generic [ref=f12e567]:
+              - generic [ref=f12e568]: "32"
+              - generic [ref=f12e569]: "if current_node is None: return current_node"
+            - generic [ref=f12e570]:
+              - generic [ref=f12e571]: "33"
+              - generic [ref=f12e572]: "if value < current_node.value:"
+            - generic [ref=f12e573]:
+              - generic [ref=f12e574]: "34"
+              - generic [ref=f12e575]: current_node.left = self._delete_recursive(current_node.left, value)
+            - generic [ref=f12e576]:
+              - generic [ref=f12e577]: "35"
+              - generic [ref=f12e578]: "elif value > current_node.value:"
+            - generic [ref=f12e579]:
+              - generic [ref=f12e580]: "36"
+              - generic [ref=f12e581]: current_node.right = self._delete_recursive(current_node.right, value)
+            - generic [ref=f12e582]:
+              - generic [ref=f12e583]: "37"
+              - generic [ref=f12e584]: "else:"
+            - generic [ref=f12e585]:
+              - generic [ref=f12e586]: "38"
+              - generic [ref=f12e587]: "# Case 1 & 2: 0 or 1 child"
+            - generic [ref=f12e588]:
+              - generic [ref=f12e589]: "39"
+              - generic [ref=f12e590]: "if current_node.left is None: return current_node.right"
+            - generic [ref=f12e591]:
+              - generic [ref=f12e592]: "40"
+              - generic [ref=f12e593]: "elif current_node.right is None: return current_node.left"
+            - generic [ref=f12e594]:
+              - generic [ref=f12e595]: "41"
+              - generic [ref=f12e596]: "# Case 3: 2 children -> In-order Successor"
+            - generic [ref=f12e597]:
+              - generic [ref=f12e598]: "42"
+              - generic [ref=f12e599]: temp_node = self._min_value_node(current_node.right)
+            - generic [ref=f12e600]:
+              - generic [ref=f12e601]: "43"
+              - generic [ref=f12e602]: current_node.value = temp_node.value
+            - generic [ref=f12e603]:
+              - generic [ref=f12e604]: "44"
+              - generic [ref=f12e605]: current_node.right = self._delete_recursive(current_node.right, temp_node.value)
+            - generic [ref=f12e606]:
+              - generic [ref=f12e607]: "45"
+              - generic [ref=f12e608]: return current_node
+            - generic [ref=f12e609]: "46"
+            - generic [ref=f12e611]:
+              - generic [ref=f12e612]: "47"
+              - generic [ref=f12e613]: "def _min_value_node(self, current_node: Node) -> Node:"
+            - generic [ref=f12e614]:
+              - generic [ref=f12e615]: "48"
+              - generic [ref=f12e616]: "if current_node.left is None: return current_node"
+            - generic [ref=f12e617]:
+              - generic [ref=f12e618]: "49"
+              - generic [ref=f12e619]: return self._min_value_node(current_node.left)

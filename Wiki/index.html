@@ -6,17 +6,17 @@
   <title>DSA Wiki — สารานุกรม Data Structures & Algorithms</title>
   <meta name="description" content="คลังความรู้โครงสร้างข้อมูลและขั้นตอนวิธี (Data Structures & Algorithms in Python) เรียงตามลำดับบทเรียน 1 - 11 พร้อมโซนเตรียมสอบแยกเป็นสัดส่วน" />
 
-  <!-- Fonts -->
+  <!-- Fonts: Chakra Petch, IBM Plex Sans Thai, JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Vendor CSS -->
   <link rel="stylesheet" href="vendor/prism.css" />
   <link rel="stylesheet" href="vendor/katex/katex.min.css" />
 
   <!-- App CSS -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260913_rev3" />
 </head>
 <body>
 
@@ -75,7 +75,7 @@
       </button>
 
       <!-- Jump to DSA Lab -->
-      <a href="../DsaLab/index.html" class="btn-nav-action btn-sql-lab" title="เปิดห้องปฏิบัติการ DSA Studio & Interactive Debugger">
+      <a href="../DsaLab/index.html" class="btn-nav-action btn-dsa-lab" title="เปิดห้องปฏิบัติการ DSA Studio & Interactive Debugger">
         <span>🔬</span>
         <span>ห้องทดลอง DSA Lab</span>
       </a>
@@ -168,8 +168,9 @@
   <!-- Diagram Fullscreen Zoom Modal -->
   <div id="diagram-modal" class="diagram-modal-backdrop">
     <div class="diagram-modal-bar">
-      <div style="font-weight: 600; font-size: 14px; color: var(--text-primary);">
-        📊 แผนผังแบบขยายเต็มจอ (Mermaid Diagram)
+      <div style="font-weight: 600; font-size: 14px; color: var(--text-primary); display: flex; align-items: center; gap: 8px; font-family: 'Chakra Petch', sans-serif;">
+        <span style="color: var(--cyan, #4fd1e8); font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 2px 7px; background: rgba(79, 209, 232, 0.12); border: 1px solid rgba(79, 209, 232, 0.35); border-radius: 4px;">DSA STUDIO</span>
+        <span>🔬 แบบจำลองโครงสร้างสถาปัตยกรรม (DSA Studio Fullscreen Inspector)</span>
       </div>
       <div style="display: flex; gap: 8px; align-items: center;">
         <button id="diagram-zoom-out-btn" class="code-btn" title="ย่อภาพ">➖ ย่อ</button>
@@ -191,12 +192,6 @@
       document.write('<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"><\/script>');
     }
   </script>
-  <script src="vendor/mermaid.min.js"></script>
-  <script>
-    if (typeof mermaid === 'undefined' && typeof window.mermaid === 'undefined') {
-      document.write('<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"><\/script>');
-    }
-  </script>
   <script src="vendor/prism.min.js"></script>
   <script src="vendor/prism-python.min.js"></script>
   <script src="vendor/katex/katex.min.js"></script>
@@ -209,15 +204,15 @@
   </script>
 
   <!-- Pre-bundled Wiki Data -->
-  <script src="wiki-data.js"></script>
+  <script src="wiki-data.js?v=20260913_rev3"></script>
 
   <!-- Pyodide WebAssembly Engine for in-browser Python execution -->
   <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
 
   <!-- DSA Interactive Studio Visualizers -->
-  <script src="dsa-interactive-studio.js"></script>
+  <script src="dsa-interactive-studio.js?v=20260913_rev3"></script>
 
-  <!-- Application Logic -->
-  <script src="app.js"></script>
+  <!-- Application Logic (DSA Lab Visual Architecture Engine) -->
+  <script src="app.js?v=20260913_rev3"></script>
 </body>
 </html>

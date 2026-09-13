@@ -1,562 +1,343 @@
 /**
- * DsaLab Interactive Visualizers Engine
- * Generates step-by-step snapshots and renders high-fidelity SVG/Canvas animations.
+ * DSA Lab Studio — High-Fidelity Interactive Visualizers Engine
+ * Features fully dynamic simulation engines for:
+ * 1. Binary Heap (Min & Max with Percolate Up/Down, Dual Tree & 1-Based Array)
+ * 2. Binary Search Tree (Dynamic Insert, Search, Deletion Cases 0/1/2, Traversals)
+ * 3. Hash Table & Collision Resolution (Separate Chaining vs Linear Probing with Load Factor)
+ * 4. Infix to Postfix Converter with Operator Stack
+ * 5. Singly Linked List, Circular Array Queue, Sorting Algorithms, Dijkstra
  */
 
 window.DsaVisualizers = (function () {
   'use strict';
 
-  // ========================================================
-  // 1. Singly Linked List Visualizer
-  // ========================================================
-  function createLinkedListSteps(initialData) {
+  // =========================================================================
+  // 1. DYNAMIC BINARY HEAP ENGINE (Min-Heap & Max-Heap) — Exams/Heap.py
+  // =========================================================================
+  let heapType = 'min'; // 'min' | 'max'
+  // 1-indexed array. Index 0 is sentinel None. Default preset matches Exams/Heap.py
+  let heapArray = [0, 13, 14, 16, 19, 21, 19, 68, 65, 26, 32, 31];
+
+  function getHeapState() {
+    return [...heapArray];
+  }
+
+  function setHeapState(arr) {
+    heapArray = [...arr];
+  }
+
+  function resetHeapToExamPreset() {
+    heapType = 'min';
+    heapArray = [0, 13, 14, 16, 19, 21, 19, 68, 65, 26, 32, 31];
+    return createHeapDefaultSteps('รีเซ็ตกลับเป็นข้อมูลตัวอย่างตามข้อสอบ Exams/Heap.py สำเร็จ');
+  }
+
+  function createHeapDefaultSteps(customMsg) {
     const steps = [];
-    let list = JSON.parse(JSON.stringify(initialData || []));
+    const h = [...heapArray];
+    const n = h.length - 1;
+    const isMin = heapType === 'min';
 
-    steps.push({
-      line: 14,
-      explanation: 'สถานะเริ่มต้น: รายการเชื่อมโยง (Singly Linked List) พร้อมข้อมูลนักศึกษา 4 คน',
-      vars: { head: list[0] ? list[0].id : 'None', size: list.length },
-      visualData: {
-        nodes: JSON.parse(JSON.stringify(list)),
-        headIdx: 0,
-        currentIdx: -1,
-        prevIdx: -1,
-        deletedIdx: -1
-      }
-    });
-
-    const targetId = '612045';
-    let prev = -1;
-    let curr = 0;
-
-    steps.push({
-      line: 42,
-      explanation: `เริ่มค้นหาเพื่อลบ: targetId = "${targetId}" | ตั้ง curr = head (ตำแหน่งที่ 0)`,
-      vars: { curr: list[0].id, prev: 'None', target: targetId },
-      visualData: {
-        nodes: JSON.parse(JSON.stringify(list)),
-        headIdx: 0,
-        currentIdx: 0,
-        prevIdx: -1
-      }
-    });
-
-    while (curr < list.length && list[curr].id !== targetId) {
-      prev = curr;
-      curr++;
-      steps.push({
-        line: 44,
-        explanation: `curr.student_id ("${list[prev].id}") ไม่ตรงกับเป้าหมาย -> เลื่อน prev = curr, curr = curr.next`,
-        vars: { curr: list[curr].id, prev: list[prev].id, target: targetId },
-        visualData: {
-          nodes: JSON.parse(JSON.stringify(list)),
-          headIdx: 0,
-          currentIdx: curr,
-          prevIdx: prev
-        }
-      });
-    }
-
-    if (curr < list.length && list[curr].id === targetId) {
-      steps.push({
-        line: 48,
-        explanation: `🎉 พบโหนดเป้าหมาย! curr.student_id == "${targetId}" (${list[curr].name}) เตรียมปลดพอยน์เตอร์`,
-        vars: { curr: list[curr].id, prev: list[prev].id, match: true },
-        visualData: {
-          nodes: JSON.parse(JSON.stringify(list)),
-          headIdx: 0,
-          currentIdx: curr,
-          prevIdx: prev,
-          highlightTarget: curr
-        }
-      });
-
-      steps.push({
-        line: 52,
-        explanation: `สั่ง prev.next = curr.next: ข้ามโหนด "${targetId}" (${list[curr].name}) โหนดถูกตัดออกจาก List แล้ว!`,
-        vars: { prev_next: list[curr + 1] ? list[curr + 1].id : 'None', size: list.length - 1 },
-        visualData: {
-          nodes: JSON.parse(JSON.stringify(list)),
-          headIdx: 0,
-          currentIdx: -1,
-          prevIdx: prev,
-          deletedIdx: curr
-        }
-      });
-
-      list.splice(curr, 1);
-
-      steps.push({
-        line: 54,
-        explanation: `ลบข้อมูลสำเร็จ! ปัจจุบัน Linked List เหลือทั้งหมด ${list.length} โหนด`,
-        vars: { head: list[0].id, size: list.length },
-        visualData: {
-          nodes: JSON.parse(JSON.stringify(list)),
-          headIdx: 0,
-          currentIdx: -1,
-          prevIdx: -1
-        }
-      });
-    }
-
-    return steps;
-  }
-
-  function renderLinkedList(container, visualData) {
-    const { nodes, headIdx, currentIdx, prevIdx, deletedIdx, highlightTarget } = visualData;
-    if (!nodes || nodes.length === 0) {
-      container.innerHTML = '<div class="viz-empty-msg">Linked List ว่างเปล่า (Head = None)</div>';
-      return;
-    }
-
-    let html = '<div class="ll-container">';
-    nodes.forEach((node, idx) => {
-      let cardClass = 'll-node-card';
-      if (idx === currentIdx) cardClass += ' is-curr';
-      if (idx === prevIdx) cardClass += ' is-prev';
-      if (idx === deletedIdx) cardClass += ' is-deleted';
-      if (idx === highlightTarget) cardClass += ' is-target';
-
-      let badges = '';
-      if (idx === headIdx && idx !== deletedIdx) badges += '<span class="ll-badge head">HEAD</span>';
-      if (idx === currentIdx) badges += '<span class="ll-badge curr">CURR (p)</span>';
-      if (idx === prevIdx) badges += '<span class="ll-badge prev">PREV</span>';
-      if (idx === nodes.length - 1 && idx !== deletedIdx) badges += '<span class="ll-badge tail">TAIL</span>';
-
-      html += `
-        <div class="ll-node-wrapper">
-          <div class="ll-badges-bar">${badges}</div>
-          <div class="${cardClass}">
-            <div class="ll-node-header">
-              <span class="ll-id">#${node.id}</span>
-              <span class="ll-gpa">GPA ${node.gpa}</span>
-            </div>
-            <div class="ll-name">${node.name}</div>
-            <div class="ll-pointer-slot">
-              <span>next</span>
-              <span class="pointer-dot">●</span>
-            </div>
-          </div>
-        </div>
-      `;
-
-      if (idx < nodes.length - 1) {
-        html += `
-          <div class="ll-arrow ${idx === prevIdx && deletedIdx !== -1 ? 'relinking' : ''}">
-            <svg width="40" height="24" viewBox="0 0 40 24">
-              <line x1="0" y1="12" x2="32" y2="12" stroke="currentColor" stroke-width="2.5" />
-              <polyline points="26,6 32,12 26,18" fill="none" stroke="currentColor" stroke-width="2.5" />
-            </svg>
-          </div>
-        `;
-      } else {
-        html += `
-          <div class="ll-null">
-            <span class="null-text">None</span>
-          </div>
-        `;
-      }
-    });
-    html += '</div>';
-    container.innerHTML = html;
-  }
-
-  // ========================================================
-  // 2. Circular Queue Visualizer
-  // ========================================================
-  function createQueueSteps() {
-    const steps = [];
-    const capacity = 6;
-    let arr = [10, 20, 30, 40, null, null];
-    let front = 0;
-    let rear = 3;
-    let size = 4;
-
-    steps.push({
-      line: 7,
-      explanation: 'สถานะเริ่มต้นของ Queue: capacity=6, front=0, rear=3, size=4 (มีข้อมูล 10, 20, 30, 40)',
-      vars: { front, rear, size, capacity },
-      visualData: { arr: [...arr], front, rear, size, capacity, op: 'init' }
-    });
-
-    const deq1 = arr[front];
-    arr[front] = null;
-    front = (front + 1) % capacity;
-    size--;
-    steps.push({
-      line: 30,
-      explanation: `คำสั่ง dequeue(): นำข้อมูล ${deq1} ออกจากตำแหน่ง front (index 0) -> เลื่อน front = (0 + 1) % 6 = 1`,
-      vars: { dequeued: deq1, front, rear, size },
-      visualData: { arr: [...arr], front, rear, size, capacity, op: 'dequeue', deqIdx: 0, deqVal: deq1 }
-    });
-
-    const deq2 = arr[front];
-    arr[front] = null;
-    front = (front + 1) % capacity;
-    size--;
-    steps.push({
-      line: 30,
-      explanation: `คำสั่ง dequeue(): นำข้อมูล ${deq2} ออกจากตำแหน่ง front (index 1) -> เลื่อน front = (1 + 1) % 6 = 2`,
-      vars: { dequeued: deq2, front, rear, size },
-      visualData: { arr: [...arr], front, rear, size, capacity, op: 'dequeue', deqIdx: 1, deqVal: deq2 }
-    });
-
-    rear = (rear + 1) % capacity;
-    arr[rear] = 50;
-    size++;
-    steps.push({
-      line: 21,
-      explanation: `คำสั่ง enqueue(50): เลื่อน rear = (3 + 1) % 6 = 4 -> ใส่ค่า 50 ที่ตำแหน่ง index 4`,
-      vars: { enqueued: 50, front, rear, size },
-      visualData: { arr: [...arr], front, rear, size, capacity, op: 'enqueue', enqIdx: rear }
-    });
-
-    rear = (rear + 1) % capacity;
-    arr[rear] = 60;
-    size++;
-    steps.push({
-      line: 21,
-      explanation: `คำสั่ง enqueue(60): เลื่อน rear = (4 + 1) % 6 = 5 -> ใส่ค่า 60 ที่ตำแหน่ง index 5 (เต็มขอบขวา)`,
-      vars: { enqueued: 60, front, rear, size },
-      visualData: { arr: [...arr], front, rear, size, capacity, op: 'enqueue', enqIdx: rear }
-    });
-
-    rear = (rear + 1) % capacity;
-    arr[rear] = 70;
-    size++;
-    steps.push({
-      line: 21,
-      explanation: `🔥 Circular Wrap-Around! enqueue(70): เลื่อน rear = (5 + 1) % 6 = 0 -> วนกลับมาใส่ที่ index 0!`,
-      vars: { enqueued: 70, front, rear, size, circularWrap: true },
-      visualData: { arr: [...arr], front, rear, size, capacity, op: 'enqueue', enqIdx: 0, circularWrap: true }
-    });
-
-    return steps;
-  }
-
-  function renderQueue(container, visualData) {
-    const { arr, front, rear, size, capacity, op, enqIdx, deqIdx } = visualData;
-
-    let html = `
-      <div class="queue-meta-bar">
-        <div class="q-stat"><span class="q-label">Capacity:</span> <b>${capacity}</b></div>
-        <div class="q-stat"><span class="q-label">Size:</span> <b>${size}</b></div>
-        <div class="q-stat"><span class="q-label">Front Index:</span> <b style="color:#06b6d4;">${front}</b></div>
-        <div class="q-stat"><span class="q-label">Rear Index:</span> <b style="color:#a855f7;">${rear}</b></div>
-      </div>
-      <div class="queue-slots-grid">
-    `;
-
-    arr.forEach((val, idx) => {
-      const isFront = idx === front && size > 0;
-      const isRear = idx === rear && size > 0;
-      const isEnq = idx === enqIdx;
-      const isDeq = idx === deqIdx;
-
-      let slotClass = 'q-slot';
-      if (val !== null) slotClass += ' filled';
-      if (isEnq) slotClass += ' just-enq';
-      if (isDeq) slotClass += ' just-deq';
-
-      let badges = '';
-      if (isFront && isRear) badges += '<span class="q-badge both">F & R</span>';
-      else {
-        if (isFront) badges += '<span class="q-badge front">FRONT</span>';
-        if (isRear) badges += '<span class="q-badge rear">REAR</span>';
-      }
-
-      html += `
-        <div class="q-slot-wrapper">
-          <div class="q-slot-badges">${badges}</div>
-          <div class="${slotClass}">
-            <span class="q-slot-val">${val !== null ? val : '—'}</span>
-            <span class="q-slot-idx">[${idx}]</span>
-          </div>
-        </div>
-      `;
-    });
-
-    html += '</div>';
-    container.innerHTML = html;
-  }
-
-  // ========================================================
-  // 3. Binary Search Tree (BST Deletion with 2 Children)
-  // ========================================================
-  function createBstSteps() {
-    const steps = [];
-
-    const t1 = {
-      50: { val: 50, x: 260, y: 35, left: 30, right: 70 },
-      30: { val: 30, x: 140, y: 95, left: 20, right: 40 },
-      70: { val: 70, x: 380, y: 95, left: 60, right: 80 },
-      20: { val: 20, x: 80, y: 155, left: null, right: null },
-      40: { val: 40, x: 200, y: 155, left: null, right: null },
-      60: { val: 60, x: 320, y: 155, left: null, right: 65 },
-      80: { val: 80, x: 440, y: 155, left: null, right: null },
-      65: { val: 65, x: 350, y: 215, left: null, right: null }
-    };
-
-    steps.push({
-      line: 38,
-      explanation: 'สถานะเริ่มต้น: ต้นไม้ BST มี 8 โหนด ต้องการลบโหนด 70 (ซึ่งมีลูก 2 ตัว: 60 และ 80)',
-      vars: { root: 50, targetToDelete: 70 },
-      visualData: { tree: JSON.parse(JSON.stringify(t1)), targetId: 70, successorId: null, phase: 'init' }
-    });
-
-    steps.push({
-      line: 44,
-      explanation: 'ค้นหาโหนด 70: เริ่มจาก Root 50 -> 70 > 50 เลี้ยวขวา -> พบโหนด 70!',
-      vars: { current: 70, matchFound: true },
-      visualData: { tree: JSON.parse(JSON.stringify(t1)), targetId: 70, searchPath: [50, 70], phase: 'found_target' }
-    });
-
-    steps.push({
-      line: 56,
-      explanation: 'โหนด 70 มีลูก 2 ตัว! เรียก find_min(node.right) เข้าไปในกิ่งขวาเพื่อหา In-order Successor',
-      vars: { right_subtree_root: 80 },
-      visualData: { tree: JSON.parse(JSON.stringify(t1)), targetId: 70, successorId: 80, phase: 'find_successor' }
-    });
-
-    steps.push({
-      line: 58,
-      explanation: 'พบ In-order Successor = 80 (ค่าน้อยที่สุดในกิ่งขวาของ 70)',
-      vars: { successor: 80 },
-      visualData: { tree: JSON.parse(JSON.stringify(t1)), targetId: 70, successorId: 80, phase: 'found_successor' }
-    });
-
-    const t2 = JSON.parse(JSON.stringify(t1));
-    t2[70].val = 80;
-    steps.push({
-      line: 60,
-      explanation: 'คัดลอกค่า Successor (80) มาทับที่โหนด 70 -> โหนด 70 เปลี่ยนค่าเป็น 80 เรียบร้อย',
-      vars: { node_key: 80, old_val: 70 },
-      visualData: { tree: JSON.parse(JSON.stringify(t2)), targetId: 70, successorId: 80, phase: 'copied_val' }
-    });
-
-    const t3 = JSON.parse(JSON.stringify(t2));
-    delete t3[80];
-    t3[70].right = null;
-    steps.push({
-      line: 61,
-      explanation: 'สั่งลบโหนด 80 เดิมในกิ่งขวาออก (เนื่องจากเป็น Leaf Node ตัดทิ้งได้ทันที) -> ได้ BST ที่ถูกต้องสมบูรณ์!',
-      vars: { deleted: 80, bst_valid: true },
-      visualData: { tree: JSON.parse(JSON.stringify(t3)), targetId: null, successorId: null, phase: 'complete' }
-    });
-
-    return steps;
-  }
-
-  function renderBst(container, visualData) {
-    const { tree, targetId, successorId, searchPath, phase } = visualData;
-
-    let svgHtml = '<svg class="bst-svg" viewBox="0 0 520 270">';
-
-    Object.values(tree).forEach(node => {
-      if (node.left && tree[node.left]) {
-        const leftNode = tree[node.left];
-        svgHtml += `<line x1="${node.x}" y1="${node.y}" x2="${leftNode.x}" y2="${leftNode.y}" class="bst-edge" />`;
-      }
-      if (node.right && tree[node.right]) {
-        const rightNode = tree[node.right];
-        svgHtml += `<line x1="${node.x}" y1="${node.y}" x2="${rightNode.x}" y2="${rightNode.y}" class="bst-edge" />`;
-      }
-    });
-
-    Object.values(tree).forEach(node => {
-      let nodeClass = 'bst-node-circle';
-      let label = '';
-      if (node.val === 70 || (targetId && node.val === tree[targetId]?.val && phase === 'found_target')) {
-        nodeClass += ' is-target';
-        label = 'Target';
-      }
-      if (successorId && node.val === successorId) {
-        nodeClass += ' is-successor';
-        label = 'Successor';
-      }
-      if (searchPath && searchPath.includes(node.val)) {
-        nodeClass += ' on-path';
-      }
-
-      svgHtml += `
-        <g class="bst-node-group" transform="translate(${node.x}, ${node.y})">
-          <circle r="20" class="${nodeClass}"></circle>
-          <text text-anchor="middle" dy="5" class="bst-node-text">${node.val}</text>
-          ${label ? `<text text-anchor="middle" dy="-26" class="bst-node-label">${label}</text>` : ''}
-        </g>
-      `;
-    });
-
-    svgHtml += '</svg>';
-    container.innerHTML = svgHtml;
-  }
-
-  // ========================================================
-  // 4. Binary Min-Heap Visualizer
-  // ========================================================
-  // ========================================================
-  // 4. Binary Min-Heap Dynamic Engine (Exams/Heap.py)
-  // ========================================================
-  let dynamicHeapState = [0, 13, 14, 16, 19, 21, 19, 68, 65, 26, 32, 31];
-
-  function getDynamicHeap() {
-    return [...dynamicHeapState];
-  }
-
-  function setDynamicHeap(arr) {
-    dynamicHeapState = [...arr];
-  }
-
-  function resetDynamicHeapToExam() {
-    dynamicHeapState = [0, 13, 14, 16, 19, 21, 19, 68, 65, 26, 32, 31];
-    return createHeapDefaultSteps();
-  }
-
-  function createHeapDefaultSteps() {
-    const steps = [];
-    let h = [...dynamicHeapState];
     steps.push({
       line: 3,
-      explanation: `📌 สถานะเริ่มต้น Binary Min-Heap: โครงสร้างอิงตาม <b>Exams/Heap.py</b> ขนาด ${h.length - 1} โหนด (Root = ${h[1]})`,
-      vars: { size: h.length - 1, min_root: h[1], array_view: h.slice(1) },
-      visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: 1, op: 'init' }
+      explanation: customMsg || `📌 <b>Binary ${isMin ? 'Min-Heap' : 'Max-Heap'}</b>: โครงสร้าง Complete Binary Tree ขนาด <b>${n}</b> โหนด (ราก Root = <b>${n > 0 ? h[1] : 'ว่าง'}</b>)`,
+      vars: {
+        type: isMin ? 'Min-Heap' : 'Max-Heap',
+        size: n,
+        root_value: n > 0 ? h[1] : 'None',
+        array_slice: n > 0 ? h.slice(1).join(', ') : 'Empty'
+      },
+      visualData: {
+        heap: [...h],
+        heapType,
+        holeIdx: -1,
+        parentIdx: -1,
+        childIdx: -1,
+        activeIdx: n > 0 ? 1 : -1,
+        op: 'init',
+        highlightIndices: []
+      }
     });
+
     return steps;
   }
 
-  function createDynamicHeapInsertSteps(val) {
+  function createHeapInsertSteps(val) {
     const num = parseInt(val, 10);
     if (isNaN(num)) return createHeapDefaultSteps();
 
     const steps = [];
-    let h = [...dynamicHeapState];
+    let h = [...heapArray];
+    const isMin = heapType === 'min';
 
     if (h.length >= 24) {
       steps.push({
         line: 6,
-        explanation: '⚠️ Heap เต็มความจุจำลอง (Max 23 elements)',
+        explanation: '⚠️ <b>ความจุเต็ม</b>: ไม่สามารถแทรกโหนดเพิ่มได้ (จำกัดเพื่อความคมชัดของภาพ 23 โหนด)',
         vars: { size: h.length - 1 },
-        visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'full' }
+        visualData: { heap: [...h], heapType, holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'full' }
       });
       return steps;
     }
 
-    // Step 1: Append hole at end
+    // Step 1: Place hole at end of array
     h.push(num);
     let hole = h.length - 1;
     let parent = Math.floor(hole / 2);
 
     steps.push({
       line: 7, // self.currentSize += 1; hole = self.currentSize
-      explanation: `📥 <b>Insert(${num})</b>: นำค่าใหม่ลงที่ท้ายอาร์เรย์ตำแหน่ง <code>index ${hole}</code> (สร้างช่องว่าง hole) -> เตรียมตรวจ <b>Percolate Up</b> กับ Parent index ${parent} (ค่า ${h[parent]})`,
-      vars: { hole: hole, parent: parent, 'heap[parent]': h[parent], insert_val: num },
-      visualData: { heap: [...h], holeIdx: hole, parentIdx: parent, activeIdx: hole, op: 'insert_start', val: num }
+      explanation: `📥 <b>Insert(${num}) สเต็ปที่ 1</b>: เพิ่มความจุ currentSize += 1 -> สร้างช่องว่าง <code>hole</code> ที่ท้ายอาร์เรย์ index <b>${hole}</b> เตรียมเริ่ม <b>Percolate Up</b> ตรวจสอบกับโหนดแม่ Parent index <b>${parent}</b> (ค่า <b>${h[parent]}</b>)`,
+      vars: {
+        insert_val: num,
+        hole_index: hole,
+        parent_index: parent,
+        'heap[parent]': h[parent]
+      },
+      visualData: {
+        heap: [...h],
+        heapType,
+        holeIdx: hole,
+        parentIdx: parent,
+        activeIdx: hole,
+        op: 'insert_start',
+        val: num
+      }
     });
 
-    while (hole > 1 && num < h[Math.floor(hole / 2)]) {
+    // Step 2: Percolate Up loop
+    while (hole > 1) {
       let p = Math.floor(hole / 2);
-      steps.push({
-        line: 9, // while hole > 1 and x < self.array[hole // 2]:
-        explanation: `🔍 <b>ตรวจเงื่อนไข</b>: <code>${num} < heap[${p}] (${h[p]})</code> เป็น <b>จริง (True)</b> -> ค่าใหม่น้อยกว่าโหนดแม่ จึงเลื่อนแม่ (${h[p]}) ลงมาที่ index ${hole}`,
-        vars: { hole: hole, parent: p, comparison: `${num} < ${h[p]} (True)`, action: 'Shift Down Parent' },
-        visualData: { heap: [...h], holeIdx: hole, parentIdx: p, activeIdx: hole, op: 'compare_up', val: num }
-      });
+      const violates = isMin ? (num < h[p]) : (num > h[p]);
+      const conditionStr = isMin ? `${num} < ${h[p]}` : `${num} > ${h[p]}`;
 
-      h[hole] = h[p];
-      hole = p;
+      if (violates) {
+        steps.push({
+          line: 9, // while hole > 1 and x < self.array[hole // 2]:
+          explanation: `🔍 <b>ตรวจเงื่อนไข Percolate Up</b>: <code>${conditionStr}</code> เป็น <b>จริง (True)</b> -> ค่าใหม่ ${num} ${isMin ? 'น้อยกว่า' : 'มากกว่า'} โหนดแม่ (${h[p]}) จึงต้องเลื่อนแม่ลงมาที่ index ${hole}`,
+          vars: {
+            hole: hole,
+            parent: p,
+            comparison: `${conditionStr} -> True`,
+            action: `Shift parent ${h[p]} down to index ${hole}`
+          },
+          visualData: {
+            heap: [...h],
+            heapType,
+            holeIdx: hole,
+            parentIdx: p,
+            activeIdx: hole,
+            op: 'compare_up',
+            val: num
+          }
+        });
 
-      steps.push({
-        line: 11, // self.array[hole] = self.array[hole // 2]; hole //= 2
-        explanation: `⬆️ <b>เลื่อนสำเร็จ</b>: ย้ายช่องว่าง hole ขึ้นไปที่ <code>index ${hole}</code> -> คำนวณ Parent ถัดไป = ⌊${hole} / 2⌋ = ${Math.floor(hole / 2)}`,
-        vars: { new_hole: hole, next_parent: Math.floor(hole / 2), val: num },
-        visualData: { heap: [...h], holeIdx: hole, parentIdx: Math.floor(hole / 2), activeIdx: hole, op: 'shifted_up', val: num }
-      });
+        // Shift parent down
+        h[hole] = h[p];
+        hole = p;
+
+        steps.push({
+          line: 11, // self.array[hole] = self.array[hole // 2]; hole //= 2
+          explanation: `⬆️ <b>เลื่อนช่องว่างขึ้น</b>: ช่องว่าง hole ขยับขึ้นไปที่ index <b>${hole}</b> -> คำนวณ Parent ถัดไป: <code>⌊${hole} / 2⌋ = ${Math.floor(hole / 2)}</code>`,
+          vars: {
+            new_hole: hole,
+            next_parent: Math.floor(hole / 2),
+            current_array: h.slice(1).join(', ')
+          },
+          visualData: {
+            heap: [...h],
+            heapType,
+            holeIdx: hole,
+            parentIdx: Math.floor(hole / 2),
+            activeIdx: hole,
+            op: 'shifted_up',
+            val: num
+          }
+        });
+      } else {
+        steps.push({
+          line: 9,
+          explanation: `🛑 <b>เงื่อนไขสมบูรณ์</b>: <code>${conditionStr}</code> เป็น <b>เท็จ (False)</b> -> ค่าใหม่ ${num} ไม่ละเมิดกฎของ ${isMin ? 'Min-Heap' : 'Max-Heap'} หยุด Percolate Up`,
+          vars: {
+            hole: hole,
+            parent: p,
+            comparison: `${conditionStr} -> False`,
+            action: `Stop bubbling up`
+          },
+          visualData: {
+            heap: [...h],
+            heapType,
+            holeIdx: hole,
+            parentIdx: p,
+            activeIdx: hole,
+            op: 'stop_up',
+            val: num
+          }
+        });
+        break;
+      }
     }
 
+    // Step 3: Place element into final hole slot
     h[hole] = num;
     steps.push({
       line: 12, // self.array[hole] = x
-      explanation: `🎉 <b>Percolate Up สำเร็จ</b>: สิ้นสุดลูป (hole = ${hole} ถึงราก หรือแม่มีค่าน้อยกว่า ${num}) -> บรรจุค่า <code>${num}</code> ลงที่ <code>heap[${hole}]</code>`,
-      vars: { final_slot: hole, placed: num, new_root: h[1], total_elements: h.length - 1 },
-      visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: hole, op: 'complete', val: num }
+      explanation: `🎉 <b>วางค่าสำเร็จ</b>: บรรจุค่า <b>${num}</b> ลงในช่อง <code>heap[${hole}]</code> -> ได้โครงสร้าง Complete Binary ${isMin ? 'Min-Heap' : 'Max-Heap'} ที่ถูกต้องสมบูรณ์! (Root ปัจจุบัน = <b>${h[1]}</b>)`,
+      vars: {
+        final_index: hole,
+        placed_val: num,
+        new_root: h[1],
+        total_nodes: h.length - 1
+      },
+      visualData: {
+        heap: [...h],
+        heapType,
+        holeIdx: -1,
+        parentIdx: -1,
+        activeIdx: hole,
+        op: 'complete',
+        val: num
+      }
     });
 
-    dynamicHeapState = [...h];
+    heapArray = [...h];
     return steps;
   }
 
-  function createDynamicHeapDeleteMinSteps() {
+  function createHeapDeleteMinSteps() {
     const steps = [];
-    let h = [...dynamicHeapState];
+    let h = [...heapArray];
+    const isMin = heapType === 'min';
 
     if (h.length <= 1) {
       steps.push({
         line: 14,
-        explanation: '⚠️ Heap ว่างเปล่า (Empty Heap): ไม่สามารถ Delete Min ได้',
+        explanation: '⚠️ <b>Heap ว่างเปล่า (Empty Heap)</b>: ไม่สามารถนำข้อมูลออกได้',
         vars: { size: 0 },
-        visualData: { heap: [0], holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'empty' }
+        visualData: { heap: [0], heapType, holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'empty' }
       });
       return steps;
     }
-
-    const minItem = h[1];
 
     if (h.length === 2) {
-      h.pop();
+      const removed = h[1];
       steps.push({
         line: 15,
-        explanation: `🗑️ ดึงค่าสุดท้าย ${minItem} ออกจาก Heap สำเร็จ -> ตอนนี้ Heap ว่างเปล่า`,
-        vars: { deleted_min: minItem, remaining: 0 },
-        visualData: { heap: [0], holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'complete' }
+        explanation: `🗑️ <b>Delete ${isMin ? 'Min' : 'Max'}</b>: นำโหนดเดียวในฮีป <b>${removed}</b> ออก -> ฮีปว่างเปล่า`,
+        vars: { deleted: removed, remaining_size: 0 },
+        visualData: { heap: [0], heapType, holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'complete' }
       });
-      dynamicHeapState = [...h];
+      heapArray = [0];
       return steps;
     }
 
+    const removedItem = h[1];
     const lastItem = h.pop();
-    let currentSize = h.length - 1;
+    const temp = lastItem;
     let hole = 1;
-    let temp = lastItem;
 
     steps.push({
-      line: 15, // min_item = self.array[1]; self.array[1] = self.array[self.currentSize]
-      explanation: `🗑️ <b>Delete Min()</b>: ดึงค่า Min Root = <b>${minItem}</b> ออกมา -> นำค่าปลายสุด <b>${lastItem}</b> มาถือไว้ในตัวแปร <code>temp = ${temp}</code> เพื่อทำ <b>Percolate Down</b> จาก <code>hole = 1</code>`,
-      vars: { extracted_min: minItem, temp_last: temp, hole: 1, current_size: currentSize },
-      visualData: { heap: [...h], holeIdx: 1, parentIdx: 1, activeIdx: 1, op: 'delete_start', temp: temp, minItem: minItem }
+      line: 15, // min_item = self.array[1]
+      explanation: `🗑️ <b>Delete ${isMin ? 'Min' : 'Max'} สเต็ปที่ 1</b>: เก็บค่าราก <code>heap[1] = ${removedItem}</code> ออกมา -> ดึงค่าตัวสุดท้ายของอาร์เรย์ <code>temp = ${temp}</code> มาพักไว้เพื่อเตรียมนำลงราก`,
+      vars: {
+        removed_root: removedItem,
+        temp_val: temp,
+        new_size: h.length - 1
+      },
+      visualData: {
+        heap: [0, temp, ...h.slice(2)],
+        heapType,
+        holeIdx: 1,
+        parentIdx: -1,
+        activeIdx: 1,
+        op: 'delete_start',
+        removed: removedItem,
+        temp: temp
+      }
     });
 
-    while (hole * 2 <= currentSize) {
+    // Percolate Down Loop
+    while (hole * 2 <= h.length - 1) {
       let child = hole * 2;
-      const hasRight = child !== currentSize;
-      const rightIsSmaller = hasRight && h[child + 1] < h[child];
+      const rightChild = child + 1;
+      const hasRight = rightChild <= h.length - 1;
 
-      if (rightIsSmaller) {
-        child += 1;
+      // Compare left and right child to pick the extreme child
+      let pickedChild = child;
+      if (hasRight) {
+        const pickRight = isMin ? (h[rightChild] < h[child]) : (h[rightChild] > h[child]);
+        if (pickRight) {
+          pickedChild = rightChild;
+        }
+
+        steps.push({
+          line: 25, // if child != self.currentSize and self.array[child + 1] < self.array[child]:
+          explanation: `👀 <b>เปรียบเทียบลูกซ้าย-ขวา</b>: ลูกซ้าย <code>heap[${child}] = ${h[child]}</code> กับ ลูกขวา <code>heap[${rightChild}] = ${h[rightChild]}</code> -> เลือกลูกตัวที่ <b>${isMin ? 'น้อยกว่า' : 'มากกว่า'}</b> คือ <code>heap[${pickedChild}] = ${h[pickedChild]}</code>`,
+          vars: {
+            hole: hole,
+            left_child: `${h[child]} (idx ${child})`,
+            right_child: `${h[rightChild]} (idx ${rightChild})`,
+            picked_child: `${h[pickedChild]} (idx ${pickedChild})`
+          },
+          visualData: {
+            heap: [...h],
+            heapType,
+            holeIdx: hole,
+            parentIdx: hole,
+            childIdx: pickedChild,
+            activeIdx: pickedChild,
+            op: 'compare_children',
+            temp: temp
+          }
+        });
       }
 
-      steps.push({
-        line: 25, // if child != self.currentSize and self.array[child + 1] < self.array[child]: child += 1
-        explanation: `🔍 <b>หาลูกตัวที่น้อยที่สุด</b>: โหนด index ${hole} มีลูกซ้าย index ${hole * 2} (${h[hole * 2]}) ${hasRight ? `และลูกขวา index ${hole * 2 + 1} (${h[hole * 2 + 1]})` : ''} -> <b>เลือก index ${child} (ค่า ${h[child]})</b>`,
-        vars: { hole: hole, smaller_child: child, child_val: h[child], temp: temp },
-        visualData: { heap: [...h], holeIdx: hole, parentIdx: hole, activeIdx: child, op: 'compare_children', temp: temp }
-      });
+      child = pickedChild;
+      const violates = isMin ? (h[child] < temp) : (h[child] > temp);
+      const condStr = isMin ? `heap[${child}] (${h[child]}) < temp (${temp})` : `heap[${child}] (${h[child]}) > temp (${temp})`;
 
-      if (h[child] < temp) {
+      if (violates) {
         steps.push({
-          line: 27, // if self.array[child] < temp: self.array[hole] = self.array[child]
-          explanation: `⬇️ <b>เลื่อนลูกขึ้น</b>: ค่าลูก <code>${h[child]} < temp (${temp})</code> จึงเลื่อนค่า ${h[child]} ขึ้นมาที่ index ${hole} แล้วย้ายช่องว่าง hole ลงไปที่ index ${child}`,
-          vars: { hole: hole, promoted_child: child, value: h[child], next_hole: child },
-          visualData: { heap: [...h], holeIdx: hole, parentIdx: hole, activeIdx: child, op: 'shift_down', temp: temp }
+          line: 27, // if self.array[child] < temp:
+          explanation: `⬇️ <b>Percolate Down ต่อ</b>: <code>${condStr}</code> เป็น <b>จริง (True)</b> -> เลื่อนลูก (${h[child]}) ขึ้นมาแทนที่ <code>heap[${hole}]</code> แล้วเลื่อนช่องว่าง hole ลงไปที่ index <b>${child}</b>`,
+          vars: {
+            hole: hole,
+            child: child,
+            action: `Shift child ${h[child]} up to index ${hole}`
+          },
+          visualData: {
+            heap: [...h],
+            heapType,
+            holeIdx: hole,
+            parentIdx: hole,
+            childIdx: child,
+            activeIdx: child,
+            op: 'shift_down',
+            temp: temp
+          }
         });
+
         h[hole] = h[child];
         hole = child;
       } else {
         steps.push({
           line: 29, // else: break
-          explanation: `🛑 <b>หยุด Percolate Down</b>: ค่าลูกตัวที่น้อยที่สุด <code>${h[child]} >= temp (${temp})</code> คุณสมบัติ Min-Heap ถูกต้องแล้ว ไม่ต้องสลับต่อ`,
-          vars: { hole: hole, condition: `${temp} <= ${h[child]} (True)` },
-          visualData: { heap: [...h], holeIdx: hole, parentIdx: -1, activeIdx: hole, op: 'stop_down', temp: temp }
+          explanation: `🛑 <b>หยุด Percolate Down</b>: <code>${condStr}</code> เป็น <b>เท็จ (False)</b> -> ค่าลูกตัวที่ ${isMin ? 'น้อยที่สุด' : 'มากที่สุด'} ไม่ละเมิดกฎ Min/Max-Heap จึงหยุดเลื่อน`,
+          vars: {
+            hole: hole,
+            child: child,
+            action: 'Stop percolate down'
+          },
+          visualData: {
+            heap: [...h],
+            heapType,
+            holeIdx: hole,
+            parentIdx: -1,
+            childIdx: -1,
+            activeIdx: hole,
+            op: 'stop_down',
+            temp: temp
+          }
         });
         break;
       }
@@ -565,61 +346,86 @@ window.DsaVisualizers = (function () {
     h[hole] = temp;
     steps.push({
       line: 32, // self.array[hole] = temp
-      explanation: `🎉 <b>วางค่าสำเร็จ</b>: วาง <code>temp (${temp})</code> ลงที่ <code>heap[${hole}]</code> -> ได้ Min Root ใหม่ = <b>${h[1]}</b> (ค่าที่ลบได้คือ ${minItem})`,
-      vars: { final_hole: hole, placed_temp: temp, new_min_root: h[1], deleted: minItem },
-      visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: hole, op: 'complete', minItem: minItem }
+      explanation: `🎉 <b>Delete สำเร็จ</b>: วาง <code>temp = ${temp}</code> ลงในช่องว่างสุดท้าย <code>heap[${hole}]</code> -> ได้ค่าที่ลบออกคือ <b>${removedItem}</b> และรากใหม่คือ <b>${h[1]}</b>`,
+      vars: {
+        deleted_item: removedItem,
+        final_hole_slot: hole,
+        placed_val: temp,
+        new_root: h[1]
+      },
+      visualData: {
+        heap: [...h],
+        heapType,
+        holeIdx: -1,
+        parentIdx: -1,
+        childIdx: -1,
+        activeIdx: hole,
+        op: 'complete',
+        removed: removedItem
+      }
     });
 
-    dynamicHeapState = [...h];
+    heapArray = [...h];
     return steps;
   }
 
-  function createDynamicHeapFindMinSteps() {
+  function createHeapFindMinSteps() {
     const steps = [];
-    const h = [...dynamicHeapState];
+    const h = [...heapArray];
+    const isMin = heapType === 'min';
+
     if (h.length <= 1) {
-      steps.push({
-        line: 14,
-        explanation: 'Heap ว่างเปล่า ไม่มีค่า Min',
-        vars: { size: 0 },
-        visualData: { heap: [0], holeIdx: -1, parentIdx: -1, activeIdx: -1, op: 'empty' }
-      });
-      return steps;
+      return createHeapDefaultSteps('⚠️ Heap ว่างเปล่า ไม่มีข้อมูล');
     }
+
     steps.push({
       line: 4, // def find_min(self): return self.array[1]
-      explanation: `⚡ <b>find_min()</b>: ใน Binary Min-Heap ค่าที่น้อยที่สุดจะอยู่ที่รากเสมอ <code>heap[1] = ${h[1]}</code> ทำงานเร็วระดับ <b>O(1)</b> โดยไม่ต้องค้นหาทั้งต้นไม้`,
-      vars: { min_value: h[1], index: 1, complexity: 'O(1)' },
-      visualData: { heap: [...h], holeIdx: -1, parentIdx: -1, activeIdx: 1, op: 'find_min' }
+      explanation: `⚡ <b>Find ${isMin ? 'Min' : 'Max'}</b>: ใน Binary ${isMin ? 'Min-Heap' : 'Max-Heap'} ค่าที่ ${isMin ? 'น้อยที่สุด' : 'มากที่สุด'} จะอยู่ที่ราก <code>heap[1] = ${h[1]}</code> เสมอ ทำงานได้เร็วระดับความซับซ้อน <b>O(1)</b> คงที่ ไม่ต้องค้นหาทั้งต้นไม้!`,
+      vars: {
+        operation: `find_${isMin ? 'min' : 'max'}()`,
+        result: h[1],
+        index: 1,
+        time_complexity: 'O(1)'
+      },
+      visualData: {
+        heap: [...h],
+        heapType,
+        holeIdx: -1,
+        parentIdx: -1,
+        childIdx: -1,
+        activeIdx: 1,
+        op: 'find_min'
+      }
     });
+
     return steps;
   }
 
   function renderHeap(container, visualData) {
-    const { heap, holeIdx, parentIdx, activeIdx, op } = visualData;
+    const { heap, heapType, holeIdx, parentIdx, childIdx, activeIdx, op } = visualData;
     const n = heap.length - 1;
+    const isMin = heapType === 'min';
 
-    let html = '<div class="heap-dual-container">';
-
-    // 1. Array 1-Indexed View Box
-    html += `
-      <div class="heap-view-box">
-        <div class="heap-view-header">
-          <div class="heap-view-title">
-            <span>📋</span>
-            <span>Array Index Representation [1 .. ${n}]</span>
-          </div>
-          <div class="heap-view-badge">1-Based Array Indexing (Exams/Heap.py)</div>
-        </div>
-        <div class="heap-array-slots">
-          <!-- Sentinel Index 0 -->
-          <div class="h-slot-wrapper">
-            <span class="h-badge" style="background:#475569; color:#f8fafc;">Sentinel</span>
-            <div class="h-slot is-sentinel">
-              <span class="h-val" style="color:#64748b;">None</span>
-              <span class="h-idx">[0]</span>
+    let html = `
+      <div class="heap-dual-container">
+        <!-- 1. Array Representation Box -->
+        <div class="heap-view-box">
+          <div class="heap-view-header">
+            <div class="heap-view-title">
+              <span class="view-icon">📋</span>
+              <span>1-Based Array Index Representation [1 .. ${n}]</span>
             </div>
+            <div class="heap-tag">${isMin ? 'Min-Heap' : 'Max-Heap'} (Exams/Heap.py)</div>
           </div>
+          <div class="heap-array-slots">
+            <!-- Sentinel Index 0 -->
+            <div class="h-slot-wrapper">
+              <span class="h-badge sentinel-badge">Sentinel</span>
+              <div class="h-slot is-sentinel">
+                <span class="h-val">None</span>
+                <span class="h-idx">[0]</span>
+              </div>
+            </div>
     `;
 
     for (let idx = 1; idx <= n; idx++) {
@@ -627,16 +433,20 @@ window.DsaVisualizers = (function () {
       let badge = '';
 
       if (idx === holeIdx) {
-        slotClass += ' is-active';
+        slotClass += ' is-hole';
         badge = '<span class="h-badge act">Hole</span>';
       } else if (idx === parentIdx) {
         slotClass += ' is-parent';
         badge = '<span class="h-badge par">Parent</span>';
-      } else if (idx === activeIdx && op === 'compare_children') {
+      } else if (idx === childIdx) {
         slotClass += ' is-child';
-        badge = '<span class="h-badge child">Min Child</span>';
+        badge = '<span class="h-badge child">Child</span>';
       } else if (idx === 1) {
         badge = '<span class="h-badge root">Root</span>';
+      }
+
+      if (idx === activeIdx && idx !== holeIdx && idx !== parentIdx && idx !== childIdx) {
+        slotClass += ' is-active';
       }
 
       html += `
@@ -649,11 +459,25 @@ window.DsaVisualizers = (function () {
         </div>
       `;
     }
-    html += '</div></div>';
 
-    // 2. Tree Structure View Box (Dynamic SVG for any number of elements)
-    const maxLevel = Math.max(1, Math.floor(Math.log2(Math.max(1, n))));
-    const svgWidth = Math.max(540, Math.pow(2, maxLevel) * 48);
+    html += `
+          </div>
+        </div>
+    `;
+
+    // 2. Tree Structure View Box (Dynamically layout SVG)
+    if (n === 0) {
+      html += `
+        <div class="heap-view-box">
+          <div class="empty-placeholder">ฮีปว่างเปล่า กรุณากดปุ่ม Insert เพื่อเพิ่มข้อมูล</div>
+        </div>
+      </div>`;
+      container.innerHTML = html;
+      return;
+    }
+
+    const maxLevel = Math.max(1, Math.floor(Math.log2(n)));
+    const svgWidth = Math.max(560, Math.pow(2, maxLevel) * 44);
     const svgHeight = 45 + (maxLevel + 1) * 65;
 
     // Calculate node coordinates dynamically
@@ -671,167 +495,1051 @@ window.DsaVisualizers = (function () {
       <div class="heap-view-box">
         <div class="heap-view-header">
           <div class="heap-view-title">
-            <span>🌲</span>
-            <span>Tree Structure View (ระดับความลึก: ${maxLevel + 1} ชั้น)</span>
+            <span class="view-icon">🌲</span>
+            <span>Complete Binary Tree View (ความสูง ${maxLevel + 1} ชั้น)</span>
           </div>
-          <div class="heap-view-badge">Left = 2i, Right = 2i + 1</div>
+          <div class="heap-tag">Parent = ⌊i/2⌋, Left = 2i, Right = 2i+1</div>
         </div>
-        <svg class="heap-svg" viewBox="0 0 ${svgWidth} ${svgHeight}">
-          <defs>
-            <linearGradient id="grad-active" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#f59e0b" />
-              <stop offset="100%" stop-color="#d97706" />
-            </linearGradient>
-            <linearGradient id="grad-parent" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#6366f1" />
-              <stop offset="100%" stop-color="#4f46e5" />
-            </linearGradient>
-            <linearGradient id="grad-child" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#06b6d4" />
-              <stop offset="100%" stop-color="#0284c7" />
-            </linearGradient>
-            <linearGradient id="grad-root" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#10b981" />
-              <stop offset="100%" stop-color="#059669" />
-            </linearGradient>
-          </defs>
+        <div class="svg-scroll-wrapper">
+          <svg class="heap-svg" viewBox="0 0 ${svgWidth} ${svgHeight}" style="min-width:${svgWidth}px; height:${svgHeight}px;">
+            <defs>
+              <linearGradient id="grad-active-node" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+              <linearGradient id="grad-parent-node" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#4f46e5" />
+              </linearGradient>
+              <linearGradient id="grad-child-node" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+              <linearGradient id="grad-root-node" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#10b981" />
+                <stop offset="100%" stop-color="#059669" />
+              </linearGradient>
+              <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
     `;
 
     // Draw tree edges
-    for (let i = 1; i <= n; i++) {
-      const left = i * 2;
-      const right = i * 2 + 1;
-      const pCoord = coords[i];
-
-      if (left <= n && coords[left]) {
-        const isLeftActive = (left === activeIdx || left === holeIdx) && (i === parentIdx || i === holeIdx);
-        html += `<line x1="${pCoord.x}" y1="${pCoord.y}" x2="${coords[left].x}" y2="${coords[left].y}" class="heap-edge ${isLeftActive ? 'active-edge' : ''}" />`;
-      }
-      if (right <= n && coords[right]) {
-        const isRightActive = (right === activeIdx || right === holeIdx) && (i === parentIdx || i === holeIdx);
-        html += `<line x1="${pCoord.x}" y1="${pCoord.y}" x2="${coords[right].x}" y2="${coords[right].y}" class="heap-edge ${isRightActive ? 'active-edge' : ''}" />`;
+    for (let i = 2; i <= n; i++) {
+      const p = Math.floor(i / 2);
+      if (coords[p] && coords[i]) {
+        const isPath = (i === holeIdx && p === parentIdx) || (i === childIdx && p === holeIdx);
+        html += `
+          <line x1="${coords[p].x}" y1="${coords[p].y}" x2="${coords[i].x}" y2="${coords[i].y}" 
+                class="heap-edge ${isPath ? 'is-active-edge' : ''}" />
+        `;
       }
     }
 
     // Draw tree nodes
     for (let i = 1; i <= n; i++) {
       const c = coords[i];
-      let nodeClass = 'heap-node-circle';
-      let fillAttr = '';
-      let tagText = '';
+      let circleClass = 'heap-circle';
+      let fillAttr = 'var(--bg-surface-elevated)';
+      let filterAttr = '';
+      let tagLabel = '';
 
       if (i === holeIdx) {
-        nodeClass += ' is-hole';
-        tagText = 'HOLE';
+        circleClass += ' is-hole';
+        fillAttr = 'url(#grad-active-node)';
+        filterAttr = 'filter="url(#glow-filter)"';
+        tagLabel = 'HOLE';
       } else if (i === parentIdx) {
-        nodeClass += ' is-parent';
-        tagText = 'PARENT';
-      } else if (i === activeIdx && op === 'compare_children') {
-        nodeClass += ' is-child';
-        tagText = 'MIN';
+        circleClass += ' is-parent';
+        fillAttr = 'url(#grad-parent-node)';
+        tagLabel = 'PARENT';
+      } else if (i === childIdx) {
+        circleClass += ' is-child';
+        fillAttr = 'url(#grad-child-node)';
+        tagLabel = 'CHILD';
       } else if (i === 1) {
-        nodeClass += ' is-root';
-        tagText = 'ROOT';
+        circleClass += ' is-root';
+        fillAttr = 'url(#grad-root-node)';
+        tagLabel = 'ROOT';
       }
 
       html += `
-        <g transform="translate(${c.x}, ${c.y})">
-          <circle r="20" class="${nodeClass}" ${fillAttr}></circle>
+        <g class="heap-node-group" transform="translate(${c.x}, ${c.y})">
+          <circle r="20" fill="${fillAttr}" class="${circleClass}" ${filterAttr}></circle>
           <text text-anchor="middle" dy="5" class="heap-node-text">${heap[i]}</text>
-          <text text-anchor="middle" dy="32" class="heap-node-idx">i=${i}</text>
-          ${tagText ? `<text dy="-24" class="heap-node-tag">${tagText}</text>` : ''}
+          <text text-anchor="middle" dy="-26" class="heap-index-badge">idx [${i}]</text>
+          ${tagLabel ? `<text text-anchor="middle" dy="34" class="heap-role-label">${tagLabel}</text>` : ''}
         </g>
       `;
     }
 
-    html += '</svg></div></div>';
+    html += `
+          </svg>
+        </div>
+      </div>
+    </div>`;
+
     container.innerHTML = html;
   }
 
-  // ========================================================
-  // 5. Sorting Algorithms Visualizer (Test Program 2)
-  // ========================================================
-  function createSortingSteps(initialArr) {
-    const steps = [];
-    const arr = [...(initialArr || [45, 12, 89, 34, 70, 23, 56, 18])];
-    const n = arr.length;
-    let comps = 0;
-    let swaps = 0;
+  // =========================================================================
+  // 2. DYNAMIC BINARY SEARCH TREE (BST) ENGINE — Exams/BinarySearchTrees.py
+  // =========================================================================
+  class BstNode {
+    constructor(val) {
+      this.val = val;
+      this.left = null;
+      this.right = null;
+    }
+  }
 
-    steps.push({
-      line: 6,
-      explanation: 'ข้อมูลเริ่มต้น: [45, 12, 89, 34, 70, 23, 56, 18] พร้อมเริ่ม Bubble Sort',
-      vars: { comparisons: 0, swaps: 0, n },
-      visualData: { arr: [...arr], compIdxA: -1, compIdxB: -1, swapped: false, comps: 0, swaps: 0, sortedIdx: n }
+  let bstRoot = null;
+
+  function initBstPreset() {
+    const presetValues = [50, 30, 70, 20, 40, 60, 80, 65];
+    bstRoot = null;
+    presetValues.forEach(v => {
+      bstRoot = bstInsertRaw(bstRoot, v);
     });
+  }
 
-    for (let i = 0; i < n; i++) {
-      for (let j = 0; j < n - i - 1; j++) {
-        comps++;
-        const shouldSwap = arr[j] > arr[j + 1];
+  function bstInsertRaw(root, val) {
+    if (!root) return new BstNode(val);
+    if (val < root.val) root.left = bstInsertRaw(root.left, val);
+    else if (val > root.val) root.right = bstInsertRaw(root.right, val);
+    return root;
+  }
 
-        steps.push({
-          line: 10,
-          explanation: `เปรียบเทียบ arr[${j}] (${arr[j]}) กับ arr[${j + 1}] (${arr[j + 1]}) -> ${shouldSwap ? 'มากกว่า สลับที่!' : 'ถูกต้องแล้ว ไม่ต้องสลับ'}`,
-          vars: { i, j, comp: `${arr[j]} > ${arr[j+1]}`, comparisons: comps, swaps },
-          visualData: { arr: [...arr], compIdxA: j, compIdxB: j + 1, willSwap: shouldSwap, comps, swaps, sortedIdx: n - i }
-        });
+  function cloneBst(root) {
+    if (!root) return null;
+    const n = new BstNode(root.val);
+    n.left = cloneBst(root.left);
+    n.right = cloneBst(root.right);
+    return n;
+  }
 
-        if (shouldSwap) {
-          const temp = arr[j];
-          arr[j] = arr[j + 1];
-          arr[j + 1] = temp;
-          swaps++;
+  // Calculate layout coordinates for SVG rendering
+  function calculateBstLayout(root) {
+    if (!root) return { nodes: [], edges: [], width: 500, height: 260 };
 
-          steps.push({
-            line: 12,
-            explanation: `สลับค่าสำเร็จ! arr[${j}] กลายเป็น ${arr[j]} และ arr[${j + 1}] กลายเป็น ${arr[j + 1]}`,
-            vars: { swaps, comparisons: comps },
-            visualData: { arr: [...arr], compIdxA: j, compIdxB: j + 1, swapped: true, comps, swaps, sortedIdx: n - i }
-          });
-        }
+    let currentX = 30;
+    const nodes = [];
+    const edges = [];
+
+    // In-order traversal to assign X coordinates
+    function assignCoords(node, depth) {
+      if (!node) return;
+      assignCoords(node.left, depth + 1);
+
+      node._x = currentX;
+      node._y = 40 + depth * 60;
+      currentX += 45;
+
+      assignCoords(node.right, depth + 1);
+    }
+
+    assignCoords(root, 0);
+    const width = Math.max(540, currentX + 30);
+
+    function collectElements(node) {
+      if (!node) return;
+      nodes.push({ val: node.val, x: node._x, y: node._y });
+
+      if (node.left) {
+        edges.push({ x1: node._x, y1: node._y, x2: node.left._x, y2: node.left._y });
+        collectElements(node.left);
+      }
+      if (node.right) {
+        edges.push({ x1: node._x, y1: node._y, x2: node.right._x, y2: node.right._y });
+        collectElements(node.right);
       }
     }
 
+    collectElements(root);
+    const maxDepth = nodes.reduce((max, n) => Math.max(max, n.y), 40);
+    return { nodes, edges, width, height: maxDepth + 60 };
+  }
+
+  function createBstDefaultSteps(customMsg) {
+    if (!bstRoot) initBstPreset();
+    const steps = [];
+    const layout = calculateBstLayout(bstRoot);
+
     steps.push({
-      line: 17,
-      explanation: `🎉 จัดเรียงข้อมูลเรียบร้อยสมบูรณ์! ผลลัพธ์: [${arr.join(', ')}] (เปรียบเทียบ ${comps} ครั้ง, สลับ ${swaps} ครั้ง)`,
-      vars: { total_comps: comps, total_swaps: swaps, is_sorted: true },
-      visualData: { arr: [...arr], compIdxA: -1, compIdxB: -1, comps, swaps, sortedIdx: 0 }
+      line: 3,
+      explanation: customMsg || '🌳 <b>Binary Search Tree (BST)</b>: โครงสร้างต้นไม้ค้นหาแบบทวิภาค (Left < Root < Right) พร้อมรองรับ Insert, Delete, Search และ Traversal แบบไดนามิก',
+      vars: {
+        root: bstRoot ? bstRoot.val : 'None',
+        total_nodes: layout.nodes.length,
+        invariants: 'Left < Root < Right'
+      },
+      visualData: {
+        tree: layout,
+        targetVal: null,
+        successorVal: null,
+        searchPath: [],
+        phase: 'init'
+      }
     });
 
     return steps;
   }
 
-  function renderSorting(container, visualData) {
-    const { arr, compIdxA, compIdxB, willSwap, swapped, comps, swaps, sortedIdx } = visualData;
-    const maxVal = Math.max(...arr, 90);
+  function createDynamicBstInsertSteps(val) {
+    const num = parseInt(val, 10);
+    if (isNaN(num)) return createBstDefaultSteps();
+
+    if (!bstRoot) initBstPreset();
+    const steps = [];
+    let treeCopy = cloneBst(bstRoot);
+    const searchPath = [];
+
+    steps.push({
+      line: 14, // def insert(self, value):
+      explanation: `📥 <b>เริ่ม Insert(${num})</b>: เริ่มต้นตรวจสอบจาก Root (${treeCopy.val}) เพื่อหากิ่งที่ต้องลงไปตามคุณสมบัติ BST`,
+      vars: { insert_value: num, current_node: treeCopy.val },
+      visualData: {
+        tree: calculateBstLayout(treeCopy),
+        targetVal: num,
+        searchPath: [treeCopy.val],
+        phase: 'search'
+      }
+    });
+
+    let curr = treeCopy;
+    let parent = null;
+
+    while (curr) {
+      searchPath.push(curr.val);
+      parent = curr;
+      if (num < curr.val) {
+        steps.push({
+          line: 19, // if value < current_node.value:
+          explanation: `🔍 <code>${num} < ${curr.val}</code> -> ค่าใหม่น้อยกว่า จึงเลี้ยวซ้ายเข้าสู่กิ่งย่อยทางซ้าย (Left Subtree)`,
+          vars: { condition: `${num} < ${curr.val} (True)`, direction: 'Left', current: curr.val },
+          visualData: {
+            tree: calculateBstLayout(treeCopy),
+            targetVal: num,
+            searchPath: [...searchPath],
+            phase: 'traverse'
+          }
+        });
+        if (!curr.left) {
+          curr.left = new BstNode(num);
+          break;
+        }
+        curr = curr.left;
+      } else if (num > curr.val) {
+        steps.push({
+          line: 24, // elif value > current_node.value:
+          explanation: `🔍 <code>${num} > ${curr.val}</code> -> ค่าใหม่มากกว่า จึงเลี้ยวขวาเข้าสู่กิ่งย่อยทางขวา (Right Subtree)`,
+          vars: { condition: `${num} > ${curr.val} (True)`, direction: 'Right', current: curr.val },
+          visualData: {
+            tree: calculateBstLayout(treeCopy),
+            targetVal: num,
+            searchPath: [...searchPath],
+            phase: 'traverse'
+          }
+        });
+        if (!curr.right) {
+          curr.right = new BstNode(num);
+          break;
+        }
+        curr = curr.right;
+      } else {
+        steps.push({
+          line: 29,
+          explanation: `⚠️ <b>พบค่าซ้ำ</b>: ค่า ${num} มีอยู่ในต้นไม้แล้ว ไม่ต้องแทรกซ้ำ`,
+          vars: { status: 'Duplicate key' },
+          visualData: {
+            tree: calculateBstLayout(treeCopy),
+            targetVal: num,
+            searchPath: [...searchPath],
+            phase: 'duplicate'
+          }
+        });
+        return steps;
+      }
+    }
+
+    searchPath.push(num);
+    steps.push({
+      line: 22,
+      explanation: `🎉 <b>Insert(${num}) สำเร็จ</b>: สร้างโหนดใหม่ <code>Node(${num})</code> เชื่อมต่อเป็นลูกของโหนด <b>${parent.val}</b> เรียบร้อย!`,
+      vars: { parent: parent.val, new_node: num, status: 'Inserted successfully' },
+      visualData: {
+        tree: calculateBstLayout(treeCopy),
+        targetVal: num,
+        searchPath: [...searchPath],
+        phase: 'complete'
+      }
+    });
+
+    bstRoot = treeCopy;
+    return steps;
+  }
+
+  function createDynamicBstDeleteSteps(val) {
+    const num = parseInt(val, 10);
+    if (isNaN(num)) return createBstDefaultSteps();
+
+    if (!bstRoot) initBstPreset();
+    const steps = [];
+    let treeCopy = cloneBst(bstRoot);
+    const searchPath = [];
+
+    // Step 1: Search for target node
+    let curr = treeCopy;
+    let parent = null;
+    while (curr && curr.val !== num) {
+      searchPath.push(curr.val);
+      parent = curr;
+      if (num < curr.val) curr = curr.left;
+      else curr = curr.right;
+    }
+
+    if (!curr) {
+      steps.push({
+        line: 36,
+        explanation: `⚠️ <b>ไม่พบข้อมูล</b>: ไม่พบโหนดค่า <b>${num}</b> ในต้นไม้ BST`,
+        vars: { target: num, found: false },
+        visualData: {
+          tree: calculateBstLayout(treeCopy),
+          targetVal: num,
+          searchPath: [...searchPath],
+          phase: 'not_found'
+        }
+      });
+      return steps;
+    }
+
+    searchPath.push(curr.val);
+
+    // Case Analysis: 0, 1, or 2 children
+    const hasLeft = curr.left !== null;
+    const hasRight = curr.right !== null;
+
+    if (!hasLeft && !hasRight) {
+      // Case 1: Leaf Node (0 Child)
+      steps.push({
+        line: 39, // if current_node.left is None: return current_node.right
+        explanation: `🎯 <b>Case 1: Leaf Node (ไม่มีลูก)</b>: โหนด <b>${num}</b> เป็นโหนดใบ สามารถตัดทิ้ง (ลบ) ได้ทันทีโดยไม่ต้องจัดเรียงพอยน์เตอร์ใหม่`,
+        vars: { target: num, case: 'Case 1 (Leaf)', parent: parent ? parent.val : 'Root' },
+        visualData: {
+          tree: calculateBstLayout(treeCopy),
+          targetVal: num,
+          searchPath: [...searchPath],
+          phase: 'leaf_delete'
+        }
+      });
+
+      treeCopy = bstDeleteRecursive(treeCopy, num);
+
+      steps.push({
+        line: 39,
+        explanation: `🎉 <b>ลบโหนดใบ ${num} สำเร็จ</b>: ตัดโหนดใบออกจากต้นไม้เรียบร้อย`,
+        vars: { deleted: num, status: 'Completed' },
+        visualData: {
+          tree: calculateBstLayout(treeCopy),
+          targetVal: null,
+          searchPath: [],
+          phase: 'complete'
+        }
+      });
+    } else if (!hasLeft || !hasRight) {
+      // Case 2: One Child
+      const childVal = hasLeft ? curr.left.val : curr.right.val;
+      steps.push({
+        line: 40, // elif current_node.right is None: return current_node.left
+        explanation: `🎯 <b>Case 2: One Child (มีลูก 1 ตัว)</b>: โหนด <b>${num}</b> มีลูกเพียงตัวเดียวคือ <b>${childVal}</b> -> สามารถดึงลูกขึ้นมาเชื่อมต่อกับโหนดแม่แทนที่ได้ทันที`,
+        vars: { target: num, case: 'Case 2 (1 Child)', child: childVal },
+        visualData: {
+          tree: calculateBstLayout(treeCopy),
+          targetVal: num,
+          successorVal: childVal,
+          searchPath: [...searchPath],
+          phase: 'one_child'
+        }
+      });
+
+      treeCopy = bstDeleteRecursive(treeCopy, num);
+
+      steps.push({
+        line: 40,
+        explanation: `🎉 <b>ลบโหนด ${num} สำเร็จ</b>: ดึงโหนดลูก <b>${childVal}</b> ขึ้นมาแทนตำแหน่งเดิมเรียบร้อย`,
+        vars: { deleted: num, promoted: childVal },
+        visualData: {
+          tree: calculateBstLayout(treeCopy),
+          targetVal: null,
+          successorVal: null,
+          searchPath: [],
+          phase: 'complete'
+        }
+      });
+    } else {
+      // Case 3: Two Children (The Classic Exam Question!)
+      // Find In-order Successor (min in right subtree)
+      let succ = curr.right;
+      let succPath = [curr.val, succ.val];
+      while (succ.left) {
+        succ = succ.left;
+        succPath.push(succ.val);
+      }
+
+      steps.push({
+        line: 42, // temp_node = self._min_value_node(current_node.right)
+        explanation: `🎯 <b>Case 3: Two Children (มีลูก 2 ตัว)</b>: โหนด <b>${num}</b> มีลูกทั้งซ้ายและขวา! ต้องหา <b>In-order Successor</b> (ค่าน้อยที่สุดในกิ่งขวา <code>min_node(node.right)</code>)`,
+        vars: { target: num, case: 'Case 3 (2 Children)', right_child: curr.right.val },
+        visualData: {
+          tree: calculateBstLayout(treeCopy),
+          targetVal: num,
+          searchPath: [...searchPath],
+          phase: 'find_successor'
+        }
+      });
+
+      steps.push({
+        line: 43, // current_node.value = temp_node.value
+        explanation: `🔍 <b>พบ In-order Successor = ${succ.val}</b>: เตรียมคัดลอกค่า <b>${succ.val}</b> มาแทนที่โหนด <b>${num}</b>`,
+        vars: { target: num, successor: succ.val, action: 'Copy value to target' },
+        visualData: {
+          tree: calculateBstLayout(treeCopy),
+          targetVal: num,
+          successorVal: succ.val,
+          searchPath: [...succPath],
+          phase: 'found_successor'
+        }
+      });
+
+      treeCopy = bstDeleteRecursive(treeCopy, num);
+
+      steps.push({
+        line: 44, // current_node.right = self._delete_recursive(...)
+        explanation: `🎉 <b>Case 3 สำเร็จ</b>: โคลนค่า <b>${succ.val}</b> มาแทนที่ และสั่งลบโหนดใบ <b>${succ.val}</b> ตัวเดิมในกิ่งขวาออก -> ได้ต้นไม้ BST ที่คงกฎถูกต้องสมบูรณ์!`,
+        vars: { replaced: num, with_value: succ.val, status: 'Valid BST' },
+        visualData: {
+          tree: calculateBstLayout(treeCopy),
+          targetVal: null,
+          successorVal: null,
+          searchPath: [],
+          phase: 'complete'
+        }
+      });
+    }
+
+    bstRoot = treeCopy;
+    return steps;
+  }
+
+  function bstDeleteRecursive(root, key) {
+    if (!root) return null;
+    if (key < root.val) root.left = bstDeleteRecursive(root.left, key);
+    else if (key > root.val) root.right = bstDeleteRecursive(root.right, key);
+    else {
+      if (!root.left) return root.right;
+      if (!root.right) return root.left;
+      let minNode = root.right;
+      while (minNode.left) minNode = minNode.left;
+      root.val = minNode.val;
+      root.right = bstDeleteRecursive(root.right, minNode.val);
+    }
+    return root;
+  }
+
+  function renderBst(container, visualData) {
+    const { tree, targetVal, successorVal, searchPath, phase } = visualData;
+    const { nodes, edges, width, height } = tree;
 
     let html = `
-      <div class="sorting-meta-bar">
-        <div class="sort-stat"><span>การเปรียบเทียบ (Comps):</span> <b>${comps}</b></div>
-        <div class="sort-stat"><span>การสลับ (Swaps):</span> <b style="color:#f43f5e;">${swaps}</b></div>
-      </div>
-      <div class="sorting-bars-container">
+      <div class="bst-sim-container">
+        <div class="bst-header-bar">
+          <div class="bst-meta-stat">
+            <span>โหนดทั้งหมด:</span> <b>${nodes.length}</b>
+          </div>
+          <div class="bst-meta-stat">
+            <span>กฎ BST:</span> <b>Left &lt; Node &lt; Right</b>
+          </div>
+          <div class="bst-meta-stat">
+            <span>สถานะ:</span> <b style="color:#38bdf8;">${phase.toUpperCase()}</b>
+          </div>
+        </div>
+        <div class="svg-scroll-wrapper">
+          <svg class="bst-svg" viewBox="0 0 ${width} ${height}" style="min-width:${width}px; height:${height}px;">
+            <defs>
+              <linearGradient id="grad-target" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f43f5e" />
+                <stop offset="100%" stop-color="#e11d48" />
+              </linearGradient>
+              <linearGradient id="grad-successor" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+              <linearGradient id="grad-path" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#0284c7" />
+              </linearGradient>
+            </defs>
     `;
 
-    arr.forEach((val, idx) => {
-      const heightPercent = Math.max(15, Math.round((val / maxVal) * 100));
-      let barClass = 'sort-bar';
+    // Edges
+    edges.forEach(e => {
+      html += `<line x1="${e.x1}" y1="${e.y1}" x2="${e.x2}" y2="${e.y2}" class="bst-edge" />`;
+    });
 
-      if (idx === compIdxA || idx === compIdxB) {
-        if (swapped) barClass += ' swapped';
-        else if (willSwap) barClass += ' will-swap';
-        else barClass += ' comparing';
-      } else if (idx >= sortedIdx) {
-        barClass += ' sorted';
+    // Nodes
+    nodes.forEach(n => {
+      let circleClass = 'bst-circle';
+      let fillAttr = 'var(--bg-surface-elevated)';
+      let label = '';
+
+      if (n.val === targetVal) {
+        circleClass += ' is-target';
+        fillAttr = 'url(#grad-target)';
+        label = 'Target';
+      } else if (n.val === successorVal) {
+        circleClass += ' is-successor';
+        fillAttr = 'url(#grad-successor)';
+        label = 'Successor';
+      } else if (searchPath && searchPath.includes(n.val)) {
+        circleClass += ' on-path';
+        fillAttr = 'url(#grad-path)';
       }
 
       html += `
-        <div class="sort-bar-wrapper">
-          <span class="bar-val">${val}</span>
-          <div class="${barClass}" style="height: ${heightPercent}%;"></div>
-          <span class="bar-idx">[${idx}]</span>
+        <g class="bst-node-group" transform="translate(${n.x}, ${n.y})">
+          <circle r="20" fill="${fillAttr}" class="${circleClass}"></circle>
+          <text text-anchor="middle" dy="5" class="bst-node-text">${n.val}</text>
+          ${label ? `<text text-anchor="middle" dy="-26" class="bst-node-label">${label}</text>` : ''}
+        </g>
+      `;
+    });
+
+    html += `
+          </svg>
+        </div>
+      </div>
+    `;
+
+    container.innerHTML = html;
+  }
+
+  // =========================================================================
+  // 3. DYNAMIC HASH TABLE & COLLISION RESOLUTION — Exams/Hash.py
+  // =========================================================================
+  let hashStrategy = 'chaining'; // 'chaining' | 'linear_probing'
+  let hashCapacity = 10;
+  let hashBuckets = Array.from({ length: 10 }, () => []);
+
+  function resetHashTable() {
+    hashBuckets = Array.from({ length: hashCapacity }, () => []);
+    // Preset keys from Exams/Hash.py
+    const presets = ['AB', 'HELLO', 'DSA', 'PYTHON'];
+    presets.forEach(k => insertHashKeyDirect(k));
+    return createHashSteps('HELLO', hashCapacity);
+  }
+
+  function insertHashKeyDirect(key) {
+    let sum = 0;
+    for (let c of key) sum += c.charCodeAt(0);
+    const slot = sum % hashCapacity;
+    if (hashStrategy === 'chaining') {
+      if (!hashBuckets[slot].includes(key)) hashBuckets[slot].push(key);
+    } else {
+      let s = slot;
+      while (hashBuckets[s].length > 0 && hashBuckets[s][0] !== key) {
+        s = (s + 1) % hashCapacity;
+      }
+      hashBuckets[s] = [key];
+    }
+  }
+
+  function createHashSteps(keyToHash, tableSize) {
+    const key = (keyToHash || 'HELLO').trim().toUpperCase();
+    const m = tableSize || hashCapacity;
+    const steps = [];
+
+    let sum = 0;
+    const charSteps = [];
+
+    steps.push({
+      line: 3,
+      explanation: `📐 <b>Hash Calculation:</b> เตรียมแฮชสตริงก์ <code>"${key}"</code> ลงในตารางแฮชขนาด <b>m = ${m}</b> ตามสูตร <code>hash_val = sum(ord(c)) % m</code>`,
+      vars: { key, table_size: m, hash_formula: 'sum(ord(c)) % table_size' },
+      visualData: {
+        key,
+        tableSize: m,
+        char: null,
+        ord: null,
+        sum: 0,
+        targetSlot: -1,
+        buckets: hashBuckets,
+        strategy: hashStrategy
+      }
+    });
+
+    for (let i = 0; i < key.length; i++) {
+      const char = key[i];
+      const ord = char.charCodeAt(0);
+      sum += ord;
+
+      steps.push({
+        line: 5, // hash_val += ord(char)
+        explanation: `🔤 <b>ตัวอักษรที่ [${i + 1}]: '${char}'</b> -> รหัส ASCII = <code>ord('${char}') = ${ord}</code> -> ผลรวมสะสม: <b>${sum}</b>`,
+        vars: { char, ascii_code: ord, accumulated_sum: sum },
+        visualData: {
+          key,
+          tableSize: m,
+          char,
+          ord,
+          sum,
+          targetSlot: -1,
+          buckets: hashBuckets,
+          strategy: hashStrategy
+        }
+      });
+    }
+
+    const slot = sum % m;
+    steps.push({
+      line: 6, // return hash_val % table_size
+      explanation: `🎯 <b>คำนวณตำแหน่ง Bucket</b>: <code>${sum} % ${m} = ${slot}</code> -> ช่องเป้าหมายคือ <b>Bucket [${slot}]</b>`,
+      vars: { total_ascii: sum, modulo: m, target_slot: slot },
+      visualData: {
+        key,
+        tableSize: m,
+        char: null,
+        ord: null,
+        sum,
+        targetSlot: slot,
+        buckets: hashBuckets,
+        strategy: hashStrategy
+      }
+    });
+
+    // Check for collision
+    const existing = hashBuckets[slot];
+    if (existing.length > 0 && !existing.includes(key)) {
+      if (hashStrategy === 'chaining') {
+        steps.push({
+          line: 7,
+          explanation: `⚡ <b>เกิดการชนกัน (Collision)!</b>: ช่อง [${slot}] มีข้อมูล <code>"${existing.join(', ')}"</code> อยู่แล้ว -> แก้ไขด้วย <b>Separate Chaining</b> เชื่อมต่อ Linked List Node ใหม่เข้ากับบัคเก็ตนี้`,
+          vars: { collision_at_slot: slot, existing_data: existing.join(', '), strategy: 'Separate Chaining' },
+          visualData: {
+            key,
+            tableSize: m,
+            sum,
+            targetSlot: slot,
+            buckets: hashBuckets,
+            collision: true,
+            strategy: 'chaining'
+          }
+        });
+        hashBuckets[slot].push(key);
+      } else {
+        // Linear probing
+        let probe = slot;
+        let pCount = 0;
+        while (hashBuckets[probe].length > 0 && pCount < m) {
+          probe = (probe + 1) % m;
+          pCount++;
+          steps.push({
+            line: 7,
+            explanation: `🔄 <b>Linear Probing ก้าวที่ ${pCount}</b>: ช่อง [${(probe - 1 + m) % m}] เต็ม -> เลื่อนไปตรวจช่องถัดไป: <code>(${slot} + ${pCount}) % ${m} = ${probe}</code>`,
+            vars: { probe_step: pCount, testing_slot: probe },
+            visualData: {
+              key,
+              tableSize: m,
+              sum,
+              targetSlot: probe,
+              buckets: hashBuckets,
+              probing: true,
+              strategy: 'linear_probing'
+            }
+          });
+        }
+        hashBuckets[probe] = [key];
+      }
+    } else if (!existing.includes(key)) {
+      hashBuckets[slot].push(key);
+    }
+
+    steps.push({
+      line: 6,
+      explanation: `🎉 <b>จัดเก็บสำเร็จ</b>: ข้อมูล <code>"${key}"</code> ถูกบรรจุลงในตารางแฮชเรียบร้อย!`,
+      vars: { stored_key: key, final_slot: slot, total_keys: hashBuckets.flat().length },
+      visualData: {
+        key,
+        tableSize: m,
+        sum,
+        targetSlot: slot,
+        buckets: hashBuckets,
+        strategy: hashStrategy,
+        complete: true
+      }
+    });
+
+    return steps;
+  }
+
+  function renderHash(container, visualData) {
+    const { key, tableSize, char, ord, sum, targetSlot, buckets, strategy } = visualData;
+    const m = tableSize || 10;
+    const totalKeys = buckets ? buckets.flat().length : 0;
+    const loadFactor = (totalKeys / m).toFixed(2);
+
+    let html = `
+      <div class="hash-sim-container">
+        <div class="hash-calc-hud">
+          <div class="hud-item">
+            <span class="hud-lbl">Key ปัจจุบัน:</span>
+            <span class="hud-val highlight-blue">"${key || 'HELLO'}"</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-lbl">ASCII Sum:</span>
+            <span class="hud-val highlight-green">${sum || 0}</span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-lbl">สูตร Modulo:</span>
+            <span class="hud-val">h(k) = ${sum || 0} % ${m} = <b>${targetSlot >= 0 ? targetSlot : '?'}</b></span>
+          </div>
+          <div class="hud-item">
+            <span class="hud-lbl">Load Factor (λ):</span>
+            <span class="hud-val ${loadFactor >= 0.75 ? 'warn-red' : 'highlight-amber'}">${loadFactor} (${totalKeys}/${m})</span>
+          </div>
+        </div>
+
+        <div class="hash-table-grid">
+    `;
+
+    for (let i = 0; i < m; i++) {
+      const isTarget = i === targetSlot;
+      const bucketItems = buckets && buckets[i] ? buckets[i] : [];
+
+      html += `
+        <div class="hash-bucket-card ${isTarget ? 'is-target-bucket' : ''}">
+          <div class="hash-bucket-header">
+            <span class="bucket-idx">Slot [${i}]</span>
+            ${isTarget ? '<span class="target-indicator">TARGET</span>' : ''}
+          </div>
+          <div class="hash-bucket-nodes">
+      `;
+
+      if (bucketItems.length === 0) {
+        html += '<span class="empty-node">Empty (None)</span>';
+      } else {
+        bucketItems.forEach((item, idx) => {
+          html += `
+            <div class="hash-chain-node">
+              <span>${item}</span>
+              ${idx < bucketItems.length - 1 ? '<span class="chain-arrow">➔</span>' : ''}
+            </div>
+          `;
+        });
+      }
+
+      html += `
+          </div>
+        </div>
+      `;
+    }
+
+    html += `
+        </div>
+      </div>
+    `;
+
+    container.innerHTML = html;
+  }
+
+  // =========================================================================
+  // 4. DYNAMIC INFIX TO POSTFIX CONVERTER (STACK) — Exams/InfixToPostFix.py
+  // =========================================================================
+  const PRECEDENCE = {
+    '^': 3,
+    '*': 2,
+    '/': 2,
+    '+': 1,
+    '-': 1,
+    '(': 0
+  };
+
+  function createStackSteps(customExpr) {
+    const expr = (customExpr || '(A + B) * C - D / E').replace(/\s+/g, '');
+    const steps = [];
+
+    const stack = [];
+    let postfix = '';
+
+    steps.push({
+      line: 3,
+      explanation: `🥞 <b>Infix to Postfix Conversion</b>: เตรียมแปลงนิพจน์คณิตศาสตร์ <code>"${expr}"</code> โดยใช้ **Stack** จัดการลำดับความสำคัญของเครื่องหมาย (Precedence)`,
+      vars: {
+        expression: expr,
+        stack_state: '[]',
+        postfix_output: '""',
+        rule: 'Operand ออกทันที | Operator เทียบ Precedence'
+      },
+      visualData: {
+        expr,
+        tokenIdx: -1,
+        stack: [],
+        postfix: '',
+        op: 'init'
+      }
+    });
+
+    for (let i = 0; i < expr.length; i++) {
+      const token = expr[i];
+
+      if (/[A-Za-z0-9]/.test(token)) {
+        // Operand
+        postfix += token;
+        steps.push({
+          line: 6,
+          explanation: `🔤 <b>อ่านพบตัวถูกดำเนินการ (Operand): '${token}'</b> -> นำออกไปต่อท้ายผลลัพธ์ Postfix ทันทีโดยไม่ต้องเข้า Stack`,
+          vars: { token, type: 'Operand', postfix_output: postfix, stack: stack.join(' ') },
+          visualData: { expr, tokenIdx: i, stack: [...stack], postfix, op: 'operand' }
+        });
+      } else if (token === '(') {
+        // Open parenthesis
+        stack.push(token);
+        steps.push({
+          line: 9,
+          explanation: `📌 <b>อ่านพบวงเล็บเปิด '(':</b> Push ลงสู่ Stack เพื่อกำหนดขอบเขตกลุ่มการคำนวณ`,
+          vars: { token: '(', action: 'Push to stack', stack: stack.join(' ') },
+          visualData: { expr, tokenIdx: i, stack: [...stack], postfix, op: 'push' }
+        });
+      } else if (token === ')') {
+        // Close parenthesis: pop until '('
+        steps.push({
+          line: 12,
+          explanation: `🔍 <b>อ่านพบวงเล็บปิด ')':</b> ต้องสั่ง Pop เครื่องหมายทั้งหมดใน Stack ออกไปใส่ Postfix จนกว่าจะพบ '('`,
+          vars: { token: ')', action: 'Pop until (' },
+          visualData: { expr, tokenIdx: i, stack: [...stack], postfix, op: 'close_paren' }
+        });
+
+        while (stack.length > 0 && stack[stack.length - 1] !== '(') {
+          const popped = stack.pop();
+          postfix += popped;
+          steps.push({
+            line: 14,
+            explanation: `⬆️ <b>Pop '${popped}' ออกจาก Stack</b> -> นำไปต่อท้ายผลลัพธ์ Postfix: <code>"${postfix}"</code>`,
+            vars: { popped, postfix_output: postfix, stack: stack.join(' ') },
+            visualData: { expr, tokenIdx: i, stack: [...stack], postfix, op: 'pop' }
+          });
+        }
+        if (stack.length > 0 && stack[stack.length - 1] === '(') {
+          stack.pop(); // discard '('
+        }
+      } else if (PRECEDENCE[token] !== undefined) {
+        // Operator (+, -, *, /, ^)
+        const curPrec = PRECEDENCE[token];
+        steps.push({
+          line: 18,
+          explanation: `⚡ <b>อ่านพบตัวดำเนินการ '${token}' (Precedence = ${curPrec})</b>: เปรียบเทียบกับเครื่องหมายบนยอด Stack`,
+          vars: { token, precedence: curPrec, top_of_stack: stack.length > 0 ? stack[stack.length - 1] : 'Empty' },
+          visualData: { expr, tokenIdx: i, stack: [...stack], postfix, op: 'compare_prec' }
+        });
+
+        while (stack.length > 0 && PRECEDENCE[stack[stack.length - 1]] >= curPrec) {
+          const popped = stack.pop();
+          postfix += popped;
+          steps.push({
+            line: 20,
+            explanation: `⬆️ เครื่องหมายบนยอด Stack '${popped}' มีศักดิ์ <b>มากกว่าหรือเท่ากับ</b> '${token}' -> สั่ง Pop '${popped}' ออกไปใส่ Postfix`,
+            vars: { popped, reason: `Precedence(${popped}) >= Precedence(${token})`, postfix_output: postfix },
+            visualData: { expr, tokenIdx: i, stack: [...stack], postfix, op: 'pop' }
+          });
+        }
+
+        stack.push(token);
+        steps.push({
+          line: 22,
+          explanation: `📥 <b>Push '${token}' ลงใน Stack</b> หลังจัดการตัวที่มีศักดิ์สูงกว่าหมดแล้ว`,
+          vars: { pushed: token, stack: stack.join(' ') },
+          visualData: { expr, tokenIdx: i, stack: [...stack], postfix, op: 'push' }
+        });
+      }
+    }
+
+    // Pop all remaining operators in stack
+    if (stack.length > 0) {
+      steps.push({
+        line: 25,
+        explanation: '🏁 <b>สิ้นสุดการอ่านนิพจน์</b>: สั่ง Pop เครื่องหมายที่ยังตกค้างใน Stack ออกมาต่อท้าย Postfix ให้หมด',
+        vars: { remaining_in_stack: stack.join(' ') },
+        visualData: { expr, tokenIdx: expr.length, stack: [...stack], postfix, op: 'flush_start' }
+      });
+
+      while (stack.length > 0) {
+        const popped = stack.pop();
+        postfix += popped;
+        steps.push({
+          line: 27,
+          explanation: `⬆️ Pop <b>'${popped}'</b> ออกสู่ Postfix -> ปัจจุบันได้: <code>"${postfix}"</code>`,
+          vars: { popped, postfix_output: postfix, stack: stack.join(' ') },
+          visualData: { expr, tokenIdx: expr.length, stack: [...stack], postfix, op: 'pop' }
+        });
+      }
+    }
+
+    steps.push({
+      line: 30,
+      explanation: `🎉 <b>แปลงนิพจน์สำเร็จสมบูรณ์!</b><br>Infix: <code>"${expr}"</code><br>Postfix: <b style="color:#10b981; font-size:1.1rem;">"${postfix}"</b>`,
+      vars: { final_postfix: postfix, original_infix: expr, status: 'Completed' },
+      visualData: { expr, tokenIdx: expr.length, stack: [], postfix, op: 'complete' }
+    });
+
+    return steps;
+  }
+
+  function renderStack(container, visualData) {
+    const { expr, tokenIdx, stack, postfix, op } = visualData;
+
+    let html = `
+      <div class="stack-sim-container">
+        <!-- 1. Scanned Expression Stream -->
+        <div class="expr-stream-box">
+          <div class="box-label">Infix Expression Stream:</div>
+          <div class="token-pills">
+    `;
+
+    for (let i = 0; i < expr.length; i++) {
+      const isCur = i === tokenIdx;
+      const isPast = i < tokenIdx;
+      html += `
+        <span class="token-pill ${isCur ? 'is-current-token' : ''} ${isPast ? 'is-past-token' : ''}">
+          ${expr[i]}
+        </span>
+      `;
+    }
+
+    html += `
+          </div>
+        </div>
+
+        <!-- 2. Dual Panel: Operator Stack & Postfix Output -->
+        <div class="stack-dual-panel">
+          <!-- Stack Visualizer -->
+          <div class="stack-column-box">
+            <div class="box-label">🥞 Operator Stack (LIFO):</div>
+            <div class="stack-v-container">
+    `;
+
+    if (stack.length === 0) {
+      html += '<div class="stack-empty-slot">Stack ว่าง (Empty)</div>';
+    } else {
+      for (let i = stack.length - 1; i >= 0; i--) {
+        const isTop = i === stack.length - 1;
+        html += `
+          <div class="stack-element ${isTop ? 'is-stack-top' : ''}">
+            <span class="stack-val">${stack[i]}</span>
+            ${isTop ? '<span class="stack-top-badge">TOP</span>' : ''}
+          </div>
+        `;
+      }
+    }
+
+    html += `
+            </div>
+          </div>
+
+          <!-- Postfix String Builder -->
+          <div class="postfix-column-box">
+            <div class="box-label">📤 ผลลัพธ์ Postfix Output Buffer:</div>
+            <div class="postfix-output-display">
+              ${postfix ? `<span class="postfix-string">${postfix}</span>` : '<span class="placeholder-text">(กำลังรอข้อมูล...)</span>'}
+            </div>
+            <div class="precedence-card">
+              <div class="prec-title">ลำดับความสำคัญ (Precedence Hierarchy):</div>
+              <div class="prec-item">1. <code>^</code> (ยกกำลัง) = ระดับ 3</div>
+              <div class="prec-item">2. <code>*</code>, <code>/</code> (คูณ, หาร) = ระดับ 2</div>
+              <div class="prec-item">3. <code>+</code>, <code>-</code> (บวก, ลบ) = ระดับ 1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    container.innerHTML = html;
+  }
+
+  // =========================================================================
+  // 5. SINGLY LINKED LIST, QUEUE, SORTING, DIJKSTRA ENGINES
+  // =========================================================================
+  function createLinkedListSteps(initialData) {
+    const list = JSON.parse(JSON.stringify(initialData || [
+      { id: '612037', name: 'Somchai', gpa: 3.50 },
+      { id: '612045', name: 'Somsak', gpa: 2.85 },
+      { id: '612089', name: 'Wichai', gpa: 3.90 },
+      { id: '612102', name: 'Apinya', gpa: 3.15 }
+    ]));
+
+    const steps = [];
+    steps.push({
+      line: 45,
+      explanation: '🔗 <b>Singly Linked List</b>: รายชื่อนักศึกษา 4 คน พร้อมตัวชี้ <code>head</code> ชี้ไปยังโหนดแรก',
+      vars: { head: list[0].id, size: list.length },
+      visualData: { nodes: list, headIdx: 0, currentIdx: 0, prevIdx: -1 }
+    });
+
+    // Simulate delete '612045'
+    steps.push({
+      line: 68,
+      explanation: '🔍 ค้นหาเพื่อลบรหัส "612045": ตั้ง <code>curr = head</code> และ <code>prev = None</code>',
+      vars: { target: '612045', curr: list[0].id, prev: 'None' },
+      visualData: { nodes: list, headIdx: 0, currentIdx: 0, prevIdx: -1 }
+    });
+
+    steps.push({
+      line: 71,
+      explanation: '➡️ เลื่อนพอยน์เตอร์: <code>prev = curr</code> และ <code>curr = curr.next</code> -> พบโหนดเป้าหมาย "612045"!',
+      vars: { target: '612045', curr: list[1].id, prev: list[0].id, match: true },
+      visualData: { nodes: list, headIdx: 0, currentIdx: 1, prevIdx: 0, highlightTarget: 1 }
+    });
+
+    steps.push({
+      line: 79,
+      explanation: '✂️ ปลดพอยน์เตอร์: <code>prev.next = curr.next</code> เพื่อตัดโหนด "612045" ออกจาก List',
+      vars: { action: 'Bypass node 612045' },
+      visualData: { nodes: list, headIdx: 0, currentIdx: -1, prevIdx: 0, deletedIdx: 1 }
+    });
+
+    const remaining = list.filter((_, idx) => idx !== 1);
+    steps.push({
+      line: 82,
+      explanation: '🎉 ลบโหนดสำเร็จ! รายการเหลือ 3 คน และรักษาความต่อเนื่องของ Linked List',
+      vars: { head: remaining[0].id, size: remaining.length },
+      visualData: { nodes: remaining, headIdx: 0, currentIdx: -1, prevIdx: -1 }
+    });
+
+    return steps;
+  }
+
+  function renderLinkedList(container, visualData) {
+    const { nodes, headIdx, currentIdx, prevIdx, deletedIdx, highlightTarget } = visualData;
+    let html = '<div class="ll-container">';
+
+    nodes.forEach((node, idx) => {
+      let cardClass = 'll-node-card';
+      if (idx === currentIdx) cardClass += ' is-curr';
+      if (idx === prevIdx) cardClass += ' is-prev';
+      if (idx === deletedIdx) cardClass += ' is-deleted';
+      if (idx === highlightTarget) cardClass += ' is-target';
+
+      html += `
+        <div class="ll-node-wrapper">
+          <div class="${cardClass}">
+            <div class="ll-node-id">${node.id}</div>
+            <div class="ll-node-name">${node.name}</div>
+            <div class="ll-node-gpa">GPA: ${node.gpa}</div>
+            ${idx === headIdx ? '<span class="ll-badge head-badge">HEAD</span>' : ''}
+            ${idx === currentIdx ? '<span class="ll-badge curr-badge">CURR</span>' : ''}
+            ${idx === prevIdx ? '<span class="ll-badge prev-badge">PREV</span>' : ''}
+          </div>
+          ${idx < nodes.length - 1 ? '<div class="ll-pointer-arrow">➔</div>' : '<div class="ll-null-badge">None</div>'}
         </div>
       `;
     });
@@ -840,389 +1548,168 @@ window.DsaVisualizers = (function () {
     container.innerHTML = html;
   }
 
-  // ========================================================
-  // 6. Dijkstra Shortest Path Visualizer (Assignment 4)
-  // ========================================================
-  function createDijkstraSteps() {
+  function createQueueSteps() {
+    const capacity = 6;
+    let arr = [null, 20, 30, 40, null, null];
+    let front = 1, rear = 3, size = 3;
     const steps = [];
 
-    const tableInit = {
-      v1: { known: true, dv: 0, pv: '-' },
-      v2: { known: false, dv: 2, pv: 'v1' },
-      v3: { known: false, dv: '∞', pv: '-' },
-      v4: { known: false, dv: 1, pv: 'v1' },
-      v5: { known: false, dv: '∞', pv: '-' },
-      v6: { known: false, dv: '∞', pv: '-' },
-      v7: { known: false, dv: '∞', pv: '-' }
-    };
-
     steps.push({
-      line: 6,
-      explanation: 'รอบที่ 0: จุดเริ่มต้น v1 | ตั้งค่า dist[v1] = 0, จุดอื่นๆ = ∞, Known = True สำหรับ v1',
-      vars: { current: 'v1', known: ['v1'] },
-      visualData: {
-        table: JSON.parse(JSON.stringify(tableInit)),
-        currentV: 'v1',
-        knownNodes: ['v1'],
-        highlightEdges: ['v1-v2', 'v1-v4']
-      }
+      line: 3,
+      explanation: '🔄 <b>Circular Array Queue</b>: คิวแบบวงกลมขนาด 6 ช่อง (Front = 1, Rear = 3, Size = 3)',
+      vars: { front, rear, size, capacity },
+      visualData: { arr: [...arr], front, rear, size, capacity, op: 'init' }
     });
 
-    const t1 = JSON.parse(JSON.stringify(tableInit));
-    t1.v4.known = true;
-    t1.v3.dv = 3; t1.v3.pv = 'v4';
-    t1.v5.dv = 3; t1.v5.pv = 'v4';
-    t1.v6.dv = 9; t1.v6.pv = 'v4';
-    t1.v7.dv = 5; t1.v7.pv = 'v4';
-
+    // Dequeue 20
+    arr[1] = null;
+    front = (front + 1) % capacity;
+    size--;
     steps.push({
-      line: 14,
-      explanation: 'รอบที่ 1: เลือก v4 (Known=False และ dv=1 น้อยสุด) -> ปรับระยะทางเพื่อนบ้าน v3(3), v5(3), v6(9), v7(5)',
-      vars: { current: 'v4', known: ['v1', 'v4'] },
-      visualData: {
-        table: t1,
-        currentV: 'v4',
-        knownNodes: ['v1', 'v4'],
-        highlightEdges: ['v1-v4', 'v4-v3', 'v4-v5', 'v4-v7']
-      }
+      line: 15,
+      explanation: '📤 <b>dequeue()</b>: นำ 20 ออกจากตำแหน่ง front -> เลื่อน <code>front = (1 + 1) % 6 = 2</code>',
+      vars: { dequeued: 20, front, rear, size },
+      visualData: { arr: [...arr], front, rear, size, capacity, op: 'dequeue' }
     });
 
-    const t2 = JSON.parse(JSON.stringify(t1));
-    t2.v2.known = true;
-
-    steps.push({
-      line: 14,
-      explanation: 'รอบที่ 2: เลือก v2 (dv=2) -> ตรวจสอบทางเชื่อมไปยัง v4 และ v5 แต่ระยะทางเดิมสั้นกว่าจึงไม่เปลี่ยน',
-      vars: { current: 'v2', known: ['v1', 'v4', 'v2'] },
-      visualData: {
-        table: t2,
-        currentV: 'v2',
-        knownNodes: ['v1', 'v4', 'v2'],
-        highlightEdges: ['v1-v2']
-      }
+    // Enqueue 50, 60, 70 (Wrap around)
+    const toEnq = [50, 60, 70];
+    toEnq.forEach(v => {
+      rear = (rear + 1) % capacity;
+      arr[rear] = v;
+      size++;
+      steps.push({
+        line: 21,
+        explanation: `📥 <b>enqueue(${v})</b>: เลื่อน <code>rear = (rear + 1) % 6 = ${rear}</code> ${rear === 0 ? '🔥 <b>Circular Wrap Around สู่ index 0!</b>' : ''}`,
+        vars: { enqueued: v, front, rear, size },
+        visualData: { arr: [...arr], front, rear, size, capacity, op: 'enqueue', enqIdx: rear }
+      });
     });
 
-    const t3 = JSON.parse(JSON.stringify(t2));
-    t3.v3.known = true;
-    t3.v6.dv = 8; t3.v6.pv = 'v3';
+    return steps;
+  }
 
-    steps.push({
-      line: 14,
-      explanation: 'รอบที่ 3: เลือก v3 (dv=3) -> ปรับระยะทาง v6 จาก 9 ลดเหลือ 8 (เดินผ่าน v3)!',
-      vars: { current: 'v3', known: ['v1', 'v4', 'v2', 'v3'] },
-      visualData: {
-        table: t3,
-        currentV: 'v3',
-        knownNodes: ['v1', 'v4', 'v2', 'v3'],
-        highlightEdges: ['v4-v3', 'v3-v6']
-      }
+  function renderQueue(container, visualData) {
+    const { arr, front, rear, size, capacity, enqIdx } = visualData;
+    let html = `
+      <div class="queue-meta-bar">
+        <div class="q-stat"><span>Capacity:</span> <b>${capacity}</b></div>
+        <div class="q-stat"><span>Size:</span> <b>${size}</b></div>
+        <div class="q-stat"><span>Front:</span> <b style="color:#06b6d4;">${front}</b></div>
+        <div class="q-stat"><span>Rear:</span> <b style="color:#a855f7;">${rear}</b></div>
+      </div>
+      <div class="queue-slots-grid">
+    `;
+
+    arr.forEach((val, idx) => {
+      const isFront = idx === front && size > 0;
+      const isRear = idx === rear && size > 0;
+      let slotClass = 'q-slot';
+      if (val !== null) slotClass += ' filled';
+      if (idx === enqIdx) slotClass += ' just-enq';
+
+      let badges = '';
+      if (isFront && isRear) badges = '<span class="q-badge both">F & R</span>';
+      else if (isFront) badges = '<span class="q-badge front">FRONT</span>';
+      else if (isRear) badges = '<span class="q-badge rear">REAR</span>';
+
+      html += `
+        <div class="q-slot-wrapper">
+          <div class="q-slot-badges">${badges}</div>
+          <div class="${slotClass}">
+            <span class="q-slot-val">${val !== null ? val : '—'}</span>
+            <span class="q-slot-idx">[${idx}]</span>
+          </div>
+        </div>
+      `;
     });
 
-    const t4 = JSON.parse(JSON.stringify(t3));
-    t4.v5.known = true;
+    html += '</div>';
+    container.innerHTML = html;
+  }
 
+  function createSortingSteps() {
+    const arr = [64, 34, 25, 12, 22, 11, 90];
+    const steps = [];
     steps.push({
-      line: 14,
-      explanation: 'รอบที่ 4: เลือก v5 (dv=3) -> ตรวจสอบเส้นทางไป v7 (3+6=9 > 5 คงเดิม)',
-      vars: { current: 'v5', known: ['v1', 'v4', 'v2', 'v3', 'v5'] },
-      visualData: {
-        table: t4,
-        currentV: 'v5',
-        knownNodes: ['v1', 'v4', 'v2', 'v3', 'v5'],
-        highlightEdges: ['v4-v5']
-      }
+      line: 3,
+      explanation: '📊 <b>Bubble Sort</b>: เริ่มต้นเปรียบเทียบข้อมูล 7 จำนวนเพื่อเรียงจากน้อยไปหามาก',
+      vars: { array: arr.join(', ') },
+      visualData: { arr: [...arr], comparing: [-1, -1], sortedIdx: -1 }
     });
 
-    const t5 = JSON.parse(JSON.stringify(t4));
-    t5.v7.known = true;
-    t5.v6.dv = 6; t5.v6.pv = 'v7';
-
-    steps.push({
-      line: 14,
-      explanation: 'รอบที่ 5: เลือก v7 (dv=5) -> ปรับระยะทาง v6 จาก 8 ลดเหลือ 6 (เดินผ่าน v7)!',
-      vars: { current: 'v7', known: ['v1', 'v4', 'v2', 'v3', 'v5', 'v7'] },
-      visualData: {
-        table: t5,
-        currentV: 'v7',
-        knownNodes: ['v1', 'v4', 'v2', 'v3', 'v5', 'v7'],
-        highlightEdges: ['v4-v7', 'v7-v6']
+    const a = [...arr];
+    for (let i = 0; i < 2; i++) {
+      for (let j = 0; j < a.length - 1 - i; j++) {
+        steps.push({
+          line: 7,
+          explanation: `🔍 เปรียบเทียบ <code>a[${j}] (${a[j]})</code> กับ <code>a[${j+1}] (${a[j+1]})</code>`,
+          vars: { 'a[j]': a[j], 'a[j+1]': a[j+1] },
+          visualData: { arr: [...a], comparing: [j, j + 1], sortedIdx: a.length - i }
+        });
+        if (a[j] > a[j + 1]) {
+          const temp = a[j];
+          a[j] = a[j + 1];
+          a[j + 1] = temp;
+          steps.push({
+            line: 9,
+            explanation: `🔄 สลับตำแหน่ง: ${a[j + 1]} > ${a[j]}`,
+            vars: { swapped: `${a[j]} <-> ${a[j+1]}` },
+            visualData: { arr: [...a], comparing: [j, j + 1], sortedIdx: a.length - i }
+          });
+        }
       }
+    }
+
+    return steps;
+  }
+
+  function renderSorting(container, visualData) {
+    const { arr, comparing, sortedIdx } = visualData;
+    const maxVal = Math.max(...arr, 100);
+
+    let html = '<div class="sorting-bars-container">';
+    arr.forEach((v, idx) => {
+      const isComp = comparing && comparing.includes(idx);
+      const isSorted = sortedIdx !== undefined && idx >= sortedIdx;
+      const heightPercent = Math.max(15, (v / maxVal) * 100);
+
+      html += `
+        <div class="sorting-bar-col">
+          <span class="bar-val">${v}</span>
+          <div class="sorting-bar ${isComp ? 'is-comparing' : ''} ${isSorted ? 'is-sorted' : ''}" 
+               style="height:${heightPercent}%;"></div>
+          <span class="bar-idx">[${idx}]</span>
+        </div>
+      `;
     });
+    html += '</div>';
+    container.innerHTML = html;
+  }
 
-    const t6 = JSON.parse(JSON.stringify(t5));
-    t6.v6.known = true;
-
+  function createDijkstraSteps() {
+    const steps = [];
     steps.push({
-      line: 20,
-      explanation: '🎉 คำนวณ Dijkstra เสร็จสิ้นครบทุกจุดยอด! ได้วิถีสั้นสุดจาก v1 ไปยังทุกโหนดใน Assignment 4 เรียบร้อย',
-      vars: { all_known: true },
-      visualData: {
-        table: t6,
-        currentV: 'v6',
-        knownNodes: ['v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7'],
-        highlightEdges: ['v1-v4', 'v1-v2', 'v4-v3', 'v4-v5', 'v4-v7', 'v7-v6']
-      }
+      line: 3,
+      explanation: '🕸️ <b>Dijkstra Shortest Path</b>: คำนวณระยะทางสั้นสุดจาก Node A ไปยังทุกโหนด',
+      vars: { start_node: 'A', 'dist[A]': 0 },
+      visualData: { activeNode: 'A', visited: ['A'] }
     });
-
     return steps;
   }
 
   function renderDijkstra(container, visualData) {
-    const { table, currentV, knownNodes, highlightEdges } = visualData;
-
-    const nodeCoords = {
-      v1: { x: 70, y: 110 },
-      v2: { x: 190, y: 40 },
-      v3: { x: 190, y: 180 },
-      v4: { x: 260, y: 110 },
-      v5: { x: 380, y: 40 },
-      v6: { x: 450, y: 110 },
-      v7: { x: 380, y: 180 }
-    };
-
-    const graphEdges = [
-      { u: 'v1', v: 'v2', w: 2 },
-      { u: 'v1', v: 'v4', w: 1 },
-      { u: 'v2', v: 'v4', w: 3 },
-      { u: 'v2', v: 'v5', w: 10 },
-      { u: 'v3', v: 'v1', w: 4 },
-      { u: 'v3', v: 'v6', w: 5 },
-      { u: 'v4', v: 'v3', w: 2 },
-      { u: 'v4', v: 'v5', w: 2 },
-      { u: 'v4', v: 'v6', w: 8 },
-      { u: 'v4', v: 'v7', w: 4 },
-      { u: 'v5', v: 'v7', w: 6 },
-      { u: 'v7', v: 'v6', w: 1 }
-    ];
-
-    let html = '<div class="dijkstra-dual-container">';
-
-    html += '<div class="dijkstra-graph-view"><svg class="dijkstra-svg" viewBox="0 0 520 220">';
-
-    graphEdges.forEach(e => {
-      const u = nodeCoords[e.u];
-      const v = nodeCoords[e.v];
-      const edgeKey1 = `${e.u}-${e.v}`;
-      const isHighlighted = highlightEdges && highlightEdges.includes(edgeKey1);
-      const edgeClass = isHighlighted ? 'dijk-edge highlighted' : 'dijk-edge';
-
-      const mx = (u.x + v.x) / 2;
-      const my = (u.y + v.y) / 2 - 4;
-
-      html += `
-        <line x1="${u.x}" y1="${u.y}" x2="${v.x}" y2="${v.y}" class="${edgeClass}" />
-        <rect x="${mx - 8}" y="${my - 8}" width="16" height="14" rx="3" fill="#0f172a" />
-        <text x="${mx}" y="${my + 3}" text-anchor="middle" class="dijk-edge-w">${e.w}</text>
-      `;
-    });
-
-    Object.keys(nodeCoords).forEach(id => {
-      const pos = nodeCoords[id];
-      const isKnown = knownNodes && knownNodes.includes(id);
-      const isCurr = id === currentV;
-
-      let nodeClass = 'dijk-node';
-      if (isCurr) nodeClass += ' is-curr';
-      else if (isKnown) nodeClass += ' is-known';
-
-      html += `
-        <g transform="translate(${pos.x}, ${pos.y})">
-          <circle r="18" class="${nodeClass}"></circle>
-          <text text-anchor="middle" dy="5" class="dijk-node-text">${id}</text>
-        </g>
-      `;
-    });
-
-    html += '</svg></div>';
-
-    html += `
-      <div class="dijkstra-table-view">
-        <table class="dijk-table">
-          <thead>
-            <tr>
-              <th>Vertex</th>
-              <th>Known</th>
-              <th>d<sub>v</sub></th>
-              <th>p<sub>v</sub></th>
-            </tr>
-          </thead>
-          <tbody>
-    `;
-
-    Object.keys(table).forEach(v => {
-      const row = table[v];
-      const isCurr = v === currentV;
-      html += `
-        <tr class="${isCurr ? 'curr-row' : ''}">
-          <td><b>${v}</b></td>
-          <td><span class="known-tag ${row.known ? 'true' : 'false'}">${row.known ? 'True' : 'False'}</span></td>
-          <td><b>${row.dv}</b></td>
-          <td>${row.pv}</td>
-        </tr>
-      `;
-    });
-
-    html += '</tbody></table></div></div>';
-    container.innerHTML = html;
-  }
-
-  // ========================================================
-  // 7. Stack Postfix Evaluator Visualizer
-  // ========================================================
-  function createStackSteps() {
-    const steps = [];
-    const tokens = ['5', '3', '+', '8', '2', '-', '*', '4', '/'];
-    let stack = [];
-
-    steps.push({
-      line: 3,
-      explanation: 'เริ่มต้นคำนวณ Postfix: โทเค็นทั้งหมด = [5, 3, +, 8, 2, -, *, 4, /]',
-      vars: { stack: [], token: 'none' },
-      visualData: { stack: [], currentToken: null, op: 'init' }
-    });
-
-    tokens.forEach(tok => {
-      if (!isNaN(tok)) {
-        stack.push(Number(tok));
-        steps.push({
-          line: 9,
-          explanation: `อ่านได้ตัวเลข '${tok}' -> Push ลงใน Stack`,
-          vars: { pushed: tok, stack: [...stack] },
-          visualData: { stack: [...stack], currentToken: tok, op: 'push' }
-        });
-      } else {
-        const b = stack.pop();
-        const a = stack.pop();
-        let res = 0;
-        if (tok === '+') res = a + b;
-        else if (tok === '-') res = a - b;
-        else if (tok === '*') res = a * b;
-        else if (tok === '/') res = Math.floor(a / b);
-
-        steps.push({
-          line: 13,
-          explanation: `อ่านได้เครื่องหมาย '${tok}' -> Pop ${b} และ ${a} ออกมาคำนวณ: ${a} ${tok} ${b} = ${res}`,
-          vars: { operator: tok, operandA: a, operandB: b, result: res },
-          visualData: { stack: [...stack], currentToken: tok, op: 'calc', calcDesc: `${a} ${tok} ${b} = ${res}` }
-        });
-
-        stack.push(res);
-        steps.push({
-          line: 18,
-          explanation: `Push ผลลัพธ์ ${res} กลับลงใน Stack`,
-          vars: { pushed: res, stack: [...stack] },
-          visualData: { stack: [...stack], currentToken: tok, op: 'push' }
-        });
-      }
-    });
-
-    steps.push({
-      line: 22,
-      explanation: `🎉 สิ้นสุดนิพจน์! ค่าสุดท้ายใน Stack คือผลลัพธ์: ${stack[0]}`,
-      vars: { final_answer: stack[0] },
-      visualData: { stack: [...stack], currentToken: null, op: 'complete' }
-    });
-
-    return steps;
-  }
-
-  function renderStack(container, visualData) {
-    const { stack, currentToken, calcDesc } = visualData;
-
-    let html = `
-      <div class="stack-meta-bar">
-        <div class="s-token">โทเค็นปัจจุบัน: <span class="tok-badge">${currentToken || '—'}</span></div>
-        ${calcDesc ? `<div class="s-calc">${calcDesc}</div>` : ''}
+    container.innerHTML = `
+      <div style="padding:24px; text-align:center; color:var(--text-secondary);">
+        <h3>🕸️ Dijkstra Algorithm Visualizer</h3>
+        <p>โหนดเริ่มต้น: <b>${visualData.activeNode || 'A'}</b> | ปล่อยคลื่นตรวจจับเส้นทางสั้นสุดผ่าน Priority Queue</p>
       </div>
-      <div class="stack-bucket-wrapper">
-        <div class="stack-bucket">
     `;
-
-    if (stack.length === 0) {
-      html += '<div class="stack-empty">Stack ว่างเปล่า</div>';
-    } else {
-      for (let i = stack.length - 1; i >= 0; i--) {
-        const isTop = i === stack.length - 1;
-        html += `
-          <div class="stack-item ${isTop ? 'is-top' : ''}">
-            <span class="stack-val">${stack[i]}</span>
-            ${isTop ? '<span class="stack-top-badge">TOP</span>' : ''}
-          </div>
-        `;
-      }
-    }
-
-    html += '</div><div class="stack-base"></div></div>';
-    container.innerHTML = html;
   }
 
-  // ========================================================
-  // 8. Hash Table Visualizer (Exams/Hash.py)
-  // ========================================================
-  function createHashSteps(key = 'AB', tableSize = 10) {
-    const steps = [];
-    let hashVal = 0;
-    const chars = String(key || 'AB').split('');
-    const buckets = new Array(tableSize).fill(null);
-
-    steps.push({
-      line: 1,
-      explanation: `🔑 <b>Hashing (Exams/Hash.py)</b>: คำนวณ Hash สำหรับ Key = "<b>${key}</b>" ลงใน Table ขนาด ${tableSize} ช่อง`,
-      vars: { key: key, table_size: tableSize, hash_val: 0 },
-      visualData: { key: key, tableSize: tableSize, currentIdx: 0, sum: 0, buckets: [...buckets], op: 'init' }
-    });
-
-    chars.forEach((c, idx) => {
-      const code = c.charCodeAt(0);
-      hashVal += code;
-      steps.push({
-        line: 4, // for char in key: hash_val += ord(char)
-        explanation: `อักษรตัวที่ ${idx + 1}: '<b>${c}</b>' -> รหัส ASCII <code>ord('${c}') = ${code}</code> | ผลรวมสะสม <code>hash_val = ${hashVal}</code>`,
-        vars: { char: c, 'ord(char)': code, hash_val: hashVal },
-        visualData: { key: key, char: c, ord: code, sum: hashVal, tableSize: tableSize, buckets: [...buckets], op: 'char' }
-      });
-    });
-
-    const finalIdx = hashVal % tableSize;
-    buckets[finalIdx] = key;
-    steps.push({
-      line: 6, // return hash_val % table_size
-      explanation: `🎉 <b>ผลลัพธ์ Modulo</b>: <code>${hashVal} % ${tableSize} = ${finalIdx}</code> -> จัดเก็บ Key "<b>${key}</b>" ลงใน <b>Bucket [${finalIdx}]</b> เรียบร้อย`,
-      vars: { sum_ascii: hashVal, table_size: tableSize, slot_index: finalIdx },
-      visualData: { key: key, targetSlot: finalIdx, buckets: [...buckets], op: 'complete' }
-    });
-
-    return steps;
-  }
-
-  function renderHash(container, visualData) {
-    const { key, char, ord, sum, targetSlot, buckets, tableSize } = visualData;
-    let html = `
-      <div class="hash-sim-container">
-        <div class="hash-calc-card">
-          <div style="color:#a5b4fc; margin-bottom: 6px;">📐 <b>สูตรการคำนวณตาม Exams/Hash.py:</b> <code>hash_val = sum(ord(char)) % table_size</code></div>
-          <div style="color:#e2e8f0;">Key: <span style="color:#38bdf8; font-weight:700;">"${key}"</span> ${char ? `| ประมวลผล: <span style="color:#f59e0b; font-weight:700;">'${char}' (ASCII: ${ord})</span>` : ''} | ผลรวม: <span style="color:#34d399; font-weight:700;">${sum || 0}</span></div>
-        </div>
-        <div class="hash-table-grid">
-    `;
-
-    for (let i = 0; i < (tableSize || 10); i++) {
-      const isTarget = i === targetSlot;
-      html += `
-        <div class="hash-bucket ${isTarget ? 'is-target' : ''}">
-          <div class="hash-bucket-idx">Bucket [${i}]</div>
-          <div class="hash-bucket-val">${buckets && buckets[i] ? buckets[i] : '<span style="color:#475569; font-weight:normal;">Empty</span>'}</div>
-        </div>
-      `;
-    }
-
-    html += '</div></div>';
-    container.innerHTML = html;
-  }
-
-  // ========================================================
-  // Python Code Snippets for Live Sync (Matches Exams/*.py)
-  // ========================================================
+  // =========================================================================
+  // EXAM CODE SNIPPETS (Directly synchronized with Exams/*.py)
+  // =========================================================================
   const EXAM_CODE_SNIPPETS = {
     assign3_heap: {
       filename: 'Exams/Heap.py',
@@ -1265,60 +1752,78 @@ window.DsaVisualizers = (function () {
     lecture5_bst_delete: {
       filename: 'Exams/BinarySearchTrees.py',
       lines: [
-        '# Exams/BinarySearchTrees.py — BST Node Deletion',
+        '# Exams/BinarySearchTrees.py — Binary Search Tree Deletion',
+        'class Node:',
+        '    def __init__(self, value):',
+        '        self.value = value',
+        '        self.left = None',
+        '        self.right = None',
+        '',
         'class BinarySearchTree:',
-        '    def delete(self, root, key):',
-        '        if root is None: return root',
-        '        if key < root.val:',
-        '            root.left = self.delete(root.left, key)',
-        '        elif key > root.val:',
-        '            root.right = self.delete(root.right, key)',
+        '    def __init__(self):',
+        '        self.root = None',
+        '',
+        '    def insert(self, value):',
+        '        if self.root is None: self.root = Node(value)',
+        '        else: self._insert_recursive(self.root, value)',
+        '',
+        '    def _insert_recursive(self, current_node: Node, value):',
+        '        if value < current_node.value:',
+        '            if current_node.left is None:',
+        '                current_node.left = Node(value)',
+        '            else:',
+        '                self._insert_recursive(current_node.left, value)',
+        '        elif value > current_node.value:',
+        '            if current_node.right is None:',
+        '                current_node.right = Node(value)',
+        '            else:',
+        '                self._insert_recursive(current_node.right, value)',
+        '',
+        '    def delete(self, value):',
+        '        self.root = self._delete_recursive(self.root, value)',
+        '',
+        '    def _delete_recursive(self, current_node: Node, value):',
+        '        if current_node is None: return current_node',
+        '        if value < current_node.value:',
+        '            current_node.left = self._delete_recursive(current_node.left, value)',
+        '        elif value > current_node.value:',
+        '            current_node.right = self._delete_recursive(current_node.right, value)',
         '        else:',
         '            # Case 1 & 2: 0 or 1 child',
-        '            if root.left is None: return root.right',
-        '            if root.right is None: return root.left',
+        '            if current_node.left is None: return current_node.right',
+        '            elif current_node.right is None: return current_node.left',
         '            # Case 3: 2 children -> In-order Successor',
-        '            temp = self.find_min(root.right)',
-        '            root.val = temp.val',
-        '            root.right = self.delete(root.right, temp.val)',
-        '        return root'
+        '            temp_node = self._min_value_node(current_node.right)',
+        '            current_node.value = temp_node.value',
+        '            current_node.right = self._delete_recursive(current_node.right, temp_node.value)',
+        '        return current_node',
+        '',
+        '    def _min_value_node(self, current_node: Node) -> Node:',
+        '        if current_node.left is None: return current_node',
+        '        return self._min_value_node(current_node.left)'
       ]
     },
     stack_postfix: {
       filename: 'Exams/InfixToPostFix.py',
       lines: [
-        '# Exams/InfixToPostFix.py — Stack Evaluation',
-        'class Stack:',
-        '    def eval_postfix(tokens):',
-        '        stack = []',
-        '        for token in tokens:',
-        '            if token.isdigit():',
-        '                stack.append(int(token))',
-        '            else:',
-        '                b = stack.pop()',
-        '                a = stack.pop()',
-        '                if token == "+": stack.append(a + b)',
-        '                elif token == "-": stack.append(a - b)',
-        '                elif token == "*": stack.append(a * b)',
-        '                elif token == "/": stack.append(a // b)',
-        '        return stack.pop()'
-      ]
-    },
-    assign1_linkedlist: {
-      filename: 'Exams/LinkedList/612037.py',
-      lines: [
-        '# Exams/LinkedList/612037.py — Singly Linked List',
-        'class LinkedList:',
-        '    def delete(self, item):',
-        '        curr = self.head',
-        '        prev = None',
-        '        while curr and curr.get_data() != item:',
-        '            prev = curr',
-        '            curr = curr.get_next()',
-        '        if not curr: return False',
-        '        if not prev: self.head = curr.get_next()',
-        '        else: prev.set_next(curr.get_next())',
-        '        return True'
+        '# Exams/InfixToPostFix.py — Infix to Postfix Converter',
+        'def infix_to_postfix(expression):',
+        '    stack = []',
+        '    postfix = []',
+        '    for token in expression:',
+        '        if token.isalnum():',
+        '            postfix.append(token)',
+        '        elif token == "(": ',
+        '            stack.append(token)',
+        '        elif token == ")":',
+        '            while stack and stack[-1] != "(": postfix.append(stack.pop())',
+        '            stack.pop()',
+        '        else:',
+        '            while stack and precedence(stack[-1]) >= precedence(token):',
+        '                postfix.append(stack.pop())',
+        '            stack.push(token)',
+        '    while stack: postfix.append(stack.pop())',
+        '    return "".join(postfix)'
       ]
     },
     exam_hash: {
@@ -1329,61 +1834,97 @@ window.DsaVisualizers = (function () {
         '    hash_val = 0',
         '    for char in key:',
         '        hash_val += ord(char)',
-        '        print(f"-{ord(char)}")',
         '    return hash_val % table_size',
         '',
         'if __name__ == "__main__":',
         '    print(hash("AB", 10))'
       ]
+    },
+    assign1_linkedlist: {
+      filename: 'Exams/LinkedList/612037.py',
+      lines: [
+        '# Exams/LinkedList/612037.py — Singly Linked List',
+        'class LinkedList:',
+        '    def delete(self, item):',
+        '        curr = self.head',
+        '        prev = None',
+        '        while curr and curr.student_id != item:',
+        '            prev = curr',
+        '            curr = curr.next',
+        '        if not curr: return False',
+        '        if not prev: self.head = curr.next',
+        '        else: prev.next = curr.next',
+        '        return True'
+      ]
     }
   };
 
+  // =========================================================================
+  // PUBLIC API DISPATCHER
+  // =========================================================================
   return {
     getStepsForExercise: function (exId) {
-      if (exId === 'assign1_linkedlist') return createLinkedListSteps(window.DSA_EXERCISES[0].defaultData);
-      if (exId === 'test1_queue') return createQueueSteps();
-      if (exId === 'lecture5_bst_delete') return createBstSteps();
       if (exId === 'assign3_heap') return createHeapDefaultSteps();
+      if (exId === 'lecture5_bst_delete') return createBstDefaultSteps();
+      if (exId === 'exam_hash') return createHashSteps('HELLO', 10);
+      if (exId === 'stack_postfix') return createStackSteps('(A + B) * C - D / E');
+      if (exId === 'assign1_linkedlist') return createLinkedListSteps();
+      if (exId === 'test1_queue') return createQueueSteps();
       if (exId === 'test2_sorting') return createSortingSteps();
       if (exId === 'assign4_dijkstra') return createDijkstraSteps();
-      if (exId === 'stack_postfix') return createStackSteps();
-      if (exId === 'exam_hash') return createHashSteps();
-      return createLinkedListSteps();
+      return createHeapDefaultSteps();
     },
 
     executeDynamicAction: function (exId, action, val) {
       if (exId === 'assign3_heap') {
-        if (action === 'insert') return createDynamicHeapInsertSteps(val);
-        if (action === 'delete') return createDynamicHeapDeleteMinSteps();
-        if (action === 'search') return createDynamicHeapFindMinSteps();
-        if (action === 'preset') return resetDynamicHeapToExam();
-        if (action === 'clear') { setDynamicHeap([0]); return createHeapDefaultSteps(); }
+        if (action === 'insert') return createHeapInsertSteps(val);
+        if (action === 'delete') return createHeapDeleteMinSteps();
+        if (action === 'search') return createHeapFindMinSteps();
+        if (action === 'preset') return resetHeapToExamPreset();
+        if (action === 'toggle_type') {
+          heapType = heapType === 'min' ? 'max' : 'min';
+          return createHeapDefaultSteps(`สลับโหมดเป็น Binary ${heapType === 'min' ? 'Min-Heap' : 'Max-Heap'}`);
+        }
+        if (action === 'clear') {
+          setHeapState([0]);
+          return createHeapDefaultSteps('ล้างข้อมูลในฮีปเรียบร้อย');
+        }
         if (action === 'random') {
-          // Generate 8-11 sorted random values into heap
           const nums = [];
-          const count = 7 + Math.floor(Math.random() * 4);
-          for (let k = 0; k < count; k++) {
-            nums.push(Math.floor(Math.random() * 80) + 10);
-          }
-          // build heap bottom up
-          setDynamicHeap([0, ...nums]);
-          return createHeapDefaultSteps();
+          for (let k = 0; k < 8; k++) nums.push(Math.floor(Math.random() * 80) + 10);
+          setHeapState([0, ...nums]);
+          return createHeapDefaultSteps('สุ่มชุดข้อมูลตัวเลขใหม่ 8 ค่า');
+        }
+      }
+
+      if (exId === 'lecture5_bst_delete') {
+        if (action === 'insert') return createDynamicBstInsertSteps(val);
+        if (action === 'delete') return createDynamicBstDeleteSteps(val);
+        if (action === 'preset') { initBstPreset(); return createBstDefaultSteps('รีเซ็ต BST ตามตัวอย่างข้อสอบ'); }
+        if (action === 'clear') { bstRoot = null; return createBstDefaultSteps('ล้างข้อมูลต้นไม้ BST เรียบร้อย'); }
+        if (action === 'random') {
+          initBstPreset();
+          return createBstDefaultSteps();
         }
       }
 
       if (exId === 'exam_hash') {
-        if (action === 'insert' || action === 'search') {
-          return createHashSteps(val || 'HELLO', 10);
+        if (action === 'insert' || action === 'search') return createHashSteps(val || 'HELLO', hashCapacity);
+        if (action === 'preset') return resetHashTable();
+        if (action === 'toggle_type') {
+          hashStrategy = hashStrategy === 'chaining' ? 'linear_probing' : 'chaining';
+          return createHashSteps(val || 'HELLO', hashCapacity);
         }
-        if (action === 'preset') return createHashSteps('AB', 10);
-      }
-
-      if (exId === 'lecture5_bst_delete') {
-        if (action === 'preset') return createBstSteps();
+        if (action === 'clear') {
+          hashBuckets = Array.from({ length: hashCapacity }, () => []);
+          return createHashSteps('', hashCapacity);
+        }
       }
 
       if (exId === 'stack_postfix') {
-        if (action === 'preset') return createStackSteps();
+        if (action === 'insert' || action === 'search' || action === 'preset') {
+          return createStackSteps(val || '(A + B) * C - D / E');
+        }
       }
 
       return null;
@@ -1395,15 +1936,15 @@ window.DsaVisualizers = (function () {
 
     renderVisualizer: function (container, exType, visualData) {
       if (!container || !visualData) return;
-      if (exType === 'linked_list') renderLinkedList(container, visualData);
-      else if (exType === 'queue') renderQueue(container, visualData);
+      if (exType === 'heap') renderHeap(container, visualData);
       else if (exType === 'bst') renderBst(container, visualData);
-      else if (exType === 'heap') renderHeap(container, visualData);
+      else if (exType === 'hash') renderHash(container, visualData);
+      else if (exType === 'stack') renderStack(container, visualData);
+      else if (exType === 'linked_list') renderLinkedList(container, visualData);
+      else if (exType === 'queue') renderQueue(container, visualData);
       else if (exType === 'sorting') renderSorting(container, visualData);
       else if (exType === 'dijkstra') renderDijkstra(container, visualData);
-      else if (exType === 'stack') renderStack(container, visualData);
-      else if (exType === 'hash') renderHash(container, visualData);
-      else renderLinkedList(container, visualData);
+      else renderHeap(container, visualData);
     }
   };
 })();

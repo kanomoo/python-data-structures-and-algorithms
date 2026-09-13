@@ -1,0 +1,180 @@
+- generic [ref=f38e1]:
+  - navigation [ref=f38e2]:
+    - generic [ref=f38e3]:
+      - link "⚡ DSA LAB STUDIO v3.0" [ref=f38e4] [cursor=pointer]:
+        - /url: ../index.html
+        - generic [ref=f38e5]: ⚡
+        - generic [ref=f38e6]: DSA LAB STUDIO
+        - generic [ref=f38e7]: v3.0
+      - generic [ref=f38e8]:
+        - button "🌲 Binary Heap (Priority Queue)" [ref=f38e9] [cursor=pointer]:
+          - generic [ref=f38e10]: 🌲
+          - text: Binary Heap (Priority Queue)
+        - button "🌿 Binary Search Tree (BST)" [ref=f38e11] [cursor=pointer]:
+          - generic [ref=f38e12]: 🌿
+          - text: Binary Search Tree (BST)
+        - button "⚡ Hash Table & Collisions" [ref=f38e13] [cursor=pointer]:
+          - generic [ref=f38e14]: ⚡
+          - text: Hash Table & Collisions
+        - 'button "🥞 Stack: Infix to Postfix" [active] [ref=f38e15] [cursor=pointer]':
+          - generic [ref=f38e16]: 🥞
+          - text: "Stack: Infix to Postfix"
+      - generic [ref=f38e17]:
+        - link "📚 สารานุกรม Wiki" [ref=f38e18] [cursor=pointer]:
+          - /url: ../Wiki/index.html
+          - generic [ref=f38e19]: 📚
+          - text: สารานุกรม Wiki
+        - link "🏠 Home" [ref=f38e20] [cursor=pointer]:
+          - /url: ../index.html
+          - generic [ref=f38e21]: 🏠
+          - text: Home
+  - navigation [ref=f38e22]:
+    - generic [ref=f38e23]:
+      - link "① หลักการ & Precedence" [ref=f38e1761] [cursor=pointer]:
+        - /url: "#stack-principle"
+      - link "② Shunting-Yard Stepper" [ref=f38e1762] [cursor=pointer]:
+        - /url: "#stack-shunting"
+  - generic [ref=f38e1763]:
+    - banner [ref=f38e1764]:
+      - generic [ref=f38e1765]: DATA STRUCTURES & ALGORITHMS — LECTURE 3 / EXAMS
+      - heading "Stack & Infix to Postfix Conversion" [level=1] [ref=f38e1767]
+      - paragraph [ref=f38e1768]: อัลกอริทึม Shunting-Yard สำหรับแปลงนิพจน์คณิตศาสตร์ Infix เป็น Postfix (Reverse Polish Notation) โดยการจัดการลำดับความสำคัญของตัวดำเนินการ (Operator Precedence) ด้วย Stack
+    - generic [ref=f38e1769]:
+      - generic [ref=f38e1770]:
+        - generic [ref=f38e1771]:
+          - generic [ref=f38e1772]: 01 — หลักการ
+          - heading "ลำดับความสำคัญของตัวดำเนินการ & Shunting-Yard" [level=2] [ref=f38e1773]
+          - paragraph [ref=f38e1774]: กฎการ Push / Pop บน Stack เมื่ออ่านเจอ Operand, Operator, และวงเล็บ
+        - generic [ref=f38e1775]:
+          - heading "1 ตารางลำดับความสำคัญ (Precedence)" [level=3] [ref=f38e1776]:
+            - generic [ref=f38e1777]: "1"
+            - text: ตารางลำดับความสำคัญ (Precedence)
+          - table [ref=f38e1778]:
+            - rowgroup [ref=f38e1779]:
+              - row [ref=f38e1780]:
+                - columnheader "ตัวดำเนินการ" [ref=f38e1781]
+                - columnheader "ความหมาย" [ref=f38e1782]
+                - columnheader "ระดับ Precedence" [ref=f38e1783]
+                - columnheader "Associativity" [ref=f38e1784]
+              - row [ref=f38e1785]:
+                - cell "^" [ref=f38e1786]
+                - cell "ยกกำลัง (Exponent)" [ref=f38e1787]
+                - cell "3 (สูงสุด)" [ref=f38e1788]
+                - cell "ขวาไปซ้าย (Right-to-Left)" [ref=f38e1789]
+              - row [ref=f38e1790]:
+                - cell "*, /" [ref=f38e1791]
+                - cell "คูณ, หาร" [ref=f38e1792]
+                - cell "2" [ref=f38e1793]
+                - cell "ซ้ายไปขวา (Left-to-Right)" [ref=f38e1794]
+              - row [ref=f38e1795]:
+                - cell "+, -" [ref=f38e1796]
+                - cell "บวก, ลบ" [ref=f38e1797]
+                - cell "1" [ref=f38e1798]
+                - cell "ซ้ายไปขวา (Left-to-Right)" [ref=f38e1799]
+              - row [ref=f38e1800]:
+                - cell "(" [ref=f38e1801]
+                - cell "วงเล็บเปิดใน Stack" [ref=f38e1802]
+                - cell "0 (ต่ำสุดเมื่ออยู่ใน Stack)" [ref=f38e1803]
+                - cell "—" [ref=f38e1804]
+      - generic [ref=f38e1805]:
+        - generic [ref=f38e1806]:
+          - generic [ref=f38e1807]: 02 — step-by-step conversion
+          - heading "ไล่กระบวนการแปลงนิพจน์ข้อสอบทีละ Token" [level=2] [ref=f38e1808]
+          - paragraph [ref=f38e1809]:
+            - text: "นิพจน์:"
+            - generic [ref=f38e1810]: (A + B) * C - (D - E) * (F + G)
+        - generic [ref=f38e1811]:
+          - generic [ref=f38e1812]:
+            - generic [ref=f38e1813]:
+              - generic [ref=f38e1815]:
+                - generic [ref=f38e1816]: Operator Stack Visualizer
+                - generic [ref=f38e1817]: currentSize = 0
+              - generic [ref=f38e1819]:
+                - generic [ref=f38e1820]:
+                  - generic [ref=f38e1821]: Postfix Output Stream
+                  - generic [ref=f38e1822]: Reverse Polish Notation
+                - generic [ref=f38e1824]:
+                  - generic [ref=f38e1825]: Out
+                  - text: (ยังไม่มีผลลัพธ์)
+                - generic [ref=f38e1826]:
+                  - generic [ref=f38e1827]: hole (ตำแหน่งว่าง)
+                  - generic [ref=f38e1829]: กำลังเปรียบเทียบ
+                  - generic [ref=f38e1831]: เพิ่งย้ายค่า
+                  - generic [ref=f38e1833]: ค่าสุดท้ายที่วาง
+            - generic [ref=f38e1835]:
+              - generic [ref=f38e1836]:
+                - generic [ref=f38e1837]:
+                  - generic [ref=f38e1838]: Source Code
+                  - generic [ref=f38e1839]: python
+                - generic [ref=f38e1840]:
+                  - generic [ref=f38e1841]:
+                    - generic [ref=f38e1842]: "1"
+                    - generic [ref=f38e1843]: "def infix_to_postfix(expr):"
+                  - generic [ref=f38e1844]:
+                    - generic [ref=f38e1845]: "2"
+                    - generic [ref=f38e1846]: stack = []
+                  - generic [ref=f38e1847]:
+                    - generic [ref=f38e1848]: "3"
+                    - generic [ref=f38e1849]: output = []
+                  - generic [ref=f38e1850]:
+                    - generic [ref=f38e1851]: "4"
+                    - generic [ref=f38e1852]: "for token in expr.split():"
+                  - generic [ref=f38e1853]:
+                    - generic [ref=f38e1854]: "5"
+                    - generic [ref=f38e1855]: "if is_operand(token): output.append(token)"
+                  - generic [ref=f38e1856]:
+                    - generic [ref=f38e1857]: "6"
+                    - generic [ref=f38e1858]: "elif token == '(': stack.push(token)"
+                  - generic [ref=f38e1859]:
+                    - generic [ref=f38e1860]: "7"
+                    - generic [ref=f38e1861]: "elif token == ')':"
+                  - generic [ref=f38e1862]:
+                    - generic [ref=f38e1863]: "8"
+                    - generic [ref=f38e1864]: "while stack and stack.top() != '(': output.append(stack.pop())"
+                  - generic [ref=f38e1865]:
+                    - generic [ref=f38e1866]: "9"
+                    - generic [ref=f38e1867]: "stack.pop() # Remove '('"
+                  - generic [ref=f38e1868]:
+                    - generic [ref=f38e1869]: "10"
+                    - generic [ref=f38e1870]: "else: # Operator"
+                  - generic [ref=f38e1871]:
+                    - generic [ref=f38e1872]: "11"
+                    - generic [ref=f38e1873]: "while stack and precedence(stack.top()) >= precedence(token):"
+                  - generic [ref=f38e1874]:
+                    - generic [ref=f38e1875]: "12"
+                    - generic [ref=f38e1876]: output.append(stack.pop())
+                  - generic [ref=f38e1877]:
+                    - generic [ref=f38e1878]: "13"
+                    - generic [ref=f38e1879]: stack.push(token)
+                  - generic [ref=f38e1880]:
+                    - generic [ref=f38e1881]: "14"
+                    - generic [ref=f38e1882]: "while stack: output.append(stack.pop())"
+                  - generic [ref=f38e1883]:
+                    - generic [ref=f38e1884]: "15"
+                    - generic [ref=f38e1885]: return ' '.join(output)
+              - generic [ref=f38e1886]:
+                - generic [ref=f38e1887]: Watch Variables
+                - generic [ref=f38e1888]:
+                  - generic [ref=f38e1889]:
+                    - generic [ref=f38e1890]: expr
+                    - generic [ref=f38e1891]: (A + B) * C - (D - E) * (F + G)
+                  - generic [ref=f38e1892]:
+                    - generic [ref=f38e1893]: tokens_left
+                    - generic [ref=f38e1894]: "19"
+              - generic [ref=f38e1895]: "เริ่มต้น: เตรียมแปลงนิพจน์ Infix \"(A + B) * C - (D - E) * (F + G)\" เป็น Postfix"
+          - generic [ref=f38e1896]:
+            - button "⟲ Reset" [ref=f38e1897] [cursor=pointer]
+            - button "◀ Prev" [disabled] [ref=f38e1898]
+            - button "Next ▶" [ref=f38e1899] [cursor=pointer]
+            - button "▶ Auto Play" [ref=f38e1900] [cursor=pointer]
+            - generic [ref=f38e1901]: Step 0 / 35
+          - generic [ref=f38e1903]:
+            - generic [ref=f38e1904]: Debug Console
+            - generic [ref=f38e1905]: "[step 0] เริ่มต้น: เตรียมแปลงนิพจน์ Infix \"(A + B) * C - (D - E) * (F + G)\" เป็น Postfix"
+  - contentinfo [ref=f38e431]:
+    - generic [ref=f38e432]:
+      - paragraph [ref=f38e433]: DSA Lab Studio — Interactive Visual Debugger & Knowledge Hub
+      - paragraph [ref=f38e434]:
+        - text: สร้างขึ้นตามแนวทางเอกสารคำสอนและข้อสอบวิชา Data Structures and Algorithms · เชื่อมโยงกับ
+        - link "DSA Wiki สารานุกรม 10 บท" [ref=f38e435] [cursor=pointer]:
+          - /url: ../Wiki/index.html

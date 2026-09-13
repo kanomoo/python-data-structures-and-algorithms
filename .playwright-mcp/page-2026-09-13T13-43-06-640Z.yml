@@ -1,0 +1,161 @@
+- generic [active] [ref=f4e1]:
+  - heading "Automated Studio & Python Runner Test Harness" [level=1] [ref=f4e2]
+  - generic [ref=f4e3]: Starting tests...
+  - generic [ref=f4e4]:
+    - heading "✂️ 3. ขั้นตอนการจัดการ Pointer ทีละสเต็ป" [level=2] [ref=f4e5]
+    - generic [ref=f4e6]:
+      - generic [ref=f4e7]:
+        - generic [ref=f4e8]:
+          - generic [ref=f4e9]: "Chapter 3: Linked Lists"
+          - heading "🔬 Interactive Linked List Studio (ห้องทดลองและตัวตรวจสอบพอยน์เตอร์)" [level=3] [ref=f4e10]
+        - generic [ref=f4e11]: สเต็ป 2 / 3
+      - generic [ref=f4e12]:
+        - generic [ref=f4e13]:
+          - generic [ref=f4e14]: "ค่าโหนด (Value):"
+          - textbox "ใส่ตัวเลขหรือข้อความ" [ref=f4e15]: "99"
+        - generic [ref=f4e16]:
+          - button "➕ แทรก Head" [ref=f4e17] [cursor=pointer]
+          - button "➕ แทรก Tail" [ref=f4e18] [cursor=pointer]
+          - button "🗑️ ลบค่านี้" [ref=f4e19] [cursor=pointer]
+          - button "🔄 รีเซ็ต" [ref=f4e20] [cursor=pointer]
+      - generic [ref=f4e23]:
+        - generic [ref=f4e24]:
+          - generic [ref=f4e25]: CURR 📍
+          - generic [ref=f4e27]:
+            - generic [ref=f4e28]: "0x200"
+            - generic [ref=f4e29]:
+              - generic "node data" [ref=f4e30]: "99"
+              - generic "next pointer" [ref=f4e32]: "next: 0x100"
+          - generic [ref=f4e33]: ➔
+        - generic [ref=f4e34]:
+          - generic [ref=f4e35]: HEAD
+          - generic [ref=f4e37]:
+            - generic [ref=f4e38]: "0x100"
+            - generic [ref=f4e39]:
+              - generic "node data" [ref=f4e40]: "10"
+              - generic "next pointer" [ref=f4e42]: "next: 0x140"
+          - generic [ref=f4e43]: ➔
+        - generic [ref=f4e44]:
+          - generic [ref=f4e45]:
+            - generic [ref=f4e46]: "0x140"
+            - generic [ref=f4e47]:
+              - generic "node data" [ref=f4e48]: "20"
+              - generic "next pointer" [ref=f4e50]: "next: 0x180"
+          - generic [ref=f4e51]: ➔
+        - generic [ref=f4e52]:
+          - generic [ref=f4e53]: TAIL
+          - generic [ref=f4e55]:
+            - generic [ref=f4e56]: "0x180"
+            - generic [ref=f4e57]:
+              - generic "node data" [ref=f4e58]: "30"
+              - generic "next pointer" [ref=f4e60]: "next: None"
+          - generic [ref=f4e61]: ➔ None
+      - generic [ref=f4e62]:
+        - generic [ref=f4e63]:
+          - generic [ref=f4e64]:
+            - generic [ref=f4e65]: "สเต็ป 2: เชื่อมพอยน์เตอร์ new_node.next = head"
+            - generic [ref=f4e66]: ▶ Line 1
+          - generic [ref=f4e67]: กำหนดให้ new_node.next ชี้ไปยังโหนดเดิมที่ตำแหน่ง head (0x100)
+          - generic [ref=f4e68]:
+            - button "⏮️ ย้อนสเต็ป" [ref=f4e69] [cursor=pointer]
+            - button "▶ เล่น (Play)" [ref=f4e70] [cursor=pointer]
+            - button "⏭️ สเต็ปถัดไป" [ref=f4e71] [cursor=pointer]
+          - generic [ref=f4e72]:
+            - generic [ref=f4e73]: "🔍 ตัวแปรขณะรัน (Live Variables Watch):"
+            - table [ref=f4e74]:
+              - rowgroup [ref=f4e75]:
+                - row [ref=f4e76]:
+                  - columnheader "ตัวแปร (Variable)" [ref=f4e77]
+                  - columnheader "ค่าในหน่วยความจำ (Value)" [ref=f4e78]
+              - rowgroup [ref=f4e79]:
+                - row [ref=f4e80]:
+                  - cell "new_node.next" [ref=f4e81]
+                  - cell "0x100" [ref=f4e82]
+                - row [ref=f4e83]:
+                  - cell "head" [ref=f4e84]
+                  - cell "0x100" [ref=f4e85]
+        - generic [ref=f4e86]:
+          - generic [ref=f4e87]:
+            - generic [ref=f4e88]:
+              - generic [ref=f4e89]: 🐍
+              - generic [ref=f4e90]: Python Algorithm Code Debugger
+            - generic [ref=f4e91]: Step Debug
+          - generic [ref=f4e93]:
+            - generic [ref=f4e94]:
+              - generic [ref=f4e95]: "1"
+              - generic [ref=f4e96]: "def insert_at(self, index, item):"
+              - generic [ref=f4e97]: ◀
+            - generic [ref=f4e98]:
+              - generic [ref=f4e99]: "2"
+              - generic [ref=f4e100]: new_node = Node(item)
+              - generic [ref=f4e101]: ◀
+            - generic [ref=f4e102]:
+              - generic [ref=f4e103]: "3"
+              - generic [ref=f4e104]: "if index == 0:"
+              - generic [ref=f4e105]: ◀
+            - generic [ref=f4e106]:
+              - generic [ref=f4e107]: "4"
+              - generic [ref=f4e108]: new_node.next = self.head; self.head = new_node; return
+              - generic [ref=f4e109]: ◀
+            - generic [ref=f4e110]:
+              - generic [ref=f4e111]: "5"
+              - generic [ref=f4e112]: curr = self.head
+              - generic [ref=f4e113]: ◀
+            - generic [ref=f4e114]:
+              - generic [ref=f4e115]: "6"
+              - generic [ref=f4e116]: "for _ in range(index - 1): curr = curr.next"
+              - generic [ref=f4e117]: ◀
+            - generic [ref=f4e118]:
+              - generic [ref=f4e119]: "7"
+              - generic [ref=f4e120]: new_node.next = curr.next
+              - generic [ref=f4e121]: ◀
+            - generic [ref=f4e122]:
+              - generic [ref=f4e123]: "8"
+              - generic [ref=f4e124]: curr.next = new_node
+              - generic [ref=f4e125]: ◀
+            - generic [ref=f4e126]:
+              - generic [ref=f4e127]: "9"
+              - generic [ref=f4e128]: ◀
+            - generic [ref=f4e129]:
+              - generic [ref=f4e130]: "10"
+              - generic [ref=f4e131]: "def remove(self, target):"
+              - generic [ref=f4e132]: ◀
+            - generic [ref=f4e133]:
+              - generic [ref=f4e134]: "11"
+              - generic [ref=f4e135]: curr, prev = self.head, None
+              - generic [ref=f4e136]: ◀
+            - generic [ref=f4e137]:
+              - generic [ref=f4e138]: "12"
+              - generic [ref=f4e139]: "while curr and curr.data != target:"
+              - generic [ref=f4e140]: ◀
+            - generic [ref=f4e141]:
+              - generic [ref=f4e142]: "13"
+              - generic [ref=f4e143]: prev = curr; curr = curr.next
+              - generic [ref=f4e144]: ◀
+            - generic [ref=f4e145]:
+              - generic [ref=f4e146]: "14"
+              - generic [ref=f4e147]: "if prev is None: self.head = curr.next"
+              - generic [ref=f4e148]: ◀
+            - generic [ref=f4e149]:
+              - generic [ref=f4e150]: "15"
+              - generic [ref=f4e151]: "else: prev.next = curr.next"
+              - generic [ref=f4e152]: ◀
+    - generic [ref=f4e153]:
+      - generic [ref=f4e154]:
+        - generic [ref=f4e155]: python
+        - button "▶ รันโค้ดทันที (Run Live)" [ref=f4e157] [cursor=pointer]
+      - code [ref=f4e159]: "# Test Python Code ll = [10, 20, 30] print(\"Testing Linked List in Wiki:\", ll) ll.append(99) print(\"Updated list:\", ll)"
+    - generic [ref=f4e160]:
+      - generic [ref=f4e161]:
+        - generic [ref=f4e162]: CPython 3.12 (Live WebAssembly Runner)
+        - generic [ref=f4e165]:
+          - button "⚡ รันโปรแกรม (Execute)" [ref=f4e166] [cursor=pointer]
+          - button "🔄 คืนค่าเดิม" [ref=f4e167] [cursor=pointer]
+          - button "🗑️ ล้าง" [ref=f4e168] [cursor=pointer]
+      - textbox "แก้ไขโค้ดและทดลองเปลี่ยนค่าได้ตามต้องการ" [ref=f4e169]: "# Test Python Code ll = [10, 20, 30] print(\"Testing Linked List in Wiki:\", ll) ll.append(99) print(\"Updated list:\", ll)"
+      - generic [ref=f4e170]:
+        - generic [ref=f4e171]:
+          - generic [ref=f4e172]: TERMINAL OUTPUT (STDOUT)
+          - generic [ref=f4e173]: ⏱️ 0ms (Local Engine)
+        - generic [ref=f4e174]: "\"Testing Linked List in Wiki:\", ll \"Updated list:\", ll"
+  - generic [ref=f4e175]: "1. Testing widget mount... ✅ Studio Widget successfully mounted in DOM 2. Testing Insert Head operation with value 99... Widget Step Exp: สร้างโหนดใหม่ new_node = Node(99) ที่หน่วยความจำ 0x200 3. Testing Step Next button... Widget Step 2 Exp: กำหนดให้ new_node.next ชี้ไปยังโหนดเดิมที่ตำแหน่ง head (0x100) 4. Testing Inline Python Runner toggle..."

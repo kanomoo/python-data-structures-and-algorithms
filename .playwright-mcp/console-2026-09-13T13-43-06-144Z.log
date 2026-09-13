@@ -1,0 +1,3 @@
+[     321ms] TypeError: Cannot set properties of null (setting 'innerHTML')
+    at renderSidebar (http://localhost:8080/Wiki/app.js:209:35)
+    at HTMLDocument.initApp (http://localhost:8080/Wiki/app.js:75:5)

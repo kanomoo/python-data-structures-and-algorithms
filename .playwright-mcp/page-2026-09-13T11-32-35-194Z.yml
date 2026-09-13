@@ -1,0 +1,246 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e9]:
+      - heading "DSA Lab Studio" [level=1] [ref=e10]
+      - paragraph [ref=e11]: Interactive Debugger & Python Runner
+    - generic [ref=e12]:
+      - button "🎯 ข้อสอบ/การบ้าน" [ref=e13] [cursor=pointer]
+      - button "🧱 เชิงเส้น" [ref=e14] [cursor=pointer]
+      - button "🌳 ต้นไม้ & ฮีป" [ref=e15] [cursor=pointer]
+    - generic [ref=e16]:
+      - generic [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: Assignment 1
+        - generic [ref=e20]: "🔗 Assignment 1: Singly Linked List (ระบบรายชื่อนักศึกษา)"
+        - generic [ref=e21]: สร้าง Linked List จัดการข้อมูลนักศึกษา (ID, Name, GPA) พร้อมแทรกและลบโหนด
+      - generic [ref=e22] [cursor=pointer]:
+        - generic [ref=e23]: Test Program 1
+        - generic [ref=e25]: "📥 Test Program 1: Circular Array Queue"
+        - generic [ref=e26]: จำลองการทำงานของคิววงกลม (Circular Queue) พร้อมตัวชี้ front, rear และ size
+      - generic [ref=e27] [cursor=pointer]:
+        - generic [ref=e28]: Lecture 5.2
+        - generic [ref=e30]: "🌲 Lecture 5.2: BST Deletion (กรณีโหนดมีลูก 2 ตัว)"
+        - generic [ref=e31]: ค้นหา In-order Successor (ค่าน้อยสุดในกิ่งขวา) มาแทนที่โหนดที่ถูกลบ
+      - generic [ref=e32] [cursor=pointer]:
+        - generic [ref=e33]: Assignment 3
+        - generic [ref=e35]: "🔺 Assignment 3: Binary Min-Heap (Percolate Up & Down)"
+        - generic [ref=e36]: "โครงสร้างฮีปแบบ Complete Binary Tree ใน Array: Insert & DeleteMin"
+      - generic [ref=e37] [cursor=pointer]:
+        - generic [ref=e38]: Test Program 2
+        - generic [ref=e40]: "📊 Test Program 2: Sorting Comparison (Bubble, Selection, Insertion, Quick)"
+        - generic [ref=e41]: เปรียบเทียบการเรียงลำดับข้อมูล นับจำนวน Comparisons และ Swaps
+      - generic [ref=e42] [cursor=pointer]:
+        - generic [ref=e43]: Assignment 4
+        - generic [ref=e45]: "🗺️ Assignment 4: Shortest Path (Dijkstra Algorithm)"
+        - generic [ref=e46]: คำนวณวิถีสั้นสุดบนกราฟถ่วงน้ำหนักจุดยอด v1 - v7 ตามสไลด์การบ้าน
+    - generic [ref=e47]:
+      - generic [ref=e48]: กำลังโหลด CPython WebAssembly...
+      - link "สูตร 💡" [ref=e51] [cursor=pointer]:
+        - /url: ../Wiki/index.html#/Glossary & Complexity Cheat Sheet
+  - generic "ลากเพื่อปรับขนาดความกว้างเมนู" [ref=e52]
+  - main [ref=e53]:
+    - generic [ref=e54]:
+      - generic [ref=e55]:
+        - button "☰" [ref=e56] [cursor=pointer]
+        - generic [ref=e57]:
+          - generic [ref=e58]: Assignment 1
+          - generic [ref=e59]: /
+          - generic [ref=e60]: Singly Linked List (ระบบรายชื่อนักศึกษา)
+      - generic [ref=e61]:
+        - link "📚 สารานุกรม Wiki" [ref=e62] [cursor=pointer]:
+          - /url: ../Wiki/index.html
+          - generic [ref=e63]: 📚
+          - generic [ref=e64]: สารานุกรม Wiki
+        - button "🔄 รีเซ็ตโจทย์นี้" [ref=e65] [cursor=pointer]:
+          - generic [ref=e66]: 🔄
+          - generic [ref=e67]: รีเซ็ตโจทย์นี้
+        - button "▶️ รันโปรแกรม (Ctrl+Enter)" [ref=e68] [cursor=pointer]:
+          - generic [ref=e69]: ▶️
+          - generic [ref=e70]: รันโปรแกรม (Ctrl+Enter)
+    - generic [ref=e71]:
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - 'heading "🔗 Assignment 1: Singly Linked List (ระบบรายชื่อนักศึกษา)" [level=2] [ref=e74]'
+          - generic [ref=e75]: Assignment 1
+        - generic [ref=e76]:
+          - 'heading "🎯 โจทย์ Assignment 1: Singly Linked List" [level=3] [ref=e77]'
+          - text: "ในสไลด์และแบบฝึกหัด Assignment 1 อาจารย์ให้นักศึกษาเขียนคลาส Node และ SinglyLinkedList เพื่อเก็บข้อมูลทะเบียนนักศึกษา: 1. Node: บรรจุข้อมูล"
+          - code [ref=e78]: student_id
+          - text: ","
+          - code [ref=e79]: name
+          - text: ","
+          - code [ref=e80]: gpa
+          - text: และตัวชี้
+          - code [ref=e81]: next
+          - text: "2. SinglyLinkedList: -"
+          - code [ref=e82]: insert_front(id, name, gpa)
+          - text: ": แทรกหัวแถว $O(1)$ -"
+          - code [ref=e83]: insert_end(id, name, gpa)
+          - text: ": แทรกท้ายแถว $O(n)$ หรือ $O(1)$ ถ้ามี tail -"
+          - code [ref=e84]: delete(id)
+          - text: ": ค้นหารหัสนักศึกษาและปลดพอยน์เตอร์ข้ามโหนด $O(n)$ -"
+          - code [ref=e85]: search(id)
+          - text: ": วิ่งค้นหาข้อมูลโหนดทีละตัว $O(n)$> [!TIP] > สังเกตการเปลี่ยนพอยน์เตอร์ใน Interactive Debugger ด้านล่าง: ตัวชี้"
+          - code [ref=e86]: p
+          - text: (Current) และ
+          - code [ref=e87]: prev
+          - text: จะก้าวไปทีละโหนด เมื่อพบโหนดที่ต้องการลบจะตั้ง
+          - code [ref=e88]: prev.next = p.next
+      - generic "ลากเพื่อปรับขนาด" [ref=e89]
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - button "main.py" [ref=e94] [cursor=pointer]
+            - generic [ref=e95]:
+              - generic [ref=e96]: Ln 66, Col 1
+              - button "คัดลอก (Copy)" [ref=e97] [cursor=pointer]
+              - button "ล้าง (Clear)" [ref=e98] [cursor=pointer]
+          - textbox "เขียนโค้ด Python ที่นี่ (รองรับ Tab, Indent, และกด Ctrl+Enter เพื่อรัน)..." [ref=e100]: "class StudentNode: def __init__(self, student_id, name, gpa): self.student_id = student_id self.name = name self.gpa = gpa self.next = None class StudentLinkedList: def __init__(self): self.head = None self.size = 0 def insert_front(self, student_id, name, gpa): new_node = StudentNode(student_id, name, gpa) new_node.next = self.head self.head = new_node self.size += 1 print(f\"Inserted front: {student_id} ({name})\") def insert_end(self, student_id, name, gpa): new_node = StudentNode(student_id, name, gpa) if not self.head: self.head = new_node else: curr = self.head while curr.next: curr = curr.next curr.next = new_node self.size += 1 print(f\"Inserted end: {student_id} ({name})\") def delete(self, student_id): curr = self.head prev = None while curr and curr.student_id != student_id: prev = curr curr = curr.next if not curr: print(f\"Not found: {student_id}\") return False if not prev: self.head = curr.next else: prev.next = curr.next self.size -= 1 print(f\"Deleted student: {student_id}\") return True def display(self): curr = self.head res = [] while curr: res.append(f\"[{curr.student_id}: {curr.name} ({curr.gpa})]\") curr = curr.next print(\" -> \".join(res) if res else \"List is empty\") # ทดสอบการทำงาน slist = StudentLinkedList() slist.insert_front(\"612037\", \"Somchai\", 3.50) slist.insert_end(\"612045\", \"Somsak\", 2.85) slist.insert_end(\"612089\", \"Wichai\", 3.90) slist.insert_front(\"612102\", \"Apinya\", 3.15) slist.display() slist.delete(\"612045\") slist.display()"
+        - generic "ลากเพื่อปรับขนาดบน-ล่าง" [ref=e101]
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - button "🕹️ Interactive Debugger" [ref=e105] [cursor=pointer]:
+                - generic [ref=e106]: 🕹️
+                - generic [ref=e107]: Interactive Debugger
+              - button "💻 Console Output" [ref=e108] [cursor=pointer]:
+                - generic [ref=e109]: 💻
+                - generic [ref=e110]: Console Output
+              - button "🔍 Variables Watch" [ref=e111] [cursor=pointer]:
+                - generic [ref=e112]: 🔍
+                - generic [ref=e113]: Variables Watch
+            - generic [ref=e114]: พร้อมทำงาน
+          - generic [ref=e116]:
+            - generic [ref=e117]:
+              - generic [ref=e118]:
+                - generic [ref=e119]:
+                  - generic [ref=e120]: "ค่า (Value):"
+                  - textbox "Value" [ref=e121]: "10"
+                - button "➕ Action" [ref=e122] [cursor=pointer]:
+                  - generic [ref=e123]: ➕
+                  - generic [ref=e124]: Action
+                - button "➖ Delete Min" [ref=e125] [cursor=pointer]:
+                  - generic [ref=e126]: ➖
+                  - generic [ref=e127]: Delete Min
+                - button "🔍 Find Min" [ref=e128] [cursor=pointer]:
+                  - generic [ref=e129]: 🔍
+                  - generic [ref=e130]: Find Min
+              - generic [ref=e131]:
+                - button "🎲 Random" [ref=e132] [cursor=pointer]:
+                  - generic [ref=e133]: 🎲
+                  - generic [ref=e134]: Random
+                - button "📝 Exams Preset" [ref=e135] [cursor=pointer]:
+                  - generic [ref=e136]: 📝
+                  - generic [ref=e137]: Exams Preset
+                - button "🧹 Clear" [ref=e138] [cursor=pointer]:
+                  - generic [ref=e139]: 🧹
+                  - generic [ref=e140]: Clear
+            - generic [ref=e141]:
+              - generic [ref=e142]: Singly Linked List (ระบบรายชื่อนักศึกษา)
+              - generic "สูตรหาโหนดแม่ Parent" [ref=e145]:
+                - generic [ref=e146]: "Parent:"
+                - generic [ref=e147]: ⌊i / 2⌋
+              - generic "สูตรหาลูกซ้าย Left Child" [ref=e148]:
+                - generic [ref=e149]: "Left:"
+                - generic [ref=e150]: 2i
+              - generic "สูตรหาลูกขวา Right Child" [ref=e151]:
+                - generic [ref=e152]: "Right:"
+                - generic [ref=e153]: 2i + 1
+              - generic [ref=e154]:
+                - generic [ref=e155]: "สถานะ:"
+                - generic [ref=e156]: กำลังประมวลผล
+            - generic [ref=e157]:
+              - generic [ref=e158]:
+                - button "▶ เล่น (Play)" [ref=e159] [cursor=pointer]
+                - button "⏮ ถอยกลับ (Step Back)" [disabled] [ref=e160] [cursor=pointer]
+                - button "⏭ ก้าวถัดไป (Step Next)" [ref=e161] [cursor=pointer]
+                - button "🔄 เริ่มใหม่ (Reset)" [ref=e162] [cursor=pointer]
+              - generic [ref=e163]:
+                - generic [ref=e164]: Step 1 / 6
+                - generic [ref=e165]:
+                  - generic [ref=e166]: "ความเร็ว:"
+                  - slider "ปรับความเร็วการเล่นอัตโนมัติ" [ref=e167] [cursor=pointer]: "1000"
+            - generic [ref=e168]:
+              - generic [ref=e169]: 👉
+              - generic [ref=e170]: "สถานะเริ่มต้น: รายการเชื่อมโยง (Singly Linked List) พร้อมข้อมูลนักศึกษา 4 คน"
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - generic [ref=e174]: HEAD
+                - generic [ref=e176]:
+                  - generic [ref=e177]:
+                    - generic [ref=e178]: "#612037"
+                    - generic [ref=e179]: GPA 3.5
+                  - generic [ref=e180]: Somchai
+                  - generic [ref=e181]:
+                    - generic [ref=e182]: next
+                    - generic [ref=e183]: ●
+              - generic [ref=e188]:
+                - generic [ref=e189]:
+                  - generic [ref=e190]: "#612045"
+                  - generic [ref=e191]: GPA 2.85
+                - generic [ref=e192]: Somsak
+                - generic [ref=e193]:
+                  - generic [ref=e194]: next
+                  - generic [ref=e195]: ●
+              - generic [ref=e200]:
+                - generic [ref=e201]:
+                  - generic [ref=e202]: "#612089"
+                  - generic [ref=e203]: GPA 3.9
+                - generic [ref=e204]: Wichai
+                - generic [ref=e205]:
+                  - generic [ref=e206]: next
+                  - generic [ref=e207]: ●
+              - generic [ref=e211]:
+                - generic [ref=e212]: TAIL
+                - generic [ref=e214]:
+                  - generic [ref=e215]:
+                    - generic [ref=e216]: "#612102"
+                    - generic [ref=e217]: GPA 3.15
+                  - generic [ref=e218]: Apinya
+                  - generic [ref=e219]:
+                    - generic [ref=e220]: next
+                    - generic [ref=e221]: ●
+              - generic [ref=e222]: None
+            - generic [ref=e223]:
+              - generic [ref=e224]:
+                - generic [ref=e225]:
+                  - generic [ref=e226]: 🐍
+                  - generic [ref=e227]: Exams/LinkedList/612037.py
+                  - generic [ref=e228]: Live Sync
+                - button "ซ่อน/แสดงโค้ด" [ref=e229] [cursor=pointer]
+              - generic [ref=e230]:
+                - generic [ref=e231]:
+                  - generic [ref=e232]: "1"
+                  - generic [ref=e233]: "# Exams/LinkedList/612037.py — Singly Linked List"
+                - generic [ref=e234]:
+                  - generic [ref=e235]: "2"
+                  - generic [ref=e236]: "class LinkedList:"
+                - generic [ref=e237]:
+                  - generic [ref=e238]: "3"
+                  - generic [ref=e239]: "def delete(self, item):"
+                - generic [ref=e240]:
+                  - generic [ref=e241]: "4"
+                  - generic [ref=e242]: curr = self.head
+                - generic [ref=e243]:
+                  - generic [ref=e244]: "5"
+                  - generic [ref=e245]: prev = None
+                - generic [ref=e246]:
+                  - generic [ref=e247]: "6"
+                  - generic [ref=e248]: "while curr and curr.get_data() != item:"
+                - generic [ref=e249]:
+                  - generic [ref=e250]: "7"
+                  - generic [ref=e251]: prev = curr
+                - generic [ref=e252]:
+                  - generic [ref=e253]: "8"
+                  - generic [ref=e254]: curr = curr.get_next()
+                - generic [ref=e255]:
+                  - generic [ref=e256]: "9"
+                  - generic [ref=e257]: "if not curr: return False"
+                - generic [ref=e258]:
+                  - generic [ref=e259]: "10"
+                  - generic [ref=e260]: "if not prev: self.head = curr.get_next()"
+                - generic [ref=e261]:
+                  - generic [ref=e262]: "11"
+                  - generic [ref=e263]: "else: prev.set_next(curr.get_next())"
+                - generic [ref=e264]:
+                  - generic [ref=e265]: "12"
+                  - generic [ref=e266]: return True

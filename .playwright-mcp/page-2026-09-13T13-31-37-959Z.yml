@@ -1,0 +1,1371 @@
+- generic [active] [ref=f45e1]:
+  - banner [ref=f45e2]:
+    - link "DSA Wiki Python DSA" [ref=f45e4] [cursor=pointer]:
+      - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+      - generic [ref=f45e9]: DSA Wiki
+      - generic [ref=f45e10]: Python DSA
+    - button "ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง... Ctrl K" [ref=f45e12] [cursor=pointer]:
+      - generic [ref=f45e13]: ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง...
+      - generic [ref=f45e18]: Ctrl K
+    - generic [ref=f45e19]:
+      - generic "ปรับขนาดตัวอักษรสำหรับอ่าน" [ref=f45e20]:
+        - button "A-" [ref=f45e21] [cursor=pointer]
+        - button "A+" [ref=f45e22] [cursor=pointer]
+      - button "☀️" [ref=f45e23] [cursor=pointer]
+      - link "🔬 ห้องทดลอง DSA Lab" [ref=f45e24] [cursor=pointer]:
+        - /url: ../DsaLab/index.html
+        - generic [ref=f45e25]: 🔬
+        - generic [ref=f45e26]: ห้องทดลอง DSA Lab
+  - generic [ref=f45e27]:
+    - complementary [ref=f45e28]:
+      - generic [ref=f45e29]:
+        - button "📚 บทเรียน (1-10)" [ref=f45e30] [cursor=pointer]
+        - button "🎯 โซนเตรียมสอบ" [ref=f45e31] [cursor=pointer]
+      - generic [ref=f45e32]:
+        - generic [ref=f45e33]:
+          - generic [ref=f45e34]: "🏛️ บทที่ 1: Introduction & Algorithm Analysis"
+          - 'link "ยังไม่ได้อ่าน บทที่ 1: บทนำ & การวิเคราะห์อัลกอริทึม (Big-O) ⏱️ 13 นาที · 0 หัวข้อ" [ref=f45e37] [cursor=pointer]':
+            - /url: "#/01.1%20-%20Introduction%20to%20Data%20Structures%20%26%20Algorithm%20Analysis"
+            - generic "ยังไม่ได้อ่าน" [ref=f45e38]
+            - generic [ref=f45e39]:
+              - generic [ref=f45e40]: "บทที่ 1: บทนำ & การวิเคราะห์อัลกอริทึม (Big-O)"
+              - generic [ref=f45e41]: ⏱️ 13 นาที · 0 หัวข้อ
+        - generic [ref=f45e42]:
+          - generic [ref=f45e43]: "🐍 บทที่ 2: Review Python & OOP"
+          - 'link "ยังไม่ได้อ่าน บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน ⏱️ 17 นาที · 0 หัวข้อ" [ref=f45e46] [cursor=pointer]':
+            - /url: "#/02.1%20-%20Python%20Review%20%26%20Object-Oriented%20Programming%20(OOP)"
+            - generic "ยังไม่ได้อ่าน" [ref=f45e47]
+            - generic [ref=f45e48]:
+              - generic [ref=f45e49]: "บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน"
+              - generic [ref=f45e50]: ⏱️ 17 นาที · 0 หัวข้อ
+        - generic [ref=f45e51]:
+          - generic [ref=f45e52]: "🔗 บทที่ 3: Linked Lists"
+          - 'link "ยังไม่ได้อ่าน บทที่ 3: Singly, Doubly & Circular Linked Lists ⏱️ 38 นาที · 0 หัวข้อ" [ref=f45e55] [cursor=pointer]':
+            - /url: "#/03.1%20-%20Linked%20Lists%20(Singly%2C%20Doubly%2C%20Circular)"
+            - generic "ยังไม่ได้อ่าน" [ref=f45e56]
+            - generic [ref=f45e57]:
+              - generic [ref=f45e58]: "บทที่ 3: Singly, Doubly & Circular Linked Lists"
+              - generic [ref=f45e59]: ⏱️ 38 นาที · 0 หัวข้อ
+        - generic [ref=f45e60]:
+          - generic [ref=f45e61]: "🥞 บทที่ 4: Stacks & Queues"
+          - generic [ref=f45e63]:
+            - 'link "ยังไม่ได้อ่าน บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix ⏱️ 28 นาที · 0 หัวข้อ" [ref=f45e64] [cursor=pointer]':
+              - /url: "#/04.1%20-%20Stacks%20%26%20Applications%20(Infix%2C%20Postfix%2C%20Parentheses)"
+              - generic "ยังไม่ได้อ่าน" [ref=f45e65]
+              - generic [ref=f45e66]:
+                - generic [ref=f45e67]: "บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix"
+                - generic [ref=f45e68]: ⏱️ 28 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 4.2: Queue & Circular Array Queue ⏱️ 21 นาที · 0 หัวข้อ" [ref=f45e69] [cursor=pointer]':
+              - /url: "#/04.2%20-%20Queues%20%26%20Circular%20Array%20Queues"
+              - generic "ยังไม่ได้อ่าน" [ref=f45e70]
+              - generic [ref=f45e71]:
+                - generic [ref=f45e72]: "บทที่ 4.2: Queue & Circular Array Queue"
+                - generic [ref=f45e73]: ⏱️ 21 นาที · 0 หัวข้อ
+        - generic [ref=f45e74]:
+          - generic [ref=f45e75]: "🌲 บทที่ 5: Trees & Binary Search Trees"
+          - generic [ref=f45e77]:
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals ⏱️ 15 นาที · 0 หัวข้อ" [ref=f45e78] [cursor=pointer]':
+              - /url: "#/05.1%20-%20Tree%20Terminology%20%26%20Binary%20Trees"
+              - generic "ยังไม่ได้อ่าน" [ref=f45e79]
+              - generic [ref=f45e80]:
+                - generic [ref=f45e81]: "บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals"
+                - generic [ref=f45e82]: ⏱️ 15 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.2: Binary Search Trees (BST) & การแทรก ⏱️ 15 นาที · 0 หัวข้อ" [ref=f45e83] [cursor=pointer]':
+              - /url: "#/05.2%20-%20Binary%20Search%20Trees%20(BST)%20%26%20Insertion"
+              - generic "ยังไม่ได้อ่าน" [ref=f45e84]
+              - generic [ref=f45e85]:
+                - generic [ref=f45e86]: "บทที่ 5.2: Binary Search Trees (BST) & การแทรก"
+                - generic [ref=f45e87]: ⏱️ 15 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี) ⏱️ 20 นาที · 0 หัวข้อ" [ref=f45e88] [cursor=pointer]':
+              - /url: "#/05.3%20-%20Binary%20Search%20Tree%20Removal%20(Node%20Deletion%20Cases)"
+              - generic "ยังไม่ได้อ่าน" [ref=f45e89]
+              - generic [ref=f45e90]:
+                - generic [ref=f45e91]: "บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี)"
+                - generic [ref=f45e92]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f45e93]:
+          - generic [ref=f45e94]: "🏷️ บทที่ 6: Hashing & Hash Tables"
+          - 'link "ยังไม่ได้อ่าน บทที่ 6: Hash Tables & Collision Resolution ⏱️ 20 นาที · 0 หัวข้อ" [ref=f45e97] [cursor=pointer]':
+            - /url: "#/06.1%20-%20Hash%20Tables%20%26%20Collision%20Resolution%20Strategies"
+            - generic "ยังไม่ได้อ่าน" [ref=f45e98]
+            - generic [ref=f45e99]:
+              - generic [ref=f45e100]: "บทที่ 6: Hash Tables & Collision Resolution"
+              - generic [ref=f45e101]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f45e102]:
+          - generic [ref=f45e103]: "⚡ บทที่ 7: Priority Queue & Binary Heap"
+          - 'link "ยังไม่ได้อ่าน บทที่ 7: Priority Queue & Binary Heaps ⏱️ 20 นาที · 0 หัวข้อ" [ref=f45e106] [cursor=pointer]':
+            - /url: "#/07.1%20-%20Priority%20Queue%20%26%20Binary%20Heaps%20(Min-Heap%2C%20Max-Heap)"
+            - generic "ยังไม่ได้อ่าน" [ref=f45e107]
+            - generic [ref=f45e108]:
+              - generic [ref=f45e109]: "บทที่ 7: Priority Queue & Binary Heaps"
+              - generic [ref=f45e110]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f45e111]:
+          - generic [ref=f45e112]: "🔀 บทที่ 8: Sorting Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 8: ขั้นตอนวิธีเรียงลำดับ (Sorting) ⏱️ 17 นาที · 0 หัวข้อ" [ref=f45e115] [cursor=pointer]':
+            - /url: "#/08.1%20-%20Sorting%20Algorithms%20(Bubble%2C%20Selection%2C%20Insertion%2C%20Merge%2C%20Quick)"
+            - generic "ยังไม่ได้อ่าน" [ref=f45e116]
+            - generic [ref=f45e117]:
+              - generic [ref=f45e118]: "บทที่ 8: ขั้นตอนวิธีเรียงลำดับ (Sorting)"
+              - generic [ref=f45e119]: ⏱️ 17 นาที · 0 หัวข้อ
+        - generic [ref=f45e120]:
+          - generic [ref=f45e121]: "🌐 บทที่ 9: Graph Traversals & Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 9: กราฟ (Graph) & BFS / DFS ⏱️ 14 นาที · 0 หัวข้อ" [ref=f45e124] [cursor=pointer]':
+            - /url: "#/09.1%20-%20Graph%20Fundamentals%20%26%20Traversals%20(BFS%2C%20DFS%2C%20Topological%20Sort)"
+            - generic "ยังไม่ได้อ่าน" [ref=f45e125]
+            - generic [ref=f45e126]:
+              - generic [ref=f45e127]: "บทที่ 9: กราฟ (Graph) & BFS / DFS"
+              - generic [ref=f45e128]: ⏱️ 14 นาที · 0 หัวข้อ
+        - generic [ref=f45e129]:
+          - generic [ref=f45e130]: "🚀 บทที่ 10: Shortest Path Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path) ⏱️ 14 นาที · 0 หัวข้อ" [ref=f45e133] [cursor=pointer]':
+            - /url: "#/10.1%20-%20Shortest%20Path%20Algorithms%20(Dijkstra%2C%20Unweighted%20Shortest%20Path)"
+            - generic "ยังไม่ได้อ่าน" [ref=f45e134]
+            - generic [ref=f45e135]:
+              - generic [ref=f45e136]: "บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path)"
+              - generic [ref=f45e137]: ⏱️ 14 นาที · 0 หัวข้อ
+    - main [ref=f45e138]:
+      - generic [ref=f45e139]:
+        - generic [ref=f45e140]:
+          - navigation [ref=f45e141]:
+            - link "สารานุกรม" [ref=f45e142] [cursor=pointer]:
+              - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+            - generic [ref=f45e143]: /
+            - generic [ref=f45e144]: "บทที่ 3: Linked Lists"
+            - generic [ref=f45e145]: /
+            - generic [ref=f45e146]: "บทที่ 3: Singly, Doubly & Circular Linked Lists"
+          - heading "🔗 03.1 - Linked Lists (Singly, Doubly, Circular)" [level=1] [ref=f45e1260]
+          - generic [ref=f45e148]:
+            - generic [ref=f45e149]:
+              - generic [ref=f45e1261]: ⏱️ อ่านประมาณ 38 นาที
+              - generic [ref=f45e1262]: 📝 22,803 ตัวอักษร
+            - button "○ ทำเครื่องหมายว่าอ่านแล้ว" [ref=f45e152] [cursor=pointer]:
+              - generic [ref=f45e1263]: ○
+              - text: ทำเครื่องหมายว่าอ่านแล้ว
+        - article [ref=f45e154]:
+          - heading "🔗 03.1 - Linked Lists (Singly, Doubly, Circular)" [level=1] [ref=f45e1264]
+          - generic [ref=f45e1265]:
+            - generic [ref=f45e1266]:
+              - generic [ref=f45e1267]: 📌
+              - generic [ref=f45e1268]: บันทึก (Note)
+            - paragraph [ref=f45e1270]:
+              - strong [ref=f45e1271]: Linked List (รายการเชื่อมโยง)
+              - text: คือโครงสร้างข้อมูลเชิงเส้นที่แต่ละสมาชิกเรียกว่า
+              - strong [ref=f45e1272]: Node
+              - text: เชื่อมต่อกันด้วย
+              - strong [ref=f45e1273]: Pointer (การอ้างอิงตำแหน่งในหน่วยความจำ)
+              - text: โดยโหนดไม่จำเป็นต้องอยู่ติดกันใน Memory เหมือน Array แต่ละโหนดจะจองพื้นที่เมื่อต้องการใช้งานจริง ทำให้การแทรกและลบข้อมูลที่ส่วนหัวใช้เวลาเพียง
+              - generic [ref=f45e1275]:
+                - math [ref=f45e1277]:
+                  - generic [ref=f45e1279]:
+                    - generic [ref=f45e1280]: O
+                    - generic [ref=f45e1281]: (
+                    - generic [ref=f45e1282]: "1"
+                    - generic [ref=f45e1283]: )
+                - generic [ref=f45e1284]: O(1)
+              - text: โดยไม่ต้องขยับเลื่อนข้อมูลทั้งแถว
+          - separator [ref=f45e1286]
+          - heading "🏛️ 1. กายวิภาคของ Node และการเชื่อมต่อ Pointer ในหน่วยความจำ" [level=2] [ref=f45e1287]
+          - paragraph [ref=f45e1288]:
+            - text: ในภาษา Python แต่ละ Node คือออบเจกต์ใน Heap Memory ที่มี Address เฉพาะตัว (เช่น
+            - code [ref=f45e1289]: "0x100"
+            - text: ","
+            - code [ref=f45e1290]: "0x240"
+            - text: ","
+            - code [ref=f45e1291]: "0x380"
+            - text: ) การเชื่อมโยงเกิดจากตัวแปร
+            - code [ref=f45e1292]: next
+            - text: หรือ
+            - code [ref=f45e1293]: prev
+            - text: เก็บตำแหน่งอ้างอิงของโหนดถัดไป ไม่ใช่การนำค่า Data มาผูกกันโดยตรง
+          - heading "1.1 โครงสร้างภายในของ Singly Linked List Node" [level=3] [ref=f45e1294]
+          - generic [ref=f45e1295]:
+            - generic [ref=f45e1296]:
+              - generic [ref=f45e1297]: 📊 แผนผัง Mermaid Diagram
+              - button "🔍 ขยายดูภาพเต็ม" [ref=f45e1298] [cursor=pointer]
+            - document [ref=f45e2328]:
+              - generic [ref=f45e2330]:
+                - generic [ref=f45e2331]:
+                  - generic [ref=f45e2332]: Node @ 0x380
+                  - generic [ref=f45e2337]: Node @ 0x240
+                  - generic [ref=f45e2342]: Node @ 0x100
+                  - generic [ref=f45e2347]: ตัวแปรชี้จุดเริ่มต้น
+                - generic [ref=f45e2359]:
+                  - generic [ref=f45e2360]: "next: None"
+                  - generic [ref=f45e2365]: "Data: 30"
+                  - generic [ref=f45e2370]: "next: 0x380"
+                  - generic [ref=f45e2375]: "Data: 20"
+                  - generic [ref=f45e2380]: "next: 0x240"
+                  - generic [ref=f45e2385]: "Data: 10"
+                  - generic [ref=f45e2390]: 📍 head = 0x100
+                  - generic [ref=f45e2395]: 🚫 None (จุดสิ้นสุด List)
+          - heading [level=3] [ref=f45e1300]:
+            - text: 1.2 โครงสร้างภายในของ Doubly Linked List Node (มีทั้ง
+            - code [ref=f45e1301]: prev
+            - text: และ
+            - code [ref=f45e1302]: next
+            - text: )
+          - generic [ref=f45e1303]:
+            - generic [ref=f45e1304]:
+              - generic [ref=f45e1305]: 📊 แผนผัง Mermaid Diagram
+              - button "🔍 ขยายดูภาพเต็ม" [ref=f45e1306] [cursor=pointer]
+            - document [ref=f45e2401]:
+              - generic [ref=f45e2403]:
+                - generic [ref=f45e2404]:
+                  - generic [ref=f45e2405]: Node 3 @ 0x380
+                  - generic [ref=f45e2410]: Node 2 @ 0x240
+                  - generic [ref=f45e2415]: Node 1 @ 0x100
+                - generic [ref=f45e2427]:
+                  - generic [ref=f45e2428]: "next: None"
+                  - generic [ref=f45e2433]: "Data: 30"
+                  - generic [ref=f45e2438]: "prev: 0x240"
+                  - generic [ref=f45e2443]: "next: 0x380"
+                  - generic [ref=f45e2448]: "Data: 20"
+                  - generic [ref=f45e2453]: "prev: 0x100"
+                  - generic [ref=f45e2458]: "next: 0x240"
+                  - generic [ref=f45e2463]: "Data: 10"
+                  - generic [ref=f45e2468]: "prev: None"
+          - heading "1.3 โครงสร้าง Circular Linked List (โหนดสุดท้ายวนกลับมาชี้ Head)" [level=3] [ref=f45e1308]
+          - generic [ref=f45e1309]:
+            - generic [ref=f45e1310]:
+              - generic [ref=f45e1311]: 📊 แผนผัง Mermaid Diagram
+              - button "🔍 ขยายดูภาพเต็ม" [ref=f45e1312] [cursor=pointer]
+            - document [ref=f45e2474]:
+              - generic [ref=f45e2476]:
+                - generic [ref=f45e2477]:
+                  - generic [ref=f45e2478]: "Node 3 (Data: 30)"
+                  - generic [ref=f45e2483]: "Node 2 (Data: 20)"
+                  - generic [ref=f45e2488]: "Node 1 (Data: 10)"
+                - generic [ref=f45e2496]: next วนกลับมาชี้ Node 1
+                - generic [ref=f45e2501]:
+                  - generic [ref=f45e2502]: next
+                  - generic [ref=f45e2507]: next
+                  - generic [ref=f45e2512]: next
+                  - generic [ref=f45e2517]: 📍 head
+          - separator [ref=f45e1314]
+          - heading "📊 2. ตารางเปรียบเทียบคุณลักษณะและประสิทธิภาพ Big-O" [level=2] [ref=f45e1315]
+          - table [ref=f45e1317]:
+            - rowgroup [ref=f45e1318]:
+              - row [ref=f45e1319]:
+                - columnheader "คุณลักษณะ" [ref=f45e1320]
+                - columnheader "Singly Linked List" [ref=f45e1321]
+                - columnheader "Doubly Linked List" [ref=f45e1322]
+                - columnheader "Circular Linked List" [ref=f45e1323]
+            - rowgroup [ref=f45e1324]:
+              - row [ref=f45e1325]:
+                - cell [ref=f45e1326]:
+                  - strong [ref=f45e1327]: Pointer ต่อ 1 Node
+                - cell [ref=f45e1328]:
+                  - text: 1 ตัว (
+                  - code [ref=f45e1329]: next
+                  - text: )
+                - cell [ref=f45e1330]:
+                  - text: 2 ตัว (
+                  - code [ref=f45e1331]: prev
+                  - text: ","
+                  - code [ref=f45e1332]: next
+                  - text: )
+                - cell "1 หรือ 2 ตัว (ชี้วนรอบ)" [ref=f45e1333]
+              - row [ref=f45e1334]:
+                - cell [ref=f45e1335]:
+                  - strong [ref=f45e1336]: ทิศทางการท่องข้อมูล
+                - cell [ref=f45e1337]:
+                  - text: ไปข้างหน้าได้อย่างเดียว (
+                  - code [ref=f45e1338]: curr = curr.next
+                  - text: )
+                - cell [ref=f45e1339]:
+                  - text: ไปข้างหน้าและถอยหลังได้ (
+                  - code [ref=f45e1340]: curr.next
+                  - text: ","
+                  - code [ref=f45e1341]: curr.prev
+                  - text: )
+                - cell "ท่องวนเป็น Loop รอบ List ได้เรื่อยๆ" [ref=f45e1342]
+              - row [ref=f45e1343]:
+                - cell [ref=f45e1344]:
+                  - strong [ref=f45e1345]: Memory Overhead
+                - cell [ref=f45e1346]:
+                  - text: ปานกลาง (
+                  - generic [ref=f45e1348]:
+                    - math [ref=f45e1350]:
+                      - generic [ref=f45e1352]:
+                        - generic [ref=f45e1353]: "1"
+                        - generic [ref=f45e1354]: ×
+                        - generic [ref=f45e1355]: pointer
+                    - generic [ref=f45e1356]:
+                      - generic [ref=f45e1357]: 1 ×
+                      - generic [ref=f45e1358]: pointer
+                  - text: )
+                - cell [ref=f45e1360]:
+                  - text: สูงสุด (
+                  - generic [ref=f45e1362]:
+                    - math [ref=f45e1364]:
+                      - generic [ref=f45e1366]:
+                        - generic [ref=f45e1367]: "2"
+                        - generic [ref=f45e1368]: ×
+                        - generic [ref=f45e1369]: pointers
+                    - generic [ref=f45e1370]:
+                      - generic [ref=f45e1371]: 2 ×
+                      - generic [ref=f45e1372]: pointers
+                  - text: )
+                - cell "ปานกลาง" [ref=f45e1374]
+              - row [ref=f45e1375]:
+                - cell [ref=f45e1376]:
+                  - strong [ref=f45e1377]: Insert at Head
+                - cell [ref=f45e1378]:
+                  - generic [ref=f45e1380]:
+                    - math [ref=f45e1382]:
+                      - generic [ref=f45e1384]:
+                        - generic [ref=f45e1385]: O
+                        - generic [ref=f45e1386]: (
+                        - generic [ref=f45e1387]: "1"
+                        - generic [ref=f45e1388]: )
+                    - generic [ref=f45e1389]: O(1)
+                - cell [ref=f45e1391]:
+                  - generic [ref=f45e1393]:
+                    - math [ref=f45e1395]:
+                      - generic [ref=f45e1397]:
+                        - generic [ref=f45e1398]: O
+                        - generic [ref=f45e1399]: (
+                        - generic [ref=f45e1400]: "1"
+                        - generic [ref=f45e1401]: )
+                    - generic [ref=f45e1402]: O(1)
+                - cell [ref=f45e1404]:
+                  - generic [ref=f45e1406]:
+                    - math [ref=f45e1408]:
+                      - generic [ref=f45e1410]:
+                        - generic [ref=f45e1411]: O
+                        - generic [ref=f45e1412]: (
+                        - generic [ref=f45e1413]: "1"
+                        - generic [ref=f45e1414]: )
+                    - generic [ref=f45e1415]: O(1)
+                  - text: (หากมี Tail pointer)
+              - row [ref=f45e1417]:
+                - cell [ref=f45e1418]:
+                  - strong [ref=f45e1419]: Delete at Head
+                - cell [ref=f45e1420]:
+                  - generic [ref=f45e1422]:
+                    - math [ref=f45e1424]:
+                      - generic [ref=f45e1426]:
+                        - generic [ref=f45e1427]: O
+                        - generic [ref=f45e1428]: (
+                        - generic [ref=f45e1429]: "1"
+                        - generic [ref=f45e1430]: )
+                    - generic [ref=f45e1431]: O(1)
+                - cell [ref=f45e1433]:
+                  - generic [ref=f45e1435]:
+                    - math [ref=f45e1437]:
+                      - generic [ref=f45e1439]:
+                        - generic [ref=f45e1440]: O
+                        - generic [ref=f45e1441]: (
+                        - generic [ref=f45e1442]: "1"
+                        - generic [ref=f45e1443]: )
+                    - generic [ref=f45e1444]: O(1)
+                - cell [ref=f45e1446]:
+                  - generic [ref=f45e1448]:
+                    - math [ref=f45e1450]:
+                      - generic [ref=f45e1452]:
+                        - generic [ref=f45e1453]: O
+                        - generic [ref=f45e1454]: (
+                        - generic [ref=f45e1455]: "1"
+                        - generic [ref=f45e1456]: )
+                    - generic [ref=f45e1457]: O(1)
+                  - text: (หากมี Tail pointer)
+              - row [ref=f45e1459]:
+                - cell [ref=f45e1460]:
+                  - strong [ref=f45e1461]: Delete at Tail
+                - cell [ref=f45e1462]:
+                  - generic [ref=f45e1464]:
+                    - math [ref=f45e1466]:
+                      - generic [ref=f45e1468]:
+                        - generic [ref=f45e1469]: O
+                        - generic [ref=f45e1470]: (
+                        - generic [ref=f45e1471]: "N"
+                        - generic [ref=f45e1472]: )
+                    - generic [ref=f45e1473]: O(N)
+                  - text: (ต้องวนลูปหาตัวก่อน Tail)
+                - cell [ref=f45e1475]:
+                  - generic [ref=f45e1477]:
+                    - math [ref=f45e1479]:
+                      - generic [ref=f45e1481]:
+                        - generic [ref=f45e1482]: O
+                        - generic [ref=f45e1483]: (
+                        - generic [ref=f45e1484]: "1"
+                        - generic [ref=f45e1485]: )
+                    - generic [ref=f45e1486]: O(1)
+                  - text: (ใช้
+                  - code [ref=f45e1488]: tail.prev
+                  - text: )
+                - cell [ref=f45e1489]:
+                  - generic [ref=f45e1491]:
+                    - math [ref=f45e1493]:
+                      - generic [ref=f45e1495]:
+                        - generic [ref=f45e1496]: O
+                        - generic [ref=f45e1497]: (
+                        - generic [ref=f45e1498]: "N"
+                        - generic [ref=f45e1499]: )
+                    - generic [ref=f45e1500]: O(N)
+                  - text: หรือ
+                  - generic [ref=f45e1503]:
+                    - math [ref=f45e1505]:
+                      - generic [ref=f45e1507]:
+                        - generic [ref=f45e1508]: O
+                        - generic [ref=f45e1509]: (
+                        - generic [ref=f45e1510]: "1"
+                        - generic [ref=f45e1511]: )
+                    - generic [ref=f45e1512]: O(1)
+              - row [ref=f45e1514]:
+                - cell [ref=f45e1515]:
+                  - strong [ref=f45e1516]: Delete Node ปัจจุบัน
+                - cell [ref=f45e1517]:
+                  - generic [ref=f45e1519]:
+                    - math [ref=f45e1521]:
+                      - generic [ref=f45e1523]:
+                        - generic [ref=f45e1524]: O
+                        - generic [ref=f45e1525]: (
+                        - generic [ref=f45e1526]: "N"
+                        - generic [ref=f45e1527]: )
+                    - generic [ref=f45e1528]: O(N)
+                  - text: (ต้องหาโหนด
+                  - code [ref=f45e1530]: prev
+                  - text: ก่อนหน้า)
+                - cell [ref=f45e1531]:
+                  - generic [ref=f45e1533]:
+                    - math [ref=f45e1535]:
+                      - generic [ref=f45e1537]:
+                        - generic [ref=f45e1538]: O
+                        - generic [ref=f45e1539]: (
+                        - generic [ref=f45e1540]: "1"
+                        - generic [ref=f45e1541]: )
+                    - generic [ref=f45e1542]: O(1)
+                  - text: (ปลดพอยน์เตอร์ด้วย
+                  - code [ref=f45e1544]: curr.prev
+                  - text: และ
+                  - code [ref=f45e1545]: curr.next
+                  - text: )
+                - cell [ref=f45e1546]:
+                  - generic [ref=f45e1548]:
+                    - math [ref=f45e1550]:
+                      - generic [ref=f45e1552]:
+                        - generic [ref=f45e1553]: O
+                        - generic [ref=f45e1554]: (
+                        - generic [ref=f45e1555]: "N"
+                        - generic [ref=f45e1556]: )
+                    - generic [ref=f45e1557]: O(N)
+          - separator [ref=f45e1559]
+          - heading "✂️ 3. ขั้นตอนการจัดการ Pointer ทีละสเต็ป (Step-by-Step Pointer Transitions)" [level=2] [ref=f45e1560]
+          - generic [ref=f45e1561]:
+            - generic [ref=f45e1562]:
+              - generic [ref=f45e1563]:
+                - generic [ref=f45e1564]: "Chapter 3: Linked Lists"
+                - heading "🔬 Interactive Linked List Studio (ห้องทดลองและตัวตรวจสอบพอยน์เตอร์)" [level=3] [ref=f45e1565]
+              - generic [ref=f45e1566]: สเต็ป 1 / 1
+            - generic [ref=f45e1567]:
+              - generic [ref=f45e1568]:
+                - generic [ref=f45e1569]: "ค่าโหนด (Value):"
+                - textbox "ใส่ตัวเลขหรือข้อความ" [ref=f45e1570]: "25"
+              - generic [ref=f45e1571]:
+                - button "➕ แทรก Head" [ref=f45e1572] [cursor=pointer]
+                - button "➕ แทรก Tail" [ref=f45e1573] [cursor=pointer]
+                - button "🗑️ ลบค่านี้" [ref=f45e1574] [cursor=pointer]
+                - button "🔄 รีเซ็ต" [ref=f45e1575] [cursor=pointer]
+            - generic [ref=f45e1578]:
+              - generic [ref=f45e1579]:
+                - generic [ref=f45e1580]: HEAD
+                - generic [ref=f45e1582]:
+                  - generic [ref=f45e1583]: "0x100"
+                  - generic [ref=f45e1584]:
+                    - generic "node data" [ref=f45e1585]: "10"
+                    - generic "next pointer" [ref=f45e1587]: "next: 0x140"
+                - generic [ref=f45e1588]: ➔
+              - generic [ref=f45e1589]:
+                - generic [ref=f45e1590]:
+                  - generic [ref=f45e1591]: "0x140"
+                  - generic [ref=f45e1592]:
+                    - generic "node data" [ref=f45e1593]: "20"
+                    - generic "next pointer" [ref=f45e1595]: "next: 0x180"
+                - generic [ref=f45e1596]: ➔
+              - generic [ref=f45e1597]:
+                - generic [ref=f45e1598]: TAIL
+                - generic [ref=f45e1600]:
+                  - generic [ref=f45e1601]: "0x180"
+                  - generic [ref=f45e1602]:
+                    - generic "node data" [ref=f45e1603]: "30"
+                    - generic "next pointer" [ref=f45e1605]: "next: None"
+                - generic [ref=f45e1606]: ➔ None
+            - generic [ref=f45e1607]:
+              - generic [ref=f45e1608]:
+                - generic [ref=f45e1609]:
+                  - generic [ref=f45e1610]: สถานะเริ่มต้น (Initial State)
+                  - generic [ref=f45e1611]: ▶ Line 1
+                - generic [ref=f45e1612]: Linked List ปัจจุบันมี 3 โหนด (head ชี้ที่ 0x100)
+                - generic [ref=f45e1613]:
+                  - button "⏮️ ย้อนสเต็ป" [disabled] [ref=f45e1614]
+                  - button "▶ เล่น (Play)" [ref=f45e1615] [cursor=pointer]
+                  - button "⏭️ สเต็ปถัดไป" [disabled] [ref=f45e1616]
+                - generic [ref=f45e1617]:
+                  - generic [ref=f45e1618]: "🔍 ตัวแปรขณะรัน (Live Variables Watch):"
+                  - table [ref=f45e1619]:
+                    - rowgroup [ref=f45e1620]:
+                      - row [ref=f45e1621]:
+                        - columnheader "ตัวแปร (Variable)" [ref=f45e1622]
+                        - columnheader "ค่าในหน่วยความจำ (Value)" [ref=f45e1623]
+                    - rowgroup [ref=f45e1624]:
+                      - row [ref=f45e1625]:
+                        - cell "head" [ref=f45e1626]
+                        - cell "0x100" [ref=f45e1627]
+                      - row [ref=f45e1628]:
+                        - cell "size" [ref=f45e1629]
+                        - cell "3" [ref=f45e1630]
+                      - row [ref=f45e1631]:
+                        - cell "curr" [ref=f45e1632]
+                        - cell "None" [ref=f45e1633]
+                      - row [ref=f45e1634]:
+                        - cell "prev" [ref=f45e1635]
+                        - cell "None" [ref=f45e1636]
+              - generic [ref=f45e1637]:
+                - generic [ref=f45e1638]:
+                  - generic [ref=f45e1639]:
+                    - generic [ref=f45e1640]: 🐍
+                    - generic [ref=f45e1641]: Python Algorithm Code Debugger
+                  - generic [ref=f45e1642]: Step Debug
+                - generic [ref=f45e1644]:
+                  - generic [ref=f45e1645]:
+                    - generic [ref=f45e1646]: "1"
+                    - generic [ref=f45e1647]: "def insert_at(self, index, item):"
+                    - generic [ref=f45e1648]: ◀
+                  - generic [ref=f45e1649]:
+                    - generic [ref=f45e1650]: "2"
+                    - generic [ref=f45e1651]: new_node = Node(item)
+                    - generic [ref=f45e1652]: ◀
+                  - generic [ref=f45e1653]:
+                    - generic [ref=f45e1654]: "3"
+                    - generic [ref=f45e1655]: "if index == 0:"
+                    - generic [ref=f45e1656]: ◀
+                  - generic [ref=f45e1657]:
+                    - generic [ref=f45e1658]: "4"
+                    - generic [ref=f45e1659]: new_node.next = self.head; self.head = new_node; return
+                    - generic [ref=f45e1660]: ◀
+                  - generic [ref=f45e1661]:
+                    - generic [ref=f45e1662]: "5"
+                    - generic [ref=f45e1663]: curr = self.head
+                    - generic [ref=f45e1664]: ◀
+                  - generic [ref=f45e1665]:
+                    - generic [ref=f45e1666]: "6"
+                    - generic [ref=f45e1667]: "for _ in range(index - 1): curr = curr.next"
+                    - generic [ref=f45e1668]: ◀
+                  - generic [ref=f45e1669]:
+                    - generic [ref=f45e1670]: "7"
+                    - generic [ref=f45e1671]: new_node.next = curr.next
+                    - generic [ref=f45e1672]: ◀
+                  - generic [ref=f45e1673]:
+                    - generic [ref=f45e1674]: "8"
+                    - generic [ref=f45e1675]: curr.next = new_node
+                    - generic [ref=f45e1676]: ◀
+                  - generic [ref=f45e1677]:
+                    - generic [ref=f45e1678]: "9"
+                    - generic [ref=f45e1679]: ◀
+                  - generic [ref=f45e1680]:
+                    - generic [ref=f45e1681]: "10"
+                    - generic [ref=f45e1682]: "def remove(self, target):"
+                    - generic [ref=f45e1683]: ◀
+                  - generic [ref=f45e1684]:
+                    - generic [ref=f45e1685]: "11"
+                    - generic [ref=f45e1686]: curr, prev = self.head, None
+                    - generic [ref=f45e1687]: ◀
+                  - generic [ref=f45e1688]:
+                    - generic [ref=f45e1689]: "12"
+                    - generic [ref=f45e1690]: "while curr and curr.data != target:"
+                    - generic [ref=f45e1691]: ◀
+                  - generic [ref=f45e1692]:
+                    - generic [ref=f45e1693]: "13"
+                    - generic [ref=f45e1694]: prev = curr; curr = curr.next
+                    - generic [ref=f45e1695]: ◀
+                  - generic [ref=f45e1696]:
+                    - generic [ref=f45e1697]: "14"
+                    - generic [ref=f45e1698]: "if prev is None: self.head = curr.next"
+                    - generic [ref=f45e1699]: ◀
+                  - generic [ref=f45e1700]:
+                    - generic [ref=f45e1701]: "15"
+                    - generic [ref=f45e1702]: "else: prev.next = curr.next"
+                    - generic [ref=f45e1703]: ◀
+          - heading [level=3] [ref=f45e1704]:
+            - text: 3.1 การแทรกโหนดที่ตำแหน่งหน้าสุด (Insert at Head)
+            - generic [ref=f45e1706]:
+              - math [ref=f45e1708]:
+                - generic [ref=f45e1710]:
+                  - generic [ref=f45e1711]: ⟹
+                  - generic [ref=f45e1712]: O
+                  - generic [ref=f45e1713]: (
+                  - generic [ref=f45e1714]: "1"
+                  - generic [ref=f45e1715]: )
+              - generic [ref=f45e1716]:
+                - generic [ref=f45e1717]: ⟹
+                - generic [ref=f45e1718]: O(1)
+          - paragraph [ref=f45e1719]:
+            - text: เมื่อต้องการแทรกโหนดใหม่ที่มีค่า
+            - code [ref=f45e1720]: "Data: 5"
+            - text: "ไว้หน้าสุด:"
+          - list [ref=f45e1721]:
+            - listitem [ref=f45e1722]:
+              - text: "สร้างโหนดใหม่:"
+              - code [ref=f45e1723]: new_node = Node(5)
+            - listitem [ref=f45e1724]:
+              - text: ชี้
+              - code [ref=f45e1725]: next
+              - text: ของโหนดใหม่ไปยังโหนดที่
+              - code [ref=f45e1726]: head
+              - text: "ชี้อยู่:"
+              - code [ref=f45e1727]: new_node.next = self.head
+            - listitem [ref=f45e1728]:
+              - text: เลื่อนตัวแปร
+              - code [ref=f45e1729]: head
+              - text: "ให้ชี้มาที่โหนดใหม่:"
+              - code [ref=f45e1730]: self.head = new_node
+          - generic [ref=f45e1731]:
+            - generic [ref=f45e1732]:
+              - generic [ref=f45e1733]: 📊 แผนผัง Mermaid Diagram
+              - button "🔍 ขยายดูภาพเต็ม" [ref=f45e1734] [cursor=pointer]
+            - document [ref=f45e2523]:
+              - generic [ref=f45e2526]:
+                - generic [ref=f45e2527]:
+                  - generic [ref=f45e2528]: 3. สั่ง self.head = new_node
+                  - generic [ref=f45e2534]:
+                    - generic [ref=f45e2535]: Node(20)
+                    - generic [ref=f45e2540]: head
+                    - generic [ref=f45e2545]: new_node(5)
+                    - generic [ref=f45e2550]: Node(10)
+                - generic [ref=f45e2555]:
+                  - generic [ref=f45e2556]: 2. สั่ง new_node.next = self.head
+                  - generic [ref=f45e2565]: new_node.next
+                  - generic [ref=f45e2570]:
+                    - generic [ref=f45e2571]: Node(10)
+                    - generic [ref=f45e2576]: new_node(5)
+                    - generic [ref=f45e2581]: head
+                - generic [ref=f45e2586]:
+                  - generic [ref=f45e2587]: "1. สถานะเดิม: head ชี้ที่ Node(10)"
+                  - generic [ref=f45e2593]:
+                    - generic [ref=f45e2594]: Node(20)
+                    - generic [ref=f45e2599]: head
+                    - generic [ref=f45e2604]: Node(10)
+          - separator [ref=f45e1736]
+          - heading [level=3] [ref=f45e1737]:
+            - text: 3.2 การลบโหนดตรงกลางด้วยการตรวจสอบ
+            - code [ref=f45e1738]: prev
+            - text: และ
+            - code [ref=f45e1739]: curr
+            - text: (Remove Middle Node by Value)
+            - generic [ref=f45e1741]:
+              - math [ref=f45e1743]:
+                - generic [ref=f45e1745]:
+                  - generic [ref=f45e1746]: ⟹
+                  - generic [ref=f45e1747]: O
+                  - generic [ref=f45e1748]: (
+                  - generic [ref=f45e1749]: "N"
+                  - generic [ref=f45e1750]: )
+              - generic [ref=f45e1751]:
+                - generic [ref=f45e1752]: ⟹
+                - generic [ref=f45e1753]: O(N)
+          - generic [ref=f45e1754]:
+            - generic [ref=f45e1755]:
+              - generic [ref=f45e1756]: ❗
+              - generic [ref=f45e1757]: สำคัญมาก (Important)
+            - generic [ref=f45e1758]:
+              - paragraph [ref=f45e1759]:
+                - strong [ref=f45e1760]: หัวใจสำคัญของการลบโหนดใน Singly Linked List
+                - text: :เราต้องใช้พอยน์เตอร์ 2 ตัวคู่กันเสมอ คือ
+                - code [ref=f45e1761]: curr
+                - text: (โหนดที่กำลังตรวจสอบ) และ
+                - code [ref=f45e1762]: prev
+                - text: (โหนดก่อนหน้า)
+              - list [ref=f45e1763]:
+                - listitem [ref=f45e1764]:
+                  - text: หากพบโหนดเป้าหมายที่
+                  - code [ref=f45e1765]: curr
+                  - text: ": เราจะสั่ง"
+                  - strong [ref=f45e1766]:
+                    - code [ref=f45e1767]: prev.next = curr.next
+                  - text: เพื่อให้พอยน์เตอร์
+                  - code [ref=f45e1768]: next
+                  - text: ของโหนดก่อนหน้ากระโดดข้าม
+                  - code [ref=f45e1769]: curr
+                  - text: ไปยังโหนดถัดไปทันที
+                - listitem [ref=f45e1770]:
+                  - text: ตัวแปร
+                  - code [ref=f45e1771]: curr
+                  - text: จะหลุดออกจากสายโยง และ Python Garbage Collector จะเก็บกวาดหน่วยความจำให้อัตโนมัติ
+          - generic [ref=f45e1772]:
+            - generic [ref=f45e1773]:
+              - generic [ref=f45e1774]: 📊 แผนผัง Mermaid Diagram
+              - button "🔍 ขยายดูภาพเต็ม" [ref=f45e1775] [cursor=pointer]
+            - document [ref=f45e2610]:
+              - generic [ref=f45e2613]:
+                - generic [ref=f45e2614]:
+                  - generic [ref=f45e2615]: 3. ผลลัพธ์สุดท้ายในหน่วยความจำ
+                  - generic [ref=f45e2621]:
+                    - generic [ref=f45e2622]: None
+                    - generic [ref=f45e2627]: head
+                    - generic [ref=f45e2632]: Node(10)
+                    - generic [ref=f45e2637]: Node(30)
+                - generic [ref=f45e2642]:
+                  - generic [ref=f45e2643]: "2. ทำงาน: prev.next = curr.next (ข้าม Node 20)"
+                  - generic [ref=f45e2652]:
+                    - generic [ref=f45e2653]: prev.next ชี้ข้ามไป Node(30)
+                    - generic [ref=f45e2657]: หลุดจากการอ้างอิง
+                  - generic [ref=f45e2661]:
+                    - generic [ref=f45e2662]: Node(30)
+                    - generic [ref=f45e2667]: Node(10)
+                    - generic [ref=f45e2672]: Node(20) [ถูกตัดออกจากสายโยง]
+                - generic [ref=f45e2677]:
+                  - generic [ref=f45e2678]: "1. วนลูปค้นหาเป้าหมาย (ต้องการลบ Data: 20)"
+                  - generic [ref=f45e2687]:
+                    - generic [ref=f45e2688]: Node(10)
+                    - generic [ref=f45e2693]: 📍 prev
+                    - generic [ref=f45e2698]: 📍 curr
+                    - generic [ref=f45e2703]: Node(20) [Target!]
+                    - generic [ref=f45e2708]: Node(30)
+          - separator [ref=f45e1777]
+          - heading [level=3] [ref=f45e1778]:
+            - text: 3.3 การแทรกโหนดใน Doubly Linked List (อัปเดต 4 พอยน์เตอร์)
+            - generic [ref=f45e1780]:
+              - math [ref=f45e1782]:
+                - generic [ref=f45e1784]:
+                  - generic [ref=f45e1785]: ⟹
+                  - generic [ref=f45e1786]: O
+                  - generic [ref=f45e1787]: (
+                  - generic [ref=f45e1788]: "1"
+                  - generic [ref=f45e1789]: )
+              - generic [ref=f45e1790]:
+                - generic [ref=f45e1791]: ⟹
+                - generic [ref=f45e1792]: O(1)
+          - paragraph [ref=f45e1793]:
+            - text: เมื่อต้องการแทรกโหนด
+            - code [ref=f45e1794]: new_node
+            - text: ระหว่าง
+            - code [ref=f45e1795]: curr
+            - text: และ
+            - code [ref=f45e1796]: curr.next
+            - text: ":"
+          - list [ref=f45e1797]:
+            - listitem [ref=f45e1798]:
+              - code [ref=f45e1799]: new_node.next = curr.next
+              - text: (โหนดใหม่ชี้ไปตัวถัดไป)
+            - listitem [ref=f45e1800]:
+              - code [ref=f45e1801]: new_node.prev = curr
+              - text: (โหนดใหม่ชี้กลับมาที่ตัวปัจจุบัน)
+            - listitem [ref=f45e1802]:
+              - code [ref=f45e1803]: curr.next.prev = new_node
+              - text: (ตัวถัดไปชี้
+              - code [ref=f45e1804]: prev
+              - text: กลับมาหาโหนดใหม่)
+            - listitem [ref=f45e1805]:
+              - code [ref=f45e1806]: curr.next = new_node
+              - text: (ตัวปัจจุบันชี้
+              - code [ref=f45e1807]: next
+              - text: ไปหาโหนดใหม่)
+          - generic [ref=f45e1808]:
+            - generic [ref=f45e1809]:
+              - generic [ref=f45e1810]: 📊 แผนผัง Mermaid Diagram
+              - button "🔍 ขยายดูภาพเต็ม" [ref=f45e1811] [cursor=pointer]
+            - document [ref=f45e2714]:
+              - generic [ref=f45e2718]:
+                - generic [ref=f45e2719]: การปรับเปลี่ยนพอยน์เตอร์ 4 สเต็ปของ Doubly Linked List
+                - generic [ref=f45e2730]:
+                  - generic [ref=f45e2731]: 4. curr.next = new_node
+                  - generic [ref=f45e2735]: 2. new_node.prev = curr
+                  - generic [ref=f45e2739]: 1. new_node.next = curr.next
+                  - generic [ref=f45e2743]: 3. curr.next.prev = new_node
+                - generic [ref=f45e2747]:
+                  - generic [ref=f45e2748]: curr
+                  - generic [ref=f45e2753]: new_node
+                  - generic [ref=f45e2758]: curr.next
+          - separator [ref=f45e1813]
+          - heading "💻 4. โค้ดภาษา Python ฉบับสมบูรณ์พร้อม Tracing ชัดเจน (Full Implementation)" [level=2] [ref=f45e1814]
+          - paragraph [ref=f45e1815]: "ทดลองศึกษาและรันโค้ดด้านล่างนี้ได้โดยตรง:"
+          - generic [ref=f45e1816]:
+            - generic [ref=f45e1817]:
+              - generic [ref=f45e1818]: python
+              - generic [ref=f45e1819]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f45e1820] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f45e1821] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f45e1822] [cursor=pointer]
+            - code [ref=f45e1824]: "class Node: \"\"\"โครงสร้าง Node สำหรับ Singly Linked List\"\"\" def __init__(self, data): self.data = data self.next = None def __repr__(self): return f\"Node({self.data})\" class SinglyLinkedList: \"\"\"คลาสจัดการ Singly Linked List พร้อมเมธอด Insert, Remove, Search\"\"\" def __init__(self): self.head = None self.size = 0 def is_empty(self) -> bool: return self.head is None def add_first(self, item): \"\"\"แทรกข้อมูลที่หน้าสุดของ List -> O(1)\"\"\" new_node = Node(item) new_node.next = self.head self.head = new_node self.size += 1 print(f\"[add_first] แทรก {item} ไว้ที่ Head เรียบร้อย (size = {self.size})\") def append(self, item): \"\"\"แทรกข้อมูลต่อท้าย List -> O(N)\"\"\" new_node = Node(item) if self.is_empty(): self.head = new_node else: curr = self.head while curr.next is not None: curr = curr.next curr.next = new_node self.size += 1 print(f\"[append] เพิ่ม {item} ต่อท้าย List (size = {self.size})\") def insert_at(self, index: int, item): \"\"\"แทรกข้อมูล ณ ดรรชนี index ที่ระบุ -> O(N)\"\"\" if index <= 0 or self.is_empty(): self.add_first(item) return if index >= self.size: self.append(item) return # วนลูปหาตำแหน่ง prev และ curr prev = None curr = self.head for _ in range(index): prev = curr curr = curr.next new_node = Node(item) new_node.next = curr prev.next = new_node self.size += 1 print(f\"[insert_at] แทรก {item} ที่ตำแหน่ง index={index} (prev={prev.data}, curr={curr.data})\") def remove(self, target) -> bool: \"\"\"ค้นหาและลบโหนดแรกที่มี data == target -> O(N)\"\"\" if self.is_empty(): print(f\"[remove] ล้มเหลว: List ว่างเปล่า ไม่สามารถลบ {target} ได้\") return False # กรณีที่ 1: โหนดเป้าหมายอยู่ที่ Head if self.head.data == target: deleted_node = self.head self.head = self.head.next self.size -= 1 print(f\"[remove] ลบโหนด Head ({target}) สำเร็จ! head ขยับไปที่ {self.head}\") return True # กรณีที่ 2: วนลูปค้นหาด้วยตัวชี้คู่ (prev และ curr) prev = self.head curr = self.head.next while curr is not None and curr.data != target: prev = curr curr = curr.next # ถ้า curr ไม่ใช่ None แสดงว่าพบโหนดเป้าหมาย if curr is not None: # หัวใจสำคัญ: เชื่อมข้ามโหนด curr prev.next = curr.next self.size -= 1 print(f\"[remove] ลบโหนด ({target}) สำเร็จ! โดยสั่ง prev({prev.data}).next = curr.next({curr.next})\") return True print(f\"[remove] ไม่พบข้อมูล {target} ใน List\") return False def search(self, target) -> int: \"\"\"ค้นหาตำแหน่ง index ของข้อมูล -> O(N)\"\"\" curr = self.head idx = 0 while curr is not None: if curr.data == target: return idx curr = curr.next idx += 1 return -1 def print_diagram(self): \"\"\"พิมพ์แผนผังจำลองโครงสร้างหน่วยความจำ\"\"\" nodes = [] curr = self.head while curr: nodes.append(f\"[{curr.data} | next]\") curr = curr.next nodes.append(\"None\") print(\"head -> \" + \" ---> \".join(nodes)) # --- ตัวอย่างการทดสอบใช้งานจริง (Test Drive) --- if __name__ == \"__main__\": ll = SinglyLinkedList() # 1. ทดสอบการแทรก ll.append(10) ll.append(20) ll.append(30) ll.add_first(5) ll.insert_at(2, 15) ll.print_diagram() # 2. ทดสอบการค้นหา pos = ll.search(20) print(f\"ค่า 20 อยู่ที่ index: {pos}\") # 3. ทดสอบการลบโหนดตรงกลาง (ใช้ prev และ curr) ll.remove(20) ll.print_diagram() # 4. ทดสอบลบตัวหน้าสุด ll.remove(5) ll.print_diagram()"
+          - separator [ref=f45e1825]
+          - heading "🎯 5. ตะลุยกรณีพิเศษที่พบบ่อยในข้อสอบ (Exam Edge Cases)" [level=2] [ref=f45e1826]
+          - generic [ref=f45e1827]:
+            - generic [ref=f45e1828]:
+              - generic [ref=f45e1829]: 🚨
+              - generic [ref=f45e1830]: อันตราย (Caution)
+            - generic [ref=f45e1831]:
+              - paragraph [ref=f45e1832]:
+                - strong [ref=f45e1833]:
+                  - text: 3 จุดผิดยอดฮิตที่ทำให้โค้ดเกิด
+                  - code [ref=f45e1834]: "AttributeError: 'NoneType' object has no attribute 'next'"
+                - text: ":"
+              - list [ref=f45e1835]:
+                - listitem [ref=f45e1836]:
+                  - strong [ref=f45e1837]:
+                    - text: ลืมเช็ค List ว่าง (
+                    - code [ref=f45e1838]: self.head is None
+                    - text: )
+                  - text: ": ก่อนจะเรียก"
+                  - code [ref=f45e1839]: self.head.next
+                  - text: ต้องมั่นใจว่า
+                  - code [ref=f45e1840]: self.head
+                  - text: ไม่ใช่
+                  - code [ref=f45e1841]: None
+                  - text: เสมอ
+                - listitem [ref=f45e1842]:
+                  - strong [ref=f45e1843]:
+                    - text: ลืมอัปเดต
+                    - code [ref=f45e1844]: head
+                    - text: เมื่อลบโหนดแรก
+                  - text: ": หากโหนดเป้าหมายอยู่ที่ตัวแรกสุด การสั่ง"
+                  - code [ref=f45e1845]: prev.next = curr.next
+                  - text: จะ Error เพราะ
+                  - code [ref=f45e1846]: prev
+                  - text: ยังเป็น
+                  - code [ref=f45e1847]: None
+                  - text: ต้องแยกเคส
+                  - code [ref=f45e1848]: self.head = self.head.next
+                  - text: โดยเฉพาะ
+                - listitem [ref=f45e1849]:
+                  - strong [ref=f45e1850]: การหลุดขอบ (Out of Bounds) ใน While Loop
+                  - text: ": เงื่อนไข"
+                  - code [ref=f45e1851]: "while curr and curr.next:"
+                  - text: ใช้เมื่อต้องการหยุดที่โหนดสุดท้าย แต่ถ้าต้องการท่องครบทุกโหนด ต้องใช้
+                  - code [ref=f45e1852]: "while curr:"
+          - separator [ref=f45e1853]
+          - 'heading "📝 6. ข้อสอบจริง: การสลับ Pointer ขั้นสูง (Pointer Reconnection Exam Problem)" [level=2] [ref=f45e1854]'
+          - paragraph [ref=f45e1855]:
+            - text: ข้อสอบข้อเขียนและภาคปฏิบัติจากโจทย์จริง (
+            - code [ref=f45e1856]: Exams/LinkedList/612037.py
+            - text: "):"
+          - heading "6.1 โจทย์ปัญหา" [level=3] [ref=f45e1857]
+          - paragraph [ref=f45e1858]:
+            - text: "กำหนด Singly Linked List ที่มีข้อมูลเริ่มต้นเรียงจากน้อยไปมาก:"
+            - generic [ref=f45e1861]:
+              - math [ref=f45e1863]:
+                - generic [ref=f45e1865]:
+                  - generic [ref=f45e1866]: head
+                  - generic [ref=f45e1867]: →
+                  - generic [ref=f45e1868]: "["
+                  - generic [ref=f45e1869]: "0"
+                  - generic [ref=f45e1870]: "]"
+                  - generic [ref=f45e1871]: →
+                  - generic [ref=f45e1872]: "["
+                  - generic [ref=f45e1873]: "1"
+                  - generic [ref=f45e1874]: "]"
+                  - generic [ref=f45e1875]: →
+                  - generic [ref=f45e1876]: "["
+                  - generic [ref=f45e1877]: "2"
+                  - generic [ref=f45e1878]: "]"
+                  - generic [ref=f45e1879]: →
+                  - generic [ref=f45e1880]: "["
+                  - generic [ref=f45e1881]: "3"
+                  - generic [ref=f45e1882]: "]"
+                  - generic [ref=f45e1883]: →
+                  - generic [ref=f45e1884]: "["
+                  - generic [ref=f45e1885]: "6"
+                  - generic [ref=f45e1886]: "]"
+                  - generic [ref=f45e1887]: →
+                  - generic [ref=f45e1888]: "["
+                  - generic [ref=f45e1889]: "7"
+                  - generic [ref=f45e1890]: "]"
+                  - generic [ref=f45e1891]: →
+                  - generic [ref=f45e1892]: None
+              - generic [ref=f45e1893]:
+                - generic [ref=f45e1894]:
+                  - generic [ref=f45e1895]: head
+                  - text: →
+                - generic [ref=f45e1896]: "[0] →"
+                - generic [ref=f45e1897]: "[1] →"
+                - generic [ref=f45e1898]: "[2] →"
+                - generic [ref=f45e1899]: "[3] →"
+                - generic [ref=f45e1900]: "[6] →"
+                - generic [ref=f45e1901]: "[7] →"
+                - generic [ref=f45e1902]: None
+            - text: "ให้นักศึกษาอ้างอิง Pointer ไปยังโหนดต่างๆ ดังนี้:"
+          - list [ref=f45e1904]:
+            - listitem [ref=f45e1905]:
+              - code [ref=f45e1906]: node1
+              - text: ชี้ที่
+              - code [ref=f45e1907]: "[0]"
+              - text: (Head เดิม)
+            - listitem [ref=f45e1908]:
+              - code [ref=f45e1909]: node2
+              - text: ชี้ที่
+              - code [ref=f45e1910]: "[1]"
+            - listitem [ref=f45e1911]:
+              - code [ref=f45e1912]: node3
+              - text: ชี้ที่
+              - code [ref=f45e1913]: "[2]"
+            - listitem [ref=f45e1914]:
+              - code [ref=f45e1915]: node4
+              - text: ชี้ที่
+              - code [ref=f45e1916]: "[3]"
+            - listitem [ref=f45e1917]:
+              - code [ref=f45e1918]: node5
+              - text: ชี้ที่
+              - code [ref=f45e1919]: "[6]"
+            - listitem [ref=f45e1920]:
+              - code [ref=f45e1921]: node6
+              - text: ชี้ที่
+              - code [ref=f45e1922]: "[7]"
+          - paragraph [ref=f45e1923]: "จงหาผลลัพธ์ของ Linked List หลังจากสั่งคำสั่ง Pointer Reconnection ต่อไปนี้:"
+          - generic [ref=f45e1924]:
+            - generic [ref=f45e1925]:
+              - generic [ref=f45e1926]: python
+              - generic [ref=f45e1927]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f45e1928] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f45e1929] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f45e1930] [cursor=pointer]
+            - code [ref=f45e1932]: "node6.set_next(node2) # [7] ชี้ข้ามไปหา [1] node5.set_next(node1) # [6] ชี้กลับไปหา [0] node1.set_next(None) # [0] ตัดสาย ให้เป็นตัวจบแถว (Tail) mylist.head = node6 # ย้าย Head ให้มาเริ่มต้นที่ [7]"
+          - heading "6.2 วิเคราะห์ Step-by-Step ด้วยกราฟ" [level=3] [ref=f45e1933]
+          - generic [ref=f45e1934]:
+            - generic [ref=f45e1935]:
+              - generic [ref=f45e1936]: 📊 แผนผัง Mermaid Diagram
+              - button "🔍 ขยายดูภาพเต็ม" [ref=f45e1937] [cursor=pointer]
+            - document [ref=f45e2764]:
+              - generic [ref=f45e2767]:
+                - generic [ref=f45e2768]: head
+                - generic [ref=f45e2773]: "[7]"
+                - generic [ref=f45e2778]: "[1]"
+                - generic [ref=f45e2783]: "[2]"
+                - generic [ref=f45e2788]: "[3]"
+                - generic [ref=f45e2793]: "[6]"
+                - generic [ref=f45e2798]: "[0]"
+                - generic [ref=f45e2803]: None
+          - paragraph [ref=f45e1939]:
+            - text: "ผลลัพธ์ที่พิมพ์ออกมาได้คือ:"
+            - generic [ref=f45e1942]:
+              - math [ref=f45e1944]:
+                - generic [ref=f45e1946]:
+                  - generic [ref=f45e1947]: "7"
+                  - generic [ref=f45e1948]: ⟹
+                  - generic [ref=f45e1949]: "1"
+                  - generic [ref=f45e1950]: ⟹
+                  - generic [ref=f45e1951]: "2"
+                  - generic [ref=f45e1952]: ⟹
+                  - generic [ref=f45e1953]: "3"
+                  - generic [ref=f45e1954]: ⟹
+                  - generic [ref=f45e1955]: "6"
+                  - generic [ref=f45e1956]: ⟹
+                  - generic [ref=f45e1957]: "0"
+              - generic [ref=f45e1958]: 7 ⟹ 1 ⟹ 2 ⟹ 3 ⟹ 6 ⟹ 0
+          - heading "6.3 โค้ดทดสอบจริงรันได้ทันที" [level=3] [ref=f45e1961]
+          - generic [ref=f45e1962]:
+            - generic [ref=f45e1963]:
+              - generic [ref=f45e1964]: python
+              - generic [ref=f45e1965]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f45e1966] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f45e1967] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f45e1968] [cursor=pointer]
+            - code [ref=f45e1970]: "class Node: def __init__(self, data): self.data = data self.next = None def get_next(self): return self.next def set_next(self, new_next): self.next = new_next class LinkedList: def __init__(self): self.head = None def add(self, item): new_node = Node(item) new_node.set_next(self.head) self.head = new_node def insert(self, item, pos): if pos == 0: self.add(item) return curr = self.head for _ in range(pos - 1): curr = curr.get_next() new_node = Node(item) new_node.set_next(curr.get_next()) curr.set_next(new_node) def print_list(self): curr = self.head res = [] while curr is not None: res.append(str(curr.data)) curr = curr.get_next() print(\" -> \".join(res) + \" -> None\") if __name__ == \"__main__\": mylist = LinkedList() # สร้าง List: 0, 1, 2, 3, 6, 7 mylist.add(6) mylist.add(1) mylist.insert(2, 2) mylist.add(0) mylist.insert(3, 4) mylist.insert(7, 6) print(\"📋 ลิสต์ก่อนสลับ Pointer:\") mylist.print_list() # ระบุตัวแปรชี้แต่ละโหนดตามโจทย์ข้อสอบ node1 = mylist.head # 0 node2 = node1.get_next() # 1 node3 = node2.get_next() # 2 node4 = node3.get_next() # 3 node5 = node4.get_next() # 6 node6 = node5.get_next() # 7 # สลับ Pointer 4 ขั้นตอน node6.set_next(node2) node5.set_next(node1) node1.set_next(None) mylist.head = node6 print(\"\\n✅ ลิสต์หลังสลับ Pointer (ตรงตามเฉลยข้อสอบ):\") mylist.print_list()"
+          - separator [ref=f45e1971]
+          - heading "📝 7. แบบฝึกหัดในห้องเรียน 8 ข้อจริง & กฎเหล็ก 5 ข้อ (Classroom 8 Questions & Golden Rules)" [level=2] [ref=f45e1972]
+          - generic [ref=f45e1973]:
+            - generic [ref=f45e1974]:
+              - generic [ref=f45e1975]: 💡
+              - generic [ref=f45e1976]: เกร็ดความรู้ (Info)
+            - paragraph [ref=f45e1978]:
+              - strong [ref=f45e1979]: ที่มาของเอกสารต้นฉบับ
+              - text: ": เอกสารใบงานในห้องเรียนจริง"
+              - code [ref=f45e1980]: New-Lectures/examp_linked_list_1.jpg
+              - text: ","
+              - code [ref=f45e1981]: New-Lectures/examp_linked_list_2.jpg
+              - text: ","
+              - code [ref=f45e1982]: Lectures/Lecture 3 Linked List/For example.pdf
+              - text: ", และ"
+              - code [ref=f45e1983]: New-Lectures/linklist ex169 Edit1.pdf
+          - separator [ref=f45e1984]
+          - heading "🚨 กฎเหล็ก 5 ข้อสำหรับการเขียนคำตอบ Linked List ในห้องสอบ" [level=3] [ref=f45e1985]
+          - list [ref=f45e1986]:
+            - listitem [ref=f45e1987]:
+              - text: 🚫
+              - strong [ref=f45e1988]:
+                - text: ห้ามใช้
+                - code [ref=f45e1989]: insert(item, 0)
+                - text: โดยเด็ดขาด
+              - text: (การแทรกที่หัวแถวต้องใช้
+              - code [ref=f45e1990]: add(item)
+              - text: เท่านั้น)
+            - listitem [ref=f45e1991]:
+              - text: 🎯
+              - strong [ref=f45e1992]:
+                - text: หากโจทย์สั่ง
+                - code [ref=f45e1993]: remove
+                - text: ต้องคำนึงถึงเงื่อนไขการลบโหนดแรกที่พบตาม Logic ที่เรียน
+            - listitem [ref=f45e1994]:
+              - text: ⏱️
+              - strong [ref=f45e1995]: หากโจทย์ซับซ้อนเกินกว่าจะใช้คำสั่งเดียว ให้เขียนลำดับคำสั่ง (Sequence of Operations) ให้ถูกต้องตามลำดับ
+            - listitem [ref=f45e1996]:
+              - text: 🏗️
+              - strong [ref=f45e1997]:
+                - text: กำหนดตอนเริ่มต้นให้
+                - code [ref=f45e1998]: mylist = LinkedList()
+            - listitem [ref=f45e1999]:
+              - text: 🛡️
+              - strong [ref=f45e2000]:
+                - text: ใช้เฉพาะ
+                - code [ref=f45e2001]: class LinkedList
+                - text: ","
+                - code [ref=f45e2002]: class Node
+                - text: และ method ที่เรียนเท่านั้น
+              - text: โดยห้ามพึ่งพาตัวแปรโครงสร้างอื่น เช่น Python List, Dict, หรือ Set
+          - separator [ref=f45e2003]
+          - heading "📸 ภาพใบงานต้นฉบับจากห้องเรียน (Original Classroom Worksheets)" [level=3] [ref=f45e2004]
+          - generic [ref=f45e2005]:
+            - generic [ref=f45e2006]:
+              - generic [ref=f45e2007]: 📄 ใบงานข้อ 1 - 5 + กฎเหล็ก
+              - img "ใบงาน Linked List ข้อ 1-5" [ref=f45e2008]
+            - generic [ref=f45e2009]:
+              - generic [ref=f45e2010]: 📄 ใบงานข้อ 6 - 8 (Pointer Bypass)
+              - img "ใบงาน Linked List ข้อ 6-8" [ref=f45e2011]
+          - separator [ref=f45e2012]
+          - heading "🎯 เฉลยละเอียดและโค้ดคำตอบที่ถูกต้อง 100% (ข้อ 1 - 8)" [level=3] [ref=f45e2013]
+          - table [ref=f45e2015]:
+            - rowgroup [ref=f45e2016]:
+              - row [ref=f45e2017]:
+                - columnheader "ข้อที่" [ref=f45e2018]
+                - columnheader [ref=f45e2019]:
+                  - text: สถานะเริ่มต้น
+                  - generic [ref=f45e2021]:
+                    - math [ref=f45e2023]:
+                      - generic [ref=f45e2024]: ⟹
+                    - generic [ref=f45e2027]: ⟹
+                  - text: ผลลัพธ์เป้าหมาย
+                - columnheader "เงื่อนไขที่อาจารย์กำหนด" [ref=f45e2029]
+                - columnheader "โค้ดคำตอบที่ถูกต้อง ชัดเจน (Python Statements)" [ref=f45e2030]
+                - columnheader "คำอธิบายตรรกะเบื้องหลัง" [ref=f45e2031]
+            - rowgroup [ref=f45e2032]:
+              - row [ref=f45e2033]:
+                - cell [ref=f45e2034]:
+                  - strong [ref=f45e2035]: "1"
+                - cell [ref=f45e2036]:
+                  - code [ref=f45e2037]: "[]"
+                  - generic [ref=f45e2039]:
+                    - math [ref=f45e2041]:
+                      - generic [ref=f45e2042]: ⟹
+                    - generic [ref=f45e2045]: ⟹
+                  - code [ref=f45e2047]: "[10, 20, 30]"
+                - cell [ref=f45e2048]:
+                  - text: เริ่มจาก LinkedList ว่าง ให้ใช้
+                  - code [ref=f45e2049]: add
+                  - text: และ
+                  - code [ref=f45e2050]: insert
+                - cell [ref=f45e2051]:
+                  - code [ref=f45e2052]: python<br>mylist.add(10)<br>mylist.insert(20, 1)<br>mylist.insert(30, 2)<br>
+                - cell [ref=f45e2053]:
+                  - text: หากใช้
+                  - code [ref=f45e2054]: add
+                  - text: ทุกตัว จะได้ลิสต์กลับด้านเป็น
+                  - code [ref=f45e2055]: "[30, 20, 10]"
+                  - text: จึงต้องใช้
+                  - code [ref=f45e2056]: add(10)
+                  - text: ที่ตำแหน่งหัว แล้วใช้
+                  - code [ref=f45e2057]: insert
+                  - text: แทรกต่อท้ายตาม index
+              - row [ref=f45e2058]:
+                - cell [ref=f45e2059]:
+                  - strong [ref=f45e2060]: "2"
+                - cell [ref=f45e2061]:
+                  - code [ref=f45e2062]: "[1, 2, 3, 4]"
+                  - generic [ref=f45e2064]:
+                    - math [ref=f45e2066]:
+                      - generic [ref=f45e2067]: ⟹
+                    - generic [ref=f45e2070]: ⟹
+                  - code [ref=f45e2072]: "[2, 3, 4]"
+                - cell "ลบโหนดที่ 1 (Index 0)" [ref=f45e2073]
+                - cell [ref=f45e2074]:
+                  - code [ref=f45e2075]: python<br>mylist.remove(1)<br>
+                - cell [ref=f45e2076]:
+                  - text: เมธอด
+                  - code [ref=f45e2077]: remove(item)
+                  - text: รับค่า Data ของโหนดที่ต้องการลบ ในที่นี้คือลบค่า 1 ซึ่งอยู่ตำแหน่งแรก
+              - row [ref=f45e2078]:
+                - cell [ref=f45e2079]:
+                  - strong [ref=f45e2080]: "3"
+                - cell [ref=f45e2081]:
+                  - code [ref=f45e2082]: "[A, B, C, D]"
+                  - generic [ref=f45e2084]:
+                    - math [ref=f45e2086]:
+                      - generic [ref=f45e2087]: ⟹
+                    - generic [ref=f45e2090]: ⟹
+                  - code [ref=f45e2092]: "[A, C, B, D]"
+                - cell [ref=f45e2093]:
+                  - text: สลับตำแหน่ง B และ C โดย
+                  - strong [ref=f45e2094]: ห้ามแก้ข้อมูลในโหนด
+                  - text: ให้ใช้
+                  - code [ref=f45e2095]: remove
+                  - text: กับ
+                  - code [ref=f45e2096]: insert
+                - cell [ref=f45e2097]:
+                  - code [ref=f45e2098]: python<br>mylist.remove("B")<br>mylist.insert("B", 2)<br>
+                - cell [ref=f45e2099]:
+                  - text: ลบ
+                  - code [ref=f45e2100]: "\"B\""
+                  - text: ออกจากตำแหน่ง index 1 ทำให้ลิสต์เหลือ
+                  - code [ref=f45e2101]: "[A, C, D]"
+                  - text: จากนั้นแทรก
+                  - code [ref=f45e2102]: "\"B\""
+                  - text: เข้าไปที่ index 2 กลายเป็น
+                  - code [ref=f45e2103]: "[A, C, B, D]"
+              - row [ref=f45e2104]:
+                - cell [ref=f45e2105]:
+                  - strong [ref=f45e2106]: "4"
+                - cell [ref=f45e2107]:
+                  - code [ref=f45e2108]: "[1, 2, 1, 3]"
+                  - generic [ref=f45e2110]:
+                    - math [ref=f45e2112]:
+                      - generic [ref=f45e2113]: ⟹
+                    - generic [ref=f45e2116]: ⟹
+                  - code [ref=f45e2118]: "[2, 1, 3]"
+                - cell "มีข้อมูลซ้ำซ้อน ต้องการลบ 1 ตัวแรก" [ref=f45e2119]
+                - cell [ref=f45e2120]:
+                  - code [ref=f45e2121]: python<br>mylist.remove(1)<br>
+                - cell [ref=f45e2122]:
+                  - text: กลไก
+                  - code [ref=f45e2123]: remove()
+                  - text: จะหยุดค้นหาและลบโหนดทันทีที่เจอค่าตรงกันเป็นตัวแรก
+              - row [ref=f45e2124]:
+                - cell [ref=f45e2125]:
+                  - strong [ref=f45e2126]: "5"
+                - cell [ref=f45e2127]:
+                  - code [ref=f45e2128]: "[1, 2, 1, 3]"
+                  - generic [ref=f45e2130]:
+                    - math [ref=f45e2132]:
+                      - generic [ref=f45e2133]: ⟹
+                    - generic [ref=f45e2136]: ⟹
+                  - code [ref=f45e2138]: "[1, 2, 3]"
+                - cell "ลบเลข 1 ทั้งสองตัว แล้วนำ 1 กลับไปไว้ที่หัว" [ref=f45e2139]
+                - cell [ref=f45e2140]:
+                  - code [ref=f45e2141]: python<br>mylist.remove(1)<br>mylist.remove(1)<br>mylist.add(1)<br>
+                - cell [ref=f45e2142]:
+                  - text: ลบ 1 ครั้งแรกเหลือ
+                  - code [ref=f45e2143]: "[2, 1, 3]"
+                  - text: ลบ 1 ครั้งที่สองเหลือ
+                  - code [ref=f45e2144]: "[2, 3]"
+                  - text: จากนั้นสั่ง
+                  - code [ref=f45e2145]: add(1)
+                  - text: เพิ่ม 1 กลับเข้าหัวแถว
+              - row [ref=f45e2146]:
+                - cell [ref=f45e2147]:
+                  - strong [ref=f45e2148]: "6"
+                - cell [ref=f45e2149]:
+                  - code [ref=f45e2150]: "[A, B, C]"
+                  - generic [ref=f45e2152]:
+                    - math [ref=f45e2154]:
+                      - generic [ref=f45e2155]: ⟹
+                    - generic [ref=f45e2158]: ⟹
+                  - code [ref=f45e2160]: "[A, C]"
+                - cell [ref=f45e2161]:
+                  - text: ลบ B ออกโดย
+                  - strong [ref=f45e2162]: การตัดต่อพอยน์เตอร์ ห้ามใช้ method remove
+                - cell [ref=f45e2163]:
+                  - code [ref=f45e2164]: python<br>mylist.head.set_next(mylist.head.get_next().get_next())<br># หรือ mylist.head.next = mylist.head.next.next<br>
+                - cell [ref=f45e2165]:
+                  - text: ให้
+                  - code [ref=f45e2166]: next
+                  - text: ของโหนด A ข้ามโหนด B ไปชี้ที่โหนด C โดยตรง ทำให้โหนด B หลุดออกจากเส้นทาง
+              - row [ref=f45e2167]:
+                - cell [ref=f45e2168]:
+                  - strong [ref=f45e2169]: "7"
+                - cell [ref=f45e2170]:
+                  - code [ref=f45e2171]: "[A, B, C, D]"
+                  - generic [ref=f45e2173]:
+                    - math [ref=f45e2175]:
+                      - generic [ref=f45e2176]: ⟹
+                    - generic [ref=f45e2179]: ⟹
+                  - code [ref=f45e2181]: "[A, D]"
+                - cell [ref=f45e2182]:
+                  - text: ลบ B และ C ออกโดย
+                  - strong [ref=f45e2183]: การตัดต่อพอยน์เตอร์ ห้ามใช้ method remove
+                - cell [ref=f45e2184]:
+                  - code [ref=f45e2185]: python<br>node = mylist.head<br>node.set_next(node.get_next().get_next().get_next())<br># หรือ mylist.head.next = mylist.head.next.next.next<br>
+                - cell [ref=f45e2186]:
+                  - text: ให้
+                  - code [ref=f45e2187]: next
+                  - text: ของโหนดหัว (A) กระโดดข้ามไป 3 สเต็ปเพื่อไปชี้โหนด D โดยตรง
+              - row [ref=f45e2188]:
+                - cell [ref=f45e2189]:
+                  - strong [ref=f45e2190]: "8"
+                - cell [ref=f45e2191]:
+                  - code [ref=f45e2192]: "[A, B, C]"
+                  - generic [ref=f45e2194]:
+                    - math [ref=f45e2196]:
+                      - generic [ref=f45e2197]: ⟹
+                    - generic [ref=f45e2200]: ⟹
+                  - code [ref=f45e2202]: "[A, X, B, C]"
+                - cell [ref=f45e2203]:
+                  - text: เพิ่ม X เข้าไปถัดจาก A โดย
+                  - strong [ref=f45e2204]: การเชื่อมต่อพอยน์เตอร์ ห้ามใช้ method insert
+                - cell [ref=f45e2205]:
+                  - code [ref=f45e2206]: python<br>node = Node("X")<br>node.set_next(mylist.head.get_next())<br>mylist.head.set_next(node)<br>
+                - cell [ref=f45e2207]:
+                  - text: 1. ชี้
+                  - code [ref=f45e2208]: next
+                  - text: ของโหนดใหม่ X ไปที่โหนด B (
+                  - code [ref=f45e2209]: head.get_next()
+                  - text: ) ก่อน2. เปลี่ยน
+                  - code [ref=f45e2210]: next
+                  - text: ของโหนด A ให้มาชี้ที่ X
+          - separator [ref=f45e2211]
+          - heading "✂️ 7.2 การสลับโหนด (Node Pointer Swapping) สลับโหนด 2 และ 4 โดยไม่แตะ Data" [level=3] [ref=f45e2212]
+          - generic [ref=f45e2213]:
+            - generic [ref=f45e2214]:
+              - generic [ref=f45e2215]: ❗
+              - generic [ref=f45e2216]: สำคัญมาก (Important)
+            - paragraph [ref=f45e2218]:
+              - strong [ref=f45e2219]:
+                - text: โจทย์จากชีท
+                - code [ref=f45e2220]: linklist ex169 Edit1.pdf
+                - text: หน้า 2-3
+              - text: ":มีลิสต์เริ่มต้น:"
+              - code [ref=f45e2221]: mylist.head -> [1] -> [2] -> [3] -> [4] -> [5]
+              - text: "ต้องการให้ได้ผลลัพธ์:"
+              - code [ref=f45e2222]: mylist.head -> [1] -> [4] -> [3] -> [2] -> [5]
+              - strong [ref=f45e2223]: กฎข้อสอบ
+              - text: ": ให้เปลี่ยนเฉพาะเส้นชี้ของ Node เท่านั้น"
+              - strong [ref=f45e2224]:
+                - text: ห้ามสลับค่า
+                - code [ref=f45e2225]: .data
+          - generic [ref=f45e2226]:
+            - generic [ref=f45e2227]:
+              - generic [ref=f45e2228]: 📊 แผนผัง Mermaid Diagram
+              - button "🔍 ขยายดูภาพเต็ม" [ref=f45e2229] [cursor=pointer]
+            - document [ref=f45e2809]:
+              - generic [ref=f45e2813]:
+                - generic [ref=f45e2814]: "เป้าหมายหลังสลับ: 1 -> 4 -> 3 -> 2 -> 5"
+                - generic [ref=f45e2820]:
+                  - generic [ref=f45e2821]: Node 4
+                  - generic [ref=f45e2826]: Node 1 (head)
+                  - generic [ref=f45e2831]: Node 3
+                  - generic [ref=f45e2836]: Node 2
+                  - generic [ref=f45e2841]: Node 5
+          - heading "💻 ลำดับคำสั่ง 4 สเต็ปที่ถูกต้อง (The 4 Pointer Statements):" [level=4] [ref=f45e2231]
+          - generic [ref=f45e2232]:
+            - generic [ref=f45e2233]:
+              - generic [ref=f45e2234]: python
+              - generic [ref=f45e2235]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f45e2236] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f45e2237] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f45e2238] [cursor=pointer]
+            - code [ref=f45e2240]: "# สมมติมีตัวแปร node1, node2, node3, node4, node5 ชี้แต่ละโหนด node1 = mylist.head # ชี้ Node 1 node2 = node1.get_next() # ชี้ Node 2 node3 = node2.get_next() # ชี้ Node 3 node4 = node3.get_next() # ชี้ Node 4 node5 = node4.get_next() # ชี้ Node 5 # ขั้นตอนการสลับพอยน์เตอร์: node1.next = node4 # สเต็ป 1: Node 1 หันไปชี้ Node 4 node4.next = node3 # สเต็ป 2: Node 4 หันไปชี้ Node 3 node3.next = node2 # สเต็ป 3: Node 3 หันไปชี้ Node 2 node2.next = node5 # สเต็ป 4: Node 2 หันไปชี้ Node 5"
+          - separator [ref=f45e2241]
+          - heading [level=3] [ref=f45e2242]:
+            - text: "🧠 7.3 เหตุผลในชีวิตจริง: ทำไมต้องตัดต่อพอยน์เตอร์? ทำไมห้ามสลับ"
+            - code [ref=f45e2243]: .data
+            - text: "?"
+          - paragraph [ref=f45e2244]: "นักศึกษามักสงสัยว่า ทำไมไม่เขียนง่ายๆ แบบนี้:"
+          - generic [ref=f45e2245]:
+            - generic [ref=f45e2246]:
+              - generic [ref=f45e2247]: python
+              - generic [ref=f45e2248]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f45e2249] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f45e2250] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f45e2251] [cursor=pointer]
+            - code [ref=f45e2253]: "# โค้ดมักง่าย (ห้ามทำในห้องสอบ!): temp = node2.data node2.data = node4.data node4.data = temp"
+          - generic [ref=f45e2254]:
+            - generic [ref=f45e2255]:
+              - generic [ref=f45e2256]: 🚨
+              - generic [ref=f45e2257]: อันตราย (Caution)
+            - paragraph [ref=f45e2259]:
+              - strong [ref=f45e2260]: กับดักอาจารย์ (0 คะแนนทันที!)
+              - text: :หากทำข้อสอบด้วยการสลับ
+              - code [ref=f45e2261]: .data
+              - text: อาจารย์ระบุชัดเจนว่าจะได้
+              - strong [ref=f45e2262]: 0 คะแนน
+              - text: เนื่องจากผิดวัตถุประสงค์ของวิชา Data Structure!
+          - heading "เหตุผลทางวิศวกรรมคอมพิวเตอร์ 3 ข้อ:" [level=4] [ref=f45e2263]
+          - list [ref=f45e2264]:
+            - listitem [ref=f45e2265]:
+              - strong [ref=f45e2266]: ขนาดของข้อมูล (Data Size ในหน่วยความจำ)
+              - text: ":"
+              - list [ref=f45e2267]:
+                - listitem [ref=f45e2268]: ในโจทย์เรียน ข้อมูลอาจเป็นตัวเลขสั้นๆ เช่น 1, 2, 3
+                - listitem [ref=f45e2269]:
+                  - text: แต่ในชีวิตจริง
+                  - code [ref=f45e2270]: .data
+                  - text: ของโหนดหนึ่งอาจเป็น
+                  - strong [ref=f45e2271]: ประวัติลูกค้าทั้งคน
+                  - text: (รูปถ่าย, ประวัติการแพทย์, อาร์เรย์ซ้อนอาร์เรย์ขนาดหลายสิบ MB)
+                - listitem [ref=f45e2272]:
+                  - strong [ref=f45e2273]:
+                    - text: ถ้าสลับพอยน์เตอร์ (
+                    - code [ref=f45e2274]: .next
+                    - text: )
+                  - text: ": คอมพิวเตอร์เพียงแค่ย้าย Memory Address ขนาด 64 บิต (8 Bytes) ใช้เวลา"
+                  - generic [ref=f45e2276]:
+                    - math [ref=f45e2278]:
+                      - generic [ref=f45e2280]:
+                        - generic [ref=f45e2281]: O
+                        - generic [ref=f45e2282]: (
+                        - generic [ref=f45e2283]: "1"
+                        - generic [ref=f45e2284]: )
+                    - generic [ref=f45e2285]: O(1)
+                  - text: เท่ากันเสมอไม่ว่าข้อมูลจะใหญ่แค่ไหน
+                - listitem [ref=f45e2287]:
+                  - strong [ref=f45e2288]:
+                    - text: ถ้าสลับข้อมูล (
+                    - code [ref=f45e2289]: .data
+                    - text: )
+                  - text: ": คอมพิวเตอร์ต้องคัดลอกข้อมูลมหาศาลย้ายไปมาใน RAM ทำให้ระบบหน่วงและสิ้นเปลืองทรัพยากร"
+            - listitem [ref=f45e2290]:
+              - strong [ref=f45e2291]: วัตถุประสงค์ของโครงสร้าง Linked List
+              - text: ":"
+              - list [ref=f45e2292]:
+                - listitem [ref=f45e2293]: Linked List ถูกสร้างขึ้นมาเพื่อแก้จุดอ่อนของ Array (ที่เวลาแทรก/ลบต้องเลื่อนขยับข้อมูลทั้งแถว)
+                - listitem [ref=f45e2294]:
+                  - text: จุดเด่นของมันคือ
+                  - strong [ref=f45e2295]: "\"ข้อมูลอยู่ที่เดิม แต่เปลี่ยนเส้นทางเดิน\""
+            - listitem [ref=f45e2296]:
+              - strong [ref=f45e2297]: พื้นฐานสำหรับ Tree และ Graph
+              - text: ":"
+              - list [ref=f45e2298]:
+                - listitem [ref=f45e2299]: การฝึกสมองให้คิดแบบ Pointer Logic เป็นรากฐานสำคัญในการไปเรียนโครงสร้างต้นไม้และกราฟ ซึ่งไม่มีทางสลับข้อมูลข้ามกิ่งได้เลย ต้องจัดการเส้นเชื่อมเท่านั้น
+          - separator [ref=f45e2300]
+          - heading "🖥️ ตัวอย่างหน้าจอ Interface การจำลองการทำงาน Linked List (Interactive Studio Preview)" [level=4] [ref=f45e2301]
+          - generic [ref=f45e2302]:
+            - generic [ref=f45e2303]:
+              - generic [ref=f45e2304]: console
+              - button "📋 คัดลอก" [ref=f45e2306] [cursor=pointer]
+            - code [ref=f45e2308]: "============================================================ LINKED LIST POINTER DEBUGGER (STUDIO) ============================================================ [State 0: Initial] Head -> [1|0x100] -> [2|0x140] -> [3|0x180] -> [4|0x1C0] -> [5|0x200] -> None [Action: Pointer Swap Node 2 <-> Node 4] Step 1: node1.next = node4 (0x1C0) [1] points to [4] Step 2: node4.next = node3 (0x180) [4] points to [3] Step 3: node3.next = node2 (0x140) [3] points to [2] Step 4: node2.next = node5 (0x200) [2] points to [5] ------------------------------------------------------------ [Final Result] Head -> [1] -> [4] -> [3] -> [2] -> [5] -> None [Validation] Memory Data Preserved: 100% | Pointer Retargeting: Success! ============================================================"
+          - separator [ref=f45e2309]
+          - heading "🔗 ลิงก์เชื่อมโยงใน Obsidian Wiki" [level=2] [ref=f45e2310]
+          - list [ref=f45e2311]:
+            - listitem [ref=f45e2312]:
+              - text: "ก่อนหน้า:"
+              - link "📄 02.1 - Python Review & Object-Oriented Programming (OOP)" [ref=f45e2313] [cursor=pointer]:
+                - /url: "#/02.1%20-%20Python%20Review%20%26%20Object-Oriented%20Programming%20(OOP)"
+            - listitem [ref=f45e2314]:
+              - text: "ถัดไป (Stack):"
+              - link "📄 04.1 - Stacks & Applications (Infix, Postfix, Parentheses)" [ref=f45e2315] [cursor=pointer]:
+                - /url: "#/04.1%20-%20Stacks%20%26%20Applications%20(Infix%2C%20Postfix%2C%20Parentheses)"
+            - listitem [ref=f45e2316]:
+              - text: "คลังข้อสอบปฏิบัติการ:"
+              - link "📄 11.1 - Midterm Real Exam Mock & Solutions" [ref=f45e2317] [cursor=pointer]:
+                - /url: "#/11.1%20-%20Midterm%20Real%20Exam%20Mock%20%26%20Solutions"
+            - listitem [ref=f45e2318]:
+              - text: "ตารางความเร็วรวม:"
+              - link "📄 Glossary & Complexity Cheat Sheet" [ref=f45e2319] [cursor=pointer]:
+                - /url: "#/Glossary%20%26%20Complexity%20Cheat%20Sheet"
+        - generic [ref=f45e1255]:
+          - 'link "← บทก่อนหน้า บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน" [ref=f45e2320] [cursor=pointer]':
+            - /url: "#/02.1%20-%20Python%20Review%20%26%20Object-Oriented%20Programming%20(OOP)"
+            - generic [ref=f45e2321]: ← บทก่อนหน้า
+            - generic [ref=f45e2322]: "บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน"
+          - 'link "บทถัดไป → บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix" [ref=f45e2323] [cursor=pointer]':
+            - /url: "#/04.1%20-%20Stacks%20%26%20Applications%20(Infix%2C%20Postfix%2C%20Parentheses)"
+            - generic [ref=f45e2324]: บทถัดไป →
+            - generic [ref=f45e2325]: "บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix"
+  - generic:
+    - generic:
+      - generic:
+        - textbox "พิมพ์ค้นหา เช่น Linked List, Heap, BST, Big-O, Dijkstra, Midterm..."
+        - button "ESC"
+  - generic:
+    - generic:
+      - generic: 📊 แผนผังแบบขยายเต็มจอ (Mermaid Diagram)
+      - generic:
+        - button "➖ ย่อ"
+        - button "1:1"
+        - button "➕ ขยาย"
+        - button "✕ ปิด"

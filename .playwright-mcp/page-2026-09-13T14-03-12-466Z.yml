@@ -1,0 +1,1078 @@
+- generic [active] [ref=f9e1]:
+  - banner [ref=f9e3]:
+    - link "DSA Wiki Python DSA" [ref=f9e5] [cursor=pointer]:
+      - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+      - generic [ref=f9e10]: DSA Wiki
+      - generic [ref=f9e11]: Python DSA
+    - button "ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง... Ctrl K" [ref=f9e13] [cursor=pointer]:
+      - generic [ref=f9e14]: ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง...
+      - generic [ref=f9e19]: Ctrl K
+    - generic [ref=f9e20]:
+      - generic "ปรับขนาดตัวอักษรสำหรับอ่าน" [ref=f9e21]:
+        - button "A-" [ref=f9e22] [cursor=pointer]
+        - button "A+" [ref=f9e23] [cursor=pointer]
+      - button "☀️" [ref=f9e24] [cursor=pointer]
+      - link "🔬 ห้องทดลอง DSA Lab" [ref=f9e25] [cursor=pointer]:
+        - /url: ../DsaLab/index.html
+        - generic [ref=f9e26]: 🔬
+        - generic [ref=f9e27]: ห้องทดลอง DSA Lab
+  - generic [ref=f9e28]:
+    - complementary [ref=f9e29]:
+      - generic [ref=f9e30]:
+        - button "📚 บทเรียน (1-10)" [ref=f9e31] [cursor=pointer]
+        - button "🎯 โซนเตรียมสอบ" [ref=f9e32] [cursor=pointer]
+      - generic [ref=f9e33]:
+        - generic [ref=f9e34]:
+          - generic [ref=f9e35]: "🏛️ บทที่ 1: Introduction & Algorithm Analysis"
+          - 'link "ยังไม่ได้อ่าน บทที่ 1: บทนำ & การวิเคราะห์อัลกอริทึม (Big-O) ⏱️ 13 นาที · 0 หัวข้อ" [ref=f9e38] [cursor=pointer]':
+            - /url: "#/01.1%20-%20Introduction%20to%20Data%20Structures%20%26%20Algorithm%20Analysis"
+            - generic "ยังไม่ได้อ่าน" [ref=f9e39]
+            - generic [ref=f9e40]:
+              - generic [ref=f9e41]: "บทที่ 1: บทนำ & การวิเคราะห์อัลกอริทึม (Big-O)"
+              - generic [ref=f9e42]: ⏱️ 13 นาที · 0 หัวข้อ
+        - generic [ref=f9e43]:
+          - generic [ref=f9e44]: "🐍 บทที่ 2: Review Python & OOP"
+          - 'link "ยังไม่ได้อ่าน บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน ⏱️ 17 นาที · 0 หัวข้อ" [ref=f9e47] [cursor=pointer]':
+            - /url: "#/02.1%20-%20Python%20Review%20%26%20Object-Oriented%20Programming%20(OOP)"
+            - generic "ยังไม่ได้อ่าน" [ref=f9e48]
+            - generic [ref=f9e49]:
+              - generic [ref=f9e50]: "บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน"
+              - generic [ref=f9e51]: ⏱️ 17 นาที · 0 หัวข้อ
+        - generic [ref=f9e52]:
+          - generic [ref=f9e53]: "🔗 บทที่ 3: Linked Lists"
+          - 'link "ยังไม่ได้อ่าน บทที่ 3: Singly, Doubly & Circular Linked Lists ⏱️ 38 นาที · 0 หัวข้อ" [ref=f9e56] [cursor=pointer]':
+            - /url: "#/03.1%20-%20Linked%20Lists%20(Singly%2C%20Doubly%2C%20Circular)"
+            - generic "ยังไม่ได้อ่าน" [ref=f9e57]
+            - generic [ref=f9e58]:
+              - generic [ref=f9e59]: "บทที่ 3: Singly, Doubly & Circular Linked Lists"
+              - generic [ref=f9e60]: ⏱️ 38 นาที · 0 หัวข้อ
+        - generic [ref=f9e61]:
+          - generic [ref=f9e62]: "🥞 บทที่ 4: Stacks & Queues"
+          - generic [ref=f9e64]:
+            - 'link "ยังไม่ได้อ่าน บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix ⏱️ 28 นาที · 0 หัวข้อ" [ref=f9e65] [cursor=pointer]':
+              - /url: "#/04.1%20-%20Stacks%20%26%20Applications%20(Infix%2C%20Postfix%2C%20Parentheses)"
+              - generic "ยังไม่ได้อ่าน" [ref=f9e66]
+              - generic [ref=f9e67]:
+                - generic [ref=f9e68]: "บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix"
+                - generic [ref=f9e69]: ⏱️ 28 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 4.2: Queue & Circular Array Queue ⏱️ 21 นาที · 0 หัวข้อ" [ref=f9e70] [cursor=pointer]':
+              - /url: "#/04.2%20-%20Queues%20%26%20Circular%20Array%20Queues"
+              - generic "ยังไม่ได้อ่าน" [ref=f9e71]
+              - generic [ref=f9e72]:
+                - generic [ref=f9e73]: "บทที่ 4.2: Queue & Circular Array Queue"
+                - generic [ref=f9e74]: ⏱️ 21 นาที · 0 หัวข้อ
+        - generic [ref=f9e75]:
+          - generic [ref=f9e76]: "🌲 บทที่ 5: Trees & Binary Search Trees"
+          - generic [ref=f9e78]:
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals ⏱️ 15 นาที · 0 หัวข้อ" [ref=f9e79] [cursor=pointer]':
+              - /url: "#/05.1%20-%20Tree%20Terminology%20%26%20Binary%20Trees"
+              - generic "ยังไม่ได้อ่าน" [ref=f9e80]
+              - generic [ref=f9e81]:
+                - generic [ref=f9e82]: "บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals"
+                - generic [ref=f9e83]: ⏱️ 15 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.2: Binary Search Trees (BST) & การแทรก ⏱️ 15 นาที · 0 หัวข้อ" [ref=f9e84] [cursor=pointer]':
+              - /url: "#/05.2%20-%20Binary%20Search%20Trees%20(BST)%20%26%20Insertion"
+              - generic "ยังไม่ได้อ่าน" [ref=f9e85]
+              - generic [ref=f9e86]:
+                - generic [ref=f9e87]: "บทที่ 5.2: Binary Search Trees (BST) & การแทรก"
+                - generic [ref=f9e88]: ⏱️ 15 นาที · 0 หัวข้อ
+            - 'link "ยังไม่ได้อ่าน บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี) ⏱️ 20 นาที · 0 หัวข้อ" [ref=f9e89] [cursor=pointer]':
+              - /url: "#/05.3%20-%20Binary%20Search%20Tree%20Removal%20(Node%20Deletion%20Cases)"
+              - generic "ยังไม่ได้อ่าน" [ref=f9e90]
+              - generic [ref=f9e91]:
+                - generic [ref=f9e92]: "บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี)"
+                - generic [ref=f9e93]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f9e94]:
+          - generic [ref=f9e95]: "🏷️ บทที่ 6: Hashing & Hash Tables"
+          - 'link "ยังไม่ได้อ่าน บทที่ 6: Hash Tables & Collision Resolution ⏱️ 20 นาที · 0 หัวข้อ" [ref=f9e98] [cursor=pointer]':
+            - /url: "#/06.1%20-%20Hash%20Tables%20%26%20Collision%20Resolution%20Strategies"
+            - generic "ยังไม่ได้อ่าน" [ref=f9e99]
+            - generic [ref=f9e100]:
+              - generic [ref=f9e101]: "บทที่ 6: Hash Tables & Collision Resolution"
+              - generic [ref=f9e102]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f9e103]:
+          - generic [ref=f9e104]: "⚡ บทที่ 7: Priority Queue & Binary Heap"
+          - 'link "ยังไม่ได้อ่าน บทที่ 7: Priority Queue & Binary Heaps ⏱️ 20 นาที · 0 หัวข้อ" [ref=f9e107] [cursor=pointer]':
+            - /url: "#/07.1%20-%20Priority%20Queue%20%26%20Binary%20Heaps%20(Min-Heap%2C%20Max-Heap)"
+            - generic "ยังไม่ได้อ่าน" [ref=f9e108]
+            - generic [ref=f9e109]:
+              - generic [ref=f9e110]: "บทที่ 7: Priority Queue & Binary Heaps"
+              - generic [ref=f9e111]: ⏱️ 20 นาที · 0 หัวข้อ
+        - generic [ref=f9e112]:
+          - generic [ref=f9e113]: "🔀 บทที่ 8: Sorting Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 8: ขั้นตอนวิธีเรียงลำดับ (Sorting) ⏱️ 17 นาที · 0 หัวข้อ" [ref=f9e116] [cursor=pointer]':
+            - /url: "#/08.1%20-%20Sorting%20Algorithms%20(Bubble%2C%20Selection%2C%20Insertion%2C%20Merge%2C%20Quick)"
+            - generic "ยังไม่ได้อ่าน" [ref=f9e117]
+            - generic [ref=f9e118]:
+              - generic [ref=f9e119]: "บทที่ 8: ขั้นตอนวิธีเรียงลำดับ (Sorting)"
+              - generic [ref=f9e120]: ⏱️ 17 นาที · 0 หัวข้อ
+        - generic [ref=f9e121]:
+          - generic [ref=f9e122]: "🌐 บทที่ 9: Graph Traversals & Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 9: กราฟ (Graph) & BFS / DFS ⏱️ 14 นาที · 0 หัวข้อ" [ref=f9e125] [cursor=pointer]':
+            - /url: "#/09.1%20-%20Graph%20Fundamentals%20%26%20Traversals%20(BFS%2C%20DFS%2C%20Topological%20Sort)"
+            - generic "ยังไม่ได้อ่าน" [ref=f9e126]
+            - generic [ref=f9e127]:
+              - generic [ref=f9e128]: "บทที่ 9: กราฟ (Graph) & BFS / DFS"
+              - generic [ref=f9e129]: ⏱️ 14 นาที · 0 หัวข้อ
+        - generic [ref=f9e130]:
+          - generic [ref=f9e131]: "🚀 บทที่ 10: Shortest Path Algorithms"
+          - 'link "ยังไม่ได้อ่าน บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path) ⏱️ 14 นาที · 0 หัวข้อ" [ref=f9e134] [cursor=pointer]':
+            - /url: "#/10.1%20-%20Shortest%20Path%20Algorithms%20(Dijkstra%2C%20Unweighted%20Shortest%20Path)"
+            - generic "ยังไม่ได้อ่าน" [ref=f9e135]
+            - generic [ref=f9e136]:
+              - generic [ref=f9e137]: "บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path)"
+              - generic [ref=f9e138]: ⏱️ 14 นาที · 0 หัวข้อ
+    - main [ref=f9e139]:
+      - generic [ref=f9e140]:
+        - generic [ref=f9e141]:
+          - navigation [ref=f9e142]:
+            - link "สารานุกรม" [ref=f9e143] [cursor=pointer]:
+              - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+            - generic [ref=f9e144]: /
+            - generic [ref=f9e145]: "บทที่ 1: Introduction & Algorithm Analysis"
+            - generic [ref=f9e146]: /
+            - 'generic "บทที่ 1: บทนำ & การวิเคราะห์อัลกอริทึม (Big-O)" [ref=f9e3016]'
+          - heading "📜 01.1 - Introduction to Data Structures & Algorithm Analysis" [level=1] [ref=f9e3017]
+          - generic [ref=f9e149]:
+            - generic [ref=f9e150]:
+              - generic [ref=f9e3018]: ⏱️ อ่านประมาณ 13 นาที
+              - generic [ref=f9e3019]: 📝 7,589 ตัวอักษร
+            - button "○ ทำเครื่องหมายว่าอ่านแล้ว" [ref=f9e153] [cursor=pointer]:
+              - generic [ref=f9e3020]: ○
+              - text: ทำเครื่องหมายว่าอ่านแล้ว
+        - article [ref=f9e155]:
+          - generic [ref=f9e3021]:
+            - generic [ref=f9e3022]:
+              - generic [ref=f9e3023]: 📌
+              - generic [ref=f9e3024]: บันทึก (Note)
+            - paragraph [ref=f9e3026]:
+              - strong [ref=f9e3027]: Data Structure (โครงสร้างข้อมูล)
+              - text: คือวิธีการจัดเก็บและจัดระเบียบข้อมูลในหน่วยความจำของคอมพิวเตอร์อย่างมีประสิทธิภาพ ในขณะที่
+              - strong [ref=f9e3028]: Algorithm (อัลกอริทึม)
+              - text: คือลำดับขั้นตอนคำสั่งที่ชัดเจนในการแก้ปัญหา การวิเคราะห์ความเร็วของอัลกอริทึมใช้สัญลักษณ์
+              - strong [ref=f9e3029]: Asymptotic Notation (Big-O)
+          - separator [ref=f9e3030]
+          - heading "🏛️ 1. Abstract Data Type (ADT) vs Data Structure" [level=2] [ref=f9e3031]
+          - generic [ref=f9e3032]:
+            - generic [ref=f9e3033]:
+              - generic [ref=f9e3034]:
+                - generic [ref=f9e3039]: DSA LAB MODEL
+                - generic [ref=f9e3040]: 🏛️ Abstract Data Type (ADT) Logical Architecture
+              - generic [ref=f9e3041]:
+                - link "⚡ เปิดใน DSA Lab" [ref=f9e3042] [cursor=pointer]:
+                  - /url: ../DsaLab/index.html
+                - button "🔍 ขยายภาพ" [ref=f9e3043] [cursor=pointer]
+            - img [ref=f9e3046]:
+              - generic [ref=f9e3050]: Abstract Data Type (ADT) - แนวคิดทางตรรกศาสตร์ (What to do?)
+              - generic [ref=f9e3053]: ระบุเฉพาะ Operations เช่น insert(), delete(), search()
+              - generic [ref=f9e3056]: Implementation - การเขียนโค้ดจริง (How to do?)
+              - generic [ref=f9e3059]: "Data Structure A: Array Implementation"
+              - generic [ref=f9e3062]: "Data Structure B: Linked List Implementation"
+          - list [ref=f9e3065]:
+            - listitem [ref=f9e3066]:
+              - strong [ref=f9e3067]: ADT (ประเภทข้อมูลนามธรรม)
+              - text: ": นิยามพฤติกรรมเชิงตรรกะและเซตของออปชัน (เช่น Stack ADT นิยามพฤติกรรม LIFO โดยมีฟังก์ชัน"
+              - code [ref=f9e3068]: push
+              - text: และ
+              - code [ref=f9e3069]: pop
+              - text: )
+            - listitem [ref=f9e3070]:
+              - strong [ref=f9e3071]: Data Structure (โครงสร้างข้อมูล)
+              - text: ": การนำ ADT ไปเขียนเป็นโปรแกรมจริงด้วยโครงสร้างหน่วยความจำ (เช่น สร้าง Stack โดยใช้ Python"
+              - code [ref=f9e3072]: list
+              - text: หรือสร้างด้วย
+              - code [ref=f9e3073]: Node
+              - text: อ้างอิง Pointer)
+          - separator [ref=f9e3074]
+          - heading "📈 2. การวิเคราะห์ความซับซ้อน (Asymptotic Notation)" [level=2] [ref=f9e3075]
+          - paragraph [ref=f9e3076]:
+            - text: ในการวัดประสิทธิภาพของโปรแกรม เราไม่ใช้นาฬิกาจับเวลา (Execution Time ในหน่วยวินาที) เนื่องจากขึ้นอยู่กับสเปกเครื่องคอมพิวเตอร์และภาษาที่ใช้ แต่เราวัดจาก
+            - strong [ref=f9e3077]:
+              - text: อัตราการเติบโตของจำนวนคำสั่ง (Growth Rate) แปรผันตามขนาดของอินพุต (
+              - generic [ref=f9e3079]:
+                - math [ref=f9e3081]:
+                  - generic [ref=f9e3082]: "N"
+                - generic [ref=f9e3085]: "N"
+              - text: )
+          - generic [ref=f9e3087]:
+            - generic [ref=f9e3088]:
+              - generic [ref=f9e3089]:
+                - generic [ref=f9e3094]: DSA LAB MODEL
+                - generic [ref=f9e3095]: 📈 Big-O & Complexity Hierarchy Model
+              - generic [ref=f9e3096]:
+                - link "⚡ เปิดใน DSA Lab" [ref=f9e3097] [cursor=pointer]:
+                  - /url: ../DsaLab/index.html
+                - button "🔍 ขยายภาพ" [ref=f9e3098] [cursor=pointer]
+            - img [ref=f9e3101]:
+              - generic [ref=f9e3102]: "Big-O Notation: O(f(N))"
+              - generic [ref=f9e3105]: "Big-Omega: Ω(f(N))"
+              - generic [ref=f9e3108]: "Big-Theta: Θ(f(N))"
+              - generic [ref=f9e3111]: Upper Bound (Worst-Case) - ขอบเขตบนสุด (ออกสอบบ่อยที่สุด)
+              - generic [ref=f9e3114]: Lower Bound (Best-Case) - ขอบเขตล่างสุด
+              - generic [ref=f9e3117]: Tight Bound - ขอบเขตที่กระชับเป๊ะทั้งบนและล่าง
+          - heading "2.1 ลำดับอัตราการเติบโตจากเร็วที่สุดไปช้าที่สุด (Growth Rates Ranking)" [level=3] [ref=f9e3120]
+          - paragraph [ref=f9e3121]:
+            - generic [ref=f9e3124]:
+              - math [ref=f9e3126]:
+                - generic [ref=f9e3128]:
+                  - generic [ref=f9e3129]: O
+                  - generic [ref=f9e3130]: (
+                  - generic [ref=f9e3131]: "1"
+                  - generic [ref=f9e3132]: )
+                  - generic [ref=f9e3133]: <
+                  - generic [ref=f9e3134]: O
+                  - generic [ref=f9e3135]: (
+                  - generic [ref=f9e3136]: log
+                  - generic: ⁡
+                  - generic [ref=f9e3137]: "N"
+                  - generic [ref=f9e3138]: )
+                  - generic [ref=f9e3139]: <
+                  - generic [ref=f9e3140]: O
+                  - generic [ref=f9e3141]: (
+                  - generic [ref=f9e3142]: "N"
+                  - generic [ref=f9e3143]: )
+                  - generic [ref=f9e3144]: <
+                  - generic [ref=f9e3145]: O
+                  - generic [ref=f9e3146]: (
+                  - generic [ref=f9e3147]: "N"
+                  - generic [ref=f9e3148]: log
+                  - generic: ⁡
+                  - generic [ref=f9e3149]: "N"
+                  - generic [ref=f9e3150]: )
+                  - generic [ref=f9e3151]: <
+                  - generic [ref=f9e3152]: O
+                  - generic [ref=f9e3153]: (
+                  - generic [ref=f9e3154]:
+                    - generic [ref=f9e3155]: "N"
+                    - generic [ref=f9e3156]: "2"
+                  - generic [ref=f9e3157]: )
+                  - generic [ref=f9e3158]: <
+                  - generic [ref=f9e3159]: O
+                  - generic [ref=f9e3160]: (
+                  - generic [ref=f9e3161]:
+                    - generic [ref=f9e3162]: "N"
+                    - generic [ref=f9e3163]: "3"
+                  - generic [ref=f9e3164]: )
+                  - generic [ref=f9e3165]: <
+                  - generic [ref=f9e3166]: O
+                  - generic [ref=f9e3167]: (
+                  - generic [ref=f9e3168]:
+                    - generic [ref=f9e3169]: "2"
+                    - generic [ref=f9e3170]: "N"
+                  - generic [ref=f9e3171]: )
+                  - generic [ref=f9e3172]: <
+                  - generic [ref=f9e3173]: O
+                  - generic [ref=f9e3174]: (
+                  - generic [ref=f9e3175]: "N"
+                  - generic [ref=f9e3176]: "!"
+                  - generic [ref=f9e3177]: )
+              - generic [ref=f9e3178]:
+                - generic [ref=f9e3179]: O(1) <
+                - generic [ref=f9e3180]:
+                  - text: O(
+                  - generic [ref=f9e3181]: log
+                  - text: N) <
+                - generic [ref=f9e3182]: O(N) <
+                - generic [ref=f9e3183]:
+                  - text: O(N
+                  - generic [ref=f9e3184]: log
+                  - text: N) <
+                - generic [ref=f9e3185]:
+                  - text: O(
+                  - generic [ref=f9e3186]:
+                    - text: "N"
+                    - generic [ref=f9e3187]: "2"
+                  - text: ) <
+                - generic [ref=f9e3192]:
+                  - text: O(
+                  - generic [ref=f9e3193]:
+                    - text: "N"
+                    - generic [ref=f9e3194]: "3"
+                  - text: ) <
+                - generic [ref=f9e3199]:
+                  - text: O(
+                  - generic [ref=f9e3200]:
+                    - text: "2"
+                    - generic [ref=f9e3201]: "N"
+                  - text: ) <
+                - generic [ref=f9e3206]: O(N!)
+          - generic [ref=f9e3207]:
+            - generic [ref=f9e3208]:
+              - generic [ref=f9e3209]:
+                - generic [ref=f9e3214]: DSA LAB MODEL
+                - generic [ref=f9e3215]: 📈 Big-O & Complexity Hierarchy Model
+              - generic [ref=f9e3216]:
+                - link "⚡ เปิดใน DSA Lab" [ref=f9e3217] [cursor=pointer]:
+                  - /url: ../DsaLab/index.html
+                - button "🔍 ขยายภาพ" [ref=f9e3218] [cursor=pointer]
+            - img [ref=f9e3221]:
+              - generic [ref=f9e3222]: O(1) Constant - Constant Time e.g. Array Index Access
+              - generic [ref=f9e3225]: O(log N) Logarithmic - e.g. Binary Search, BST Search
+              - generic [ref=f9e3228]: O(N) Linear - e.g. Single Loop, Linear Search
+              - generic [ref=f9e3231]: O(N log N) Log-linear - e.g. Merge Sort, Quick Sort (Avg)
+              - generic [ref=f9e3234]: O(N^2) Quadratic - e.g. Nested Loops, Bubble Sort
+              - generic [ref=f9e3237]: O(2^N) Exponential - e.g. Recursive Fibonacci, Subsets
+          - separator [ref=f9e3240]
+          - heading "🧮 3. ตัวอย่างการวิเคราะห์ Big-O จากโค้ด Python" [level=2] [ref=f9e3241]
+          - heading [level=3] [ref=f9e3242]:
+            - text: 3.1 Loop เดี่ยว
+            - generic [ref=f9e3244]:
+              - math [ref=f9e3246]:
+                - generic [ref=f9e3248]:
+                  - generic [ref=f9e3249]: ⟹
+                  - generic [ref=f9e3250]: O
+                  - generic [ref=f9e3251]: (
+                  - generic [ref=f9e3252]: "N"
+                  - generic [ref=f9e3253]: )
+              - generic [ref=f9e3254]:
+                - generic [ref=f9e3255]: ⟹
+                - generic [ref=f9e3256]: O(N)
+          - generic [ref=f9e3257]:
+            - generic [ref=f9e3258]:
+              - generic [ref=f9e3259]: python
+              - generic [ref=f9e3260]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f9e3261] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f9e3262] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f9e3263] [cursor=pointer]
+            - code [ref=f9e3265]: "def find_max(arr): max_val = arr[0] # O(1) for num in arr: # วนลูป N ครั้ง -> O(N) if num > max_val: max_val = num return max_val # O(1) # Total Time Complexity = O(N)"
+          - heading [level=3] [ref=f9e3266]:
+            - text: 3.2 Nested Loops (ลูปซ้อนกัน)
+            - generic [ref=f9e3268]:
+              - math [ref=f9e3270]:
+                - generic [ref=f9e3272]:
+                  - generic [ref=f9e3273]: ⟹
+                  - generic [ref=f9e3274]: O
+                  - generic [ref=f9e3275]: (
+                  - generic [ref=f9e3276]:
+                    - generic [ref=f9e3277]: "N"
+                    - generic [ref=f9e3278]: "2"
+                  - generic [ref=f9e3279]: )
+              - generic [ref=f9e3280]:
+                - generic [ref=f9e3281]: ⟹
+                - generic [ref=f9e3282]:
+                  - text: O(
+                  - generic [ref=f9e3283]:
+                    - text: "N"
+                    - generic [ref=f9e3284]: "2"
+                  - text: )
+          - generic [ref=f9e3289]:
+            - generic [ref=f9e3290]:
+              - generic [ref=f9e3291]: python
+              - generic [ref=f9e3292]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f9e3293] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f9e3294] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f9e3295] [cursor=pointer]
+            - code [ref=f9e3297]: "def print_pairs(arr): n = len(arr) for i in range(n): # วน N ครั้ง for j in range(n): # วน N ครั้ง print(arr[i], arr[j]) # O(1) # Total = N * N = O(N^2)"
+          - heading [level=3] [ref=f9e3298]:
+            - text: 3.3 Binary Search (ลดปัญหาลงครึ่งหนึ่งทุกสเต็ป)
+            - generic [ref=f9e3300]:
+              - math [ref=f9e3302]:
+                - generic [ref=f9e3304]:
+                  - generic [ref=f9e3305]: ⟹
+                  - generic [ref=f9e3306]: O
+                  - generic [ref=f9e3307]: (
+                  - generic [ref=f9e3308]: log
+                  - generic: ⁡
+                  - generic [ref=f9e3309]: "N"
+                  - generic [ref=f9e3310]: )
+              - generic [ref=f9e3311]:
+                - generic [ref=f9e3312]: ⟹
+                - generic [ref=f9e3313]:
+                  - text: O(
+                  - generic [ref=f9e3314]: log
+                  - text: N)
+          - generic [ref=f9e3315]:
+            - generic [ref=f9e3316]:
+              - generic [ref=f9e3317]: python
+              - generic [ref=f9e3318]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f9e3319] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f9e3320] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f9e3321] [cursor=pointer]
+            - code [ref=f9e3323]: "def binary_search(arr, target): low = 0 high = len(arr) - 1 while low <= high: # ตัดครึ่งข้อมูลทุกรอบ -> O(log N) mid = (low + high) // 2 if arr[mid] == target: return mid elif arr[mid] < target: low = mid + 1 else: high = mid - 1 return -1"
+          - separator [ref=f9e3324]
+          - heading "📝 4. คลังตัวอย่างข้อสอบ & แบบฝึกหัดในห้องเรียน (Classroom \"For Example\" & Worksheets)" [level=2] [ref=f9e3325]
+          - 'heading "🎯 4.1 โจทย์แบบฝึกหัดในห้องเรียน: การวิเคราะห์ลูปสะสมค่า (Accumulator Loop Tracing)" [level=3] [ref=f9e3326]'
+          - generic [ref=f9e3327]:
+            - generic [ref=f9e3328]:
+              - generic [ref=f9e3329]: 💡
+              - generic [ref=f9e3330]: เกร็ดความรู้ (Info)
+            - paragraph [ref=f9e3332]:
+              - strong [ref=f9e3333]: ที่มาของโจทย์
+              - text: ": จากเอกสารแบบฝึกหัดในห้องเรียน"
+              - code [ref=f9e3334]: Lectures/0Exercises/Note Exercises 00.png
+              - text: และ
+              - code [ref=f9e3335]: exercises-00.png
+              - text: ซึ่งเป็นข้อสอบถามความเข้าใจเรื่องการทำงานของลูปและการวิเคราะห์ความเร็วของอัลกอริทึม
+          - heading "📄 โจทย์คำถาม (Problem Statement)" [level=4] [ref=f9e3336]
+          - paragraph [ref=f9e3337]:
+            - text: จงวิเคราะห์การทำงานของฟังก์ชันต่อไปนี้เมื่อเรียกใช้งานคำสั่ง
+            - code [ref=f9e3338]: Function(20)
+            - text: ":"
+          - generic [ref=f9e3339]:
+            - generic [ref=f9e3340]:
+              - generic [ref=f9e3341]: python
+              - generic [ref=f9e3342]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f9e3343] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f9e3344] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f9e3345] [cursor=pointer]
+            - code [ref=f9e3347]: "def Function(n): i = s = 1 while s < n: i = i + 1 s = s + i print(\"*\") Function(20)"
+          - paragraph [ref=f9e3348]:
+            - strong [ref=f9e3349]: "คำถาม 2 ข้อที่ต้องตอบ:"
+          - list [ref=f9e3350]:
+            - listitem [ref=f9e3351]:
+              - strong [ref=f9e3352]: What is the result of this program?
+              - text: (ผลลัพธ์ของโปรแกรมนี้คืออะไร?)
+            - listitem [ref=f9e3353]:
+              - strong [ref=f9e3354]: How many times does the command "print" run?
+              - text: (คำสั่ง
+              - code [ref=f9e3355]: print
+              - text: ถูกสั่งทำงานทั้งหมดกี่ครั้ง?)
+          - separator [ref=f9e3356]
+          - heading "💻 เฉลยคำตอบที่ถูกต้องชัดเจน (Clear & Accurate Solution)" [level=4] [ref=f9e3357]
+          - generic [ref=f9e3358]:
+            - generic [ref=f9e3359]:
+              - generic [ref=f9e3360]: text
+              - button "📋 คัดลอก" [ref=f9e3362] [cursor=pointer]
+            - code [ref=f9e3364]: "คำตอบข้อ 1: The result of this program is: * * * * * คำตอบข้อ 2: The \"print\" command runs 5 times."
+          - separator [ref=f9e3365]
+          - heading "📊 ตารางแสดงการ Trace ทีละบรรทัด (Step-by-Step Execution Trace Table)" [level=4] [ref=f9e3366]
+          - table [ref=f9e3368]:
+            - rowgroup [ref=f9e3369]:
+              - row [ref=f9e3370]:
+                - columnheader "รอบที่ (Round)" [ref=f9e3371]
+                - columnheader [ref=f9e3372]:
+                  - text: ค่า
+                  - generic [ref=f9e3374]:
+                    - math [ref=f9e3376]:
+                      - generic [ref=f9e3377]: i
+                    - generic [ref=f9e3380]: i
+                  - text: ก่อนบวก
+                - columnheader [ref=f9e3382]:
+                  - generic [ref=f9e3384]:
+                    - math [ref=f9e3386]:
+                      - generic [ref=f9e3388]:
+                        - generic [ref=f9e3389]: i
+                        - generic [ref=f9e3390]: =
+                        - generic [ref=f9e3391]: i
+                        - generic [ref=f9e3392]: +
+                        - generic [ref=f9e3393]: "1"
+                    - generic [ref=f9e3394]:
+                      - generic [ref=f9e3395]: i =
+                      - generic [ref=f9e3396]: i +
+                      - generic [ref=f9e3397]: "1"
+                - columnheader [ref=f9e3398]:
+                  - text: ค่า
+                  - generic [ref=f9e3400]:
+                    - math [ref=f9e3402]:
+                      - generic [ref=f9e3403]: s
+                    - generic [ref=f9e3406]: s
+                  - text: ก่อนบวก
+                - columnheader [ref=f9e3408]:
+                  - generic [ref=f9e3410]:
+                    - math [ref=f9e3412]:
+                      - generic [ref=f9e3414]:
+                        - generic [ref=f9e3415]: s
+                        - generic [ref=f9e3416]: =
+                        - generic [ref=f9e3417]: s
+                        - generic [ref=f9e3418]: +
+                        - generic [ref=f9e3419]: i
+                    - generic [ref=f9e3420]:
+                      - generic [ref=f9e3421]: s =
+                      - generic [ref=f9e3422]: s +
+                      - generic [ref=f9e3423]: i
+                - columnheader [ref=f9e3424]:
+                  - text: ตรวจเงื่อนไข
+                  - code [ref=f9e3425]: while s < 20
+                - columnheader [ref=f9e3426]:
+                  - text: ผลลัพธ์บรรทัด
+                  - code [ref=f9e3427]: print("*")
+            - rowgroup [ref=f9e3428]:
+              - row [ref=f9e3429]:
+                - cell [ref=f9e3430]:
+                  - strong [ref=f9e3431]: จุดเริ่มต้น
+                - cell [ref=f9e3432]:
+                  - code [ref=f9e3433]: "1"
+                - cell "-" [ref=f9e3434]
+                - cell [ref=f9e3435]:
+                  - code [ref=f9e3436]: "1"
+                - cell "-" [ref=f9e3437]
+                - cell [ref=f9e3438]:
+                  - generic [ref=f9e3440]:
+                    - math [ref=f9e3442]:
+                      - generic [ref=f9e3444]:
+                        - generic [ref=f9e3445]: "1"
+                        - generic [ref=f9e3446]: <
+                        - generic [ref=f9e3447]: "20"
+                    - generic [ref=f9e3448]:
+                      - generic [ref=f9e3449]: 1 <
+                      - generic [ref=f9e3450]: "20"
+                  - text: เป็น
+                  - strong [ref=f9e3451]: จริง
+                  - text: (เข้าลูป)
+                - cell "ยังไม่พิมพ์" [ref=f9e3452]
+              - row [ref=f9e3453]:
+                - cell [ref=f9e3454]:
+                  - strong [ref=f9e3455]: รอบที่ 1
+                - cell "1" [ref=f9e3456]
+                - cell [ref=f9e3457]:
+                  - generic [ref=f9e3459]:
+                    - math [ref=f9e3461]:
+                      - generic [ref=f9e3463]:
+                        - generic [ref=f9e3464]: i
+                        - generic [ref=f9e3465]: =
+                        - generic [ref=f9e3466]: "1"
+                        - generic [ref=f9e3467]: +
+                        - generic [ref=f9e3468]: "1"
+                        - generic [ref=f9e3469]: =
+                        - generic [ref=f9e3470]: "2"
+                    - generic [ref=f9e3471]:
+                      - generic [ref=f9e3472]: i =
+                      - generic [ref=f9e3473]: 1 +
+                      - generic [ref=f9e3474]: 1 =
+                      - generic [ref=f9e3475]: "2"
+                - cell "1" [ref=f9e3476]
+                - cell [ref=f9e3477]:
+                  - generic [ref=f9e3479]:
+                    - math [ref=f9e3481]:
+                      - generic [ref=f9e3483]:
+                        - generic [ref=f9e3484]: s
+                        - generic [ref=f9e3485]: =
+                        - generic [ref=f9e3486]: "1"
+                        - generic [ref=f9e3487]: +
+                        - generic [ref=f9e3488]: "2"
+                        - generic [ref=f9e3489]: =
+                        - generic [ref=f9e3490]: "3"
+                    - generic [ref=f9e3491]:
+                      - generic [ref=f9e3492]: s =
+                      - generic [ref=f9e3493]: 1 +
+                      - generic [ref=f9e3494]: 2 =
+                      - generic [ref=f9e3495]: "3"
+                - cell [ref=f9e3496]:
+                  - text: "ตรวจรอบถัดไป:"
+                  - generic [ref=f9e3498]:
+                    - math [ref=f9e3500]:
+                      - generic [ref=f9e3502]:
+                        - generic [ref=f9e3503]: "3"
+                        - generic [ref=f9e3504]: <
+                        - generic [ref=f9e3505]: "20"
+                    - generic [ref=f9e3506]:
+                      - generic [ref=f9e3507]: 3 <
+                      - generic [ref=f9e3508]: "20"
+                  - text: (จริง)
+                - cell [ref=f9e3509]:
+                  - text: พิมพ์
+                  - code [ref=f9e3510]: "*"
+                  - text: ครั้งที่ 1
+              - row [ref=f9e3511]:
+                - cell [ref=f9e3512]:
+                  - strong [ref=f9e3513]: รอบที่ 2
+                - cell "2" [ref=f9e3514]
+                - cell [ref=f9e3515]:
+                  - generic [ref=f9e3517]:
+                    - math [ref=f9e3519]:
+                      - generic [ref=f9e3521]:
+                        - generic [ref=f9e3522]: i
+                        - generic [ref=f9e3523]: =
+                        - generic [ref=f9e3524]: "2"
+                        - generic [ref=f9e3525]: +
+                        - generic [ref=f9e3526]: "1"
+                        - generic [ref=f9e3527]: =
+                        - generic [ref=f9e3528]: "3"
+                    - generic [ref=f9e3529]:
+                      - generic [ref=f9e3530]: i =
+                      - generic [ref=f9e3531]: 2 +
+                      - generic [ref=f9e3532]: 1 =
+                      - generic [ref=f9e3533]: "3"
+                - cell "3" [ref=f9e3534]
+                - cell [ref=f9e3535]:
+                  - generic [ref=f9e3537]:
+                    - math [ref=f9e3539]:
+                      - generic [ref=f9e3541]:
+                        - generic [ref=f9e3542]: s
+                        - generic [ref=f9e3543]: =
+                        - generic [ref=f9e3544]: "3"
+                        - generic [ref=f9e3545]: +
+                        - generic [ref=f9e3546]: "3"
+                        - generic [ref=f9e3547]: =
+                        - generic [ref=f9e3548]: "6"
+                    - generic [ref=f9e3549]:
+                      - generic [ref=f9e3550]: s =
+                      - generic [ref=f9e3551]: 3 +
+                      - generic [ref=f9e3552]: 3 =
+                      - generic [ref=f9e3553]: "6"
+                - cell [ref=f9e3554]:
+                  - text: "ตรวจรอบถัดไป:"
+                  - generic [ref=f9e3556]:
+                    - math [ref=f9e3558]:
+                      - generic [ref=f9e3560]:
+                        - generic [ref=f9e3561]: "6"
+                        - generic [ref=f9e3562]: <
+                        - generic [ref=f9e3563]: "20"
+                    - generic [ref=f9e3564]:
+                      - generic [ref=f9e3565]: 6 <
+                      - generic [ref=f9e3566]: "20"
+                  - text: (จริง)
+                - cell [ref=f9e3567]:
+                  - text: พิมพ์
+                  - code [ref=f9e3568]: "*"
+                  - text: ครั้งที่ 2
+              - row [ref=f9e3569]:
+                - cell [ref=f9e3570]:
+                  - strong [ref=f9e3571]: รอบที่ 3
+                - cell "3" [ref=f9e3572]
+                - cell [ref=f9e3573]:
+                  - generic [ref=f9e3575]:
+                    - math [ref=f9e3577]:
+                      - generic [ref=f9e3579]:
+                        - generic [ref=f9e3580]: i
+                        - generic [ref=f9e3581]: =
+                        - generic [ref=f9e3582]: "3"
+                        - generic [ref=f9e3583]: +
+                        - generic [ref=f9e3584]: "1"
+                        - generic [ref=f9e3585]: =
+                        - generic [ref=f9e3586]: "4"
+                    - generic [ref=f9e3587]:
+                      - generic [ref=f9e3588]: i =
+                      - generic [ref=f9e3589]: 3 +
+                      - generic [ref=f9e3590]: 1 =
+                      - generic [ref=f9e3591]: "4"
+                - cell "6" [ref=f9e3592]
+                - cell [ref=f9e3593]:
+                  - generic [ref=f9e3595]:
+                    - math [ref=f9e3597]:
+                      - generic [ref=f9e3599]:
+                        - generic [ref=f9e3600]: s
+                        - generic [ref=f9e3601]: =
+                        - generic [ref=f9e3602]: "6"
+                        - generic [ref=f9e3603]: +
+                        - generic [ref=f9e3604]: "4"
+                        - generic [ref=f9e3605]: =
+                        - generic [ref=f9e3606]: "10"
+                    - generic [ref=f9e3607]:
+                      - generic [ref=f9e3608]: s =
+                      - generic [ref=f9e3609]: 6 +
+                      - generic [ref=f9e3610]: 4 =
+                      - generic [ref=f9e3611]: "10"
+                - cell [ref=f9e3613]:
+                  - text: "ตรวจรอบถัดไป:"
+                  - generic [ref=f9e3615]:
+                    - math [ref=f9e3617]:
+                      - generic [ref=f9e3619]:
+                        - generic [ref=f9e3620]: "10"
+                        - generic [ref=f9e3621]: <
+                        - generic [ref=f9e3622]: "20"
+                    - generic [ref=f9e3623]:
+                      - generic [ref=f9e3624]: 10 <
+                      - generic [ref=f9e3625]: "20"
+                  - text: (จริง)
+                - cell [ref=f9e3626]:
+                  - text: พิมพ์
+                  - code [ref=f9e3627]: "*"
+                  - text: ครั้งที่ 3
+              - row [ref=f9e3628]:
+                - cell [ref=f9e3629]:
+                  - strong [ref=f9e3630]: รอบที่ 4
+                - cell "4" [ref=f9e3631]
+                - cell [ref=f9e3632]:
+                  - generic [ref=f9e3634]:
+                    - math [ref=f9e3636]:
+                      - generic [ref=f9e3638]:
+                        - generic [ref=f9e3639]: i
+                        - generic [ref=f9e3640]: =
+                        - generic [ref=f9e3641]: "4"
+                        - generic [ref=f9e3642]: +
+                        - generic [ref=f9e3643]: "1"
+                        - generic [ref=f9e3644]: =
+                        - generic [ref=f9e3645]: "5"
+                    - generic [ref=f9e3646]:
+                      - generic [ref=f9e3647]: i =
+                      - generic [ref=f9e3648]: 4 +
+                      - generic [ref=f9e3649]: 1 =
+                      - generic [ref=f9e3650]: "5"
+                - cell "10" [ref=f9e3651]
+                - cell [ref=f9e3652]:
+                  - generic [ref=f9e3654]:
+                    - math [ref=f9e3656]:
+                      - generic [ref=f9e3658]:
+                        - generic [ref=f9e3659]: s
+                        - generic [ref=f9e3660]: =
+                        - generic [ref=f9e3661]: "10"
+                        - generic [ref=f9e3662]: +
+                        - generic [ref=f9e3663]: "5"
+                        - generic [ref=f9e3664]: =
+                        - generic [ref=f9e3665]: "15"
+                    - generic [ref=f9e3666]:
+                      - generic [ref=f9e3667]: s =
+                      - generic [ref=f9e3668]: 10 +
+                      - generic [ref=f9e3669]: 5 =
+                      - generic [ref=f9e3670]: "15"
+                - cell [ref=f9e3672]:
+                  - text: "ตรวจรอบถัดไป:"
+                  - generic [ref=f9e3674]:
+                    - math [ref=f9e3676]:
+                      - generic [ref=f9e3678]:
+                        - generic [ref=f9e3679]: "15"
+                        - generic [ref=f9e3680]: <
+                        - generic [ref=f9e3681]: "20"
+                    - generic [ref=f9e3682]:
+                      - generic [ref=f9e3683]: 15 <
+                      - generic [ref=f9e3684]: "20"
+                  - text: (จริง)
+                - cell [ref=f9e3685]:
+                  - text: พิมพ์
+                  - code [ref=f9e3686]: "*"
+                  - text: ครั้งที่ 4
+              - row [ref=f9e3687]:
+                - cell [ref=f9e3688]:
+                  - strong [ref=f9e3689]: รอบที่ 5
+                - cell "5" [ref=f9e3690]
+                - cell [ref=f9e3691]:
+                  - generic [ref=f9e3693]:
+                    - math [ref=f9e3695]:
+                      - generic [ref=f9e3697]:
+                        - generic [ref=f9e3698]: i
+                        - generic [ref=f9e3699]: =
+                        - generic [ref=f9e3700]: "5"
+                        - generic [ref=f9e3701]: +
+                        - generic [ref=f9e3702]: "1"
+                        - generic [ref=f9e3703]: =
+                        - generic [ref=f9e3704]: "6"
+                    - generic [ref=f9e3705]:
+                      - generic [ref=f9e3706]: i =
+                      - generic [ref=f9e3707]: 5 +
+                      - generic [ref=f9e3708]: 1 =
+                      - generic [ref=f9e3709]: "6"
+                - cell "15" [ref=f9e3710]
+                - cell [ref=f9e3711]:
+                  - generic [ref=f9e3713]:
+                    - math [ref=f9e3715]:
+                      - generic [ref=f9e3717]:
+                        - generic [ref=f9e3718]: s
+                        - generic [ref=f9e3719]: =
+                        - generic [ref=f9e3720]: "15"
+                        - generic [ref=f9e3721]: +
+                        - generic [ref=f9e3722]: "6"
+                        - generic [ref=f9e3723]: =
+                        - generic [ref=f9e3724]: "21"
+                    - generic [ref=f9e3725]:
+                      - generic [ref=f9e3726]: s =
+                      - generic [ref=f9e3727]: 15 +
+                      - generic [ref=f9e3728]: 6 =
+                      - generic [ref=f9e3729]: "21"
+                - cell [ref=f9e3731]:
+                  - text: "ตรวจรอบถัดไป:"
+                  - generic [ref=f9e3733]:
+                    - math [ref=f9e3735]:
+                      - generic [ref=f9e3737]:
+                        - generic [ref=f9e3738]: "21"
+                        - generic [ref=f9e3739]: <
+                        - generic [ref=f9e3740]: "20"
+                    - generic [ref=f9e3741]:
+                      - generic [ref=f9e3742]: 21 <
+                      - generic [ref=f9e3743]: "20"
+                  - text: เป็น
+                  - strong [ref=f9e3744]: เท็จ (Break)
+                - cell [ref=f9e3745]:
+                  - text: พิมพ์
+                  - code [ref=f9e3746]: "*"
+                  - text: ครั้งที่ 5
+          - generic [ref=f9e3747]:
+            - generic [ref=f9e3748]:
+              - generic [ref=f9e3749]: ⚠️
+              - generic [ref=f9e3750]: ข้อควรระวัง (Warning)
+            - generic [ref=f9e3751]:
+              - paragraph [ref=f9e3752]:
+                - strong [ref=f9e3753]: กับดักที่นักศึกษามักตอบผิดในห้องสอบ (Common Trap)
+                - text: ":"
+              - list [ref=f9e3754]:
+                - listitem [ref=f9e3755]:
+                  - text: ตอบว่าคำสั่ง
+                  - code [ref=f9e3756]: print
+                  - text: รัน 6 ครั้ง เพราะเห็นค่าสุดท้ายของ
+                  - generic [ref=f9e3758]:
+                    - math [ref=f9e3760]:
+                      - generic [ref=f9e3761]: i
+                    - generic [ref=f9e3764]: i
+                  - text: เป็น 6
+                  - generic [ref=f9e3767]:
+                    - math [ref=f9e3769]:
+                      - generic [ref=f9e3770]: ⟹
+                    - generic [ref=f9e3773]: ⟹
+                  - strong [ref=f9e3775]: ผิด!
+                  - text: เพราะ
+                  - generic [ref=f9e3777]:
+                    - math [ref=f9e3779]:
+                      - generic [ref=f9e3781]:
+                        - generic [ref=f9e3782]: i
+                        - generic [ref=f9e3783]: =
+                        - generic [ref=f9e3784]: "6"
+                    - generic [ref=f9e3785]:
+                      - generic [ref=f9e3786]: i =
+                      - generic [ref=f9e3787]: "6"
+                  - text: เกิดขึ้นในรอบที่ 5 และพิมพ์เพียงครั้งที่ 5 เท่านั้น ก่อนที่เงื่อนไข
+                  - generic [ref=f9e3789]:
+                    - math [ref=f9e3791]:
+                      - generic [ref=f9e3793]:
+                        - generic [ref=f9e3794]: "21"
+                        - generic [ref=f9e3795]: <
+                        - generic [ref=f9e3796]: "20"
+                    - generic [ref=f9e3797]:
+                      - generic [ref=f9e3798]: 21 <
+                      - generic [ref=f9e3799]: "20"
+                  - text: จะปฏิเสธการเข้าลูปรอบที่ 6
+                - listitem [ref=f9e3800]:
+                  - text: สับสนระหว่างค่าที่เช็คในเงื่อนไข
+                  - code [ref=f9e3801]: while s < n
+                  - text: ว่าเช็คค่า
+                  - generic [ref=f9e3803]:
+                    - math [ref=f9e3805]:
+                      - generic [ref=f9e3806]: s
+                    - generic [ref=f9e3809]: s
+                  - text: ก่อนบวกหรือหลังบวก (ในโค้ดนี้ ลูปจะเช็คค่า
+                  - generic [ref=f9e3812]:
+                    - math [ref=f9e3814]:
+                      - generic [ref=f9e3815]: s
+                    - generic [ref=f9e3818]: s
+                  - text: ของรอบก่อนหน้าก่อนเข้าทำคำสั่งข้างใน)
+          - separator [ref=f9e3820]
+          - heading "📐 การวิเคราะห์ความซับซ้อนเชิงคณิตศาสตร์ (Mathematical Big-O Derivation)" [level=4] [ref=f9e3821]
+          - paragraph [ref=f9e3822]:
+            - text: เหตุใดฟังก์ชันนี้จึงไม่ได้ทำงาน
+            - generic [ref=f9e3824]:
+              - math [ref=f9e3826]:
+                - generic [ref=f9e3828]:
+                  - generic [ref=f9e3829]: O
+                  - generic [ref=f9e3830]: (
+                  - generic [ref=f9e3831]: "n"
+                  - generic [ref=f9e3832]: )
+              - generic [ref=f9e3833]: O(n)
+            - text: "?"
+          - list [ref=f9e3835]:
+            - listitem [ref=f9e3836]:
+              - text: สังเกตการเพิ่มขึ้นของตัวแปร
+              - generic [ref=f9e3838]:
+                - math [ref=f9e3840]:
+                  - generic [ref=f9e3841]: s
+                - generic [ref=f9e3844]: s
+              - text: ":"
+              - generic [ref=f9e3848]:
+                - math [ref=f9e3850]:
+                  - generic [ref=f9e3852]:
+                    - generic [ref=f9e3853]:
+                      - generic [ref=f9e3854]: s
+                      - generic [ref=f9e3855]: k
+                    - generic [ref=f9e3856]: =
+                    - generic [ref=f9e3857]: "1"
+                    - generic [ref=f9e3858]: +
+                    - generic [ref=f9e3859]: "2"
+                    - generic [ref=f9e3860]: +
+                    - generic [ref=f9e3861]: "3"
+                    - generic [ref=f9e3862]: +
+                    - generic [ref=f9e3863]: "4"
+                    - generic [ref=f9e3864]: +
+                    - generic [ref=f9e3865]: ⋯
+                    - generic [ref=f9e3866]: +
+                    - generic [ref=f9e3867]:
+                      - generic [ref=f9e3868]: i
+                      - generic [ref=f9e3869]: k
+                    - generic [ref=f9e3870]: =
+                    - generic [ref=f9e3871]:
+                      - generic [ref=f9e3872]: ∑
+                      - generic [ref=f9e3873]:
+                        - generic [ref=f9e3874]: j
+                        - generic [ref=f9e3875]: =
+                        - generic [ref=f9e3876]: "1"
+                      - generic [ref=f9e3877]:
+                        - generic [ref=f9e3878]: k
+                        - generic [ref=f9e3879]: +
+                        - generic [ref=f9e3880]: "1"
+                    - generic [ref=f9e3881]: j
+                    - generic [ref=f9e3882]: =
+                    - generic [ref=f9e3883]:
+                      - generic [ref=f9e3884]:
+                        - generic [ref=f9e3885]: (
+                        - generic [ref=f9e3886]: k
+                        - generic [ref=f9e3887]: +
+                        - generic [ref=f9e3888]: "1"
+                        - generic [ref=f9e3889]: )
+                        - generic [ref=f9e3890]: (
+                        - generic [ref=f9e3891]: k
+                        - generic [ref=f9e3892]: +
+                        - generic [ref=f9e3893]: "2"
+                        - generic [ref=f9e3894]: )
+                      - generic [ref=f9e3895]: "2"
+                - generic [ref=f9e3896]:
+                  - generic [ref=f9e3897]:
+                    - generic [ref=f9e3898]:
+                      - text: s
+                      - generic [ref=f9e3899]: k
+                    - text: =
+                  - generic [ref=f9e3907]: 1 +
+                  - generic [ref=f9e3908]: 2 +
+                  - generic [ref=f9e3909]: 3 +
+                  - generic [ref=f9e3910]: 4 +
+                  - generic [ref=f9e3911]: ⋯ +
+                  - generic [ref=f9e3912]:
+                    - generic [ref=f9e3913]:
+                      - text: i
+                      - generic [ref=f9e3914]: k
+                    - text: =
+                  - generic [ref=f9e3922]:
+                    - generic [ref=f9e3926]:
+                      - generic [ref=f9e3927]: j=1
+                      - generic [ref=f9e3929]: ∑
+                      - generic [ref=f9e3930]: k+1
+                    - text: j =
+                  - generic [ref=f9e3940]:
+                    - generic [ref=f9e3941]: "2"
+                    - generic [ref=f9e3943]: (k + 1)(k + 2)
+            - listitem [ref=f9e3947]:
+              - text: ลูปจะหยุดทำงานเมื่อ
+              - generic [ref=f9e3949]:
+                - math [ref=f9e3951]:
+                  - generic [ref=f9e3953]:
+                    - generic [ref=f9e3954]: s
+                    - generic [ref=f9e3955]: ≥
+                    - generic [ref=f9e3956]: "n"
+                - generic [ref=f9e3957]:
+                  - generic [ref=f9e3958]: s ≥
+                  - generic [ref=f9e3959]: "n"
+              - text: ":"
+              - generic [ref=f9e3962]:
+                - math [ref=f9e3964]:
+                  - generic [ref=f9e3966]:
+                    - generic [ref=f9e3967]:
+                      - generic [ref=f9e3968]:
+                        - generic [ref=f9e3969]: i
+                        - generic [ref=f9e3970]: "2"
+                      - generic [ref=f9e3971]: "2"
+                    - generic [ref=f9e3972]: ≈
+                    - generic [ref=f9e3973]: "n"
+                    - generic [ref=f9e3974]: ⟹
+                    - generic [ref=f9e3975]:
+                      - generic [ref=f9e3976]: i
+                      - generic [ref=f9e3977]: "2"
+                    - generic [ref=f9e3978]: ≈
+                    - generic [ref=f9e3979]: "2"
+                    - generic [ref=f9e3980]: "n"
+                    - generic [ref=f9e3981]: ⟹
+                    - generic [ref=f9e3982]: i
+                    - generic [ref=f9e3983]: ≈
+                    - generic [ref=f9e3985]:
+                      - generic [ref=f9e3986]: "2"
+                      - generic [ref=f9e3987]: "n"
+                - generic [ref=f9e3988]:
+                  - generic [ref=f9e3989]:
+                    - generic [ref=f9e3994]:
+                      - generic [ref=f9e3995]: "2"
+                      - generic [ref=f9e3998]:
+                        - text: i
+                        - generic [ref=f9e3999]: "2"
+                    - text: ≈
+                  - generic [ref=f9e4007]: n ⟹
+                  - generic [ref=f9e4008]:
+                    - generic [ref=f9e4009]:
+                      - text: i
+                      - generic [ref=f9e4010]: "2"
+                    - text: ≈
+                  - generic [ref=f9e4015]: 2n ⟹
+                  - generic [ref=f9e4016]: i ≈
+                  - generic [ref=f9e4017]: 2n
+            - listitem [ref=f9e4029]:
+              - text: ดังนั้น จำนวนรอบการทำงานของลูปจะแปรผันตาม
+              - generic [ref=f9e4031]:
+                - math [ref=f9e4033]:
+                  - generic [ref=f9e4034]: "n"
+                - generic [ref=f9e4038]: "n"
+              - text: "ส่งผลให้:"
+              - generic [ref=f9e4053]:
+                - math [ref=f9e4055]:
+                  - generic [ref=f9e4057]:
+                    - generic [ref=f9e4058]: Time Complexity
+                    - generic [ref=f9e4059]: =
+                    - generic [ref=f9e4060]: O
+                    - generic [ref=f9e4061]: (
+                    - generic [ref=f9e4062]: "n"
+                    - generic [ref=f9e4064]: )
+                - generic [ref=f9e4065]:
+                  - generic [ref=f9e4066]:
+                    - generic [ref=f9e4067]: Time Complexity
+                    - text: =
+                  - generic [ref=f9e4068]:
+                    - text: O(
+                    - generic [ref=f9e4069]: "n"
+                    - text: )
+          - separator [ref=f9e4080]
+          - heading "🖥️ ตัวอย่างหน้าจอ Interface การรันโปรแกรม (CLI Output Preview)" [level=4] [ref=f9e4081]
+          - generic [ref=f9e4082]:
+            - generic [ref=f9e4083]:
+              - generic [ref=f9e4084]: console
+              - button "📋 คัดลอก" [ref=f9e4086] [cursor=pointer]
+            - code [ref=f9e4088]: "============================================================ ALGORITHM TRACE RUNNER: Function(n=20) ============================================================ [Init] i = 1, s = 1 | Target Condition: s < 20 [Iter 1] i = 2, s = 3 | Condition: 3 < 20 (True) -> Output: * [Iter 2] i = 3, s = 6 | Condition: 6 < 20 (True) -> Output: * [Iter 3] i = 4, s = 10 | Condition: 10 < 20 (True) -> Output: * [Iter 4] i = 5, s = 15 | Condition: 15 < 20 (True) -> Output: * [Iter 5] i = 6, s = 21 | Condition: 21 < 20 (False)-> Output: * ------------------------------------------------------------ [Terminated] Loop stopped because s (21) >= n (20) [Summary] Total print count: 5 times [Complexity] Growth Rate: O(sqrt(n)) ============================================================"
+          - separator [ref=f9e4089]
+          - heading "🔗 ลิงก์เชื่อมโยงใน Obsidian Wiki" [level=2] [ref=f9e4090]
+          - list [ref=f9e4091]:
+            - listitem [ref=f9e4092]:
+              - text: "ถัดไป:"
+              - link "📄 02.1 - Python Review & Object-Oriented Programming (OOP)" [ref=f9e4093] [cursor=pointer]:
+                - /url: "#/02.1%20-%20Python%20Review%20%26%20Object-Oriented%20Programming%20(OOP)"
+            - listitem [ref=f9e4094]:
+              - text: "ตารางความเร็วรวม:"
+              - link "📄 Glossary & Complexity Cheat Sheet" [ref=f9e4095] [cursor=pointer]:
+                - /url: "#/Glossary%20%26%20Complexity%20Cheat%20Sheet"
+            - listitem [ref=f9e4096]:
+              - text: "กลับหน้าหลัก:"
+              - link "📄 Index" [ref=f9e4097] [cursor=pointer]:
+                - /url: "#/Index"
+        - 'link "บทถัดไป → บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน" [ref=f9e4099] [cursor=pointer]':
+          - /url: "#/02.1%20-%20Python%20Review%20%26%20Object-Oriented%20Programming%20(OOP)"
+          - generic [ref=f9e4100]: บทถัดไป →
+          - generic [ref=f9e4101]: "บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน"
+    - complementary [ref=f9e2987]:
+      - generic [ref=f9e2988]: สารบัญในหน้านี้
+      - list [ref=f9e2989]:
+        - listitem [ref=f9e4102]:
+          - link "Abstract Data Type (ADT) vs Data Structure" [ref=f9e4103] [cursor=pointer]:
+            - /url: "#-1-abstract-data-type-adt-vs-data-structure"
+        - listitem [ref=f9e4104]:
+          - link "📈 การวิเคราะห์ความซับซ้อน (Asymptotic Notation)" [ref=f9e4105] [cursor=pointer]:
+            - /url: "#-2-การวิเคราะห์ความซับซ้อน-asymptotic-notation"
+        - listitem [ref=f9e4106]:
+          - link "1 ลำดับอัตราการเติบโตจากเร็วที่สุดไปช้าที่สุด (Growth Rates Ranking)" [ref=f9e4107] [cursor=pointer]:
+            - /url: "#21-ลำดับอัตราการเติบโตจากเร็วที่สุดไปช้าที่สุด-growth-rates-ranking"
+        - listitem [ref=f9e4108]:
+          - link "🧮 ตัวอย่างการวิเคราะห์ Big-O จากโค้ด Python" [ref=f9e4109] [cursor=pointer]:
+            - /url: "#-3-ตัวอย่างการวิเคราะห์-big-o-จากโค้ด-python"
+        - listitem [ref=f9e4110]:
+          - link "1 Loop เดี่ยว ⟹ O(N)\\implies O(N)⟹O(N)" [ref=f9e4111] [cursor=pointer]:
+            - /url: "#31-loop-เดี่ยว-onimplies-onon"
+        - listitem [ref=f9e4112]:
+          - link "2 Nested Loops (ลูปซ้อนกัน) ⟹ O(N2)\\implies O(N^2)⟹O(N2)" [ref=f9e4113] [cursor=pointer]:
+            - /url: "#32-nested-loops-ลูปซ้อนกัน-on2implies-on2on2"
+        - listitem [ref=f9e4114]:
+          - link "3 Binary Search (ลดปัญหาลงครึ่งหนึ่งทุกสเต็ป) ⟹ O(log⁡N)\\implies O(\\log N)⟹O(logN)" [ref=f9e4115] [cursor=pointer]:
+            - /url: "#33-binary-search-ลดปัญหาลงครึ่งหนึ่งทุกสเต็ป-olognimplies-olog-nologn"
+        - listitem [ref=f9e4116]:
+          - link "📝 คลังตัวอย่างข้อสอบ & แบบฝึกหัดในห้องเรียน (Classroom \"For Example\" & Worksheets)" [ref=f9e4117] [cursor=pointer]:
+            - /url: "#-4-คลังตัวอย่างข้อสอบ-แบบฝึกหัดในห้องเรียน-classroom-for-example-worksheets"
+        - listitem [ref=f9e4118]:
+          - 'link "🎯 1 โจทย์แบบฝึกหัดในห้องเรียน: การวิเคราะห์ลูปสะสมค่า (Accumulator Loop Tracing)" [ref=f9e4119] [cursor=pointer]':
+            - /url: "#-41-โจทย์แบบฝึกหัดในห้องเรียน-การวิเคราะห์ลูปสะสมค่า-accumulator-loop-tracing"
+        - listitem [ref=f9e4120]:
+          - link "🔗 ลิงก์เชื่อมโยงใน Obsidian Wiki" [ref=f9e4121] [cursor=pointer]:
+            - /url: "#-ลิงก์เชื่อมโยงใน-obsidian-wiki"
+  - generic:
+    - generic:
+      - generic:
+        - textbox "พิมพ์ค้นหา เช่น Linked List, Heap, BST, Big-O, Dijkstra, Midterm..."
+        - button "ESC"
+  - generic:
+    - generic:
+      - generic:
+        - generic: DSA STUDIO
+        - generic: 🔬 แบบจำลองโครงสร้างสถาปัตยกรรม (DSA Studio Fullscreen Inspector)
+      - generic:
+        - button "➖ ย่อ"
+        - button "1:1"
+        - button "➕ ขยาย"
+        - button "✕ ปิด"

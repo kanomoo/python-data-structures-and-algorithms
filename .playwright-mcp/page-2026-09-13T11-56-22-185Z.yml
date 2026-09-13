@@ -1,0 +1,127 @@
+- generic [ref=f13e2]:
+  - generic [ref=f13e3]:
+    - generic [ref=f13e4]: ⚡
+    - generic [ref=f13e5]: ระบบสารานุกรมความรู้และห้องปฏิบัติการภาษา Python DSA
+  - heading "Python Data Structures & Algorithms" [level=1] [ref=f13e6]
+  - paragraph [ref=f13e7]: ศูนย์รวมเนื้อหาบทเรียนและการบ้านวิชา DSA อย่างละเอียดระดับเวิลด์คลาส พร้อม Interactive Visual Debugger จำลองขั้นตอนวิธีทีละสเต็ป และระบบรันโค้ด Python ในเบราว์เซอร์
+  - generic [ref=f13e8]:
+    - 'link "📚 สารานุกรม DSA Wiki รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แผนผัง Mermaid, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K) ✓ บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก ✓ 🏁 โซนเตรียมสอบปลายภาค: สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์ ✓ 🎯 ตะลุยโจทย์ข้อสอบจริง Midterm & Mock Exam เสมือนจริง ✓ ตารางสรุป Time & Space Complexity Cheat Sheet ✓ ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที 📖 เปิดสารานุกรม Wiki →" [ref=f13e9] [cursor=pointer]':
+      - /url: Wiki/index.html
+      - generic [ref=f13e10]: 📚
+      - heading "สารานุกรม DSA Wiki" [level=2] [ref=f13e11]
+      - paragraph [ref=f13e12]: รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แผนผัง Mermaid, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K)
+      - list [ref=f13e13]:
+        - listitem [ref=f13e14]:
+          - generic [ref=f13e15]: ✓
+          - generic [ref=f13e16]: บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก
+        - listitem [ref=f13e17]:
+          - generic [ref=f13e18]: ✓
+          - generic [ref=f13e19]: "🏁 โซนเตรียมสอบปลายภาค: สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์"
+        - listitem [ref=f13e20]:
+          - generic [ref=f13e21]: ✓
+          - generic [ref=f13e22]: 🎯 ตะลุยโจทย์ข้อสอบจริง Midterm & Mock Exam เสมือนจริง
+        - listitem [ref=f13e23]:
+          - generic [ref=f13e24]: ✓
+          - generic [ref=f13e25]: ตารางสรุป Time & Space Complexity Cheat Sheet
+        - listitem [ref=f13e26]:
+          - generic [ref=f13e27]: ✓
+          - generic [ref=f13e28]: ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที
+      - generic [ref=f13e29]:
+        - generic [ref=f13e30]: 📖 เปิดสารานุกรม Wiki
+        - generic [ref=f13e31]: →
+    - 'link "🔬 ห้องทดลอง DSA Lab & Interactive Studio สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง กรอกค่าทดสอบได้อิสระ พร้อม Live Python Code Sync ✓ Interactive Action Deck: ใส่ค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ ✓ Live Code Sync: ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์ ✓ แอนิเมชันคู่ขนาน Complete Binary Tree View & 1-Based Array Index View ✓ ชิปสูตรคณิตศาสตร์: Parent , Left , Right ✓ รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม) 🚀 เข้าสู่ห้องทดลอง DSA Lab →" [ref=f13e32] [cursor=pointer]':
+      - /url: DsaLab/index.html?ex=assign3_heap
+      - generic [ref=f13e33]: 🔬
+      - heading "ห้องทดลอง DSA Lab & Interactive Studio" [level=2] [ref=f13e34]
+      - paragraph [ref=f13e35]: สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง กรอกค่าทดสอบได้อิสระ พร้อม Live Python Code Sync
+      - list [ref=f13e36]:
+        - listitem [ref=f13e37]:
+          - generic [ref=f13e38]: ✓
+          - generic [ref=f13e39]: "Interactive Action Deck: ใส่ค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ"
+        - listitem [ref=f13e40]:
+          - generic [ref=f13e41]: ✓
+          - generic [ref=f13e42]: "Live Code Sync: ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์"
+        - listitem [ref=f13e43]:
+          - generic [ref=f13e44]: ✓
+          - generic [ref=f13e45]: แอนิเมชันคู่ขนาน Complete Binary Tree View & 1-Based Array Index View
+        - listitem [ref=f13e46]:
+          - generic [ref=f13e47]: ✓
+          - generic [ref=f13e48]:
+            - text: "ชิปสูตรคณิตศาสตร์: Parent"
+            - generic [ref=f13e50]:
+              - math [ref=f13e52]:
+                - generic [ref=f13e54]:
+                  - generic [ref=f13e55]: ⌊
+                  - generic [ref=f13e56]: i
+                  - generic [ref=f13e57]: /
+                  - generic [ref=f13e58]: "2"
+                  - generic [ref=f13e59]: ⌋
+              - generic [ref=f13e60]: ⌊i/2⌋
+            - text: ", Left"
+            - generic [ref=f13e63]:
+              - math [ref=f13e65]:
+                - generic [ref=f13e67]:
+                  - generic [ref=f13e68]: "2"
+                  - generic [ref=f13e69]: i
+              - generic [ref=f13e70]: 2i
+            - text: ", Right"
+            - generic [ref=f13e73]:
+              - math [ref=f13e75]:
+                - generic [ref=f13e77]:
+                  - generic [ref=f13e78]: "2"
+                  - generic [ref=f13e79]: i
+                  - generic [ref=f13e80]: +
+                  - generic [ref=f13e81]: "1"
+              - generic [ref=f13e82]:
+                - generic [ref=f13e83]: 2i +
+                - generic [ref=f13e84]: "1"
+        - listitem [ref=f13e85]:
+          - generic [ref=f13e86]: ✓
+          - generic [ref=f13e87]: รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม)
+      - generic [ref=f13e88]:
+        - generic [ref=f13e89]: 🚀 เข้าสู่ห้องทดลอง DSA Lab
+        - generic [ref=f13e90]: →
+  - generic [ref=f13e91]:
+    - generic [ref=f13e92]: 🏁
+    - generic [ref=f13e93]: โซนเตรียมสอบปลายภาค & จำลองสอบเสมือนจริง (Final & Midterm Exam Zone)
+  - generic [ref=f13e94]:
+    - link "Final Exam 🏁 เจาะลึกแนวข้อสอบปลายภาค & กับดักอาจารย์ สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs & Dijkstra" [ref=f13e95] [cursor=pointer]:
+      - /url: Wiki/index.html#/11.6 - Final Exam Real Classroom Prep & Solutions
+      - generic [ref=f13e96]: Final Exam
+      - generic [ref=f13e97]: 🏁 เจาะลึกแนวข้อสอบปลายภาค & กับดักอาจารย์
+      - generic [ref=f13e98]: สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs & Dijkstra
+    - 'link "Midterm Exam 🎯 ข้อสอบจริง Midterm Mock & Solutions เฉลยข้อสอบจริง 20 ข้อ: LinkedList, Stacks, Queues, BST Deletion" [ref=f13e99] [cursor=pointer]':
+      - /url: Wiki/index.html#/11.1 - Midterm Real Exam Mock & Solutions
+      - generic [ref=f13e100]: Midterm Exam
+      - generic [ref=f13e101]: 🎯 ข้อสอบจริง Midterm Mock & Solutions
+      - generic [ref=f13e102]: "เฉลยข้อสอบจริง 20 ข้อ: LinkedList, Stacks, Queues, BST Deletion"
+    - link "Quick Cheat Sheet ⚡ ตารางสรุป Big-O & Complexity ทุกบท ทบทวนสูตรคำนวณ ความเร็ว Best/Avg/Worst และ Memory Space" [ref=f13e103] [cursor=pointer]:
+      - /url: Wiki/index.html#/Glossary & Complexity Cheat Sheet
+      - generic [ref=f13e104]: Quick Cheat Sheet
+      - generic [ref=f13e105]: ⚡ ตารางสรุป Big-O & Complexity ทุกบท
+      - generic [ref=f13e106]: ทบทวนสูตรคำนวณ ความเร็ว Best/Avg/Worst และ Memory Space
+  - generic [ref=f13e107]:
+    - generic [ref=f13e108]: 🎯
+    - generic [ref=f13e109]: แบบจำลอง Interactive จากข้อสอบจริง (คลิกเพื่อทดสอบทันที)
+  - generic [ref=f13e110]:
+    - link "Exams/Heap.py 🔺 Binary Min-Heap Studio Interactive Percolate Up & Down ใส่ค่าเองได้อิสระ" [ref=f13e111] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=assign3_heap
+      - generic [ref=f13e112]: Exams/Heap.py
+      - generic [ref=f13e113]: 🔺 Binary Min-Heap Studio
+      - generic [ref=f13e114]: Interactive Percolate Up & Down ใส่ค่าเองได้อิสระ
+    - link "Exams/Hash.py 🔑 Hash Table & Collisions จำลอง Separate Chaining & Linear Probing พร้อม Load Factor" [ref=f13e115] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=exam_hash
+      - generic [ref=f13e116]: Exams/Hash.py
+      - generic [ref=f13e117]: 🔑 Hash Table & Collisions
+      - generic [ref=f13e118]: จำลอง Separate Chaining & Linear Probing พร้อม Load Factor
+    - link "Exams/BST 🌲 BST Deletion 3 Cases จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor" [ref=f13e119] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=lecture5_bst_delete
+      - generic [ref=f13e120]: Exams/BST
+      - generic [ref=f13e121]: 🌲 BST Deletion 3 Cases
+      - generic [ref=f13e122]: จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor
+    - 'link "Exams/Postfix 🥞 Stack: Infix to Postfix จำลอง Operator Stack และ Precedence Hierarchy ทีละโทเค็น" [ref=f13e123] [cursor=pointer]':
+      - /url: DsaLab/index.html?ex=stack_postfix
+      - generic [ref=f13e124]: Exams/Postfix
+      - generic [ref=f13e125]: "🥞 Stack: Infix to Postfix"
+      - generic [ref=f13e126]: จำลอง Operator Stack และ Precedence Hierarchy ทีละโทเค็น
+  - contentinfo [ref=f13e127]: Python Data Structures & Algorithms Knowledge Base & Interactive Studio — ยกระดับการเรียนรู้ด้วยมาตรฐานระดับเวิลด์คลาส

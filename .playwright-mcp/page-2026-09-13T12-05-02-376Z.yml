@@ -1,0 +1,7 @@
+- generic [active] [ref=f22e1]:
+  - status [ref=f22e7]
+  - generic:
+    - generic:
+      - generic:
+        - status
+        - region "Notifications"

@@ -1,0 +1,9 @@
+[     884ms] [ERROR] Unrecognized Content-Security-Policy directive 'webrtc'. @ https://www.claudeusercontent.com/artifact/3be9a554-8360-460f-9fad-c041859bccdb?domain=claude.ai&parentOrigin=https%3A%2F%2Fclaude.ai&errorReportingMode=parent&formattedSpreadsheets=true&contentType=text%2Fhtml:0
+[    1933ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://claude.ai') does not match the recipient window's origin ('https://www.claudeusercontent.com'). @ https://www.claudeusercontent.com/_next/static/chunks/1zx-bsq5g5hoy.js:406
+[    1934ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://claude.ai') does not match the recipient window's origin ('https://www.claudeusercontent.com'). @ https://www.claudeusercontent.com/_next/static/chunks/0-4oxrladvahx.js:194
+[    1935ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://claude.ai') does not match the recipient window's origin ('https://www.claudeusercontent.com'). @ https://www.claudeusercontent.com/_next/static/chunks/1zx-bsq5g5hoy.js:406
+[    2176ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[    2875ms] [INFO] [O11Y] [DatadogRUM] Initialized {service: claude-ai, env: production, version: 3445de0a06} @ https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/vendor-datadog-Ba3XIL81.js:4
+[    4119ms] [LOG] recaptchacompat disabled @ https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/vendor-datadog-Ba3XIL81.js:4
+[    4366ms] [ERROR] Not signed in with the identity provider. @ https://claude.ai/login:0
+[    5620ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with NetworkError: Error retrieving a token. @ https://assets-proxy.anthropic.com/claude-ai/v2/assets/v1/vendor-datadog-Ba3XIL81.js:4
