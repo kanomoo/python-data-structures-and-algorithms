@@ -2355,13 +2355,12 @@ window.DsaWikiStudio = (function () {
               <div class="studio-step-title">คำอธิบายขั้นตอน</div>
               <div class="active-code-line-badge">▶ Line <span class="active-code-line-num">-</span></div>
             </div>
-            <div class="studio-step-exp">พร้อมจำลองการทำงาน...</div>
-            
             <div class="studio-stepper-controls">
               <button id="${widgetId}-prev" class="studio-stepper-btn" onclick="window.DsaWikiStudio.act('${widgetId}', 'prev')" title="ย้อนกลับ">⏮️ ย้อนสเต็ป</button>
               <button id="${widgetId}-play" class="studio-stepper-btn play" onclick="window.DsaWikiStudio.act('${widgetId}', 'play')" title="เล่นอัตโนมัติ">▶ เล่น (Play)</button>
               <button id="${widgetId}-next" class="studio-stepper-btn" onclick="window.DsaWikiStudio.act('${widgetId}', 'next')" title="สเต็ปถัดไป">⏭️ สเต็ปถัดไป</button>
             </div>
+            <div class="studio-step-exp">พร้อมจำลองการทำงาน...</div>
 
             <!-- Live Variables Inspector -->
             <div class="studio-inspector-footer">
