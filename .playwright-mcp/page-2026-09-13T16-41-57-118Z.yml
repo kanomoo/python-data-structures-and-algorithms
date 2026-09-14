@@ -1,0 +1,164 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: ⚡
+    - generic [ref=e5]: ระบบสารานุกรมความรู้และห้องปฏิบัติการภาษา Python DSA
+  - heading "Python Data Structures & Algorithms" [level=1] [ref=e6]
+  - paragraph [ref=e7]: ศูนย์รวมเนื้อหาบทเรียนและการบ้านวิชา DSA อย่างละเอียดระดับเวิลด์คลาส พร้อม Interactive Visual Debugger จำลองขั้นตอนวิธีทีละสเต็ป และระบบรันโค้ด Python ในเบราว์เซอร์
+  - generic [ref=e8]:
+    - 'link "📚 สารานุกรม DSA Wiki รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แบบจำลองโครงสร้างสถาปัตยกรรม DSA Studio Visual Models, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K) ✓ บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก ✓ 📋 งานและการบ้านที่อาจารย์สั่ง: รวม Assignment 1-4, Test Programs 1-2, ซอร์สโค้ดส่งจริง & กับดักคะแนน 0 ✓ 🏁 โซนเตรียมสอบปลายภาค: สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์ ✓ 🎯 ตะลุยโจทย์ข้อสอบจริง Midterm & Mock Exam เสมือนจริง ✓ ตารางสรุป Time & Space Complexity Cheat Sheet ✓ ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที 📖 เปิดสารานุกรม Wiki →" [ref=e9] [cursor=pointer]':
+      - /url: Wiki/index.html
+      - generic [ref=e10]: 📚
+      - heading "สารานุกรม DSA Wiki" [level=2] [ref=e11]
+      - paragraph [ref=e12]: รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แบบจำลองโครงสร้างสถาปัตยกรรม DSA Studio Visual Models, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K)
+      - list [ref=e13]:
+        - listitem [ref=e14]:
+          - generic [ref=e15]: ✓
+          - generic [ref=e16]: บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก
+        - listitem [ref=e17]:
+          - generic [ref=e18]: ✓
+          - generic [ref=e19]: "📋 งานและการบ้านที่อาจารย์สั่ง: รวม Assignment 1-4, Test Programs 1-2, ซอร์สโค้ดส่งจริง & กับดักคะแนน 0"
+        - listitem [ref=e20]:
+          - generic [ref=e21]: ✓
+          - generic [ref=e22]: "🏁 โซนเตรียมสอบปลายภาค: สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์"
+        - listitem [ref=e23]:
+          - generic [ref=e24]: ✓
+          - generic [ref=e25]: 🎯 ตะลุยโจทย์ข้อสอบจริง Midterm & Mock Exam เสมือนจริง
+        - listitem [ref=e26]:
+          - generic [ref=e27]: ✓
+          - generic [ref=e28]: ตารางสรุป Time & Space Complexity Cheat Sheet
+        - listitem [ref=e29]:
+          - generic [ref=e30]: ✓
+          - generic [ref=e31]: ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที
+      - generic [ref=e32]:
+        - generic [ref=e33]: 📖 เปิดสารานุกรม Wiki
+        - generic [ref=e34]: →
+    - 'link "🔬 ห้องทดลอง DSA Lab & Interactive Studio สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง กรอกค่าทดสอบได้อิสระ พร้อม Live Python Code Sync ✓ Interactive Action Deck: ใส่ค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ ✓ Live Code Sync: ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์ ✓ แอนิเมชันคู่ขนาน Complete Binary Tree View & 1-Based Array Index View ✓ ชิปสูตรคณิตศาสตร์: Parent , Left , Right ✓ รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม) 🚀 เข้าสู่ห้องทดลอง DSA Lab →" [ref=e35] [cursor=pointer]':
+      - /url: DsaLab/index.html?ex=assign3_heap
+      - generic [ref=e36]: 🔬
+      - heading "ห้องทดลอง DSA Lab & Interactive Studio" [level=2] [ref=e37]
+      - paragraph [ref=e38]: สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง กรอกค่าทดสอบได้อิสระ พร้อม Live Python Code Sync
+      - list [ref=e39]:
+        - listitem [ref=e40]:
+          - generic [ref=e41]: ✓
+          - generic [ref=e42]: "Interactive Action Deck: ใส่ค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ"
+        - listitem [ref=e43]:
+          - generic [ref=e44]: ✓
+          - generic [ref=e45]: "Live Code Sync: ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์"
+        - listitem [ref=e46]:
+          - generic [ref=e47]: ✓
+          - generic [ref=e48]: แอนิเมชันคู่ขนาน Complete Binary Tree View & 1-Based Array Index View
+        - listitem [ref=e49]:
+          - generic [ref=e50]: ✓
+          - generic [ref=e51]:
+            - text: "ชิปสูตรคณิตศาสตร์: Parent"
+            - generic [ref=e53]:
+              - math [ref=e55]:
+                - generic [ref=e57]:
+                  - generic [ref=e58]: ⌊
+                  - generic [ref=e59]: i
+                  - generic [ref=e60]: /
+                  - generic [ref=e61]: "2"
+                  - generic [ref=e62]: ⌋
+              - generic [ref=e63]: ⌊i/2⌋
+            - text: ", Left"
+            - generic [ref=e66]:
+              - math [ref=e68]:
+                - generic [ref=e70]:
+                  - generic [ref=e71]: "2"
+                  - generic [ref=e72]: i
+              - generic [ref=e73]: 2i
+            - text: ", Right"
+            - generic [ref=e76]:
+              - math [ref=e78]:
+                - generic [ref=e80]:
+                  - generic [ref=e81]: "2"
+                  - generic [ref=e82]: i
+                  - generic [ref=e83]: +
+                  - generic [ref=e84]: "1"
+              - generic [ref=e85]:
+                - generic [ref=e86]: 2i +
+                - generic [ref=e87]: "1"
+        - listitem [ref=e88]:
+          - generic [ref=e89]: ✓
+          - generic [ref=e90]: รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม)
+      - generic [ref=e91]:
+        - generic [ref=e92]: 🚀 เข้าสู่ห้องทดลอง DSA Lab
+        - generic [ref=e93]: →
+  - generic [ref=e94]:
+    - generic [ref=e95]: 📋
+    - generic [ref=e96]: งานและการบ้านที่อาจารย์สั่งในห้องเรียน (Course Assignments & Lab Works)
+  - generic [ref=e97]:
+    - link "Assignment 1 · Linked List 🔗 Singly Linked List (รหัสนักศึกษา & สลับ Node) สร้าง mylist จากเลขท้าย 6 ตัว เรียง Ascending และสลับ Node 1 กับ 6 ด้วย Pointer (ห้ามแตะ Data!) พร้อมกับดัก insert(x,0)" [ref=e98] [cursor=pointer]:
+      - /url: Wiki/index.html#/12.1 - Assignment 1 Singly Linked List Student ID & Node Swap
+      - generic [ref=e99]: Assignment 1 · Linked List
+      - generic [ref=e100]: 🔗 Singly Linked List (รหัสนักศึกษา & สลับ Node)
+      - generic [ref=e101]: สร้าง mylist จากเลขท้าย 6 ตัว เรียง Ascending และสลับ Node 1 กับ 6 ด้วย Pointer (ห้ามแตะ Data!) พร้อมกับดัก insert(x,0)
+    - link "Assignment 2 · Binary Tree 🌲 Construct Binary Tree (Post-order & In-order) สร้างต้นไม้จากเลขท้าย 5 ตัว ย้ายหลักสุดท้ายสร้าง In-order หา Root และท่องผลลัพธ์ Pre-order traversal" [ref=e102] [cursor=pointer]:
+      - /url: Wiki/index.html#/12.2 - Assignment 2 Construct Binary Tree from Post-order & In-order
+      - generic [ref=e103]: Assignment 2 · Binary Tree
+      - generic [ref=e104]: 🌲 Construct Binary Tree (Post-order & In-order)
+      - generic [ref=e105]: สร้างต้นไม้จากเลขท้าย 5 ตัว ย้ายหลักสุดท้ายสร้าง In-order หา Root และท่องผลลัพธ์ Pre-order traversal
+    - link "Assignment 3 · Binary Heap 🔺 Binary Min-Heap In-class (แทรก 15 ค่า & DeleteMin) จากหนังสือ Mark Allen Weiss p.283 แทรก 15 ค่า ตรวจสอบ Heap Property สลับ Percolate Up/Down และ 1-based Array" [ref=e106] [cursor=pointer]:
+      - /url: Wiki/index.html#/12.3 - Assignment 3 Binary Min-Heap In-class Insertion & DeleteMin
+      - generic [ref=e107]: Assignment 3 · Binary Heap
+      - generic [ref=e108]: 🔺 Binary Min-Heap In-class (แทรก 15 ค่า & DeleteMin)
+      - generic [ref=e109]: จากหนังสือ Mark Allen Weiss p.283 แทรก 15 ค่า ตรวจสอบ Heap Property สลับ Percolate Up/Down และ 1-based Array
+    - link "Assignment 4 · Graph Algorithms 🗺️ Graph, Topological Sort & Shortest Path วิเคราะห์พื้นที่ Adjacency Matrix สิ้นเปลือง 75.52%, ทำ Topological Sort ด้วย Indegree Queue และตาราง BFS Shortest Path" [ref=e110] [cursor=pointer]:
+      - /url: Wiki/index.html#/12.4 - Assignment 4 Graph Topological Sort & Unweighted Shortest Path
+      - generic [ref=e111]: Assignment 4 · Graph Algorithms
+      - generic [ref=e112]: 🗺️ Graph, Topological Sort & Shortest Path
+      - generic [ref=e113]: วิเคราะห์พื้นที่ Adjacency Matrix สิ้นเปลือง 75.52%, ทำ Topological Sort ด้วย Indegree Queue และตาราง BFS Shortest Path
+    - 'link "Programming Lab 1 & 2 📊 Queue Overflow/Underflow & Sorting Trace โค้ดส่งจริงของนักศึกษา (program.py), ทดสอบ Queue 5 และ 6 ช่อง, พร้อมตาราง Trace: Insertion, Selection, Bubble Sort" [ref=e114] [cursor=pointer]':
+      - /url: Wiki/index.html#/12.5 - Test Program 1 & 2 Queue Implementation & Sorting Trace
+      - generic [ref=e115]: Programming Lab 1 & 2
+      - generic [ref=e116]: 📊 Queue Overflow/Underflow & Sorting Trace
+      - generic [ref=e117]: "โค้ดส่งจริงของนักศึกษา (program.py), ทดสอบ Queue 5 และ 6 ช่อง, พร้อมตาราง Trace: Insertion, Selection, Bubble Sort"
+    - link "0Exercises · กิจกรรมในห้อง 📝 เช็คชื่อเข้าเรียน & กับดัก Indentation โจทย์เช็คชื่อ 25 มิ.ย. Function(n) วิเคราะห์ print(\"*\") อยู่นอกลูป while ทำงานแค่ 1 ครั้ง ไม่ใช่ 5 ครั้ง และ Special cases ของ Stack/Queue" [ref=e118] [cursor=pointer]:
+      - /url: Wiki/index.html#/12.6 - 0Exercises Warm-up Function Tracing & Attendance Tasks
+      - generic [ref=e119]: 0Exercises · กิจกรรมในห้อง
+      - generic [ref=e120]: 📝 เช็คชื่อเข้าเรียน & กับดัก Indentation
+      - generic [ref=e121]: โจทย์เช็คชื่อ 25 มิ.ย. Function(n) วิเคราะห์ print("*") อยู่นอกลูป while ทำงานแค่ 1 ครั้ง ไม่ใช่ 5 ครั้ง และ Special cases ของ Stack/Queue
+  - generic [ref=e122]:
+    - generic [ref=e123]: 🏁
+    - generic [ref=e124]: โซนเตรียมสอบปลายภาค & จำลองสอบเสมือนจริง (Final & Midterm Exam Zone)
+  - generic [ref=e125]:
+    - link "Final Exam 🏁 เจาะลึกแนวข้อสอบปลายภาค & กับดักอาจารย์ สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs & Dijkstra" [ref=e126] [cursor=pointer]:
+      - /url: Wiki/index.html#/11.6 - Final Exam Real Classroom Prep & Solutions
+      - generic [ref=e127]: Final Exam
+      - generic [ref=e128]: 🏁 เจาะลึกแนวข้อสอบปลายภาค & กับดักอาจารย์
+      - generic [ref=e129]: สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs & Dijkstra
+    - 'link "Midterm Exam 🎯 ข้อสอบจริง Midterm Mock & Solutions เฉลยข้อสอบจริง 20 ข้อ: LinkedList, Stacks, Queues, BST Deletion" [ref=e130] [cursor=pointer]':
+      - /url: Wiki/index.html#/11.1 - Midterm Real Exam Mock & Solutions
+      - generic [ref=e131]: Midterm Exam
+      - generic [ref=e132]: 🎯 ข้อสอบจริง Midterm Mock & Solutions
+      - generic [ref=e133]: "เฉลยข้อสอบจริง 20 ข้อ: LinkedList, Stacks, Queues, BST Deletion"
+    - link "Quick Cheat Sheet ⚡ ตารางสรุป Big-O & Complexity ทุกบท ทบทวนสูตรคำนวณ ความเร็ว Best/Avg/Worst และ Memory Space" [ref=e134] [cursor=pointer]:
+      - /url: Wiki/index.html#/Glossary & Complexity Cheat Sheet
+      - generic [ref=e135]: Quick Cheat Sheet
+      - generic [ref=e136]: ⚡ ตารางสรุป Big-O & Complexity ทุกบท
+      - generic [ref=e137]: ทบทวนสูตรคำนวณ ความเร็ว Best/Avg/Worst และ Memory Space
+  - generic [ref=e138]:
+    - generic [ref=e139]: 🎯
+    - generic [ref=e140]: แบบจำลอง Interactive จากข้อสอบจริง (คลิกเพื่อทดสอบทันที)
+  - generic [ref=e141]:
+    - link "Exams/Heap.py 🔺 Binary Min-Heap Studio Interactive Percolate Up & Down ใส่ค่าเองได้อิสระ" [ref=e142] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=assign3_heap
+      - generic [ref=e143]: Exams/Heap.py
+      - generic [ref=e144]: 🔺 Binary Min-Heap Studio
+      - generic [ref=e145]: Interactive Percolate Up & Down ใส่ค่าเองได้อิสระ
+    - link "Exams/Hash.py 🔑 Hash Table & Collisions จำลอง Separate Chaining & Linear Probing พร้อม Load Factor" [ref=e146] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=exam_hash
+      - generic [ref=e147]: Exams/Hash.py
+      - generic [ref=e148]: 🔑 Hash Table & Collisions
+      - generic [ref=e149]: จำลอง Separate Chaining & Linear Probing พร้อม Load Factor
+    - link "Exams/BST 🌲 BST Deletion 3 Cases จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor" [ref=e150] [cursor=pointer]:
+      - /url: DsaLab/index.html?ex=lecture5_bst_delete
+      - generic [ref=e151]: Exams/BST
+      - generic [ref=e152]: 🌲 BST Deletion 3 Cases
+      - generic [ref=e153]: จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor
+    - 'link "Exams/Postfix 🥞 Stack: Infix to Postfix จำลอง Operator Stack และ Precedence Hierarchy ทีละโทเค็น" [ref=e154] [cursor=pointer]':
+      - /url: DsaLab/index.html?ex=stack_postfix
+      - generic [ref=e155]: Exams/Postfix
+      - generic [ref=e156]: "🥞 Stack: Infix to Postfix"
+      - generic [ref=e157]: จำลอง Operator Stack และ Precedence Hierarchy ทีละโทเค็น
+  - contentinfo [ref=e158]: Python Data Structures & Algorithms Knowledge Base & Interactive Studio — ยกระดับการเรียนรู้ด้วยมาตรฐานระดับเวิลด์คลาส

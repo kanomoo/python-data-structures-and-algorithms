@@ -327,10 +327,11 @@
         </p>
         <ul class="card-features">
           <li><span class="feat-check">✓</span><span>บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก</span></li>
-          <li><span class="feat-check">✓</span><span>🏁 <b>โซนเตรียมสอบปลายภาค</b>: สรุป Hashing, Heaps, Sorting, Graphs & กับดักอาจารย์</span></li>
-          <li><span class="feat-check">✓</span><span>🎯 ตะลุยโจทย์ข้อสอบจริง Midterm & Mock Exam เสมือนจริง</span></li>
-          <li><span class="feat-check">✓</span><span>ตารางสรุป Time & Space Complexity Cheat Sheet</span></li>
-          <li><span class="feat-check">✓</span><span>ปุ่มคลิกส่งโค้ดตัวอย่างไปเปิดรันใน DSA Lab ได้ทันที</span></li>
+          <li><span class="feat-check">✓</span><span>🎙️ <b>บันทึกสอนสด &amp; สไลด์ 87 ภาพ</b>: ถอดเสียงคำต่อคำ ดร.ประดิษฐ์ พิทักษ์เสถียรกุล เจาะลึก Hashing, Heap &amp; ข้อสอบตรง</span></li>
+          <li><span class="feat-check">✓</span><span>📋 <b>งานและการบ้านที่อาจารย์สั่ง</b>: รวม Assignment 1-4, In-class Tasks ส่งเที่ยงตรง, Test Programs 1-2 &amp; กับดักคะแนน 0</span></li>
+          <li><span class="feat-check">✓</span><span>🏁 <b>โซนเตรียมสอบปลายภาค</b>: สรุป Hashing, Heaps, Sorting, Graphs &amp; กับดักอาจารย์</span></li>
+          <li><span class="feat-check">✓</span><span>🎯 ตะลุยโจทย์ข้อสอบจริง Midterm &amp; Mock Exam เสมือนจริง</span></li>
+          <li><span class="feat-check">✓</span><span>ตารางสรุป Time &amp; Space Complexity Cheat Sheet</span></li>
         </ul>
         <div class="card-btn">
           <span>📖 เปิดสารานุกรม Wiki</span>
@@ -339,16 +340,17 @@
       </a>
 
       <!-- Card 2: DSA Lab Studio -->
-      <a href="DsaLab/index.html?ex=assign3_heap" class="hub-card dsa-lab">
+      <a href="DsaLab/index.html?ex=lecture8_heap_final_trace" class="hub-card dsa-lab">
         <div class="card-icon-box">🔬</div>
-        <h2 class="card-title">ห้องทดลอง DSA Lab & Interactive Studio</h2>
+        <h2 class="card-title">ห้องทดลอง DSA Lab &amp; Interactive Studio</h2>
         <p class="card-desc">
           สตูดิโอ Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบความละเอียดจากข้อสอบจริง กรอกค่าทดสอบได้อิสระ พร้อม Live Python Code Sync
         </p>
         <ul class="card-features">
+          <li><span class="feat-check">✓</span><span><b>Classroom Tracing Labs</b>: จำลองการชน Hashing 7 ครั้ง &amp; Binary Heap Insert 14 + DeleteMin 3 ครั้ง</span></li>
           <li><span class="feat-check">✓</span><span><b>Interactive Action Deck</b>: ใส่ค่า Insert, Delete Min, Find Min, Hash Key ได้อิสระ</span></li>
           <li><span class="feat-check">✓</span><span><b>Live Code Sync</b>: ไฮไลต์บรรทัดโค้ดภาษา Python (จาก Exams/*.py) แบบเรียลไทม์</span></li>
-          <li><span class="feat-check">✓</span><span>แอนิเมชันคู่ขนาน <b>Complete Binary Tree View & 1-Based Array Index View</b></span></li>
+          <li><span class="feat-check">✓</span><span>แอนิเมชันคู่ขนาน <b>Complete Binary Tree View &amp; 1-Based Array Index View</b></span></li>
           <li><span class="feat-check">✓</span><span>ชิปสูตรคณิตศาสตร์: Parent $\lfloor i/2 \rfloor$, Left $2i$, Right $2i+1$</span></li>
           <li><span class="feat-check">✓</span><span>รันโค้ด Python ในเบราว์เซอร์ผ่าน WebAssembly (ไม่ต้องลงโปรแกรม)</span></li>
         </ul>
@@ -359,59 +361,221 @@
       </a>
     </div>
 
-    <!-- Exam Preparation Zone Showcase -->
+    <!-- Course Assignments & Classroom Labs Showcase -->
     <div class="section-title">
-      <span>🏁</span>
-      <span>โซนเตรียมสอบปลายภาค & จำลองสอบเสมือนจริง (Final & Midterm Exam Zone)</span>
+      <span>📋</span>
+      <span>งานและการบ้านที่อาจารย์สั่งในห้องเรียน (Course Assignments & Lab Works)</span>
+    </div>
+
+    <div class="assignment-strip" style="margin-bottom: 28px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <a href="Wiki/index.html#/12.1 - Assignment 1 Singly Linked List Student ID & Node Swap" class="assign-card" style="border-color: rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.07);">
+        <span class="assign-tag" style="color: #38bdf8;">Assignment 1 · Linked List</span>
+        <div class="assign-name">🔗 Singly Linked List (รหัสนักศึกษา & สลับ Node)</div>
+        <div class="assign-sub">สร้าง mylist จากเลขท้าย 6 ตัว เรียง Ascending และสลับ Node 1 กับ 6 ด้วย Pointer (ห้ามแตะ Data!) พร้อมกับดัก insert(x,0)</div>
+      </a>
+
+      <a href="Wiki/index.html#/12.2 - Assignment 2 Construct Binary Tree from Post-order & In-order" class="assign-card" style="border-color: rgba(168, 85, 247, 0.4); background: rgba(168, 85, 247, 0.07);">
+        <span class="assign-tag" style="color: #c084fc;">Assignment 2 · Binary Tree</span>
+        <div class="assign-name">🌲 Construct Binary Tree (Post-order & In-order)</div>
+        <div class="assign-sub">สร้างต้นไม้จากเลขท้าย 5 ตัว ย้ายหลักสุดท้ายสร้าง In-order หา Root และท่องผลลัพธ์ Pre-order traversal</div>
+      </a>
+
+      <a href="Wiki/index.html#/12.3 - Assignment 3 Binary Min-Heap In-class Insertion & DeleteMin" class="assign-card" style="border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.07);">
+        <span class="assign-tag" style="color: #fbbf24;">Assignment 3 · Binary Heap</span>
+        <div class="assign-name">🔺 Binary Min-Heap In-class (แทรก 15 ค่า & DeleteMin)</div>
+        <div class="assign-sub">จากหนังสือ Mark Allen Weiss p.283 แทรก 15 ค่า ตรวจสอบ Heap Property สลับ Percolate Up/Down และ 1-based Array</div>
+      </a>
+
+      <a href="Wiki/index.html#/12.4 - Assignment 4 Graph Topological Sort & Unweighted Shortest Path" class="assign-card" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.07);">
+        <span class="assign-tag" style="color: #34d399;">Assignment 4 · Graph Algorithms</span>
+        <div class="assign-name">🗺️ Graph, Topological Sort & Shortest Path</div>
+        <div class="assign-sub">วิเคราะห์พื้นที่ Adjacency Matrix สิ้นเปลือง 75.52%, ทำ Topological Sort ด้วย Indegree Queue และตาราง BFS Shortest Path</div>
+      </a>
+
+      <a href="Wiki/index.html#/12.5 - Test Program 1 & 2 Queue Implementation & Sorting Trace" class="assign-card" style="border-color: rgba(236, 72, 153, 0.4); background: rgba(236, 72, 153, 0.07);">
+        <span class="assign-tag" style="color: #f472b6;">Programming Lab 1 & 2</span>
+        <div class="assign-name">📊 Queue Overflow/Underflow & Sorting Trace</div>
+        <div class="assign-sub">โค้ดส่งจริงของนักศึกษา (program.py), ทดสอบ Queue 5 และ 6 ช่อง, พร้อมตาราง Trace: Insertion, Selection, Bubble Sort</div>
+      </a>
+
+      <a href="Wiki/index.html#/12.6 - 0Exercises Warm-up Function Tracing & Attendance Tasks" class="assign-card" style="border-color: rgba(251, 146, 60, 0.4); background: rgba(251, 146, 60, 0.07);">
+        <span class="assign-tag" style="color: #fb923c;">0Exercises · กิจกรรมในห้อง</span>
+        <div class="assign-name">📝 เช็คชื่อเข้าเรียน & กับดัก Indentation</div>
+        <div class="assign-sub">โจทย์เช็คชื่อ 25 มิ.ย. Function(n) วิเคราะห์ print("*") อยู่นอกลูป while ทำงานแค่ 1 ครั้ง ไม่ใช่ 5 ครั้ง และ Special cases ของ Stack/Queue</div>
+      </a>
+
+      <a href="Wiki/index.html#/12.7 - In-Class Assignment Binary Heap DeleteMin & Hashing Trace" class="assign-card" style="border-color: rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.07);">
+        <span class="assign-tag" style="color: #f87171;">In-Class Work · ส่งเที่ยงตรง</span>
+        <div class="assign-name">📋 Heap DeleteMin (หน้า 283) &amp; Hashing Trace</div>
+        <div class="assign-sub">งานส่งก่อน 12:00 น. วันที่ 9-9-69 จาก Mark Allen Weiss p.283 ทำ DeleteMin 1 ครั้ง และงาน 26-8-69 Trace การชน 7 ครั้ง</div>
+      </a>
+    </div>
+
+    <!-- Classroom Live Transcripts & Visual Slides Showcase -->
+    <div class="section-title">
+      <span>🎙️</span>
+      <span>บันทึกการสอนและถอดความเสียงสด (Classroom Transcripts &amp; Slides 87 รูป)</span>
+    </div>
+
+    <div class="assignment-strip" style="margin-bottom: 28px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <a href="Wiki/index.html#/14.1 - Classroom Lecture Hashing, Open Addressing & Rehashing" class="assign-card" style="border-color: rgba(6, 182, 212, 0.45); background: rgba(6, 182, 212, 0.08);">
+        <span class="assign-tag" style="color: #22d3ee;">บทที่ 7 · Hashing Live</span>
+        <div class="assign-name">🔑 Hashing, Open Addressing &amp; Rehashing</div>
+        <div class="assign-sub">ถอดความเสียงสด ดร.ประดิษฐ์ พิทักษ์เสถียรกุล: แยก Chaining, Linear Probing ใส่ 5 ตัวชน 7 ครั้ง, Secondary Clustering, Rehashing ตาราง 17 ช่อง</div>
+      </a>
+
+      <a href="Wiki/index.html#/14.2 - Classroom Lecture Priority Queue & Binary Heap Properties" class="assign-card" style="border-color: rgba(168, 85, 247, 0.45); background: rgba(168, 85, 247, 0.08);">
+        <span class="assign-tag" style="color: #c084fc;">บทที่ 8 · Priority Queue</span>
+        <div class="assign-name">⚡ PQ &amp; คุณสมบัติของ Binary Heap</div>
+        <div class="assign-sub">เปรียบเทียบ FIFO Queue vs PQ, ที่มาของชื่อ Heap ทรงพีระมิดกองดินกองทราย, Structure Property (Complete Binary Tree ซ้ายไปขวา) และ Min-Heap</div>
+      </a>
+
+      <a href="Wiki/index.html#/14.3 - Classroom Lecture Exam Focus Node Calculation & 1D Array" class="assign-card" style="border-color: rgba(245, 158, 11, 0.45); background: rgba(245, 158, 11, 0.08);">
+        <span class="assign-tag" style="color: #fbbf24;">เจาะข้อสอบ · 1D Array</span>
+        <div class="assign-name">🎯 สูตรคำนวณโหนด H=10 &amp; แปลงเป็น 1D Array</div>
+        <div class="assign-sub">สูตรช่วงโหนด 2^H ถึง 2^(H+1)-1 ข้อสอบตรงความสูง 10 ตอบ 1,024 และ 2,047 (ห้ามตอบเลขยกกำลัง), สูตร 2i, 2i+1, ปัดเศษทิ้ง และทำไมเว้นช่อง 0</div>
+      </a>
+
+      <a href="Wiki/index.html#/14.4 - Classroom Lecture Binary Heap Python Implementation & Final Exam Trace" class="assign-card" style="border-color: rgba(16, 185, 129, 0.45); background: rgba(16, 185, 129, 0.08);">
+        <span class="assign-tag" style="color: #34d399;">ข้อสอบปลายภาค · Python Heap</span>
+        <div class="assign-name">🏆 Python BinaryHeap &amp; เฉลยสอบปลายภาค</div>
+        <div class="assign-sub">โครงสร้าง [None]*(capacity+1), ตาราง Trace แทรก 14 (hole 11-&gt;5-&gt;2), Trace deleteMin 1 ครั้ง และเผยข้อสอบปลายภาคจริง DeleteMin 3 ครั้งรวด!</div>
+      </a>
+
+      <a href="Wiki/index.html#/14.5 - Master Catalog Classroom Slides & Photos (87 Photos)" class="assign-card" style="border-color: rgba(236, 72, 153, 0.45); background: rgba(236, 72, 153, 0.08);">
+        <span class="assign-tag" style="color: #f472b6;">คลังภาพ 125 รูป · Visual Archive &amp; Exam Leaks</span>
+        <div class="assign-name">📸 แคตตาล็อกภาพสไลด์ กระดาน &amp; หลักฐานข้อสอบ 125 ภาพ</div>
+        <div class="assign-sub">รวมภาพถ่ายหน้าจอโปรเจกเตอร์ สไลด์บรรยาย โค้ด VS Code กระดานดำสด ภาพสกรีนช็อตข้อสอบ และสไลด์คมชัดสูง 125 ภาพ แบ่งตามคาบเรียนและหมวดหมู่</div>
+      </a>
+    </div>
+
+    <!-- Classroom For Example PDFs Tracing Showcase -->
+    <div class="section-title">
+      <span>💡</span>
+      <span>โจทย์ตัวอย่างและ Tracing ในห้องเรียน (For Example PDFs จากสไลด์อาจารย์ทุกบท)</span>
     </div>
 
     <div class="assignment-strip" style="margin-bottom: 28px;">
+      <a href="Wiki/index.html#/13.1 - For Example Lecture 3 Linked List (โจทย์สร้างโหนด สลับพอยน์เตอร์ และกับดัก add)" class="assign-card" style="border-color: rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.08);">
+        <span class="assign-tag" style="color: #22d3ee;">Ex 3 · Linked List</span>
+        <div class="assign-name">🔗 กับดัก method add() &amp; สลับ 4 พอยน์เตอร์</div>
+        <div class="assign-sub">ทำไม add() 5 ตัวถึงได้ 0 คะแนน, วิธีแทรก 1..5 ต่อจากโหนด [3] และคำสั่งสลับ node2, 3, 4 โดยไม่หลุดหาย</div>
+      </a>
+
+      <a href="Wiki/index.html#/13.2 - For Example Lecture 4 Stack & Postfix (Trace Push-Pop และแปลงนิพจน์ Shunting-Yard)" class="assign-card" style="border-color: rgba(168, 85, 247, 0.4); background: rgba(168, 85, 247, 0.08);">
+        <span class="assign-tag" style="color: #c084fc;">Ex 4 · Stack &amp; Postfix</span>
+        <div class="assign-name">🥞 Push-Pop 2 ระลอก &amp; Shunting-Yard</div>
+        <div class="assign-sub">Trace ค่าที่เหลือใน Stack [25], ตารางแปลงนิพจน์ (a+(b*c))+(((d*e)+f)*g) ทีละโทเคน</div>
+      </a>
+
+      <a href="Wiki/index.html#/13.4 - For Example Lecture 5 Binary Tree (กฎเหล็กเขียน Path ห้ามใช้ลูกศร และ Reconstruct Tree)" class="assign-card" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.08);">
+        <span class="assign-tag" style="color: #34d399;">Ex 5 · Binary Tree</span>
+        <div class="assign-name">🌲 กฎเหล็กเขียน Path ห้ามใช้ลูกศร &amp; Reconstruct</div>
+        <div class="assign-sub">คำเตือนอาจารย์ประดิษฐ์: เขียน A -> E -> J -> Q ได้ 0 คะแนน! และการสร้าง Tree ย้อนกลับจาก In-order / Pre-order</div>
+      </a>
+
+      <a href="Wiki/index.html#/13.6 - For Example Lecture 8.1 Binary Heap (Trace ตัวแปร hole ใน Percolate Up และ Down)" class="assign-card" style="border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.08);">
+        <span class="assign-tag" style="color: #fbbf24;">Ex 8.1 · Binary Heap</span>
+        <div class="assign-name">⚡ Trace ตัวแปร hole ใน Percolate Up/Down</div>
+        <div class="assign-sub">แทรก 14 ลงใน Heap 10 โหนด, การเลื่อน hole = 11 -> 5 -> 2 และการเปรียบเทียบ child ใน deleteMin</div>
+      </a>
+
+      <a href="Wiki/index.html#/13.7 - For Example Lecture 9 Sorting (Pass-by-Pass Tracing Bubble, Selection, Insertion)" class="assign-card" style="border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.08);">
+        <span class="assign-tag" style="color: #f87171;">Ex 9 · Sorting</span>
+        <div class="assign-name">🔀 Pass-by-Pass Tracing &amp; Position Move</div>
+        <div class="assign-sub">Trace ละเอียด Bubble, Selection, และคำนวณผลรวม Position Move = 9 ครั้งของ Insertion Sort</div>
+      </a>
+
+      <a href="Wiki/index.html#/13.8 - For Example Lecture 10 & 11 Graph (Topological Sort, BFS Shortest Path & คำนวณขยะ Matrix)" class="assign-card" style="border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.08);">
+        <span class="assign-tag" style="color: #818cf8;">Ex 10 &amp; 11 · Graph</span>
+        <div class="assign-name">🕸️ Topological Sort, BFS &amp; คำนวณขยะ Matrix</div>
+        <div class="assign-sub">คำนวณพื้นที่สูญเปล่าของ Matrix 75.69%, ตารางสถานะ BFS Known, d_v, p_v บนกราฟ 7 จุดยอด</div>
+      </a>
+    </div>
+
+    <!-- Exam Preparation Zone Showcase -->
+    <div class="section-title">
+      <span>🏁</span>
+      <span>โซนเตรียมสอบปลายภาค &amp; จำลองสอบเสมือนจริง (Final &amp; Midterm Exam Zone)</span>
+    </div>
+
+    <div class="assignment-strip" style="margin-bottom: 28px;">
+      <a href="Wiki/index.html#/11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions)" class="assign-card" style="border-color: rgba(239, 68, 68, 0.5); background: rgba(239, 68, 68, 0.09);">
+        <span class="assign-tag" style="color: #f87171;">Classroom Leaked Exam · ข้อสอบตรงจุด</span>
+        <div class="assign-name">🎯 รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน</div>
+        <div class="assign-sub">โจทย์ที่อาจารย์บอกว่าออกสอบ: Hashing ชน 7 ครั้ง, โหนด H=10 ตอบ 1,024/2,047, และ DeleteMin 3 ครั้งรวด (10 คะแนนเต็ม)!</div>
+      </a>
+
       <a href="Wiki/index.html#/11.6 - Final Exam Real Classroom Prep & Solutions" class="assign-card" style="border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.08);">
         <span class="assign-tag" style="color: #f87171;">Final Exam</span>
-        <div class="assign-name">🏁 เจาะลึกแนวข้อสอบปลายภาค & กับดักอาจารย์</div>
-        <div class="assign-sub">สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs & Dijkstra</div>
+        <div class="assign-name">🏁 เจาะลึกแนวข้อสอบปลายภาค &amp; กับดักอาจารย์</div>
+        <div class="assign-sub">สรุป Hashing (Collision Trap), Binary Heap, Sorting, Graphs &amp; Dijkstra</div>
       </a>
 
       <a href="Wiki/index.html#/11.1 - Midterm Real Exam Mock & Solutions" class="assign-card" style="border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.08);">
         <span class="assign-tag" style="color: #fbbf24;">Midterm Exam</span>
-        <div class="assign-name">🎯 ข้อสอบจริง Midterm Mock & Solutions</div>
+        <div class="assign-name">🎯 ข้อสอบจริง Midterm Mock &amp; Solutions</div>
         <div class="assign-sub">เฉลยข้อสอบจริง 20 ข้อ: LinkedList, Stacks, Queues, BST Deletion</div>
       </a>
 
       <a href="Wiki/index.html#/Glossary & Complexity Cheat Sheet" class="assign-card" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.08);">
         <span class="assign-tag" style="color: #34d399;">Quick Cheat Sheet</span>
-        <div class="assign-name">⚡ ตารางสรุป Big-O & Complexity ทุกบท</div>
+        <div class="assign-name">⚡ ตารางสรุป Big-O &amp; Complexity ทุกบท</div>
         <div class="assign-sub">ทบทวนสูตรคำนวณ ความเร็ว Best/Avg/Worst และ Memory Space</div>
       </a>
     </div>
 
-    <!-- Quick Assignment Showcase -->
+    <!-- Quick Assignment Showcase (Interactive Debuggers) -->
     <div class="section-title">
       <span>🎯</span>
-      <span>แบบจำลอง Interactive จากข้อสอบจริง (คลิกเพื่อทดสอบทันที)</span>
+      <span>ห้องทดลอง Interactive Visual Debugger จากงานและการบ้านที่สั่ง (คลิกเพื่อทดสอบทันที)</span>
     </div>
 
     <div class="assignment-strip">
-      <a href="DsaLab/index.html?ex=assign3_heap" class="assign-card" style="border-color: rgba(245, 158, 11, 0.35);">
-        <span class="assign-tag" style="color: #f59e0b;">Exams/Heap.py</span>
+      <a href="DsaLab/index.html?topic=assign1" class="assign-card" style="border-color: rgba(6, 182, 212, 0.35);">
+        <span class="assign-tag" style="color: #06b6d4;">Assign 1 · Linked List</span>
+        <div class="assign-name">🔗 Pointer Swapper Debugger</div>
+        <div class="assign-sub">ทดสอบสลับโหนดรหัสนักศึกษา 612037 และโจทย์ห้องเรียน ดูลูกศรเปลี่ยนทิศ</div>
+      </a>
+
+      <a href="DsaLab/index.html?topic=test1" class="assign-card" style="border-color: rgba(245, 158, 11, 0.35);">
+        <span class="assign-tag" style="color: #f59e0b;">Test 1 · Queue</span>
+        <div class="assign-name">🚶 Queue Over &amp; Underflow</div>
+        <div class="assign-sub">ทดสอบรันโค้ดจริง program.py ดักจับ Overflow และ Underflow ทีละสเต็ป</div>
+      </a>
+
+      <a href="DsaLab/index.html?topic=test2" class="assign-card" style="border-color: rgba(168, 85, 247, 0.35);">
+        <span class="assign-tag" style="color: #c084fc;">Test 2 · Sorting</span>
+        <div class="assign-name">🔀 Sorting Trace &amp; Position Move</div>
+        <div class="assign-sub">จำลอง Insertion Sort (นับ Move), Selection (หา min) และ Bubble Sort</div>
+      </a>
+
+      <a href="DsaLab/index.html?topic=assign4" class="assign-card" style="border-color: rgba(16, 185, 129, 0.35);">
+        <span class="assign-tag" style="color: #34d399;">Assign 4 · Graph</span>
+        <div class="assign-name">🕸️ Graph BFS Shortest Path</div>
+        <div class="assign-sub">จำลอง Breadth-First Search กราฟ 7 จุดยอด พร้อมอัปเดตตาราง Known, d_v, p_v</div>
+      </a>
+
+      <a href="DsaLab/index.html?topic=heap" class="assign-card" style="border-color: rgba(245, 158, 11, 0.35);">
+        <span class="assign-tag" style="color: #f59e0b;">Exams · Binary Heap</span>
         <div class="assign-name">🔺 Binary Min-Heap Studio</div>
-        <div class="assign-sub">Interactive Percolate Up & Down ใส่ค่าเองได้อิสระ</div>
+        <div class="assign-sub">Interactive Percolate Up &amp; Down ใส่ค่าเองได้อิสระ</div>
       </a>
 
-      <a href="DsaLab/index.html?ex=exam_hash" class="assign-card" style="border-color: rgba(6, 182, 212, 0.35);">
-        <span class="assign-tag" style="color: #06b6d4;">Exams/Hash.py</span>
-        <div class="assign-name">🔑 Hash Table & Collisions</div>
-        <div class="assign-sub">จำลอง Separate Chaining & Linear Probing พร้อม Load Factor</div>
-      </a>
-
-      <a href="DsaLab/index.html?ex=lecture5_bst_delete" class="assign-card" style="border-color: rgba(16, 185, 129, 0.35);">
-        <span class="assign-tag" style="color: #34d399;">Exams/BST</span>
+      <a href="DsaLab/index.html?topic=bst" class="assign-card" style="border-color: rgba(16, 185, 129, 0.35);">
+        <span class="assign-tag" style="color: #34d399;">Exams · BST</span>
         <div class="assign-name">🌲 BST Deletion 3 Cases</div>
         <div class="assign-sub">จำลองการลบโหนดที่มีลูก 2 ตัว หา In-order Successor</div>
       </a>
 
-      <a href="DsaLab/index.html?ex=stack_postfix" class="assign-card" style="border-color: rgba(168, 85, 247, 0.35);">
-        <span class="assign-tag" style="color: #c084fc;">Exams/Postfix</span>
+      <a href="DsaLab/index.html?topic=hash" class="assign-card" style="border-color: rgba(6, 182, 212, 0.35);">
+        <span class="assign-tag" style="color: #06b6d4;">Exams · Hash</span>
+        <div class="assign-name">🔑 Hash Table &amp; Collisions</div>
+        <div class="assign-sub">จำลอง Separate Chaining &amp; Linear Probing พร้อม Load Factor</div>
+      </a>
+
+      <a href="DsaLab/index.html?topic=stack" class="assign-card" style="border-color: rgba(168, 85, 247, 0.35);">
+        <span class="assign-tag" style="color: #c084fc;">Exams · Stack</span>
         <div class="assign-name">🥞 Stack: Infix to Postfix</div>
         <div class="assign-sub">จำลอง Operator Stack และ Precedence Hierarchy ทีละโทเค็น</div>
       </a>

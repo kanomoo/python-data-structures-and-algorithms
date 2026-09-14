@@ -1,0 +1,560 @@
+- generic [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link "DSA Wiki Python DSA" [ref=f1e4] [cursor=pointer]:
+      - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+      - generic [ref=f1e9]: DSA Wiki
+      - generic [ref=f1e10]: Python DSA
+    - button "ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง... Ctrl K" [ref=f1e12] [cursor=pointer]:
+      - generic [ref=f1e13]: ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง...
+      - generic [ref=f1e18]: Ctrl K
+    - generic [ref=f1e19]:
+      - generic "ปรับขนาดตัวอักษรสำหรับอ่าน" [ref=f1e20]:
+        - button "A-" [ref=f1e21] [cursor=pointer]
+        - button "A+" [ref=f1e22] [cursor=pointer]
+      - button "☀️" [ref=f1e23] [cursor=pointer]
+      - link "🔬 ห้องทดลอง DSA Lab" [ref=f1e24] [cursor=pointer]:
+        - /url: ../DsaLab/index.html
+        - generic [ref=f1e25]: 🔬
+        - generic [ref=f1e26]: ห้องทดลอง DSA Lab
+  - generic [ref=f1e27]:
+    - complementary [ref=f1e28]:
+      - generic [ref=f1e29]:
+        - button "📚 บทเรียน" [ref=f1e30] [cursor=pointer]
+        - button "📋 งานที่สั่ง" [active] [ref=f1e31] [cursor=pointer]
+        - button "🎯 เตรียมสอบ" [ref=f1e32] [cursor=pointer]
+      - generic [ref=f1e1744]:
+        - generic [ref=f1e1745]: 📋 งานและการบ้านที่อาจารย์สั่ง (Course Assignments & Labs)
+        - generic [ref=f1e1747]:
+          - 'link "ยังไม่ได้อ่าน 📋 Assign 1: Linked List (รหัสนักศึกษา & สลับพอยน์เตอร์) ⏱️ 16 นาที · 13 หัวข้อ" [ref=f1e1748] [cursor=pointer]':
+            - /url: "#/12.1%20-%20Assignment%201%20Singly%20Linked%20List%20Student%20ID%20%26%20Node%20Swap"
+            - generic "ยังไม่ได้อ่าน" [ref=f1e1749]
+            - generic [ref=f1e1750]:
+              - generic [ref=f1e1751]: "📋 Assign 1: Linked List (รหัสนักศึกษา & สลับพอยน์เตอร์)"
+              - generic [ref=f1e1752]: ⏱️ 16 นาที · 13 หัวข้อ
+          - 'link "ยังไม่ได้อ่าน 📋 Assign 2: Construct Binary Tree (Post-order & In-order) ⏱️ 10 นาที · 10 หัวข้อ" [ref=f1e1753] [cursor=pointer]':
+            - /url: "#/12.2%20-%20Assignment%202%20Construct%20Binary%20Tree%20from%20Post-order%20%26%20In-order"
+            - generic "ยังไม่ได้อ่าน" [ref=f1e1754]
+            - generic [ref=f1e1755]:
+              - generic [ref=f1e1756]: "📋 Assign 2: Construct Binary Tree (Post-order & In-order)"
+              - generic [ref=f1e1757]: ⏱️ 10 นาที · 10 หัวข้อ
+          - 'link "ยังไม่ได้อ่าน 📋 Assign 3: Binary Min-Heap In-class (แทรก 15 ค่า & DeleteMin) ⏱️ 12 นาที · 11 หัวข้อ" [ref=f1e1758] [cursor=pointer]':
+            - /url: "#/12.3%20-%20Assignment%203%20Binary%20Min-Heap%20In-class%20Insertion%20%26%20DeleteMin"
+            - generic "ยังไม่ได้อ่าน" [ref=f1e1759]
+            - generic [ref=f1e1760]:
+              - generic [ref=f1e1761]: "📋 Assign 3: Binary Min-Heap In-class (แทรก 15 ค่า & DeleteMin)"
+              - generic [ref=f1e1762]: ⏱️ 12 นาที · 11 หัวข้อ
+          - 'link "ยังไม่ได้อ่าน 📋 Assign 4: Graph Topological Sort & Shortest Path ⏱️ 12 นาที · 13 หัวข้อ" [ref=f1e1763] [cursor=pointer]':
+            - /url: "#/12.4%20-%20Assignment%204%20Graph%20Topological%20Sort%20%26%20Unweighted%20Shortest%20Path"
+            - generic "ยังไม่ได้อ่าน" [ref=f1e1764]
+            - generic [ref=f1e1765]:
+              - generic [ref=f1e1766]: "📋 Assign 4: Graph Topological Sort & Shortest Path"
+              - generic [ref=f1e1767]: ⏱️ 12 นาที · 13 หัวข้อ
+          - 'link "ยังไม่ได้อ่าน 📋 Test Program 1 & 2: Queue Class & Sorting Trace ⏱️ 13 นาที · 12 หัวข้อ" [ref=f1e1768] [cursor=pointer]':
+            - /url: "#/12.5%20-%20Test%20Program%201%20%26%202%20Queue%20Implementation%20%26%20Sorting%20Trace"
+            - generic "ยังไม่ได้อ่าน" [ref=f1e1769]
+            - generic [ref=f1e1770]:
+              - generic [ref=f1e1771]: "📋 Test Program 1 & 2: Queue Class & Sorting Trace"
+              - generic [ref=f1e1772]: ⏱️ 13 นาที · 12 หัวข้อ
+          - 'link "ยังไม่ได้อ่าน 📋 0Exercises: เช็คชื่อ & กับดัก Indentation ⏱️ 9 นาที · 15 หัวข้อ" [ref=f1e1773] [cursor=pointer]':
+            - /url: "#/12.6%20-%200Exercises%20Warm-up%20Function%20Tracing%20%26%20Attendance%20Tasks"
+            - generic "ยังไม่ได้อ่าน" [ref=f1e1774]
+            - generic [ref=f1e1775]:
+              - generic [ref=f1e1776]: "📋 0Exercises: เช็คชื่อ & กับดัก Indentation"
+              - generic [ref=f1e1777]: ⏱️ 9 นาที · 15 หัวข้อ
+    - main [ref=f1e68]:
+      - generic [ref=f1e69]:
+        - generic [ref=f1e70]:
+          - navigation [ref=f1e71]:
+            - link "สารานุกรม" [ref=f1e72] [cursor=pointer]:
+              - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+            - generic [ref=f1e73]: /
+            - generic [ref=f1e74]: งานและการบ้านที่อาจารย์สั่ง (Course Assignments & Labs)
+            - generic [ref=f1e75]: /
+            - 'generic "📋 Assign 1: Linked List (รหัสนักศึกษา & สลับพอยน์เตอร์)" [ref=f1e1778]'
+          - 'heading "🔗 12.1 - Assignment 1: Singly Linked List (เรียงรหัสนักศึกษา & สลับพอยน์เตอร์ Node)" [level=1] [ref=f1e1779]'
+          - generic [ref=f1e78]:
+            - generic [ref=f1e79]:
+              - generic [ref=f1e1780]: ⏱️ อ่านประมาณ 16 นาที
+              - generic [ref=f1e1781]: 📝 9,748 ตัวอักษร
+            - button "○ ทำเครื่องหมายว่าอ่านแล้ว" [ref=f1e82] [cursor=pointer]:
+              - generic [ref=f1e1782]: ○
+              - text: ทำเครื่องหมายว่าอ่านแล้ว
+        - article [ref=f1e84]:
+          - generic [ref=f1e1783]:
+            - generic [ref=f1e1784]:
+              - generic [ref=f1e1785]: 📌
+              - generic [ref=f1e1786]: บันทึก (Note)
+            - generic [ref=f1e1787]:
+              - paragraph [ref=f1e1788]:
+                - strong [ref=f1e1789]: ข้อมูลรายวิชาและการบ้าน
+                - text: ":"
+              - list [ref=f1e1790]:
+                - listitem [ref=f1e1791]:
+                  - strong [ref=f1e1792]: วิชา
+                  - text: ": 060243106 Data Structures and Algorithms (3 หน่วยกิต)"
+                - listitem [ref=f1e1793]:
+                  - strong [ref=f1e1794]: อาจารย์ผู้สอน
+                  - text: ": นายประดิษฐ์ พิทักษ์เสถียรกุล"
+                - listitem [ref=f1e1795]:
+                  - strong [ref=f1e1796]: คณะ
+                  - text: ": เทคโนโลยีและการจัดการอุตสาหกรรม มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (มจพ. ปราจีนบุรี)"
+                - listitem [ref=f1e1797]:
+                  - strong [ref=f1e1798]: สัดส่วนคะแนน
+                  - text: ": การบ้าน (Assignments) 20 คะแนน จากคะแนนเก็บรวม 65 คะแนน (เกรดรวม 100 คะแนน)"
+                - listitem [ref=f1e1799]:
+                  - strong [ref=f1e1800]: ไฟล์ต้นฉบับในโปรเจกต์
+                  - text: ":"
+                  - link [ref=f1e1801] [cursor=pointer]:
+                    - /url: file:///C:/Project/python-data-structures-and-algorithms/New-Lectures/Assign%201%20Linked%20List.pdf
+                    - code [ref=f1e1802]: New-Lectures/Assign 1 Linked List.pdf
+                  - text: ", โฟลเดอร์"
+                  - link [ref=f1e1803] [cursor=pointer]:
+                    - /url: file:///C:/Project/python-data-structures-and-algorithms/Lectures/Assignment%201%20Linked%20List/
+                    - code [ref=f1e1804]: Lectures/Assignment 1 Linked List/
+                  - text: และโค้ดส่งจริง
+                  - link [ref=f1e1805] [cursor=pointer]:
+                    - /url: file:///C:/Project/python-data-structures-and-algorithms/Exams/LinkedList/612037.py
+                    - code [ref=f1e1806]: Exams/LinkedList/612037.py
+          - separator [ref=f1e1807]
+          - heading "🎯 1. รายละเอียดโจทย์ Assignment 1 (ข้อกำหนดจากอาจารย์)" [level=2] [ref=f1e1808]
+          - heading "1.1 ข้อกำหนดโจทย์ต้นฉบับภาษาอังกฤษ (Original Assignment Brief)" [level=3] [ref=f1e1809]
+          - blockquote [ref=f1e1810]:
+            - paragraph [ref=f1e1811]:
+              - strong [ref=f1e1812]: "Assign 1: Linked List"
+            - list [ref=f1e1813]:
+              - listitem [ref=f1e1814]:
+                - text: If no
+                - code [ref=f1e1815]: LinkedList
+                - text: instance has been created yet, write statements in the
+                - code [ref=f1e1816]: main
+                - text: program to create a
+                - code [ref=f1e1817]: mylist
+                - text: instance with the ordered inputs as the
+                - strong [ref=f1e1818]: last 6 digits of your student's id
+                - text: produce the output that sort from small to large (ascending order) by using the
+                - code [ref=f1e1819]: LinkedList
+                - text: class and
+                - code [ref=f1e1820]: Node
+                - text: class we have learned.
+              - listitem [ref=f1e1821]:
+                - text: Then, swap node position 1 and 6 by changing the node pointers using the
+                - code [ref=f1e1822]: LinkedList
+                - text: and
+                - code [ref=f1e1823]: Node
+                - text: classes.
+                - strong [ref=f1e1824]: Do not use any methods that have not been taught in class. Do not change data in node. Modify pointers only, do not swap data.
+              - listitem [ref=f1e1825]:
+                - text: Create file name with your the last 6 digits student's
+                - code [ref=f1e1826]: id.py
+                - text: (เช่น
+                - code [ref=f1e1827]: 612037.py
+                - text: ).
+            - paragraph [ref=f1e1828]:
+              - strong [ref=f1e1829]: Example from Professor
+              - text: :If student's ID is
+              - code [ref=f1e1830]: 6706021 632032
+              - text: Then the last 6 digits are
+              - code [ref=f1e1831]: "632032"
+              - generic [ref=f1e1833]:
+                - math [ref=f1e1835]:
+                  - generic [ref=f1e1836]: →
+                - generic [ref=f1e1839]: →
+              - text: Ordered inputs are
+              - code [ref=f1e1841]: 6, 3, 2, 0, 3, 2
+              - text: "Desired sorted output:"
+              - code [ref=f1e1842]: 0, 2, 2, 3, 3, 6
+              - emphasis [ref=f1e1843]: "(Note: No problem with input 0 and duplicates 2, 2, 3, 3)"
+          - heading "1.2 สรุปเป้าหมาย 2 ขั้นตอนหลัก" [level=3] [ref=f1e1844]
+          - list [ref=f1e1845]:
+            - listitem [ref=f1e1846]:
+              - strong [ref=f1e1847]: การสร้างและจัดเรียงข้อมูลนำเข้า (Data Insertion in Ascending Order)
+              - text: ":"
+              - list [ref=f1e1848]:
+                - listitem [ref=f1e1849]:
+                  - text: นำเลขท้าย 6 ตัวของรหัสนักศึกษามาป้อนเข้าทีละตัว โดยสั่ง
+                  - code [ref=f1e1850]: add()
+                  - text: (แทรกหน้าสุด) หรือ
+                  - code [ref=f1e1851]: insert(item, pos)
+                  - text: (แทรกตามตำแหน่ง) ให้ผลลัพธ์ในลิสต์เรียงจากน้อยไปมาก
+                - listitem [ref=f1e1852]:
+                  - text: ห้ามใช้ฟังก์ชันโกง เช่น
+                  - code [ref=f1e1853]: .sort()
+                  - text: ต้องใช้ลำดับการเรียกคำสั่งของคลาสที่เรียนเท่านั้น
+            - listitem [ref=f1e1854]:
+              - strong [ref=f1e1855]: การสลับตำแหน่งโหนดที่ 1 และโหนดที่ 6 ด้วยพอยน์เตอร์ (Pointer Swapping)
+              - text: ":"
+              - list [ref=f1e1856]:
+                - listitem [ref=f1e1857]:
+                  - text: ต้องสลับตัวเชื่อมโยง (
+                  - code [ref=f1e1858]: next
+                  - text: และ
+                  - code [ref=f1e1859]: head
+                  - text: ) เพื่อสลับโหนดตัวแรกและตัวที่หก
+                - listitem [ref=f1e1860]:
+                  - strong [ref=f1e1861]: ห้ามสลับค่าข้อมูล (Do not swap node.data)
+                  - text: ต้องย้ายโครงข่ายพอยน์เตอร์จริงในหน่วยความจำ
+          - separator [ref=f1e1862]
+          - 'heading "🔍 2. เฉลยการแก้ปัญหาและแนวคิด (Student Solution: รหัส 6806021612037)" [level=2] [ref=f1e1863]'
+          - paragraph [ref=f1e1864]:
+            - text: นักศึกษา
+            - strong [ref=f1e1865]: Paphavin Thitichunhakun (รหัส 6806021612037)
+            - text: เลขท้าย 6 หลักคือ
+            - code [ref=f1e1866]: "612037"
+            - text: "ดังนั้นตัวเลขนำเข้า 6 ตัวคือ:"
+            - code [ref=f1e1867]: 6, 1, 2, 0, 3, 7
+            - text: "ผลลัพธ์ที่ต้องการ (Ascending Sort):"
+            - code [ref=f1e1868]: 0, 1, 2, 3, 6, 7
+          - heading "2.1 ลำดับการเรียกคำสั่งเพื่อเรียงลำดับ" [level=3] [ref=f1e1869]
+          - table [ref=f1e1871]:
+            - rowgroup [ref=f1e1872]:
+              - row [ref=f1e1873]:
+                - columnheader "ขั้นตอน" [ref=f1e1874]
+                - columnheader "ตัวเลขที่ใส่" [ref=f1e1875]
+                - columnheader "คำสั่งที่ใช้" [ref=f1e1876]
+                - columnheader "ผลลัพธ์ใน LinkedList" [ref=f1e1877]
+                - columnheader "คำอธิบายเหตุผล" [ref=f1e1878]
+            - rowgroup [ref=f1e1879]:
+              - row [ref=f1e1880]:
+                - cell [ref=f1e1881]:
+                  - strong [ref=f1e1882]: "1"
+                - cell [ref=f1e1883]:
+                  - code [ref=f1e1884]: "6"
+                - cell [ref=f1e1885]:
+                  - code [ref=f1e1886]: mylist.add(6)
+                - cell [ref=f1e1887]:
+                  - code [ref=f1e1888]: "[6]"
+                - cell "ใส่ตัวแรกสุดของลิสต์" [ref=f1e1889]
+              - row [ref=f1e1890]:
+                - cell [ref=f1e1891]:
+                  - strong [ref=f1e1892]: "2"
+                - cell [ref=f1e1893]:
+                  - code [ref=f1e1894]: "1"
+                - cell [ref=f1e1895]:
+                  - code [ref=f1e1896]: mylist.add(1)
+                - cell [ref=f1e1897]:
+                  - code [ref=f1e1898]: "[1, 6]"
+                - cell [ref=f1e1899]:
+                  - code [ref=f1e1900]: 1 < 6
+                  - text: ใช้
+                  - code [ref=f1e1901]: add()
+                  - text: แทรกหัวแถว
+              - row [ref=f1e1902]:
+                - cell [ref=f1e1903]:
+                  - strong [ref=f1e1904]: "3"
+                - cell [ref=f1e1905]:
+                  - code [ref=f1e1906]: "2"
+                - cell [ref=f1e1907]:
+                  - code [ref=f1e1908]: mylist.insert(2, 1)
+                - cell [ref=f1e1909]:
+                  - code [ref=f1e1910]: "[1, 2, 6]"
+                - cell [ref=f1e1911]:
+                  - code [ref=f1e1912]: "2"
+                  - text: อยู่ระหว่าง 1 กับ 6 แทรกที่ index
+                  - code [ref=f1e1913]: "1"
+              - row [ref=f1e1914]:
+                - cell [ref=f1e1915]:
+                  - strong [ref=f1e1916]: "4"
+                - cell [ref=f1e1917]:
+                  - code [ref=f1e1918]: "0"
+                - cell [ref=f1e1919]:
+                  - code [ref=f1e1920]: mylist.add(0)
+                - cell [ref=f1e1921]:
+                  - code [ref=f1e1922]: "[0, 1, 2, 6]"
+                - cell [ref=f1e1923]:
+                  - code [ref=f1e1924]: "0"
+                  - text: น้อยที่สุด แทรกหัวแถวด้วย
+                  - code [ref=f1e1925]: add()
+              - row [ref=f1e1926]:
+                - cell [ref=f1e1927]:
+                  - strong [ref=f1e1928]: "5"
+                - cell [ref=f1e1929]:
+                  - code [ref=f1e1930]: "3"
+                - cell [ref=f1e1931]:
+                  - code [ref=f1e1932]: mylist.insert(3, 3)
+                - cell [ref=f1e1933]:
+                  - code [ref=f1e1934]: "[0, 1, 2, 3, 6]"
+                - cell [ref=f1e1935]:
+                  - code [ref=f1e1936]: "3"
+                  - text: อยู่หลัง 2 แทรกที่ index
+                  - code [ref=f1e1937]: "3"
+              - row [ref=f1e1938]:
+                - cell [ref=f1e1939]:
+                  - strong [ref=f1e1940]: "6"
+                - cell [ref=f1e1941]:
+                  - code [ref=f1e1942]: "7"
+                - cell [ref=f1e1943]:
+                  - code [ref=f1e1944]: mylist.insert(7, 5)
+                - cell [ref=f1e1945]:
+                  - code [ref=f1e1946]: "[0, 1, 2, 3, 6, 7]"
+                - cell [ref=f1e1947]:
+                  - code [ref=f1e1948]: "7"
+                  - text: มากสุด แทรกท้ายสุดที่ index
+                  - code [ref=f1e1949]: "5"
+          - generic [ref=f1e1950]:
+            - generic [ref=f1e1951]:
+              - generic [ref=f1e1952]: python
+              - generic [ref=f1e1953]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e1954] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e1955] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f1e1956] [cursor=pointer]
+            - code [ref=f1e1958]: "mylist = LinkedList() mylist.add(6) mylist.add(1) mylist.insert(2, 1) mylist.add(0) mylist.insert(3, 3) mylist.insert(7, 5) print(\"Output small to large : \", end=\"\") mylist.getdata() # ผลลัพธ์: 0 1 2 3 6 7"
+          - separator [ref=f1e1959]
+          - heading "🔄 3. การสลับตำแหน่ง Node 1 และ Node 6 (Pointer Manipulation)" [level=2] [ref=f1e1960]
+          - heading "3.1 ไดอะแกรมก่อนและหลังสลับพอยน์เตอร์" [level=3] [ref=f1e1961]
+          - paragraph [ref=f1e1962]: "ก่อนสลับ:"
+          - generic [ref=f1e1963]:
+            - generic [ref=f1e1964]:
+              - generic [ref=f1e1965]:
+                - generic [ref=f1e1970]: DSA LAB MODEL
+                - generic [ref=f1e1971]: 🔬 แบบจำลองโครงสร้างสถาปัตยกรรม (DSA Studio Architecture)
+              - generic [ref=f1e1972]:
+                - link "⚡ เปิดใน DSA Lab" [ref=f1e1973] [cursor=pointer]:
+                  - /url: ../DsaLab/index.html
+                - button "🔍 ขยายภาพ" [ref=f1e1974] [cursor=pointer]
+            - img [ref=f1e1977]:
+              - generic [ref=f1e1978]: head
+              - generic [ref=f1e1981]: "Node 1: (0)"
+              - generic [ref=f1e1984]: "Node 2: (1)"
+              - generic [ref=f1e1987]: "Node 3: (2)"
+              - generic [ref=f1e1990]: "Node 4: (3)"
+              - generic [ref=f1e1993]: "Node 5: (6)"
+              - generic [ref=f1e1996]: "Node 6: (7)"
+              - generic [ref=f1e1999]: None
+          - paragraph [ref=f1e2002]: "ขั้นตอนการสลับ (เปลี่ยนพอยน์เตอร์ 4 จุด):"
+          - list [ref=f1e2003]:
+            - listitem [ref=f1e2004]:
+              - text: ให้
+              - code [ref=f1e2005]: node6.set_next(node2)
+              - text: (โหนด 6 ชี้ไปหาโหนด 2 แทนที่จะชี้ไปหา None)
+            - listitem [ref=f1e2006]:
+              - text: ให้
+              - code [ref=f1e2007]: node5.set_next(node1)
+              - text: (โหนด 5 ชี้ไปหาโหนด 1 แทนที่จะชี้ไปหาโหนด 6)
+            - listitem [ref=f1e2008]:
+              - text: ให้
+              - code [ref=f1e2009]: node1.set_next(None)
+              - text: (โหนด 1 กลายเป็นโหนดท้ายสุด ชี้ไปหา None)
+            - listitem [ref=f1e2010]:
+              - text: ปรับหัวลิสต์
+              - code [ref=f1e2011]: mylist.head = node6
+              - text: (โหนด 6 กลายเป็นหัวแถวใหม่)
+          - paragraph [ref=f1e2012]: "หลังสลับ:"
+          - generic [ref=f1e2013]:
+            - generic [ref=f1e2014]:
+              - generic [ref=f1e2015]:
+                - generic [ref=f1e2020]: DSA LAB MODEL
+                - generic [ref=f1e2021]: 🔬 แบบจำลองโครงสร้างสถาปัตยกรรม (DSA Studio Architecture)
+              - generic [ref=f1e2022]:
+                - link "⚡ เปิดใน DSA Lab" [ref=f1e2023] [cursor=pointer]:
+                  - /url: ../DsaLab/index.html
+                - button "🔍 ขยายภาพ" [ref=f1e2024] [cursor=pointer]
+            - img [ref=f1e2027]:
+              - generic [ref=f1e2028]: head
+              - generic [ref=f1e2031]: "Node 6: (7)"
+              - generic [ref=f1e2034]: "Node 2: (1)"
+              - generic [ref=f1e2037]: "Node 3: (2)"
+              - generic [ref=f1e2040]: "Node 4: (3)"
+              - generic [ref=f1e2043]: "Node 5: (6)"
+              - generic [ref=f1e2046]: "Node 1: (0)"
+              - generic [ref=f1e2049]: None
+          - paragraph [ref=f1e2052]:
+            - text: "ผลลัพธ์หลังสลับ Node 1 และ 6:"
+            - code [ref=f1e2053]: 7, 1, 2, 3, 6, 0
+          - separator [ref=f1e2054]
+          - heading [level=2] [ref=f1e2055]:
+            - text: 💻 4. โค้ดส่งจริงของนักศึกษาฉบับสมบูรณ์ (
+            - code [ref=f1e2056]: Exams/LinkedList/612037.py
+            - text: )
+          - generic [ref=f1e2057]:
+            - generic [ref=f1e2058]:
+              - generic [ref=f1e2059]: python
+              - generic [ref=f1e2060]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e2061] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e2062] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f1e2063] [cursor=pointer]
+            - code [ref=f1e2065]: "# 6806021612037 Paphavin Thitichunhakun # วิชา 060243106 Data Structures and Algorithms class Node: def __init__(self, init_data): self.data, self.next = init_data, None def get_data(self): return self.data def set_data(self, new_data): self.data = new_data def get_next(self): return self.next def set_next(self, new_next): self.next = new_next class LinkedList: def __init__(self): self.head = None def add(self, item): temp = Node(item) temp.set_next(self.head) self.head = temp def search(self, item) -> bool: current = self.head found = False while current is not None and not found: if current.get_data() == item: found = True else: current = current.get_next() return found def remove(self, item): previous = None current = self.head found = False while current is not None and not found: if current.get_data() == item: found = True else: previous = current current = current.get_next() if not found: return elif previous is None: self.head = current.get_next() else: previous.set_next(current.get_next()) def getdata(self): current = self.head if current is None: print(\"LinkedList is empty\") return while current is not None: print(current.get_data(), end=\" \") current = current.get_next() print() def insert(self, item, pos): if pos == 0: self.add(item) return previous = None current = self.head temp = Node(item) for _ in range(pos): if current is None: raise ValueError(\"Index out of range\") previous = current current = current.get_next() previous.set_next(temp) temp.set_next(current) if __name__ == \"__main__\": mylist = LinkedList() # 1. ป้อนเลขท้าย 6 ตัว (6, 1, 2, 0, 3, 7) ให้เรียงน้อยไปมาก mylist.add(6) mylist.add(1) mylist.insert(2, 1) mylist.add(0) mylist.insert(3, 3) mylist.insert(7, 5) print(\"Output small to large : \", end=\"\") mylist.getdata() # 0 1 2 3 6 7 # 2. เข้าถึงตัวชี้โหนดตำแหน่ง 1 ถึง 6 node1 = mylist.head node2 = node1.get_next() node3 = node2.get_next() node4 = node3.get_next() node5 = node4.get_next() node6 = node5.get_next() # 3. สลับ Pointer ระหว่าง Node 1 และ Node 6 (ห้ามสลับ data) node6.set_next(node2) node5.set_next(node1) node1.set_next(None) mylist.head = node6 print(\"Output after swap : \", end=\"\") mylist.getdata() # 7 1 2 3 6 0"
+          - separator [ref=f1e2066]
+          - heading "⚠️ 5. กับดักและคำเตือนสำคัญของอาจารย์ (Teacher's Traps & Rules)" [level=2] [ref=f1e2067]
+          - paragraph [ref=f1e2068]:
+            - text: จากบันทึกประกาศในห้องเรียนของ อ.ประดิษฐ์ (ดูรูปใน
+            - code [ref=f1e2069]: Lectures/Assignment 1 Linked List/Screenshot...
+            - text: "):"
+          - generic [ref=f1e2070]:
+            - generic [ref=f1e2071]:
+              - generic [ref=f1e2072]: 🚨
+              - generic [ref=f1e2073]: อันตราย (Caution)
+            - generic [ref=f1e2074]:
+              - heading [level=3] [ref=f1e2075]:
+                - text: "🚨 กับดักที่ 1: ห้ามใช้"
+                - code [ref=f1e2076]: mylist.insert(item, 0)
+                - text: เด็ดขาด! (ได้ 0 คะแนน)
+              - paragraph [ref=f1e2077]:
+                - text: "อาจารย์ระบุชัดเจน:"
+                - emphasis [ref=f1e2078]: "\"คุณไม่สามารถเขียนประโยคคำสั่งว่า mylist.insert(1, 0) ผิดนะครับ สาเหตุเป็นเพราะว่า for i in range(pos): เมื่อ pos = 0 range(0) คือลิสต์ว่างเปล่า ทำให้ for loop ไม่ทำงานเลย ผมได้เขียน method add() สำหรับการ insert ข้อมูลเข้าไปที่ข้างหน้า Linkedlist ไว้แล้วตามเอกสารการสอน ใครใช้คำสั่ง insert(ข้อมูล, 0) จึงผิดทั้งหมด ตอนสอบเขียนมาจะได้ 0 คะแนน\""
+          - generic [ref=f1e2079]:
+            - generic [ref=f1e2080]:
+              - generic [ref=f1e2081]: ⚠️
+              - generic [ref=f1e2082]: ข้อควรระวัง (Warning)
+            - generic [ref=f1e2083]:
+              - 'heading "⚠️ กับดักที่ 2: ห้ามประกาศตัวแปรข้ามบรรทัด!" [level=3] [ref=f1e2084]'
+              - generic [ref=f1e2085]:
+                - generic [ref=f1e2086]:
+                  - generic [ref=f1e2087]: python
+                  - generic [ref=f1e2088]:
+                    - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e2089] [cursor=pointer]
+                    - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e2090] [cursor=pointer]
+                    - button "📋 คัดลอก" [ref=f1e2091] [cursor=pointer]
+                - generic [ref=f1e2092]:
+                  - code [ref=f1e2093]:
+                    - text: "# ❌ ผิดไวยากรณ์ ได้ 0 คะแนน mylist = LinkedList()"
+                    - heading "✅ ถูกต้อง ต้องเขียนในบรรทัดเดียวกัน" [level=1] [ref=f1e2094]
+                  - paragraph [ref=f1e2095]:
+                    - code [ref=f1e2096]: mylist = LinkedList()
+              - paragraph
+              - paragraph [ref=f1e2097]:
+                - text: "อาจารย์ระบุ:"
+                - emphasis [ref=f1e2098]: "\"ผมไม่เข้าใจนักศึกษาหลายคน ที่ประกาศตัวแปรคนละบรรทัดแบบนี้ ผิดนะครับ ต้องเขียนบรรทัดเดียวกันเรียกว่า 1 ประโยค หรือ 1 statement ตอนสอบเขียนแบบนี้ได้ 0 คะแนน บอกล่วงหน้าเลย\""
+          - generic [ref=f1e2099]:
+            - generic [ref=f1e2100]:
+              - generic [ref=f1e2101]: ❗
+              - generic [ref=f1e2102]: สำคัญมาก (Important)
+            - generic [ref=f1e2103]:
+              - 'heading "❗ กับดักที่ 3: ห้ามใช้ Method ที่ไม่ได้สอน" [level=3] [ref=f1e2104]'
+              - list [ref=f1e2105]:
+                - listitem [ref=f1e2106]:
+                  - text: ห้ามใช้
+                  - code [ref=f1e2107]: mylist.sort()
+                  - text: (ไม่มีในคลาสที่สอน)
+                - listitem [ref=f1e2108]:
+                  - text: ห้ามใช้
+                  - code [ref=f1e2109]: mylist.display()
+                  - text: (ในคลาสใช้ชื่อ
+                  - code [ref=f1e2110]: getdata()
+                  - text: )
+                - listitem [ref=f1e2111]:
+                  - text: ห้ามสลับ
+                  - code [ref=f1e2112]: node1.data, node6.data = node6.data, node1.data
+                  - text: (โจทย์บังคับให้แก้ Pointer เท่านั้น)
+          - separator [ref=f1e2113]
+          - heading "📚 6. กรณีทำผิดส่งใหม่ (Assign 1.1 สำหรับนักศึกษาที่ทำผิดรอบแรก)" [level=2] [ref=f1e2114]
+          - paragraph [ref=f1e2115]:
+            - text: สำหรับนักศึกษาที่ส่งรอบแรกผิด อาจารย์ให้ทำโจทย์ใหม่โดยกำหนดให้ในลิสต์
+            - strong [ref=f1e2116]: มีเลข 5 อยู่ก่อนแล้ว
+            - text: ตัวอย่างนักศึกษารหัส
+            - code [ref=f1e2117]: "612615"
+            - text: "(เลขท้าย 6 ตัว: 1, 1, 2, 5, 6, 6) และใน List เริ่มต้นมีเลข 5:"
+          - list [ref=f1e2118]:
+            - listitem [ref=f1e2119]:
+              - code [ref=f1e2120]: mylist.insert(6, 1)
+              - generic [ref=f1e2122]:
+                - math [ref=f1e2124]:
+                  - generic [ref=f1e2125]: →
+                - generic [ref=f1e2128]: →
+              - code [ref=f1e2130]: "[5, 6]"
+            - listitem [ref=f1e2131]:
+              - code [ref=f1e2132]: mylist.add(1)
+              - generic [ref=f1e2134]:
+                - math [ref=f1e2136]:
+                  - generic [ref=f1e2137]: →
+                - generic [ref=f1e2140]: →
+              - code [ref=f1e2142]: "[1, 5, 6]"
+            - listitem [ref=f1e2143]:
+              - code [ref=f1e2144]: mylist.insert(2, 1)
+              - generic [ref=f1e2146]:
+                - math [ref=f1e2148]:
+                  - generic [ref=f1e2149]: →
+                - generic [ref=f1e2152]: →
+              - code [ref=f1e2154]: "[1, 2, 5, 6]"
+            - listitem [ref=f1e2155]:
+              - code [ref=f1e2156]: mylist.insert(6, 3)
+              - generic [ref=f1e2158]:
+                - math [ref=f1e2160]:
+                  - generic [ref=f1e2161]: →
+                - generic [ref=f1e2164]: →
+              - code [ref=f1e2166]: "[1, 2, 5, 6, 6]"
+            - listitem [ref=f1e2167]:
+              - code [ref=f1e2168]: mylist.add(1)
+              - generic [ref=f1e2170]:
+                - math [ref=f1e2172]:
+                  - generic [ref=f1e2173]: →
+                - generic [ref=f1e2176]: →
+              - code [ref=f1e2178]: "[1, 1, 2, 5, 6, 6]"
+            - listitem [ref=f1e2179]:
+              - code [ref=f1e2180]: mylist.insert(5, 3)
+              - generic [ref=f1e2182]:
+                - math [ref=f1e2184]:
+                  - generic [ref=f1e2185]: →
+                - generic [ref=f1e2188]: →
+              - code [ref=f1e2190]: "[1, 1, 2, 5, 5, 6, 6]"
+            - listitem [ref=f1e2191]:
+              - text: "คำถาม: \"สามารถใช้ method add() ซ้ำได้หรือไม่?\""
+              - generic [ref=f1e2193]:
+                - math [ref=f1e2195]:
+                  - generic [ref=f1e2196]: →
+                - generic [ref=f1e2199]: →
+              - strong [ref=f1e2201]: "คำตอบ: ได้ (Yes)"
+              - text: เมื่อต้องการแทรกข้อมูลที่น้อยที่สุดไว้หน้าหัวลิสต์
+        - link "บทถัดไป → 🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)" [ref=f1e2203] [cursor=pointer]:
+          - /url: "#/11.6%20-%20Final%20Exam%20Real%20Classroom%20Prep%20%26%20Solutions"
+          - generic [ref=f1e2204]: บทถัดไป →
+          - generic [ref=f1e2205]: 🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)
+    - complementary [ref=f1e509]:
+      - generic [ref=f1e510]: สารบัญในหน้านี้
+      - list [ref=f1e511]:
+        - listitem [ref=f1e2206]:
+          - link "🎯 รายละเอียดโจทย์ Assignment 1 (ข้อกำหนดจากอาจารย์)" [ref=f1e2207] [cursor=pointer]:
+            - /url: "#-1-รายละเอียดโจทย์-assignment-1-ข้อกำหนดจากอาจารย์"
+        - listitem [ref=f1e2208]:
+          - link "1 ข้อกำหนดโจทย์ต้นฉบับภาษาอังกฤษ (Original Assignment Brief)" [ref=f1e2209] [cursor=pointer]:
+            - /url: "#11-ข้อกำหนดโจทย์ต้นฉบับภาษาอังกฤษ-original-assignment-brief"
+        - listitem [ref=f1e2210]:
+          - link "2 สรุปเป้าหมาย 2 ขั้นตอนหลัก" [ref=f1e2211] [cursor=pointer]:
+            - /url: "#12-สรุปเป้าหมาย-2-ขั้นตอนหลัก"
+        - listitem [ref=f1e2212]:
+          - 'link "เฉลยการแก้ปัญหาและแนวคิด (Student Solution: รหัส 6806021612037)" [ref=f1e2213] [cursor=pointer]':
+            - /url: "#-2-เฉลยการแก้ปัญหาและแนวคิด-student-solution-รหัส-6806021612037"
+        - listitem [ref=f1e2214]:
+          - link "1 ลำดับการเรียกคำสั่งเพื่อเรียงลำดับ" [ref=f1e2215] [cursor=pointer]:
+            - /url: "#21-ลำดับการเรียกคำสั่งเพื่อเรียงลำดับ"
+        - listitem [ref=f1e2216]:
+          - link "🔄 การสลับตำแหน่ง Node 1 และ Node 6 (Pointer Manipulation)" [ref=f1e2217] [cursor=pointer]:
+            - /url: "#-3-การสลับตำแหน่ง-node-1-และ-node-6-pointer-manipulation"
+        - listitem [ref=f1e2218]:
+          - link "1 ไดอะแกรมก่อนและหลังสลับพอยน์เตอร์" [ref=f1e2219] [cursor=pointer]:
+            - /url: "#31-ไดอะแกรมก่อนและหลังสลับพอยน์เตอร์"
+        - listitem [ref=f1e2220]:
+          - link "💻 โค้ดส่งจริงของนักศึกษาฉบับสมบูรณ์ (Exams/LinkedList/py)" [ref=f1e2221] [cursor=pointer]:
+            - /url: "#-4-โค้ดส่งจริงของนักศึกษาฉบับสมบูรณ์-examslinkedlist612037py"
+        - listitem [ref=f1e2222]:
+          - link "⚠️ กับดักและคำเตือนสำคัญของอาจารย์ (Teacher's Traps & Rules)" [ref=f1e2223] [cursor=pointer]:
+            - /url: "#-5-กับดักและคำเตือนสำคัญของอาจารย์-teachers-traps-rules"
+        - listitem [ref=f1e2224]:
+          - 'link "🚨 กับดักที่ 1: ห้ามใช้ mylist.insert(item, 0) เด็ดขาด! (ได้ 0 คะแนน)" [ref=f1e2225] [cursor=pointer]':
+            - /url: "#-กับดักที่-1-ห้ามใช้-mylistinsertitem-0-เด็ดขาด-ได้-0-คะแนน"
+        - listitem [ref=f1e2226]:
+          - 'link "⚠️ กับดักที่ 2: ห้ามประกาศตัวแปรข้ามบรรทัด!" [ref=f1e2227] [cursor=pointer]':
+            - /url: "#-กับดักที่-2-ห้ามประกาศตัวแปรข้ามบรรทัด"
+        - listitem [ref=f1e2228]:
+          - link "✅ ถูกต้อง ต้องเขียนในบรรทัดเดียวกัน" [ref=f1e2229] [cursor=pointer]:
+            - /url: "#-ถูกต้อง-ต้องเขียนในบรรทัดเดียวกัน"
+        - listitem [ref=f1e2230]:
+          - 'link "❗ กับดักที่ 3: ห้ามใช้ Method ที่ไม่ได้สอน" [ref=f1e2231] [cursor=pointer]':
+            - /url: "#-กับดักที่-3-ห้ามใช้-method-ที่ไม่ได้สอน"
+        - listitem [ref=f1e2232]:
+          - link "กรณีทำผิดส่งใหม่ (Assign 1 สำหรับนักศึกษาที่ทำผิดรอบแรก)" [ref=f1e2233] [cursor=pointer]:
+            - /url: "#-6-กรณีทำผิดส่งใหม่-assign-11-สำหรับนักศึกษาที่ทำผิดรอบแรก"
+  - generic:
+    - generic:
+      - generic:
+        - textbox "พิมพ์ค้นหา เช่น Linked List, Heap, BST, Big-O, Dijkstra, Midterm..."
+        - button "ESC"
+  - generic:
+    - generic:
+      - generic:
+        - generic: DSA STUDIO
+        - generic: 🔬 แบบจำลองโครงสร้างสถาปัตยกรรม (DSA Studio Fullscreen Inspector)
+      - generic:
+        - button "➖ ย่อ"
+        - button "1:1"
+        - button "➕ ขยาย"
+        - button "✕ ปิด"

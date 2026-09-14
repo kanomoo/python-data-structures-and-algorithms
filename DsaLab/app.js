@@ -1147,6 +1147,22 @@ document.addEventListener('DOMContentLoaded', () => {
     stack: [
       { href: '#stack-principle', text: '① หลักการ & Precedence' },
       { href: '#stack-shunting', text: '② Shunting-Yard Stepper' }
+    ],
+    assign1: [
+      { href: '#assign1-principle', text: '① กฎการสลับโหนด' },
+      { href: '#assign1-swap-debug', text: '② Linked List Pointer Swap Debugger' }
+    ],
+    test1: [
+      { href: '#test1-principle', text: '① โครงสร้างโค้ด program.py' },
+      { href: '#test1-queue-debug', text: '② Queue Over/Underflow Debugger' }
+    ],
+    test2: [
+      { href: '#test2-principle', text: '① ทฤษฎี Position Move & Pass' },
+      { href: '#test2-sorting-debug', text: '② Interactive Sorting Debugger' }
+    ],
+    assign4: [
+      { href: '#assign4-principle', text: '① ตาราง Known, d_v, p_v' },
+      { href: '#assign4-bfs-debug', text: '② Graph BFS Shortest Path Debugger' }
     ]
   };
 
@@ -1527,6 +1543,931 @@ document.addEventListener('DOMContentLoaded', () => {
     buildTrace: () => traceInfixToPostfix(EXAM_EXPR)
   });
   if (stackShuntingWidget) stackShuntingWidget.setMode('shunting');
+
+  // -------------------------------------------------------------
+  // 4. ASSIGNMENT 1: LINKED LIST POINTER SWAP DEBUGGER
+  // -------------------------------------------------------------
+  const ASSIGN1_CODE = [
+    'class Node:',
+    '    def __init__(self, data):',
+    '        self.data = data',
+    '        self.next = None',
+    '',
+    'def swap_nodes(head, x, y):',
+    '    if x == y: return head',
+    '    prevA, currA = None, head',
+    '    while currA and currA.data != x:',
+    '        prevA, currA = currA, currA.next',
+    '    prevB, currB = None, head',
+    '    while currB and currB.data != y:',
+    '        prevB, currB = currB, currB.next',
+    '    if not currA or not currB: return head',
+    '    if prevA: prevA.next = currB',
+    '    else: head = currB',
+    '    if prevB: prevB.next = currA',
+    '    else: head = currA',
+    '    currA.next, currB.next = currB.next, currA.next',
+    '    return head'
+  ];
+
+  function traceAssign1(mode) {
+    const trace = [];
+    if (mode === 'lecture') {
+      // Lecture 3: 4-node pointer swap: 1 -> 4 -> 3 -> 2 -> 5
+      trace.push({
+        line: 6,
+        vars: { state: 'Initial 1->2->3->4->5' },
+        nodes: ['1', '2', '3', '4', '5'],
+        badge: 'INIT',
+        narration: 'เริ่มต้นโครงสร้างห้องเรียน: 1 -> 2 -> 3 -> 4 -> 5 ต้องการสลับเป็น 1 -> 4 -> 3 -> 2 -> 5',
+        console: 'โจทย์หน้า 3: node1 -> node2 -> node3 -> node4 -> node5'
+      });
+      trace.push({
+        line: 14,
+        vars: { 'node2.next': 'node5' },
+        nodes: ['1', '4', '3', '2', '5'],
+        badge: 'STEP 1',
+        narration: 'คำสั่ง 1: node2.next = node5 (ผูก node2 ให้ชี้ไปที่ node5 รอไว้ล่วงหน้า)',
+        console: 'node2.next = node5'
+      });
+      trace.push({
+        line: 17,
+        vars: { 'node3.next': 'node2' },
+        nodes: ['1', '4', '3', '2', '5'],
+        badge: 'STEP 2',
+        narration: 'คำสั่ง 2: node3.next = node2 (ผูก node3 ให้ชี้กลับมาที่ node2)',
+        console: 'node3.next = node2'
+      });
+      trace.push({
+        line: 18,
+        vars: { 'node4.next': 'node3' },
+        nodes: ['1', '4', '3', '2', '5'],
+        badge: 'STEP 3',
+        narration: 'คำสั่ง 3: node4.next = node3 (ผูก node4 ให้ชี้มาที่ node3)',
+        console: 'node4.next = node3'
+      });
+      trace.push({
+        line: 20,
+        vars: { 'node1.next': 'node4', result: '1 -> 4 -> 3 -> 2 -> 5' },
+        nodes: ['1', '4', '3', '2', '5'],
+        badge: 'COMPLETE',
+        narration: 'คำสั่ง 4: node1.next = node4 (ปรับหัวลิสต์ให้ชี้ไปที่ node4 เป็นตัวแรก) เสร็จสมบูรณ์!',
+        console: '✔ สลับ 4 โหนดสำเร็จ: 1 -> 4 -> 3 -> 2 -> 5 ตรงตามเฉลยอาจารย์ประดิษฐ์'
+      });
+      return trace;
+    }
+
+    // Default student ID mode: 6 -> 1 -> 2 -> 0 -> 3 -> 7, swap 1 and 3
+    trace.push({
+      line: 6,
+      vars: { x: 1, y: 3, head: '6', prevA: 'None', currA: '6', prevB: 'None', currB: '6' },
+      nodes: ['6', '1', '2', '0', '3', '7'],
+      badge: 'START',
+      narration: 'เริ่มต้น: Singly Linked List รหัสนักศึกษา [6 -> 1 -> 2 -> 0 -> 3 -> 7] ต้องการสลับโหนดค่า 1 กับโหนดค่า 3',
+      console: '>>> swap_nodes(head, x=1, y=3)'
+    });
+    trace.push({
+      line: 8,
+      vars: { x: 1, y: 3, head: '6', prevA: 'None', currA: '6' },
+      nodes: ['6', '1', '2', '0', '3', '7'],
+      badge: 'SEARCH A',
+      narration: 'เริ่มค้นหาโหนด x=1: prevA = None, currA = head (โหนด 6) -> 6 != 1 เลื่อนต่อ',
+      console: 'traverse: prevA = 6, currA = 1'
+    });
+    trace.push({
+      line: 10,
+      vars: { x: 1, y: 3, prevA: 'Node(6)', currA: 'Node(1)' },
+      nodes: ['6', '1', '2', '0', '3', '7'],
+      badge: 'FOUND A',
+      narration: 'พบโหนด x=1 แล้ว! บันทึกพอยน์เตอร์: prevA = Node(6), currA = Node(1)',
+      console: '✔ Found x=1 at currA'
+    });
+    trace.push({
+      line: 11,
+      vars: { x: 1, y: 3, prevB: 'None', currB: 'head (6)' },
+      nodes: ['6', '1', '2', '0', '3', '7'],
+      badge: 'SEARCH B',
+      narration: 'เริ่มค้นหาโหนด y=3 จากหัวลิสต์: prevB = None, currB = head',
+      console: 'traverse to find y=3'
+    });
+    trace.push({
+      line: 13,
+      vars: { x: 1, y: 3, prevB: 'Node(0)', currB: 'Node(3)' },
+      nodes: ['6', '1', '2', '0', '3', '7'],
+      badge: 'FOUND B',
+      narration: 'พบโหนด y=3 แล้ว! บันทึกพอยน์เตอร์: prevB = Node(0), currB = Node(3)',
+      console: '✔ Found y=3 at currB'
+    });
+    trace.push({
+      line: 15,
+      vars: { 'prevA.next': 'currB (3)', currA: '1', currB: '3' },
+      nodes: ['6', '3', '2', '0', '1', '7'],
+      badge: 'LINK 1',
+      narration: 'คำสั่ง prevA.next = currB: ให้โหนด 6 ชี้ข้ามไปยังโหนด 3 ทันที',
+      console: 'Pointer: prevA(6).next = currB(3)'
+    });
+    trace.push({
+      line: 18,
+      vars: { 'prevB.next': 'currA (1)', currA: '1', currB: '3' },
+      nodes: ['6', '3', '2', '0', '1', '7'],
+      badge: 'LINK 2',
+      narration: 'คำสั่ง prevB.next = currA: ให้โหนด 0 ชี้กลับมายังโหนด 1',
+      console: 'Pointer: prevB(0).next = currA(1)'
+    });
+    trace.push({
+      line: 20,
+      vars: { 'currA.next': '7', 'currB.next': '2' },
+      nodes: ['6', '3', '2', '0', '1', '7'],
+      badge: 'SWAP NEXT',
+      narration: 'สลับเส้นเชื่อม next: currA.next (1 ชี้ 7), currB.next (3 ชี้ 2)',
+      console: 'Pointer swap: currA.next, currB.next = currB.next, currA.next'
+    });
+    trace.push({
+      line: 21,
+      vars: { result: '6 -> 3 -> 2 -> 0 -> 1 -> 7' },
+      nodes: ['6', '3', '2', '0', '1', '7'],
+      badge: 'DONE',
+      narration: '✔ สลับโหนดสำเร็จ! ได้ลิสต์ 6 -> 3 -> 2 -> 0 -> 1 -> 7 โดยที่ไม่มีโหนดหลุดหายและไม่ต้อง copy ข้อมูล!',
+      console: '✔ Complete swap_nodes! Time: O(N), Space: O(1)'
+    });
+    return trace;
+  }
+
+  const assign1Widget = buildDebuggerWidget(document.getElementById('assign1Debugger'), {
+    id: 'asg1',
+    defaultMode: 'swap',
+    showJump: false,
+    treeTitle: 'Linked List Pointer Architecture',
+    arrayTitle: 'Node Traversal Order',
+    arraySubtitle: 'Singly Linked List chain',
+    getCode: () => ASSIGN1_CODE,
+    customRenderTree: (svg, step) => {
+      const nodes = step.nodes || ['6', '1', '2', '0', '3', '7'];
+      let html = '';
+      const startX = 50;
+      const spacing = 110;
+      const y = 170;
+
+      // Head pointer indicator
+      html += `<rect x="20" y="70" width="56" height="26" rx="5" fill="#1e293b" stroke="var(--cyan)" stroke-width="1.5"/>
+        <text x="48" y="87" fill="var(--cyan)" font-family="JetBrains Mono" font-weight="700" font-size="12" text-anchor="middle">head</text>
+        <line x1="48" y1="96" x2="48" y2="150" stroke="var(--cyan)" stroke-width="2"/>
+        <polygon points="48,158 44,148 52,148" fill="var(--cyan)"/>`;
+
+      nodes.forEach((val, i) => {
+        const x = startX + i * spacing;
+        const isA = (val === '1' && step.badge && step.badge.includes('A'));
+        const isB = (val === '3' && step.badge && step.badge.includes('B'));
+        let fill = '#171924';
+        let stroke = '#3a3d4b';
+        if (isA || isB) {
+          fill = 'rgba(79, 209, 232, 0.2)';
+          stroke = 'var(--cyan)';
+        } else if (step.badge === 'DONE') {
+          fill = 'rgba(16, 185, 129, 0.15)';
+          stroke = 'var(--green)';
+        }
+
+        // Data part & Next pointer box
+        html += `<g>
+          <rect x="${x}" y="${y}" width="46" height="42" rx="6" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+          <text x="${x + 23}" y="${y + 27}" fill="var(--text)" font-family="Chakra Petch" font-weight="700" font-size="18" text-anchor="middle">${val}</text>
+          <rect x="${x + 46}" y="${y}" width="28" height="42" rx="4" fill="#1b1d25" stroke="${stroke}" stroke-width="1.5"/>
+          <circle cx="${x + 60}" cy="${y + 21}" r="4" fill="var(--cyan)"/>
+          <text x="${x + 37}" y="${y - 10}" fill="var(--muted)" font-family="JetBrains Mono" font-size="10" text-anchor="middle">[${i}]</text>
+        </g>`;
+
+        // Next Arrow
+        if (i < nodes.length - 1) {
+          const nextX = startX + (i + 1) * spacing;
+          html += `<line x1="${x + 74}" y1="${y + 21}" x2="${nextX}" y2="${y + 21}" stroke="var(--cyan)" stroke-width="2"/>
+            <polygon points="${nextX},${y + 21} ${nextX - 7},${y + 16} ${nextX - 7},${y + 26}" fill="var(--cyan)"/>`;
+        } else {
+          // Null pointer
+          html += `<line x1="${x + 74}" y1="${y + 21}" x2="${x + 95}" y2="${y + 21}" stroke="var(--muted)" stroke-width="2"/>
+            <text x="${x + 104}" y="${y + 25}" fill="var(--muted)" font-family="JetBrains Mono" font-weight="700" font-size="12">None</text>`;
+        }
+      });
+
+      svg.setAttribute('viewBox', '0 0 760 360');
+      svg.innerHTML = html;
+    },
+    customRenderArray: (row, step) => {
+      const nodes = step.nodes || [];
+      row.innerHTML = nodes.map((val, i) =>
+        `<div class="abox moved"><span class="aidx">Node ${i}</span>${val}</div>`
+      ).join('');
+    },
+    buildTrace: (mode) => traceAssign1(mode)
+  });
+  if (assign1Widget) assign1Widget.setMode('swap');
+
+  document.querySelectorAll('[data-assign1-mode]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (assign1Widget) assign1Widget.setMode(btn.dataset.assign1Mode);
+    });
+  });
+
+  // -------------------------------------------------------------
+  // 5. TEST PROGRAM 1: QUEUE OVERFLOW & UNDERFLOW DEBUGGER
+  // -------------------------------------------------------------
+  const TEST1_CODE = [
+    '# Paphavin Thitichunhakun 6806021612037',
+    'class Queue:',
+    '    def __init__(self, limit):',
+    '        self.items = []',
+    '        self.limit = limit',
+    '        self.front = 0',
+    '        self.rear = -1',
+    '        self.size = 0',
+    '',
+    '    def isEmpty(self):',
+    '        return len(self.items) <= 0',
+    '',
+    '    def enQueue(self, item):',
+    '        if len(self.items) >= self.limit:',
+    '            print("Queue is overflow")',
+    '        else:',
+    '            self.items.append(item)',
+    '            self.rear += 1',
+    '            self.size += 1',
+    '',
+    '    def deQueue(self):',
+    '        if self.isEmpty():',
+    '            print("Queue is underflow")',
+    '        else:',
+    '            self.items.pop(0)',
+    '            self.size = self.size - 1',
+    '            self.rear = self.size - 1'
+  ];
+
+  function traceTest1Queue() {
+    const trace = [];
+    trace.push({
+      line: 3,
+      vars: { limit: 5, size: 0, front: 0, rear: -1, items: '[]' },
+      items: [],
+      limit: 5,
+      front: 0,
+      rear: -1,
+      badge: 'INIT',
+      narration: 'เริ่มต้นสร้าง queue = Queue(5): กำหนด limit=5, items=[] ว่างเปล่า, front=0, rear=-1',
+      console: '>>> queue = Queue(5) สร้างคิวขนาดจำกัด 5 ช่อง'
+    });
+
+    const pushVals = [6, 1, 2, 0, 3];
+    let curItems = [];
+    pushVals.forEach((v, i) => {
+      curItems.push(v);
+      trace.push({
+        line: 17,
+        vars: { item: v, limit: 5, size: i + 1, front: 0, rear: i, items: `[${curItems.join(', ')}]` },
+        items: [...curItems],
+        limit: 5,
+        front: 0,
+        rear: i,
+        badge: 'ENQUEUE',
+        narration: `enQueue(${v}): เพิ่ม ${v} ต่อท้าย, ขยับ rear=${i}, size=${i + 1}`,
+        console: `queue.enQueue(${v}) -> items: [${curItems.join(', ')}]`
+      });
+    });
+
+    // Overflow attempt:
+    trace.push({
+      line: 15,
+      vars: { item: 7, limit: 5, size: 5, 'len(items)': 5 },
+      items: [6, 1, 2, 0, 3],
+      limit: 5,
+      front: 0,
+      rear: 4,
+      badge: 'OVERFLOW!',
+      narration: '⚠️ enQueue(7): len(self.items) >= self.limit (5 >= 5) เป็นจริง! พิมพ์ "Queue is overflow" ทาง stdout',
+      console: 'Queue is overflow (คิวเต็ม ไม่สามารถแทรก 7 ได้)'
+    });
+
+    // Reset to Queue(6)
+    trace.push({
+      line: 3,
+      vars: { limit: 6, size: 6, front: 0, rear: 5, items: '[6, 1, 2, 0, 3, 7]' },
+      items: [6, 1, 2, 0, 3, 7],
+      limit: 6,
+      front: 0,
+      rear: 5,
+      badge: 'RESET Q(6)',
+      narration: 'เริ่มส่วนที่ 2 ของโปรแกรม: สร้าง queue = Queue(6) และ enQueue 6, 1, 2, 0, 3, 7 ครบ 6 ตัว',
+      console: '>>> queue = Queue(6) เตรียมทดสอบ DeQueue จนเกลี้ยง'
+    });
+
+    let deqItems = [6, 1, 2, 0, 3, 7];
+    for (let step = 0; step < 6; step++) {
+      const removed = deqItems.shift();
+      trace.push({
+        line: 25,
+        vars: { popped: removed, size: deqItems.length, rear: deqItems.length - 1, items: `[${deqItems.join(', ')}]` },
+        items: [...deqItems],
+        limit: 6,
+        front: 0,
+        rear: deqItems.length - 1,
+        badge: 'DEQUEUE',
+        narration: `deQueue(): ดึง ${removed} ออกจากหัวคิว (pop(0)), size ลดเหลือ ${deqItems.length}, rear = ${deqItems.length - 1}`,
+        console: `queue.deQueue() -> ดึง ${removed} ออก, เหลือ [${deqItems.join(', ')}]`
+      });
+    }
+
+    // Underflow attempt:
+    trace.push({
+      line: 23,
+      vars: { 'isEmpty()': 'True', size: 0, items: '[]' },
+      items: [],
+      limit: 6,
+      front: 0,
+      rear: -1,
+      badge: 'UNDERFLOW!',
+      narration: '⚠️ สั่ง deQueue() ครั้งที่ 7 ในขณะที่คิวว่างเปล่า (isEmpty() == True) $\to$ พิมพ์ "Queue is underflow"',
+      console: 'Queue is underflow (คิวว่างเปล่า ไม่สามารถ deQueue ได้)'
+    });
+
+    return trace;
+  }
+
+  const test1Widget = buildDebuggerWidget(document.getElementById('test1Debugger'), {
+    id: 'tst1',
+    defaultMode: 'queue',
+    showJump: false,
+    treeTitle: 'Queue Conveyor Architecture',
+    arrayTitle: 'Array Storage (self.items)',
+    arraySubtitle: 'FIFO Queue buffer',
+    getCode: () => TEST1_CODE,
+    customRenderTree: (svg, step) => {
+      const items = step.items || [];
+      const limit = step.limit || 6;
+      let html = '';
+
+      // Conveyor chamber
+      html += `<rect x="60" y="120" width="640" height="120" rx="14" fill="#14151b" stroke="var(--border)" stroke-width="2"/>
+        <text x="80" y="150" fill="var(--muted)" font-family="JetBrains Mono" font-size="12">QUEUE CONVEYOR BUFFER (limit=${limit})</text>`;
+
+      for (let i = 0; i < limit; i++) {
+        const x = 90 + i * 100;
+        const val = items[i];
+        const isPresent = val !== undefined;
+        let fill = isPresent ? 'rgba(79, 209, 232, 0.15)' : '#1b1d25';
+        let stroke = isPresent ? 'var(--cyan)' : '#333745';
+        if (step.badge === 'OVERFLOW!' && i === limit - 1) {
+          fill = 'rgba(245, 166, 35, 0.25)';
+          stroke = 'var(--amber)';
+        } else if (step.badge === 'UNDERFLOW!') {
+          fill = 'rgba(255, 107, 129, 0.15)';
+          stroke = 'var(--red)';
+        }
+
+        html += `<g>
+          <rect x="${x}" y="170" width="80" height="50" rx="8" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
+          <text x="${x + 40}" y="202" fill="${isPresent ? 'var(--text)' : 'var(--muted)'}" font-family="Chakra Petch" font-weight="700" font-size="20" text-anchor="middle">${isPresent ? val : '-'}</text>
+          <text x="${x + 40}" y="238" fill="var(--muted)" font-family="JetBrains Mono" font-size="10" text-anchor="middle">[${i}]</text>
+        </g>`;
+      }
+
+      // Front / Rear Pointers
+      if (items.length > 0) {
+        // Front pointer
+        html += `<g>
+          <text x="130" y="85" fill="var(--green)" font-family="JetBrains Mono" font-weight="700" font-size="12" text-anchor="middle">FRONT (0)</text>
+          <line x1="130" y1="92" x2="130" y2="160" stroke="var(--green)" stroke-width="2"/>
+          <polygon points="130,165 126,155 134,155" fill="var(--green)"/>
+        </g>`;
+
+        // Rear pointer
+        const rearIdx = items.length - 1;
+        const rx = 130 + rearIdx * 100;
+        html += `<g>
+          <text x="${rx}" y="300" fill="var(--amber)" font-family="JetBrains Mono" font-weight="700" font-size="12" text-anchor="middle">REAR (${rearIdx})</text>
+          <line x1="${rx}" y1="285" x2="${rx}" y2="230" stroke="var(--amber)" stroke-width="2"/>
+          <polygon points="${rx},225 126,235 134,235" fill="var(--amber)"/>
+        </g>`;
+      }
+
+      svg.setAttribute('viewBox', '0 0 760 360');
+      svg.innerHTML = html;
+    },
+    customRenderArray: (row, step) => {
+      const items = step.items || [];
+      if (items.length === 0) {
+        row.innerHTML = `<div class="abox dead"><span class="aidx">Items</span>[] (Queue is empty)</div>`;
+        return;
+      }
+      row.innerHTML = items.map((val, i) =>
+        `<div class="abox moved"><span class="aidx">[${i}]</span>${val}</div>`
+      ).join('');
+    },
+    buildTrace: () => traceTest1Queue()
+  });
+  if (test1Widget) test1Widget.setMode('queue');
+
+  // -------------------------------------------------------------
+  // 6. TEST PROGRAM 2 & LECTURE 9: SORTING TRACE & POSITION MOVE
+  // -------------------------------------------------------------
+  const TEST2_SORT_CODE = [
+    '# Sorting Algorithms: Insertion, Selection, Bubble',
+    'def insertion_sort(arr):',
+    '    for p in range(1, len(arr)):',
+    '        temp = arr[p]',
+    '        j = p',
+    '        moves = 0',
+    '        while j > 0 and temp < arr[j - 1]:',
+    '            arr[j] = arr[j - 1]',
+    '            j -= 1',
+    '            moves += 1',
+    '        arr[j] = temp',
+    '    return arr'
+  ];
+
+  function traceSorting(algo) {
+    if (algo === 'selection') {
+      const trace = [];
+      trace.push({
+        line: 2,
+        vars: { pass: 0, arr: '[64, 25, 12, 22, 11]' },
+        arr: [64, 25, 12, 22, 11],
+        highlights: [],
+        badge: 'INIT',
+        narration: 'เริ่มต้น Selection Sort: ชุดข้อมูล [64, 25, 12, 22, 11]',
+        console: 'Selection Sort เริ่มต้น'
+      });
+      trace.push({
+        line: 7,
+        vars: { pass: 1, min_idx: 4, min_val: 11, swap_with: 64 },
+        arr: [11, 25, 12, 22, 64],
+        highlights: [{ idx: 0, type: 'final' }, { idx: 4, type: 'moved' }],
+        badge: 'PASS 1 SWAP',
+        narration: 'Pass 1: ค่าน้อยสุดคือ 11 (index 4) $\to$ สลับกับ array[0] (64)',
+        console: 'Pass 1: swap(arr[0]=64, arr[4]=11) -> [11, 25, 12, 22, 64]'
+      });
+      trace.push({
+        line: 7,
+        vars: { pass: 2, min_idx: 2, min_val: 12, swap_with: 25 },
+        arr: [11, 12, 25, 22, 64],
+        highlights: [{ idx: 1, type: 'final' }, { idx: 2, type: 'moved' }],
+        badge: 'PASS 2 SWAP',
+        narration: 'Pass 2: ค่าน้อยสุดในส่วนที่เหลือคือ 12 $\to$ สลับกับ array[1] (25)',
+        console: 'Pass 2: swap(arr[1]=25, arr[2]=12) -> [11, 12, 25, 22, 64]'
+      });
+      trace.push({
+        line: 7,
+        vars: { pass: 3, min_idx: 3, min_val: 22, swap_with: 25 },
+        arr: [11, 12, 22, 25, 64],
+        highlights: [{ idx: 2, type: 'final' }, { idx: 3, type: 'moved' }],
+        badge: 'PASS 3 SWAP',
+        narration: 'Pass 3: ค่าน้อยสุดคือ 22 $\to$ สลับกับ array[2] (25)',
+        console: 'Pass 3: swap(arr[2]=25, arr[3]=22) -> [11, 12, 22, 25, 64]'
+      });
+      trace.push({
+        line: 11,
+        vars: { pass: 4, result: 'SORTED' },
+        arr: [11, 12, 22, 25, 64],
+        highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'final' }, { idx: 2, type: 'final' }, { idx: 3, type: 'final' }, { idx: 4, type: 'final' }],
+        badge: 'DONE',
+        narration: 'Pass 4: 25 อยู่ในตำแหน่งถูกต้องแล้ว $\to$ สิ้นสุดการจัดเรียง O(N^2)',
+        console: '✔ Selection Sort เสร็จสมบูรณ์ [11, 12, 22, 25, 64]'
+      });
+      return trace;
+    } else if (algo === 'bubble') {
+      const trace = [];
+      trace.push({
+        line: 2,
+        vars: { pass: 0, arr: '[5, 1, 4, 2, 8]' },
+        arr: [5, 1, 4, 2, 8],
+        highlights: [],
+        badge: 'INIT',
+        narration: 'เริ่มต้น Bubble Sort: [5, 1, 4, 2, 8]',
+        console: 'Bubble Sort เริ่มต้น'
+      });
+      trace.push({
+        line: 7,
+        vars: { pass: 1, compare: '(5, 1)', swap: 'True' },
+        arr: [1, 5, 4, 2, 8],
+        highlights: [{ idx: 0, type: 'moved' }, { idx: 1, type: 'moved' }],
+        badge: 'PASS 1 (5>1)',
+        narration: 'Pass 1.1: เปรียบเทียบ 5 กับ 1 $\to$ 5 > 1 ทำการ Swap เป็น [1, 5, 4, 2, 8]',
+        console: 'Swap (5, 1)'
+      });
+      trace.push({
+        line: 7,
+        vars: { pass: 1, compare: '(5, 4)', swap: 'True' },
+        arr: [1, 4, 5, 2, 8],
+        highlights: [{ idx: 1, type: 'moved' }, { idx: 2, type: 'moved' }],
+        badge: 'PASS 1 (5>4)',
+        narration: 'Pass 1.2: เปรียบเทียบ 5 กับ 4 $\to$ 5 > 4 ทำการ Swap เป็น [1, 4, 5, 2, 8]',
+        console: 'Swap (5, 4)'
+      });
+      trace.push({
+        line: 7,
+        vars: { pass: 1, compare: '(5, 2)', swap: 'True' },
+        arr: [1, 4, 2, 5, 8],
+        highlights: [{ idx: 2, type: 'moved' }, { idx: 3, type: 'moved' }, { idx: 4, type: 'final' }],
+        badge: 'PASS 1 END',
+        narration: 'Pass 1.3: เปรียบเทียบ 5 กับ 2 $\to$ 5 > 2 Swap $\to$ เลข 8 ตกตะกอนที่ตำแหน่งท้ายสุด',
+        console: 'Pass 1 จบ: 8 อยู่ตำแหน่งสุดท้าย'
+      });
+      trace.push({
+        line: 7,
+        vars: { pass: 2, compare: '(4, 2)', swap: 'True' },
+        arr: [1, 2, 4, 5, 8],
+        highlights: [{ idx: 1, type: 'moved' }, { idx: 2, type: 'moved' }, { idx: 3, type: 'final' }, { idx: 4, type: 'final' }],
+        badge: 'PASS 2 END',
+        narration: 'Pass 2: เปรียบเทียบ 4 กับ 2 $\to$ Swap $\to$ เลข 5 ตกตะกอน',
+        console: 'Pass 2 จบ: [1, 2, 4, 5, 8]'
+      });
+      trace.push({
+        line: 11,
+        vars: { pass: 3, swapped: 'False', early_break: 'True' },
+        arr: [1, 2, 4, 5, 8],
+        highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'final' }, { idx: 2, type: 'final' }, { idx: 3, type: 'final' }, { idx: 4, type: 'final' }],
+        badge: 'EARLY BREAK',
+        narration: 'Pass 3: ไม่มีการสลับค่าใดๆ เกิดขึ้นเลย (swapped == False) $\to$ ตัดจบการทำงานทันที!',
+        console: '✔ Early exit triggered! อาร์เรย์เรียงลำดับสมบูรณ์'
+      });
+      return trace;
+    } else {
+      // Insertion Sort with Position Move!
+      const trace = [];
+      trace.push({
+        line: 2,
+        vars: { pass: 0, total_moves: 0, arr: '[34, 8, 64, 51, 32, 21]' },
+        arr: [34, 8, 64, 51, 32, 21],
+        highlights: [{ idx: 0, type: 'final' }],
+        badge: 'INIT',
+        narration: 'เริ่มต้น Insertion Sort จากเอกสารอาจารย์: [34, 8, 64, 51, 32, 21]',
+        console: 'Insertion Sort เริ่มต้น (index 0 ถือว่าจัดเสร็จแล้ว)'
+      });
+      trace.push({
+        line: 4,
+        vars: { p: 1, temp: 8, 'position move': 1, total_moves: 1 },
+        arr: [8, 34, 64, 51, 32, 21],
+        highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'moved' }],
+        badge: 'PASS 1 (MOVE 1)',
+        narration: 'Pass 1 (temp=8): 8 < 34 $\to$ เลื่อน 34 ไปทางขวา 1 ตำแหน่ง (Position Move = 1)',
+        console: 'Pass 1: temp=8, move=1 -> [8, 34, 64, 51, 32, 21]'
+      });
+      trace.push({
+        line: 4,
+        vars: { p: 2, temp: 64, 'position move': 0, total_moves: 1 },
+        arr: [8, 34, 64, 51, 32, 21],
+        highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'final' }, { idx: 2, type: 'final' }],
+        badge: 'PASS 2 (MOVE 0)',
+        narration: 'Pass 2 (temp=64): 64 > 34 $\to$ ไม่ต้องเลื่อนข้อมูลใดๆ (Position Move = 0)',
+        console: 'Pass 2: temp=64, move=0'
+      });
+      trace.push({
+        line: 4,
+        vars: { p: 3, temp: 51, 'position move': 1, total_moves: 2 },
+        arr: [8, 34, 51, 64, 32, 21],
+        highlights: [{ idx: 2, type: 'final' }, { idx: 3, type: 'moved' }],
+        badge: 'PASS 3 (MOVE 1)',
+        narration: 'Pass 3 (temp=51): 51 < 64 $\to$ เลื่อน 64 ไปทางขวา 1 ตำแหน่ง (Position Move = 1)',
+        console: 'Pass 3: temp=51, move=1'
+      });
+      trace.push({
+        line: 4,
+        vars: { p: 4, temp: 32, 'position move': 3, total_moves: 5 },
+        arr: [8, 32, 34, 51, 64, 21],
+        highlights: [{ idx: 1, type: 'final' }, { idx: 4, type: 'moved' }],
+        badge: 'PASS 4 (MOVE 3)',
+        narration: 'Pass 4 (temp=32): 32 น้อยกว่า 64, 51, 34 $\to$ เลื่อนสมาชิก 3 ตัวขวา (Position Move = 3)',
+        console: 'Pass 4: temp=32, move=3'
+      });
+      trace.push({
+        line: 4,
+        vars: { p: 5, temp: 21, 'position move': 4, total_moves: 9 },
+        arr: [8, 21, 32, 34, 51, 64],
+        highlights: [{ idx: 1, type: 'final' }, { idx: 5, type: 'moved' }],
+        badge: 'PASS 5 (MOVE 4)',
+        narration: 'Pass 5 (temp=21): 21 น้อยกว่า 64, 51, 34, 32 $\to$ เลื่อนสมาชิก 4 ตัวขวา (Position Move = 4)',
+        console: 'Pass 5: temp=21, move=4'
+      });
+      trace.push({
+        line: 12,
+        vars: { total_moves: 9, result: '[8, 21, 32, 34, 51, 64]' },
+        arr: [8, 21, 32, 34, 51, 64],
+        highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'final' }, { idx: 2, type: 'final' }, { idx: 3, type: 'final' }, { idx: 4, type: 'final' }, { idx: 5, type: 'final' }],
+        badge: 'TOTAL 9 MOVES',
+        narration: '✔ สิ้นสุดการเรียงลำดับ! รวมจำนวน Position Move ทั้งสิ้น = 1 + 0 + 1 + 3 + 4 = 9 ครั้ง ตรงตามเฉลยอาจารย์',
+        console: '✔ สรุปผลรวม Position Move ทั้งสิ้น = 9 ครั้ง'
+      });
+      return trace;
+    }
+  }
+
+  const test2Widget = buildDebuggerWidget(document.getElementById('test2Debugger'), {
+    id: 'tst2',
+    defaultMode: 'insertion',
+    showJump: false,
+    treeTitle: 'Sorting Pass Visualizer',
+    arrayTitle: 'Array Elements & Bar Heights',
+    arraySubtitle: 'Pass-by-Pass Tracing',
+    getCode: () => TEST2_SORT_CODE,
+    customRenderTree: (svg, step) => {
+      const arr = step.arr || [34, 8, 64, 51, 32, 21];
+      const maxVal = Math.max(...arr, 64);
+      let html = '';
+      const startX = 80;
+      const spacing = 100;
+      const baseH = 260;
+
+      arr.forEach((val, i) => {
+        const x = startX + i * spacing;
+        const barH = Math.max(30, Math.round((val / maxVal) * 180));
+        const y = baseH - barH;
+        const hl = (step.highlights || []).find(h => h.idx === i);
+        let fill = 'linear-gradient(180deg, #3b82f6, #1d4ed8)';
+        let stroke = '#60a5fa';
+        if (hl) {
+          fill = hl.type === 'final' ? 'linear-gradient(180deg, #10b981, #059669)' : 'linear-gradient(180deg, #f59e0b, #d97706)';
+          stroke = hl.type === 'final' ? '#34d399' : '#fbbf24';
+        }
+
+        html += `<g>
+          <rect x="${x}" y="${y}" width="54" height="${barH}" rx="8" fill="${stroke}" fill-opacity="0.25" stroke="${stroke}" stroke-width="2"/>
+          <text x="${x + 27}" y="${y - 12}" fill="var(--text)" font-family="JetBrains Mono" font-weight="700" font-size="14" text-anchor="middle">${val}</text>
+          <text x="${x + 27}" y="${baseH + 24}" fill="var(--muted)" font-family="JetBrains Mono" font-size="11" text-anchor="middle">[${i}]</text>
+        </g>`;
+      });
+
+      // Ground line
+      html += `<line x1="40" y1="${baseH}" x2="720" y2="${baseH}" stroke="var(--border)" stroke-width="2"/>`;
+
+      svg.setAttribute('viewBox', '0 0 760 340');
+      svg.innerHTML = html;
+    },
+    customRenderArray: (row, step) => {
+      const arr = step.arr || [];
+      row.innerHTML = arr.map((val, i) => {
+        const hl = (step.highlights || []).find(h => h.idx === i);
+        const cls = hl ? (hl.type === 'final' ? 'final' : 'moved') : '';
+        return `<div class="abox ${cls}"><span class="aidx">[${i}]</span>${val}</div>`;
+      }).join('');
+    },
+    buildTrace: (algo) => traceSorting(algo)
+  });
+  if (test2Widget) test2Widget.setMode('insertion');
+
+  document.querySelectorAll('[data-sort-algo]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (test2Widget) test2Widget.setMode(btn.dataset.sortAlgo);
+    });
+  });
+
+  // -------------------------------------------------------------
+  // 7. ASSIGNMENT 4 & LECTURE 11: GRAPH BFS SHORTEST PATH DEBUGGER
+  // -------------------------------------------------------------
+  const ASSIGN4_GRAPH_CODE = [
+    '# Graph Unweighted Shortest Path (BFS)',
+    'def unweighted_shortest_path(graph, start):',
+    '    table = {v: {"known": False, "d": float("inf"), "p": 0} for v in graph}',
+    '    table[start]["d"] = 0',
+    '    queue = [start]',
+    '    while queue:',
+    '        v = queue.pop(0)',
+    '        table[v]["known"] = True',
+    '        for w in graph[v]:',
+    '            if table[w]["d"] == float("inf"):',
+    '                table[w]["d"] = table[v]["d"] + 1',
+    '                table[w]["p"] = v',
+    '                queue.append(w)',
+    '    return table'
+  ];
+
+  function traceGraphBfs() {
+    const trace = [];
+    trace.push({
+      line: 4,
+      vars: { start: 'v1', queue: "['v1']", current: 'None' },
+      table: {
+        v1: { known: false, d: 0, p: 0 },
+        v2: { known: false, d: '∞', p: 0 },
+        v3: { known: false, d: '∞', p: 0 },
+        v4: { known: false, d: '∞', p: 0 },
+        v5: { known: false, d: '∞', p: 0 },
+        v6: { known: false, d: '∞', p: 0 },
+        v7: { known: false, d: '∞', p: 0 }
+      },
+      queue: ['v1'],
+      activeV: 'v1',
+      badge: 'INIT BFS',
+      narration: 'เริ่มต้น BFS ที่จุดยอด v1: กำหนด d(v1)=0, จุดยอดอื่น d=∞, นำ v1 เข้าคิว [v1]',
+      console: '>>> Start Unweighted Shortest Path จากจุด v1'
+    });
+
+    trace.push({
+      line: 7,
+      vars: { current: 'v1', 'neighbors(v1)': "['v2', 'v4']", queue: "['v2', 'v4']" },
+      table: {
+        v1: { known: true, d: 0, p: 0 },
+        v2: { known: false, d: 1, p: 'v1' },
+        v3: { known: false, d: '∞', p: 0 },
+        v4: { known: false, d: 1, p: 'v1' },
+        v5: { known: false, d: '∞', p: 0 },
+        v6: { known: false, d: '∞', p: 0 },
+        v7: { known: false, d: '∞', p: 0 }
+      },
+      queue: ['v2', 'v4'],
+      activeV: 'v1',
+      badge: 'DEQ v1',
+      narration: 'Dequeue v1 (Known=True) $\to$ ตรวจสอบเพื่อนบ้าน v2, v4: อัปเดต d=1, p=v1 แล้ว Enqueue ทั้งคู่',
+      console: 'v1 Known! Update v2 (d=1, p=v1), v4 (d=1, p=v1)'
+    });
+
+    trace.push({
+      line: 7,
+      vars: { current: 'v2', 'neighbors(v2)': "['v4', 'v5']", queue: "['v4', 'v5']" },
+      table: {
+        v1: { known: true, d: 0, p: 0 },
+        v2: { known: true, d: 1, p: 'v1' },
+        v3: { known: false, d: '∞', p: 0 },
+        v4: { known: false, d: 1, p: 'v1' },
+        v5: { known: false, d: 2, p: 'v2' },
+        v6: { known: false, d: '∞', p: 0 },
+        v7: { known: false, d: '∞', p: 0 }
+      },
+      queue: ['v4', 'v5'],
+      activeV: 'v2',
+      badge: 'DEQ v2',
+      narration: 'Dequeue v2 (Known=True) $\to$ v4 มีค่า d แล้วข้ามไป, อัปเดต v5: d=2, p=v2 แล้ว Enqueue(v5)',
+      console: 'v2 Known! Update v5 (d=2, p=v2)'
+    });
+
+    trace.push({
+      line: 7,
+      vars: { current: 'v4', 'neighbors(v4)': "['v3', 'v6', 'v7']", queue: "['v5', 'v3', 'v6', 'v7']" },
+      table: {
+        v1: { known: true, d: 0, p: 0 },
+        v2: { known: true, d: 1, p: 'v1' },
+        v3: { known: false, d: 2, p: 'v4' },
+        v4: { known: true, d: 1, p: 'v1' },
+        v5: { known: false, d: 2, p: 'v2' },
+        v6: { known: false, d: 2, p: 'v4' },
+        v7: { known: false, d: 2, p: 'v4' }
+      },
+      queue: ['v5', 'v3', 'v6', 'v7'],
+      activeV: 'v4',
+      badge: 'DEQ v4',
+      narration: 'Dequeue v4 (Known=True) $\to$ เพื่อนบ้าน v3, v6, v7 ได้รับการอัปเดต d=2, p=v4 แล้วเข้าคิวทั้งหมด',
+      console: 'v4 Known! Update v3, v6, v7 (d=2, p=v4)'
+    });
+
+    trace.push({
+      line: 7,
+      vars: { current: 'v5', queue: "['v3', 'v6', 'v7']" },
+      table: {
+        v1: { known: true, d: 0, p: 0 },
+        v2: { known: true, d: 1, p: 'v1' },
+        v3: { known: false, d: 2, p: 'v4' },
+        v4: { known: true, d: 1, p: 'v1' },
+        v5: { known: true, d: 2, p: 'v2' },
+        v6: { known: false, d: 2, p: 'v4' },
+        v7: { known: false, d: 2, p: 'v4' }
+      },
+      queue: ['v3', 'v6', 'v7'],
+      activeV: 'v5',
+      badge: 'DEQ v5',
+      narration: 'Dequeue v5 (Known=True) $\to$ เพื่อนบ้าน v7 มีค่า d=2 แล้ว ไม่ต้องอัปเดตซ้ำ',
+      console: 'v5 Known! ไม่มีการอัปเดตใหม่'
+    });
+
+    trace.push({
+      line: 14,
+      vars: { queue: '[]', result: 'COMPLETE' },
+      table: {
+        v1: { known: true, d: 0, p: 0 },
+        v2: { known: true, d: 1, p: 'v1' },
+        v3: { known: true, d: 2, p: 'v4' },
+        v4: { known: true, d: 1, p: 'v1' },
+        v5: { known: true, d: 2, p: 'v2' },
+        v6: { known: true, d: 2, p: 'v4' },
+        v7: { known: true, d: 2, p: 'v4' }
+      },
+      queue: [],
+      activeV: null,
+      badge: 'ALL KNOWN',
+      narration: '✔ Dequeue v3, v6, v7 จนคิวว่างเปล่า! ตารางสถิติระยะทางสั้นสุดสมบูรณ์แบบ ตรงตามเฉลยข้อสอบอาจารย์ประดิษฐ์ 100%',
+      console: '✔ สิ้นสุดขั้นตอนวิธี BFS Unweighted Shortest Path'
+    });
+
+    return trace;
+  }
+
+  const assign4Widget = buildDebuggerWidget(document.getElementById('assign4Debugger'), {
+    id: 'asg4',
+    defaultMode: 'bfs',
+    showJump: false,
+    treeTitle: '7-Vertex Digraph Visualization',
+    arrayTitle: 'BFS Active Queue',
+    arraySubtitle: 'FIFO Queue for unvisited neighbors',
+    getCode: () => ASSIGN4_GRAPH_CODE,
+    customRenderTree: (svg, step) => {
+      const vPos = {
+        v1: { x: 90, y: 190 },
+        v2: { x: 250, y: 80 },
+        v4: { x: 250, y: 300 },
+        v3: { x: 410, y: 190 },
+        v5: { x: 410, y: 80 },
+        v7: { x: 570, y: 300 },
+        v6: { x: 570, y: 190 }
+      };
+
+      const edges = [
+        ['v1', 'v2'], ['v1', 'v4'],
+        ['v2', 'v4'], ['v2', 'v5'],
+        ['v3', 'v1'], ['v3', 'v6'],
+        ['v4', 'v3'], ['v4', 'v6'], ['v4', 'v7'],
+        ['v5', 'v7'], ['v7', 'v6']
+      ];
+
+      let html = '';
+
+      // Edges with arrows
+      edges.forEach(([u, v]) => {
+        const p1 = vPos[u], p2 = vPos[v];
+        const dx = p2.x - p1.x, dy = p2.y - p1.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const r = 24;
+        const x1 = p1.x + (dx / dist) * r;
+        const y1 = p1.y + (dy / dist) * r;
+        const x2 = p2.x - (dx / dist) * (r + 4);
+        const y2 = p2.y - (dy / dist) * (r + 4);
+
+        html += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#3a3d4b" stroke-width="1.8"/>`;
+      });
+
+      // Vertices
+      const tbl = step.table || {};
+      Object.keys(vPos).forEach(key => {
+        const { x, y } = vPos[key];
+        const info = tbl[key] || { known: false, d: '∞', p: 0 };
+        const isActive = step.activeV === key;
+        let stroke = '#3a3d4b', fill = '#171924';
+        if (isActive) {
+          stroke = 'var(--amber)';
+          fill = 'rgba(245, 166, 35, 0.25)';
+        } else if (info.known) {
+          stroke = 'var(--green)';
+          fill = 'rgba(16, 185, 129, 0.18)';
+        }
+
+        html += `<g>
+          <circle cx="${x}" cy="${y}" r="22" fill="${fill}" stroke="${stroke}" stroke-width="2.2"/>
+          <text x="${x}" y="${y + 5}" fill="var(--text)" font-family="Chakra Petch" font-weight="700" font-size="14" text-anchor="middle">${key}</text>
+          <text x="${x}" y="${y - 28}" fill="${info.known ? 'var(--green)' : 'var(--muted)'}" font-family="JetBrains Mono" font-size="10" text-anchor="middle">d=${info.d}</text>
+        </g>`;
+      });
+
+      svg.setAttribute('viewBox', '0 0 760 380');
+      svg.innerHTML = html;
+    },
+    customRenderArray: (row, step) => {
+      const q = step.queue || [];
+      if (q.length === 0) {
+        row.innerHTML = `<div class="abox dead"><span class="aidx">Queue</span>(คิวว่างเปล่า — การกระจายเสร็จสิ้น)</div>`;
+        return;
+      }
+      row.innerHTML = q.map((v, i) =>
+        `<div class="abox moved"><span class="aidx">[${i}]</span>${v}</div>`
+      ).join('');
+    },
+    buildTrace: () => traceGraphBfs()
+  });
+  if (assign4Widget) assign4Widget.setMode('bfs');
+
+  // -------------------------------------------------------------
+  // URL QUERY PARAMETER AUTO-ROUTING (?topic=assign1, ?ex=...)
+  // -------------------------------------------------------------
+  const urlParams = new URLSearchParams(window.location.search);
+  const topicParam = urlParams.get('topic') || urlParams.get('ex');
+  if (topicParam) {
+    if (subTocMap[topicParam]) {
+      switchTopic(topicParam);
+    } else if (topicParam.includes('assign1') || topicParam.includes('linked')) {
+      switchTopic('assign1');
+    } else if (topicParam.includes('test1') || topicParam.includes('queue')) {
+      switchTopic('test1');
+    } else if (topicParam.includes('test2') || topicParam.includes('sort')) {
+      switchTopic('test2');
+    } else if (topicParam.includes('assign4') || topicParam.includes('graph')) {
+      switchTopic('assign4');
+    } else if (topicParam.includes('heap')) {
+      switchTopic('heap');
+    } else if (topicParam.includes('bst')) {
+      switchTopic('bst');
+    } else if (topicParam.includes('hash')) {
+      switchTopic('hash');
+    } else if (topicParam.includes('stack')) {
+      switchTopic('stack');
+    }
+  }
 
   // -------------------------------------------------------------
   // GLOBAL KEYBOARD SHORTCUTS (Space / ArrowRight = Next, ArrowLeft = Prev, R = Reset)

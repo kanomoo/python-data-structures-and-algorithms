@@ -53,7 +53,11 @@
     const initialDoc = hashDoc || (state.wikiData ? state.wikiData.initialDocId : '01.1 - Introduction to Data Structures & Algorithm Analysis');
 
     // Auto-detect mode based on document
-    if (initialDoc && (initialDoc.startsWith('11.') || initialDoc.includes('Glossary') || initialDoc.includes('Index'))) {
+    if (initialDoc && initialDoc.startsWith('12.')) {
+      state.currentMode = 'assignment';
+    } else if (initialDoc && initialDoc.startsWith('14.')) {
+      state.currentMode = 'classroom';
+    } else if (initialDoc && (initialDoc.startsWith('11.') || initialDoc.includes('Glossary') || initialDoc.includes('Index'))) {
       state.currentMode = 'exam';
     } else {
       state.currentMode = 'curriculum';
@@ -87,7 +91,10 @@
     elements.toast = document.getElementById('wiki-toast');
 
     elements.tabModeCurriculum = document.getElementById('tab-mode-curriculum');
+    elements.tabModeAssignment = document.getElementById('tab-mode-assignment');
+    elements.tabModeExample = document.getElementById('tab-mode-example');
     elements.tabModeExam = document.getElementById('tab-mode-exam');
+    elements.tabModeClassroom = document.getElementById('tab-mode-classroom');
   }
 
   function loadCompletedState() {
@@ -120,7 +127,10 @@
 
   function updateModeTabs() {
     if (elements.tabModeCurriculum) elements.tabModeCurriculum.classList.toggle('active', state.currentMode === 'curriculum');
+    if (elements.tabModeAssignment) elements.tabModeAssignment.classList.toggle('active', state.currentMode === 'assignment');
+    if (elements.tabModeExample) elements.tabModeExample.classList.toggle('active', state.currentMode === 'example');
     if (elements.tabModeExam) elements.tabModeExam.classList.toggle('active', state.currentMode === 'exam');
+    if (elements.tabModeClassroom) elements.tabModeClassroom.classList.toggle('active', state.currentMode === 'classroom');
   }
 
   function formatDocNavTitle(docId, originalTitle) {
@@ -138,7 +148,34 @@
     if (docId.startsWith('09.1')) return 'บทที่ 9: กราฟ (Graph) & BFS / DFS';
     if (docId.startsWith('10.1')) return 'บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path)';
 
+    // Assignment items (12.x)
+    if (docId.startsWith('12.1')) return '📋 Assign 1: Linked List (รหัสนักศึกษา & สลับพอยน์เตอร์)';
+    if (docId.startsWith('12.2')) return '📋 Assign 2: Construct Binary Tree (Post-order & In-order)';
+    if (docId.startsWith('12.3')) return '📋 Assign 3: Binary Min-Heap In-class (แทรก 15 ค่า & DeleteMin)';
+    if (docId.startsWith('12.4')) return '📋 Assign 4: Graph Topological Sort & Shortest Path';
+    if (docId.startsWith('12.5')) return '📋 Test Program 1 & 2: Queue Class & Sorting Trace';
+    if (docId.startsWith('12.6')) return '📋 0Exercises: เช็คชื่อ & กับดัก Indentation';
+    if (docId.startsWith('12.7')) return '📋 Assign In-Class: Heap DeleteMin (p.283) & Hashing Trace';
+
+    // Classroom Live Lecture Transcripts & Slides (14.x)
+    if (docId.startsWith('14.1')) return '🎙️ 14.1: Hashing & Open Addressing & Rehashing';
+    if (docId.startsWith('14.2')) return '🎙️ 14.2: Priority Queue & Heap Properties';
+    if (docId.startsWith('14.3')) return '🎙️ 14.3: เจาะข้อสอบ สูตรโหนด & 1D Array';
+    if (docId.startsWith('14.4')) return '🎙️ 14.4: Python BinaryHeap & ข้อสอบปลายภาค';
+    if (docId.startsWith('14.5')) return '📸 14.5: แคตตาล็อกภาพสไลด์ กระดาน & หลักฐานข้อสอบ (125 รูป)';
+
+    // Classroom For Example Tracing (13.x)
+    if (docId.startsWith('13.1')) return '💡 Ex 3: Singly Linked List (กับดัก add & สลับ 4 พอยน์เตอร์)';
+    if (docId.startsWith('13.2')) return '💡 Ex 4: Stack Trace (Push-Pop 2 ระลอก & แปลงนิพจน์ Postfix)';
+    if (docId.startsWith('13.3')) return '💡 Ex 4: Queue Trace (Enqueue-Dequeue & Circular Queue)';
+    if (docId.startsWith('13.4')) return '💡 Ex 5: Binary Tree (กฎเขียน Path ห้ามใช้ลูกศร & Reconstruct)';
+    if (docId.startsWith('13.5')) return '💡 Ex 5.1 & 5.2: BST Trace (_insert 4 รอบ & ลบ 2 กรณี)';
+    if (docId.startsWith('13.6')) return '💡 Ex 8.1: Binary Heap (Trace รูว่าง hole ใน Percolate Up/Down)';
+    if (docId.startsWith('13.7')) return '💡 Ex 9: Sorting Trace (Bubble, Selection, Insertion & Move)';
+    if (docId.startsWith('13.8')) return '💡 Ex 10 & 11: Graph (Topological Sort, Shortest Path & คำนวณขยะ)';
+
     // Exam items
+    if (docId.startsWith('11.7')) return '🎯 ข้อสอบตรงห้องเรียน: โจทย์ที่อาจารย์พูด 3 ข้อใหญ่ & เฉลย';
     if (docId.startsWith('11.6')) return '🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)';
     if (docId.startsWith('11.1')) return '🎯 ข้อสอบจริง Midterm Real Mock (2026)';
     if (docId.startsWith('11.2')) return '🎯 ข้อสอบเก็ง Predicted Midterm 2026';
@@ -153,9 +190,18 @@
 
   function renderSidebar() {
     if (!state.wikiData) return;
-    const categories = state.currentMode === 'curriculum'
-      ? (state.wikiData.curriculumCategories || state.wikiData.categories.filter(c => c.type === 'curriculum'))
-      : (state.wikiData.examCategories || state.wikiData.categories.filter(c => c.type === 'exam'));
+    let categories = [];
+    if (state.currentMode === 'curriculum') {
+      categories = state.wikiData.curriculumCategories || state.wikiData.categories.filter(c => c.type === 'curriculum');
+    } else if (state.currentMode === 'assignment') {
+      categories = state.wikiData.assignmentCategories || state.wikiData.categories.filter(c => c.type === 'assignment');
+    } else if (state.currentMode === 'example') {
+      categories = state.wikiData.exampleCategories || state.wikiData.categories.filter(c => c.type === 'example');
+    } else if (state.currentMode === 'classroom') {
+      categories = state.wikiData.classroomTranscriptCategories || state.wikiData.categories.filter(c => c.type === 'classroom');
+    } else {
+      categories = state.wikiData.examCategories || state.wikiData.categories.filter(c => c.type === 'exam');
+    }
 
     let html = '';
     categories.forEach(cat => {
@@ -233,9 +279,15 @@
     }
     if (!doc) return;
 
-    // Check if doc belongs to exam category to auto-switch mode tab
-    const isExamDoc = doc.id.startsWith('11.') || doc.id.includes('Glossary') || doc.id.includes('Index');
-    const targetMode = isExamDoc ? 'exam' : 'curriculum';
+    // Check if doc belongs to assignment, example, or exam category to auto-switch mode tab
+    let targetMode = 'curriculum';
+    if (doc.id.startsWith('12.')) {
+      targetMode = 'assignment';
+    } else if (doc.id.startsWith('13.')) {
+      targetMode = 'example';
+    } else if (doc.id.startsWith('11.') || doc.id.includes('Glossary') || doc.id.includes('Index')) {
+      targetMode = 'exam';
+    }
     if (state.currentMode !== targetMode) {
       state.currentMode = targetMode;
       updateModeTabs();
@@ -2721,9 +2773,33 @@
         state.currentMode = 'curriculum';
         updateModeTabs();
         renderSidebar();
-        // If current doc is an exam doc, navigate to Chapter 1
-        if (state.currentDocId && (state.currentDocId.startsWith('11.') || state.currentDocId.includes('Glossary') || state.currentDocId.includes('Index'))) {
+        // If current doc is not curriculum, navigate to Chapter 1
+        if (state.currentDocId && (state.currentDocId.startsWith('11.') || state.currentDocId.startsWith('12.') || state.currentDocId.includes('Glossary') || state.currentDocId.includes('Index'))) {
           navigateToDoc('01.1 - Introduction to Data Structures & Algorithm Analysis');
+        }
+      });
+    }
+
+    if (elements.tabModeAssignment) {
+      elements.tabModeAssignment.addEventListener('click', () => {
+        state.currentMode = 'assignment';
+        updateModeTabs();
+        renderSidebar();
+        // If current doc is not assignment, navigate to Assignment 1
+        if (!state.currentDocId || !state.currentDocId.startsWith('12.')) {
+          navigateToDoc('12.1 - Assignment 1 Singly Linked List Student ID & Node Swap');
+        }
+      });
+    }
+
+    if (elements.tabModeExample) {
+      elements.tabModeExample.addEventListener('click', () => {
+        state.currentMode = 'example';
+        updateModeTabs();
+        renderSidebar();
+        // If current doc is not example, navigate to 13.1
+        if (!state.currentDocId || !state.currentDocId.startsWith('13.')) {
+          navigateToDoc('13.1 - For Example Lecture 3 Linked List (โจทย์สร้างโหนด สลับพอยน์เตอร์ และกับดัก add)');
         }
       });
     }
@@ -2736,6 +2812,18 @@
         // If current doc is not an exam doc, navigate to first exam mock
         if (state.currentDocId && !state.currentDocId.startsWith('11.') && !state.currentDocId.includes('Glossary') && !state.currentDocId.includes('Index')) {
           navigateToDoc('11.1 - Midterm Real Exam Mock & Solutions');
+        }
+      });
+    }
+
+    if (elements.tabModeClassroom) {
+      elements.tabModeClassroom.addEventListener('click', () => {
+        state.currentMode = 'classroom';
+        updateModeTabs();
+        renderSidebar();
+        // If current doc is not classroom doc, navigate to 14.1
+        if (!state.currentDocId || !state.currentDocId.startsWith('14.')) {
+          navigateToDoc('14.1 - Classroom Lecture Hashing, Open Addressing & Rehashing');
         }
       });
     }

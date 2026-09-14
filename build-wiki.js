@@ -116,6 +116,7 @@ const EXAM_CATEGORIES = [
     title: '🏁 ข้อสอบปลายภาค & กับดักอาจารย์ (Final Exam 2568)',
     description: 'ข้อสอบปลายภาคฉบับจริง: Hashing, Binary Heap, Sorting, Graphs, Dijkstra และ 5 กับดักห้องเรียนที่อาจารย์เน้นย้ำ',
     files: [
+      '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions).md',
       '11.6 - Final Exam Real Classroom Prep & Solutions.md'
     ]
   },
@@ -148,6 +149,62 @@ const EXAM_CATEGORIES = [
     files: [
       'Glossary & Complexity Cheat Sheet.md',
       'Index.md'
+    ]
+  }
+];
+
+// Course Assignments & Teacher Tasks (ข้อกำหนดอาจารย์, โค้ดส่งจริง, และข้อควรระวัง)
+const ASSIGNMENT_CATEGORIES = [
+  {
+    id: 'assign-course',
+    type: 'assignment',
+    title: '📋 งานและการบ้านที่อาจารย์สั่ง (Course Assignments & Labs)',
+    description: 'รวมข้อกำหนดโจทย์อาจารย์ประดิษฐ์ พิทักษ์เสถียรกุล, ขั้นตอนวิธีทำ, เฉลยโค้ด Python, และกับดักคะแนน 0',
+    files: [
+      '12.1 - Assignment 1 Singly Linked List Student ID & Node Swap.md',
+      '12.2 - Assignment 2 Construct Binary Tree from Post-order & In-order.md',
+      '12.3 - Assignment 3 Binary Min-Heap In-class Insertion & DeleteMin.md',
+      '12.4 - Assignment 4 Graph Topological Sort & Unweighted Shortest Path.md',
+      '12.5 - Test Program 1 & 2 Queue Implementation & Sorting Trace.md',
+      '12.6 - 0Exercises Warm-up Function Tracing & Attendance Tasks.md',
+      '12.7 - In-Class Assignment Binary Heap DeleteMin & Hashing Trace.md'
+    ]
+  }
+];
+
+// Classroom Live Lecture Transcripts & Visual Slides (ถอดความเสียงสอนสด & สไลด์กระดาน 125 รูป)
+const CLASSROOM_TRANSCRIPT_CATEGORIES = [
+  {
+    id: 'classroom-transcripts',
+    type: 'classroom',
+    title: '🎙️ บันทึกการสอนและถอดความเสียงสด (Classroom Transcripts & Slides)',
+    description: 'ถอดความเสียงคำต่อคำของ ดร.ประดิษฐ์ พิทักษ์เสถียรกุล พร้อมภาพสไลด์และกระดานดำ 125 ภาพ เจาะลึก Hashing, Heap และข้อสอบปลายภาค',
+    files: [
+      '14.1 - Classroom Lecture Hashing, Open Addressing & Rehashing.md',
+      '14.2 - Classroom Lecture Priority Queue & Binary Heap Properties.md',
+      '14.3 - Classroom Lecture Exam Focus Node Calculation & 1D Array.md',
+      '14.4 - Classroom Lecture Binary Heap Python Implementation & Final Exam Trace.md',
+      '14.5 - Master Catalog Classroom Slides & Photos (87 Photos).md'
+    ]
+  }
+];
+
+// Classroom For Example Tracing (เอกสาร For Example PDFs ทุกบทเรียนของอาจารย์)
+const CLASSROOM_EXAMPLE_CATEGORIES = [
+  {
+    id: 'classroom-examples',
+    type: 'example',
+    title: '💡 ตัวอย่างโจทย์ในห้องเรียน (For Example Tracing ทุกบท)',
+    description: 'ถอดรหัสเฉลยและ Tracing จากเอกสาร For Example PDFs ทุกบทเรียนของอาจารย์ประดิษฐ์ พร้อมจุดผิดที่ได้ 0 คะแนน',
+    files: [
+      '13.1 - For Example Lecture 3 Linked List (โจทย์สร้างโหนด สลับพอยน์เตอร์ และกับดัก add).md',
+      '13.2 - For Example Lecture 4 Stack & Postfix (Trace Push-Pop และแปลงนิพจน์ Shunting-Yard).md',
+      '13.3 - For Example Lecture 4 Queue (Trace Enqueue-Dequeue และวงรอบ Circular Queue).md',
+      '13.4 - For Example Lecture 5 Binary Tree (กฎเหล็กเขียน Path ห้ามใช้ลูกศร และ Reconstruct Tree).md',
+      '13.5 - For Example Lecture 5.1 & 5.2 BST (Trace _insert_recursive & _delete_recursive 2 เคส).md',
+      '13.6 - For Example Lecture 8.1 Binary Heap (Trace ตัวแปร hole ใน Percolate Up และ Down).md',
+      '13.7 - For Example Lecture 9 Sorting (Pass-by-Pass Tracing Bubble, Selection, Insertion).md',
+      '13.8 - For Example Lecture 10 & 11 Graph (Topological Sort, BFS Shortest Path & คำนวณขยะ Matrix).md'
     ]
   }
 ];
@@ -300,8 +357,11 @@ function build() {
   }
 
   const curriculumCategories = processCategoryList(CURRICULUM_CATEGORIES);
+  const assignmentCategories = processCategoryList(ASSIGNMENT_CATEGORIES);
+  const exampleCategories = processCategoryList(CLASSROOM_EXAMPLE_CATEGORIES);
   const examCategories = processCategoryList(EXAM_CATEGORIES);
-  const allCategories = [...curriculumCategories, ...examCategories];
+  const classroomTranscriptCategories = processCategoryList(CLASSROOM_TRANSCRIPT_CATEGORIES);
+  const allCategories = [...curriculumCategories, ...assignmentCategories, ...exampleCategories, ...examCategories, ...classroomTranscriptCategories];
 
   const documents = {};
   processedMap.forEach((val) => {
@@ -312,7 +372,10 @@ function build() {
     generatedAt: new Date().toISOString(),
     initialDocId: '01.1 - Introduction to Data Structures & Algorithm Analysis',
     curriculumCategories,
+    assignmentCategories,
+    exampleCategories,
     examCategories,
+    classroomTranscriptCategories,
     categories: allCategories,
     documents
   };

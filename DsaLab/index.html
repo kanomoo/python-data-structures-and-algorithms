@@ -42,6 +42,18 @@
           <button class="topic-pill" data-topic="stack">
             <span>🥞</span> Stack: Infix to Postfix
           </button>
+          <button class="topic-pill" data-topic="assign1">
+            <span>🔗</span> Assign 1: Linked List Swap
+          </button>
+          <button class="topic-pill" data-topic="test1">
+            <span>🚶</span> Test 1: Queue Over/Underflow
+          </button>
+          <button class="topic-pill" data-topic="test2">
+            <span>🔀</span> Test 2: Sorting Trace &amp; Move
+          </button>
+          <button class="topic-pill" data-topic="assign4">
+            <span>🕸️</span> Assign 4: Graph BFS Shortest Path
+          </button>
         </div>
         <button class="scroll-arrow-btn scroll-arrow-right" id="pillsScrollRight" title="เลื่อนแถบไปทางขวา" aria-label="Scroll right">›</button>
       </div>
@@ -392,6 +404,161 @@
     </div>
   </div>
 
+  <!-- ================================================================ -->
+  <!-- TOPIC 5: ASSIGNMENT 1 — LINKED LIST POINTER SWAP                 -->
+  <!-- ================================================================ -->
+  <div id="topic-assign1" class="topic-view">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — ASSIGNMENT 1 &amp; LECTURE 3</div>
+      <h1>Singly Linked List: <span class="highlight-cyan">Pointer Swapper</span> Studio</h1>
+      <p class="sub">จำลองการสร้าง Singly Linked List จากรหัสนักศึกษา และการสลับพอยน์เตอร์ <span class="mono">swap_nodes()</span>
+      โดยไม่แตะต้องข้อมูลภายในโหนด เพื่อป้องกันข้อผิดพลาดการเกิด Dangling Pointer ในข้อสอบ</p>
+    </header>
+
+    <div class="wrap">
+      <section id="assign1-principle">
+        <div class="section-head">
+          <div class="tag">01 — หลักการ</div>
+          <h2>กฎการสลับโหนด (Node Swapping Without Modifying Data)</h2>
+          <p>การค้นหาตัวชี้ <span class="mono">prevA, currA, prevB, currB</span> และลำดับการปรับ <span class="mono">next</span></p>
+        </div>
+        <div class="article">
+          <h3><span class="num">1</span>ทำไมต้องสลับพอยน์เตอร์ แทนที่จะสลับแค่ข้อมูล (<span class="mono">data</span>)</h3>
+          <p>ในการทำงานจริง หากข้อมูลในโหนดมีขนาดใหญ่มาก เช่น Record ขนาดใหญ่หลายสิบเมกะไบต์ การคัดลอกข้อมูลจะสิ้นเปลืองหน่วยความจำและ CPU มาก
+          การสลับเฉพาะ Pointer จะใช้เวลาเพียง <b>O(1)</b> ในการสลับเส้นเชื่อม 3-4 เส้นเท่านั้น!</p>
+          <div class="demo-tabs" style="margin-top: 14px;">
+            <button class="demo-tab active" data-assign1-mode="swap">สลับโหนด 1 และ 3 (รหัสนักศึกษา 612037)</button>
+            <button class="demo-tab" data-assign1-mode="lecture">สลับ 4 โหนดตามโจทย์ห้องเรียน (For example.pdf)</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="assign1-swap-debug">
+        <div class="section-head">
+          <div class="tag">02 — step-by-step visual debugger</div>
+          <h2>Interactive Pointer Swap Visualizer</h2>
+          <p>ดูการเปลี่ยนทิศทางของลูกศร <span class="mono">next</span> และตัวแปร Pointer แบบสดๆ</p>
+        </div>
+        <div class="debugger" id="assign1Debugger"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- TOPIC 6: TEST PROGRAM 1 — QUEUE OVERFLOW & UNDERFLOW             -->
+  <!-- ================================================================ -->
+  <div id="topic-test1" class="topic-view">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — TEST PROGRAM 1</div>
+      <h1>Queue Implementation: <span class="highlight-amber">Over &amp; Underflow</span> Debugger</h1>
+      <p class="sub">ไล่ตรวจการทำงานของคลาส <span class="mono">Queue</span> จากไฟล์โค้ดส่งตรวจจริง <span class="mono">program.py</span>
+      (รหัสนักศึกษา 6806021612037) พร้อมการดักจับสภาวะ Overflow และ Underflow</p>
+    </header>
+
+    <div class="wrap">
+      <section id="test1-principle">
+        <div class="section-head">
+          <div class="tag">01 — โครงสร้างโค้ด</div>
+          <h2>การทำงานของ Array-Based Queue พร้อมการจัดการ Front / Rear</h2>
+          <p>การคำนวณตำแหน่ง <span class="mono">rear = size - 1</span> และเงื่อนไข <span class="mono">len(items) &gt;= limit</span></p>
+        </div>
+        <div class="article">
+          <h3><span class="num">1</span>การทดสอบในฟังก์ชันหลัก (<span class="mono">main</span>)</h3>
+          <p><b>เคสที่ 1 (Overflow)</b>: สร้าง <span class="mono">Queue(5)</span> แล้ว Enqueue ตัวเลข 6, 1, 2, 0, 3 จนเต็ม จากนั้น Enqueue ตัวที่ 6 (เลข 7) $\to$ พิมพ์เตือน <b>"Queue is overflow"</b></p>
+          <p><b>เคสที่ 2 (Underflow)</b>: สร้าง <span class="mono">Queue(6)</span> ใส่เลขจนเต็ม แล้วสั่ง Dequeue ออก 6 ครั้งจนหมดเกลี้ยง จากนั้น Dequeue ครั้งที่ 7 $\to$ พิมพ์เตือน <b>"Queue is underflow"</b></p>
+        </div>
+      </section>
+
+      <section id="test1-queue-debug">
+        <div class="section-head">
+          <div class="tag">02 — interactive trace</div>
+          <h2>ทดสอบการรันโค้ดและดูสถานะคิวทีละคำสั่ง</h2>
+          <p>ควบคุมการ Enqueue และ Dequeue พร้อมการไฮไลต์บรรทัดโค้ดภาษา Python</p>
+        </div>
+        <div class="debugger" id="test1Debugger"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- TOPIC 7: TEST PROGRAM 2 & LECTURE 9 — SORTING TRACE              -->
+  <!-- ================================================================ -->
+  <div id="topic-test2" class="topic-view">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — TEST PROGRAM 2 &amp; LECTURE 9</div>
+      <h1>Sorting Algorithms: <span class="highlight-violet">Pass-by-Pass</span> Trace &amp; Move</h1>
+      <p class="sub">เจาะลึกขั้นตอนวิธีจัดเรียง 3 ชนิดคลาสสิก: <span class="mono">Insertion Sort</span> (พร้อมนับ Position Move),
+      <span class="mono">Selection Sort</span> (หา min_idx), และ <span class="mono">Bubble Sort</span> (Early Termination)</p>
+    </header>
+
+    <div class="wrap">
+      <section id="test2-principle">
+        <div class="section-head">
+          <div class="tag">01 — หลักการ</div>
+          <h2>การวิเคราะห์ Pass และ Position Move ในเอกสารอาจารย์</h2>
+          <p>เลือกโหมดขั้นตอนวิธีเพื่อเปรียบเทียบพฤติกรรมการขยับข้อมูล</p>
+        </div>
+        <div class="demo-tabs">
+          <button class="demo-tab active" data-sort-algo="insertion">Insertion Sort (พร้อมนับ Position Move)</button>
+          <button class="demo-tab" data-sort-algo="selection">Selection Sort (หา min_idx ประจำรอบ)</button>
+          <button class="demo-tab" data-sort-algo="bubble">Bubble Sort (สลับทีละคู่ &amp; Flag ตรวจสอบ)</button>
+        </div>
+      </section>
+
+      <section id="test2-sorting-debug">
+        <div class="section-head">
+          <div class="tag">02 — step-by-step visual debugger</div>
+          <h2>แผงควบคุมและจำลองการจัดเรียงทีละขั้นตอน</h2>
+          <p>สังเกตการเลื่อนของตำแหน่งสมาชิก แถบสีเปรียบเทียบ และการเปลี่ยนค่าใน Array</p>
+        </div>
+        <div class="debugger" id="test2Debugger"></div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- TOPIC 8: ASSIGNMENT 4 & LECTURE 11 — GRAPH BFS SHORTEST PATH     -->
+  <!-- ================================================================ -->
+  <div id="topic-assign4" class="topic-view">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — ASSIGNMENT 4 &amp; LECTURE 11</div>
+      <h1>Graph Algorithms: <span class="highlight-cyan">BFS Shortest Path</span> Studio</h1>
+      <p class="sub">จำลองขั้นตอนวิธีค้นหาเส้นทางที่สั้นที่สุดบนกราฟแบบไม่ถ่วงน้ำหนัก (Unweighted Shortest Path)
+      โดยใช้ Breadth-First Search (BFS) และตารางสถานะ <span class="mono">Known, d_v, p_v</span> จากกราฟ 7 จุดยอดของอาจารย์ประดิษฐ์</p>
+    </header>
+
+    <div class="wrap">
+      <section id="assign4-principle">
+        <div class="section-head">
+          <div class="tag">01 — นิยามและตารางสถานะ</div>
+          <h2>หลักการ Breadth-First Search บนกราฟระบุทิศทาง</h2>
+          <p>กราฟ 7 จุดยอด ($v_1 \dots v_7$): อัปเดตตารางและคิวเมื่อจุดยอดถูกเข้าถึงครั้งแรก</p>
+        </div>
+        <div class="article">
+          <h3><span class="num">1</span>โครงสร้างตาราง 4 คอลัมน์สำคัญที่ออกสอบ</h3>
+          <table class="cmp">
+            <tbody>
+              <tr><th>คอลัมน์</th><th>ความหมายทางทฤษฎี</th><th>ค่าเริ่มต้นสำหรับ $v_1$</th><th>ค่าเริ่มต้นสำหรับจุดอื่น</th></tr>
+              <tr><td><span class="mono">v</span></td><td>ชื่อจุดยอด (Vertex)</td><td>$v_1$</td><td>$v_2 \dots v_7$</td></tr>
+              <tr><td><span class="mono">Known</span></td><td>ประมวลผลเสร็จสิ้นแล้วหรือไม่ (True / False)</td><td class="bad">False</td><td class="bad">False</td></tr>
+              <tr><td><span class="mono">d_v</span></td><td>ระยะทางสั้นสุดจากจุดเริ่มต้น</td><td class="hl">0</td><td>$\infty$ (อนันต์)</td></tr>
+              <tr><td><span class="mono">p_v</span></td><td>จุดยอดก่อนหน้าบนวิถีสั้นสุด (Parent)</td><td>0 (ไม่มี)</td><td>0 (ไม่มี)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="assign4-bfs-debug">
+        <div class="section-head">
+          <div class="tag">02 — step-by-step visual debugger</div>
+          <h2>Interactive Graph BFS &amp; Table Stepper</h2>
+          <p>ดูการกระจายแสง BFS บนกราฟจำลอง และการบันทึกค่าลงในตารางทีละขั้นตอน</p>
+        </div>
+        <div class="debugger" id="assign4Debugger"></div>
+      </section>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="wrap">
@@ -403,6 +570,7 @@
   </footer>
 
   <!-- App Script -->
+  <script src="exercises.js"></script>
   <script src="app.js?v=10"></script>
 </body>
 </html>

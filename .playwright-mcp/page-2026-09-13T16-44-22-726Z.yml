@@ -1,0 +1,1482 @@
+- generic [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link "DSA Wiki Python DSA" [ref=f1e4] [cursor=pointer]:
+      - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+      - generic [ref=f1e9]: DSA Wiki
+      - generic [ref=f1e10]: Python DSA
+    - button "ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง... Ctrl K" [ref=f1e12] [cursor=pointer]:
+      - generic [ref=f1e13]: ค้นหาบทเรียน, โครงสร้างข้อมูล, โค้ดตัวอย่าง...
+      - generic [ref=f1e18]: Ctrl K
+    - generic [ref=f1e19]:
+      - generic "ปรับขนาดตัวอักษรสำหรับอ่าน" [ref=f1e20]:
+        - button "A-" [ref=f1e21] [cursor=pointer]
+        - button "A+" [ref=f1e22] [cursor=pointer]
+      - button "☀️" [ref=f1e23] [cursor=pointer]
+      - link "🔬 ห้องทดลอง DSA Lab" [ref=f1e24] [cursor=pointer]:
+        - /url: ../DsaLab/index.html
+        - generic [ref=f1e25]: 🔬
+        - generic [ref=f1e26]: ห้องทดลอง DSA Lab
+  - generic [ref=f1e27]:
+    - complementary [ref=f1e28]:
+      - generic [ref=f1e29]:
+        - button "📚 บทเรียน" [ref=f1e30] [cursor=pointer]
+        - button "📋 งานที่สั่ง" [ref=f1e31] [cursor=pointer]
+        - button "🎯 เตรียมสอบ" [active] [ref=f1e32] [cursor=pointer]
+      - generic [ref=f1e33]:
+        - generic [ref=f1e2234]:
+          - generic [ref=f1e2235]: 🏁 ข้อสอบปลายภาค & กับดักอาจารย์ (Final Exam 2568)
+          - link "ยังไม่ได้อ่าน 🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568) ⏱️ 27 นาที · 24 หัวข้อ" [ref=f1e2238] [cursor=pointer]:
+            - /url: "#/11.6%20-%20Final%20Exam%20Real%20Classroom%20Prep%20%26%20Solutions"
+            - generic "ยังไม่ได้อ่าน" [ref=f1e2239]
+            - generic [ref=f1e2240]:
+              - generic [ref=f1e2241]: 🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)
+              - generic [ref=f1e2242]: ⏱️ 27 นาที · 24 หัวข้อ
+        - generic [ref=f1e2243]:
+          - generic [ref=f1e2244]: 🎯 ข้อสอบจำลองกลางภาค & ตะลุยโจทย์ (Midterm Mock)
+          - generic [ref=f1e2246]:
+            - link "ยังไม่ได้อ่าน 🎯 ข้อสอบจริง Midterm Real Mock (2026) ⏱️ 37 นาที · 0 หัวข้อ" [ref=f1e2247] [cursor=pointer]:
+              - /url: "#/11.1%20-%20Midterm%20Real%20Exam%20Mock%20%26%20Solutions"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e2248]
+              - generic [ref=f1e2249]:
+                - generic [ref=f1e2250]: 🎯 ข้อสอบจริง Midterm Real Mock (2026)
+                - generic [ref=f1e2251]: ⏱️ 37 นาที · 0 หัวข้อ
+            - link "ยังไม่ได้อ่าน 🎯 ข้อสอบเก็ง Predicted Midterm 2026 ⏱️ 20 นาที · 0 หัวข้อ" [ref=f1e2252] [cursor=pointer]:
+              - /url: "#/11.2%20-%20Predicted%20Midterm%20Exam%202026%20Comprehensive"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e2253]
+              - generic [ref=f1e2254]:
+                - generic [ref=f1e2255]: 🎯 ข้อสอบเก็ง Predicted Midterm 2026
+                - generic [ref=f1e2256]: ⏱️ 20 นาที · 0 หัวข้อ
+            - link "ยังไม่ได้อ่าน 🎯 ตะลุยคลังข้อสอบ 20 ข้อ + ทบทวน ⏱️ 14 นาที · 0 หัวข้อ" [ref=f1e2257] [cursor=pointer]:
+              - /url: "#/11.5%20-%20Comprehensive%20Exam%20Questions%2C%20Tracing%20%26%20Python%20Solutions"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e2258]
+              - generic [ref=f1e2259]:
+                - generic [ref=f1e2260]: 🎯 ตะลุยคลังข้อสอบ 20 ข้อ + ทบทวน
+                - generic [ref=f1e2261]: ⏱️ 14 นาที · 0 หัวข้อ
+        - generic [ref=f1e2262]:
+          - generic [ref=f1e2263]: 🥞 โจทย์เจาะลึกเฉพาะเรื่อง (Topic Drills)
+          - generic [ref=f1e2265]:
+            - link "ยังไม่ได้อ่าน 🎯 เจาะข้อสอบ Stack Practice (Exam Style) ⏱️ 21 นาที · 0 หัวข้อ" [ref=f1e2266] [cursor=pointer]:
+              - /url: "#/11.3%20-%20Stack%20Practice%20Exam%20Problems%20%26%20Solutions"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e2267]
+              - generic [ref=f1e2268]:
+                - generic [ref=f1e2269]: 🎯 เจาะข้อสอบ Stack Practice (Exam Style)
+                - generic [ref=f1e2270]: ⏱️ 21 นาที · 0 หัวข้อ
+            - link "ยังไม่ได้อ่าน 🎯 เจาะข้อสอบ Queue Practice (Exam Style) ⏱️ 8 นาที · 0 หัวข้อ" [ref=f1e2271] [cursor=pointer]:
+              - /url: "#/11.4%20-%20Queue%20Practice%20Exam%20Problems%20%26%20Solutions"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e2272]
+              - generic [ref=f1e2273]:
+                - generic [ref=f1e2274]: 🎯 เจาะข้อสอบ Queue Practice (Exam Style)
+                - generic [ref=f1e2275]: ⏱️ 8 นาที · 0 หัวข้อ
+        - generic [ref=f1e2276]:
+          - generic [ref=f1e2277]: 📖 สารบัญและสรุปสูตร (Reference & Cheat Sheet)
+          - generic [ref=f1e2279]:
+            - link "ยังไม่ได้อ่าน ⚡ ตารางสรุป Big-O & คำศัพท์ (Cheat Sheet) ⏱️ 6 นาที · 0 หัวข้อ" [ref=f1e2280] [cursor=pointer]:
+              - /url: "#/Glossary%20%26%20Complexity%20Cheat%20Sheet"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e2281]
+              - generic [ref=f1e2282]:
+                - generic [ref=f1e2283]: ⚡ ตารางสรุป Big-O & คำศัพท์ (Cheat Sheet)
+                - generic [ref=f1e2284]: ⏱️ 6 นาที · 0 หัวข้อ
+            - link "ยังไม่ได้อ่าน 📌 สารบัญภาพรวม (Master Index) ⏱️ 10 นาที · 0 หัวข้อ" [ref=f1e2285] [cursor=pointer]:
+              - /url: "#/Index"
+              - generic "ยังไม่ได้อ่าน" [ref=f1e2286]
+              - generic [ref=f1e2287]:
+                - generic [ref=f1e2288]: 📌 สารบัญภาพรวม (Master Index)
+                - generic [ref=f1e2289]: ⏱️ 10 นาที · 0 หัวข้อ
+    - main [ref=f1e68]:
+      - generic [ref=f1e69]:
+        - generic [ref=f1e70]:
+          - navigation [ref=f1e71]:
+            - link "สารานุกรม" [ref=f1e72] [cursor=pointer]:
+              - /url: "#/01.1 - Introduction to Data Structures & Algorithm Analysis"
+            - generic [ref=f1e73]: /
+            - generic [ref=f1e74]: ข้อสอบจำลองกลางภาค & ตะลุยโจทย์ (Midterm Mock)
+            - generic [ref=f1e75]: /
+            - generic "🎯 ข้อสอบจริง Midterm Real Mock (2026)" [ref=f1e2290]
+          - heading "📝 11.1 - Midterm Real Exam Mock & Solutions (รวมข้อสอบจริง + เก็งชุดใหม่ 2026 พร้อมเฉลยแบบ while และไม่ใช้ while)" [level=1] [ref=f1e2291]
+          - generic [ref=f1e78]:
+            - generic [ref=f1e79]:
+              - generic [ref=f1e2292]: ⏱️ อ่านประมาณ 37 นาที
+              - generic [ref=f1e2293]: 📝 22,133 ตัวอักษร
+            - button "○ ทำเครื่องหมายว่าอ่านแล้ว" [ref=f1e82] [cursor=pointer]:
+              - generic [ref=f1e2294]: ○
+              - text: ทำเครื่องหมายว่าอ่านแล้ว
+        - article [ref=f1e84]:
+          - generic [ref=f1e2295]:
+            - generic [ref=f1e2296]:
+              - generic [ref=f1e2297]: 💡
+              - generic [ref=f1e2298]: "**ข้อมูลการสอบ (Exam Information)**"
+            - list [ref=f1e2300]:
+              - listitem [ref=f1e2301]:
+                - strong [ref=f1e2302]: "คะแนนเต็ม:"
+                - text: 70 คะแนน (หาร 2 เหลือ 35 คะแนนต่อชุด)
+              - listitem [ref=f1e2303]:
+                - strong [ref=f1e2304]: "เงื่อนไข:"
+                - text: เปิดตำราได้ (Open Book / Open Notes)
+              - listitem [ref=f1e2305]:
+                - strong [ref=f1e2306]: "ภาษา:"
+                - text: คำถามเป็นภาษาอังกฤษ / อนุโลมให้ตอบเป็นภาษาไทยหรือภาษาอังกฤษได้
+              - listitem [ref=f1e2307]:
+                - strong [ref=f1e2308]: "การเขียนตอบ:"
+                - text: เขียนคำตอบด้วยปากกา / รูป Tree สามารถวาดด้วยดินสอได้
+              - listitem [ref=f1e2309]:
+                - strong [ref=f1e2310]: "การเขียนโค้ด:"
+                - text: แสดงเฉลยทั้ง
+                - strong [ref=f1e2311]: แบบไม่ใช้ while (สั่งทีละบรรทัด)
+                - text: และ
+                - strong [ref=f1e2312]: แบบใช้ while loop
+          - separator [ref=f1e2313]
+          - heading "📑 สารบัญ (Table of Contents)" [level=1] [ref=f1e2314]
+          - list [ref=f1e2315]:
+            - listitem [ref=f1e2316]:
+              - 'link "🌟 ชุดที่ 1: ข้อสอบกลางภาคฉบับจริง (Real Midterm Exam)" [ref=f1e2317] [cursor=pointer]':
+                - /url: "#-%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B8%97%E0%B8%B5%E0%B9%88-1-%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%AA%E0%B8%AD%E0%B8%9A%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%87%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B8%89%E0%B8%9A%E0%B8%B1%E0%B8%9A%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87-real-midterm-exam"
+              - list [ref=f1e2318]:
+                - listitem [ref=f1e2319]:
+                  - 'link "Part 1: Singly Linked List (10 คะแนน)" [ref=f1e2320] [cursor=pointer]':
+                    - /url: "#part-1-singly-linked-list-10-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2321]:
+                  - 'link "Part 2: Stack & Queue Manipulation (10 คะแนน)" [ref=f1e2322] [cursor=pointer]':
+                    - /url: "#part-2-stack--queue-manipulation-10-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2323]:
+                  - 'link "Part 3: Binary Search Tree (15 คะแนน)" [ref=f1e2324] [cursor=pointer]':
+                    - /url: "#part-3-binary-search-tree-15-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2325]:
+                  - 'link "Part 4: Expression Tree (15 คะแนน)" [ref=f1e2326] [cursor=pointer]':
+                    - /url: "#part-4-expression-tree-15-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2327]:
+                  - 'link "Part 5: หลักการอะไรเอ่ย (10 คะแนน)" [ref=f1e2328] [cursor=pointer]':
+                    - /url: "#part-5-%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%81%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3%E0%B9%80%E0%B8%AD%E0%B9%88%E0%B8%A2-10-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2329]:
+                  - 'link "Part 6: Hash Table & Python Tracing (10 คะแนน)" [ref=f1e2330] [cursor=pointer]':
+                    - /url: "#part-6-hash-table--python-tracing-10-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+            - listitem [ref=f1e2331]:
+              - 'link "🚀 ชุดที่ 2: เก็งข้อสอบกลางภาคชุดใหม่ (Predicted Midterm Exam)" [ref=f1e2332] [cursor=pointer]':
+                - /url: "#-%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B8%97%E0%B8%B5%E0%B9%88-2-%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%87%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%AA%E0%B8%AD%E0%B8%9A%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%87%E0%B8%A0%E0%B8%B2%E0%B8%84%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88-predicted-midterm-exam"
+              - list [ref=f1e2333]:
+                - listitem [ref=f1e2334]:
+                  - 'link "Part 1: Linked List Operations & Edge Cases (10 คะแนน)" [ref=f1e2335] [cursor=pointer]':
+                    - /url: "#part-1-linked-list-operations--edge-cases-10-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2336]:
+                  - 'link "Part 2: Stack & Queue + Special Cases of Queues (10 คะแนน)" [ref=f1e2337] [cursor=pointer]':
+                    - /url: "#part-2-stack--queue--special-cases-of-queues-10-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2338]:
+                  - 'link "Part 3: BST Delete Recursive Tracing & Tree Reconstruction (15 คะแนน)" [ref=f1e2339] [cursor=pointer]':
+                    - /url: "#part-3-bst-delete-recursive-tracing--tree-reconstruction-15-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2340]:
+                  - 'link "Part 4: Expression Tree, Infix-Postfix & Traversals (15 คะแนน)" [ref=f1e2341] [cursor=pointer]':
+                    - /url: "#part-4-expression-tree-infix-postfix--traversals-15-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2342]:
+                  - 'link "Part 5: หลักการอะไรเอ่ยชุดเก็ง (10 คะแนน)" [ref=f1e2343] [cursor=pointer]':
+                    - /url: "#part-5-%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%81%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3%E0%B9%80%E0%B8%AD%E0%B9%88%E0%B8%A2%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%87-10-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+                - listitem [ref=f1e2344]:
+                  - 'link "Part 6: คำถามย่อย & Code Tracing ชุดเก็ง (10 คะแนน)" [ref=f1e2345] [cursor=pointer]':
+                    - /url: "#part-6-%E0%B8%84%E0%B8%B3%E0%B8%96%E0%B8%B2%E0%B8%A1%E0%B8%A2%E0%B9%88%E0%B8%AD%E0%B8%A2--code-tracing-%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%87-10-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99"
+          - separator [ref=f1e2346]
+          - separator [ref=f1e2347]
+          - 'heading "🌟 ชุดที่ 1: ข้อสอบกลางภาคฉบับจริง (Real Midterm Exam)" [level=1] [ref=f1e2348]'
+          - separator [ref=f1e2349]
+          - 'heading "Part 1: Singly Linked List (10 คะแนน)" [level=2] [ref=f1e2350]'
+          - heading [level=3] [ref=f1e2351]:
+            - text: "ข้อ 1.1: Main Program Statement Manipulation (5 คะแนน)"
+            - emphasis [ref=f1e2352]:
+              - text: (ตรงตามรูปข้อสอบจริง
+              - code [ref=f1e2353]: 412.jpg
+              - text: )
+          - paragraph [ref=f1e2354]:
+            - strong [ref=f1e2355]: "Question (EN):"
+            - text: Write the statements in
+            - code [ref=f1e2356]: main
+            - text: program when the instance variable
+            - code [ref=f1e2357]: listA
+            - text: with ordered inputs are
+            - code [ref=f1e2358]: 1, 3, 8, 7, 9
+            - text: and has result outputs are
+            - code [ref=f1e2359]: 9, 5, 1, 3, 7, 2, 8
+            - text: by using class
+            - code [ref=f1e2360]: LinkedList
+            - text: "'s methods that we learned only."
+            - code [ref=f1e2361]: //Score 5
+          - paragraph [ref=f1e2362]:
+            - strong [ref=f1e2363]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2364]:
+              - text: (จงเขียนประโยคคำสั่งในโปรแกรม
+              - code [ref=f1e2365]: main
+              - text: เมื่อกำหนดตัวแปร
+              - code [ref=f1e2366]: listA
+              - text: ที่มีข้อมูลอินพุตเริ่มต้นคือ
+              - code [ref=f1e2367]: 1, 3, 8, 7, 9
+              - text: และต้องการให้ได้ผลลัพธ์เป็น
+              - code [ref=f1e2368]: 9, 5, 1, 3, 7, 2, 8
+              - text: โดยใช้เฉพาะเมธอดของคลาส
+              - code [ref=f1e2369]: LinkedList
+              - text: ที่เรียนมาเท่านั้น)
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e2370]
+          - generic [ref=f1e2371]:
+            - generic [ref=f1e2372]:
+              - generic [ref=f1e2373]: python
+              - generic [ref=f1e2374]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e2375] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e2376] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f1e2377] [cursor=pointer]
+            - code [ref=f1e2379]: "listA.remove(9) # ลบ 9 ท้ายออก -> 1 -> 3 -> 8 -> 7 listA.remove(8) # ลบ 8 ออก -> 1 -> 3 -> 7 listA.insert(8, 3) # แทรก 8 ที่ index 3 -> 1 -> 3 -> 7 -> 8 listA.insert(2, 3) # แทรก 2 ที่ index 3 -> 1 -> 3 -> 7 -> 2 -> 8 listA.add(5) # add แทรกที่ head -> 5 -> 1 -> 3 -> 7 -> 2 -> 8 listA.add(9) # add แทรกที่ head -> 9 -> 5 -> 1 -> 3 -> 7 -> 2 -> 8"
+          - separator [ref=f1e2380]
+          - heading [level=3] [ref=f1e2381]:
+            - text: "ข้อ 1.2: Special Cases in Linked List (5 คะแนน)"
+            - emphasis [ref=f1e2382]:
+              - text: (ตรงตามรูปข้อสอบจริง
+              - code [ref=f1e2383]: 415.jpg
+              - text: )
+          - paragraph [ref=f1e2384]:
+            - strong [ref=f1e2385]: "Question (EN):"
+            - text: When we implement Linked List, there are many special cases we must check. If the elements of a list are
+            - code [ref=f1e2386]: 34, 12, 52, 16, 15
+            - text: ", write at least the 3 special cases by examples."
+            - code [ref=f1e2387]: //Score 3
+          - paragraph [ref=f1e2388]:
+            - strong [ref=f1e2389]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2390]:
+              - text: (เมื่อเราสร้างและใช้งาน Linked List จะมีกรณีพิเศษ (Special Cases) หลายกรณีที่เราต้องตรวจสอบ หากข้อมูลในลิสต์ปัจจุบันคือ
+              - code [ref=f1e2391]: 34, 12, 52, 16, 15
+              - text: จงเขียนยกตัวอย่างกรณีพิเศษอย่างน้อย 3 กรณีพร้อมอธิบาย)
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e2392]
+          - list [ref=f1e2393]:
+            - listitem [ref=f1e2394]:
+              - strong [ref=f1e2395]:
+                - code [ref=f1e2396]: Find(99)
+                - text: หรือ
+                - code [ref=f1e2397]: Delete(99)
+                - text: "(Element Not Found):"
+              - text: ค้นหาหรือลบข้อมูลที่ไม่มีในลิสต์ ต้องดักเงื่อนไขเพื่อไม่ให้ Pointer วิ่งหลุดเป็น
+              - code [ref=f1e2398]: None
+              - text: จนเกิด
+              - code [ref=f1e2399]: AttributeError
+            - listitem [ref=f1e2400]:
+              - strong [ref=f1e2401]:
+                - code [ref=f1e2402]: Insert(88, 10)
+                - text: "(Index Out of Bounds):"
+              - text: แทรกข้อมูลที่ตำแหน่งเกินความยาวของลิสต์
+            - listitem [ref=f1e2403]:
+              - strong [ref=f1e2404]:
+                - code [ref=f1e2405]: Delete(34)
+                - text: หรือ
+                - code [ref=f1e2406]: Insert(99, 0)
+                - text: "(Head Node Operation):"
+              - text: จัดการที่ตำแหน่งโหนดแรกสุด ต้องเปลี่ยน
+              - code [ref=f1e2407]: self.head
+              - text: โดยตรง
+          - separator [ref=f1e2408]
+          - heading [level=2] [ref=f1e2409]:
+            - text: "Part 2: Stack & Queue Manipulation (10 คะแนน)"
+            - emphasis [ref=f1e2410]:
+              - text: (ตรงตามรูป
+              - code [ref=f1e2411]: Screenshot
+              - text: )
+          - 'heading "ข้อ 2.1: Delete Elements from Stack using Queue (10 คะแนน)" [level=3] [ref=f1e2412]'
+          - paragraph [ref=f1e2413]:
+            - strong [ref=f1e2414]: "Question (EN):"
+            - text: If there is the exists Stack's instance variable
+            - code [ref=f1e2415]: s
+            - text: which has 5 elements
+            - code [ref=f1e2416]: 8, 4, 6, 9, 2
+            - text: already. Write statement in main program to delete element
+            - strong [ref=f1e2417]: "4"
+            - text: and
+            - strong [ref=f1e2418]: "9"
+            - text: from the instance variable
+            - code [ref=f1e2419]: s
+            - text: with using the exists Queue's instance variable
+            - code [ref=f1e2420]: q
+            - text: and has result output are
+            - code [ref=f1e2421]: 8, 6, 2
+            - text: by using class
+            - code [ref=f1e2422]: Stack
+            - text: "'s and"
+            - code [ref=f1e2423]: Queue
+            - text: "'s methods that we learned only."
+            - code [ref=f1e2424]: //Score 10
+          - paragraph [ref=f1e2425]:
+            - strong [ref=f1e2426]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2427]:
+              - text: (หากมีตัวแปร Stack ชื่อ
+              - code [ref=f1e2428]: s
+              - text: ซึ่งมีข้อมูล 5 ตัวคือ
+              - code [ref=f1e2429]: 8, 4, 6, 9, 2
+              - text: อยู่แล้ว (โดย 8 อยู่ก้น และ 2 อยู่บนสุด) จงเขียนประโยคคำสั่งในโปรแกรม
+              - code [ref=f1e2430]: main
+              - text: เพื่อลบข้อมูลตัวเลข 4 และ 9 ออกจากตัวแปร
+              - code [ref=f1e2431]: s
+              - text: โดยใช้ตัวแปร Queue ชื่อ
+              - code [ref=f1e2432]: q
+              - text: ช่วย และให้ได้ผลลัพธ์สุดท้ายเป็น
+              - code [ref=f1e2433]: 8, 6, 2
+              - text: โดยใช้เฉพาะเมธอดของคลาส
+              - code [ref=f1e2434]: Stack
+              - text: และ
+              - code [ref=f1e2435]: Queue
+              - text: ที่เรียนมาเท่านั้น)
+          - 'heading "💡 รูปแบบที่ 1: แบบเขียนคำสั่งทีละบรรทัด (ไม่ใช้ while loop - เข้าใจง่ายตรงไปตรงมา)" [level=4] [ref=f1e2436]'
+          - generic [ref=f1e2437]:
+            - generic [ref=f1e2438]:
+              - generic [ref=f1e2439]: python
+              - generic [ref=f1e2440]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e2441] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e2442] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f1e2443] [cursor=pointer]
+            - code [ref=f1e2445]: "# 1. Pop ข้อมูลออกจาก Stack s โดยกรองเอาเฉพาะ 2, 6, 8 ใส่ Queue q val = s.pop() # ได้ 2 q.enQueue(val) s.pop() # ได้ 9 (ลบทิ้ง ไม่เก็บ) val = s.pop() # ได้ 6 q.enQueue(val) s.pop() # ได้ 4 (ลบทิ้ง ไม่เก็บ) val = s.pop() # ได้ 8 q.enQueue(val) # สภาพใน Queue ตอนนี้: q = [Front: 2, 6, 8 :Rear] # 2. ถ่ายจาก q เข้า s (สั่งทีละตัว ไม่ใช้ while) s.push(q.deQueue()) # ใส่ 2 เข้าก้น s s.push(q.deQueue()) # ใส่ 6 s.push(q.deQueue()) # ใส่ 8 อยู่บนสุด # สภาพใน Stack ตอนนี้: s = [Bottom: 2, 6, 8 :Top] # 3. Pop จาก s กลับเข้า q เพื่อกลับลำดับ q.enQueue(s.pop()) # pop 8 เข้า q q.enQueue(s.pop()) # pop 6 เข้า q q.enQueue(s.pop()) # pop 2 เข้า q # สภาพใน Queue ตอนนี้: q = [Front: 8, 6, 2 :Rear] # 4. Dequeue จาก q กลับเข้า s จะได้ลำดับที่ถูกต้องตรงตามโจทย์ s.push(q.deQueue()) # ใส่ 8 เข้าก้น s s.push(q.deQueue()) # ใส่ 6 s.push(q.deQueue()) # ใส่ 2 อยู่บนสุด # ผลลัพธ์สุดท้าย: s = [Bottom: 8, 6, 2 :Top] (ถูกต้อง 100%)"
+          - heading [level=4] [ref=f1e2446]:
+            - text: "💡 รูปแบบที่ 2: แบบใช้"
+            - code [ref=f1e2447]: while
+            - text: loop (สั้น กระชับ เป็นมาตรฐาน)
+          - generic [ref=f1e2448]:
+            - generic [ref=f1e2449]:
+              - generic [ref=f1e2450]: python
+              - generic [ref=f1e2451]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e2452] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e2453] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f1e2454] [cursor=pointer]
+            - code [ref=f1e2456]: "# 1. Pop ข้อมูลออกจาก Stack s โดยกรองเอาเฉพาะ 2, 6, 8 ใส่ Queue q val = s.pop() # ได้ 2 q.enQueue(val) s.pop() # ได้ 9 (ทิ้ง) val = s.pop() # ได้ 6 q.enQueue(val) s.pop() # ได้ 4 (ทิ้ง) val = s.pop() # ได้ 8 q.enQueue(val) # 2. ถ่ายโอนสลับ 2 รอบด้วย while loop while not q.isEmpty(): s.push(q.deQueue()) # s = [Bottom: 2, 6, 8 :Top] while not s.is_empty(): q.enQueue(s.pop()) # q = [Front: 8, 6, 2 :Rear] while not q.isEmpty(): s.push(q.deQueue()) # s = [Bottom: 8, 6, 2 :Top]"
+          - separator [ref=f1e2457]
+          - 'heading "Part 3: Binary Search Tree (15 คะแนน)" [level=2] [ref=f1e2458]'
+          - 'heading "ข้อ 3.1: Recursive Step Tracing Table (8 คะแนน)" [level=3] [ref=f1e2459]'
+          - paragraph [ref=f1e2460]:
+            - strong [ref=f1e2461]: "Question (EN):"
+            - text: Write step-by-step recursive operations of
+            - code [ref=f1e2462]: current_node
+            - text: and
+            - code [ref=f1e2463]: value
+            - text: ", and the statements executed when"
+            - code [ref=f1e2464]: if..else
+            - text: conditions are true in
+            - code [ref=f1e2465]: _insert_recursive
+            - text: method when inserting value
+            - code [ref=f1e2466]: "25"
+            - text: into a BST with existing nodes
+            - code [ref=f1e2467]: 50, 20, 70, 30
+            - text: (Root is
+            - code [ref=f1e2468]: "50"
+            - text: ).
+            - code [ref=f1e2469]: //Score 8
+          - paragraph [ref=f1e2470]:
+            - strong [ref=f1e2471]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2472]:
+              - text: (จงเขียนขั้นตอนการทำงานใน recursive ระหว่าง
+              - code [ref=f1e2473]: current_node
+              - text: กับ
+              - code [ref=f1e2474]: value
+              - text: และประโยคคำสั่งที่ถูกทำ เมื่อเงื่อนไข
+              - code [ref=f1e2475]: if..else
+              - text: เป็นจริง เมื่อแทรกค่า
+              - code [ref=f1e2476]: "25"
+              - text: ลงใน BST ที่มีโหนดเดิมคือ
+              - code [ref=f1e2477]: 50, 20, 70, 30
+              - text: )
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e2478]
+          - table [ref=f1e2480]:
+            - rowgroup [ref=f1e2481]:
+              - row [ref=f1e2482]:
+                - columnheader "Call ครั้งที่" [ref=f1e2483]
+                - columnheader [ref=f1e2484]:
+                  - code [ref=f1e2485]: current_node.value
+                - columnheader [ref=f1e2486]:
+                  - code [ref=f1e2487]: value
+                - columnheader "เงื่อนไขที่ตรวจสอบและผลลัพธ์" [ref=f1e2488]
+                - columnheader "ประโยคคำสั่งที่ถูกทำ" [ref=f1e2489]
+            - rowgroup [ref=f1e2490]:
+              - row [ref=f1e2491]:
+                - cell [ref=f1e2492]:
+                  - strong [ref=f1e2493]: "1"
+                - cell [ref=f1e2494]:
+                  - code [ref=f1e2495]: "50"
+                - cell [ref=f1e2496]:
+                  - code [ref=f1e2497]: "25"
+                - cell [ref=f1e2498]:
+                  - code [ref=f1e2499]: 25 < 50
+                  - text: is
+                  - code [ref=f1e2500]: "True"
+                  - text: (left มีโหนด 20)
+                - cell [ref=f1e2501]:
+                  - code [ref=f1e2502]: self._insert_recursive(current_node.left, 25)
+              - row [ref=f1e2503]:
+                - cell [ref=f1e2504]:
+                  - strong [ref=f1e2505]: "2"
+                - cell [ref=f1e2506]:
+                  - code [ref=f1e2507]: "20"
+                - cell [ref=f1e2508]:
+                  - code [ref=f1e2509]: "25"
+                - cell [ref=f1e2510]:
+                  - code [ref=f1e2511]: 25 > 20
+                  - text: is
+                  - code [ref=f1e2512]: "True"
+                  - text: (right มีโหนด 30)
+                - cell [ref=f1e2513]:
+                  - code [ref=f1e2514]: self._insert_recursive(current_node.right, 25)
+              - row [ref=f1e2515]:
+                - cell [ref=f1e2516]:
+                  - strong [ref=f1e2517]: "3"
+                - cell [ref=f1e2518]:
+                  - code [ref=f1e2519]: "30"
+                - cell [ref=f1e2520]:
+                  - code [ref=f1e2521]: "25"
+                - cell [ref=f1e2522]:
+                  - code [ref=f1e2523]: 25 < 30
+                  - text: is
+                  - code [ref=f1e2524]: "True"
+                  - text: (left ว่าง
+                  - code [ref=f1e2525]: is None
+                  - text: )
+                - cell [ref=f1e2526]:
+                  - code [ref=f1e2527]: current_node.left = Node(25)
+                  - emphasis [ref=f1e2528]: (สร้างโหนดสำเร็จ)
+          - separator [ref=f1e2529]
+          - 'heading "ข้อ 3.2: Tree Reconstruction from Traversals (7 คะแนน)" [level=3] [ref=f1e2530]'
+          - paragraph [ref=f1e2531]:
+            - strong [ref=f1e2532]: "Question (EN):"
+            - text: "Given traversal outputs: Pre-order:"
+            - code [ref=f1e2533]: 60, 30, 15, 40, 35, 80, 70, 95
+            - text: "and In-order:"
+            - code [ref=f1e2534]: 15, 30, 35, 40, 60, 70, 80, 95
+            - text: . Draw the complete Binary Search Tree and write its Post-order traversal result.
+            - code [ref=f1e2535]: //Score 7
+          - paragraph [ref=f1e2536]:
+            - strong [ref=f1e2537]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2538]: (กำหนดผลการเดินท่องไปใน Tree มาให้ จงวาดรูป Binary Search Tree ออกมา และเขียนผลลัพธ์การเดินท่องแบบ Post-order Traversal)
+          - heading "💡 เฉลยรูป Binary Search Tree และลำดับ Post-order:" [level=4] [ref=f1e2539]
+          - generic [ref=f1e2540]:
+            - generic [ref=f1e2541]:
+              - generic [ref=f1e2542]: text
+              - button "📋 คัดลอก" [ref=f1e2544] [cursor=pointer]
+            - code [ref=f1e2546]: 60 / \ 30 80 / \ / \ 15 40 70 95 / 35
+          - paragraph [ref=f1e2547]:
+            - strong [ref=f1e2548]:
+              - text: Post-order Traversal (Left
+              - generic [ref=f1e2550]:
+                - math [ref=f1e2552]:
+                  - generic [ref=f1e2553]: →
+                - generic [ref=f1e2556]: →
+              - text: Right
+              - generic [ref=f1e2559]:
+                - math [ref=f1e2561]:
+                  - generic [ref=f1e2562]: →
+                - generic [ref=f1e2565]: →
+              - text: "Root):"
+            - code [ref=f1e2567]: 15, 35, 40, 30, 70, 95, 80, 60
+          - separator [ref=f1e2568]
+          - 'heading "Part 4: Expression Tree (15 คะแนน)" [level=2] [ref=f1e2569]'
+          - 'heading "ข้อ 4.1: Infix to Postfix Conversion (8 คะแนน)" [level=3] [ref=f1e2570]'
+          - paragraph [ref=f1e2571]:
+            - strong [ref=f1e2572]: "Question (EN):"
+            - text: Write step-by-step operator stack status for converting the Infix expression
+            - code [ref=f1e2573]: ((A + B) * C - (D - E) / (F + G))
+            - text: to Postfix expression.
+            - code [ref=f1e2574]: //Score 8
+          - paragraph [ref=f1e2575]:
+            - strong [ref=f1e2576]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2577]:
+              - text: (จงเขียนขั้นตอนเครื่องหมายเข้าออก Stack เพื่อแปลงนิพจน์ Infix
+              - code [ref=f1e2578]: ((A + B) * C - (D - E) / (F + G))
+              - text: ให้เป็นนิพจน์ Postfix)
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e2579]
+          - list [ref=f1e2580]:
+            - listitem [ref=f1e2581]:
+              - strong [ref=f1e2582]: "Postfix Expression ผลลัพธ์:"
+              - code [ref=f1e2583]: A B + C * D E - F G + / -
+          - separator [ref=f1e2584]
+          - 'heading "ข้อ 4.2: Expression Tree Drawing & Numerical Evaluation (7 คะแนน)" [level=3] [ref=f1e2585]'
+          - paragraph [ref=f1e2586]:
+            - strong [ref=f1e2587]: "Question (EN):"
+            - text: "Draw Expression Tree and evaluate numerical answer from Postfix:"
+            - code [ref=f1e2588]: 5 3 + 8 6 2 / - *
+            - code [ref=f1e2589]: //Score 7
+          - paragraph [ref=f1e2590]:
+            - strong [ref=f1e2591]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2592]:
+              - text: "(จงวาดภาพ Expression Tree และคำนวณหาคำตอบค่าตัวเลขสุดท้ายจาก Postfix:"
+              - code [ref=f1e2593]: 5 3 + 8 6 2 / - *
+              - text: )
+          - heading "💡 เฉลยรูปภาพ Expression Tree และการคำนวณ:" [level=4] [ref=f1e2594]
+          - generic [ref=f1e2595]:
+            - generic [ref=f1e2596]:
+              - generic [ref=f1e2597]: text
+              - button "📋 คัดลอก" [ref=f1e2599] [cursor=pointer]
+            - code [ref=f1e2601]: "* / \\ + - / \\ / \\ 5 3 8 / / \\ 6 2"
+          - paragraph [ref=f1e2602]:
+            - strong [ref=f1e2603]: "การคำนวณ:"
+          - list [ref=f1e2604]:
+            - listitem [ref=f1e2605]:
+              - text: "กิ่งซ้าย:"
+              - generic [ref=f1e2607]:
+                - math [ref=f1e2609]:
+                  - generic [ref=f1e2611]:
+                    - generic [ref=f1e2612]: "5"
+                    - generic [ref=f1e2613]: +
+                    - generic [ref=f1e2614]: "3"
+                    - generic [ref=f1e2615]: =
+                    - generic [ref=f1e2616]: "8"
+                - generic [ref=f1e2617]:
+                  - generic [ref=f1e2618]: 5 +
+                  - generic [ref=f1e2619]: 3 =
+                  - generic [ref=f1e2620]: "8"
+            - listitem [ref=f1e2621]:
+              - text: "กิ่งขวา:"
+              - generic [ref=f1e2623]:
+                - math [ref=f1e2625]:
+                  - generic [ref=f1e2627]:
+                    - generic [ref=f1e2628]: "6"
+                    - generic [ref=f1e2629]: /
+                    - generic [ref=f1e2630]: "2"
+                    - generic [ref=f1e2631]: =
+                    - generic [ref=f1e2632]: "3"
+                    - generic [ref=f1e2633]: ⟹
+                    - generic [ref=f1e2634]: "8"
+                    - generic [ref=f1e2635]: −
+                    - generic [ref=f1e2636]: "3"
+                    - generic [ref=f1e2637]: =
+                    - generic [ref=f1e2638]: "5"
+                - generic [ref=f1e2639]:
+                  - generic [ref=f1e2640]: 6/2 =
+                  - generic [ref=f1e2641]: 3 ⟹
+                  - generic [ref=f1e2642]: 8 −
+                  - generic [ref=f1e2643]: 3 =
+                  - generic [ref=f1e2644]: "5"
+            - listitem [ref=f1e2645]:
+              - text: "โหนดราก:"
+              - generic [ref=f1e2647]:
+                - math [ref=f1e2649]:
+                  - generic [ref=f1e2651]:
+                    - generic [ref=f1e2652]: "8"
+                    - generic [ref=f1e2653]: ×
+                    - generic [ref=f1e2654]: "5"
+                    - generic [ref=f1e2655]: =
+                    - generic [ref=f1e2656]: "40"
+                - generic [ref=f1e2657]:
+                  - generic [ref=f1e2658]: 8 ×
+                  - generic [ref=f1e2659]: 5 =
+                  - generic [ref=f1e2660]: "40"
+          - separator [ref=f1e2662]
+          - 'heading "Part 5: หลักการอะไรเอ่ย (10 คะแนน)" [level=2] [ref=f1e2663]'
+          - paragraph [ref=f1e2664]:
+            - strong [ref=f1e2665]: "Question (EN) & (คำแปลไทย):"
+          - list [ref=f1e2666]:
+            - listitem [ref=f1e2667]:
+              - strong [ref=f1e2668]: "LIFO Principle (2.5 คะแนน):"
+              - text: LIFO คือ Last-In, First-Out ใช้ใน
+              - strong [ref=f1e2669]: Stack
+              - text: "ตัวอย่างจริง:"
+              - strong [ref=f1e2670]: Function Call Stack
+              - text: ","
+              - strong [ref=f1e2671]: Undo/Redo
+            - listitem [ref=f1e2672]:
+              - strong [ref=f1e2673]: "BST Key Property (2.5 คะแนน):"
+              - text: Left Child < Parent < Right Child ในทุก Subtree
+            - listitem [ref=f1e2674]:
+              - strong [ref=f1e2675]: "Collision Resolution (2.5 คะแนน):"
+              - text: Chaining ต่อ Linked List ในช่องเดิม, Open Addressing (Linear Probing) เลื่อนหาช่องว่างถัดไปใน Array
+            - listitem [ref=f1e2676]:
+              - strong [ref=f1e2677]: "Indexing Complexity (2.5 คะแนน):"
+              - text: Array ใช้
+              - generic [ref=f1e2679]:
+                - math [ref=f1e2681]:
+                  - generic [ref=f1e2683]:
+                    - generic [ref=f1e2684]: O
+                    - generic [ref=f1e2685]: (
+                    - generic [ref=f1e2686]: "1"
+                    - generic [ref=f1e2687]: )
+                - generic [ref=f1e2688]: O(1)
+              - text: (Contiguous Memory), Linked List ใช้
+              - generic [ref=f1e2691]:
+                - math [ref=f1e2693]:
+                  - generic [ref=f1e2695]:
+                    - generic [ref=f1e2696]: O
+                    - generic [ref=f1e2697]: (
+                    - generic [ref=f1e2698]: "n"
+                    - generic [ref=f1e2699]: )
+                - generic [ref=f1e2700]: O(n)
+              - text: (Sequential Traversal)
+          - separator [ref=f1e2702]
+          - 'heading "Part 6: Hash Table & Python Tracing (10 คะแนน)" [level=2] [ref=f1e2703]'
+          - heading [level=3] [ref=f1e2704]:
+            - text: "ข้อ 6.1: Hash Table & Memory Allocation (5 คะแนน)"
+            - emphasis [ref=f1e2705]:
+              - text: (ตรงตามรูปโปรเจกเตอร์
+              - code [ref=f1e2706]: 411.jpg
+              - text: )
+          - paragraph [ref=f1e2707]:
+            - strong [ref=f1e2708]: "Question (EN):"
+            - text: Given
+            - code [ref=f1e2709]: table_size = 7
+            - text: and hash function
+            - code [ref=f1e2710]: hash_val % table_size
+            - text: . (1) Calculate index for
+            - code [ref=f1e2711]: "\"cat\""
+            - text: (ASCII sum=312),
+            - code [ref=f1e2712]: "\"dog\""
+            - text: (ASCII sum=314),
+            - code [ref=f1e2713]: "\"bird\""
+            - text: (ASCII sum=417). (2) Explain the difference between
+            - code [ref=f1e2714]: my_strings = [None] * 7
+            - text: and
+            - code [ref=f1e2715]: my_strings = []
+            - text: in Python.
+            - code [ref=f1e2716]: //Score 5
+          - paragraph [ref=f1e2717]:
+            - strong [ref=f1e2718]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2719]:
+              - text: (กำหนดตารางแฮชขนาด
+              - code [ref=f1e2720]: table_size = 7
+              - text: และฟังก์ชันแฮช
+              - code [ref=f1e2721]: hash_val % table_size
+              - text: ": (1) จงคำนวณ Hash Index สำหรับ"
+              - code [ref=f1e2722]: "\"cat\""
+              - text: ","
+              - code [ref=f1e2723]: "\"dog\""
+              - text: ","
+              - code [ref=f1e2724]: "\"bird\""
+              - text: (2) จงอธิบายความแตกต่างระหว่างคำสั่ง
+              - code [ref=f1e2725]: my_strings = [None] * 7
+              - text: กับ
+              - code [ref=f1e2726]: my_strings = []
+              - text: ในภาษา Python)
+          - heading "💡 เฉลยละเอียดตรงตามข้อความในรูป 411:" [level=4] [ref=f1e2727]
+          - list [ref=f1e2728]:
+            - listitem [ref=f1e2729]:
+              - strong [ref=f1e2730]: "การคำนวณ Index:"
+              - list [ref=f1e2731]:
+                - listitem [ref=f1e2732]:
+                  - code [ref=f1e2733]: "\"cat\""
+                  - text: ":"
+                  - generic [ref=f1e2734]: "312 \\pmod 7 = 4 \\implies \\text{เก็บที่ } \\text{my_strings}[4] = \\text{\"cat\"}"
+                - listitem [ref=f1e2735]:
+                  - code [ref=f1e2736]: "\"dog\""
+                  - text: ":"
+                  - generic [ref=f1e2737]: "314 \\pmod 7 = 6 \\implies \\text{เก็บที่ } \\text{my_strings}[6] = \\text{\"dog\"}"
+                - listitem [ref=f1e2738]:
+                  - code [ref=f1e2739]: "\"bird\""
+                  - text: ":"
+                  - generic [ref=f1e2741]:
+                    - math [ref=f1e2743]:
+                      - generic [ref=f1e2745]:
+                        - generic [ref=f1e2746]: "417"
+                        - generic [ref=f1e2747]: (
+                        - generic [ref=f1e2748]:
+                          - generic [ref=f1e2749]: m
+                          - generic [ref=f1e2750]: o
+                          - generic [ref=f1e2751]: d
+                        - generic [ref=f1e2752]: "7"
+                        - generic [ref=f1e2753]: )
+                        - generic [ref=f1e2754]: =
+                        - generic [ref=f1e2755]: "4"
+                        - generic [ref=f1e2756]: ⟹
+                        - generic [ref=f1e2757]: เกิด Collision ที่ Index 4
+                    - generic [ref=f1e2758]:
+                      - generic [ref=f1e2759]: "417"
+                      - generic [ref=f1e2760]:
+                        - text: (
+                        - generic [ref=f1e2761]: mod
+                        - text: 7) =
+                      - generic [ref=f1e2763]: 4 ⟹
+                      - generic [ref=f1e2764]: เกิด Collision ที่ Index 4
+            - listitem [ref=f1e2766]:
+              - strong [ref=f1e2767]:
+                - text: ความแตกต่างระหว่าง
+                - code [ref=f1e2768]: "[None] * 7"
+                - text: กับ
+                - code [ref=f1e2769]: "[]"
+                - text: ":"
+              - list [ref=f1e2770]:
+                - listitem [ref=f1e2771]:
+                  - code [ref=f1e2772]: my_strings = [None] * 7
+                  - text: ": เป็นการสร้าง list ที่มีขนาดคงที่ 7 ช่อง โดยแต่ละช่องมีค่าเริ่มต้นเป็น"
+                  - code [ref=f1e2773]: None
+                  - text: ทั้งหมด ซึ่งเป็นค่าพิเศษแสดงถึง "ไม่มีค่า" หรือ "null" สามารถเข้าถึงแต่ละช่องเพื่อกำหนดค่าใหม่ได้ทันที เช่น
+                  - code [ref=f1e2774]: my_strings[1] = "Test1"
+                  - text: ","
+                  - code [ref=f1e2775]: my_strings[4] = "Test4"
+                - listitem [ref=f1e2776]:
+                  - code [ref=f1e2777]: my_strings = []
+                  - text: ": เป็นการสร้าง list ว่างเปล่า ที่ไม่มีสมาชิกใดๆ อยู่ภายในเลย ขนาดเริ่มต้นคือ 0 การเพิ่มสมาชิกจะต้องใช้เมธอดเช่น"
+                  - code [ref=f1e2778]: .append()
+                  - text: หรือ
+                  - code [ref=f1e2779]: .insert()
+                  - text: หากเข้าถึงด้วย index เช่น
+                  - code [ref=f1e2780]: my_strings[1]
+                  - text: จะเกิด
+                  - code [ref=f1e2781]: IndexError
+          - separator [ref=f1e2782]
+          - 'heading "ข้อ 6.2: Python Recursive Output Tracing (5 คะแนน)" [level=3] [ref=f1e2783]'
+          - paragraph [ref=f1e2784]:
+            - strong [ref=f1e2785]: "Question (EN):"
+            - text: Trace and write output of
+            - code [ref=f1e2786]: print(mystery(5))
+            - text: where
+            - code [ref=f1e2787]: mystery(n)
+            - text: returns
+            - code [ref=f1e2788]: n * mystery(n-2)
+            - text: for odd numbers.
+            - code [ref=f1e2789]: //Score 5
+            - strong [ref=f1e2790]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2791]:
+              - text: (จง Trace ค่าผลลัพธ์ Output ของฟังก์ชัน
+              - code [ref=f1e2792]: mystery(5)
+              - text: )
+            - text: 👉
+            - strong [ref=f1e2793]: "เฉลย:"
+            - generic [ref=f1e2795]:
+              - math [ref=f1e2797]:
+                - generic [ref=f1e2799]:
+                  - generic [ref=f1e2800]: "5"
+                  - generic [ref=f1e2801]: ×
+                  - generic [ref=f1e2802]: "3"
+                  - generic [ref=f1e2803]: ×
+                  - generic [ref=f1e2804]: "1"
+                  - generic [ref=f1e2805]: =
+                  - generic [ref=f1e2806]: "15"
+              - generic [ref=f1e2807]:
+                - generic [ref=f1e2808]: 5 ×
+                - generic [ref=f1e2809]: 3 ×
+                - generic [ref=f1e2810]: 1 =
+                - generic [ref=f1e2811]: "15"
+          - separator [ref=f1e2813]
+          - separator [ref=f1e2814]
+          - 'heading "🚀 ชุดที่ 2: เก็งข้อสอบกลางภาคชุดใหม่ (Predicted Midterm Exam)" [level=1] [ref=f1e2815]'
+          - separator [ref=f1e2816]
+          - 'heading "Part 1: Linked List Operations & Edge Cases (10 คะแนน)" [level=2] [ref=f1e2817]'
+          - 'heading "ข้อ 1.1: Insert and Delete in Singly Linked List (5 คะแนน)" [level=3] [ref=f1e2818]'
+          - paragraph [ref=f1e2819]:
+            - strong [ref=f1e2820]: "Question (EN):"
+            - text: Suppose you have an instance variable
+            - code [ref=f1e2821]: myList
+            - text: of class
+            - code [ref=f1e2822]: LinkedList
+            - text: "containing initial data:"
+            - code [ref=f1e2823]: "[45, 18, 72, 29, 63]"
+            - text: (where 45 is Head). Write statements in
+            - code [ref=f1e2824]: main
+            - text: program to transform
+            - code [ref=f1e2825]: myList
+            - text: into
+            - code [ref=f1e2826]: "[90, 45, 18, 50, 63, 100]"
+            - text: using only
+            - code [ref=f1e2827]: add(item)
+            - text: ","
+            - code [ref=f1e2828]: insert(item, pos)
+            - text: ","
+            - code [ref=f1e2829]: remove(item)
+            - text: ", and"
+            - code [ref=f1e2830]: search(item)
+            - text: .
+            - code [ref=f1e2831]: //Score 5
+          - paragraph [ref=f1e2832]:
+            - strong [ref=f1e2833]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2834]:
+              - text: (กำหนดตัวแปร
+              - code [ref=f1e2835]: myList
+              - text: มีข้อมูลเริ่มต้นคือ
+              - code [ref=f1e2836]: "[45, 18, 72, 29, 63]"
+              - text: (โดย 45 อยู่ที่ Head) จงเขียนประโยคคำสั่งในโปรแกรม
+              - code [ref=f1e2837]: main
+              - text: เพื่อปรับเปลี่ยนข้อมูลให้กลายเป็น
+              - code [ref=f1e2838]: "[90, 45, 18, 50, 63, 100]"
+              - text: โดยใช้เฉพาะเมธอด
+              - code [ref=f1e2839]: add
+              - text: ","
+              - code [ref=f1e2840]: insert
+              - text: ","
+              - code [ref=f1e2841]: remove
+              - text: เท่านั้น)
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e2842]
+          - generic [ref=f1e2843]:
+            - generic [ref=f1e2844]:
+              - generic [ref=f1e2845]: python
+              - generic [ref=f1e2846]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e2847] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e2848] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f1e2849] [cursor=pointer]
+            - code [ref=f1e2851]: "myList.remove(72) # ลบ 72 -> [45, 18, 29, 63] myList.remove(29) # ลบ 29 -> [45, 18, 63] myList.insert(50, 2) # แทรก 50 ที่ index 2 -> [45, 18, 50, 63] myList.insert(100, 4) # แทรก 100 ที่ index 4 (ต่อท้าย) -> [45, 18, 50, 63, 100] myList.add(90) # add 90 ที่หัวแถว -> [90, 45, 18, 50, 63, 100]"
+          - separator [ref=f1e2852]
+          - 'heading "ข้อ 1.2: Doubly Linked List vs Singly Linked List Edge Cases (5 คะแนน)" [level=3] [ref=f1e2853]'
+          - paragraph [ref=f1e2854]:
+            - strong [ref=f1e2855]: "Question (EN):"
+            - text: In a Doubly Linked List, each node contains both
+            - code [ref=f1e2856]: next
+            - text: and
+            - code [ref=f1e2857]: prev
+            - text: pointers. Write the 4 pointer update statements when inserting a new node
+            - code [ref=f1e2858]: new_node
+            - text: after a node
+            - code [ref=f1e2859]: curr
+            - text: . What special check is needed if
+            - code [ref=f1e2860]: curr
+            - text: is the last node (
+            - code [ref=f1e2861]: tail
+            - text: )?
+            - code [ref=f1e2862]: //Score 5
+          - paragraph [ref=f1e2863]:
+            - strong [ref=f1e2864]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2865]:
+              - text: (ใน Doubly Linked List แต่ละโหนดจะมีทั้ง pointer
+              - code [ref=f1e2866]: next
+              - text: และ
+              - code [ref=f1e2867]: prev
+              - text: จงเขียนคำสั่ง 4 บรรทัดในการแทรกโหนดใหม่
+              - code [ref=f1e2868]: new_node
+              - text: ต่อท้ายโหนด
+              - code [ref=f1e2869]: curr
+              - text: และต้องดักเงื่อนไขพิเศษอะไรหาก
+              - code [ref=f1e2870]: curr
+              - text: เป็นโหนดสุดท้ายของลิสต์)
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e2871]
+          - generic [ref=f1e2872]:
+            - generic [ref=f1e2873]:
+              - generic [ref=f1e2874]: python
+              - generic [ref=f1e2875]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e2876] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e2877] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f1e2878] [cursor=pointer]
+            - code [ref=f1e2880]: "# 4 บรรทัดในการเชื่อมโยง Pointer new_node.next = curr.next new_node.prev = curr if curr.next is not None: curr.next.prev = new_node curr.next = new_node # กรณีพิเศษ: หาก curr เป็นโหนดสุดท้าย (curr.next is None) # ไม่ต้องอัปเดต curr.next.prev และต้องอัปเดต pointer tail = new_node"
+          - separator [ref=f1e2881]
+          - 'heading "Part 2: Stack & Queue + Special Cases of Queues (10 คะแนน)" [level=2] [ref=f1e2882]'
+          - heading [level=3] [ref=f1e2883]:
+            - text: "ข้อ 2.1: Special Boundary Cases of Queue ADT (5 คะแนน)"
+            - emphasis [ref=f1e2884]: (เจาะลึกจากชีทบทเรียน)
+          - paragraph [ref=f1e2885]:
+            - strong [ref=f1e2886]: "Question (EN):"
+            - text: When we implement a
+            - strong [ref=f1e2887]: Circular Array Queue
+            - text: with capacity
+            - generic [ref=f1e2889]:
+              - math [ref=f1e2891]:
+                - generic [ref=f1e2893]:
+                  - generic [ref=f1e2894]: "N"
+                  - generic [ref=f1e2895]: =
+                  - generic [ref=f1e2896]: "5"
+              - generic [ref=f1e2897]:
+                - generic [ref=f1e2898]: N =
+                - generic [ref=f1e2899]: "5"
+            - text: ", there are critical boundary/special cases that must be handled. Write at least"
+            - strong [ref=f1e2900]: 3 special cases
+            - text: with method call examples and explain why each occurs.
+            - code [ref=f1e2901]: //Score 5
+          - paragraph [ref=f1e2902]:
+            - strong [ref=f1e2903]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2904]:
+              - text: (เมื่อเราสร้าง Circular Array Queue ขนาดความจุ
+              - generic [ref=f1e2906]:
+                - math [ref=f1e2908]:
+                  - generic [ref=f1e2910]:
+                    - generic [ref=f1e2911]: "N"
+                    - generic [ref=f1e2912]: =
+                    - generic [ref=f1e2913]: "5"
+                - generic [ref=f1e2914]:
+                  - generic [ref=f1e2915]: N =
+                  - generic [ref=f1e2916]: "5"
+              - text: มีกรณีพิเศษ (Special Cases) ที่ต้องจัดการอย่างน้อย 3 กรณี จงยกตัวอย่าง Method Call และอธิบายเหตุผลอย่างละเอียด)
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e2917]
+          - list [ref=f1e2918]:
+            - listitem [ref=f1e2919]:
+              - strong [ref=f1e2920]:
+                - text: Queue Underflow (
+                - code [ref=f1e2921]: deQueue()
+                - text: "บน Queue ว่าง):"
+              - list [ref=f1e2922]:
+                - listitem [ref=f1e2923]:
+                  - emphasis [ref=f1e2924]: "ตัวอย่าง:"
+                  - code [ref=f1e2925]: q = Queue(5)
+                  - text: ", เรียก"
+                  - code [ref=f1e2926]: q.deQueue()
+                  - text: ขณะ
+                  - code [ref=f1e2927]: q.isEmpty()
+                  - text: เป็นจริง
+                - listitem [ref=f1e2928]:
+                  - emphasis [ref=f1e2929]: "คำอธิบาย:"
+                  - text: ไม่มีข้อมูลให้ออก การเข้าถึงอาเรย์จะผิดพลาด ต้องดัก
+                  - code [ref=f1e2930]: "if self.isEmpty(): return None"
+            - listitem [ref=f1e2931]:
+              - strong [ref=f1e2932]:
+                - text: Queue Overflow (
+                - code [ref=f1e2933]: enQueue()
+                - text: "บน Queue เต็ม):"
+              - list [ref=f1e2934]:
+                - listitem [ref=f1e2935]:
+                  - emphasis [ref=f1e2936]: "ตัวอย่าง:"
+                  - text: คิวมีสมาชิกครบ 5 ตัวแล้วเรียก
+                  - code [ref=f1e2937]: q.enQueue(99)
+                - listitem [ref=f1e2938]:
+                  - emphasis [ref=f1e2939]: "คำอธิบาย:"
+                  - text: ใน Circular Queue หากขนาดเต็มแล้วไม่ตรวจ
+                  - code [ref=f1e2940]: (rear + 1) % limit == front
+                  - text: การ enQueue จะไปเขียนทับข้อมูลเดิมที่หัวแถว (Front)
+            - listitem [ref=f1e2941]:
+              - strong [ref=f1e2942]: "Pointer Wrap-Around (การวนกลับของ Index):"
+              - list [ref=f1e2943]:
+                - listitem [ref=f1e2944]:
+                  - emphasis [ref=f1e2945]: "ตัวอย่าง:"
+                  - code [ref=f1e2946]: rear
+                  - text: อยู่ที่ index 4 (ท้ายอาเรย์) แต่ด้านหน้า index 0 ว่างจากการ deQueue
+                - listitem [ref=f1e2947]:
+                  - emphasis [ref=f1e2948]: "คำอธิบาย:"
+                  - text: ต้องคำนวณตำแหน่งใหม่ด้วยสูตร
+                  - code [ref=f1e2949]: rear = (rear + 1) % limit
+                  - text: เพื่อวนกลับมาชี้ index 0 ป้องกันไม่ให้ index หลุดขอบ
+          - separator [ref=f1e2950]
+          - 'heading "ข้อ 2.2: Queue to Stack Transformation (5 คะแนน)" [level=3] [ref=f1e2951]'
+          - paragraph [ref=f1e2952]:
+            - strong [ref=f1e2953]: "Question (EN):"
+            - text: Given an existing Queue
+            - code [ref=f1e2954]: q
+            - text: containing
+            - code [ref=f1e2955]: "[10, 20, 30, 40, 50]"
+            - text: "(Front: 10, Rear: 50). Write statements in"
+            - code [ref=f1e2956]: main
+            - text: program to remove element
+            - code [ref=f1e2957]: "30"
+            - text: and leave
+            - code [ref=f1e2958]: q = [10, 20, 40, 50]
+            - text: using only Queue methods and rotation technique.
+            - code [ref=f1e2959]: //Score 5
+          - paragraph [ref=f1e2960]:
+            - strong [ref=f1e2961]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2962]:
+              - text: (กำหนด Queue
+              - code [ref=f1e2963]: q
+              - text: มีข้อมูล
+              - code [ref=f1e2964]: "[10, 20, 30, 40, 50]"
+              - text: จงเขียนประโยคคำสั่งเพื่อลบเลข
+              - code [ref=f1e2965]: "30"
+              - text: ออกโดยใช้เทคนิค Rotation ของ Queue ให้เหลือ
+              - code [ref=f1e2966]: "[10, 20, 40, 50]"
+              - text: )
+          - heading "💡 เฉลยแบบเขียนทีละบรรทัด (ไม่ใช้ while):" [level=4] [ref=f1e2967]
+          - generic [ref=f1e2968]:
+            - generic [ref=f1e2969]:
+              - generic [ref=f1e2970]: python
+              - generic [ref=f1e2971]:
+                - button "▶ รันโค้ดทันที (Run Live)" [ref=f1e2972] [cursor=pointer]
+                - button "🔬 เปิดใน Lab ใหญ่" [ref=f1e2973] [cursor=pointer]
+                - button "📋 คัดลอก" [ref=f1e2974] [cursor=pointer]
+            - code [ref=f1e2976]: "# หมุน 10 และ 20 ไปต่อท้าย q.enQueue(q.deQueue()) # [20, 30, 40, 50, 10] q.enQueue(q.deQueue()) # [30, 40, 50, 10, 20] # DeQueue 30 ออกมาทิ้ง q.deQueue() # [40, 50, 10, 20] # หมุน 40, 50 ไปต่อท้ายเพื่อให้ 10 กลับมาอยู่หัวแถวตามเดิม q.enQueue(q.deQueue()) # [50, 10, 20, 40] q.enQueue(q.deQueue()) # [10, 20, 40, 50] (สำเร็จ)"
+          - separator [ref=f1e2977]
+          - 'heading "Part 3: BST Delete Recursive Tracing & Tree Reconstruction (15 คะแนน)" [level=2] [ref=f1e2978]'
+          - 'heading "ข้อ 3.1: Recursive Deletion Step Tracing (Case: 2 Children) (8 คะแนน)" [level=3] [ref=f1e2979]'
+          - paragraph [ref=f1e2980]:
+            - strong [ref=f1e2981]: "Question (EN):"
+            - text: Given a Binary Search Tree with nodes
+            - code [ref=f1e2982]: "[50, 30, 70, 20, 40, 60, 80, 35]"
+            - text: . Trace the recursive execution steps of
+            - code [ref=f1e2983]: _delete_recursive(current_node, 30)
+            - text: when deleting node
+            - code [ref=f1e2984]: "30"
+            - text: "(which has 2 children: left child 20, right child 40 with left child 35). Write the trace table."
+            - code [ref=f1e2985]: //Score 8
+          - paragraph [ref=f1e2986]:
+            - strong [ref=f1e2987]: "(คำแปลไทย):"
+            - emphasis [ref=f1e2988]:
+              - text: (กำหนด BST ที่มีโหนด
+              - code [ref=f1e2989]: "[50, 30, 70, 20, 40, 60, 80, 35]"
+              - text: จง Trace ขั้นตอนการทำงานเมื่อเรียกคำสั่งลบโหนด
+              - code [ref=f1e2990]: "30"
+              - text: ซึ่งเป็นกรณีที่มีลูก 2 ข้าง (Two Children) โดยต้องหา In-order Successor จาก subtree ขวา)
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e2991]
+          - table [ref=f1e2993]:
+            - rowgroup [ref=f1e2994]:
+              - row [ref=f1e2995]:
+                - columnheader "Call ครั้งที่" [ref=f1e2996]
+                - columnheader [ref=f1e2997]:
+                  - code [ref=f1e2998]: current_node.value
+                - columnheader [ref=f1e2999]:
+                  - code [ref=f1e3000]: value
+                - columnheader "เงื่อนไขที่เข้า" [ref=f1e3001]
+                - columnheader "การกระทำที่เกิดขึ้น (Executed Action)" [ref=f1e3002]
+            - rowgroup [ref=f1e3003]:
+              - row [ref=f1e3004]:
+                - cell [ref=f1e3005]:
+                  - strong [ref=f1e3006]: "1"
+                - cell [ref=f1e3007]:
+                  - code [ref=f1e3008]: "50"
+                - cell [ref=f1e3009]:
+                  - code [ref=f1e3010]: "30"
+                - cell [ref=f1e3011]:
+                  - code [ref=f1e3012]: 30 < 50
+                  - text: is
+                  - code [ref=f1e3013]: "True"
+                - cell [ref=f1e3014]:
+                  - code [ref=f1e3015]: current_node.left = self._delete_recursive(current_node.left, 30)
+              - row [ref=f1e3016]:
+                - cell [ref=f1e3017]:
+                  - strong [ref=f1e3018]: "2"
+                - cell [ref=f1e3019]:
+                  - code [ref=f1e3020]: "30"
+                - cell [ref=f1e3021]:
+                  - code [ref=f1e3022]: "30"
+                - cell [ref=f1e3023]:
+                  - code [ref=f1e3024]: 30 == 30
+                  - text: (2 children)
+                - cell [ref=f1e3025]:
+                  - text: หา min ของกิ่งขวาได้
+                  - code [ref=f1e3026]: "35"
+                  - text: ", แทนค่า"
+                  - code [ref=f1e3027]: current_node.value = 35
+                  - text: ", สั่ง"
+                  - code [ref=f1e3028]: current_node.right = self._delete_recursive(current_node.right, 35)
+              - row [ref=f1e3029]:
+                - cell [ref=f1e3030]:
+                  - strong [ref=f1e3031]: "3"
+                - cell [ref=f1e3032]:
+                  - code [ref=f1e3033]: "40"
+                - cell [ref=f1e3034]:
+                  - code [ref=f1e3035]: "35"
+                - cell [ref=f1e3036]:
+                  - code [ref=f1e3037]: 35 < 40
+                  - text: is
+                  - code [ref=f1e3038]: "True"
+                - cell [ref=f1e3039]:
+                  - code [ref=f1e3040]: current_node.left = self._delete_recursive(current_node.left, 35)
+              - row [ref=f1e3041]:
+                - cell [ref=f1e3042]:
+                  - strong [ref=f1e3043]: "4"
+                - cell [ref=f1e3044]:
+                  - code [ref=f1e3045]: "35"
+                - cell [ref=f1e3046]:
+                  - code [ref=f1e3047]: "35"
+                - cell [ref=f1e3048]:
+                  - code [ref=f1e3049]: 35 == 35
+                  - text: (Leaf Node)
+                - cell [ref=f1e3050]:
+                  - text: คืนค่า
+                  - code [ref=f1e3051]: None
+                  - text: เพื่อตัดโหนด 35 เดิมทิ้ง
+          - separator [ref=f1e3052]
+          - 'heading "ข้อ 3.2: Reconstructing BST from Post-order & In-order (7 คะแนน)" [level=3] [ref=f1e3053]'
+          - paragraph [ref=f1e3054]:
+            - strong [ref=f1e3055]: "Question (EN):"
+            - text: "Given traversal results of a Binary Search Tree:"
+          - list [ref=f1e3056]:
+            - listitem [ref=f1e3057]:
+              - strong [ref=f1e3058]: "Post-order:"
+              - code [ref=f1e3059]: 8, 24, 16, 42, 60, 55, 32
+            - listitem [ref=f1e3060]:
+              - strong [ref=f1e3061]: "In-order:"
+              - code [ref=f1e3062]: 8, 16, 24, 32, 42, 55, 60
+          - list [ref=f1e3063]:
+            - listitem [ref=f1e3064]: Draw the complete Binary Search Tree.
+            - listitem [ref=f1e3065]:
+              - text: Write its
+              - strong [ref=f1e3066]: Pre-order Traversal
+              - text: .
+              - code [ref=f1e3067]: //Score 7
+          - paragraph [ref=f1e3068]:
+            - strong [ref=f1e3069]: "(คำแปลไทย):"
+            - emphasis [ref=f1e3070]: (กำหนดผลการเดินท่องแบบ Post-order และ In-order จงวาดรูป Binary Search Tree และเขียนผลลัพธ์แบบ Pre-order Traversal)
+          - heading "💡 เฉลยรูป Binary Search Tree (Root คือตัวท้ายสุดของ Post-order = 32):" [level=4] [ref=f1e3071]
+          - generic [ref=f1e3072]:
+            - generic [ref=f1e3073]:
+              - generic [ref=f1e3074]: text
+              - button "📋 คัดลอก" [ref=f1e3076] [cursor=pointer]
+            - code [ref=f1e3078]: 32 / \ 16 55 / \ / \ 8 24 42 60
+          - paragraph [ref=f1e3079]:
+            - strong [ref=f1e3080]:
+              - text: Pre-order Traversal (Root
+              - generic [ref=f1e3082]:
+                - math [ref=f1e3084]:
+                  - generic [ref=f1e3085]: →
+                - generic [ref=f1e3088]: →
+              - text: Left
+              - generic [ref=f1e3091]:
+                - math [ref=f1e3093]:
+                  - generic [ref=f1e3094]: →
+                - generic [ref=f1e3097]: →
+              - text: "Right):"
+            - code [ref=f1e3099]: 32, 16, 8, 24, 55, 42, 60
+          - separator [ref=f1e3100]
+          - 'heading "Part 4: Expression Tree, Infix-Postfix & Traversals (15 คะแนน)" [level=2] [ref=f1e3101]'
+          - 'heading "ข้อ 4.1: Convert Infix to Postfix with Stack Table (8 คะแนน)" [level=3] [ref=f1e3102]'
+          - paragraph [ref=f1e3103]:
+            - strong [ref=f1e3104]: "Question (EN):"
+            - text: "Trace the Operator Stack for converting:"
+            - code [ref=f1e3105]: (A + B * C) / (D - E ^ F)
+            - text: to Postfix.
+            - code [ref=f1e3106]: //Score 8
+          - paragraph [ref=f1e3107]:
+            - strong [ref=f1e3108]: "(คำแปลไทย):"
+            - emphasis [ref=f1e3109]:
+              - text: (จง Trace ขั้นตอนของ Operator Stack ในการแปลง
+              - code [ref=f1e3110]: (A + B * C) / (D - E ^ F)
+              - text: ให้เป็น Postfix)
+          - heading "💡 เฉลยและวิธีคิด (Solution):" [level=4] [ref=f1e3111]
+          - list [ref=f1e3112]:
+            - listitem [ref=f1e3113]:
+              - strong [ref=f1e3114]: "Postfix Expression ผลลัพธ์:"
+              - code [ref=f1e3115]: A B C * + D E F ^ - /
+          - separator [ref=f1e3116]
+          - 'heading "ข้อ 4.2: Expression Tree Construction & Multi-traversal (7 คะแนน)" [level=3] [ref=f1e3117]'
+          - paragraph [ref=f1e3118]:
+            - strong [ref=f1e3119]: "Question (EN):"
+            - text: "Given numeric Postfix:"
+            - code [ref=f1e3120]: 12 4 / 5 2 * + 7 -
+          - list [ref=f1e3121]:
+            - listitem [ref=f1e3122]: Draw the Expression Tree.
+            - listitem [ref=f1e3123]:
+              - text: Evaluate the numerical result.
+              - code [ref=f1e3124]: //Score 7
+          - paragraph [ref=f1e3125]:
+            - strong [ref=f1e3126]: "(คำแปลไทย):"
+            - emphasis [ref=f1e3127]:
+              - text: "(กำหนด Postfix:"
+              - code [ref=f1e3128]: 12 4 / 5 2 * + 7 -
+              - text: จงวาด Expression Tree และคำนวณผลลัพธ์)
+          - heading "💡 เฉลยรูป Expression Tree และการคำนวณ:" [level=4] [ref=f1e3129]
+          - generic [ref=f1e3130]:
+            - generic [ref=f1e3131]:
+              - generic [ref=f1e3132]: text
+              - button "📋 คัดลอก" [ref=f1e3134] [cursor=pointer]
+            - code [ref=f1e3136]: "- / \\ + 7 / \\ / * / \\ / \\ 12 4 5 2"
+          - paragraph [ref=f1e3137]:
+            - strong [ref=f1e3138]: "การคำนวณ:"
+            - generic [ref=f1e3140]:
+              - math [ref=f1e3142]:
+                - generic [ref=f1e3144]:
+                  - generic [ref=f1e3145]: (
+                  - generic [ref=f1e3146]: "12"
+                  - generic [ref=f1e3147]: /
+                  - generic [ref=f1e3148]: "4"
+                  - generic [ref=f1e3149]: )
+                  - generic [ref=f1e3150]: +
+                  - generic [ref=f1e3151]: (
+                  - generic [ref=f1e3152]: "5"
+                  - generic [ref=f1e3153]: ×
+                  - generic [ref=f1e3154]: "2"
+                  - generic [ref=f1e3155]: )
+                  - generic [ref=f1e3156]: −
+                  - generic [ref=f1e3157]: "7"
+                  - generic [ref=f1e3158]: =
+                  - generic [ref=f1e3159]: "3"
+                  - generic [ref=f1e3160]: +
+                  - generic [ref=f1e3161]: "10"
+                  - generic [ref=f1e3162]: −
+                  - generic [ref=f1e3163]: "7"
+                  - generic [ref=f1e3164]: =
+                  - generic [ref=f1e3165]: "6"
+              - generic [ref=f1e3166]:
+                - generic [ref=f1e3167]: (12/4) +
+                - generic [ref=f1e3168]: (5 ×
+                - generic [ref=f1e3169]: 2) −
+                - generic [ref=f1e3170]: 7 =
+                - generic [ref=f1e3171]: 3 +
+                - generic [ref=f1e3172]: 10 −
+                - generic [ref=f1e3173]: 7 =
+                - generic [ref=f1e3174]: "6"
+          - separator [ref=f1e3175]
+          - 'heading "Part 5: หลักการอะไรเอ่ยชุดเก็ง (10 คะแนน)" [level=2] [ref=f1e3176]'
+          - list [ref=f1e3177]:
+            - listitem [ref=f1e3178]:
+              - strong [ref=f1e3179]: "(2.5 คะแนน) Worst-case BST vs Balanced BST:"
+              - text: ทำไม Binary Search Tree ในกรณีแย่สุด (Worst Case เช่น ข้อมูลเรียงลำดับมาล่วงหน้า
+              - code [ref=f1e3180]: 1, 2, 3, 4, 5
+              - text: ) ถึงมี Search Complexity เป็น
+              - generic [ref=f1e3182]:
+                - math [ref=f1e3184]:
+                  - generic [ref=f1e3186]:
+                    - generic [ref=f1e3187]: O
+                    - generic [ref=f1e3188]: (
+                    - generic [ref=f1e3189]: "n"
+                    - generic [ref=f1e3190]: )
+                - generic [ref=f1e3191]: O(n)
+              - text: แทนที่จะเป็น
+              - generic [ref=f1e3194]:
+                - math [ref=f1e3196]:
+                  - generic [ref=f1e3198]:
+                    - generic [ref=f1e3199]: O
+                    - generic [ref=f1e3200]: (
+                    - generic [ref=f1e3201]: log
+                    - generic: ⁡
+                    - generic [ref=f1e3202]: "n"
+                    - generic [ref=f1e3203]: )
+                - generic [ref=f1e3205]:
+                  - text: O(
+                  - generic [ref=f1e3206]: log
+                  - text: n)
+              - text: "?👉"
+              - strong [ref=f1e3207]: "เฉลย:"
+              - text: เพราะ Tree จะเอียงไปข้างเดียวกลายเป็นเส้นตรง (Degenerate / Skewed Tree) ทำให้โครงสร้างกลายสภาพเหมือน Singly Linked List
+            - listitem [ref=f1e3208]:
+              - strong [ref=f1e3209]: "(2.5 คะแนน) Circular Queue Modulo:"
+              - text: ทำไม Circular Queue ต้องใช้สูตร
+              - code [ref=f1e3210]: (rear + 1) % capacity
+              - text: "?👉"
+              - strong [ref=f1e3211]: "เฉลย:"
+              - text: เพื่อให้ Pointer สามารถวนกลับ (Wrap-around) ไปใช้พื้นที่ว่างด้านหน้า index 0 เมื่อ rear เดินจนสุดความจุอาเรย์
+            - listitem [ref=f1e3212]:
+              - strong [ref=f1e3213]: "(2.5 คะแนน) Infix vs Postfix Evaluation:"
+              - text: ทำไมระบบคอมพิวเตอร์จึงนิยมแปลง Infix เป็น Postfix ก่อนคำนวณ?👉
+              - strong [ref=f1e3214]: "เฉลย:"
+              - text: เพราะ Postfix ไม่ต้องใช้วงเล็บ และไม่มีความคลุมเครือเรื่องลำดับความสำคัญของเครื่องหมาย (Operator Precedence) สามารถใช้ Stack คำนวณในรอบเดียวได้ทันทีแบบ
+              - generic [ref=f1e3216]:
+                - math [ref=f1e3218]:
+                  - generic [ref=f1e3220]:
+                    - generic [ref=f1e3221]: O
+                    - generic [ref=f1e3222]: (
+                    - generic [ref=f1e3223]: "n"
+                    - generic [ref=f1e3224]: )
+                - generic [ref=f1e3225]: O(n)
+            - listitem [ref=f1e3227]:
+              - strong [ref=f1e3228]: "(2.5 คะแนน) Quadratic Probing vs Linear Probing:"
+              - text: ใน Open Addressing วิธี Quadratic Probing แก้ปัญหา Primary Clustering ของ Linear Probing อย่างไร?👉
+              - strong [ref=f1e3229]: "เฉลย:"
+              - text: Linear Probing เลื่อนทีละ 1 (
+              - generic [ref=f1e3231]:
+                - math [ref=f1e3233]:
+                  - generic [ref=f1e3235]:
+                    - generic [ref=f1e3236]: +
+                    - generic [ref=f1e3237]: "1"
+                    - generic [ref=f1e3238]: ","
+                    - generic [ref=f1e3239]: +
+                    - generic [ref=f1e3240]: "2"
+                    - generic [ref=f1e3241]: ","
+                    - generic [ref=f1e3242]: +
+                    - generic [ref=f1e3243]: "3"
+                - generic [ref=f1e3244]: +1, +2, +3
+              - text: ) ทำให้เกิดการเกาะกลุ่มเป็นก้อนยาว (Primary Clustering), Quadratic Probing จึงเลื่อนแบบกำลังสอง (
+              - generic [ref=f1e3247]:
+                - math [ref=f1e3249]:
+                  - generic [ref=f1e3251]:
+                    - generic [ref=f1e3252]: +
+                    - generic [ref=f1e3253]:
+                      - generic [ref=f1e3254]: "1"
+                      - generic [ref=f1e3255]: "2"
+                    - generic [ref=f1e3256]: ","
+                    - generic [ref=f1e3257]: +
+                    - generic [ref=f1e3258]:
+                      - generic [ref=f1e3259]: "2"
+                      - generic [ref=f1e3260]: "2"
+                    - generic [ref=f1e3261]: ","
+                    - generic [ref=f1e3262]: +
+                    - generic [ref=f1e3263]:
+                      - generic [ref=f1e3264]: "3"
+                      - generic [ref=f1e3265]: "2"
+                    - generic [ref=f1e3266]: ","
+                    - generic [ref=f1e3267]: .
+                    - generic [ref=f1e3268]: .
+                    - generic [ref=f1e3269]: .
+                - generic [ref=f1e3271]:
+                  - text: +
+                  - generic [ref=f1e3272]:
+                    - text: "1"
+                    - generic [ref=f1e3273]: "2"
+                  - text: ", +"
+                  - generic [ref=f1e3278]:
+                    - text: "2"
+                    - generic [ref=f1e3279]: "2"
+                  - text: ", +"
+                  - generic [ref=f1e3284]:
+                    - text: "3"
+                    - generic [ref=f1e3285]: "2"
+                  - text: ", ..."
+              - text: ) เพื่อกระจายข้อมูลให้ห่างออกจากจุดที่ชนกัน
+          - separator [ref=f1e3290]
+          - 'heading "Part 6: คำถามย่อย & Code Tracing ชุดเก็ง (10 คะแนน)" [level=2] [ref=f1e3291]'
+          - 'heading "ข้อ 6.1: Recursive Binary Tree Count Nodes (5 คะแนน)" [level=3] [ref=f1e3292]'
+          - paragraph [ref=f1e3293]:
+            - strong [ref=f1e3294]: "Question (EN):"
+            - text: Trace return value of
+            - code [ref=f1e3295]: count_nodes(root)
+            - text: "for Tree with Root 10 (left: 5 with right: 7, right: 15)."
+            - code [ref=f1e3296]: //Score 5
+            - strong [ref=f1e3297]: "(คำแปลไทย):"
+            - emphasis [ref=f1e3298]: (จง Trace การนับจำนวนโหนดของ Tree)
+            - text: 👉
+            - strong [ref=f1e3299]: "เฉลย:"
+            - text: Root (1) + Left Subtree (2 โหนด) + Right Subtree (1 โหนด)
+            - generic [ref=f1e3301]:
+              - math [ref=f1e3303]:
+                - generic [ref=f1e3305]:
+                  - generic [ref=f1e3306]: =
+                  - generic [ref=f1e3307]: "1"
+                  - generic [ref=f1e3308]: +
+                  - generic [ref=f1e3309]: "2"
+                  - generic [ref=f1e3310]: +
+                  - generic [ref=f1e3311]: "1"
+                  - generic [ref=f1e3312]: =
+                  - generic [ref=f1e3313]: "4"
+              - generic [ref=f1e3314]:
+                - generic [ref=f1e3315]: =
+                - generic [ref=f1e3316]: 1 +
+                - generic [ref=f1e3317]: 2 +
+                - generic [ref=f1e3318]: 1 =
+                - generic [ref=f1e3319]: "4"
+          - separator [ref=f1e3320]
+          - 'heading "ข้อ 6.2: Hash Collision with Quadratic Probing Tracing (5 คะแนน)" [level=3] [ref=f1e3321]'
+          - paragraph [ref=f1e3322]:
+            - strong [ref=f1e3323]: "Question (EN):"
+            - text: Insert keys
+            - code [ref=f1e3324]: 11, 18, 25
+            - text: into Table size 7 using Quadratic Probing (
+            - generic [ref=f1e3326]:
+              - math [ref=f1e3328]:
+                - generic [ref=f1e3330]:
+                  - generic [ref=f1e3331]: h
+                  - generic [ref=f1e3332]: (
+                  - generic [ref=f1e3333]: k
+                  - generic [ref=f1e3334]: )
+                  - generic [ref=f1e3335]: =
+                  - generic [ref=f1e3336]: k
+                  - generic [ref=f1e3337]: (
+                  - generic [ref=f1e3338]:
+                    - generic [ref=f1e3339]: m
+                    - generic [ref=f1e3340]: o
+                    - generic [ref=f1e3341]: d
+                  - generic [ref=f1e3342]: "7"
+                  - generic [ref=f1e3343]: )
+              - generic [ref=f1e3344]:
+                - generic [ref=f1e3345]: h(k) =
+                - generic [ref=f1e3346]: k
+                - generic [ref=f1e3347]:
+                  - text: (
+                  - generic [ref=f1e3348]: mod
+                  - text: 7)
+            - text: ).
+            - code [ref=f1e3350]: //Score 5
+            - strong [ref=f1e3351]: "(คำแปลไทย):"
+            - emphasis [ref=f1e3352]: (จงแทรกข้อมูล 11, 18, 25 ลงตารางขนาด 7 ช่องด้วยวิธี Quadratic Probing)
+            - text: 👉
+            - strong [ref=f1e3353]: "เฉลยผลลัพธ์ตาราง:"
+            - code [ref=f1e3354]: "Index 0: None"
+            - text: "|"
+            - code [ref=f1e3355]: "Index 1: 25"
+            - text: "|"
+            - code [ref=f1e3356]: "Index 2: None"
+            - text: "|"
+            - code [ref=f1e3357]: "Index 3: None"
+            - text: "|"
+            - code [ref=f1e3358]: "Index 4: 11"
+            - text: "|"
+            - code [ref=f1e3359]: "Index 5: 18"
+            - text: "|"
+            - code [ref=f1e3360]: "Index 6: None"
+        - generic [ref=f1e504]:
+          - link "← บทก่อนหน้า 🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)" [ref=f1e3361] [cursor=pointer]:
+            - /url: "#/11.6%20-%20Final%20Exam%20Real%20Classroom%20Prep%20%26%20Solutions"
+            - generic [ref=f1e3362]: ← บทก่อนหน้า
+            - generic [ref=f1e3363]: 🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)
+          - link "บทถัดไป → 🎯 ข้อสอบเก็ง Predicted Midterm 2026" [ref=f1e3364] [cursor=pointer]:
+            - /url: "#/11.2%20-%20Predicted%20Midterm%20Exam%202026%20Comprehensive"
+            - generic [ref=f1e3365]: บทถัดไป →
+            - generic [ref=f1e3366]: 🎯 ข้อสอบเก็ง Predicted Midterm 2026
+    - complementary [ref=f1e509]:
+      - generic [ref=f1e510]: สารบัญในหน้านี้
+      - list [ref=f1e511]:
+        - listitem [ref=f1e3367]:
+          - link "📑 สารบัญ (Table of Contents)" [ref=f1e3368] [cursor=pointer]:
+            - /url: "#-สารบัญ-table-of-contents"
+        - listitem [ref=f1e3369]:
+          - 'link "🌟 ชุดที่ 1: ข้อสอบกลางภาคฉบับจริง (Real Midterm Exam)" [ref=f1e3370] [cursor=pointer]':
+            - /url: "#-ชุดที่-1-ข้อสอบกลางภาคฉบับจริง-real-midterm-exam"
+        - listitem [ref=f1e3371]:
+          - 'link "Part 1: Singly Linked List (10 คะแนน)" [ref=f1e3372] [cursor=pointer]':
+            - /url: "#part-1-singly-linked-list-10-คะแนน"
+        - listitem [ref=f1e3373]:
+          - 'link "ข้อ 1: Main Program Statement Manipulation (5 คะแนน) (ตรงตามรูปข้อสอบจริง jpg)" [ref=f1e3374] [cursor=pointer]':
+            - /url: "#ข้อ-11-main-program-statement-manipulation-5-คะแนน-ตรงตามรูปข้อสอบจริง-412jpg"
+        - listitem [ref=f1e3375]:
+          - 'link "ข้อ 2: Special Cases in Linked List (5 คะแนน) (ตรงตามรูปข้อสอบจริง jpg)" [ref=f1e3376] [cursor=pointer]':
+            - /url: "#ข้อ-12-special-cases-in-linked-list-5-คะแนน-ตรงตามรูปข้อสอบจริง-415jpg"
+        - listitem [ref=f1e3377]:
+          - 'link "Part 2: Stack & Queue Manipulation (10 คะแนน) (ตรงตามรูป Screenshot)" [ref=f1e3378] [cursor=pointer]':
+            - /url: "#part-2-stack-queue-manipulation-10-คะแนน-ตรงตามรูป-screenshot"
+        - listitem [ref=f1e3379]:
+          - 'link "ข้อ 1: Delete Elements from Stack using Queue (10 คะแนน)" [ref=f1e3380] [cursor=pointer]':
+            - /url: "#ข้อ-21-delete-elements-from-stack-using-queue-10-คะแนน"
+        - listitem [ref=f1e3381]:
+          - 'link "Part 3: Binary Search Tree (15 คะแนน)" [ref=f1e3382] [cursor=pointer]':
+            - /url: "#part-3-binary-search-tree-15-คะแนน"
+        - listitem [ref=f1e3383]:
+          - 'link "ข้อ 1: Recursive Step Tracing Table (8 คะแนน)" [ref=f1e3384] [cursor=pointer]':
+            - /url: "#ข้อ-31-recursive-step-tracing-table-8-คะแนน"
+        - listitem [ref=f1e3385]:
+          - 'link "ข้อ 2: Tree Reconstruction from Traversals (7 คะแนน)" [ref=f1e3386] [cursor=pointer]':
+            - /url: "#ข้อ-32-tree-reconstruction-from-traversals-7-คะแนน"
+        - listitem [ref=f1e3387]:
+          - 'link "Part 4: Expression Tree (15 คะแนน)" [ref=f1e3388] [cursor=pointer]':
+            - /url: "#part-4-expression-tree-15-คะแนน"
+        - listitem [ref=f1e3389]:
+          - 'link "ข้อ 1: Infix to Postfix Conversion (8 คะแนน)" [ref=f1e3390] [cursor=pointer]':
+            - /url: "#ข้อ-41-infix-to-postfix-conversion-8-คะแนน"
+        - listitem [ref=f1e3391]:
+          - 'link "ข้อ 2: Expression Tree Drawing & Numerical Evaluation (7 คะแนน)" [ref=f1e3392] [cursor=pointer]':
+            - /url: "#ข้อ-42-expression-tree-drawing-numerical-evaluation-7-คะแนน"
+        - listitem [ref=f1e3393]:
+          - 'link "Part 5: หลักการอะไรเอ่ย (10 คะแนน)" [ref=f1e3394] [cursor=pointer]':
+            - /url: "#part-5-หลักการอะไรเอ่ย-10-คะแนน"
+        - listitem [ref=f1e3395]:
+          - 'link "Part 6: Hash Table & Python Tracing (10 คะแนน)" [ref=f1e3396] [cursor=pointer]':
+            - /url: "#part-6-hash-table-python-tracing-10-คะแนน"
+        - listitem [ref=f1e3397]:
+          - 'link "ข้อ 1: Hash Table & Memory Allocation (5 คะแนน) (ตรงตามรูปโปรเจกเตอร์ jpg)" [ref=f1e3398] [cursor=pointer]':
+            - /url: "#ข้อ-61-hash-table-memory-allocation-5-คะแนน-ตรงตามรูปโปรเจกเตอร์-411jpg"
+        - listitem [ref=f1e3399]:
+          - 'link "ข้อ 2: Python Recursive Output Tracing (5 คะแนน)" [ref=f1e3400] [cursor=pointer]':
+            - /url: "#ข้อ-62-python-recursive-output-tracing-5-คะแนน"
+        - listitem [ref=f1e3401]:
+          - 'link "🚀 ชุดที่ 2: เก็งข้อสอบกลางภาคชุดใหม่ (Predicted Midterm Exam)" [ref=f1e3402] [cursor=pointer]':
+            - /url: "#-ชุดที่-2-เก็งข้อสอบกลางภาคชุดใหม่-predicted-midterm-exam"
+        - listitem [ref=f1e3403]:
+          - 'link "Part 1: Linked List Operations & Edge Cases (10 คะแนน)" [ref=f1e3404] [cursor=pointer]':
+            - /url: "#part-1-linked-list-operations-edge-cases-10-คะแนน"
+        - listitem [ref=f1e3405]:
+          - 'link "ข้อ 1: Insert and Delete in Singly Linked List (5 คะแนน)" [ref=f1e3406] [cursor=pointer]':
+            - /url: "#ข้อ-11-insert-and-delete-in-singly-linked-list-5-คะแนน"
+        - listitem [ref=f1e3407]:
+          - 'link "ข้อ 2: Doubly Linked List vs Singly Linked List Edge Cases (5 คะแนน)" [ref=f1e3408] [cursor=pointer]':
+            - /url: "#ข้อ-12-doubly-linked-list-vs-singly-linked-list-edge-cases-5-คะแนน"
+        - listitem [ref=f1e3409]:
+          - 'link "Part 2: Stack & Queue + Special Cases of Queues (10 คะแนน)" [ref=f1e3410] [cursor=pointer]':
+            - /url: "#part-2-stack-queue-special-cases-of-queues-10-คะแนน"
+        - listitem [ref=f1e3411]:
+          - 'link "ข้อ 1: Special Boundary Cases of Queue ADT (5 คะแนน) (เจาะลึกจากชีทบทเรียน)" [ref=f1e3412] [cursor=pointer]':
+            - /url: "#ข้อ-21-special-boundary-cases-of-queue-adt-5-คะแนน-เจาะลึกจากชีทบทเรียน"
+        - listitem [ref=f1e3413]:
+          - 'link "ข้อ 2: Queue to Stack Transformation (5 คะแนน)" [ref=f1e3414] [cursor=pointer]':
+            - /url: "#ข้อ-22-queue-to-stack-transformation-5-คะแนน"
+        - listitem [ref=f1e3415]:
+          - 'link "Part 3: BST Delete Recursive Tracing & Tree Reconstruction (15 คะแนน)" [ref=f1e3416] [cursor=pointer]':
+            - /url: "#part-3-bst-delete-recursive-tracing-tree-reconstruction-15-คะแนน"
+        - listitem [ref=f1e3417]:
+          - 'link "ข้อ 1: Recursive Deletion Step Tracing (Case: 2 Children) (8 คะแนน)" [ref=f1e3418] [cursor=pointer]':
+            - /url: "#ข้อ-31-recursive-deletion-step-tracing-case-2-children-8-คะแนน"
+        - listitem [ref=f1e3419]:
+          - 'link "ข้อ 2: Reconstructing BST from Post-order & In-order (7 คะแนน)" [ref=f1e3420] [cursor=pointer]':
+            - /url: "#ข้อ-32-reconstructing-bst-from-post-order-in-order-7-คะแนน"
+        - listitem [ref=f1e3421]:
+          - 'link "Part 4: Expression Tree, Infix-Postfix & Traversals (15 คะแนน)" [ref=f1e3422] [cursor=pointer]':
+            - /url: "#part-4-expression-tree-infix-postfix-traversals-15-คะแนน"
+        - listitem [ref=f1e3423]:
+          - 'link "ข้อ 1: Convert Infix to Postfix with Stack Table (8 คะแนน)" [ref=f1e3424] [cursor=pointer]':
+            - /url: "#ข้อ-41-convert-infix-to-postfix-with-stack-table-8-คะแนน"
+        - listitem [ref=f1e3425]:
+          - 'link "ข้อ 2: Expression Tree Construction & Multi-traversal (7 คะแนน)" [ref=f1e3426] [cursor=pointer]':
+            - /url: "#ข้อ-42-expression-tree-construction-multi-traversal-7-คะแนน"
+        - listitem [ref=f1e3427]:
+          - 'link "Part 5: หลักการอะไรเอ่ยชุดเก็ง (10 คะแนน)" [ref=f1e3428] [cursor=pointer]':
+            - /url: "#part-5-หลักการอะไรเอ่ยชุดเก็ง-10-คะแนน"
+        - listitem [ref=f1e3429]:
+          - 'link "Part 6: คำถามย่อย & Code Tracing ชุดเก็ง (10 คะแนน)" [ref=f1e3430] [cursor=pointer]':
+            - /url: "#part-6-คำถามย่อย-code-tracing-ชุดเก็ง-10-คะแนน"
+        - listitem [ref=f1e3431]:
+          - 'link "ข้อ 1: Recursive Binary Tree Count Nodes (5 คะแนน)" [ref=f1e3432] [cursor=pointer]':
+            - /url: "#ข้อ-61-recursive-binary-tree-count-nodes-5-คะแนน"
+        - listitem [ref=f1e3433]:
+          - 'link "ข้อ 2: Hash Collision with Quadratic Probing Tracing (5 คะแนน)" [ref=f1e3434] [cursor=pointer]':
+            - /url: "#ข้อ-62-hash-collision-with-quadratic-probing-tracing-5-คะแนน"
+  - generic:
+    - generic:
+      - generic:
+        - textbox "พิมพ์ค้นหา เช่น Linked List, Heap, BST, Big-O, Dijkstra, Midterm..."
+        - button "ESC"
+  - generic:
+    - generic:
+      - generic:
+        - generic: DSA STUDIO
+        - generic: 🔬 แบบจำลองโครงสร้างสถาปัตยกรรม (DSA Studio Fullscreen Inspector)
+      - generic:
+        - button "➖ ย่อ"
+        - button "1:1"
+        - button "➕ ขยาย"
+        - button "✕ ปิด"
