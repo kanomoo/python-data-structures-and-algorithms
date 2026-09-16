@@ -167,7 +167,8 @@ const ASSIGNMENT_CATEGORIES = [
       '12.4 - Assignment 4 Graph Topological Sort & Unweighted Shortest Path.md',
       '12.5 - Test Program 1 & 2 Queue Implementation & Sorting Trace.md',
       '12.6 - 0Exercises Warm-up Function Tracing & Attendance Tasks.md',
-      '12.7 - In-Class Assignment Binary Heap DeleteMin & Hashing Trace.md'
+      '12.7 - In-Class Assignment Binary Heap DeleteMin & Hashing Trace.md',
+      '12.8 - In-Class Assignment Bubble Sort Trace & Total Swaps Calculation.md'
     ]
   }
 ];
@@ -184,7 +185,8 @@ const CLASSROOM_TRANSCRIPT_CATEGORIES = [
       '14.2 - Classroom Lecture Priority Queue & Binary Heap Properties.md',
       '14.3 - Classroom Lecture Exam Focus Node Calculation & 1D Array.md',
       '14.4 - Classroom Lecture Binary Heap Python Implementation & Final Exam Trace.md',
-      '14.5 - Master Catalog Classroom Slides & Photos (87 Photos).md'
+      '14.5 - Master Catalog Classroom Slides & Photos (87 Photos).md',
+      '14.6 - Classroom Lecture Sorting (Insertion, Selection, Bubble Sort) & Exam Inversions.md'
     ]
   }
 ];
