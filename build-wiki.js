@@ -186,7 +186,8 @@ const CLASSROOM_TRANSCRIPT_CATEGORIES = [
       '14.3 - Classroom Lecture Exam Focus Node Calculation & 1D Array.md',
       '14.4 - Classroom Lecture Binary Heap Python Implementation & Final Exam Trace.md',
       '14.5 - Master Catalog Classroom Slides & Photos (87 Photos).md',
-      '14.6 - Classroom Lecture Sorting (Insertion, Selection, Bubble Sort) & Exam Inversions.md'
+      '14.6 - Classroom Lecture Sorting (Insertion, Selection, Bubble Sort) & Exam Inversions.md',
+      '14.7 - Classroom Lecture Graph Theory, Representations & Final Exam Leaks.md'
     ]
   }
 ];

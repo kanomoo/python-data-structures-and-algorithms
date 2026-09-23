@@ -1,6 +1,6 @@
 def insertion_sort(a):
     total = 0
-    print(0, a, None)
+    print("Original: ", a, "Position Move")
     for p in range(1, len(a)):
         tmp = a[p]
         j = p
@@ -11,8 +11,9 @@ def insertion_sort(a):
             swap += 1
         a[j] = tmp
         total += swap
-        print(p, a, swap)
-    print(total)
+        print(f"After p = {p}", a, swap)
+    print(f"Result : {a}")
+    # print(total)
 
 if __name__ == "__main__":
     my_list = [34, 8, 64, 51, 32, 21]
