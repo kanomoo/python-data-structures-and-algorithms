@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="../Wiki/vendor/katex/katex.min.css">
 </head>
 <body>
 
@@ -53,6 +54,9 @@
           </button>
           <button class="topic-pill" data-topic="assign4">
             <span>🕸️</span> Assign 4: Graph BFS Shortest Path
+          </button>
+          <button class="topic-pill" data-topic="topsort">
+            <span>🔀</span> Lecture 10: Topological Sort
           </button>
         </div>
         <button class="scroll-arrow-btn scroll-arrow-right" id="pillsScrollRight" title="เลื่อนแถบไปทางขวา" aria-label="Scroll right">›</button>
@@ -246,7 +250,7 @@
         <div class="section-head">
           <div class="tag">01 — หลักการ</div>
           <h2>BST Invariant &amp; โครงสร้างข้อมูลแบบต้นไม้ค้นหา</h2>
-          <p>คุณสมบัติที่ทำให้ BST สามารถค้นหา แทรก และลบข้อมูลได้รวดเร็วเฉลี่ย $O(\log N)$</p>
+          <p>คุณสมบัติที่ทำให้ BST สามารถค้นหา แทรก และลบข้อมูลได้รวดเร็วเฉลี่ย <span class="mono">O(log N)</span></p>
         </div>
         <div class="article">
           <h3><span class="num">1</span>กฎเหล็กของ BST Invariant</h3>
@@ -259,7 +263,7 @@
           <div class="cards">
             <div class="card">
               <h4 style="color:var(--cyan)">กรณีที่ 1: โหนดใบ (Leaf Node)</h4>
-              <p>โหนดที่ต้องการลบไม่มีลูกเลย → ปลดตัวชี้จากโหนดพ่อเป็น <span class="mono">None</span> ได้ทันที ทำงานในเวลา $O(h)$</p>
+              <p>โหนดที่ต้องการลบไม่มีลูกเลย → ปลดตัวชี้จากโหนดพ่อเป็น <span class="mono">None</span> ได้ทันที ทำงานในเวลา <span class="mono">O(h)</span></p>
             </div>
             <div class="card amber">
               <h4 style="color:var(--amber)">กรณีที่ 2: มีลูกเพียง 1 ข้าง</h4>
@@ -328,7 +332,7 @@
           <div class="cards">
             <div class="card">
               <h4 style="color:var(--cyan)">Separate Chaining</h4>
-              <p>แต่ละช่องในตารางเก็บหัวพอยน์เตอร์ของ Linked List ถ้าข้อมูลชนกันจะนำไปต่อท้ายหรือใส่หัวแถว ข้อดีคือ $\lambda$ เกิน 1 ได้</p>
+              <p>แต่ละช่องในตารางเก็บหัวพอยน์เตอร์ของ Linked List ถ้าข้อมูลชนกันจะนำไปต่อท้ายหรือใส่หัวแถว ข้อดีคือค่าความหนาแน่น λ (Load Factor) เกิน 1 ได้</p>
             </div>
             <div class="card amber">
               <h4 style="color:var(--amber)">Open Addressing (Linear Probing)</h4>
@@ -464,8 +468,8 @@
         </div>
         <div class="article">
           <h3><span class="num">1</span>การทดสอบในฟังก์ชันหลัก (<span class="mono">main</span>)</h3>
-          <p><b>เคสที่ 1 (Overflow)</b>: สร้าง <span class="mono">Queue(5)</span> แล้ว Enqueue ตัวเลข 6, 1, 2, 0, 3 จนเต็ม จากนั้น Enqueue ตัวที่ 6 (เลข 7) $\to$ พิมพ์เตือน <b>"Queue is overflow"</b></p>
-          <p><b>เคสที่ 2 (Underflow)</b>: สร้าง <span class="mono">Queue(6)</span> ใส่เลขจนเต็ม แล้วสั่ง Dequeue ออก 6 ครั้งจนหมดเกลี้ยง จากนั้น Dequeue ครั้งที่ 7 $\to$ พิมพ์เตือน <b>"Queue is underflow"</b></p>
+          <p><b>เคสที่ 1 (Overflow)</b>: สร้าง <span class="mono">Queue(5)</span> แล้ว Enqueue ตัวเลข 6, 1, 2, 0, 3 จนเต็ม จากนั้น Enqueue ตัวที่ 6 (เลข 7) → พิมพ์เตือน <b>"Queue is overflow"</b></p>
+          <p><b>เคสที่ 2 (Underflow)</b>: สร้าง <span class="mono">Queue(6)</span> ใส่เลขจนเต็ม แล้วสั่ง Dequeue ออก 6 ครั้งจนหมดเกลี้ยง จากนั้น Dequeue ครั้งที่ 7 → พิมพ์เตือน <b>"Queue is underflow"</b></p>
         </div>
       </section>
 
@@ -532,16 +536,16 @@
         <div class="section-head">
           <div class="tag">01 — นิยามและตารางสถานะ</div>
           <h2>หลักการ Breadth-First Search บนกราฟระบุทิศทาง</h2>
-          <p>กราฟ 7 จุดยอด ($v_1 \dots v_7$): อัปเดตตารางและคิวเมื่อจุดยอดถูกเข้าถึงครั้งแรก</p>
+          <p>กราฟ 7 จุดยอด (v1 ถึง v7): อัปเดตตารางและคิวเมื่อจุดยอดถูกเข้าถึงครั้งแรก</p>
         </div>
         <div class="article">
           <h3><span class="num">1</span>โครงสร้างตาราง 4 คอลัมน์สำคัญที่ออกสอบ</h3>
           <table class="cmp">
             <tbody>
-              <tr><th>คอลัมน์</th><th>ความหมายทางทฤษฎี</th><th>ค่าเริ่มต้นสำหรับ $v_1$</th><th>ค่าเริ่มต้นสำหรับจุดอื่น</th></tr>
-              <tr><td><span class="mono">v</span></td><td>ชื่อจุดยอด (Vertex)</td><td>$v_1$</td><td>$v_2 \dots v_7$</td></tr>
+              <tr><th>คอลัมน์</th><th>ความหมายทางทฤษฎี</th><th>ค่าเริ่มต้นสำหรับ v1</th><th>ค่าเริ่มต้นสำหรับจุดอื่น</th></tr>
+              <tr><td><span class="mono">v</span></td><td>ชื่อจุดยอด (Vertex)</td><td>v1</td><td>v2 ถึง v7</td></tr>
               <tr><td><span class="mono">Known</span></td><td>ประมวลผลเสร็จสิ้นแล้วหรือไม่ (True / False)</td><td class="bad">False</td><td class="bad">False</td></tr>
-              <tr><td><span class="mono">d_v</span></td><td>ระยะทางสั้นสุดจากจุดเริ่มต้น</td><td class="hl">0</td><td>$\infty$ (อนันต์)</td></tr>
+              <tr><td><span class="mono">d_v</span></td><td>ระยะทางสั้นสุดจากจุดเริ่มต้น</td><td class="hl">0</td><td>∞ (อนันต์)</td></tr>
               <tr><td><span class="mono">p_v</span></td><td>จุดยอดก่อนหน้าบนวิถีสั้นสุด (Parent)</td><td>0 (ไม่มี)</td><td>0 (ไม่มี)</td></tr>
             </tbody>
           </table>
@@ -559,6 +563,237 @@
     </div>
   </div>
 
+  <!-- ================================================================ -->
+  <!-- TOPIC 9: LECTURE 10 — TOPOLOGICAL SORT & GRAPH FUNDAMENTALS       -->
+  <!-- ================================================================ -->
+  <div id="topic-topsort" class="topic-view">
+    <header>
+      <div class="eyebrow"><span class="dot"></span>DATA STRUCTURES &amp; ALGORITHMS — LECTURE 10 GRAPH FUNDAMENTALS</div>
+      <h1>Graph Algorithms: <span class="highlight-cyan">Topological Sort</span> Studio</h1>
+      <p class="sub">เจาะลึกการจัดเรียงงานบนกราฟระบุทิศทางแบบไม่มีวงรอบ (DAG) ด้วย Kahn's Algorithm
+      ติดตามค่า Indegree Array &amp; Circular Queue ทีละขั้นตอน วิเคราะห์ความสิ้นเปลืองเนื้อที่ของ Adjacency Matrix และสรุปเฉลยข้อสอบของอาจารย์ประดิษฐ์</p>
+      
+      <!-- Quick Resource Action Bar -->
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;">
+        <a href="#topsort-debugger-sec" class="ctrl-btn primary" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+          <span>⚡</span> ไปที่ Interactive Debugger
+        </a>
+        <a href="../Lectures/Lecture 10 Graph/Topological sort_solved.pdf" download target="_blank" class="ctrl-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; background:rgba(79,209,232,0.12); border-color:var(--cyan); color:var(--cyan);">
+          <span>📑</span> ดาวน์โหลดเฉลย PDF (เขียนคำตอบลงไฟล์จริง)
+        </a>
+        <a href="../Lectures/Lecture 10 Graph/Topological_Sort_Classroom_Wiki.md" target="_blank" class="ctrl-btn ghost" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+          <span>📖</span> เอกสารเฉลยละเอียดรายหน้า (Classroom Wiki)
+        </a>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <!-- SECTION 1: THEORY & DEFINITIONS -->
+      <section id="topsort-theory">
+        <div class="section-head">
+          <div class="tag">01 — นิยามและหลักการทางทฤษฎี</div>
+          <h2>Topological Sort บน Directed Acyclic Graph (DAG)</h2>
+          <p>ทำความเข้าใจเงื่อนไขการเรียงลำดับงานตามความสัมพันธ์แบบมีทิศทาง และแนวคิดของ Indegree</p>
+        </div>
+        <div class="article">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px; margin-bottom:20px;">
+            <div class="panel-box" style="padding:16px; border-left:3px solid var(--cyan);">
+              <h4 style="color:var(--cyan); margin-bottom:8px; font-size:16px;">🎯 นิยาม Topological Order</h4>
+              <p style="font-size:13.5px; line-height:1.6; color:var(--text-sub);">
+                คือการจัดเรียงจุดยอดในกราฟแบบเส้นตรง โดยมีเงื่อนไขว่า <b>สำหรับทุกเส้นเชื่อมระบุทิศทาง (u, v)</b> จุดยอด u จะต้องปรากฏขึ้นก่อน v ในลำดับเสมอ
+                ใช้ในการจัดตารางเรียนที่ต้องเรียนวิชาบังคับก่อน (Prerequisite Courses) หรือการคอมไพล์ซอฟต์แวร์
+              </p>
+            </div>
+            <div class="panel-box" style="padding:16px; border-left:3px solid var(--amber);">
+              <h4 style="color:var(--amber); margin-bottom:8px; font-size:16px;">🔄 เงื่อนไข DAG &amp; วงรอบ (Cycle)</h4>
+              <p style="font-size:13.5px; line-height:1.6; color:var(--text-sub);">
+                Topological Sort จะเกิดขึ้นได้ก็ต่อเมื่อกราฟเป็น <b>DAG (Directed Acyclic Graph)</b> เท่านั้น หากกราฟมี Cycle แม้แต่วงเดียว จะไม่มีทางจัดลำดับได้เลย
+                เพราะจะเกิดการวนรอซึ่งกันและกัน (Deadlock)
+              </p>
+            </div>
+            <div class="panel-box" style="padding:16px; border-left:3px solid var(--emerald);">
+              <h4 style="color:var(--emerald); margin-bottom:8px; font-size:16px;">📥 คอนเซปต์ Indegree = 0</h4>
+              <p style="font-size:13.5px; line-height:1.6; color:var(--text-sub);">
+                <b>Indegree</b> คือจำนวนเส้นเชื่อมที่ชี้พุ่งเข้ามายังจุดยอดนั้น จุดยอดที่มี <span class="mono">Indegree = 0</span> หมายถึง <b>"ไม่มีงานหรือเงื่อนไขค้างอยู่แล้ว สามารถลงมือทำได้ทันที"</b> จึงพร้อมนำเข้าคิวรอประมวลผล
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: ADJACENCY MATRIX & MEMORY WASTE -->
+      <section id="topsort-matrix-waste">
+        <div class="section-head">
+          <div class="tag">02 — การแทนกราฟและความสิ้นเปลืองหน่วยความจำ</div>
+          <h2>Adjacency Matrix ขนาด 7 × 7 &amp; การคำนวณ Memory Waste</h2>
+          <p>ข้อสอบถามคำนวณเปอร์เซ็นต์พื้นที่สิ้นเปลืองของตารางแบบ Matrix เมื่อเทียบกับกราฟ 7 จุดยอด 12 เส้นเชื่อม</p>
+        </div>
+        <div class="article">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px; align-items:start;">
+            <div>
+              <h3 style="margin-bottom:12px;"><span class="num">1</span>ตาราง Adjacency Matrix (แถวต้นทาง u \ คอลัมน์ปลายทาง v) ขนาด 7 × 7</h3>
+              <div style="overflow-x:auto;">
+                <table class="cmp" style="font-size:12.5px; text-align:center;">
+                  <thead>
+                    <tr><th title="แถวต้นทาง u \ คอลัมน์ปลายทาง v">u \ v<br><span style="font-size:10.5px; font-weight:normal; opacity:0.85;">(ต้นทาง \ ปลายทาง)</span></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>ผลรวม Out</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><b>1</b></td><td style="color:#555;">0</td><td class="hl" style="font-weight:700;">1</td><td class="hl" style="font-weight:700;">1</td><td class="hl" style="font-weight:700;">1</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td><b>3</b></td></tr>
+                    <tr><td><b>2</b></td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td class="hl" style="font-weight:700;">1</td><td class="hl" style="font-weight:700;">1</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td><b>2</b></td></tr>
+                    <tr><td><b>3</b></td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td class="hl" style="font-weight:700;">1</td><td style="color:#555;">0</td><td><b>1</b></td></tr>
+                    <tr><td><b>4</b></td><td style="color:#555;">0</td><td style="color:#555;">0</td><td class="hl" style="font-weight:700;">1</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td class="hl" style="font-weight:700;">1</td><td class="hl" style="font-weight:700;">1</td><td><b>3</b></td></tr>
+                    <tr><td><b>5</b></td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td class="hl" style="font-weight:700;">1</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td class="hl" style="font-weight:700;">1</td><td><b>2</b></td></tr>
+                    <tr><td><b>6</b></td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td><b>0</b></td></tr>
+                    <tr><td><b>7</b></td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td style="color:#555;">0</td><td class="hl" style="font-weight:700;">1</td><td style="color:#555;">0</td><td><b>1</b></td></tr>
+                    <tr style="background:rgba(255,255,255,0.04); font-weight:700;">
+                      <td><b>Indegree</b></td>
+                      <td style="color:var(--emerald);">0</td>
+                      <td style="color:var(--cyan);">1</td>
+                      <td style="color:var(--cyan);">2</td>
+                      <td style="color:var(--cyan);">3</td>
+                      <td style="color:var(--cyan);">1</td>
+                      <td style="color:var(--cyan);">3</td>
+                      <td style="color:var(--cyan);">2</td>
+                      <td style="color:var(--amber);">12 เส้น</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="margin-bottom:12px;"><span class="num">2</span>การคำนวณสูตรสัดส่วนความสูญเสีย (Memory Waste)</h3>
+              <div class="panel-box" style="padding:16px;">
+                <p style="font-size:13.5px; margin-bottom:12px;">ตารางมีขนาดทั้งหมด <b>7 × 7 = 49 ช่อง</b> โดยมีเส้นเชื่อมจริงเพียง 12 เส้น:</p>
+                <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); border-radius:8px; padding:12px; margin-bottom:10px;">
+                  <div style="font-weight:700; color:var(--emerald); font-size:13px;">ช่องที่มีค่า 1 (ใช้งานจริง): 12 ช่อง</div>
+                  <div class="mono" style="font-size:15px; margin-top:4px; font-weight:700;">(12 / 49) × 100% = 24.49%</div>
+                </div>
+                <div style="background:rgba(239, 68, 68, 0.1); border:1px solid rgba(239, 68, 68, 0.3); border-radius:8px; padding:12px; margin-bottom:12px;">
+                  <div style="font-weight:700; color:#ef4444; font-size:13px;">ช่องที่มีค่า 0 (สูญเปล่า / ไม่ได้ใช้งาน): 37 ช่อง</div>
+                  <div class="mono" style="font-size:15px; margin-top:4px; font-weight:700;">(37 / 49) × 100% = 75.51%</div>
+                </div>
+                <div style="font-size:12.5px; color:var(--muted); line-height:1.5;">
+                  💡 <b>สรุปคำสอนอาจารย์</b>: เพราะกราฟส่วนใหญ่เป็นแบบ Sparse Graph พื้นที่กว่า 75% สิ้นเปลืองไปกับการเก็บ 0 จึงไม่นิยมใช้ Matrix และเปลี่ยนไปใช้ <b>Adjacency List</b> แทน
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: STEP-BY-STEP VISUAL DEBUGGER -->
+      <section id="topsort-debugger-sec">
+        <div class="section-head">
+          <div class="tag">03 — step-by-step visual debugger &amp; variable inspector</div>
+          <h2>Interactive Topological Sort Debugger (Kahn's Stepper)</h2>
+          <p>จำลองการไล่โค้ดทีละบรรทัด พร้อมไฟไฮไลต์เส้นเชื่อมบนกราฟ 7 โหนด, การอัปเดต Indegree Array และพอยน์เตอร์ Circular Queue</p>
+        </div>
+        <div class="debugger" id="topsortDebugger"></div>
+      </section>
+
+      <!-- SECTION 4: VERBATIM SOLUTION TABLE & QUEUE TRACE -->
+      <section id="topsort-table-trace">
+        <div class="section-head">
+          <div class="tag">04 — ตารางบันทึกสถานะข้อสอบจริง</div>
+          <h2>ตาราง Indegree Tracing 6 รอบ &amp; วงรอบ Circular Queue (สไลด์หน้า 6)</h2>
+          <p>ตารางเฉลยบันทึกค่าสมบูรณ์แบบสำหรับนำไปเทียบกับการคำนวณในห้องสอบ</p>
+        </div>
+        <div class="article">
+          <div style="overflow-x:auto; margin-bottom:20px;">
+            <table class="cmp" style="text-align:center; font-size:13px;">
+              <thead>
+                <tr>
+                  <th>จุดยอด (v)</th>
+                  <th>เริ่มต้น</th>
+                  <th>รอบที่ 1<br>(Pop 1)</th>
+                  <th>รอบที่ 2<br>(Pop 2)</th>
+                  <th>รอบที่ 3<br>(Pop 5)</th>
+                  <th>รอบที่ 4<br>(Pop 4)</th>
+                  <th>รอบที่ 5<br>(Pop 3)</th>
+                  <th>รอบที่ 6<br>(Pop 7)</th>
+                  <th>สถานะจบ<br>(Pop 6)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><b>1</b></td><td class="hl" style="font-weight:700;">0 (เข้าคิว)</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td></tr>
+                <tr><td><b>2</b></td><td>1</td><td class="hl" style="font-weight:700;">0 (เข้าคิว)</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td></tr>
+                <tr><td><b>3</b></td><td>2</td><td>1</td><td>1</td><td>1</td><td class="hl" style="font-weight:700;">0 (เข้าคิว)</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td></tr>
+                <tr><td><b>4</b></td><td>3</td><td>2</td><td>1</td><td class="hl" style="font-weight:700;">0 (เข้าคิว)</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td></tr>
+                <tr><td><b>5</b></td><td>1</td><td>1</td><td class="hl" style="font-weight:700;">0 (เข้าคิว)</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td><td class="bad">—</td></tr>
+                <tr><td><b>6</b></td><td>3</td><td>3</td><td>3</td><td>3</td><td>2</td><td>1</td><td class="hl" style="font-weight:700;">0 (เข้าคิว)</td><td class="bad">—</td></tr>
+                <tr><td><b>7</b></td><td>2</td><td>2</td><td>2</td><td>1</td><td class="hl" style="font-weight:700;">0 (เข้าคิว)</td><td>0</td><td class="bad">—</td><td class="bad">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
+            <div class="panel-box" style="padding:14px;">
+              <h4 style="color:var(--cyan); margin-bottom:6px;">📦 Circular Queue Array (Indices 0..6)</h4>
+              <p style="font-size:12.5px; color:var(--text-sub); line-height:1.5;">
+                ขนาดคิว N = 7 ช่อง: ดัชนี [0]=1, [1]=2, [2]=5, [3]=4, [4]=7, [5]=3, [6]=6
+              </p>
+            </div>
+            <div class="panel-box" style="padding:14px;">
+              <h4 style="color:var(--amber); margin-bottom:6px;">🧭 พอยน์เตอร์เมื่อสิ้นสุดการทำงาน</h4>
+              <p style="font-size:12.5px; color:var(--text-sub); line-height:1.5;">
+                <span class="mono">Currentsize = 0</span> (คิวว่างเปล่า)<br>
+                <span class="mono">Front = 0</span> (วนรอบกลับมาที่เดิม), <span class="mono">Back = 6</span> (Enqueue ครบ 7 ตัว)
+              </p>
+            </div>
+            <div class="panel-box" style="padding:14px;">
+              <h4 style="color:var(--emerald); margin-bottom:6px;">🎯 ผลลัพธ์ Topological Order</h4>
+              <p style="font-size:13px; font-weight:700; color:var(--emerald);">
+                1, 2, 5, 4, 3, 7, 6
+              </p>
+              <p style="font-size:11.5px; color:var(--muted); margin-top:2px;">(หรือ 1, 2, 5, 4, 7, 3, 6 ก็ได้คะแนนเต็มเช่นกัน)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: ZERO-SCORE TRAPS & EXAM RULES -->
+      <section id="topsort-rules">
+        <div class="section-head">
+          <div class="tag">05 — กฎเหล็กข้อสอบ &amp; ดาวน์โหลดเอกสาร</div>
+          <h2>ข้อควรระวังเพื่อป้องกันการได้ 0 คะแนน</h2>
+          <p>กฎการตรวจข้อสอบอย่างเข้มงวดของอาจารย์ประดิษฐ์</p>
+        </div>
+        <div class="article">
+          <div class="alert-box" style="background:rgba(239, 68, 68, 0.12); border:1.5px solid rgba(239, 68, 68, 0.45); border-radius:10px; padding:18px; margin-bottom:20px;">
+            <div style="font-size:16px; font-weight:700; color:#ff6b81; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
+              <span>⚠️</span> กฎเหล็กจุดตัด 0 คะแนน: ห้ามเขียนลูกศร "-&gt;" เด็ดขาด!
+            </div>
+            <p style="font-size:13.5px; color:#fca5a5; line-height:1.6; margin-bottom:10px;">
+              ทั้งในโจทย์การเขียน Path (Undirected Graph, Directed Graph) และ Topological Sort อาจารย์เน้นย้ำหลายรอบว่า 
+              <b>"ต้องคั่นด้วยเครื่องหมายจุลภาค (Comma) เท่านั้น ห้ามใส่ลูกศร -&gt; เด็ดขาด หากเขียนลูกศรจะถูกหักเหลือ 0 คะแนนทันที"</b>
+            </p>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; font-family:'JetBrains Mono', monospace; font-size:13px;">
+              <div style="background:rgba(239, 68, 68, 0.2); padding:6px 12px; border-radius:6px; color:#fca5a5; text-decoration:line-through;">
+                ❌ 1 -&gt; 2 -&gt; 5 -&gt; 4 -&gt; 3 -&gt; 7 -&gt; 6 (0 คะแนน)
+              </div>
+              <div style="background:rgba(16, 185, 129, 0.2); padding:6px 12px; border-radius:6px; color:#6ee7b7; font-weight:700;">
+                ✅ 1, 2, 5, 4, 3, 7, 6 (ได้คะแนนเต็ม)
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:12px;">
+            <a href="../Lectures/Lecture 10 Graph/Topological sort_solved.pdf" download target="_blank" class="ctrl-btn primary" style="text-decoration:none; padding:10px 18px;">
+              <span>📥</span> ดาวน์โหลดเอกสารเฉลยสมบูรณ์ (Topological sort_solved.pdf)
+            </a>
+            <a href="../Lectures/Lecture 10 Graph/Topological_Sort_Classroom_Wiki.md" target="_blank" class="ctrl-btn" style="text-decoration:none; padding:10px 18px;">
+              <span>📖</span> เปิดอ่าน Classroom Wiki บันทึก 6 หน้า
+            </a>
+            <a href="../Wiki/index.html#/13.8%20-%20Graph%20Algorithms%20Unweighted%20Shortest%20Path%20&%20Topological%20Sort" class="ctrl-btn ghost" style="text-decoration:none; padding:10px 18px;">
+              <span>📚</span> สารานุกรม DSA Wiki หมวด 13.8
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="wrap">
@@ -568,6 +803,23 @@
       </p>
     </div>
   </footer>
+
+  <!-- KaTeX Math Renderer & Fallback -->
+  <script src="../Wiki/vendor/katex/katex.min.js"></script>
+  <script src="../Wiki/vendor/katex/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
 
   <!-- App Script -->
   <script src="exercises.js"></script>

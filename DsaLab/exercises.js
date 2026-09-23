@@ -517,6 +517,159 @@ for v in sorted(dist.keys()):
   },
 
   {
+    id: 'lecture10_topsort',
+    category: 'exam',
+    badge: 'Lecture 10',
+    title: '🔀 Lecture 10: Topological Sort (DAG & Indegree Queue)',
+    subtitle: 'จัดเรียงลำดับงานบน Directed Acyclic Graph (DAG) 7 จุดยอด 12 เส้นเชื่อม ด้วย Kahn\'s Algorithm',
+    visualizer: 'topsort',
+    nodes: ['v1', 'v2', 'v3', 'v4', 'v5', 'v6', 'v7'],
+    edges: [
+      { u: 'v1', v: 'v2' }, { u: 'v1', v: 'v4' }, { u: 'v1', v: 'v3' },
+      { u: 'v2', v: 'v4' }, { u: 'v2', v: 'v5' },
+      { u: 'v3', v: 'v6' },
+      { u: 'v4', v: 'v6' }, { u: 'v4', v: 'v7' }, { u: 'v4', v: 'v3' },
+      { u: 'v5', v: 'v4' }, { u: 'v5', v: 'v7' },
+      { u: 'v7', v: 'v6' }
+    ],
+    theory: `
+### 🔀 โจทย์ Lecture 10: Topological Sort & Graph Fundamentals
+อาจารย์ประดิษฐ์ใช้กราฟ 7 จุดยอด ($v_1 \dots v_7$) 12 เส้นเชื่อม เพื่อทดสอบ 3 หัวข้อหลัก:
+1. **การคำนวณ Memory Waste ของ Adjacency Matrix ($7 \\times 7 = 49$ ช่อง)**:
+   - ช่องที่เป็น 1 (มีเส้นเชื่อมจริง): 12 ช่อง $\\implies \\frac{12}{49} \\times 100\\% = 24.49\\%$
+   - ช่องที่เป็น 0 (สูญเปล่า/ไม่ได้ใช้): 37 ช่อง $\\implies \\frac{37}{49} \\times 100\\% = 75.51\\%$
+2. **Kahn's Algorithm ด้วย Indegree Array & Circular Queue (ขนาด 7 ช่อง)**:
+   - คำนวณ Indegree เริ่มต้น: $v_1:0, v_2:1, v_3:2, v_4:3, v_5:1, v_6:3, v_7:2$
+   - จุดยอดที่มี $\\text{Indegree} = 0$ จะถูกนำเข้าคิว
+   - เมื่อ Dequeue $v$ ออกมา ให้นำไปต่อท้ายผลลัพธ์ และลด Indegree ของเพื่อนบ้าน $w$ ลง 1 หากเหลือ 0 ให้นำเข้าคิว
+3. **⚠️ กฎเหล็ก 0 คะแนน**:
+   - **ห้ามเขียนลูกศร \`->\` เด็ดขาด!** ต้องคั่นด้วยจุลภาค \`,\` เท่านั้น
+   - คำตอบทางการ: **\`1, 2, 5, 4, 3, 7, 6\`** (หรือ \`1, 2, 5, 4, 7, 3, 6\`)
+
+> 📖 **ดูเฉลยละเอียดรายหน้า**: เปิดอ่าน [Topological_Sort_Classroom_Wiki.md](../Lectures/Lecture%2010%20Graph/Topological_Sort_Classroom_Wiki.md) หรือดาวน์โหลด [Topological sort_solved.pdf](../Lectures/Lecture%2010%20Graph/Topological%20sort_solved.pdf)
+`,
+    starterCode: `class CircularQueue:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.items = [None] * capacity
+        self.front = 0
+        self.back = capacity - 1
+        self.size = 0
+
+    def is_empty(self):
+        return self.size == 0
+
+    def enqueue(self, val):
+        self.back = (self.back + 1) % self.capacity
+        self.items[self.back] = val
+        self.size += 1
+
+    def dequeue(self):
+        val = self.items[self.front]
+        self.front = (self.front + 1) % self.capacity
+        self.size -= 1
+        return val
+
+def topological_sort(graph):
+    # TODO: 1. คำนวณ Indegree ของทุกจุดยอด
+    # TODO: 2. นำจุดยอดที่มี Indegree = 0 เข้าคิว
+    # TODO: 3. Dequeue และลด Indegree ของเพื่อนบ้าน
+    pass
+
+# กราฟ 7 จุดยอดจากเอกสารแจกหน้า 5
+graph = {
+    1: [2, 4, 3],
+    2: [4, 5],
+    3: [6],
+    4: [6, 7, 3],
+    5: [4, 7],
+    6: [],
+    7: [6]
+}
+
+result = topological_sort(graph)
+print("Topological Sort:", ", ".join(map(str, result)) if result else "None")
+`,
+    solutionCode: `class CircularQueue:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.items = [None] * capacity
+        self.front = 0
+        self.back = capacity - 1
+        self.size = 0
+
+    def is_empty(self):
+        return self.size == 0
+
+    def enqueue(self, val):
+        self.back = (self.back + 1) % self.capacity
+        self.items[self.back] = val
+        self.size += 1
+
+    def dequeue(self):
+        val = self.items[self.front]
+        self.front = (self.front + 1) % self.capacity
+        self.size -= 1
+        return val
+
+def topological_sort(graph):
+    # 1. คำนวณ Indegree เริ่มต้น
+    indegree = {u: 0 for u in graph}
+    for u in graph:
+        for w in graph[u]:
+            indegree[w] += 1
+            
+    print("Indegree เริ่มต้น:", indegree)
+
+    # 2. นำจุดยอดที่มี Indegree = 0 เข้า Circular Queue
+    q = CircularQueue(capacity=len(graph))
+    for u in graph:
+        if indegree[u] == 0:
+            q.enqueue(u)
+
+    topo_order = []
+    round_no = 1
+
+    # 3. ประมวลผลจากคิวจนกว่าคิวจะว่าง
+    while not q.is_empty():
+        v = q.dequeue()
+        topo_order.append(v)
+        print(f"\\n[รอบที่ {round_no}] Dequeue v = {v} -> Output ขณะนี้: {topo_order}")
+
+        for w in graph[v]:
+            indegree[w] -= 1
+            print(f"  ลด Indegree ของ w = {w} เหลือ {indegree[w]}", end="")
+            if indegree[w] == 0:
+                q.enqueue(w)
+                print(f" -> Enqueue({w}) เข้าคิว!")
+            else:
+                print()
+        round_no += 1
+
+    if len(topo_order) < len(graph):
+        raise ValueError("กราฟมี Cycle! ไม่สามารถทำ Topological Sort ได้")
+
+    return topo_order
+
+graph = {
+    1: [2, 4, 3],
+    2: [4, 5],
+    3: [6],
+    4: [6, 7, 3],
+    5: [4, 7],
+    6: [],
+    7: [6]
+}
+
+order = topological_sort(graph)
+print("\\n" + "=" * 55)
+print("🎯 คำตอบทางการสำหรับส่งอาจารย์ (คั่นด้วย Comma ห้ามใช้ลูกศร):")
+print(", ".join(map(str, order)))
+print("=" * 55)
+`
+  },
+
+  {
     id: 'stack_postfix',
     category: 'linear',
     badge: 'Lecture 4',

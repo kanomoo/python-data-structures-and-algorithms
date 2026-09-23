@@ -1448,3 +1448,28 @@ footer a:hover {
   .ctrl-btn { padding: 7px 10px; font-size: 11.5px; }
   .top-nav-inner { flex-direction: column; align-items: flex-start; }
 }
+
+/* ================================================================
+   TOPOLOGICAL SORT SPECIFIC STYLES
+================================================================ */
+
+@keyframes pulseGlowCyan {
+  0% { filter: drop-shadow(0 0 2px rgba(6, 182, 212, 0.4)); }
+  50% { filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.9)); }
+  100% { filter: drop-shadow(0 0 2px rgba(6, 182, 212, 0.4)); }
+}
+
+@keyframes pulseGlowAmber {
+  0% { filter: drop-shadow(0 0 3px rgba(245, 166, 35, 0.4)); }
+  50% { filter: drop-shadow(0 0 10px rgba(245, 166, 35, 0.9)); }
+  100% { filter: drop-shadow(0 0 3px rgba(245, 166, 35, 0.4)); }
+}
+
+.ts-edge-active {
+  animation: pulseGlowCyan 1.5s infinite ease-in-out;
+}
+
+.ts-node-active {
+  animation: pulseGlowAmber 1.5s infinite ease-in-out;
+}
+

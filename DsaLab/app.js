@@ -213,7 +213,8 @@ function buildDebuggerWidget(container, opts) {
     const list = document.getElementById(`${id}_watchList`);
     if (!list) return;
 
-    const entries = Object.entries(step.watch || {});
+    const watchData = step.watch || step.vars || {};
+    const entries = Object.entries(watchData);
     if (entries.length === 0) {
       list.innerHTML = `<div class="watch-item"><span class="k">—</span><span class="v">ยังไม่มีตัวแปร</span></div>`;
       return;
@@ -226,7 +227,9 @@ function buildDebuggerWidget(container, opts) {
   function renderBadge(step) {
     const slot = document.getElementById(`${id}_badgeSlot`);
     if (!slot) return;
-    if (step.meta) {
+    if (step.badge) {
+      slot.innerHTML = `<div class="insert-badge">🔧 ${escapeHtml(step.badge)}</div>`;
+    } else if (step.meta) {
       slot.innerHTML = `<div class="insert-badge">🔧 กำลังดำเนินการ: ${escapeHtml(step.meta.label || `ตัวที่ ${step.meta.num || ''} : ค่า ${step.meta.value || ''}`)}</div>`;
     } else {
       slot.innerHTML = `<div class="insert-badge insert-badge-placeholder"><span>⚡ พร้อมดำเนินการสเต็ปถัดไป</span></div>`;
@@ -242,7 +245,8 @@ function buildDebuggerWidget(container, opts) {
       if (i > st.idx) return;
       const cur = i === st.idx ? ' current' : '';
       const mk = s.boundary ? ' marker' : '';
-      html += `<div class="console-line${cur}${mk}"><b>[step ${i}]</b> ${escapeHtml(s.note)}</div>`;
+      const msg = s.note || s.narration || s.console || '';
+      html += `<div class="console-line${cur}${mk}"><b>[step ${i}]</b> ${escapeHtml(msg)}</div>`;
     });
     log.innerHTML = html;
     log.scrollTop = log.scrollHeight;
@@ -258,7 +262,7 @@ function buildDebuggerWidget(container, opts) {
     renderBadge(step);
 
     const nar = document.getElementById(`${id}_narration`);
-    if (nar) nar.textContent = step.note || '';
+    if (nar) nar.textContent = step.note || step.narration || '';
 
     const counterText = `Step ${st.idx} / ${Math.max(0, st.trace.length - 1)}`;
     const counter = document.getElementById(`${id}_stepCounter`);
@@ -1163,6 +1167,13 @@ document.addEventListener('DOMContentLoaded', () => {
     assign4: [
       { href: '#assign4-principle', text: '① ตาราง Known, d_v, p_v' },
       { href: '#assign4-bfs-debug', text: '② Graph BFS Shortest Path Debugger' }
+    ],
+    topsort: [
+      { href: '#topsort-theory', text: '① ทฤษฎี DAG & Indegree' },
+      { href: '#topsort-matrix-waste', text: '② Adjacency Matrix & ความสิ้นเปลือง' },
+      { href: '#topsort-debugger-sec', text: '③ Step-by-Step Topological Debugger' },
+      { href: '#topsort-table-trace', text: '④ ตาราง Indegree Tracing 6 รอบ' },
+      { href: '#topsort-rules', text: '⑤ กฎข้อสอบ & ข้อห้าม 0 คะแนน' }
     ]
   };
 
@@ -1885,7 +1896,7 @@ document.addEventListener('DOMContentLoaded', () => {
       front: 0,
       rear: -1,
       badge: 'UNDERFLOW!',
-      narration: '⚠️ สั่ง deQueue() ครั้งที่ 7 ในขณะที่คิวว่างเปล่า (isEmpty() == True) $\to$ พิมพ์ "Queue is underflow"',
+      narration: '⚠️ สั่ง deQueue() ครั้งที่ 7 ในขณะที่คิวว่างเปล่า (isEmpty() == True) → พิมพ์ "Queue is underflow"',
       console: 'Queue is underflow (คิวว่างเปล่า ไม่สามารถ deQueue ได้)'
     });
 
@@ -2002,7 +2013,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [11, 25, 12, 22, 64],
         highlights: [{ idx: 0, type: 'final' }, { idx: 4, type: 'moved' }],
         badge: 'PASS 1 SWAP',
-        narration: 'Pass 1: ค่าน้อยสุดคือ 11 (index 4) $\to$ สลับกับ array[0] (64)',
+        narration: 'Pass 1: ค่าน้อยสุดคือ 11 (index 4) → สลับกับ array[0] (64)',
         console: 'Pass 1: swap(arr[0]=64, arr[4]=11) -> [11, 25, 12, 22, 64]'
       });
       trace.push({
@@ -2011,7 +2022,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [11, 12, 25, 22, 64],
         highlights: [{ idx: 1, type: 'final' }, { idx: 2, type: 'moved' }],
         badge: 'PASS 2 SWAP',
-        narration: 'Pass 2: ค่าน้อยสุดในส่วนที่เหลือคือ 12 $\to$ สลับกับ array[1] (25)',
+        narration: 'Pass 2: ค่าน้อยสุดในส่วนที่เหลือคือ 12 → สลับกับ array[1] (25)',
         console: 'Pass 2: swap(arr[1]=25, arr[2]=12) -> [11, 12, 25, 22, 64]'
       });
       trace.push({
@@ -2020,7 +2031,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [11, 12, 22, 25, 64],
         highlights: [{ idx: 2, type: 'final' }, { idx: 3, type: 'moved' }],
         badge: 'PASS 3 SWAP',
-        narration: 'Pass 3: ค่าน้อยสุดคือ 22 $\to$ สลับกับ array[2] (25)',
+        narration: 'Pass 3: ค่าน้อยสุดคือ 22 → สลับกับ array[2] (25)',
         console: 'Pass 3: swap(arr[2]=25, arr[3]=22) -> [11, 12, 22, 25, 64]'
       });
       trace.push({
@@ -2029,7 +2040,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [11, 12, 22, 25, 64],
         highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'final' }, { idx: 2, type: 'final' }, { idx: 3, type: 'final' }, { idx: 4, type: 'final' }],
         badge: 'DONE',
-        narration: 'Pass 4: 25 อยู่ในตำแหน่งถูกต้องแล้ว $\to$ สิ้นสุดการจัดเรียง O(N^2)',
+        narration: 'Pass 4: 25 อยู่ในตำแหน่งถูกต้องแล้ว → สิ้นสุดการจัดเรียง O(N^2)',
         console: '✔ Selection Sort เสร็จสมบูรณ์ [11, 12, 22, 25, 64]'
       });
       return trace;
@@ -2050,7 +2061,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [1, 5, 4, 2, 8],
         highlights: [{ idx: 0, type: 'moved' }, { idx: 1, type: 'moved' }],
         badge: 'PASS 1 (5>1)',
-        narration: 'Pass 1.1: เปรียบเทียบ 5 กับ 1 $\to$ 5 > 1 ทำการ Swap เป็น [1, 5, 4, 2, 8]',
+        narration: 'Pass 1.1: เปรียบเทียบ 5 กับ 1 → 5 > 1 ทำการ Swap เป็น [1, 5, 4, 2, 8]',
         console: 'Swap (5, 1)'
       });
       trace.push({
@@ -2059,7 +2070,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [1, 4, 5, 2, 8],
         highlights: [{ idx: 1, type: 'moved' }, { idx: 2, type: 'moved' }],
         badge: 'PASS 1 (5>4)',
-        narration: 'Pass 1.2: เปรียบเทียบ 5 กับ 4 $\to$ 5 > 4 ทำการ Swap เป็น [1, 4, 5, 2, 8]',
+        narration: 'Pass 1.2: เปรียบเทียบ 5 กับ 4 → 5 > 4 ทำการ Swap เป็น [1, 4, 5, 2, 8]',
         console: 'Swap (5, 4)'
       });
       trace.push({
@@ -2068,7 +2079,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [1, 4, 2, 5, 8],
         highlights: [{ idx: 2, type: 'moved' }, { idx: 3, type: 'moved' }, { idx: 4, type: 'final' }],
         badge: 'PASS 1 END',
-        narration: 'Pass 1.3: เปรียบเทียบ 5 กับ 2 $\to$ 5 > 2 Swap $\to$ เลข 8 ตกตะกอนที่ตำแหน่งท้ายสุด',
+        narration: 'Pass 1.3: เปรียบเทียบ 5 กับ 2 → 5 > 2 Swap → เลข 8 ตกตะกอนที่ตำแหน่งท้ายสุด',
         console: 'Pass 1 จบ: 8 อยู่ตำแหน่งสุดท้าย'
       });
       trace.push({
@@ -2077,7 +2088,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [1, 2, 4, 5, 8],
         highlights: [{ idx: 1, type: 'moved' }, { idx: 2, type: 'moved' }, { idx: 3, type: 'final' }, { idx: 4, type: 'final' }],
         badge: 'PASS 2 END',
-        narration: 'Pass 2: เปรียบเทียบ 4 กับ 2 $\to$ Swap $\to$ เลข 5 ตกตะกอน',
+        narration: 'Pass 2: เปรียบเทียบ 4 กับ 2 → Swap → เลข 5 ตกตะกอน',
         console: 'Pass 2 จบ: [1, 2, 4, 5, 8]'
       });
       trace.push({
@@ -2086,7 +2097,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [1, 2, 4, 5, 8],
         highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'final' }, { idx: 2, type: 'final' }, { idx: 3, type: 'final' }, { idx: 4, type: 'final' }],
         badge: 'EARLY BREAK',
-        narration: 'Pass 3: ไม่มีการสลับค่าใดๆ เกิดขึ้นเลย (swapped == False) $\to$ ตัดจบการทำงานทันที!',
+        narration: 'Pass 3: ไม่มีการสลับค่าใดๆ เกิดขึ้นเลย (swapped == False) → ตัดจบการทำงานทันที!',
         console: '✔ Early exit triggered! อาร์เรย์เรียงลำดับสมบูรณ์'
       });
       return trace;
@@ -2108,7 +2119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [8, 34, 64, 51, 32, 21],
         highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'moved' }],
         badge: 'PASS 1 (MOVE 1)',
-        narration: 'Pass 1 (temp=8): 8 < 34 $\to$ เลื่อน 34 ไปทางขวา 1 ตำแหน่ง (Position Move = 1)',
+        narration: 'Pass 1 (temp=8): 8 < 34 → เลื่อน 34 ไปทางขวา 1 ตำแหน่ง (Position Move = 1)',
         console: 'Pass 1: temp=8, move=1 -> [8, 34, 64, 51, 32, 21]'
       });
       trace.push({
@@ -2117,7 +2128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [8, 34, 64, 51, 32, 21],
         highlights: [{ idx: 0, type: 'final' }, { idx: 1, type: 'final' }, { idx: 2, type: 'final' }],
         badge: 'PASS 2 (MOVE 0)',
-        narration: 'Pass 2 (temp=64): 64 > 34 $\to$ ไม่ต้องเลื่อนข้อมูลใดๆ (Position Move = 0)',
+        narration: 'Pass 2 (temp=64): 64 > 34 → ไม่ต้องเลื่อนข้อมูลใดๆ (Position Move = 0)',
         console: 'Pass 2: temp=64, move=0'
       });
       trace.push({
@@ -2126,7 +2137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [8, 34, 51, 64, 32, 21],
         highlights: [{ idx: 2, type: 'final' }, { idx: 3, type: 'moved' }],
         badge: 'PASS 3 (MOVE 1)',
-        narration: 'Pass 3 (temp=51): 51 < 64 $\to$ เลื่อน 64 ไปทางขวา 1 ตำแหน่ง (Position Move = 1)',
+        narration: 'Pass 3 (temp=51): 51 < 64 → เลื่อน 64 ไปทางขวา 1 ตำแหน่ง (Position Move = 1)',
         console: 'Pass 3: temp=51, move=1'
       });
       trace.push({
@@ -2135,7 +2146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [8, 32, 34, 51, 64, 21],
         highlights: [{ idx: 1, type: 'final' }, { idx: 4, type: 'moved' }],
         badge: 'PASS 4 (MOVE 3)',
-        narration: 'Pass 4 (temp=32): 32 น้อยกว่า 64, 51, 34 $\to$ เลื่อนสมาชิก 3 ตัวขวา (Position Move = 3)',
+        narration: 'Pass 4 (temp=32): 32 น้อยกว่า 64, 51, 34 → เลื่อนสมาชิก 3 ตัวขวา (Position Move = 3)',
         console: 'Pass 4: temp=32, move=3'
       });
       trace.push({
@@ -2144,7 +2155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         arr: [8, 21, 32, 34, 51, 64],
         highlights: [{ idx: 1, type: 'final' }, { idx: 5, type: 'moved' }],
         badge: 'PASS 5 (MOVE 4)',
-        narration: 'Pass 5 (temp=21): 21 น้อยกว่า 64, 51, 34, 32 $\to$ เลื่อนสมาชิก 4 ตัวขวา (Position Move = 4)',
+        narration: 'Pass 5 (temp=21): 21 น้อยกว่า 64, 51, 34, 32 → เลื่อนสมาชิก 4 ตัวขวา (Position Move = 4)',
         console: 'Pass 5: temp=21, move=4'
       });
       trace.push({
@@ -2277,7 +2288,7 @@ document.addEventListener('DOMContentLoaded', () => {
       queue: ['v2', 'v4'],
       activeV: 'v1',
       badge: 'DEQ v1',
-      narration: 'Dequeue v1 (Known=True) $\to$ ตรวจสอบเพื่อนบ้าน v2, v4: อัปเดต d=1, p=v1 แล้ว Enqueue ทั้งคู่',
+      narration: 'Dequeue v1 (Known=True) → ตรวจสอบเพื่อนบ้าน v2, v4: อัปเดต d=1, p=v1 แล้ว Enqueue ทั้งคู่',
       console: 'v1 Known! Update v2 (d=1, p=v1), v4 (d=1, p=v1)'
     });
 
@@ -2296,7 +2307,7 @@ document.addEventListener('DOMContentLoaded', () => {
       queue: ['v4', 'v5'],
       activeV: 'v2',
       badge: 'DEQ v2',
-      narration: 'Dequeue v2 (Known=True) $\to$ v4 มีค่า d แล้วข้ามไป, อัปเดต v5: d=2, p=v2 แล้ว Enqueue(v5)',
+      narration: 'Dequeue v2 (Known=True) → v4 มีค่า d แล้วข้ามไป, อัปเดต v5: d=2, p=v2 แล้ว Enqueue(v5)',
       console: 'v2 Known! Update v5 (d=2, p=v2)'
     });
 
@@ -2315,7 +2326,7 @@ document.addEventListener('DOMContentLoaded', () => {
       queue: ['v5', 'v3', 'v6', 'v7'],
       activeV: 'v4',
       badge: 'DEQ v4',
-      narration: 'Dequeue v4 (Known=True) $\to$ เพื่อนบ้าน v3, v6, v7 ได้รับการอัปเดต d=2, p=v4 แล้วเข้าคิวทั้งหมด',
+      narration: 'Dequeue v4 (Known=True) → เพื่อนบ้าน v3, v6, v7 ได้รับการอัปเดต d=2, p=v4 แล้วเข้าคิวทั้งหมด',
       console: 'v4 Known! Update v3, v6, v7 (d=2, p=v4)'
     });
 
@@ -2334,7 +2345,7 @@ document.addEventListener('DOMContentLoaded', () => {
       queue: ['v3', 'v6', 'v7'],
       activeV: 'v5',
       badge: 'DEQ v5',
-      narration: 'Dequeue v5 (Known=True) $\to$ เพื่อนบ้าน v7 มีค่า d=2 แล้ว ไม่ต้องอัปเดตซ้ำ',
+      narration: 'Dequeue v5 (Known=True) → เพื่อนบ้าน v7 มีค่า d=2 แล้ว ไม่ต้องอัปเดตซ้ำ',
       console: 'v5 Known! ไม่มีการอัปเดตใหม่'
     });
 
@@ -2442,6 +2453,1504 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   if (assign4Widget) assign4Widget.setMode('bfs');
 
+  // =============================================================
+  // TOPIC 9: LECTURE 10 — TOPOLOGICAL SORT & GRAPH FUNDAMENTALS
+  // =============================================================
+  const TOPSORT_GRAPH_CODE = [
+    'def topological_sort(graph):',
+    '    # 1. คำนวณ Indegree (จำนวนเส้นชี้เข้า) ของทุกจุดยอด',
+    '    indegree = {u: 0 for u in graph}',
+    '    for u in graph:',
+    '        for w in graph[u]:',
+    '            indegree[w] += 1',
+    '',
+    '    # 2. นำจุดยอดที่มี Indegree = 0 เข้า Circular Queue',
+    '    q = CircularQueue(capacity=len(graph))',
+    '    for u in graph:',
+    '        if indegree[u] == 0:',
+    '            q.enqueue(u)',
+    '',
+    '    topo_order = []',
+    '',
+    '    # 3. วนลูปประมวลผลจุดยอดจากคิวจนกว่าคิวจะว่าง',
+    '    while not q.is_empty():',
+    '        v = q.dequeue()',
+    '        topo_order.append(v)',
+    '',
+    '        # 4. ลดค่า Indegree ของเพื่อนบ้าน w ที่ v ชี้ไปหา',
+    '        for w in graph[v]:',
+    '            indegree[w] -= 1',
+    '            if indegree[w] == 0:',
+    '                q.enqueue(w)',
+    '',
+    '    if len(topo_order) < len(graph):',
+    '        raise ValueError("Graph contains cycle!")',
+    '    return topo_order'
+  ];
+
+  function traceTopologicalSort() {
+    const trace = [];
+    let curIndeg = { 1: 0, 2: 1, 3: 2, 4: 3, 5: 1, 6: 3, 7: 2 };
+    let curQueue = [];
+    let curQueueSlots = [null, null, null, null, null, null, null];
+    let curFront = 0;
+    let curBack = 6;
+    let curSize = 0;
+    let curTopo = [];
+
+    // Step 0: Initial Scan
+    trace.push({
+      line: 3,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'INIT INDEGREES',
+      boundary: true,
+      note: 'เริ่มต้น: ตรวจนับจำนวนเส้นชี้เข้า (Indegree) ของจุดยอดทั้ง 7 จุด: v1=0, v2=1, v3=2, v4=3, v5=1, v6=3, v7=2 รวม 12 เส้น',
+      watch: { 'Phase': 'Initialization', 'Total Vertices': 7, 'Total Edges': 12, 'Queue': '[]' }
+    });
+
+    // Step 1: Enqueue v1
+    curQueue = [1];
+    curQueueSlots[0] = 1;
+    curFront = 0;
+    curBack = 0;
+    curSize = 1;
+
+    trace.push({
+      line: 11,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ENQUEUE v1',
+      boundary: false,
+      note: 'ตรวจพบจุดยอดที่มี Indegree = 0 คือ v1 (ไม่มีงานก่อนหน้าค้างอยู่)  →  Enqueue(1) เข้าคิวช่อง [0] (Currentsize=1, Front=0, Back=0)',
+      watch: { 'v': 'None', 'indegree[1]': 0, 'Queue': '[1]', 'Currentsize': 1, 'Front': 0, 'Back': 0 }
+    });
+
+    // Iteration 1: Process v1
+    trace.push({
+      line: 16,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'WHILE LOOP (รอบ 1)',
+      boundary: true,
+      note: 'เข้าสู่ลูป while not q.is_empty(): คิวไม่ว่าง มีจุดยอด [1] รอรับการประมวลผล',
+      watch: { 'q.is_empty()': false, 'Queue': '[1]', 'Currentsize': 1 }
+    });
+
+    curQueue = [];
+    curFront = 1;
+    curSize = 0;
+    trace.push({
+      line: 17,
+      activeV: 1,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DEQUEUE v1',
+      boundary: false,
+      note: 'Dequeue หัวคิวช่อง [0]  →  ได้จุดยอดที่พร้อมทำงาน v = 1 (Front ขยับเป็น 1, Currentsize = 0)',
+      watch: { 'v': 'v1', 'Queue': '[]', 'Currentsize': 0, 'Front': 1, 'Back': 0 }
+    });
+
+    curTopo = [1];
+    trace.push({
+      line: 18,
+      activeV: 1,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ORDER v1',
+      boundary: false,
+      note: 'บันทึกจุดยอด 1 ลงใน Topological Order  →  ลำดับปัจจุบัน: [1]',
+      watch: { 'v': 'v1', 'topo_order': '[1]', 'len(topo_order)': 1 }
+    });
+
+    // Edge 1 -> 2
+    trace.push({
+      line: 21,
+      activeV: 1,
+      targetW: 2,
+      activeEdge: [1, 2],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (1 → 2)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 1 → 2: ปลายทางคือเพื่อนบ้าน w = 2 (Indegree เดิม = 1)',
+      watch: { 'v': 'v1', 'w': 'v2', 'indegree[2]': 1 }
+    });
+
+    curIndeg[2] = 0;
+    trace.push({
+      line: 22,
+      activeV: 1,
+      targetW: 2,
+      activeEdge: [1, 2],
+      indegrees: { ...curIndeg },
+      decrementedW: 2,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(2)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของจุดยอด 2 ลง 1: indegree[2] = 1 - 1 = 0',
+      watch: { 'v': 'v1', 'w': 'v2', 'indegree[2]': 0 }
+    });
+
+    curQueue = [2];
+    curQueueSlots[1] = 2;
+    curBack = 1;
+    curSize = 1;
+    trace.push({
+      line: 24,
+      activeV: 1,
+      targetW: 2,
+      activeEdge: [1, 2],
+      indegrees: { ...curIndeg },
+      decrementedW: 2,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ENQUEUE v2',
+      boundary: false,
+      note: 'indegree[2] กลายเป็น 0 แล้ว!  →  Enqueue(2) เข้าคิวช่อง [1] (Currentsize=1, Back=1)',
+      watch: { 'v': 'v1', 'w': 'v2', 'Queue': '[2]', 'Currentsize': 1, 'Front': 1, 'Back': 1 }
+    });
+
+    // Edge 1 -> 4
+    trace.push({
+      line: 21,
+      activeV: 1,
+      targetW: 4,
+      activeEdge: [1, 4],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (1 → 4)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 1 → 4: ปลายทางคือเพื่อนบ้าน w = 4 (Indegree เดิม = 3)',
+      watch: { 'v': 'v1', 'w': 'v4', 'indegree[4]': 3 }
+    });
+
+    curIndeg[4] = 2;
+    trace.push({
+      line: 22,
+      activeV: 1,
+      targetW: 4,
+      activeEdge: [1, 4],
+      indegrees: { ...curIndeg },
+      decrementedW: 4,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(4)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 4 ลง 1: indegree[4] = 3 - 1 = 2 (ยังไม่เป็น 0 จึงยังไม่เข้าคิว)',
+      watch: { 'v': 'v1', 'w': 'v4', 'indegree[4]': 2 }
+    });
+
+    // Edge 1 -> 3
+    trace.push({
+      line: 21,
+      activeV: 1,
+      targetW: 3,
+      activeEdge: [1, 3],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (1 → 3)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 1 → 3: ปลายทางคือเพื่อนบ้าน w = 3 (Indegree เดิม = 2)',
+      watch: { 'v': 'v1', 'w': 'v3', 'indegree[3]': 2 }
+    });
+
+    curIndeg[3] = 1;
+    trace.push({
+      line: 22,
+      activeV: 1,
+      targetW: 3,
+      activeEdge: [1, 3],
+      indegrees: { ...curIndeg },
+      decrementedW: 3,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(3)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 3 ลง 1: indegree[3] = 2 - 1 = 1 (ยังไม่เป็น 0) — ประมวลผลเพื่อนบ้านของ v1 ครบถ้วน',
+      watch: { 'v': 'v1', 'w': 'v3', 'indegree[3]': 1 }
+    });
+
+    // Iteration 2: Process v2
+    trace.push({
+      line: 16,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'WHILE LOOP (รอบ 2)',
+      boundary: true,
+      note: 'วนลูป while รอบที่ 2: คิวมีจุดยอด [2] รออยู่',
+      watch: { 'q.is_empty()': false, 'Queue': '[2]', 'Currentsize': 1 }
+    });
+
+    curQueue = [];
+    curFront = 2;
+    curSize = 0;
+    trace.push({
+      line: 17,
+      activeV: 2,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DEQUEUE v2',
+      boundary: false,
+      note: 'Dequeue หัวคิวช่อง [1]  →  ได้จุดยอด v = 2 (Front ขยับเป็น 2, Currentsize = 0)',
+      watch: { 'v': 'v2', 'Queue': '[]', 'Currentsize': 0, 'Front': 2, 'Back': 1 }
+    });
+
+    curTopo = [1, 2];
+    trace.push({
+      line: 18,
+      activeV: 2,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ORDER v2',
+      boundary: false,
+      note: 'บันทึกจุดยอด 2 ลงใน Topological Order  →  ลำดับปัจจุบัน: [1, 2]',
+      watch: { 'v': 'v2', 'topo_order': '[1, 2]', 'len(topo_order)': 2 }
+    });
+
+    // Edge 2 -> 4
+    trace.push({
+      line: 21,
+      activeV: 2,
+      targetW: 4,
+      activeEdge: [2, 4],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (2 → 4)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 2 → 4: ปลายทางคือเพื่อนบ้าน w = 4 (Indegree เดิม = 2)',
+      watch: { 'v': 'v2', 'w': 'v4', 'indegree[4]': 2 }
+    });
+
+    curIndeg[4] = 1;
+    trace.push({
+      line: 22,
+      activeV: 2,
+      targetW: 4,
+      activeEdge: [2, 4],
+      indegrees: { ...curIndeg },
+      decrementedW: 4,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(4)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 4 ลง 1: indegree[4] = 2 - 1 = 1 (ยังไม่เป็น 0)',
+      watch: { 'v': 'v2', 'w': 'v4', 'indegree[4]': 1 }
+    });
+
+    // Edge 2 -> 5
+    trace.push({
+      line: 21,
+      activeV: 2,
+      targetW: 5,
+      activeEdge: [2, 5],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (2 → 5)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 2 → 5: ปลายทางคือเพื่อนบ้าน w = 5 (Indegree เดิม = 1)',
+      watch: { 'v': 'v2', 'w': 'v5', 'indegree[5]': 1 }
+    });
+
+    curIndeg[5] = 0;
+    trace.push({
+      line: 22,
+      activeV: 2,
+      targetW: 5,
+      activeEdge: [2, 5],
+      indegrees: { ...curIndeg },
+      decrementedW: 5,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(5)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 5 ลง 1: indegree[5] = 1 - 1 = 0',
+      watch: { 'v': 'v2', 'w': 'v5', 'indegree[5]': 0 }
+    });
+
+    curQueue = [5];
+    curQueueSlots[2] = 5;
+    curBack = 2;
+    curSize = 1;
+    trace.push({
+      line: 24,
+      activeV: 2,
+      targetW: 5,
+      activeEdge: [2, 5],
+      indegrees: { ...curIndeg },
+      decrementedW: 5,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ENQUEUE v5',
+      boundary: false,
+      note: 'indegree[5] กลายเป็น 0 แล้ว!  →  Enqueue(5) เข้าคิวช่อง [2] (Currentsize=1, Back=2)',
+      watch: { 'v': 'v2', 'w': 'v5', 'Queue': '[5]', 'Currentsize': 1, 'Front': 2, 'Back': 2 }
+    });
+
+    // Iteration 3: Process v5
+    trace.push({
+      line: 16,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'WHILE LOOP (รอบ 3)',
+      boundary: true,
+      note: 'วนลูป while รอบที่ 3: คิวมีจุดยอด [5] รออยู่',
+      watch: { 'q.is_empty()': false, 'Queue': '[5]', 'Currentsize': 1 }
+    });
+
+    curQueue = [];
+    curFront = 3;
+    curSize = 0;
+    trace.push({
+      line: 17,
+      activeV: 5,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DEQUEUE v5',
+      boundary: false,
+      note: 'Dequeue หัวคิวช่อง [2]  →  ได้จุดยอด v = 5 (Front ขยับเป็น 3, Currentsize = 0)',
+      watch: { 'v': 'v5', 'Queue': '[]', 'Currentsize': 0, 'Front': 3, 'Back': 2 }
+    });
+
+    curTopo = [1, 2, 5];
+    trace.push({
+      line: 18,
+      activeV: 5,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ORDER v5',
+      boundary: false,
+      note: 'บันทึกจุดยอด 5 ลงใน Topological Order  →  ลำดับปัจจุบัน: [1, 2, 5]',
+      watch: { 'v': 'v5', 'topo_order': '[1, 2, 5]', 'len(topo_order)': 3 }
+    });
+
+    // Edge 5 -> 4
+    trace.push({
+      line: 21,
+      activeV: 5,
+      targetW: 4,
+      activeEdge: [5, 4],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (5 → 4)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 5 → 4: ปลายทางคือเพื่อนบ้าน w = 4 (Indegree เดิม = 1)',
+      watch: { 'v': 'v5', 'w': 'v4', 'indegree[4]': 1 }
+    });
+
+    curIndeg[4] = 0;
+    trace.push({
+      line: 22,
+      activeV: 5,
+      targetW: 4,
+      activeEdge: [5, 4],
+      indegrees: { ...curIndeg },
+      decrementedW: 4,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(4)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 4 ลง 1: indegree[4] = 1 - 1 = 0',
+      watch: { 'v': 'v5', 'w': 'v4', 'indegree[4]': 0 }
+    });
+
+    curQueue = [4];
+    curQueueSlots[3] = 4;
+    curBack = 3;
+    curSize = 1;
+    trace.push({
+      line: 24,
+      activeV: 5,
+      targetW: 4,
+      activeEdge: [5, 4],
+      indegrees: { ...curIndeg },
+      decrementedW: 4,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ENQUEUE v4',
+      boundary: false,
+      note: 'indegree[4] กลายเป็น 0 แล้ว!  →  Enqueue(4) เข้าคิวช่อง [3] (Currentsize=1, Back=3)',
+      watch: { 'v': 'v5', 'w': 'v4', 'Queue': '[4]', 'Currentsize': 1, 'Front': 3, 'Back': 3 }
+    });
+
+    // Edge 5 -> 7
+    trace.push({
+      line: 21,
+      activeV: 5,
+      targetW: 7,
+      activeEdge: [5, 7],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (5 → 7)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 5 → 7: ปลายทางคือเพื่อนบ้าน w = 7 (Indegree เดิม = 2)',
+      watch: { 'v': 'v5', 'w': 'v7', 'indegree[7]': 2 }
+    });
+
+    curIndeg[7] = 1;
+    trace.push({
+      line: 22,
+      activeV: 5,
+      targetW: 7,
+      activeEdge: [5, 7],
+      indegrees: { ...curIndeg },
+      decrementedW: 7,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(7)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 7 ลง 1: indegree[7] = 2 - 1 = 1 (ยังไม่เป็น 0) — ประมวลผลเพื่อนบ้านของ v5 ครบถ้วน',
+      watch: { 'v': 'v5', 'w': 'v7', 'indegree[7]': 1 }
+    });
+
+    // Iteration 4: Process v4
+    trace.push({
+      line: 16,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'WHILE LOOP (รอบ 4)',
+      boundary: true,
+      note: 'วนลูป while รอบที่ 4: คิวมีจุดยอด [4] รออยู่',
+      watch: { 'q.is_empty()': false, 'Queue': '[4]', 'Currentsize': 1 }
+    });
+
+    curQueue = [];
+    curFront = 4;
+    curSize = 0;
+    trace.push({
+      line: 17,
+      activeV: 4,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DEQUEUE v4',
+      boundary: false,
+      note: 'Dequeue หัวคิวช่อง [3]  →  ได้จุดยอด v = 4 (Front ขยับเป็น 4, Currentsize = 0)',
+      watch: { 'v': 'v4', 'Queue': '[]', 'Currentsize': 0, 'Front': 4, 'Back': 3 }
+    });
+
+    curTopo = [1, 2, 5, 4];
+    trace.push({
+      line: 18,
+      activeV: 4,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ORDER v4',
+      boundary: false,
+      note: 'บันทึกจุดยอด 4 ลงใน Topological Order  →  ลำดับปัจจุบัน: [1, 2, 5, 4]',
+      watch: { 'v': 'v4', 'topo_order': '[1, 2, 5, 4]', 'len(topo_order)': 4 }
+    });
+
+    // Edge 4 -> 6
+    trace.push({
+      line: 21,
+      activeV: 4,
+      targetW: 6,
+      activeEdge: [4, 6],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (4 → 6)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 4 → 6: ปลายทางคือเพื่อนบ้าน w = 6 (Indegree เดิม = 3)',
+      watch: { 'v': 'v4', 'w': 'v6', 'indegree[6]': 3 }
+    });
+
+    curIndeg[6] = 2;
+    trace.push({
+      line: 22,
+      activeV: 4,
+      targetW: 6,
+      activeEdge: [4, 6],
+      indegrees: { ...curIndeg },
+      decrementedW: 6,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(6)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 6 ลง 1: indegree[6] = 3 - 1 = 2 (ยังไม่เป็น 0)',
+      watch: { 'v': 'v4', 'w': 'v6', 'indegree[6]': 2 }
+    });
+
+    // Edge 4 -> 3
+    trace.push({
+      line: 21,
+      activeV: 4,
+      targetW: 3,
+      activeEdge: [4, 3],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (4 → 3)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 4 → 3: ปลายทางคือเพื่อนบ้าน w = 3 (Indegree เดิม = 1)',
+      watch: { 'v': 'v4', 'w': 'v3', 'indegree[3]': 1 }
+    });
+
+    curIndeg[3] = 0;
+    trace.push({
+      line: 22,
+      activeV: 4,
+      targetW: 3,
+      activeEdge: [4, 3],
+      indegrees: { ...curIndeg },
+      decrementedW: 3,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(3)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 3 ลง 1: indegree[3] = 1 - 1 = 0',
+      watch: { 'v': 'v4', 'w': 'v3', 'indegree[3]': 0 }
+    });
+
+    curQueue.push(3);
+    curQueueSlots[4] = 3;
+    curBack = 4;
+    curSize += 1;
+    trace.push({
+      line: 24,
+      activeV: 4,
+      targetW: 3,
+      activeEdge: [4, 3],
+      indegrees: { ...curIndeg },
+      decrementedW: 3,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ENQUEUE v3',
+      boundary: false,
+      note: 'indegree[3] กลายเป็น 0 แล้ว!  →  Enqueue(3) เข้าคิวช่อง [4] (Currentsize=1, Back=4)',
+      watch: { 'v': 'v4', 'w': 'v3', 'Queue': '[3]', 'Currentsize': curSize, 'Front': curFront, 'Back': curBack }
+    });
+
+    // Edge 4 -> 7
+    trace.push({
+      line: 21,
+      activeV: 4,
+      targetW: 7,
+      activeEdge: [4, 7],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (4 → 7)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 4 → 7: ปลายทางคือเพื่อนบ้าน w = 7 (Indegree เดิม = 1)',
+      watch: { 'v': 'v4', 'w': 'v7', 'indegree[7]': 1 }
+    });
+
+    curIndeg[7] = 0;
+    trace.push({
+      line: 22,
+      activeV: 4,
+      targetW: 7,
+      activeEdge: [4, 7],
+      indegrees: { ...curIndeg },
+      decrementedW: 7,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(7)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 7 ลง 1: indegree[7] = 1 - 1 = 0',
+      watch: { 'v': 'v4', 'w': 'v7', 'indegree[7]': 0 }
+    });
+
+    curQueue.push(7);
+    curQueueSlots[5] = 7;
+    curBack = 5;
+    curSize += 1;
+    trace.push({
+      line: 24,
+      activeV: 4,
+      targetW: 7,
+      activeEdge: [4, 7],
+      indegrees: { ...curIndeg },
+      decrementedW: 7,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ENQUEUE v7',
+      boundary: false,
+      note: 'indegree[7] กลายเป็น 0 แล้ว!  →  Enqueue(7) เข้าคิวช่อง [5] — ตอนนี้คิวมี [3, 7] (Currentsize=2, Back=5)',
+      watch: { 'v': 'v4', 'w': 'v7', 'Queue': '[3, 7]', 'Currentsize': curSize, 'Front': curFront, 'Back': curBack }
+    });
+
+    // Iteration 5: Process v3
+    trace.push({
+      line: 16,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'WHILE LOOP (รอบ 5)',
+      boundary: true,
+      note: 'วนลูป while รอบที่ 5: คิวมีจุดยอด [3, 7] รออยู่ (ตามหลัก FIFO ดึง 3 ออกก่อน)',
+      watch: { 'q.is_empty()': false, 'Queue': '[3, 7]', 'Currentsize': 2 }
+    });
+
+    curQueue.shift();
+    curFront = 5;
+    curSize -= 1;
+    trace.push({
+      line: 17,
+      activeV: 3,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DEQUEUE v3',
+      boundary: false,
+      note: 'Dequeue หัวคิวช่อง [4]  →  ได้จุดยอด v = 3 (Front ขยับเป็น 5, ในคิวเหลือ [7])',
+      watch: { 'v': 'v3', 'Queue': '[7]', 'Currentsize': curSize, 'Front': curFront, 'Back': curBack }
+    });
+
+    curTopo.push(3);
+    trace.push({
+      line: 18,
+      activeV: 3,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ORDER v3',
+      boundary: false,
+      note: 'บันทึกจุดยอด 3 ลงใน Topological Order  →  ลำดับปัจจุบัน: [1, 2, 5, 4, 3]',
+      watch: { 'v': 'v3', 'topo_order': '[1, 2, 5, 4, 3]', 'len(topo_order)': 5 }
+    });
+
+    // Edge 3 -> 6
+    trace.push({
+      line: 21,
+      activeV: 3,
+      targetW: 6,
+      activeEdge: [3, 6],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (3 → 6)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 3 → 6: ปลายทางคือเพื่อนบ้าน w = 6 (Indegree เดิม = 2)',
+      watch: { 'v': 'v3', 'w': 'v6', 'indegree[6]': 2 }
+    });
+
+    curIndeg[6] = 1;
+    trace.push({
+      line: 22,
+      activeV: 3,
+      targetW: 6,
+      activeEdge: [3, 6],
+      indegrees: { ...curIndeg },
+      decrementedW: 6,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(6)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 6 ลง 1: indegree[6] = 2 - 1 = 1 (ยังไม่เป็น 0) — จุดยอด v3 ไม่มีเพื่อนบ้านอื่นแล้ว',
+      watch: { 'v': 'v3', 'w': 'v6', 'indegree[6]': 1 }
+    });
+
+    // Iteration 6: Process v7
+    trace.push({
+      line: 16,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'WHILE LOOP (รอบ 6)',
+      boundary: true,
+      note: 'วนลูป while รอบที่ 6: คิวมีจุดยอด [7] รออยู่',
+      watch: { 'q.is_empty()': false, 'Queue': '[7]', 'Currentsize': 1 }
+    });
+
+    curQueue.shift();
+    curFront = 6;
+    curSize = 0;
+    trace.push({
+      line: 17,
+      activeV: 7,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DEQUEUE v7',
+      boundary: false,
+      note: 'Dequeue หัวคิวช่อง [5]  →  ได้จุดยอด v = 7 (Front ขยับเป็น 6, Currentsize = 0)',
+      watch: { 'v': 'v7', 'Queue': '[]', 'Currentsize': 0, 'Front': 6, 'Back': 5 }
+    });
+
+    curTopo.push(7);
+    trace.push({
+      line: 18,
+      activeV: 7,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ORDER v7',
+      boundary: false,
+      note: 'บันทึกจุดยอด 7 ลงใน Topological Order  →  ลำดับปัจจุบัน: [1, 2, 5, 4, 3, 7]',
+      watch: { 'v': 'v7', 'topo_order': '[1, 2, 5, 4, 3, 7]', 'len(topo_order)': 6 }
+    });
+
+    // Edge 7 -> 6
+    trace.push({
+      line: 21,
+      activeV: 7,
+      targetW: 6,
+      activeEdge: [7, 6],
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'EXAMINE EDGE (7 → 6)',
+      boundary: false,
+      note: 'ตรวจเส้นเชื่อม 7 → 6: ปลายทางคือเพื่อนบ้าน w = 6 (Indegree เดิม = 1)',
+      watch: { 'v': 'v7', 'w': 'v6', 'indegree[6]': 1 }
+    });
+
+    curIndeg[6] = 0;
+    trace.push({
+      line: 22,
+      activeV: 7,
+      targetW: 6,
+      activeEdge: [7, 6],
+      indegrees: { ...curIndeg },
+      decrementedW: 6,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DECREMENT in(6)',
+      boundary: false,
+      note: 'ลดค่า Indegree ของ 6 ลง 1: indegree[6] = 1 - 1 = 0',
+      watch: { 'v': 'v7', 'w': 'v6', 'indegree[6]': 0 }
+    });
+
+    curQueue.push(6);
+    curQueueSlots[6] = 6;
+    curBack = 6;
+    curSize = 1;
+    trace.push({
+      line: 24,
+      activeV: 7,
+      targetW: 6,
+      activeEdge: [7, 6],
+      indegrees: { ...curIndeg },
+      decrementedW: 6,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ENQUEUE v6',
+      boundary: false,
+      note: 'indegree[6] กลายเป็น 0 แล้ว!  →  Enqueue(6) เข้าคิวช่อง [6] (Currentsize=1, Back=6)',
+      watch: { 'v': 'v7', 'w': 'v6', 'Queue': '[6]', 'Currentsize': 1, 'Front': 6, 'Back': 6 }
+    });
+
+    // Iteration 7: Process v6
+    trace.push({
+      line: 16,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'WHILE LOOP (รอบ 7)',
+      boundary: true,
+      note: 'วนลูป while รอบที่ 7: คิวมีจุดยอด [6] รออยู่',
+      watch: { 'q.is_empty()': false, 'Queue': '[6]', 'Currentsize': 1 }
+    });
+
+    curQueue.shift();
+    curFront = 0; // wrap around!
+    curSize = 0;
+    trace.push({
+      line: 17,
+      activeV: 6,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DEQUEUE v6',
+      boundary: false,
+      note: 'Dequeue หัวคิวช่อง [6]  →  ได้จุดยอด v = 6 (Front วนครบกลับมาเป็น 0! Currentsize = 0)',
+      watch: { 'v': 'v6', 'Queue': '[]', 'Currentsize': 0, 'Front': 0, 'Back': 6 }
+    });
+
+    curTopo.push(6);
+    trace.push({
+      line: 18,
+      activeV: 6,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'ORDER v6',
+      boundary: false,
+      note: 'บันทึกจุดยอด 6 ลงใน Topological Order  →  ลำดับปัจจุบัน: [1, 2, 5, 4, 3, 7, 6]',
+      watch: { 'v': 'v6', 'topo_order': '[1, 2, 5, 4, 3, 7, 6]', 'len(topo_order)': 7 }
+    });
+
+    // v6 sink node
+    trace.push({
+      line: 21,
+      activeV: 6,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'SINK NODE v6',
+      boundary: false,
+      note: 'จุดยอด v6 เป็น Sink Node (ไม่มีเส้นชี้ออก, w ∈ ∅)  →  ไม่ต้องลด Indegree ของใคร',
+      watch: { 'v': 'v6', 'graph[v6]': '[]', 'neighbors': 'Empty' }
+    });
+
+    // while loop exit
+    trace.push({
+      line: 16,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'QUEUE EMPTY',
+      boundary: true,
+      note: 'คิวว่างเปล่าแล้ว (q.is_empty() = True)  →  หลุดออกจากลูป while!',
+      watch: { 'q.is_empty()': true, 'Currentsize': 0, 'Front': 0, 'Back': 6 }
+    });
+
+    // DAG check
+    trace.push({
+      line: 26,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'DAG CHECK PASSED',
+      boundary: false,
+      note: 'ตรวจสอบ: len(topo_order) = 7 เท่ากับจำนวนจุดยอดทั้งหมด (|V| = 7)  →  กราฟนี้เป็น DAG ปราศจาก Cycle!',
+      watch: { 'len(topo_order)': 7, '|V|': 7, 'Has Cycle': false }
+    });
+
+    // Complete
+    trace.push({
+      line: 28,
+      activeV: null,
+      targetW: null,
+      activeEdge: null,
+      indegrees: { ...curIndeg },
+      decrementedW: null,
+      queue: [...curQueue],
+      queueSlots: [...curQueueSlots],
+      front: curFront,
+      back: curBack,
+      currentSize: curSize,
+      topoOrder: [...curTopo],
+      badge: 'COMPLETE 100%',
+      boundary: true,
+      note: '✔ สิ้นสุดขั้นตอนวิธี Topological Sort สมบูรณ์! คำตอบข้อสอบ: 1, 2, 5, 4, 3, 7, 6 (ห้ามเขียนลูกศร -> เด็ดขาด)',
+      watch: { 'Topological Order': '1, 2, 5, 4, 3, 7, 6', 'Result': 'Success' }
+    });
+
+    return trace;
+  }
+
+  const topsortWidget = buildDebuggerWidget(document.getElementById('topsortDebugger'), {
+    id: 'ts',
+    defaultMode: 'topsort',
+    showJump: false,
+    treeTitle: '7-Node DAG Topological Graph',
+    arrayTitle: 'Circular Queue & Indegree Status',
+    arraySubtitle: 'Circular Array (0..6) & Live Indegree Values',
+    getCode: () => TOPSORT_GRAPH_CODE,
+    customRenderTree: (svg, step) => {
+      const vPos = {
+        v1: { x: 240, y: 75 },
+        v2: { x: 500, y: 75 },
+        v3: { x: 120, y: 195 },
+        v4: { x: 370, y: 195 },
+        v5: { x: 620, y: 195 },
+        v6: { x: 240, y: 315 },
+        v7: { x: 500, y: 315 }
+      };
+
+      const edges = [
+        ['v1', 'v2'], ['v1', 'v4'], ['v1', 'v3'],
+        ['v2', 'v4'], ['v2', 'v5'],
+        ['v3', 'v6'],
+        ['v4', 'v6'], ['v4', 'v7'], ['v4', 'v3'],
+        ['v5', 'v4'], ['v5', 'v7'],
+        ['v7', 'v6']
+      ];
+
+      const activeEdge = step.activeEdge ? [
+        (typeof step.activeEdge[0] === 'number' ? `v${step.activeEdge[0]}` : step.activeEdge[0]),
+        (typeof step.activeEdge[1] === 'number' ? `v${step.activeEdge[1]}` : step.activeEdge[1])
+      ] : null;
+
+      const activeV = step.activeV != null ? (typeof step.activeV === 'number' ? `v${step.activeV}` : step.activeV) : null;
+      const targetW = step.targetW != null ? (typeof step.targetW === 'number' ? `v${step.targetW}` : step.targetW) : null;
+      const topoOrder = (step.topoOrder || []).map(x => typeof x === 'number' ? `v${x}` : x);
+      const queueItems = (step.queue || []).map(x => typeof x === 'number' ? `v${x}` : x);
+      const indegrees = step.indegrees || {};
+
+      let html = `
+        <defs>
+          <marker id="arrow-ts" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#4b5563"/>
+          </marker>
+          <marker id="arrow-active" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#06b6d4"/>
+          </marker>
+          <marker id="arrow-ordered" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#10b981"/>
+          </marker>
+          <filter id="glow-amber" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+      `;
+
+      // Draw Edges
+      edges.forEach(([u, v]) => {
+        const p1 = vPos[u], p2 = vPos[v];
+        const dx = p2.x - p1.x, dy = p2.y - p1.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const r = 24;
+        const x1 = p1.x + (dx / dist) * r;
+        const y1 = p1.y + (dy / dist) * r;
+        const x2 = p2.x - (dx / dist) * (r + 5);
+        const y2 = p2.y - (dy / dist) * (r + 5);
+
+        const isActive = activeEdge && activeEdge[0] === u && activeEdge[1] === v;
+        const isOrdered = topoOrder.includes(u) && topoOrder.includes(v);
+
+        let stroke = '#374151', strokeW = '1.8', marker = 'url(#arrow-ts)', dash = 'none', filter = '';
+        if (isActive) {
+          stroke = '#06b6d4';
+          strokeW = '3.5';
+          marker = 'url(#arrow-active)';
+          dash = '6 3';
+          filter = 'url(#glow-cyan)';
+        } else if (isOrdered) {
+          stroke = 'rgba(16, 185, 129, 0.45)';
+          strokeW = '2';
+          marker = 'url(#arrow-ordered)';
+        }
+
+        html += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="${strokeW}" stroke-dasharray="${dash}" marker-end="${marker}" ${filter ? `filter="${filter}"` : ''}/>`;
+      });
+
+      // Draw Vertices
+      Object.keys(vPos).forEach(key => {
+        const { x, y } = vPos[key];
+        const num = parseInt(key.replace('v', ''), 10);
+        const inDeg = indegrees[num] !== undefined ? indegrees[num] : '-';
+        const isOrdered = topoOrder.includes(key);
+        const isActive = activeV === key;
+        const isTarget = targetW === key;
+        const isInQueue = queueItems.includes(key);
+        const orderIdx = topoOrder.indexOf(key);
+
+        let fill = '#171924', stroke = '#374151', strokeW = '2', filter = '';
+        let subBadgeText = '';
+
+        if (isActive) {
+          fill = 'rgba(245, 166, 35, 0.28)';
+          stroke = '#f5a623';
+          strokeW = '3.5';
+          filter = 'url(#glow-amber)';
+          subBadgeText = 'ACTIVE v';
+        } else if (isTarget) {
+          fill = 'rgba(6, 182, 212, 0.28)';
+          stroke = '#06b6d4';
+          strokeW = '3';
+          filter = 'url(#glow-cyan)';
+          subBadgeText = 'TARGET w';
+        } else if (isOrdered) {
+          fill = 'rgba(16, 185, 129, 0.2)';
+          stroke = '#10b981';
+          strokeW = '2.4';
+          subBadgeText = `Top #${orderIdx + 1}`;
+        } else if (isInQueue) {
+          fill = 'rgba(168, 85, 247, 0.25)';
+          stroke = '#a855f7';
+          strokeW = '2.5';
+          subBadgeText = 'IN QUEUE';
+        }
+
+        html += `<g id="ts-node-${key}">`;
+        if (isActive) {
+          html += `<circle cx="${x}" cy="${y}" r="31" fill="none" stroke="#f5a623" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.8"/>`;
+        }
+        html += `<circle cx="${x}" cy="${y}" r="24" fill="${fill}" stroke="${stroke}" stroke-width="${strokeW}" ${filter ? `filter="${filter}"` : ''}/>`;
+        
+        // Node Label
+        html += `<text x="${x}" y="${y + 5}" fill="var(--text)" font-family="Chakra Petch" font-weight="700" font-size="15" text-anchor="middle">${key}</text>`;
+
+        // Indegree Pill above node
+        let pillBg = '#1f2937', pillTextColor = '#9ca3af';
+        if (inDeg === 0) {
+          pillBg = isOrdered ? 'rgba(16, 185, 129, 0.25)' : 'rgba(168, 85, 247, 0.35)';
+          pillTextColor = isOrdered ? '#34d399' : '#c084fc';
+        } else if (isTarget) {
+          pillBg = 'rgba(6, 182, 212, 0.3)';
+          pillTextColor = '#38bdf8';
+        }
+
+        html += `<rect x="${x - 22}" y="${y - 41}" width="44" height="17" rx="8.5" fill="${pillBg}" stroke="${stroke}" stroke-width="1"/>`;
+        html += `<text x="${x}" y="${y - 29}" fill="${pillTextColor}" font-family="JetBrains Mono" font-weight="700" font-size="10" text-anchor="middle">in=${inDeg}</text>`;
+
+        // Status badge below node
+        if (subBadgeText) {
+          let bColor = '#9ca3af';
+          if (isActive) bColor = '#f5a623';
+          else if (isTarget) bColor = '#38bdf8';
+          else if (isOrdered) bColor = '#34d399';
+          else if (isInQueue) bColor = '#c084fc';
+          html += `<text x="${x}" y="${y + 40}" fill="${bColor}" font-family="Chakra Petch" font-weight="600" font-size="10.5" text-anchor="middle">${subBadgeText}</text>`;
+        }
+
+        html += `</g>`;
+      });
+
+      svg.setAttribute('viewBox', '0 0 760 380');
+      svg.innerHTML = html;
+    },
+    customRenderArray: (row, step) => {
+      const qSlots = step.queueSlots || [];
+      const front = step.front != null ? step.front : 0;
+      const back = step.back != null ? step.back : 0;
+      const currentSize = step.currentSize != null ? step.currentSize : 0;
+      const topoOrder = step.topoOrder || [];
+      const indegrees = step.indegrees || {};
+
+      let html = `<div style="width:100%; display:flex; flex-direction:column; gap:12px;">`;
+
+      // 1. Circular Queue Array (Slots 0..6)
+      html += `<div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div style="font-size:12px; font-weight:700; color:var(--text); text-transform:uppercase; letter-spacing:0.04em;">
+            Circular Queue q (Array 7 ช่อง: ดัชนี 0..6)
+          </div>
+          <div class="mono" style="font-size:11.5px; color:var(--muted);">
+            currentSize = <b style="color:var(--cyan);">${currentSize}</b> | Front = <b style="color:var(--amber);">${front}</b> | Back = <b style="color:var(--violet);">${back}</b>
+          </div>
+        </div>
+        <div class="array-row" style="margin-top:0;">`;
+
+      for (let i = 0; i < 7; i++) {
+        const val = qSlots[i];
+        const isFront = (i === front && currentSize > 0);
+        const isBack = (i === back && val != null);
+        let ptrBadge = '';
+        if (isFront && isBack) ptrBadge = '<span style="color:var(--amber); font-weight:800;">F,B</span>';
+        else if (isFront) ptrBadge = '<span style="color:var(--amber); font-weight:800;">F</span>';
+        else if (isBack) ptrBadge = '<span style="color:var(--violet); font-weight:800;">B</span>';
+
+        let cls = 'abox';
+        if (val == null) {
+          cls += ' dead';
+        } else if (step.activeV === val || (typeof val === 'string' && val.includes(String(step.activeV)))) {
+          cls += ' moved';
+        } else {
+          cls += ' final';
+        }
+
+        html += `<div class="${cls}" style="position:relative;">
+          <span class="aidx">[${i}]</span>
+          ${val ? (typeof val === 'number' ? `v${val}` : val) : '∅'}
+          ${ptrBadge ? `<div style="position:absolute; bottom:-16px; font-size:10px; font-family:'JetBrains Mono';">${ptrBadge}</div>` : ''}
+        </div>`;
+      }
+      html += `</div></div>`;
+
+      // 2. Live Indegree Bar
+      html += `<div style="margin-top:8px;">
+        <div style="font-size:12px; font-weight:700; color:var(--text); margin-bottom:6px;">
+          Indegree Array Status:
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">`;
+      
+      for (let v = 1; v <= 7; v++) {
+        const deg = indegrees[v] !== undefined ? indegrees[v] : '-';
+        const isDec = step.decrementedW === v;
+        const isZero = deg === 0;
+        let badgeBg = 'rgba(255,255,255,0.05)', bColor = 'var(--text-sub)', bBorder = 'var(--border)';
+        if (isDec) {
+          badgeBg = 'rgba(6,182,212,0.25)';
+          bColor = 'var(--cyan)';
+          bBorder = 'var(--cyan)';
+        } else if (isZero) {
+          badgeBg = 'rgba(16,185,129,0.2)';
+          bColor = 'var(--emerald)';
+          bBorder = 'var(--emerald)';
+        }
+
+        html += `<div style="display:inline-flex; align-items:center; gap:5px; background:${badgeBg}; border:1px solid ${bBorder}; border-radius:6px; padding:3px 8px; font-family:'JetBrains Mono'; font-size:12px;">
+          <span style="color:var(--muted); font-weight:600;">v${v}:</span>
+          <b style="color:${bColor};">${deg}</b>
+        </div>`;
+      }
+      html += `</div></div>`;
+
+      // 3. Topological Order Stream
+      html += `<div style="margin-top:4px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div style="font-size:12px; font-weight:700; color:var(--emerald);">
+            Topological Order ผลลัพธ์:
+          </div>
+          <div style="font-size:11px; color:#fca5a5; font-weight:600;">
+            ⚠️ กฎข้อสอบ: คั่นด้วย Comma ห้ามใส่ลูกศร -&gt;
+          </div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:6px; min-height:32px; background:rgba(0,0,0,0.25); border:1px dashed var(--border); border-radius:8px; padding:6px 12px;">
+          ${topoOrder.length === 0 ? '<span style="color:var(--muted); font-size:12px;">(ยังไม่มีจุดยอดนำออกจากคิว)</span>' : ''}
+          ${topoOrder.map((item, idx) => {
+            const val = typeof item === 'number' ? `v${item}` : item;
+            return `<span style="display:inline-flex; align-items:center; gap:4px; background:rgba(16,185,129,0.2); border:1px solid var(--emerald); border-radius:6px; padding:2px 8px; font-family:'JetBrains Mono'; font-size:12px; font-weight:700; color:var(--emerald);">
+              <span style="font-size:9.5px; opacity:0.7;">#${idx + 1}</span> ${val}
+            </span>${idx < topoOrder.length - 1 ? '<span style="color:var(--muted); font-weight:700;">,</span>' : ''}`;
+          }).join('')}
+        </div>
+      </div>`;
+
+      html += `</div>`;
+      row.innerHTML = html;
+    },
+    buildTrace: () => traceTopologicalSort()
+  });
+  if (topsortWidget) topsortWidget.setMode('topsort');
+
   // -------------------------------------------------------------
   // URL QUERY PARAMETER AUTO-ROUTING (?topic=assign1, ?ex=...)
   // -------------------------------------------------------------
@@ -2456,8 +3965,10 @@ document.addEventListener('DOMContentLoaded', () => {
       switchTopic('test1');
     } else if (topicParam.includes('test2') || topicParam.includes('sort')) {
       switchTopic('test2');
-    } else if (topicParam.includes('assign4') || topicParam.includes('graph')) {
+    } else if (topicParam.includes('assign4') || topicParam.includes('bfs')) {
       switchTopic('assign4');
+    } else if (topicParam.includes('topsort') || topicParam.includes('topological')) {
+      switchTopic('topsort');
     } else if (topicParam.includes('heap')) {
       switchTopic('heap');
     } else if (topicParam.includes('bst')) {
