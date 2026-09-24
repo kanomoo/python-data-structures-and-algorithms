@@ -959,6 +959,52 @@ body.theme-light .article-body img:hover {
   background: rgba(99, 102, 241, 0.05);
 }
 
+/* Luminous, High-Contrast Article Body Links & Table Quick Links */
+.article-body a {
+  color: #38bdf8; /* Luminous cyan-sky */
+  text-decoration: underline;
+  text-decoration-color: rgba(56, 189, 248, 0.45);
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.article-body a:hover {
+  color: #7dd3fc;
+  text-decoration-color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
+}
+
+.article-body td a,
+.article-body table a,
+.table-responsive-wrapper a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 6px;
+  color: #38bdf8 !important;
+  font-weight: 700;
+  font-size: 12.5px;
+  font-family: var(--font-sans);
+  text-decoration: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.article-body td a:hover,
+.article-body table a:hover,
+.table-responsive-wrapper a:hover {
+  background: rgba(56, 189, 248, 0.3);
+  border-color: #38bdf8;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+}
+
 /* Light Theme overrides for Tables */
 body.theme-light .table-responsive-wrapper {
   background: #ffffff;
@@ -3322,4 +3368,1088 @@ body.theme-light .studio-debugger-deck {
   color: #fca5a5;
 }
 
+/* ==========================================================================
+   KaTeX & Mathematical Typography Design System (Match link.md Standard)
+   ========================================================================== */
+
+.math-block-container {
+  display: block;
+  margin: 20px 0;
+  padding: 16px 22px;
+  background: var(--bg-surface-elevated, #20222c);
+  border: 1px solid var(--border-subtle, #2d303c);
+  border-left: 3.5px solid var(--brand-primary, #4fd1e8);
+  border-radius: var(--radius-md, 10px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.math-block-container:hover {
+  border-color: rgba(79, 209, 232, 0.4);
+  box-shadow: 0 6px 24px rgba(79, 209, 232, 0.12);
+}
+
+.math-block-container .katex-display {
+  margin: 0 !important;
+  text-align: center;
+}
+
+.katex {
+  font-size: 1.05em;
+  color: var(--text-primary, #e9e7e1);
+  text-rendering: geometricPrecision;
+}
+
+.katex-display > .katex {
+  white-space: normal;
+}
+
+.katex .mathbf {
+  color: var(--brand-primary, #4fd1e8);
+  font-weight: 700;
+}
+
+.katex .text {
+  font-family: var(--font-sans);
+}
+
+.katex-fallback {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--brand-accent, #f5a623);
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.katex-error {
+  display: none !important;
+}
+
+/* Responsive Table Wrapper */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 18px 0;
+  border-radius: var(--radius-md, 10px);
+  border: 1px solid var(--border-subtle, #2d303c);
+  background: var(--bg-surface, #1b1d25);
+}
+
+.table-responsive-wrapper table {
+  margin: 0 !important;
+  border: none !important;
+}
+
+/* ==========================================================================
+   Custom Modals (Reference Links link.md & Voice Intel)
+   ========================================================================== */
+
+.custom-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 11, 16, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.custom-modal-backdrop.open {
+  display: flex;
+  animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.custom-modal-box {
+  background: var(--bg-surface, #1b1d25);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.14));
+  border-radius: var(--radius-lg, 14px);
+  width: 100%;
+  max-width: 980px;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7), 0 0 30px rgba(79, 209, 232, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-modal-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-subtle, #2d303c);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--bg-surface, #1b1d25);
+  z-index: 10;
+}
+
+.custom-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-heading, 'Chakra Petch');
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text-primary, #e9e7e1);
+}
+
+.modal-badge-cyan {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(79, 209, 232, 0.15);
+  color: var(--brand-primary, #4fd1e8);
+  border: 1px solid rgba(79, 209, 232, 0.35);
+  font-weight: 700;
+}
+
+.modal-badge-amber {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(245, 166, 35, 0.15);
+  color: var(--brand-accent, #f5a623);
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  font-weight: 700;
+}
+
+.custom-modal-body {
+  padding: 24px;
+  color: var(--text-primary, #e9e7e1);
+  line-height: 1.7;
+}
+
+.modal-lead {
+  font-size: 14.5px;
+  color: var(--text-secondary, #c7cad6);
+  margin-bottom: 18px;
+}
+
+/* Reference Table (link.md) */
+.cmp-ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.cmp-ref-table th, .cmp-ref-table td {
+  padding: 12px 14px;
+  border: 1px solid var(--border-subtle, #2d303c);
+  text-align: left;
+}
+
+.cmp-ref-table th {
+  background: var(--bg-surface-elevated, #20222c);
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  color: var(--brand-primary, #4fd1e8);
+  text-transform: uppercase;
+}
+
+.ref-sub {
+  font-size: 12px;
+  color: var(--text-muted, #8b8fa3);
+  display: block;
+  margin-top: 3px;
+}
+
+.ref-links-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ref-link-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.ref-link-badge.badge-lab {
+  background: rgba(79, 209, 232, 0.15);
+  color: var(--brand-primary, #4fd1e8);
+  border-color: rgba(79, 209, 232, 0.35);
+}
+.ref-link-badge.badge-lab:hover {
+  background: var(--brand-primary, #4fd1e8);
+  color: #0f172a;
+  box-shadow: 0 0 12px rgba(79, 209, 232, 0.4);
+}
+
+.ref-link-badge.badge-claude {
+  background: rgba(245, 166, 35, 0.12);
+  color: #fbbf24;
+  border-color: rgba(245, 166, 35, 0.35);
+}
+.ref-link-badge.badge-claude:hover {
+  background: #f59e0b;
+  color: #1e1b4b;
+}
+
+.ref-link-badge.badge-offline {
+  background: rgba(183, 148, 246, 0.15);
+  color: #c084fc;
+  border-color: rgba(183, 148, 246, 0.35);
+}
+.ref-link-badge.badge-offline:hover {
+  background: #a855f7;
+  color: white;
+}
+
+.ref-link-badge.badge-gemini {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.35);
+}
+.ref-link-badge.badge-gemini:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.ref-link-badge.badge-perp {
+  background: rgba(20, 184, 166, 0.15);
+  color: #2dd4bf;
+  border-color: rgba(20, 184, 166, 0.35);
+}
+.ref-link-badge.badge-perp:hover {
+  background: #14b8a6;
+  color: #042f2e;
+}
+
+.ref-link-badge.badge-wiki {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary, #e9e7e1);
+  border-color: var(--border-subtle, #2d303c);
+}
+.ref-link-badge.badge-wiki:hover {
+  border-color: var(--brand-primary, #4fd1e8);
+  color: var(--brand-primary, #4fd1e8);
+}
+
+/* Voice Intel Cards */
+.voice-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 768px) {
+  .voice-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.voice-trap-card {
+  background: var(--bg-surface-elevated, #20222c);
+  border: 1px solid var(--border-subtle, #2d303c);
+  border-radius: var(--radius-md, 10px);
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.voice-trap-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+
+.voice-trap-card.danger::before { background: #ef4444; }
+.voice-trap-card.warning::before { background: #f59e0b; }
+.voice-trap-card.info::before { background: #3b82f6; }
+.voice-trap-card.brand::before { background: var(--brand-primary, #4fd1e8); }
+
+.voice-trap-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.trap-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  flex-shrink: 0;
+}
+
+.voice-trap-header h4 {
+  font-family: var(--font-heading, 'Chakra Petch');
+  font-size: 15px;
+  margin: 0;
+  color: var(--text-primary, #e9e7e1);
+}
+
+.voice-trap-card p {
+  font-size: 13.5px;
+  color: var(--text-secondary, #c7cad6);
+  margin-bottom: 10px;
+}
+
+.voice-example-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  font-family: var(--font-mono, monospace);
+  margin-top: 8px;
+}
+
+.bad-ans {
+  background: rgba(239, 68, 68, 0.14);
+  color: #fca5a5;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.good-ans {
+  background: rgba(34, 197, 94, 0.14);
+  color: #86efac;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.voice-math-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.math-mini-card {
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.math-mini-card.green {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.math-mini-card.red {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.mini-label {
+  font-size: 11px;
+  color: var(--text-muted, #8b8fa3);
+  margin-bottom: 4px;
+}
+
+.mini-val .katex {
+  font-size: 1.1em;
+}
+
+.voice-note {
+  font-size: 12.5px !important;
+  color: var(--brand-primary, #4fd1e8) !important;
+  margin-top: 10px !important;
+  line-height: 1.5;
+}
+
+.take-home-banner {
+  background: rgba(79, 209, 232, 0.08);
+  border: 1.5px solid rgba(79, 209, 232, 0.35);
+  border-radius: var(--radius-md, 10px);
+  padding: 18px 22px;
+}
+
+.th-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-heading, 'Chakra Petch');
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand-primary, #4fd1e8);
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.th-due {
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(245, 166, 35, 0.2);
+  color: #f59e0b;
+}
+
+.th-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary, #c7cad6);
+  margin-bottom: 14px;
+}
+
+.th-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Image zoom & frame */
+.dsa-image-frame {
+  cursor: zoom-in;
+  margin: 22px 0;
+  border: 1px solid var(--border-subtle, #2d303c);
+  border-radius: var(--radius-md, 10px);
+  overflow: hidden;
+  background: var(--bg-surface, #1b1d25);
+  transition: all 0.2s ease;
+  display: block;
+  max-width: 100%;
+}
+
+.dsa-image-frame:hover {
+  border-color: var(--brand-primary, #4fd1e8);
+  box-shadow: 0 10px 30px rgba(79, 209, 232, 0.18);
+  transform: translateY(-2px);
+}
+
+.dsa-image-frame img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.dsa-image-caption {
+  font-size: 12px;
+  color: var(--text-muted, #8b8fa3);
+  text-align: center;
+  padding: 8px 14px;
+  background: var(--bg-surface-elevated, #20222c);
+  font-family: var(--font-mono, monospace);
+  border-top: 1px solid var(--border-subtle, #2d303c);
+}
+
+/* ==========================================================================
+   Lecture Command Deck (One-Stop Lecture Hub per Chapter)
+   ========================================================================== */
+.lecture-command-deck {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.88));
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37), 0 0 20px rgba(56, 189, 248, 0.08);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.lecture-command-deck::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8, #34d399, #f59e0b);
+}
+
+.deck-banner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+}
+
+.deck-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.deck-kicker {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+
+.deck-heading {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: var(--font-heading, 'Chakra Petch');
+  line-height: 1.35;
+}
+
+.deck-quick-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.deck-tag {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-family: var(--font-mono, monospace);
+}
+
+.deck-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.deck-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.deck-row-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #94a3b8;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.deck-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* Individual Command Deck Action Buttons */
+.deck-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 7px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.deck-btn.is-current {
+  outline: 2px solid #38bdf8;
+  outline-offset: 1px;
+  font-weight: 700;
+}
+
+.deck-btn-theory {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+.deck-btn-theory:hover {
+  background: rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  transform: translateY(-1px);
+}
+
+.deck-btn-assign {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+.deck-btn-assign:hover {
+  background: rgba(245, 158, 11, 0.25);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+  transform: translateY(-1px);
+}
+
+.deck-btn-example {
+  background: rgba(168, 85, 247, 0.12);
+  color: #c084fc !important;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+}
+.deck-btn-example:hover {
+  background: rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+  transform: translateY(-1px);
+}
+
+.deck-btn-pdf {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.deck-btn-pdf:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #38bdf8;
+  color: #38bdf8 !important;
+  transform: translateY(-1px);
+}
+
+.deck-btn-pdf-solved {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399 !important;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.deck-btn-pdf-solved:hover {
+  background: rgba(16, 185, 129, 0.25);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+  transform: translateY(-1px);
+}
+
+.deck-btn-lab {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.25));
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  font-weight: 700;
+}
+.deck-btn-lab:hover {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.35), rgba(59, 130, 246, 0.45));
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.5);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.deck-btn-exam {
+  background: rgba(239, 68, 68, 0.12);
+  color: #f87171 !important;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+.deck-btn-exam:hover {
+  background: rgba(239, 68, 68, 0.25);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+  transform: translateY(-1px);
+}
+
+.deck-btn-voice {
+  background: rgba(236, 72, 153, 0.12);
+  color: #f472b6 !important;
+  border: 1px solid rgba(236, 72, 153, 0.35);
+}
+.deck-btn-voice:hover {
+  background: rgba(236, 72, 153, 0.25);
+  box-shadow: 0 0 12px rgba(236, 72, 153, 0.4);
+  transform: translateY(-1px);
+}
+
+.deck-voice-box {
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px dashed rgba(245, 158, 11, 0.4);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.deck-voice-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.deck-voice-msg {
+  font-size: 12.5px;
+  color: #fde68a;
+  line-height: 1.5;
+}
+
+/* Light Mode Overrides for Lecture Command Deck */
+body.theme-light .lecture-command-deck {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+body.theme-light .deck-heading {
+  color: #0f172a;
+}
+
+body.theme-light .deck-kicker {
+  color: #0284c7;
+}
+
+body.theme-light .deck-tag {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+body.theme-light .deck-row-label {
+  color: #64748b;
+}
+
+body.theme-light .deck-btn-theory {
+  background: #e0f2fe;
+  color: #0369a1 !important;
+  border-color: #7dd3fc;
+}
+
+body.theme-light .deck-btn-assign {
+  background: #fef3c7;
+  color: #b45309 !important;
+  border-color: #fcd34d;
+}
+
+body.theme-light .deck-btn-example {
+  background: #f3e8ff;
+  color: #7e22ce !important;
+  border-color: #d8b4fe;
+}
+
+body.theme-light .deck-btn-pdf {
+  background: #f8fafc;
+  color: #334155 !important;
+  border-color: #cbd5e1;
+}
+
+body.theme-light .deck-btn-pdf-solved {
+  background: #d1fae5;
+  color: #065f46 !important;
+  border-color: #6ee7b7;
+}
+
+body.theme-light .deck-btn-lab {
+  background: #0284c7;
+  color: #ffffff !important;
+  border-color: #0369a1;
+}
+
+body.theme-light .deck-btn-exam {
+  background: #fee2e2;
+  color: #b91c1c !important;
+  border-color: #fca5a5;
+}
+
+body.theme-light .deck-btn-voice {
+  background: #fdf2f8;
+  color: #db2777 !important;
+  border-color: #fbcfe8;
+}
+
+body.theme-light .deck-voice-box {
+  background: #fffbeb;
+  border-color: #f59e0b;
+}
+
+body.theme-light .deck-voice-msg {
+  color: #92400e;
+}
+
+/* ==========================================================================
+   In-Wiki PDF Viewer & Sidebar Lecture PDF Integration
+   ========================================================================== */
+
+/* Sidebar PDF Section */
+.sidebar-pdf-group {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-pdf-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+  padding: 4px 8px 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebar-pdf-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-pdf-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+  padding: 2px 4px 2px 6px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all var(--transition-fast);
+}
+
+.sidebar-pdf-item:hover {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.sidebar-pdf-item.active {
+  background: rgba(56, 189, 248, 0.16);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+}
+
+.sidebar-pdf-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+  padding: 4px 2px;
+}
+
+.sidebar-pdf-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.sidebar-pdf-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.sidebar-pdf-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.sidebar-pdf-item.active .sidebar-pdf-name {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.sidebar-pdf-kind {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+.pdf-badge-slide {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.pdf-badge-solved {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.pdf-badge-worksheet {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.pdf-badge-assign {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.sidebar-pdf-popout {
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #94a3b8;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-pdf-popout:hover {
+  opacity: 1;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+}
+
+/* In-Wiki PDF Viewer Card */
+.wiki-pdf-viewer-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+}
+
+.wiki-pdf-header-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wiki-pdf-header-meta {
+  flex: 1;
+  min-width: 280px;
+}
+
+.wiki-pdf-main-title {
+  margin: 8px 0 4px 0 !important;
+  font-size: 20px !important;
+  font-weight: 700;
+  color: #f8fafc;
+  line-height: 1.3;
+}
+
+.wiki-pdf-desc {
+  margin: 0;
+  font-size: 13.5px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.wiki-pdf-action-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wiki-pdf-frame-wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 230px);
+  min-height: 650px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  background: #0f172a;
+}
+
+.wiki-pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #1e293b;
+}
+
+.wiki-pdf-footer-note {
+  font-size: 12.5px;
+  color: #94a3b8;
+  background: rgba(30, 41, 59, 0.6);
+  padding: 10px 14px;
+  border-radius: 8px;
+  border-left: 3px solid #38bdf8;
+}
+
+/* Light Mode Overrides for PDF Viewer */
+body.theme-light .sidebar-pdf-group {
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+body.theme-light .sidebar-pdf-item {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+body.theme-light .sidebar-pdf-item:hover {
+  background: #f0f9ff;
+  border-color: #7dd3fc;
+}
+
+body.theme-light .sidebar-pdf-item.active {
+  background: #e0f2fe;
+  border-color: #0284c7;
+}
+
+body.theme-light .sidebar-pdf-name {
+  color: #1e293b;
+}
+
+body.theme-light .wiki-pdf-viewer-card {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+body.theme-light .wiki-pdf-main-title {
+  color: #0f172a !important;
+}
+
+body.theme-light .wiki-pdf-desc {
+  color: #64748b;
+}
+
+body.theme-light .wiki-pdf-frame-wrapper {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+body.theme-light .wiki-pdf-footer-note {
+  background: #f8fafc;
+  color: #475569;
+}
 

@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="vendor/katex/katex.min.css" />
 
   <!-- App CSS -->
-  <link rel="stylesheet" href="styles.css?v=20260913_rev4" />
+  <link rel="stylesheet" href="styles.css?v=20260924_rev11" />
 </head>
 <body>
 
@@ -63,6 +63,24 @@
     </div>
 
     <div class="nav-right">
+      <!-- Master PDF Catalog Trigger -->
+      <a href="#/15.1%20-%20%E0%B8%84%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C%20PDF%20%E0%B8%AA%E0%B9%84%E0%B8%A5%E0%B8%94%E0%B9%8C%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%A2%E0%B8%B2%E0%B8%A2%20%E0%B9%83%E0%B8%9A%E0%B8%87%E0%B8%B2%E0%B8%99%20For%20Example%20%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%84%E0%B8%9F%E0%B8%A5%E0%B9%8C%E0%B9%80%E0%B8%89%E0%B8%A5%E0%B8%A2%E0%B8%AD%E0%B8%B2%E0%B8%88%E0%B8%B2%E0%B8%A3%E0%B8%A2%E0%B9%8C%E0%B8%84%E0%B8%A3%E0%B8%9A%E0%B8%97%E0%B8%B1%E0%B9%89%E0%B8%87%2011%20%E0%B8%9A%E0%B8%97%20(Teacher%20Master%20PDF%20%26%20Media%20Catalog)" class="btn-nav-action btn-pdf-hub" title="เปิดคลังไฟล์ PDF สไลด์บรรยาย ใบงาน และเฉลยอาจารย์ครบทั้ง 11 บท (91 ไฟล์)">
+        <span>📑</span>
+        <span>คลัง PDF (91 ไฟล์)</span>
+      </a>
+
+      <!-- Quick Reference Modal Trigger (link.md) -->
+      <button id="ref-modal-btn" class="btn-nav-action btn-ref-links" title="เปิดตารางลิงก์อ้างอิงและโมดูลภายนอกจาก link.md" onclick="window.WikiApp.openRefModal()">
+        <span>🔗</span>
+        <span>แหล่งอ้างอิง (link.md)</span>
+      </button>
+
+      <!-- Voice Exam Traps Modal Trigger -->
+      <button id="voice-modal-btn" class="btn-nav-action btn-voice-intel" title="เปิดสรุปข้อสอบรั่วและจุดตัด 0 คะแนนจากไฟล์เสียงห้องเรียน" onclick="window.WikiApp.openVoiceModal()">
+        <span>🎙️</span>
+        <span>ข้อสอบรั่ว (Voice)</span>
+      </button>
+
       <!-- Font Size Controls -->
       <div class="font-size-group" title="ปรับขนาดตัวอักษรสำหรับอ่าน">
         <button id="font-decrease-btn" class="font-btn" title="ลดขนาดตัวอักษร">A-</button>
@@ -89,10 +107,13 @@
 
     <!-- Left Sidebar: Curriculum & Navigation -->
     <aside id="sidebar" class="wiki-sidebar">
-      <!-- Mode Switcher Tabs (Curriculum vs Assignments vs Examples vs Exam Prep) -->
+      <!-- Mode Switcher Tabs (Curriculum vs PDF Archive vs Assignments vs Examples vs Exam Prep vs Live Lecture) -->
       <div class="wiki-sidebar-tabs">
-        <button id="tab-mode-curriculum" class="wiki-tab-btn active" title="อ่านเนื้อหาตามลำดับบทที่ 1 ถึง 10">
-          📚 บทเรียน
+        <button id="tab-mode-curriculum" class="wiki-tab-btn active" title="อ่านเนื้อหาตามลำดับบทที่ 1 ถึง 11 ครบทุกสไลด์ การบ้าน ตัวอย่าง บันทึกเสียง และ Lab ในจุดเดียว">
+          📚 รวมครบ 11 Lectures
+        </button>
+        <button id="tab-mode-pdf" class="wiki-tab-btn" title="คลังเอกสาร PDF สไลด์ ใบงาน และเฉลยอาจารย์ครบทั้ง 11 บท รวม 91 ไฟล์">
+          📑 คลัง PDF
         </button>
         <button id="tab-mode-assignment" class="wiki-tab-btn" title="งานและการบ้านที่อาจารย์สั่ง พร้อมวิธีทำและเฉลย">
           📋 งานที่สั่ง
@@ -103,7 +124,7 @@
         <button id="tab-mode-exam" class="wiki-tab-btn" title="สลับไปยังโซนเตรียมสอบและข้อสอบเก่า">
           🎯 เตรียมสอบ
         </button>
-        <button id="tab-mode-classroom" class="wiki-tab-btn" title="บันทึกถอดเสียงสอนสด สไลด์และภาพกระดาน 106 ภาพ (รวมคาบ 23 ก.ย. 2569)">
+        <button id="tab-mode-classroom" class="wiki-tab-btn" title="บันทึกถอดเสียงสอนสด สไลด์และภาพกระดาน 144 ภาพ">
           🎙️ บันทึกสด
         </button>
       </div>
@@ -135,6 +156,9 @@
             </button>
           </div>
         </header>
+
+        <!-- Lecture Command Deck (One-Stop Hub) -->
+        <div id="article-command-deck"></div>
 
         <!-- Article Content -->
         <article id="article-body" class="article-body">
@@ -191,6 +215,258 @@
     <div id="diagram-canvas" class="diagram-modal-canvas"></div>
   </div>
 
+  <!-- Reference Links Modal (Based on link.md) -->
+  <div id="ref-modal" class="custom-modal-backdrop">
+    <div class="custom-modal-box custom-modal-large">
+      <div class="custom-modal-header">
+        <div class="custom-modal-title">
+          <span class="modal-badge-cyan">LINK.MD</span>
+          <span>🔗 แหล่งอ้างอิงและเครื่องมือเรียนรู้ (Reference Links &amp; Interactive Artifacts)</span>
+        </div>
+        <button class="code-btn" onclick="window.WikiApp.closeRefModal()" title="ปิดหน้าต่าง (Esc)">✕ ปิด</button>
+      </div>
+      <div class="custom-modal-body">
+        <p class="modal-lead">
+          รวบรวมลิงก์อ้างอิงโมเดลจำลองภายนอก (Claude Artifact, Gemini Share, Perplexity) พร้อมโมดูลทดสอบเชิงโต้ตอบในโปรเจกต์:
+        </p>
+
+        <div class="table-responsive-wrapper">
+          <table class="cmp-ref-table">
+            <thead>
+              <tr>
+                <th>ไฟล์ในโปรเจกต์</th>
+                <th>หัวข้อ / โครงสร้างข้อมูล</th>
+                <th>เครื่องมือในโปรเจกต์</th>
+                <th>ลิงก์อ้างอิงภายนอก &amp; Artifacts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Exams/Heap.py</code></td>
+                <td>
+                  <strong>Binary Heap</strong><br>
+                  <span class="ref-sub">Min/Max Heap, Percolate Up/Down, 1-based Array</span>
+                </td>
+                <td>
+                  <a href="../DsaLab/index.html" target="_blank" class="ref-link-badge badge-lab">
+                    🔬 เปิด Heap Visualizer
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="https://claude.ai/public/artifacts/3be9a554-8360-460f-9fad-c041859bccdb" target="_blank" class="ref-link-badge badge-claude">
+                      🤖 Claude Artifact (Online)
+                    </a>
+                    <a href="../claude_heap_artifact_reference.html" target="_blank" class="ref-link-badge badge-offline">
+                      💾 Claude Reference (Offline HTML)
+                    </a>
+                    <a href="https://www.perplexity.ai/computer/a/8e421185-9a16-4483-9acd-9905f4bdd0c4" target="_blank" class="ref-link-badge badge-perp">
+                      🧠 Perplexity AI Notebook
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Exams/BinarySearchTrees.py</code></td>
+                <td>
+                  <strong>Binary Search Tree (BST)</strong><br>
+                  <span class="ref-sub">Insert, Search, Deletion 3 Cases (Leaf, 1 Child, Successor)</span>
+                </td>
+                <td>
+                  <a href="../DsaLab/index.html" target="_blank" class="ref-link-badge badge-lab">
+                    🔬 เปิด BST Visualizer
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="https://share.gemini.google/68l68tkQ4gyZ" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 1
+                    </a>
+                    <a href="https://share.gemini.google/buHkJaab2mpf" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 2
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Exams/Hash.py</code></td>
+                <td>
+                  <strong>Hash Table</strong><br>
+                  <span class="ref-sub">Linear Probing, Separate Chaining, Load Factor λ Gauge</span>
+                </td>
+                <td>
+                  <a href="../DsaLab/index.html" target="_blank" class="ref-link-badge badge-lab">
+                    🔬 เปิด Hash Visualizer
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="https://share.gemini.google/SJXI2wdwjceD" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 1
+                    </a>
+                    <a href="https://share.gemini.google/v6raXDvrr0Tp" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 2
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Exams/InfixToPostFix.py</code></td>
+                <td>
+                  <strong>Stack: Infix to Postfix</strong><br>
+                  <span class="ref-sub">Precedence Table, Token Scanner, Shunting-Yard Animator</span>
+                </td>
+                <td>
+                  <a href="../DsaLab/index.html" target="_blank" class="ref-link-badge badge-lab">
+                    🔬 เปิด Stack Visualizer
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="https://gemini.google.com/share/cc48e0f025be" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 1
+                    </a>
+                    <a href="https://gemini.google.com/share/8746e44a615d" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 2
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Exams/Graph_Exam_Leaks_20260923.py</code></td>
+                <td>
+                  <strong>Graph &amp; Topological Sort</strong><br>
+                  <span class="ref-sub">Adjacency Matrix vs List, Memory Waste 24.48%, Complete Graph 45</span>
+                </td>
+                <td>
+                  <a href="../DsaLab/index.html" target="_blank" class="ref-link-badge badge-lab">
+                    🔬 เปิด TopSort Simulator
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="#/14.7 - Classroom Lecture Graph Theory, Representations &amp; Final Exam Leaks" onclick="window.WikiApp.closeRefModal()" class="ref-link-badge badge-wiki">
+                      🎙️ สรุปเสียงคาบ 23 ก.ย.
+                    </a>
+                    <a href="#/09.1 - Graph Fundamentals &amp; Traversals (BFS, DFS, Topological Sort)" onclick="window.WikiApp.closeRefModal()" class="ref-link-badge badge-wiki">
+                      📖 บทเรียนกราฟบทที่ 9
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voice Exam Traps & Intelligence Modal -->
+  <div id="voice-modal" class="custom-modal-backdrop">
+    <div class="custom-modal-box custom-modal-large">
+      <div class="custom-modal-header">
+        <div class="custom-modal-title">
+          <span class="modal-badge-amber">VOICE INTEL</span>
+          <span>🎙️ สรุปจุดสำคัญและกับดักข้อสอบจากเสียงอาจารย์ประดิษฐ์ (Classroom Leaks)</span>
+        </div>
+        <button class="code-btn" onclick="window.WikiApp.closeVoiceModal()" title="ปิดหน้าต่าง (Esc)">✕ ปิด</button>
+      </div>
+      <div class="custom-modal-body">
+        <!-- Graph Score Announcement Banner from Voice -->
+        <div style="background: rgba(245, 158, 11, 0.12); border: 1.5px solid rgba(245, 158, 11, 0.45); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;">
+          <div style="display:flex; align-items:center; gap:10px; font-weight:700; color:#fbbf24; font-size:15.5px; margin-bottom:6px;">
+            <span>📢</span>
+            <span>คะแนนข้อสอบปลายภาคเรื่อง Graph จากไฟล์เสียง (23 ก.ย. 69 นาทีที่ 20):</span>
+          </div>
+          <div style="font-size:13.5px; color:#e2e8f0; line-height:1.6;">
+            อาจารย์ ดร.ประดิษฐ์ พูดระบุในห้องเรียนคำต่อคำว่า: <em>"เปิด Google Classroom ดูสไลด์ บทที่ 10 เรื่องกราฟนี้ จะออกสอบปลายภาค <strong>2 ข้อใหญ่</strong> และมีข้อย่อยประมาณ <strong>3-4 ข้อ</strong> รวมแล้วคะแนน<strong>ไม่ต่ำกว่า 20 คะแนน</strong> จากคะแนนเต็มข้อสอบ 70 คะแนน (หาร 2 เหลือ 35 คะแนนปลายภาค)"</em>
+            <br>
+            <span style="display:inline-block; margin-top:8px; color:#38bdf8; font-weight:600;">⚡ สรุป: กราฟมีคะแนนดิบ <strong>ไม่ต่ำกว่า 20 คะแนน</strong> คิดเป็นเกือบ 30% ของข้อสอบ Final ทั้งฉบับ (น้ำหนักคะแนนตัดเกรดสุทธิ ~10 ถึง 15 คะแนนจากเกรดรวม 100%)</span>
+          </div>
+        </div>
+
+        <div class="voice-cards-grid">
+          <!-- Trap 1 -->
+          <div class="voice-trap-card danger">
+            <div class="voice-trap-header">
+              <span class="trap-num">1</span>
+              <h4>การเขียน Path (ได้ 0 คะแนนทันทีหากใช้ลูกศร)</h4>
+            </div>
+            <p>นิยามของ Path ทางคณิตศาสตร์คือ <strong>Sequence of vertices</strong> ต้องเขียนคั่นด้วยจุลภาคเท่านั้น!</p>
+            <div class="voice-example-box">
+              <div class="bad-ans">❌ ห้ามเขียน: <code>A -&gt; B -&gt; C</code> หรือ <code>A → B → C</code> (ได้ 0 คะแนน)</div>
+              <div class="good-ans">✅ ต้องเขียน: <code>A, B, C</code> หรือ <code>(A, B, C)</code> (คะแนนเต็ม)</div>
+            </div>
+          </div>
+
+          <!-- Trap 2 -->
+          <div class="voice-trap-card warning">
+            <div class="voice-trap-header">
+              <span class="trap-num">2</span>
+              <h4>สูตร Complete Graph: $E = \frac{V(V-1)}{2}$</h4>
+            </div>
+            <p>เมื่อโจทย์ถามกราฟ $V=10$ มีเส้นเชื่อมกี่เส้น:</p>
+            <div class="voice-example-box">
+              <div class="bad-ans">❌ ห้ามตอบติดสูตร: <code>10*(10-1)/2</code> หรือ <code>90/2</code> (หักคะแนน)</div>
+              <div class="good-ans">✅ ต้องตอบจำนวนเต็ม: <strong><code>45</code> หรือ <code>45 เส้น</code></strong></div>
+            </div>
+          </div>
+
+          <!-- Trap 3 -->
+          <div class="voice-trap-card info">
+            <div class="voice-trap-header">
+              <span class="trap-num">3</span>
+              <h4>คำถามบน Null Graph ($V=\{\}, E=\{\}$)</h4>
+            </div>
+            <p>หากข้อสอบถามว่าจงหา Path จากจุด $A$ ไปยังจุด $C$ บนกราฟว่าง:</p>
+            <div class="voice-example-box">
+              <div class="good-ans">✅ คำตอบที่ถูกต้อง: <strong>"ไม่มี Path จาก $A$ ไป $C$ เนื่องจากไม่มีจุด $A$ และจุด $C$ อยู่ในกราฟนี้"</strong></div>
+            </div>
+          </div>
+
+          <!-- Trap 4 -->
+          <div class="voice-trap-card brand">
+            <div class="voice-trap-header">
+              <span class="trap-num">4</span>
+              <h4>การคำนวณร้อยละ Memory Waste (7x7 Adjacency Matrix)</h4>
+            </div>
+            <p>กราฟ 7 จุดยอด 12 เส้นเชื่อม (ตาราง $7 \times 7 = 49$ ช่อง):</p>
+            <div class="voice-math-grid">
+              <div class="math-mini-card green">
+                <div class="mini-label">ช่องที่มีค่า 1 (ใช้งานจริง)</div>
+                <div class="mini-val">$$\frac{12 \times 100}{49} = \mathbf{24.48\%}$$</div>
+              </div>
+              <div class="math-mini-card red">
+                <div class="mini-label">ช่องที่มีค่า 0 (สูญเปล่า)</div>
+                <div class="mini-val">$$\frac{37 \times 100}{49} = \mathbf{75.51\%}$$</div>
+              </div>
+            </div>
+            <p class="voice-note">💡 <strong>เหตุผลที่ Adjacency List เป็นพระเอก:</strong> ใช้เพียง $|V| + |E| = 7 + 12 = 19$ ช่อง ประหยัดพื้นที่กว่าถึง <strong>61.22%</strong>!</p>
+          </div>
+        </div>
+
+        <!-- Take Home 2 Banner -->
+        <div class="take-home-banner">
+          <div class="th-title">
+            <span>📋 การบ้าน Take-Home Programming Assignment 2</span>
+            <span class="th-due">กำหนดส่ง: 27 ก.ย. 2569 เวลา 23:59 น.</span>
+          </div>
+          <p class="th-desc">
+            เขียนโปรแกรม Python 3 อัลกอริทึม: <code>Insertion Sort</code>, <code>Selection Sort</code>, <code>Bubble Sort</code> ทดสอบกับชุดข้อมูล <code>data = [64, 34, 25, 12, 22, 11, 90]</code> พร้อมแสดงผล Pass-by-pass, นับจำนวน Comparisons และ Swaps อย่างแม่นยำ
+          </p>
+          <div class="th-actions">
+            <a href="../DsaLab/take_home_assignment_2_sorting.py" target="_blank" class="code-btn" style="color:var(--brand-primary); border-color:var(--brand-primary);">
+              🐍 ดูโค้ดเฉลย Python (take_home_assignment_2_sorting.py)
+            </a>
+            <a href="#/14.6 - Classroom Lecture Sorting (Insertion, Selection, Bubble Sort) &amp; Exam Inversions" onclick="window.WikiApp.closeVoiceModal()" class="code-btn">
+              📖 อ่านทฤษฎี Sorting และ Inversions
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification -->
   <div id="wiki-toast" class="wiki-toast"></div>
 
@@ -213,15 +489,15 @@
   </script>
 
   <!-- Pre-bundled Wiki Data -->
-  <script src="wiki-data.js?v=20260913_rev4"></script>
+  <script src="wiki-data.js?v=20260924_rev11"></script>
 
   <!-- Pyodide WebAssembly Engine for in-browser Python execution -->
   <script src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
 
   <!-- DSA Interactive Studio Visualizers -->
-  <script src="dsa-interactive-studio.js?v=20260913_rev4"></script>
+  <script src="dsa-interactive-studio.js?v=20260924_rev14"></script>
 
   <!-- Application Logic (DSA Lab Visual Architecture Engine) -->
-  <script src="app.js?v=20260913_rev4"></script>
+  <script src="app.js?v=20260924_rev16"></script>
 </body>
 </html>

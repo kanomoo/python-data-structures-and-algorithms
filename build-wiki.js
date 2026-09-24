@@ -11,99 +11,264 @@ const path = require('path');
 const DSA_WIKI_DIR = path.join(__dirname, 'DSA-Wiki');
 const OUTPUT_FILE = path.join(__dirname, 'Wiki', 'wiki-data.js');
 
-// Core sequential curriculum chapters (Chapters 1 to 10)
+// Core unified curriculum categories (Lectures 1 to 11 - Grouping Theory, Assignments, Examples, Transcripts & Exam Drills by Lecture)
 const CURRICULUM_CATEGORIES = [
   {
     id: 'ch1',
     type: 'curriculum',
-    title: '🏛️ บทที่ 1: Introduction & Algorithm Analysis',
+    title: '🏛️ บทที่ 1 (Lecture 1): Introduction & Algorithm Analysis',
     description: 'ความหมาย Data Structure, ADT และการวิเคราะห์ขั้นตอนวิธี Big-O',
     files: [
-      '01.1 - Introduction to Data Structures & Algorithm Analysis.md'
+      '01.1 - Introduction to Data Structures & Algorithm Analysis.md',
+      '12.6 - 0Exercises Warm-up Function Tracing & Attendance Tasks.md'
+    ],
+    pdfs: [
+      { name: 'Lecture 1 Introduction.pdf', title: 'สไลด์หลัก: Lecture 1 Introduction (Data Structures & Big-O)', kind: 'slide', path: 'Lectures/Lecture 1 Introduction/Lecture 1 Introduction.pdf' },
+      { name: 'DATA STRUCTURES & ALGORITHMS_Lecture 1 Edit168.pdf', title: 'สไลด์ปรับปรุง Edit168: Lecture 1', kind: 'slide', path: 'Lectures/Lecture 1 Introduction/DATA STRUCTURES & ALGORITHMS_Lecture 1 Edit168.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 1 Edit168.pdf', title: 'สไลด์หลักสูตรใหม่: Lecture 1', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 1 Edit168.pdf' }
     ]
   },
   {
     id: 'ch2',
     type: 'curriculum',
-    title: '🐍 บทที่ 2: Review Python & OOP',
+    title: '🐍 บทที่ 2 (Lecture 2): Review Python & OOP',
     description: 'ทบทวนภาษา Python, คลาส, วัตถุ และหลักการ OOP 4 เสาหลัก',
     files: [
       '02.1 - Python Review & Object-Oriented Programming (OOP).md'
+    ],
+    pdfs: [
+      { name: 'Lecture 2 Review Python.pdf', title: 'สไลด์หลัก: Lecture 2 Review Python & OOP', kind: 'slide', path: 'Lectures/Lecture 2 Review Python/Lecture 2 Review Python.pdf' },
+      { name: 'DATA STRUCTURES & ALGORITHMS_Lecture 2 Edit168.pdf', title: 'สไลด์ปรับปรุง Edit168: Lecture 2', kind: 'slide', path: 'Lectures/Lecture 2 Review Python/DATA STRUCTURES & ALGORITHMS_Lecture 2 Edit168.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 2 Edit168.pdf', title: 'สไลด์หลักสูตรใหม่: Lecture 2', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 2 Edit168.pdf' },
+      { name: 'Python_Oop.pdf', title: 'เอกสารสรุปทบทวน: Python OOP ฉบับสมบูรณ์', kind: 'slide', path: 'Lectures/Python_Oop.pdf' }
     ]
   },
   {
     id: 'ch3',
     type: 'curriculum',
-    title: '🔗 บทที่ 3: Linked Lists',
-    description: 'Singly Linked List, Doubly Linked List, Circular Linked List & Pointer Operations',
+    title: '🔗 บทที่ 3 (Lecture 3): Linked Lists',
+    description: 'Singly, Doubly, Circular Linked Lists, การบ้านสลับพอยน์เตอร์ และตัวอย่างกับดัก add',
     files: [
-      '03.1 - Linked Lists (Singly, Doubly, Circular).md'
+      '03.1 - Linked Lists (Singly, Doubly, Circular).md',
+      '12.1 - Assignment 1 Singly Linked List Student ID & Node Swap.md',
+      '13.1 - For Example Lecture 3 Linked List (โจทย์สร้างโหนด สลับพอยน์เตอร์ และกับดัก add).md'
+    ],
+    pdfs: [
+      { name: 'Lecture 3 Linked List.pdf', title: 'สไลด์หลัก: Lecture 3 Linked List', kind: 'slide', path: 'Lectures/Lecture 3 Linked List/Lecture 3 Linked List.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 3.pdf', title: 'สไลด์หลักสูตร 168: Lecture 3', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 3.pdf' },
+      { name: 'For example.pdf', title: 'ใบงานโจทย์: For Example Linked List (สร้างโหนด & สลับ)', kind: 'worksheet', path: 'Lectures/Lecture 3 Linked List/For example.pdf' },
+      { name: 'For example_solved.pdf', title: 'เฉลยอาจารย์: For Example Linked List', kind: 'solved', path: 'Lectures/Lecture 3 Linked List/For example_solved.pdf' },
+      { name: 'For example Linked List 169.pdf', title: 'ใบงานโจทย์: For Example Linked List 169', kind: 'worksheet', path: 'New-Lectures/For example Linked List 169.pdf' },
+      { name: 'For example Linked List 169_solved.pdf', title: 'เฉลยอาจารย์: For Example Linked List 169', kind: 'solved', path: 'New-Lectures/For example Linked List 169_solved.pdf' },
+      { name: 'Assign 1 Linked List.pdf', title: 'โจทย์การบ้าน 1: Singly Linked List เรียงรหัสนักศึกษา', kind: 'assignment', path: 'New-Lectures/Assign 1 Linked List.pdf' },
+      { name: 'Assign 1 Linked List_solved.pdf', title: 'เฉลยการบ้าน 1: Singly Linked List', kind: 'solved', path: 'New-Lectures/Assign 1 Linked List_solved.pdf' },
+      { name: 'Test Program 1 Linked List.pdf', title: 'โจทย์แบบฝึกแล็บ: Test Program 1 Linked List', kind: 'assignment', path: 'New-Lectures/Test Program 1 Linked List.pdf' },
+      { name: 'Test Program 1 Linked List_solved.pdf', title: 'เฉลยแบบฝึกแล็บ: Test Program 1 Linked List', kind: 'solved', path: 'New-Lectures/Test Program 1 Linked List_solved.pdf' }
     ]
   },
   {
     id: 'ch4',
     type: 'curriculum',
-    title: '🥞 บทที่ 4: Stacks & Queues',
-    description: 'Stack (LIFO, Infix/Postfix) และ Queue (FIFO, Circular Array Queue)',
+    title: '🥞 บทที่ 4 (Lecture 4): Stacks & Queues',
+    description: 'Stack (LIFO, Infix/Postfix) และ Queue (FIFO, Circular Queue) พร้อมการบ้านและคลังข้อสอบ',
     files: [
       '04.1 - Stacks & Applications (Infix, Postfix, Parentheses).md',
-      '04.2 - Queues & Circular Array Queues.md'
+      '04.2 - Queues & Circular Array Queues.md',
+      '12.5 - Test Program 1 & 2 Queue Implementation & Sorting Trace.md',
+      '13.2 - For Example Lecture 4 Stack & Postfix (Trace Push-Pop และแปลงนิพจน์ Shunting-Yard).md',
+      '13.3 - For Example Lecture 4 Queue (Trace Enqueue-Dequeue และวงรอบ Circular Queue).md',
+      '11.3 - Stack Practice Exam Problems & Solutions.md',
+      '11.4 - Queue Practice Exam Problems & Solutions.md'
+    ],
+    pdfs: [
+      { name: 'Lecture 4 Stack.pdf', title: 'สไลด์หลัก: Lecture 4 Stack ADT', kind: 'slide', path: 'Lectures/Lecture 4 Stack/Lecture 4 Stack.pdf' },
+      { name: 'Lecture 04.1.pdf', title: 'สไลด์หลัก: Lecture 04.1 Queue & Circular Queue', kind: 'slide', path: 'Lectures/Lecture 4 Stack/Lecture 04.1.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 4 Edit168.pdf', title: 'สไลด์ปรับปรุง Edit168: Lecture 4 Stack', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 4 Edit168.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 4.1.pdf', title: 'สไลด์ปรับปรุง Edit168: Lecture 4.1 Queue', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 4.1.pdf' },
+      { name: 'For example Stack.pdf', title: 'ใบงานโจทย์: For Example Stack (Push/Pop Tracing)', kind: 'worksheet', path: 'Lectures/Lecture 4 Stack/For example Stack.pdf' },
+      { name: 'For example Stack_solved.pdf', title: 'เฉลยอาจารย์: For Example Stack', kind: 'solved', path: 'Lectures/Lecture 4 Stack/For example Stack_solved.pdf' },
+      { name: 'For example Queue.pdf', title: 'ใบงานโจทย์: For Example Queue (Circular Queue)', kind: 'worksheet', path: 'Lectures/Lecture 4 Stack/For example Queue.pdf' },
+      { name: 'For example Queue_solved.pdf', title: 'เฉลยอาจารย์: For Example Queue', kind: 'solved', path: 'Lectures/Lecture 4 Stack/For example Queue_solved.pdf' },
+      { name: 'Postfix Expression.pdf', title: 'ใบงานโจทย์: Postfix Expression & Shunting-Yard', kind: 'worksheet', path: 'Lectures/Lecture 4 Stack/Postfix Expression.pdf' },
+      { name: 'Postfix Expression_solved.pdf', title: 'เฉลยอาจารย์: Postfix Expression', kind: 'solved', path: 'Lectures/Lecture 4 Stack/Postfix Expression_solved.pdf' },
+      { name: 'แปลเอกสารบทท 3.6 The Stack ADT.pdf', title: 'เอกสารแปลตำรา: Mark Allen Weiss 3.6 The Stack ADT', kind: 'slide', path: 'Lectures/Lecture 4 Stack/แปลเอกสารบทท 3.6 The Stack ADT.pdf' }
     ]
   },
   {
     id: 'ch5',
     type: 'curriculum',
-    title: '🌲 บทที่ 5: Trees & Binary Search Trees',
-    description: 'นิยามต้นไม้, Tree Traversals, BST Search/Insert และการลบโหนด 3 กรณี',
+    title: '🌲 บทที่ 5 (Lecture 5): Trees & Tree Traversals',
+    description: 'นิยามต้นไม้, Complete Binary Tree, การสร้าง Tree จาก Post/In-order และกฎห้ามใส่ลูกศร',
     files: [
       '05.1 - Tree Terminology & Binary Trees.md',
-      '05.2 - Binary Search Trees (BST) & Insertion.md',
-      '05.3 - Binary Search Tree Removal (Node Deletion Cases).md'
+      '12.2 - Assignment 2 Construct Binary Tree from Post-order & In-order.md',
+      '13.4 - For Example Lecture 5 Binary Tree (กฎเหล็กเขียน Path ห้ามใช้ลูกศร และ Reconstruct Tree).md'
+    ],
+    pdfs: [
+      { name: 'Lecture 5 Tree.pdf', title: 'สไลด์หลัก: Lecture 5 Trees & Binary Trees', kind: 'slide', path: 'Lectures/Lecture 5 Tree/Lecture 5 Tree.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 5 Edit168.pdf', title: 'สไลด์ปรับปรุง Edit168: Lecture 5 Trees', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 5 Edit168.pdf' },
+      { name: 'For example Binary Tree.pdf', title: 'ใบงานโจทย์: For Example Binary Tree (กฎห้ามใส่ลูกศร)', kind: 'worksheet', path: 'Lectures/Lecture 5 Tree/For example Binary Tree.pdf' },
+      { name: 'For example Binary Tree_solved.pdf', title: 'เฉลยอาจารย์: For Example Binary Tree', kind: 'solved', path: 'Lectures/Lecture 5 Tree/For example Binary Tree_solved.pdf' },
+      { name: 'Assign 2 Binary Tree.pdf', title: 'โจทย์การบ้าน 2: สร้างทรีจาก Post & In-order', kind: 'assignment', path: 'Lectures/Assignment 2 Construct Binary Tree/Assign 2 Binary Tree.pdf' },
+      { name: 'Assign 2 Binary Tree_solved.pdf', title: 'เฉลยการบ้าน 2: สร้างทรีจาก Post & In-order', kind: 'solved', path: 'Lectures/Assignment 2 Construct Binary Tree/Assign 2 Binary Tree_solved.pdf' }
     ]
   },
   {
     id: 'ch6',
     type: 'curriculum',
-    title: '🏷️ บทที่ 6: Hashing & Hash Tables',
-    description: 'Hash Tables, Collision Handling (Linear, Quadratic, Chaining) & Rehashing',
+    title: '🌿 บทที่ 6 (Lecture 5.1 & 5.2): Binary Search Tree (BST) & Deletion',
+    description: 'Binary Search Tree Property, Insertion, Search และการลบโหนด 3 กรณีพร้อม Trace ละเอียด',
     files: [
-      '06.1 - Hash Tables & Collision Resolution Strategies.md'
+      '05.2 - Binary Search Trees (BST) & Insertion.md',
+      '05.3 - Binary Search Tree Removal (Node Deletion Cases).md',
+      '13.5 - For Example Lecture 5.1 & 5.2 BST (Trace _insert_recursive & _delete_recursive 2 เคส).md'
+    ],
+    pdfs: [
+      { name: 'Lecture 5.1add in method delete.pdf', title: 'สไลด์หลัก: Lecture 5.1 BST Insertion & Deletion', kind: 'slide', path: 'Lectures/Lecture 5.1 Binary Search Tree/Lecture 5.1add in method delete.pdf' },
+      { name: 'Lecture 5.2 Binary Search Tree (Remove node which has 2 children).pdf', title: 'สไลด์หลัก: Lecture 5.2 BST Deletion (2 Children)', kind: 'slide', path: 'Lectures/Lecture 5.2 Binary Search Tree Remove/Lecture 5.2 Binary Search Tree (Remove node which has 2 children).pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 5.1.pdf', title: 'สไลด์ปรับปรุง: Lecture 5.1 BST', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 5.1.pdf' },
+      { name: 'removebst.pdf', title: 'เอกสารสรุป: Remove BST สรุปขั้นตอน 3 กรณี', kind: 'slide', path: 'Lectures/Lecture 5.1 Binary Search Tree/removebst.pdf' },
+      { name: 'For example Binary Search Tree std delete round 4 in insert_s step.pdf', title: 'ใบงานโจทย์: BST Delete Round 4', kind: 'worksheet', path: 'Lectures/Lecture 5.1 Binary Search Tree/For example Binary Search Tree std delete round 4 in insert_s step.pdf' },
+      { name: 'For example Binary Search Tree std delete round 4 in insert_s step_solved.pdf', title: 'เฉลยอาจารย์: BST Delete Round 4', kind: 'solved', path: 'Lectures/Lecture 5.1 Binary Search Tree/For example Binary Search Tree std delete round 4 in insert_s step_solved.pdf' },
+      { name: 'Example for Binary Search Tree remove 2 std.pdf', title: 'ใบงานโจทย์: BST Remove 2 Children', kind: 'worksheet', path: 'Lectures/Lecture 5.2 Binary Search Tree Remove/Example for Binary Search Tree remove 2 std.pdf' },
+      { name: 'Example for Binary Search Tree remove 2 std_solved.pdf', title: 'เฉลยอาจารย์: BST Remove 2 Children', kind: 'solved', path: 'Lectures/Lecture 5.2 Binary Search Tree Remove/Example for Binary Search Tree remove 2 std_solved.pdf' }
     ]
   },
   {
     id: 'ch7',
     type: 'curriculum',
-    title: '⚡ บทที่ 7: Priority Queue & Binary Heap',
-    description: 'Priority Queue ADT, Complete Binary Tree Array Indexing, Percolate Up/Down',
+    title: '🏷️ บทที่ 7 (Lecture 7): Hashing & Collision Strategies',
+    description: 'Hash Tables, Separate Chaining, Open Addressing, Rehashing และงานส่งในห้องชน 7 ครั้ง',
     files: [
-      '07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap).md'
+      '06.1 - Hash Tables & Collision Resolution Strategies.md',
+      '12.7 - In-Class Assignment Binary Heap DeleteMin & Hashing Trace.md',
+      '14.1 - Classroom Lecture Hashing, Open Addressing & Rehashing.md'
+    ],
+    pdfs: [
+      { name: 'Lecture 7 Hashing.pdf', title: 'สไลด์หลัก: Lecture 7 Hash Tables & Collision Resolution', kind: 'slide', path: 'Lectures/Lecture 7 Hashing/Lecture 7 Hashing.pdf' }
     ]
   },
   {
     id: 'ch8',
     type: 'curriculum',
-    title: '🔀 บทที่ 8: Sorting Algorithms',
-    description: 'Bubble, Selection, Insertion, Merge, Quick Sort & ตารางเปรียบเทียบ',
+    title: '⚡ บทที่ 8 (Lecture 8 & 8.1): Priority Queue & Binary Heap',
+    description: 'Priority Queue ADT, Complete Binary Tree Array, การบ้านแทรก 15 ค่า, เสียงสอนสด และเฉลยข้อสอบ DeleteMin 3 ครั้ง',
     files: [
-      '08.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick).md'
+      '07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap).md',
+      '12.3 - Assignment 3 Binary Min-Heap In-class Insertion & DeleteMin.md',
+      '13.6 - For Example Lecture 8.1 Binary Heap (Trace ตัวแปร hole ใน Percolate Up และ Down).md',
+      '14.2 - Classroom Lecture Priority Queue & Binary Heap Properties.md',
+      '14.3 - Classroom Lecture Exam Focus Node Calculation & 1D Array.md',
+      '14.4 - Classroom Lecture Binary Heap Python Implementation & Final Exam Trace.md'
+    ],
+    pdfs: [
+      { name: 'Lecture 8 Priority Queue (Heap).pdf', title: 'สไลด์หลัก: Lecture 8 Priority Queue & Binary Heap', kind: 'slide', path: 'Lectures/Lecture 8 Priority Queue (Heap)/Lecture 8 Priority Queue (Heap).pdf' },
+      { name: 'Lecture 8.1 Priority Queue (Insert and deleteMin).pdf', title: 'สไลด์หลัก: Lecture 8.1 Binary Heap (Insert & DeleteMin)', kind: 'slide', path: 'Lectures/Lecture 8.1 Priority Queue (Insert and deleteMin)/Lecture 8.1 Priority Queue (Insert and deleteMin).pdf' },
+      { name: 'For example Binary Heap.pdf', title: 'ใบงานโจทย์: For Example Binary Heap (Percolate Up/Down)', kind: 'worksheet', path: 'Lectures/Lecture 8.1 Priority Queue (Insert and deleteMin)/For example Binary Heap.pdf' },
+      { name: 'For example Binary Heap_solved.pdf', title: 'เฉลยอาจารย์: For Example Binary Heap', kind: 'solved', path: 'Lectures/Lecture 8.1 Priority Queue (Insert and deleteMin)/For example Binary Heap_solved.pdf' },
+      { name: 'Assignment 3 Inclass.pdf', title: 'โจทย์การบ้าน 3: Binary Min-Heap In-class แทรก 15 ค่า', kind: 'assignment', path: 'Lectures/Assignment 3 Binary Heap/Assignment 3 Inclass.pdf' },
+      { name: 'Assignment 3 Inclass_solved.pdf', title: 'เฉลยการบ้าน 3: Binary Min-Heap In-class', kind: 'solved', path: 'Lectures/Assignment 3 Binary Heap/Assignment 3 Inclass_solved.pdf' }
     ]
   },
   {
     id: 'ch9',
     type: 'curriculum',
-    title: '🌐 บทที่ 9: Graph Traversals & Algorithms',
-    description: 'โครงสร้างกราฟ, Adjacency Matrix vs List, BFS, DFS & Topological Sort',
+    title: '🔀 บทที่ 9 (Lecture 9): Sorting Algorithms',
+    description: 'Bubble, Selection, Insertion, Pass-by-Pass Traces, Inversions และการบ้าน Take-Home 2',
     files: [
-      '09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort).md'
+      '08.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick).md',
+      '12.8 - In-Class Assignment Bubble Sort Trace & Total Swaps Calculation.md',
+      '13.7 - For Example Lecture 9 Sorting (Pass-by-Pass Tracing Bubble, Selection, Insertion).md',
+      '14.6 - Classroom Lecture Sorting (Insertion, Selection, Bubble Sort) & Exam Inversions.md'
+    ],
+    pdfs: [
+      { name: 'Lecture 9 Sorting.pdf', title: 'สไลด์หลัก: Lecture 9 Sorting Algorithms', kind: 'slide', path: 'Lectures/Lecture 9 Sorting/Lecture 9 Sorting.pdf' },
+      { name: 'Lecture 9.1.pdf', title: 'สไลด์เสริม: Lecture 9.1 Sorting', kind: 'slide', path: 'Lectures/Lecture 9 Sorting/Lecture 9.1.pdf' },
+      { name: 'DATA STRUCTURES & ALGORITHMS_Lecture 9 168.pdf', title: 'สไลด์ปรับปรุง Edit168: Lecture 9 Sorting', kind: 'slide', path: 'Lectures/Lecture 9 Sorting/New/DATA STRUCTURES & ALGORITHMS_Lecture 9 168.pdf' },
+      { name: 'For Example Bubble sort.pdf', title: 'ใบงานโจทย์: Bubble Sort Tracing & Swaps', kind: 'worksheet', path: 'Lectures/Lecture 9 Sorting/For Example Bubble sort.pdf' },
+      { name: 'For Example Bubble sort_solved.pdf', title: 'เฉลยอาจารย์: Bubble Sort Tracing', kind: 'solved', path: 'Lectures/Lecture 9 Sorting/For Example Bubble sort_solved.pdf' },
+      { name: 'For Example Selection sort.pdf', title: 'ใบงานโจทย์: Selection Sort Tracing', kind: 'worksheet', path: 'Lectures/Lecture 9 Sorting/For Example Selection sort.pdf' },
+      { name: 'For Example Selection sort_solved.pdf', title: 'เฉลยอาจารย์: Selection Sort Tracing', kind: 'solved', path: 'Lectures/Lecture 9 Sorting/For Example Selection sort_solved.pdf' },
+      { name: 'Short note Insertion sort.pdf', title: 'ใบงานสรุป: Insertion Sort Tracing', kind: 'worksheet', path: 'Lectures/Lecture 9 Sorting/Short note Insertion sort.pdf' },
+      { name: 'Short note Insertion sort_solved.pdf', title: 'เฉลยอาจารย์: Insertion Sort Tracing', kind: 'solved', path: 'Lectures/Lecture 9 Sorting/Short note Insertion sort_solved.pdf' },
+      { name: 'หมายเหตุ ในหัวข้อ insertion sort.pdf', title: 'หมายเหตุอาจารย์: Insertion Sort Analysis', kind: 'slide', path: 'Lectures/Lecture 9 Sorting/หมายเหตุ ในหัวข้อ insertion sort.pdf' }
     ]
   },
   {
     id: 'ch10',
     type: 'curriculum',
-    title: '🚀 บทที่ 10: Shortest Path Algorithms',
-    description: 'Unweighted Shortest Path (BFS) และ Dijkstra Algorithm พร้อมตาราง Trace',
+    title: '🌐 บทที่ 10 (Lecture 10): Graph & Topological Sort',
+    description: 'โครงสร้างกราฟ, Adjacency Matrix vs List, Memory Waste 24.48%, DAG, Kahn\'s TopoSort และข้อสอบไม่ต่ำกว่า 20 คะแนน',
+    files: [
+      '09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort).md',
+      '12.4 - Assignment 4 Graph Topological Sort & Unweighted Shortest Path.md',
+      '13.8 - For Example Lecture 10 & 11 Graph (Topological Sort, BFS Shortest Path & คำนวณขยะ Matrix).md',
+      '14.7 - Classroom Lecture Graph Theory, Representations & Final Exam Leaks.md'
+    ],
+    pdfs: [
+      { name: 'Lecture 10 Graph.pdf', title: 'สไลด์หลัก: Lecture 10 Graph Fundamentals & Representations', kind: 'slide', path: 'Lectures/Lecture 10 Graph/Lecture 10 Graph.pdf' },
+      { name: 'Topological sort.pdf', title: 'ใบงานโจทย์: Topological Sort (Kahn Algorithm)', kind: 'worksheet', path: 'Lectures/Lecture 10 Graph/Topological sort.pdf' },
+      { name: 'Topological sort_solved.pdf', title: 'เฉลยอาจารย์: Topological Sort', kind: 'solved', path: 'Lectures/Lecture 10 Graph/Topological sort_solved.pdf' }
+    ]
+  },
+  {
+    id: 'ch11',
+    type: 'curriculum',
+    title: '🚀 บทที่ 11 (Lecture 11): Shortest Path & Dijkstra Algorithms',
+    description: 'Unweighted Shortest Path (BFS), Dijkstra Algorithm บนกราฟมีค่าน้ำหนัก พร้อมตารางสถานะ Known, Dist, Path',
     files: [
       '10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path).md'
+    ],
+    pdfs: [
+      { name: 'Lecture 11 Shortest path.pdf', title: 'สไลด์หลัก: Lecture 11 Shortest Path Algorithms & Dijkstra', kind: 'slide', path: 'Lectures/Lecture 11 Shortest path/Lecture 11 Shortest path.pdf' },
+      { name: 'For Example Graph.pdf', title: 'ใบงานโจทย์: Unweighted Shortest Path (BFS)', kind: 'worksheet', path: 'Lectures/Lecture 11 Shortest path/For Example Graph.pdf' },
+      { name: 'For Example Graph_solved.pdf', title: 'เฉลยอาจารย์: Unweighted Shortest Path & Dijkstra', kind: 'solved', path: 'Lectures/Lecture 11 Shortest path/For Example Graph_solved.pdf' },
+      { name: 'Assign 4 Shortest Path.pdf', title: 'โจทย์การบ้าน 4: Graph BFS Shortest Path & TopoSort', kind: 'assignment', path: 'Lectures/Assignment 4 Shortest Path/For Example Graph.pdf' },
+      { name: 'Assign 4 Shortest Path_solved.pdf', title: 'เฉลยการบ้าน 4: Graph BFS Shortest Path & TopoSort', kind: 'solved', path: 'Lectures/Assignment 4 Shortest Path/For Example Graph_solved.pdf' }
+    ]
+  },
+  {
+    id: 'ch-pdf-master',
+    type: 'curriculum',
+    title: '📑 คลัง PDF สไลด์ ใบงาน และภาพข้อสอบจริง (Master PDF & Media Catalog)',
+    description: 'รวบรวมไฟล์ PDF สไลด์บรรยาย ใบงาน For Example และไฟล์เฉลย _solved.pdf ครบทั้ง 11 บท รวม 91 ไฟล์ และภาพถ่ายข้อสอบจริง 12 หน้า',
+    files: [
+      '15.1 - คลังไฟล์ PDF สไลด์บรรยาย ใบงาน For Example และไฟล์เฉลยอาจารย์ครบทั้ง 11 บท (Teacher Master PDF & Media Catalog).md',
+      '15.2 - ภาพถ่ายข้อสอบกลางภาคฉบับจริงในห้องสอบ 12 หน้า (Midterm Real Exam Paper Photos Gallery).md',
+      '14.5 - Master Catalog Classroom Slides & Photos (87 Photos).md'
+    ],
+    pdfs: [
+      { name: 'planstd060243106.pdf', title: 'แผนการสอนรายวิชา & เกณฑ์การให้คะแนน (Course Syllabus)', kind: 'slide', path: 'Lectures/planstd060243106.pdf' },
+      { name: 'Data Structures & Algorithms in Python.pdf', title: 'ตำราหลัก: Data Structures & Algorithms in Python (Goodrich / Weiss)', kind: 'slide', path: 'Lectures/Data Structures & Algorithms in Python.pdf' }
+    ]
+  },
+  {
+    id: 'ch-exam-master',
+    type: 'curriculum',
+    title: '🎯 ศูนย์รวมแนวข้อสอบ & สรุปสูตร (Master Exam Hub & Cheat Sheet)',
+    description: 'รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน, แนวข้อสอบปลายภาค 2568, ข้อสอบจำลอง Midterm Real Mock และตาราง Big-O',
+    files: [
+      '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions).md',
+      '11.6 - Final Exam Real Classroom Prep & Solutions.md',
+      '11.1 - Midterm Real Exam Mock & Solutions.md',
+      '11.2 - Predicted Midterm Exam 2026 Comprehensive.md',
+      '11.5 - Comprehensive Exam Questions, Tracing & Python Solutions.md',
+      'Glossary & Complexity Cheat Sheet.md',
+      'Index.md'
+    ]
+  }
+];
+
+// Master PDF & Media Archive (สไลด์บรรยาย, ใบงาน For Example, เฉลย _solved.pdf, ภาพกระดาน, ภาพข้อสอบจริง)
+const PDF_ARCHIVE_CATEGORIES = [
+  {
+    id: 'pdf-master',
+    type: 'pdf',
+    title: '📑 คลังไฟล์ PDF สไลด์ ใบงาน และเฉลยอาจารย์ (Teacher Master PDF & Media Catalog)',
+    description: 'รวบรวมไฟล์ PDF สไลด์บรรยาย ใบงาน For Example และไฟล์เฉลย _solved.pdf ของอาจารย์ประดิษฐ์ ครบทั้ง 11 บท รวม 91 ไฟล์',
+    files: [
+      '15.1 - คลังไฟล์ PDF สไลด์บรรยาย ใบงาน For Example และไฟล์เฉลยอาจารย์ครบทั้ง 11 บท (Teacher Master PDF & Media Catalog).md',
+      '15.2 - ภาพถ่ายข้อสอบกลางภาคฉบับจริงในห้องสอบ 12 หน้า (Midterm Real Exam Paper Photos Gallery).md'
     ]
   }
 ];
@@ -354,7 +519,8 @@ function build() {
         type: cat.type,
         title: cat.title,
         description: cat.description,
-        docs
+        docs,
+        pdfs: cat.pdfs || []
       };
     });
   }
@@ -364,7 +530,8 @@ function build() {
   const exampleCategories = processCategoryList(CLASSROOM_EXAMPLE_CATEGORIES);
   const examCategories = processCategoryList(EXAM_CATEGORIES);
   const classroomTranscriptCategories = processCategoryList(CLASSROOM_TRANSCRIPT_CATEGORIES);
-  const allCategories = [...curriculumCategories, ...assignmentCategories, ...exampleCategories, ...examCategories, ...classroomTranscriptCategories];
+  const pdfArchiveCategories = processCategoryList(PDF_ARCHIVE_CATEGORIES);
+  const allCategories = [...curriculumCategories, ...assignmentCategories, ...exampleCategories, ...examCategories, ...classroomTranscriptCategories, ...pdfArchiveCategories];
 
   const documents = {};
   processedMap.forEach((val) => {
@@ -379,6 +546,7 @@ function build() {
     exampleCategories,
     examCategories,
     classroomTranscriptCategories,
+    pdfArchiveCategories,
     categories: allCategories,
     documents
   };

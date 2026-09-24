@@ -75,7 +75,7 @@
     .container {
       position: relative;
       z-index: 1;
-      max-width: 1040px;
+      max-width: 1240px;
       width: 100%;
       text-align: center;
     }
@@ -110,23 +110,62 @@
     p.subtitle {
       font-size: clamp(1rem, 2.5vw, 1.15rem);
       color: var(--text-sub);
-      max-width: 740px;
-      margin: 0 auto 44px auto;
+      max-width: 820px;
+      margin: 0 auto 32px auto;
       line-height: 1.7;
+    }
+
+    .quick-nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .quick-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .quick-nav-pill:hover {
+      background: rgba(79, 209, 232, 0.15);
+      border-color: var(--brand);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(79, 209, 232, 0.25);
+    }
+
+    .quick-nav-pill.highlight {
+      background: rgba(245, 166, 35, 0.12);
+      border-color: rgba(245, 166, 35, 0.4);
+      color: #fbd38d;
+    }
+
+    .quick-nav-pill.highlight:hover {
+      background: rgba(245, 166, 35, 0.22);
+      border-color: #f5a623;
+      box-shadow: 0 4px 14px rgba(245, 166, 35, 0.3);
     }
 
     .hub-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 24px;
       text-align: left;
       margin-bottom: 36px;
-    }
-
-    @media (max-width: 780px) {
-      .hub-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     .hub-card {
@@ -295,6 +334,351 @@
       line-height: 1.4;
     }
 
+    .hub-card.claude-hub:hover .card-btn {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border-color: #f59e0b;
+      color: #0f172a;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+    }
+
+    /* Modal Backdrop & Dialog System */
+    .custom-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 12, 18, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .custom-modal-backdrop.active {
+      display: flex;
+    }
+
+    .custom-modal {
+      background: #141721;
+      border: 1px solid rgba(79, 209, 232, 0.35);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 940px;
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(79, 209, 232, 0.15);
+      padding: 28px;
+      position: relative;
+      color: var(--text-main);
+      text-align: left;
+    }
+
+    .custom-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .custom-modal-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .custom-modal-close {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: 6px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .custom-modal-close:hover {
+      background: #ef4444;
+      color: #fff;
+      border-color: #ef4444;
+    }
+
+    /* Reference Table */
+    .cmp-ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .cmp-ref-table th, .cmp-ref-table td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .cmp-ref-table th {
+      background: rgba(79, 209, 232, 0.1);
+      color: var(--cyan);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 11.5px;
+      letter-spacing: 0.5px;
+    }
+
+    .cmp-ref-table tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .ref-sub {
+      font-size: 12px;
+      color: var(--text-sub);
+      display: block;
+      margin-top: 3px;
+    }
+
+    .ref-links-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ref-link-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      width: fit-content;
+    }
+
+    .ref-link-badge.badge-lab {
+      background: rgba(79, 209, 232, 0.15);
+      color: var(--cyan);
+      border-color: rgba(79, 209, 232, 0.35);
+    }
+    .ref-link-badge.badge-lab:hover {
+      background: var(--cyan);
+      color: #0f172a;
+      box-shadow: 0 0 12px rgba(79, 209, 232, 0.4);
+    }
+
+    .ref-link-badge.badge-claude {
+      background: rgba(245, 166, 35, 0.12);
+      color: #fbbf24;
+      border-color: rgba(245, 166, 35, 0.35);
+    }
+    .ref-link-badge.badge-claude:hover {
+      background: #f59e0b;
+      color: #1e1b4b;
+    }
+
+    .ref-link-badge.badge-offline {
+      background: rgba(183, 148, 246, 0.15);
+      color: #c084fc;
+      border-color: rgba(183, 148, 246, 0.35);
+    }
+    .ref-link-badge.badge-offline:hover {
+      background: #a855f7;
+      color: white;
+    }
+
+    .ref-link-badge.badge-gemini {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+    .ref-link-badge.badge-gemini:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .ref-link-badge.badge-perp {
+      background: rgba(20, 184, 166, 0.15);
+      color: #2dd4bf;
+      border-color: rgba(20, 184, 166, 0.35);
+    }
+    .ref-link-badge.badge-perp:hover {
+      background: #14b8a6;
+      color: #042f2e;
+    }
+
+    .ref-link-badge.badge-wiki {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      border-color: var(--border);
+    }
+    .ref-link-badge.badge-wiki:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Voice Intel Cards */
+    .voice-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .voice-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .voice-trap-card {
+      background: #1b1d25;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .voice-trap-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+    }
+
+    .voice-trap-card.danger::before { background: #ef4444; }
+    .voice-trap-card.warning::before { background: #f59e0b; }
+    .voice-trap-card.info::before { background: #3b82f6; }
+    .voice-trap-card.brand::before { background: var(--cyan); }
+
+    .voice-trap-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .trap-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .voice-trap-header h4 {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 15px;
+      margin: 0;
+      color: var(--text-main);
+    }
+
+    .voice-trap-card p {
+      font-size: 13.5px;
+      color: var(--text-sub);
+      margin-bottom: 10px;
+    }
+
+    .voice-example-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12.5px;
+      font-family: monospace;
+      margin-top: 8px;
+    }
+
+    .bad-ans {
+      background: rgba(239, 68, 68, 0.14);
+      color: #fca5a5;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(239, 68, 68, 0.25);
+    }
+
+    .good-ans {
+      background: rgba(34, 197, 94, 0.14);
+      color: #86efac;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+    }
+
+    .voice-math-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .math-mini-card {
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .math-mini-card.green {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+    }
+
+    .math-mini-card.red {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .mini-label {
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-bottom: 4px;
+    }
+
+    .voice-note {
+      font-size: 12.5px !important;
+      color: var(--cyan) !important;
+      margin-top: 10px !important;
+      line-height: 1.5;
+    }
+
+    .take-home-banner {
+      background: rgba(79, 209, 232, 0.08);
+      border: 1.5px solid rgba(79, 209, 232, 0.35);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-top: 16px;
+    }
+
+    .th-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--cyan);
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
     footer {
       margin-top: 48px;
       font-size: 12.5px;
@@ -317,17 +701,29 @@
       พร้อม <b>Interactive Visual Debugger</b> จำลองขั้นตอนวิธีทีละสเต็ป และระบบรันโค้ด Python ในเบราว์เซอร์
     </p>
 
+    <div class="quick-nav-bar">
+      <a href="Wiki/index.html" class="quick-nav-pill"><span class="icon">📚</span> สารานุกรม 11 บทเรียน</a>
+      <a href="Wiki/index.html#/15.1 - คลังไฟล์ PDF สไลด์บรรยาย ใบงาน For Example และไฟล์เฉลยอาจารย์ครบทั้ง 11 บท (Teacher Master PDF & Media Catalog)" class="quick-nav-pill highlight"><span class="icon">📑</span> คลัง PDF & ใบงานอาจารย์ (91 ไฟล์)</a>
+      <a href="Wiki/index.html#/15.2 - ภาพถ่ายข้อสอบกลางภาคฉบับจริงในห้องสอบ 12 หน้า (Midterm Real Exam Paper Photos Gallery)" class="quick-nav-pill highlight"><span class="icon">📸</span> ข้อสอบจริง 12 หน้า (Real Exam)</a>
+      <a href="DsaLab/index.html" class="quick-nav-pill"><span class="icon">🔬</span> DSA Lab Studio</a>
+      <a href="claude_heap_artifact_reference.html" class="quick-nav-pill highlight"><span class="icon">💎</span> Claude Heap Artifact</a>
+      <button class="quick-nav-pill" id="ref-modal-btn"><span class="icon">🔗</span> แหล่งอ้างอิง (link.md)</button>
+      <button class="quick-nav-pill" id="voice-modal-btn"><span class="icon">🎙️</span> ข้อสอบรั่ว (Voice Intel)</button>
+    </div>
+
     <div class="hub-grid">
       <!-- Card 1: Wiki Knowledge Hub -->
       <a href="Wiki/index.html" class="hub-card wiki-hub">
         <div class="card-icon-box">📚</div>
         <h2 class="card-title">สารานุกรม DSA Wiki</h2>
         <p class="card-desc">
-          รวมครบ 20 บทเรียนระดับลึกพิเศษ จัดหมวดหมู่ตามบทเรียนอย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แบบจำลองโครงสร้างสถาปัตยกรรม DSA Studio Visual Models, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K)
+          รวมครบทั้ง 11 บทเรียน (Lecture 1 ถึง 11) และคลังเอกสาร 47 บทความ จัดหมวดหมู่อย่างเป็นระเบียบ พร้อมกล่องสรุป Callouts, แบบจำลองโครงสร้าง DSA Studio Visual Models, และระบบค้นหาเร็วปานสายฟ้า (Ctrl + K)
         </p>
         <ul class="card-features">
-          <li><span class="feat-check">✓</span><span>บทที่ 1 - 10 ครบทุกสไลด์พร้อมบทวิเคราะห์ Big-O เชิงลึก</span></li>
-          <li><span class="feat-check">✓</span><span>🎙️ <b>บันทึกสอนสด &amp; สไลด์ 87 ภาพ</b>: ถอดเสียงคำต่อคำ ดร.ประดิษฐ์ พิทักษ์เสถียรกุล เจาะลึก Hashing, Heap &amp; ข้อสอบตรง</span></li>
+          <li><span class="feat-check">✓</span><span><b>ครบทั้ง 11 บทเรียน (Lecture 1 ถึง 11)</b> ครบทุกสไลด์ตามอาจารย์ พร้อมบทวิเคราะห์ Big-O เชิงลึก</span></li>
+          <li><span class="feat-check">✓</span><span>📑 <b>คลังไฟล์ PDF อาจารย์ (91 ไฟล์)</b>: สไลด์บรรยาย, ใบงาน For Example และเฉลย _solved.pdf ครบทั้ง 11 บท</span></li>
+          <li><span class="feat-check">✓</span><span>📸 <b>ภาพถ่ายข้อสอบกลางภาคฉบับจริง 12 หน้า</b>: ถ่ายจากห้องสอบจริง พร้อมสแกนกระดานสอน 144 ภาพ</span></li>
+          <li><span class="feat-check">✓</span><span>🎙️ <b>บันทึกสอนสด &amp; สไลด์ 144 ภาพ</b>: ถอดเสียงคำต่อคำ ดร.ประดิษฐ์ พิทักษ์เสถียรกุล เจาะลึก Hashing, Heap &amp; ข้อสอบตรง</span></li>
           <li><span class="feat-check">✓</span><span>📋 <b>งานและการบ้านที่อาจารย์สั่ง</b>: รวม Assignment 1-4, In-class Tasks ส่งเที่ยงตรง, Test Programs 1-2 &amp; กับดักคะแนน 0</span></li>
           <li><span class="feat-check">✓</span><span>🏁 <b>โซนเตรียมสอบปลายภาค</b>: สรุป Hashing, Heaps, Sorting, Graphs &amp; กับดักอาจารย์</span></li>
           <li><span class="feat-check">✓</span><span>🎯 ตะลุยโจทย์ข้อสอบจริง Midterm &amp; Mock Exam เสมือนจริง</span></li>
@@ -358,6 +754,46 @@
           <span>🚀 เข้าสู่ห้องทดลอง DSA Lab</span>
           <span>→</span>
         </div>
+      </a>
+
+      <!-- Card 3: Claude Artifact Reference -->
+      <a href="claude_heap_artifact_reference.html" class="hub-card claude-hub">
+        <div class="card-icon-box" style="background:rgba(245, 166, 35, 0.15); border-color:rgba(245, 166, 35, 0.35); color:#fbbf24;">💎</div>
+        <h2 class="card-title">Claude Artifact: Heap Studio</h2>
+        <p class="card-desc">
+          Interactive Visual Debugger สไตล์ Modern Artifact ถอดแบบจากต้นฉบับ Claude Artifact ที่ผู้ใช้ชื่นชอบ พร้อมแอนิเมชันคู่ขนาน Tree &amp; Array View และ Sandbox แบบลื่นไหลเต็มรูปแบบ
+        </p>
+        <ul class="card-features">
+          <li><span class="feat-check">✓</span><span><b>Tree &amp; Array Parallel View</b>: แสดง Complete Binary Tree ควบคู่ 1-Based Array Index 0 ไม่ใช้งาน</span></li>
+          <li><span class="feat-check">✓</span><span><b>Step-by-Step Stepper</b>: จำลองคำสั่ง Build from Scratch (10 ค่า) และ Insert/DeleteMin ทีละก้าว</span></li>
+          <li><span class="feat-check">✓</span><span><b>Watch Variable Inspector</b>: ติดตามตัวแปร <code class="mono">hole</code>, <code class="mono">child</code>, <code class="mono">currentSize</code> สด</span></li>
+          <li><span class="feat-check">✓</span><span><b>Interactive Sandbox</b>: เพิ่มและลบโหนดได้ไม่จำกัด พร้อมปุ่ม Auto-Play / Step / Reset</span></li>
+          <li><span class="feat-check">✓</span><span><b>Offline Standalone HTML</b>: ใช้งานได้ทันทีไม่ต้องพึ่งพาอินเทอร์เน็ต</span></li>
+        </ul>
+        <div class="card-btn" style="border-color:rgba(245, 166, 35, 0.3);">
+          <span>💎 เปิด Claude Artifact Studio</span>
+          <span>→</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Master Teacher PDF & Exam Paper Archive Showcase -->
+    <div class="section-title">
+      <span>📑</span>
+      <span>คลังไฟล์ PDF สไลด์บรรยาย ใบงานเฉลยอาจารย์ (91 ไฟล์) และภาพถ่ายข้อสอบจริง 12 หน้า</span>
+    </div>
+
+    <div class="assignment-strip" style="margin-bottom: 28px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+      <a href="Wiki/index.html#/15.1 - คลังไฟล์ PDF สไลด์บรรยาย ใบงาน For Example และไฟล์เฉลยอาจารย์ครบทั้ง 11 บท (Teacher Master PDF & Media Catalog)" class="assign-card" style="border-color: rgba(245, 158, 11, 0.45); background: rgba(245, 158, 11, 0.08);">
+        <span class="assign-tag" style="color: #fbbf24;">Master PDF Catalog · ครบ 11 บทเรียน (91 ไฟล์)</span>
+        <div class="assign-name">📑 รวมไฟล์ PDF สไลด์บรรยาย ใบงาน For Example และไฟล์เฉลยอาจารย์</div>
+        <div class="assign-sub">เข้าถึงไฟล์ PDF ต้นฉบับและฉบับปรับปรุง ครบตั้งแต่ Lecture 1 ถึง 11, ใบงาน For Example ทุกบท, ไฟล์เฉลย _solved.pdf, เอกสารการบ้าน และตำราเรียน เปิดดูและดาวน์โหลดได้ทันที</div>
+      </a>
+
+      <a href="Wiki/index.html#/15.2 - ภาพถ่ายข้อสอบกลางภาคฉบับจริงในห้องสอบ 12 หน้า (Midterm Real Exam Paper Photos Gallery)" class="assign-card" style="border-color: rgba(239, 68, 68, 0.45); background: rgba(239, 68, 68, 0.08);">
+        <span class="assign-tag" style="color: #f87171;">Real Exam Archive · 12 หน้าในห้องสอบจริง</span>
+        <div class="assign-name">📸 ภาพถ่ายข้อสอบกลางภาคฉบับจริงในห้องสอบ 12 หน้า</div>
+        <div class="assign-sub">แกลเลอรีภาพถ่ายกระดาษข้อสอบจริง 12 หน้า (48078_0 ถึง 48089) บันทึกทุกข้อโจทย์ คำสั่ง และคำถามที่ออกสอบจริง พร้อมฟังก์ชันคลิกดูภาพขยายเต็มจอ</div>
       </a>
     </div>
 
@@ -592,10 +1028,307 @@
     </footer>
   </div>
 
+  <!-- Reference Links Modal (Based on link.md) -->
+  <div id="ref-modal" class="custom-modal-backdrop">
+    <div class="custom-modal-box custom-modal-large">
+      <div class="custom-modal-header">
+        <div class="custom-modal-title">
+          <span class="modal-badge-cyan">LINK.MD</span>
+          <span>🔗 แหล่งอ้างอิงและเครื่องมือเรียนรู้ (Reference Links &amp; Interactive Artifacts)</span>
+        </div>
+        <button class="custom-modal-close" id="ref-modal-close-btn" title="ปิดหน้าต่าง (Esc)">✕ ปิด</button>
+      </div>
+      <div class="custom-modal-body">
+        <p class="modal-lead">
+          รวบรวมลิงก์อ้างอิงโมเดลจำลองภายนอก (Claude Artifact, Gemini Share, Perplexity) พร้อมโมดูลทดสอบเชิงโต้ตอบในโปรเจกต์:
+        </p>
+
+        <div style="overflow-x:auto;">
+          <table class="cmp-ref-table">
+            <thead>
+              <tr>
+                <th>ไฟล์ในโปรเจกต์</th>
+                <th>หัวข้อ / โครงสร้างข้อมูล</th>
+                <th>เครื่องมือในโปรเจกต์</th>
+                <th>ลิงก์อ้างอิงภายนอก &amp; Artifacts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>Exams/Heap.py</code></td>
+                <td>
+                  <strong>Binary Heap</strong><br>
+                  <span class="ref-sub">Min/Max Heap, Percolate Up/Down, 1-based Array</span>
+                </td>
+                <td>
+                  <a href="DsaLab/index.html?topic=heap" class="ref-link-badge badge-lab">
+                    🔬 เปิด Heap Visualizer
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="https://claude.ai/public/artifacts/3be9a554-8360-460f-9fad-c041859bccdb" target="_blank" class="ref-link-badge badge-claude">
+                      🤖 Claude Artifact (Online)
+                    </a>
+                    <a href="claude_heap_artifact_reference.html" class="ref-link-badge badge-offline">
+                      💾 Claude Reference (Offline HTML)
+                    </a>
+                    <a href="https://www.perplexity.ai/computer/a/8e421185-9a16-4483-9acd-9905f4bdd0c4" target="_blank" class="ref-link-badge badge-perp">
+                      🧠 Perplexity AI Notebook
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Exams/BinarySearchTrees.py</code></td>
+                <td>
+                  <strong>Binary Search Tree (BST)</strong><br>
+                  <span class="ref-sub">Insert, Search, Deletion 3 Cases (Leaf, 1 Child, Successor)</span>
+                </td>
+                <td>
+                  <a href="DsaLab/index.html?topic=bst" class="ref-link-badge badge-lab">
+                    🔬 เปิด BST Visualizer
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="https://share.gemini.google/68l68tkQ4gyZ" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 1
+                    </a>
+                    <a href="https://share.gemini.google/buHkJaab2mpf" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 2
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Exams/Hash.py</code></td>
+                <td>
+                  <strong>Hash Table</strong><br>
+                  <span class="ref-sub">Linear Probing, Separate Chaining, Load Factor λ Gauge</span>
+                </td>
+                <td>
+                  <a href="DsaLab/index.html?topic=hash" class="ref-link-badge badge-lab">
+                    🔬 เปิด Hash Visualizer
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="https://share.gemini.google/SJXI2wdwjceD" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 1
+                    </a>
+                    <a href="https://share.gemini.google/v6raXDvrr0Tp" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 2
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Exams/InfixToPostFix.py</code></td>
+                <td>
+                  <strong>Stack: Infix to Postfix</strong><br>
+                  <span class="ref-sub">Precedence Table, Token Scanner, Shunting-Yard Animator</span>
+                </td>
+                <td>
+                  <a href="DsaLab/index.html?topic=stack" class="ref-link-badge badge-lab">
+                    🔬 เปิด Stack Visualizer
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="https://gemini.google.com/share/cc48e0f025be" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 1
+                    </a>
+                    <a href="https://gemini.google.com/share/8746e44a615d" target="_blank" class="ref-link-badge badge-gemini">
+                      ✨ Gemini Share 2
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><code>Exams/Graph_Exam_Leaks_20260923.py</code></td>
+                <td>
+                  <strong>Graph &amp; Topological Sort</strong><br>
+                  <span class="ref-sub">Adjacency Matrix vs List, Memory Waste 24.48%, Complete Graph 45</span>
+                </td>
+                <td>
+                  <a href="DsaLab/index.html?topic=topsort" class="ref-link-badge badge-lab">
+                    🔬 เปิด TopSort Simulator
+                  </a>
+                </td>
+                <td>
+                  <div class="ref-links-stack">
+                    <a href="Wiki/index.html#/14.7 - Classroom Lecture Graph Theory, Representations &amp; Final Exam Leaks" class="ref-link-badge badge-wiki">
+                      🎙️ สรุปเสียงคาบ 23 ก.ย.
+                    </a>
+                    <a href="Wiki/index.html#/09.1 - Graph Fundamentals &amp; Traversals (BFS, DFS, Topological Sort)" class="ref-link-badge badge-wiki">
+                      📖 บทเรียนกราฟบทที่ 9
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voice Exam Traps & Intelligence Modal -->
+  <div id="voice-modal" class="custom-modal-backdrop">
+    <div class="custom-modal-box custom-modal-large">
+      <div class="custom-modal-header">
+        <div class="custom-modal-title">
+          <span class="modal-badge-amber">VOICE INTEL</span>
+          <span>🎙️ สรุปจุดสำคัญและกับดักข้อสอบจากเสียงอาจารย์ประดิษฐ์ (Classroom Leaks)</span>
+        </div>
+        <button class="custom-modal-close" id="voice-modal-close-btn" title="ปิดหน้าต่าง (Esc)">✕ ปิด</button>
+      </div>
+      <div class="custom-modal-body">
+        <!-- Graph Score Announcement Banner from Voice -->
+        <div style="background: rgba(245, 158, 11, 0.12); border: 1.5px solid rgba(245, 158, 11, 0.45); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;">
+          <div style="display:flex; align-items:center; gap:10px; font-weight:700; color:#fbbf24; font-size:15.5px; margin-bottom:6px;">
+            <span>📢</span>
+            <span>คะแนนข้อสอบปลายภาคเรื่อง Graph จากไฟล์เสียง (23 ก.ย. 69 นาทีที่ 20):</span>
+          </div>
+          <div style="font-size:13.5px; color:#e2e8f0; line-height:1.6;">
+            อาจารย์ ดร.ประดิษฐ์ พูดระบุในห้องเรียนคำต่อคำว่า: <em>"เปิด Google Classroom ดูสไลด์ บทที่ 10 เรื่องกราฟนี้ จะออกสอบปลายภาค <strong>2 ข้อใหญ่</strong> และมีข้อย่อยประมาณ <strong>3-4 ข้อ</strong> รวมแล้วคะแนน<strong>ไม่ต่ำกว่า 20 คะแนน</strong> จากคะแนนเต็มข้อสอบ 70 คะแนน (หาร 2 เหลือ 35 คะแนนปลายภาค)"</em>
+            <br>
+            <span style="display:inline-block; margin-top:8px; color:#38bdf8; font-weight:600;">⚡ สรุป: กราฟมีคะแนนดิบ <strong>ไม่ต่ำกว่า 20 คะแนน</strong> คิดเป็นเกือบ 30% ของข้อสอบ Final ทั้งฉบับ (น้ำหนักคะแนนตัดเกรดสุทธิ ~10 ถึง 15 คะแนนจากเกรดรวม 100%)</span>
+          </div>
+        </div>
+
+        <div class="voice-cards-grid">
+          <!-- Trap 1 -->
+          <div class="voice-trap-card danger">
+            <div class="voice-trap-header">
+              <span class="trap-num">1</span>
+              <h4>การเขียน Path (ได้ 0 คะแนนทันทีหากใช้ลูกศร)</h4>
+            </div>
+            <p>นิยามของ Path ทางคณิตศาสตร์คือ <strong>Sequence of vertices</strong> ต้องเขียนคั่นด้วยจุลภาคเท่านั้น!</p>
+            <div class="voice-example-box">
+              <div class="bad-ans">❌ ห้ามเขียน: <code>A -&gt; B -&gt; C</code> หรือ <code>A → B → C</code> (ได้ 0 คะแนน)</div>
+              <div class="good-ans">✅ ต้องเขียน: <code>A, B, C</code> หรือ <code>(A, B, C)</code> (คะแนนเต็ม)</div>
+            </div>
+          </div>
+
+          <!-- Trap 2 -->
+          <div class="voice-trap-card warning">
+            <div class="voice-trap-header">
+              <span class="trap-num">2</span>
+              <h4>สูตร Complete Graph: $E = \frac{V(V-1)}{2}$</h4>
+            </div>
+            <p>เมื่อโจทย์ถามกราฟ $V=10$ มีเส้นเชื่อมกี่เส้น:</p>
+            <div class="voice-example-box">
+              <div class="bad-ans">❌ ห้ามตอบติดสูตร: <code>10*(10-1)/2</code> หรือ <code>90/2</code> (หักคะแนน)</div>
+              <div class="good-ans">✅ ต้องตอบจำนวนเต็ม: <strong><code>45</code> หรือ <code>45 เส้น</code></strong></div>
+            </div>
+          </div>
+
+          <!-- Trap 3 -->
+          <div class="voice-trap-card info">
+            <div class="voice-trap-header">
+              <span class="trap-num">3</span>
+              <h4>คำถามบน Null Graph ($V=\{\}, E=\{\}$)</h4>
+            </div>
+            <p>หากข้อสอบถามว่าจงหา Path จากจุด $A$ ไปยังจุด $C$ บนกราฟว่าง:</p>
+            <div class="voice-example-box">
+              <div class="good-ans">✅ คำตอบที่ถูกต้อง: <strong>"ไม่มี Path จาก $A$ ไป $C$ เนื่องจากไม่มีจุด $A$ และจุด $C$ อยู่ในกราฟนี้"</strong></div>
+            </div>
+          </div>
+
+          <!-- Trap 4 -->
+          <div class="voice-trap-card brand">
+            <div class="voice-trap-header">
+              <span class="trap-num">4</span>
+              <h4>การคำนวณร้อยละ Memory Waste (7x7 Adjacency Matrix)</h4>
+            </div>
+            <p>กราฟ 7 จุดยอด 12 เส้นเชื่อม (ตาราง $7 \times 7 = 49$ ช่อง):</p>
+            <div class="voice-math-grid">
+              <div class="math-mini-card green">
+                <div class="mini-label">ช่องที่มีค่า 1 (ใช้งานจริง)</div>
+                <div class="mini-val">$$\frac{12 \times 100}{49} = \mathbf{24.48\%}$$</div>
+              </div>
+              <div class="math-mini-card red">
+                <div class="mini-label">ช่องที่มีค่า 0 (สูญเปล่า)</div>
+                <div class="mini-val">$$\frac{37 \times 100}{49} = \mathbf{75.51\%}$$</div>
+              </div>
+            </div>
+            <p class="voice-note">💡 <strong>เหตุผลที่ Adjacency List เป็นพระเอก:</strong> ใช้เพียง $|V| + |E| = 7 + 12 = 19$ ช่อง ประหยัดพื้นที่กว่าถึง <strong>61.22%</strong>!</p>
+          </div>
+        </div>
+
+        <!-- Take-Home Assignment 2 Notice -->
+        <div class="take-home-banner">
+          <div class="th-title">
+            <span>📋 การบ้าน Take-Home Programming Assignment 2</span>
+            <span style="font-size:12px; font-weight:normal; color:#f59e0b;">กำหนดส่ง: 27 ก.ย. 2569 เวลา 23:59 น.</span>
+          </div>
+          <p style="font-size:13.5px; margin-bottom:12px; color:var(--text-sub);">
+            เขียนโปรแกรม Python 3 อัลกอริทึม: Insertion Sort, Selection Sort, Bubble Sort ทดสอบกับชุดข้อมูล <code>data = [64, 34, 25, 12, 22, 11, 90]</code> พร้อมแสดงผล Pass-by-pass, นับจำนวน Comparisons และ Swaps อย่างแม่นยำ
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="Wiki/index.html#/12.8 - Take-Home Assignment 2 Sorting Algorithm Comparison" class="ref-link-badge badge-lab">
+              <span>🐍</span> ดูโค้ดเฉลย Python (take_home_assignment_2_sorting.py)
+            </a>
+            <a href="Wiki/index.html#/08.1 - Sorting Fundamentals &amp; Elementary Sorts" class="ref-link-badge badge-wiki">
+              <span>📖</span> อ่านทฤษฎี Sorting และ Inversions
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- KaTeX Vendor Scripts -->
   <script src="Wiki/vendor/katex/katex.min.js"></script>
   <script src="Wiki/vendor/katex/contrib/auto-render.min.js"></script>
   <script>
+    // Modal Open & Close Handler
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.add('open', 'active');
+        if (window.renderMathInElement) {
+          window.renderMathInElement(el, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ],
+            preProcess: function(math) {
+              return math.replace(/(?<!\\)%/g, '\\%');
+            },
+            throwOnError: false
+          });
+        }
+      }
+    }
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('open', 'active');
+    }
+
+    document.getElementById('ref-modal-btn')?.addEventListener('click', () => openModal('ref-modal'));
+    document.getElementById('voice-modal-btn')?.addEventListener('click', () => openModal('voice-modal'));
+    document.getElementById('ref-modal-close-btn')?.addEventListener('click', () => closeModal('ref-modal'));
+    document.getElementById('voice-modal-close-btn')?.addEventListener('click', () => closeModal('voice-modal'));
+
+    // Backdrop click
+    ['ref-modal', 'voice-modal'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', (e) => {
+        if (e.target.id === id) closeModal(id);
+      });
+    });
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal('ref-modal');
+        closeModal('voice-modal');
+      }
+    });
+
+    // KaTeX Global Render
     document.addEventListener('DOMContentLoaded', () => {
       if (window.renderMathInElement) {
         window.renderMathInElement(document.body, {
@@ -603,6 +1336,9 @@
             { left: '$$', right: '$$', display: true },
             { left: '$', right: '$', display: false }
           ],
+          preProcess: function(math) {
+            return math.replace(/(?<!\\)%/g, '\\%');
+          },
           throwOnError: false
         });
       }

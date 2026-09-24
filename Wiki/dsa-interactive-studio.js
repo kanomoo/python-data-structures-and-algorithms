@@ -58,8 +58,9 @@ window.DsaWikiStudio = (function () {
         }
       });
 
-      if (activeElem) {
-        activeElem.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      if (activeElem && linesContainer) {
+        const topDiff = activeElem.offsetTop - linesContainer.offsetTop;
+        linesContainer.scrollTop = topDiff - (linesContainer.clientHeight / 2);
       }
     }
   }
@@ -2566,7 +2567,7 @@ window.DsaWikiStudio = (function () {
                 <text x="${x + 35}" y="${y - 12}" fill="${stroke}" font-size="10" font-weight="700" font-family="JetBrains Mono" text-anchor="middle">${badge ? '▼ ' + badge : n.addr}</text>
                 <rect x="${x}" y="${y}" width="42" height="42" rx="6" fill="${fill}" stroke="${stroke}" stroke-width="2" />
                 <text x="${x + 21}" y="${y + 26}" fill="#fff" font-size="16" font-weight="800" font-family="Chakra Petch" text-anchor="middle">${n.val}</text>
-                <rect x="${x + 42}" y="${y}" width="28" height="42" rx="0 6 6 0" fill="#0f172a" stroke="${stroke}" stroke-width="2" />
+                <rect x="${x + 42}" y="${y}" width="28" height="42" rx="4" fill="#0f172a" stroke="${stroke}" stroke-width="2" />
                 <circle cx="${x + 56}" cy="${y + 21}" r="4" fill="${stroke}" />
               </g>
             `;

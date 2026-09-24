@@ -11,6 +11,7 @@
   const state = {
     wikiData: window.WIKI_DATA || null,
     currentDocId: null,
+    currentPdf: null,
     currentMode: 'curriculum', // 'curriculum' | 'exam'
     completedDocs: new Set(),
     theme: localStorage.getItem('wiki_theme') || 'dark',
@@ -37,6 +38,9 @@
   const elements = {};
 
   function initApp() {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
     cacheElements();
     applyTheme(state.theme);
     applyFontSize(state.fontSize);
@@ -48,29 +52,26 @@
     buildSearchIndex();
     setupEventListeners();
 
-    // Determine initial document from hash or default to Chapter 1
-    const hashDoc = getDocFromHash();
-    const initialDoc = hashDoc || (state.wikiData ? state.wikiData.initialDocId : '01.1 - Introduction to Data Structures & Algorithm Analysis');
-
-    // Auto-detect mode based on document
-    if (initialDoc && initialDoc.startsWith('12.')) {
-      state.currentMode = 'assignment';
-    } else if (initialDoc && initialDoc.startsWith('14.')) {
-      state.currentMode = 'classroom';
-    } else if (initialDoc && (initialDoc.startsWith('11.') || initialDoc.includes('Glossary') || initialDoc.includes('Index'))) {
-      state.currentMode = 'exam';
-    } else {
-      state.currentMode = 'curriculum';
-    }
+    // Unified Curriculum mode is the default so students see everything consolidated by Lecture 1 to 11
+    state.currentMode = 'curriculum';
 
     updateModeTabs();
     renderSidebar();
-    navigateToDoc(initialDoc, getAnchorFromHash());
+
+    const hashPdf = getPdfFromHash();
+    if (hashPdf) {
+      navigateToPdf(hashPdf);
+    } else {
+      const hashDoc = getDocFromHash();
+      const initialDoc = hashDoc || (state.wikiData ? state.wikiData.initialDocId : '01.1 - Introduction to Data Structures & Algorithm Analysis');
+      navigateToDoc(initialDoc, getAnchorFromHash());
+    }
   }
 
   function cacheElements() {
     elements.sidebarNav = document.getElementById('sidebar-nav');
     elements.articleTitle = document.getElementById('article-title');
+    elements.articleCommandDeck = document.getElementById('article-command-deck');
     elements.articleBody = document.getElementById('article-body');
     elements.articleMeta = document.getElementById('article-meta');
     elements.breadcrumbCategory = document.getElementById('breadcrumb-category');
@@ -91,6 +92,7 @@
     elements.toast = document.getElementById('wiki-toast');
 
     elements.tabModeCurriculum = document.getElementById('tab-mode-curriculum');
+    elements.tabModePdf = document.getElementById('tab-mode-pdf');
     elements.tabModeAssignment = document.getElementById('tab-mode-assignment');
     elements.tabModeExample = document.getElementById('tab-mode-example');
     elements.tabModeExam = document.getElementById('tab-mode-exam');
@@ -127,63 +129,466 @@
 
   function updateModeTabs() {
     if (elements.tabModeCurriculum) elements.tabModeCurriculum.classList.toggle('active', state.currentMode === 'curriculum');
+    if (elements.tabModePdf) elements.tabModePdf.classList.toggle('active', state.currentMode === 'pdf');
     if (elements.tabModeAssignment) elements.tabModeAssignment.classList.toggle('active', state.currentMode === 'assignment');
     if (elements.tabModeExample) elements.tabModeExample.classList.toggle('active', state.currentMode === 'example');
     if (elements.tabModeExam) elements.tabModeExam.classList.toggle('active', state.currentMode === 'exam');
     if (elements.tabModeClassroom) elements.tabModeClassroom.classList.toggle('active', state.currentMode === 'classroom');
   }
 
+  const LECTURE_HUBS = {
+    1: {
+      lectureNum: 1,
+      title: 'Lecture 1: Introduction to Data Structures & Algorithm Analysis',
+      shortTitle: 'Lecture 1 (Big-O & ADT)',
+      theoryDocId: '01.1 - Introduction to Data Structures & Algorithm Analysis',
+      assignmentDocId: '12.6 - 0Exercises Warm-up Function Tracing & Attendance Tasks',
+      assignmentLabel: '📋 แบบฝึกหัด Warm-up (12.6)',
+      exampleDocId: null,
+      exampleLabel: null,
+      transcriptDocId: null,
+      examDocId: '11.5 - Comprehensive Exam Questions, Tracing & Python Solutions',
+      examLabel: '🎯 ตะลุยโจทย์ Big-O',
+      dsaLabUrl: '../DsaLab/index.html?topic=bigo',
+      dsaLabLabel: '🔬 รันเปรียบเทียบ Big-O',
+      pdfs: [
+        { name: 'Lecture 1 สไลด์หลัก', file: 'Lectures/Lecture 1 Introduction/Lecture 1 Introduction.pdf' },
+        { name: 'Lecture 1 สไลด์ Edit168', file: 'Lectures/Lecture 1 Introduction/DATA STRUCTURES & ALGORITHMS_Lecture 1 Edit168.pdf' }
+      ],
+      voiceIntel: 'ข้อสอบเน้นถามนิยาม ADT ต้องตอบ 2 ส่วน: Specification (Data type & Operations) + Implementation. ระวังกับดัก Indentation error ห้ามลืม tab!'
+    },
+    2: {
+      lectureNum: 2,
+      title: 'Lecture 2: Review Python & Object-Oriented Programming (OOP)',
+      shortTitle: 'Lecture 2 (Python & OOP)',
+      theoryDocId: '02.1 - Python Review & Object-Oriented Programming (OOP)',
+      assignmentDocId: null,
+      assignmentLabel: null,
+      exampleDocId: null,
+      exampleLabel: null,
+      transcriptDocId: null,
+      examDocId: null,
+      examLabel: null,
+      dsaLabUrl: '../DsaLab/index.html?topic=oop',
+      dsaLabLabel: '🔬 จำลองคลาส OOP & Pointers',
+      pdfs: [
+        { name: 'Lecture 2 สไลด์หลัก', file: 'Lectures/Lecture 2 Review Python/Lecture 2 Review Python.pdf' },
+        { name: 'Python OOP สไลด์เสริม', file: 'Lectures/Python_Oop.pdf' }
+      ],
+      voiceIntel: 'ระวัง Variable scope, self ในเมธอด, และการส่งผ่าน reference ใน Python (mutable vs immutable)'
+    },
+    3: {
+      lectureNum: 3,
+      title: 'Lecture 3: Linked Lists (Singly, Doubly, Circular)',
+      shortTitle: 'Lecture 3 (Linked Lists)',
+      theoryDocId: '03.1 - Linked Lists (Singly, Doubly, Circular)',
+      assignmentDocId: '12.1 - Assignment 1 Singly Linked List Student ID & Node Swap',
+      assignmentLabel: '📋 การบ้าน 1: สลับพอยน์เตอร์รหัสนักศึกษา',
+      exampleDocId: '13.1 - For Example Lecture 3 Linked List (โจทย์สร้างโหนด สลับพอยน์เตอร์ และกับดัก add)',
+      exampleLabel: '💡 โจทย์ตัวอย่าง 3: สลับ 4 พอยน์เตอร์ & กับดัก add',
+      transcriptDocId: null,
+      examDocId: '11.1 - Midterm Real Exam Mock & Solutions',
+      examLabel: '🎯 ข้อสอบจริงสลับโหนดกลางภาค',
+      dsaLabUrl: '../DsaLab/index.html?topic=linkedlist',
+      dsaLabLabel: '🔬 ห้องทดลอง Linked List Animation',
+      pdfs: [
+        { name: 'Lecture 3 สไลด์หลัก', file: 'Lectures/Lecture 3 Linked List/Lecture 3 Linked List.pdf' },
+        { name: 'ใบงาน For Example 169 (เฉลย)', file: 'New-Lectures/For example Linked List 169_solved.pdf' },
+        { name: 'Assign 1 Linked List (เฉลย)', file: 'New-Lectures/Assign 1 Linked List_solved.pdf' }
+      ],
+      voiceIntel: 'ข้อสอบชอบออกโจทย์สลับโหนดสองโหนดติดกัน (Swap Adjacent Nodes) ห้ามหลุดพอยน์เตอร์ไม่งั้น Python GC ลบข้อมูลทิ้งทันที!'
+    },
+    4: {
+      lectureNum: 4,
+      title: 'Lecture 4: Stacks & Queues (Infix, Postfix, Circular Queue)',
+      shortTitle: 'Lecture 4 (Stack & Queue)',
+      theoryDocId: '04.1 - Stacks & Applications (Infix, Postfix, Parentheses)',
+      theoryDocId2: '04.2 - Queues & Circular Array Queues',
+      assignmentDocId: '12.5 - Test Program 1 & 2 Queue Implementation & Sorting Trace',
+      assignmentLabel: '📋 Test Program 1 & 2: Queue Class & Trace',
+      exampleDocId: '13.2 - For Example Lecture 4 Stack & Postfix (Trace Push-Pop และแปลงนิพจน์ Shunting-Yard)',
+      exampleDocId2: '13.3 - For Example Lecture 4 Queue (Trace Enqueue-Dequeue และวงรอบ Circular Queue)',
+      exampleLabel: '💡 โจทย์ตัวอย่าง 4: Stack Postfix & Circular Queue',
+      transcriptDocId: null,
+      examDocId: '11.3 - Stack Practice Exam Problems & Solutions',
+      examDocId2: '11.4 - Queue Practice Exam Problems & Solutions',
+      examLabel: '🎯 เจาะข้อสอบ Stack & Queue',
+      dsaLabUrl: '../DsaLab/index.html?topic=stack',
+      dsaLabUrl2: '../DsaLab/index.html?topic=queue',
+      dsaLabLabel: '🔬 เครื่องมือจำลอง Stack & Circular Queue',
+      pdfs: [
+        { name: 'Lecture 4 สไลด์ Stack', file: 'Lectures/Lecture 4 Stack/Lecture 4 Stack.pdf' },
+        { name: 'Lecture 04.1 สไลด์ Queue', file: 'Lectures/Lecture 4 Stack/Lecture 04.1.pdf' },
+        { name: 'เฉลย For Example Stack', file: 'Lectures/Lecture 4 Stack/For example Stack_solved.pdf' },
+        { name: 'เฉลย For Example Queue', file: 'Lectures/Lecture 4 Stack/For example Queue_solved.pdf' },
+        { name: 'เฉลย Postfix Expression', file: 'Lectures/Lecture 4 Stack/Postfix Expression_solved.pdf' }
+      ],
+      voiceIntel: 'Circular Queue: สูตรคำนวณตำแหน่ง rear = (rear + 1) % capacity. การแปลง Infix เป็น Postfix กฎวงเล็บเปิดปิดและ Precedence ของตัวดำเนินการ'
+    },
+    5: {
+      lectureNum: 5,
+      title: 'Lecture 5: Trees, Binary Trees & Tree Traversals',
+      shortTitle: 'Lecture 5 (Trees & Traversals)',
+      theoryDocId: '05.1 - Tree Terminology & Binary Trees',
+      assignmentDocId: '12.2 - Assignment 2 Construct Binary Tree from Post-order & In-order',
+      assignmentLabel: '📋 การบ้าน 2: สร้างต้นไม้จาก Post-order & In-order',
+      exampleDocId: '13.4 - For Example Lecture 5 Binary Tree (กฎเหล็กเขียน Path ห้ามใช้ลูกศร และ Reconstruct Tree)',
+      exampleLabel: '💡 โจทย์ตัวอย่าง 5: กฎห้ามใส่ลูกศร & Reconstruct',
+      transcriptDocId: null,
+      examDocId: '11.1 - Midterm Real Exam Mock & Solutions',
+      examLabel: '🎯 ข้อสอบสร้างต้นไม้จริง',
+      dsaLabUrl: '../DsaLab/index.html?topic=tree',
+      dsaLabLabel: '🔬 เครื่องมือวาด Tree & Traversals',
+      pdfs: [
+        { name: 'Lecture 5 สไลด์ Tree', file: 'Lectures/Lecture 5 Tree/Lecture 5 Tree.pdf' },
+        { name: 'เฉลย For Example Binary Tree', file: 'Lectures/Lecture 5 Tree/For example Binary Tree_solved.pdf' },
+        { name: 'เฉลย Assign 2 Binary Tree', file: 'Lectures/Assignment 2 Construct Binary Tree/Assign 2 Binary Tree_solved.pdf' }
+      ],
+      voiceIntel: 'กฎเหล็กอาจารย์: เขียน Path ห้ามใส่หัวลูกศร ให้เขียนคั่นด้วยขีดลบหรือคอมม่าเท่านั้น! เขียนลำดับ Pre/In/Postorder ต้องแม่นยำ'
+    },
+    6: {
+      lectureNum: 6,
+      title: 'Lecture 6 (Lectures 5.1 & 5.2): Binary Search Trees (BST) & Deletion',
+      shortTitle: 'Lecture 6 (BST & Removal)',
+      theoryDocId: '05.2 - Binary Search Trees (BST) & Insertion',
+      theoryDocId2: '05.3 - Binary Search Tree Removal (Node Deletion Cases)',
+      assignmentDocId: null,
+      assignmentLabel: null,
+      exampleDocId: '13.5 - For Example Lecture 5.1 & 5.2 BST (Trace _insert_recursive & _delete_recursive 2 เคส)',
+      exampleLabel: '💡 โจทย์ตัวอย่าง 5.1 & 5.2: Trace แทรกและลบโหนด BST',
+      transcriptDocId: null,
+      examDocId: '11.2 - Predicted Midterm Exam 2026 Comprehensive',
+      examLabel: '🎯 เจาะข้อสอบลบโหนด BST 2 ลูก',
+      dsaLabUrl: '../DsaLab/index.html?topic=bst',
+      dsaLabLabel: '🔬 จำลอง Interactive BST Insert & Remove',
+      pdfs: [
+        { name: 'Lecture 5.1 สไลด์ BST Insert', file: 'Lectures/Lecture 5.1 Binary Search Tree/Lecture 5.1add in method delete.pdf' },
+        { name: 'เฉลย For Example BST Insert', file: 'Lectures/Lecture 5.1 Binary Search Tree/For example Binary Search Tree std delete round 4 in insert_s step_solved.pdf' },
+        { name: 'Lecture 5.2 สไลด์ BST Remove', file: 'Lectures/Lecture 5.2 Binary Search Tree Remove/Lecture 5.2 Binary Search Tree (Remove node which has 2 children).pdf' },
+        { name: 'เฉลย BST Remove 2 std', file: 'Lectures/Lecture 5.2 Binary Search Tree Remove/Example for Binary Search Tree remove 2 std_solved.pdf' }
+      ],
+      voiceIntel: 'การลบโหนดที่มีลูก 2 คน: ต้องดึง FindMin จาก subtree ด้านขวา หรือ FindMax จาก subtree ด้านซ้ายมาแทนที่ แล้วเรียก remove โหนดนั้นทิ้ง'
+    },
+    7: {
+      lectureNum: 7,
+      title: 'Lecture 7: Hash Tables & Collision Resolution Strategies',
+      shortTitle: 'Lecture 7 (Hashing)',
+      theoryDocId: '06.1 - Hash Tables & Collision Resolution Strategies',
+      assignmentDocId: '12.7 - In-Class Assignment Binary Heap DeleteMin & Hashing Trace',
+      assignmentLabel: '📋 งานในห้อง 12.7: Hashing Collision Trace',
+      exampleDocId: null,
+      exampleLabel: null,
+      transcriptDocId: '14.1 - Classroom Lecture Hashing, Open Addressing & Rehashing',
+      transcriptLabel: '🎙️ บันทึกเสียงสอนสด 14.1: Hashing & Rehashing',
+      examDocId: '11.6 - Final Exam Real Classroom Prep & Solutions',
+      examLabel: '🎯 เก็งข้อสอบปลายภาค Hashing',
+      dsaLabUrl: '../DsaLab/index.html?topic=hashing',
+      dsaLabLabel: '🔬 จำลอง Hash Table & Collision Probing',
+      pdfs: [
+        { name: 'Lecture 7 สไลด์ Hashing', file: 'Lectures/Lecture 7 Hashing/Lecture 7 Hashing.pdf' }
+      ],
+      voiceIntel: 'อาจารย์เน้นมากเรื่อง Rehashing: เมื่อ Load Factor เกินกำหนด หรือการชนบ่อย ต้องสร้างตารางใหม่ขนาดเป็นเลขจำนวนเฉพาะ (Prime Number) ที่มากกว่า 2 เท่าของขนาดเดิมเสมอ'
+    },
+    8: {
+      lectureNum: 8,
+      title: 'Lecture 8 (Lectures 8 & 8.1): Priority Queue & Binary Heap',
+      shortTitle: 'Lecture 8 (Heap & Priority Queue)',
+      theoryDocId: '07.1 - Priority Queue & Binary Heaps (Min-Heap, Max-Heap)',
+      assignmentDocId: '12.3 - Assignment 3 Binary Min-Heap In-class Insertion & DeleteMin',
+      assignmentLabel: '📋 การบ้าน 3: แทรก 15 ค่า & DeleteMin',
+      exampleDocId: '13.6 - For Example Lecture 8.1 Binary Heap (Trace ตัวแปร hole ใน Percolate Up และ Down)',
+      exampleLabel: '💡 โจทย์ตัวอย่าง 8.1: Trace ตัวแปร hole ใน Heap',
+      transcriptDocId: '14.2 - Classroom Lecture Priority Queue & Binary Heap Properties',
+      transcriptLabel: '🎙️ เสียงสด 14.2, 14.3, 14.4: เจาะลึก Heap & ข้อสอบ',
+      examDocId: '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions)',
+      examLabel: '🎯 ข้อสอบพูดในห้อง: ลบ Min-Heap 3 ครั้ง',
+      dsaLabUrl: '../DsaLab/claude_heap_artifact_reference.html',
+      dsaLabLabel: '🔬 เครื่องมือจำลอง Binary Heap & Index 1',
+      pdfs: [
+        { name: 'Lecture 8 สไลด์ Priority Queue', file: 'Lectures/Lecture 8 Priority Queue (Heap)/Lecture 8 Priority Queue (Heap).pdf' },
+        { name: 'Lecture 8.1 สไลด์ Binary Heap', file: 'Lectures/Lecture 8.1 Priority Queue (Insert and deleteMin)/Lecture 8.1 Priority Queue (Insert and deleteMin).pdf' },
+        { name: 'เฉลย For Example Binary Heap', file: 'Lectures/Lecture 8.1 Priority Queue (Insert and deleteMin)/For example Binary Heap_solved.pdf' },
+        { name: 'เฉลย Assign 3 In-class Heap', file: 'Lectures/Assignment 3 Binary Heap/Assignment 3 Inclass_solved.pdf' }
+      ],
+      voiceIntel: 'ข้อสอบออกแน่นอน: 1D Array เริ่มต้นที่ Index 1 (Root). Parent = i // 2, Left = 2*i, Right = 2*i + 1. อาจารย์บอกในห้องเรียนให้เตรียมตัวทำโจทย์ลบ DeleteMin 3 ครั้งติดต่อกัน!'
+    },
+    9: {
+      lectureNum: 9,
+      title: 'Lecture 9: Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick)',
+      shortTitle: 'Lecture 9 (Sorting)',
+      theoryDocId: '08.1 - Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick)',
+      assignmentDocId: '12.8 - In-Class Assignment Bubble Sort Trace & Total Swaps Calculation',
+      assignmentLabel: '📋 งานในห้อง 12.8: Bubble Sort Trace & นับ Swaps',
+      exampleDocId: '13.7 - For Example Lecture 9 Sorting (Pass-by-Pass Tracing Bubble, Selection, Insertion)',
+      exampleLabel: '💡 โจทย์ตัวอย่าง 9: Pass-by-Pass Tracing สลับและ Move',
+      transcriptDocId: '14.6 - Classroom Lecture Sorting (Insertion, Selection, Bubble Sort) & Exam Inversions',
+      transcriptLabel: '🎙️ เสียงสด 14.6: Sorting & นับ Inversions',
+      examDocId: '11.6 - Final Exam Real Classroom Prep & Solutions',
+      examLabel: '🎯 ข้อสอบ Sorting & Inversions',
+      dsaLabUrl: '../DsaLab/index.html?topic=sorting',
+      dsaLabLabel: '🔬 เครื่องมือเปรียบเทียบ Sorting Algorithms',
+      pdfs: [
+        { name: 'Lecture 9 สไลด์ Sorting', file: 'Lectures/Lecture 9 Sorting/Lecture 9 Sorting.pdf' },
+        { name: 'เฉลย Bubble Sort Trace', file: 'Lectures/Lecture 9 Sorting/For Example Bubble sort_solved.pdf' },
+        { name: 'เฉลย Selection Sort Trace', file: 'Lectures/Lecture 9 Sorting/For Example Selection sort_solved.pdf' },
+        { name: 'เฉลย Short Note Insertion Sort', file: 'Lectures/Lecture 9 Sorting/Short note Insertion sort_solved.pdf' }
+      ],
+      voiceIntel: 'อาจารย์เน้นเรื่อง Inversions: จำนวนคู่ที่สลับลำดับ = จำนวนครั้งในการ swap ของ Bubble Sort. Insertion Sort ดีที่สุดกรณี Best Case O(N) เมื่อข้อมูลเกือบเรียงอยู่แล้ว'
+    },
+    10: {
+      lectureNum: 10,
+      title: 'Lecture 10: Graph Fundamentals, Representations & Topological Sort',
+      shortTitle: 'Lecture 10 (Graph & TopoSort)',
+      theoryDocId: '09.1 - Graph Fundamentals & Traversals (BFS, DFS, Topological Sort)',
+      assignmentDocId: '12.4 - Assignment 4 Graph Topological Sort & Unweighted Shortest Path',
+      assignmentLabel: '📋 การบ้าน 4: TopoSort & Unweighted BFS Table',
+      exampleDocId: '13.8 - For Example Lecture 10 & 11 Graph (Topological Sort, BFS Shortest Path & คำนวณขยะ Matrix)',
+      exampleLabel: '💡 โจทย์ตัวอย่าง 10/11: TopoSort & ขยะ Matrix 24.48%',
+      transcriptDocId: '14.7 - Classroom Lecture Graph Theory, Representations & Final Exam Leaks',
+      transcriptLabel: '🎙️ เสียงสด 14.7: อาจารย์ประกาศกราฟไม่ต่ำกว่า 20 คะแนน!',
+      examDocId: '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions)',
+      examLabel: '🎯 ข้อสอบรั่วห้องเรียน: กราฟไม่ต่ำกว่า 20 คะแนน',
+      dsaLabUrl: '../DsaLab/index.html?topic=topsort',
+      dsaLabLabel: '🔬 เครื่องมือจำลอง Topological Sort (Kahn Algorithm)',
+      pdfs: [
+        { name: 'Lecture 10 สไลด์ Graph', file: 'Lectures/Lecture 10 Graph/Lecture 10 Graph.pdf' },
+        { name: 'เฉลย Topological Sort', file: 'Lectures/Lecture 10 Graph/Topological sort_solved.pdf' },
+        { name: 'เฉลย Assign 4 Graph', file: 'Lectures/Assignment 4 Shortest Path/For Example Graph_solved.pdf' }
+      ],
+      voiceIntel: '🚨 ข้อสอบ Final แน่นอน: อาจารย์ประกาศในไฟล์เสียงว่าเรื่อง Graph มีไม่ต่ำกว่า 20 คะแนน! ออก Adjacency Matrix vs List (คำนวณความสิ้นเปลือง Memory Waste 24.48%), Topological Sort (ตาราง In-degree & Queue), และ BFS Unweighted Shortest Path'
+    },
+    11: {
+      lectureNum: 11,
+      title: 'Lecture 11: Shortest Path Algorithms (Dijkstra & Weighted Graphs)',
+      shortTitle: 'Lecture 11 (Dijkstra Shortest Path)',
+      theoryDocId: '10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path)',
+      assignmentDocId: '12.4 - Assignment 4 Graph Topological Sort & Unweighted Shortest Path',
+      assignmentLabel: '📋 การบ้าน 4: เชื่อมโยง Dijkstra Table',
+      exampleDocId: '13.8 - For Example Lecture 10 & 11 Graph (Topological Sort, BFS Shortest Path & คำนวณขยะ Matrix)',
+      exampleLabel: '💡 โจทย์ตัวอย่าง 11: ตารางสถานะ Known, Dist, Path',
+      transcriptDocId: null,
+      examDocId: '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions)',
+      examLabel: '🎯 เจาะข้อสอบ Dijkstra ตารางสถานะ',
+      dsaLabUrl: '../DsaLab/index.html?topic=dijkstra',
+      dsaLabLabel: '🔬 เครื่องมือจำลอง Dijkstra Algorithm',
+      pdfs: [
+        { name: 'Lecture 11 สไลด์ Shortest Path', file: 'Lectures/Lecture 11 Shortest path/Lecture 11 Shortest path.pdf' },
+        { name: 'เฉลย For Example Graph/Dijkstra', file: 'Lectures/Lecture 11 Shortest path/For Example Graph_solved.pdf' }
+      ],
+      voiceIntel: 'Dijkstra Algorithm ใช้ Greedy Strategy หาทางเดินสั้นสุดบนกราฟมีค่าน้ำหนักที่เป็นบวกเสมอ ตารางประกอบด้วย Known, dv (Distance), pv (Previous Path). หากมีน้ำหนักติดลบ Dijkstra จะให้ผลลัพธ์ผิดพลาด'
+    }
+  };
+
+  function getLectureHubForDoc(docId) {
+    if (!docId) return null;
+    if (docId.startsWith('01.1') || docId.startsWith('12.6')) return LECTURE_HUBS[1];
+    if (docId.startsWith('02.1')) return LECTURE_HUBS[2];
+    if (docId.startsWith('03.1') || docId.startsWith('12.1') || docId.startsWith('13.1')) return LECTURE_HUBS[3];
+    if (docId.startsWith('04.1') || docId.startsWith('04.2') || docId.startsWith('12.5') || docId.startsWith('13.2') || docId.startsWith('13.3') || docId.startsWith('11.3') || docId.startsWith('11.4')) return LECTURE_HUBS[4];
+    if (docId.startsWith('05.1') || docId.startsWith('12.2') || docId.startsWith('13.4')) return LECTURE_HUBS[5];
+    if (docId.startsWith('05.2') || docId.startsWith('05.3') || docId.startsWith('13.5')) return LECTURE_HUBS[6];
+    if (docId.startsWith('06.1') || docId.startsWith('14.1')) return LECTURE_HUBS[7];
+    if (docId.startsWith('07.1') || docId.startsWith('12.3') || docId.startsWith('13.6') || docId.startsWith('14.2') || docId.startsWith('14.3') || docId.startsWith('14.4')) return LECTURE_HUBS[8];
+    if (docId.startsWith('08.1') || docId.startsWith('12.8') || docId.startsWith('13.7') || docId.startsWith('14.6')) return LECTURE_HUBS[9];
+    if (docId.startsWith('09.1') || docId.startsWith('14.7')) return LECTURE_HUBS[10];
+    if (docId.startsWith('10.1')) return LECTURE_HUBS[11];
+    if (docId.startsWith('12.4')) return LECTURE_HUBS[10];
+    if (docId.startsWith('13.8')) return LECTURE_HUBS[10];
+    if (docId.startsWith('12.7')) return LECTURE_HUBS[7];
+    return null;
+  }
+
+  function generateLectureCommandDeck(docId) {
+    const hub = getLectureHubForDoc(docId);
+    if (!hub) return '';
+
+    const isTheory = docId === hub.theoryDocId || docId === hub.theoryDocId2;
+    const isAssignment = docId === hub.assignmentDocId;
+    const isExample = docId === hub.exampleDocId || docId === hub.exampleDocId2;
+    const isTranscript = docId === hub.transcriptDocId;
+    const isExam = docId === hub.examDocId || docId === hub.examDocId2;
+
+    let theoryBtns = '';
+    if (hub.theoryDocId) {
+      const activeClass = isTheory && (!hub.theoryDocId2 || docId === hub.theoryDocId) ? 'is-current' : '';
+      theoryBtns += `<a href="#/${encodeURIComponent(hub.theoryDocId)}" class="deck-btn deck-btn-theory ${activeClass}" title="อ่านเนื้อหาทฤษฎีหลักประจำบทนี้">📖 ทฤษฎีหลัก</a>`;
+    }
+    if (hub.theoryDocId2) {
+      const activeClass = docId === hub.theoryDocId2 ? 'is-current' : '';
+      const partName = hub.lectureNum === 4 ? 'Queue' : 'BST Deletion';
+      theoryBtns += `<a href="#/${encodeURIComponent(hub.theoryDocId2)}" class="deck-btn deck-btn-theory ${activeClass}" title="อ่านเนื้อหาทฤษฎีส่วนที่ 2: ${partName}">📖 ทฤษฎี: ${partName}</a>`;
+    }
+
+    let pdfBtns = '';
+    const chapterPdfs = (state.wikiData && state.wikiData.curriculumCategories) ? 
+      ((state.wikiData.curriculumCategories.find(c => c.id === `ch${hub.lectureNum}`) || {}).pdfs || hub.pdfs || []) : 
+      hub.pdfs || [];
+
+    if (chapterPdfs && chapterPdfs.length > 0) {
+      chapterPdfs.forEach(pdf => {
+        const filePath = pdf.path || pdf.file;
+        const isSolved = (pdf.name || '').includes('เฉลย') || (pdf.name || '').includes('_solved') || filePath.includes('_solved');
+        const badgeIcon = isSolved ? '🎯' : (pdf.kind === 'worksheet' ? '📝' : (pdf.kind === 'assignment' ? '📋' : '📑'));
+        const btnClass = isSolved ? 'deck-btn-pdf-solved' : 'deck-btn-pdf';
+        pdfBtns += `
+          <a href="#/pdf/${encodeURIComponent(filePath)}" class="deck-btn ${btnClass}" title="เปิดอ่านในเว็บ: ${pdf.title || pdf.name}">
+            ${badgeIcon} ${pdf.name}
+          </a>
+        `;
+      });
+    }
+
+    let assignBtn = '';
+    if (hub.assignmentDocId) {
+      const activeClass = isAssignment ? 'is-current' : '';
+      assignBtn = `<a href="#/${encodeURIComponent(hub.assignmentDocId)}" class="deck-btn deck-btn-assign ${activeClass}" title="${hub.assignmentLabel || 'งาน & การบ้านที่อาจารย์สั่ง'}">
+        ${hub.assignmentLabel || '📋 งาน & การบ้าน'}
+      </a>`;
+    }
+
+    let exampleBtn = '';
+    if (hub.exampleDocId) {
+      const activeClass = isExample ? 'is-current' : '';
+      exampleBtn = `<a href="#/${encodeURIComponent(hub.exampleDocId)}" class="deck-btn deck-btn-example ${activeClass}" title="${hub.exampleLabel || 'โจทย์ตัวอย่างอาจารย์ For Example'}">
+        ${hub.exampleLabel || '💡 โจทย์ตัวอย่างอาจารย์'}
+      </a>`;
+    }
+
+    let labBtn = '';
+    if (hub.dsaLabUrl) {
+      labBtn = `<a href="${hub.dsaLabUrl}" target="_blank" rel="noopener noreferrer" class="deck-btn deck-btn-lab" title="เปิดห้องทดลองจำลองโค้ดและแอนิเมชันสำหรับบทนี้โดยเฉพาะ">
+        ⚡ ${hub.dsaLabLabel || '🔬 เปิดใน DSA Lab'}
+      </a>`;
+    }
+
+    let examBtn = '';
+    if (hub.examDocId) {
+      const activeClass = isExam ? 'is-current' : '';
+      examBtn = `<a href="#/${encodeURIComponent(hub.examDocId)}" class="deck-btn deck-btn-exam ${activeClass}" title="${hub.examLabel || 'เจาะข้อสอบประจำบทนี้'}">
+        ${hub.examLabel || '🎯 ข้อสอบประจำบท'}
+      </a>`;
+    }
+
+    let transcriptBtn = '';
+    if (hub.transcriptDocId) {
+      const activeClass = isTranscript ? 'is-current' : '';
+      transcriptBtn = `<a href="#/${encodeURIComponent(hub.transcriptDocId)}" class="deck-btn deck-btn-voice ${activeClass}" title="${hub.transcriptLabel || 'บันทึกเสียงสอนสดในห้องเรียน'}">
+        ${hub.transcriptLabel || '🎙️ เสียงสอนสด'}
+      </a>`;
+    }
+
+    return `
+      <section class="lecture-command-deck" aria-label="One-Stop Lecture Hub">
+        <div class="deck-banner">
+          <div class="deck-info">
+            <span class="deck-kicker">🎯 ONE-STOP LECTURE HUB · รวมทุกสื่อประจำบทในจุดเดียว</span>
+            <h2 class="deck-heading">${escapeHtml(hub.title)}</h2>
+          </div>
+          <div class="deck-quick-tags">
+            <span class="deck-tag">สไลด์ & ใบงานครบ</span>
+            <span class="deck-tag">มีเฉลยอาจารย์</span>
+            <span class="deck-tag">เชื่อมต่อ DSA Lab</span>
+          </div>
+        </div>
+
+        <div class="deck-body">
+          <div class="deck-row">
+            <span class="deck-row-label">📖 ทฤษฎี & เนื้อหา:</span>
+            <div class="deck-row-actions">
+              ${theoryBtns}
+              ${assignBtn}
+              ${exampleBtn}
+            </div>
+          </div>
+
+          <div class="deck-row">
+            <span class="deck-row-label">📑 สไลด์ & เฉลยอาจารย์:</span>
+            <div class="deck-row-actions">
+              ${pdfBtns}
+            </div>
+          </div>
+
+          <div class="deck-row">
+            <span class="deck-row-label">🔬 ปฏิบัติการ & เตรียมสอบ:</span>
+            <div class="deck-row-actions">
+              ${labBtn}
+              ${examBtn}
+              ${transcriptBtn}
+            </div>
+          </div>
+
+          ${hub.voiceIntel ? `
+            <div class="deck-voice-box">
+              <span class="deck-voice-icon">🎙️</span>
+              <div class="deck-voice-msg">
+                <strong>จุดเน้นข้อสอบ & เสียงสอนสดอาจารย์:</strong> ${escapeHtml(hub.voiceIntel)}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      </section>
+    `;
+  }
+
   function formatDocNavTitle(docId, originalTitle) {
-    if (docId.startsWith('01.1')) return 'บทที่ 1: บทนำ & การวิเคราะห์อัลกอริทึม (Big-O)';
-    if (docId.startsWith('02.1')) return 'บทที่ 2: ทบทวนภาษา Python & OOP พื้นฐาน';
-    if (docId.startsWith('03.1')) return 'บทที่ 3: Singly, Doubly & Circular Linked Lists';
-    if (docId.startsWith('04.1')) return 'บทที่ 4.1: Stack & วงเล็บ & นิพจน์ Postfix';
-    if (docId.startsWith('04.2')) return 'บทที่ 4.2: Queue & Circular Array Queue';
-    if (docId.startsWith('05.1')) return 'บทที่ 5.1: ต้นไม้ (Trees) & Tree Traversals';
-    if (docId.startsWith('05.2')) return 'บทที่ 5.2: Binary Search Trees (BST) & การแทรก';
-    if (docId.startsWith('05.3')) return 'บทที่ 5.3: BST Removal (การลบโหนดทุกกรณี)';
-    if (docId.startsWith('06.1')) return 'บทที่ 6: Hash Tables & Collision Resolution';
-    if (docId.startsWith('07.1')) return 'บทที่ 7: Priority Queue & Binary Heaps';
-    if (docId.startsWith('08.1')) return 'บทที่ 8: ขั้นตอนวิธีเรียงลำดับ (Sorting)';
-    if (docId.startsWith('09.1')) return 'บทที่ 9: กราฟ (Graph) & BFS / DFS';
-    if (docId.startsWith('10.1')) return 'บทที่ 10: วิถีสั้นสุด (Dijkstra Shortest Path)';
+    // 11 Core Curriculum Chapters (Matching Teacher Lectures 1 to 11)
+    if (docId.startsWith('01.1')) return '📖 ทฤษฎี: บทนำ & Big-O (Lecture 1)';
+    if (docId.startsWith('02.1')) return '📖 ทฤษฎี: Python & OOP (Lecture 2)';
+    if (docId.startsWith('03.1')) return '📖 ทฤษฎี: Linked Lists (Lecture 3)';
+    if (docId.startsWith('04.1')) return '📖 ทฤษฎี: Stacks & Infix/Postfix (Lecture 4)';
+    if (docId.startsWith('04.2')) return '📖 ทฤษฎี: Queues & Circular Queue (Lecture 4)';
+    if (docId.startsWith('05.1')) return '📖 ทฤษฎี: Trees & Traversals (Lecture 5)';
+    if (docId.startsWith('05.2')) return '📖 ทฤษฎี: BST & Insertion (Lecture 5.1)';
+    if (docId.startsWith('05.3')) return '📖 ทฤษฎี: BST Node Deletion (Lecture 5.2)';
+    if (docId.startsWith('06.1')) return '📖 ทฤษฎี: Hash Tables & Collision (Lecture 7)';
+    if (docId.startsWith('07.1')) return '📖 ทฤษฎี: Priority Queue & Heap (Lecture 8)';
+    if (docId.startsWith('08.1')) return '📖 ทฤษฎี: Sorting Algorithms (Lecture 9)';
+    if (docId.startsWith('09.1')) return '📖 ทฤษฎี: Graph & TopoSort (Lecture 10)';
+    if (docId.startsWith('10.1')) return '📖 ทฤษฎี: Dijkstra Shortest Path (Lecture 11)';
+
+    // Master PDF Archive & Real Exam Paper Gallery (15.x)
+    if (docId.startsWith('15.1')) return '📑 แคตตาล็อก PDF สไลด์ & เฉลยอาจารย์ 91 ไฟล์';
+    if (docId.startsWith('15.2')) return '📸 ภาพถ่ายข้อสอบกลางภาคจริง 12 หน้า';
 
     // Assignment items (12.x)
-    if (docId.startsWith('12.1')) return '📋 Assign 1: Linked List (รหัสนักศึกษา & สลับพอยน์เตอร์)';
-    if (docId.startsWith('12.2')) return '📋 Assign 2: Construct Binary Tree (Post-order & In-order)';
-    if (docId.startsWith('12.3')) return '📋 Assign 3: Binary Min-Heap In-class (แทรก 15 ค่า & DeleteMin)';
-    if (docId.startsWith('12.4')) return '📋 Assign 4: Graph Topological Sort & Shortest Path';
-    if (docId.startsWith('12.5')) return '📋 Test Program 1 & 2: Queue Class & Sorting Trace';
-    if (docId.startsWith('12.6')) return '📋 0Exercises: เช็คชื่อ & กับดัก Indentation';
-    if (docId.startsWith('12.7')) return '📋 Assign In-Class: Heap DeleteMin (p.283) & Hashing Trace';
+    if (docId.startsWith('12.1')) return '📋 การบ้าน 1: Linked List สลับพอยน์เตอร์';
+    if (docId.startsWith('12.2')) return '📋 การบ้าน 2: สร้าง Tree (Post & In-order)';
+    if (docId.startsWith('12.3')) return '📋 การบ้าน 3: Min-Heap 15 ค่า & DeleteMin';
+    if (docId.startsWith('12.4')) return '📋 การบ้าน 4: Graph TopoSort & Shortest Path';
+    if (docId.startsWith('12.5')) return '📋 Test Program 1 & 2: Queue Class & Trace';
+    if (docId.startsWith('12.6')) return '📋 แบบฝึกหัด 0Exercises: เช็คชื่อ & กับดัก Tab';
+    if (docId.startsWith('12.7')) return '📋 งานในห้อง: Heap DeleteMin (p.283) & Hashing';
+    if (docId.startsWith('12.8')) return '📋 งานในห้อง: Bubble Sort Trace & นับ Swaps';
 
     // Classroom Live Lecture Transcripts & Slides (14.x)
-    if (docId.startsWith('14.1')) return '🎙️ 14.1: Hashing & Open Addressing & Rehashing';
-    if (docId.startsWith('14.2')) return '🎙️ 14.2: Priority Queue & Heap Properties';
-    if (docId.startsWith('14.3')) return '🎙️ 14.3: เจาะข้อสอบ สูตรโหนด & 1D Array';
-    if (docId.startsWith('14.4')) return '🎙️ 14.4: Python BinaryHeap & ข้อสอบปลายภาค';
-    if (docId.startsWith('14.5')) return '📸 14.5: แคตตาล็อกภาพสไลด์ กระดาน & หลักฐานข้อสอบ (125 รูป)';
+    if (docId.startsWith('14.1')) return '🎙️ เสียงสด 14.1: Hashing & Rehashing';
+    if (docId.startsWith('14.2')) return '🎙️ เสียงสด 14.2: Priority Queue & Heap';
+    if (docId.startsWith('14.3')) return '🎙️ เสียงสด 14.3: เจาะข้อสอบ โหนด & 1D Array';
+    if (docId.startsWith('14.4')) return '🎙️ เสียงสด 14.4: Python Heap & ข้อสอบปลายภาค';
+    if (docId.startsWith('14.5')) return '📸 สไลด์ & กระดาน: รวมภาพหลักฐาน 144 รูป';
+    if (docId.startsWith('14.6')) return '🎙️ เสียงสด 14.6: Sorting & นับ Inversions';
+    if (docId.startsWith('14.7')) return '🎙️ เสียงสด 14.7: Graph รั่วข้อสอบ >= 20 คะแนน';
 
     // Classroom For Example Tracing (13.x)
-    if (docId.startsWith('13.1')) return '💡 Ex 3: Singly Linked List (กับดัก add & สลับ 4 พอยน์เตอร์)';
-    if (docId.startsWith('13.2')) return '💡 Ex 4: Stack Trace (Push-Pop 2 ระลอก & แปลงนิพจน์ Postfix)';
-    if (docId.startsWith('13.3')) return '💡 Ex 4: Queue Trace (Enqueue-Dequeue & Circular Queue)';
-    if (docId.startsWith('13.4')) return '💡 Ex 5: Binary Tree (กฎเขียน Path ห้ามใช้ลูกศร & Reconstruct)';
-    if (docId.startsWith('13.5')) return '💡 Ex 5.1 & 5.2: BST Trace (_insert 4 รอบ & ลบ 2 กรณี)';
-    if (docId.startsWith('13.6')) return '💡 Ex 8.1: Binary Heap (Trace รูว่าง hole ใน Percolate Up/Down)';
-    if (docId.startsWith('13.7')) return '💡 Ex 9: Sorting Trace (Bubble, Selection, Insertion & Move)';
-    if (docId.startsWith('13.8')) return '💡 Ex 10 & 11: Graph (Topological Sort, Shortest Path & คำนวณขยะ)';
+    if (docId.startsWith('13.1')) return '💡 โจทย์ตัวอย่าง 3: Linked List สลับ 4 พอยน์เตอร์';
+    if (docId.startsWith('13.2')) return '💡 โจทย์ตัวอย่าง 4: Stack Trace Push-Pop & Postfix';
+    if (docId.startsWith('13.3')) return '💡 โจทย์ตัวอย่าง 4: Queue Trace & Circular Queue';
+    if (docId.startsWith('13.4')) return '💡 โจทย์ตัวอย่าง 5: Tree ห้ามใส่ลูกศร & Reconstruct';
+    if (docId.startsWith('13.5')) return '💡 โจทย์ตัวอย่าง 5.1/5.2: BST Trace & ลบ 2 เคส';
+    if (docId.startsWith('13.6')) return '💡 โจทย์ตัวอย่าง 8.1: Binary Heap Trace hole';
+    if (docId.startsWith('13.7')) return '💡 โจทย์ตัวอย่าง 9: Sorting Trace Pass-by-Pass';
+    if (docId.startsWith('13.8')) return '💡 โจทย์ตัวอย่าง 10/11: Graph TopoSort & Matrix 24.48%';
 
     // Exam items
-    if (docId.startsWith('11.7')) return '🎯 ข้อสอบตรงห้องเรียน: โจทย์ที่อาจารย์พูด 3 ข้อใหญ่ & เฉลย';
-    if (docId.startsWith('11.6')) return '🏁 ข้อสอบปลายภาค Final Exam Prep & Traps (2568)';
-    if (docId.startsWith('11.1')) return '🎯 ข้อสอบจริง Midterm Real Mock (2026)';
-    if (docId.startsWith('11.2')) return '🎯 ข้อสอบเก็ง Predicted Midterm 2026';
-    if (docId.startsWith('11.3')) return '🎯 เจาะข้อสอบ Stack Practice (Exam Style)';
-    if (docId.startsWith('11.4')) return '🎯 เจาะข้อสอบ Queue Practice (Exam Style)';
-    if (docId.startsWith('11.5')) return '🎯 ตะลุยคลังข้อสอบ 20 ข้อ + ทบทวน';
-    if (docId.includes('Glossary')) return '⚡ ตารางสรุป Big-O & คำศัพท์ (Cheat Sheet)';
-    if (docId === 'Index') return '📌 สารบัญภาพรวม (Master Index)';
+    if (docId.startsWith('11.7')) return '🎯 ข้อสอบพูดในห้อง: 3 ข้อใหญ่ (Graph >= 20 คะแนน)';
+    if (docId.startsWith('11.6')) return '🏁 ข้อสอบปลายภาค: Final Exam Prep & กับดัก';
+    if (docId.startsWith('11.1')) return '🎯 จำลองข้อสอบจริง: Midterm Real Mock 2026';
+    if (docId.startsWith('11.2')) return '🎯 เก็งข้อสอบกลางภาค: Predicted Midterm 2026';
+    if (docId.startsWith('11.3')) return '🎯 ตะลุยข้อสอบ: Stack Practice Exam Problems';
+    if (docId.startsWith('11.4')) return '🎯 ตะลุยข้อสอบ: Queue Practice Exam Problems';
+    if (docId.startsWith('11.5')) return '🎯 คลังข้อสอบรวม: 20 ข้อ Tracing & Solutions';
+    if (docId.includes('Glossary')) return '⚡ สรุปสูตร Big-O & ศัพท์เทคนิค (Cheat Sheet)';
+    if (docId === 'Index') return '📌 แผนผังภาพรวมหลักสูตร (Master Index)';
 
     return originalTitle;
   }
@@ -193,6 +598,8 @@
     let categories = [];
     if (state.currentMode === 'curriculum') {
       categories = state.wikiData.curriculumCategories || state.wikiData.categories.filter(c => c.type === 'curriculum');
+    } else if (state.currentMode === 'pdf') {
+      categories = state.wikiData.pdfArchiveCategories || state.wikiData.categories.filter(c => c.type === 'pdf');
     } else if (state.currentMode === 'assignment') {
       categories = state.wikiData.assignmentCategories || state.wikiData.categories.filter(c => c.type === 'assignment');
     } else if (state.currentMode === 'example') {
@@ -234,6 +641,61 @@
         `;
       });
 
+      if (cat.pdfs && cat.pdfs.length > 0) {
+        html += `
+          <div class="sidebar-pdf-group">
+            <div class="sidebar-pdf-group-title">
+              <span>📑 ไฟล์ PDF สไลด์ & เฉลย (${cat.pdfs.length})</span>
+            </div>
+            <div class="sidebar-pdf-items">
+        `;
+
+        cat.pdfs.forEach(pdf => {
+          const isPdfActive = state.currentPdf === pdf.path;
+          let pIcon = '📑';
+          let pBadge = 'สไลด์';
+          let pBadgeClass = 'pdf-badge-slide';
+          if (pdf.kind === 'solved' || pdf.name.includes('_solved')) {
+            pIcon = '🎯';
+            pBadge = 'เฉลย';
+            pBadgeClass = 'pdf-badge-solved';
+          } else if (pdf.kind === 'worksheet' || pdf.name.includes('For example') || pdf.name.includes('For Example')) {
+            pIcon = '📝';
+            pBadge = 'ใบงาน';
+            pBadgeClass = 'pdf-badge-worksheet';
+          } else if (pdf.kind === 'assignment' || pdf.name.includes('Assign')) {
+            pIcon = '📋';
+            pBadge = 'การบ้าน';
+            pBadgeClass = 'pdf-badge-assign';
+          }
+
+          html += `
+            <div class="sidebar-pdf-item ${isPdfActive ? 'active' : ''}">
+              <a class="sidebar-pdf-link" 
+                 data-pdf-path="${escapeHtml(pdf.path)}" 
+                 data-pdf-title="${escapeHtml(pdf.title)}"
+                 data-cat-title="${escapeHtml(cat.title)}"
+                 href="#/pdf/${encodeURIComponent(pdf.path)}" 
+                 title="${escapeHtml(pdf.title)}">
+                <span class="sidebar-pdf-icon">${pIcon}</span>
+                <div class="sidebar-pdf-info">
+                  <div class="sidebar-pdf-name">${escapeHtml(pdf.name)}</div>
+                  <div class="sidebar-pdf-kind ${pBadgeClass}">${pBadge}</div>
+                </div>
+              </a>
+              <a href="../${encodeURI(pdf.path)}" target="_blank" rel="noopener noreferrer" class="sidebar-pdf-popout" title="เปิดในแท็บใหม่ ↗️">
+                ↗️
+              </a>
+            </div>
+          `;
+        });
+
+        html += `
+            </div>
+          </div>
+        `;
+      }
+
       html += `
           </div>
         </div>
@@ -249,23 +711,51 @@
         closeMobileSidebar();
       });
     });
+
+    elements.sidebarNav.querySelectorAll('.sidebar-pdf-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        navigateToPdf(link.dataset.pdfPath, link.dataset.pdfTitle, link.dataset.catTitle);
+        closeMobileSidebar();
+      });
+    });
   }
 
   function updateSidebarActiveState() {
     if (!elements.sidebarNav) return;
+    let activeEl = null;
     elements.sidebarNav.querySelectorAll('.doc-nav-item').forEach(item => {
       const docId = item.dataset.docId;
       const isCompleted = state.completedDocs.has(docId);
-      const isActive = docId === state.currentDocId;
+      const isActive = !state.currentPdf && docId === state.currentDocId;
       item.classList.toggle('active', isActive);
       item.classList.toggle('completed', isCompleted);
       const statusBox = item.querySelector('.doc-status-box');
       if (statusBox) statusBox.textContent = isCompleted ? '✓' : '';
+      if (isActive) activeEl = item;
     });
+
+    elements.sidebarNav.querySelectorAll('.sidebar-pdf-item').forEach(item => {
+      const link = item.querySelector('.sidebar-pdf-link');
+      if (!link) return;
+      const isPdfActive = state.currentPdf === link.dataset.pdfPath;
+      item.classList.toggle('active', isPdfActive);
+      if (isPdfActive) activeEl = item;
+    });
+
+    if (activeEl && elements.sidebar) {
+      const sRect = elements.sidebar.getBoundingClientRect();
+      const aRect = activeEl.getBoundingClientRect();
+      if (aRect.top < sRect.top || aRect.bottom > sRect.bottom) {
+        elements.sidebar.scrollTop += (aRect.top - sRect.top) - (sRect.height / 3);
+      }
+    }
   }
 
   function navigateToDoc(docId, anchor) {
     if (!state.wikiData || !state.wikiData.documents) return;
+
+    state.currentPdf = null;
 
     let doc = state.wikiData.documents[docId];
     if (!doc) {
@@ -279,27 +769,175 @@
     }
     if (!doc) return;
 
-    // Check if doc belongs to assignment, example, or exam category to auto-switch mode tab
-    let targetMode = 'curriculum';
-    if (doc.id.startsWith('12.')) {
-      targetMode = 'assignment';
-    } else if (doc.id.startsWith('13.')) {
-      targetMode = 'example';
-    } else if (doc.id.startsWith('11.') || doc.id.includes('Glossary') || doc.id.includes('Index')) {
-      targetMode = 'exam';
-    }
-    if (state.currentMode !== targetMode) {
-      state.currentMode = targetMode;
-      updateModeTabs();
-      renderSidebar();
+    // If the student is currently in 'curriculum' mode, ALWAYS STAY in 'curriculum' mode!
+    // All 11 lectures contain all documents so the student never gets disoriented by jumping tabs.
+    if (state.currentMode !== 'curriculum') {
+      let targetMode = 'curriculum';
+      if (doc.id.startsWith('15.')) {
+        targetMode = 'pdf';
+      } else if (doc.id.startsWith('12.')) {
+        targetMode = 'assignment';
+      } else if (doc.id.startsWith('13.')) {
+        targetMode = 'example';
+      } else if (doc.id.startsWith('14.')) {
+        targetMode = 'classroom';
+      } else if (doc.id.startsWith('11.') || doc.id.includes('Glossary') || doc.id.includes('Index')) {
+        targetMode = 'exam';
+      }
+      if (state.currentMode !== targetMode) {
+        state.currentMode = targetMode;
+        updateModeTabs();
+        renderSidebar();
+      }
     }
 
     state.currentDocId = doc.id;
     window.location.hash = `#/${encodeURIComponent(doc.id)}${anchor ? '#' + anchor : ''}`;
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    if (!anchor) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
 
+    if (elements.markReadBtn) elements.markReadBtn.style.display = 'inline-flex';
     renderDocument(doc, anchor);
     updateSidebarActiveState();
+  }
+
+  function navigateToPdf(pdfPath, pdfTitle, catTitle) {
+    if (!pdfPath) return;
+
+    state.currentDocId = null;
+    state.currentPdf = pdfPath;
+
+    const pdfName = pdfPath.split('/').pop();
+    const cleanTitle = pdfTitle || pdfName;
+
+    // Detect lecture hub if available
+    let relatedHub = null;
+    let relatedLectureTitle = catTitle || 'คลังไฟล์เอกสาร PDF';
+    for (let k in LECTURE_HUBS) {
+      const h = LECTURE_HUBS[k];
+      if (h.pdfs && h.pdfs.some(p => (p.file || p.path || '').toLowerCase().includes(pdfName.toLowerCase()))) {
+        relatedHub = h;
+        relatedLectureTitle = `บทที่ ${h.lectureNum} (${h.shortTitle || h.title})`;
+        break;
+      }
+    }
+    if (!relatedHub && state.wikiData && state.wikiData.curriculumCategories) {
+      for (const cat of state.wikiData.curriculumCategories) {
+        if (cat.pdfs && cat.pdfs.some(p => p.path === pdfPath || p.name === pdfName)) {
+          relatedLectureTitle = cat.title.replace(/^.+?\s/, '');
+          const matchNum = cat.id.replace('ch', '');
+          if (LECTURE_HUBS[matchNum]) relatedHub = LECTURE_HUBS[matchNum];
+          break;
+        }
+      }
+    }
+
+    // Determine type label and badge
+    let kindBadge = '📑 สไลด์บรรยาย';
+    let kindClass = 'pdf-badge-slide';
+    if (pdfPath.includes('_solved') || cleanTitle.includes('เฉลย')) {
+      kindBadge = '🎯 เฉลยอาจารย์ (Solved)';
+      kindClass = 'pdf-badge-solved';
+    } else if (pdfPath.includes('For example') || pdfPath.includes('For Example') || cleanTitle.includes('ใบงาน')) {
+      kindBadge = '📝 ใบงานโจทย์ (For Example)';
+      kindClass = 'pdf-badge-worksheet';
+    } else if (pdfPath.includes('Assign') || cleanTitle.includes('การบ้าน')) {
+      kindBadge = '📋 โจทย์การบ้าน (Assignment)';
+      kindClass = 'pdf-badge-assign';
+    }
+
+    // Update location hash
+    window.location.hash = `#/pdf/${encodeURIComponent(pdfPath)}`;
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
+    // Update Breadcrumbs
+    if (elements.breadcrumbCategory) elements.breadcrumbCategory.textContent = relatedLectureTitle;
+    if (elements.breadcrumbCurrent) {
+      elements.breadcrumbCurrent.textContent = pdfName;
+      elements.breadcrumbCurrent.title = pdfName;
+    }
+    if (elements.articleTitle) elements.articleTitle.innerHTML = `📑 ${escapeHtml(pdfName)}`;
+    if (elements.articleMeta) {
+      elements.articleMeta.innerHTML = `
+        <span class="meta-badge">📌 ${escapeHtml(relatedLectureTitle)}</span>
+        <span class="meta-badge">📁 ${escapeHtml(kindBadge)}</span>
+        <span class="meta-badge">🌐 พร้อมเปิดอ่าน Offline 100%</span>
+      `;
+    }
+
+    // Hide Command Deck while viewing PDF to keep interface clean
+    if (elements.articleCommandDeck) {
+      elements.articleCommandDeck.innerHTML = '';
+      elements.articleCommandDeck.style.display = 'none';
+    }
+
+    // Related action buttons
+    let backToNotesBtn = '';
+    if (relatedHub && relatedHub.theoryDocId) {
+      backToNotesBtn = `
+        <button class="code-btn code-btn-run" onclick="window.WikiApp.navigateToDoc('${escapeHtml(relatedHub.theoryDocId)}')">
+          📖 อ่านสรุปเนื้อหาบทเรียน
+        </button>
+      `;
+    }
+    let dsaLabBtn = '';
+    if (relatedHub && relatedHub.dsaLabUrl) {
+      dsaLabBtn = `
+        <a href="${relatedHub.dsaLabUrl}" target="_blank" rel="noopener noreferrer" class="code-btn" style="color:#38bdf8; border-color: rgba(56,189,248,0.4);">
+          🔬 เปิดแล็บจำลอง (DSA Lab)
+        </a>
+      `;
+    }
+
+    const html = `
+      <div class="wiki-pdf-viewer-card">
+        <div class="wiki-pdf-header-bar">
+          <div class="wiki-pdf-header-meta">
+            <span class="sidebar-pdf-kind ${kindClass}">${kindBadge}</span>
+            <h2 class="wiki-pdf-main-title">📑 ${escapeHtml(pdfName)}</h2>
+            <p class="wiki-pdf-desc">${escapeHtml(cleanTitle)}</p>
+          </div>
+          <div class="wiki-pdf-action-pills">
+            <a href="../${encodeURI(pdfPath)}" target="_blank" rel="noopener noreferrer" class="code-btn code-btn-run" title="เปิดเต็มหน้าต่างเบราว์เซอร์ใหม่">
+              ↗️ เปิดเต็มแท็บใหม่ (Full Tab)
+            </a>
+            <a href="../${encodeURI(pdfPath)}" download class="code-btn" title="ดาวน์โหลดไฟล์ PDF เก็บไว้">
+              ⬇️ ดาวน์โหลด PDF
+            </a>
+            ${backToNotesBtn}
+            ${dsaLabBtn}
+          </div>
+        </div>
+        <div class="wiki-pdf-frame-wrapper">
+          <iframe src="../${encodeURI(pdfPath)}#toolbar=1&navpanes=1" class="wiki-pdf-frame" title="${escapeHtml(pdfName)}"></iframe>
+        </div>
+        <div class="wiki-pdf-footer-note">
+          <span>💡 <strong>คำแนะนำ:</strong> สามารถซูม ย่อ-ขยาย พลิกหน้า หรือค้นหาข้อความภายในเอกสารได้โดยใช้แถบเครื่องมือของเบราว์เซอร์ด้านบนไฟล์ PDF</span>
+        </div>
+      </div>
+    `;
+
+    elements.articleBody.innerHTML = html;
+
+    // Update Table of Contents (Outline) on the right sidebar
+    if (elements.tocList) {
+      elements.tocList.innerHTML = `
+        <li class="toc-item"><a class="toc-link active" href="../${encodeURI(pdfPath)}" target="_blank">↗️ เปิดเต็มแท็บใหม่</a></li>
+        <li class="toc-item"><a class="toc-link" href="../${encodeURI(pdfPath)}" download>⬇️ ดาวน์โหลด PDF</a></li>
+        ${relatedHub && relatedHub.theoryDocId ? `<li class="toc-item"><a class="toc-link" href="#/${encodeURIComponent(relatedHub.theoryDocId)}">📖 อ่านสรุปทฤษฎีบทนี้</a></li>` : ''}
+      `;
+    }
+
+    if (elements.paginationNav) elements.paginationNav.innerHTML = '';
+    if (elements.markReadBtn) elements.markReadBtn.style.display = 'none';
+
+    updateSidebarActiveState();
+    closeMobileSidebar();
   }
 
   function getMarkedParser() {
@@ -313,6 +951,112 @@
     }
     return null;
   }
+
+  /**
+   * Enterprise-Grade LaTeX / KaTeX Math Protection & Rendering Engine
+   * 1. Protects all LaTeX / KaTeX math blocks and inline expressions from Marked parser
+   *    so Marked cannot corrupt backslashes, underscores (_), asterisks (*), or percent signs (%).
+   * 2. Automatically sanitizes unescaped % inside math expressions to \% because KaTeX
+   *    treats unescaped % as a TeX comment that truncates formulas and causes ParseErrors.
+   * 3. Renders math directly via katex.renderToString() with displayMode, ensuring
+   *    zero-latency, pixel-perfect mathematical typography with zero raw error dumps.
+   */
+  const MathEngine = {
+    protect(markdown) {
+      if (!markdown) return { text: markdown, tokens: [] };
+      let text = markdown;
+      const mathTokens = [];
+      let tokenIdx = 0;
+
+      // 1. Temporarily protect code blocks (both ``` and `inline`) so math inside code is untouched
+      const codeBlocks = [];
+      let codeCounter = 0;
+      text = text.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, (match) => {
+        const placeholder = `%%DSA_CODE_BLOCK_${codeCounter++}%%`;
+        codeBlocks.push({ placeholder, content: match });
+        return placeholder;
+      });
+
+      // 2. Extract and protect Display Math: $$ ... $$ and \[ ... \]
+      text = text.replace(/(\$\$[\s\S]*?\$\$|\\\[[\s\S]*?\\\])/g, (match) => {
+        let math = match.startsWith('\\[') ? match.slice(2, -2) : match.slice(2, -2);
+        // Strip any accidental stray $ inside display math and sanitize %
+        math = math.replace(/\$/g, '').replace(/(?<!\\)%/g, '\\%');
+        const placeholder = `%%DSA_MATH_BLOCK_${tokenIdx++}%%`;
+        mathTokens.push({ placeholder, math, display: true });
+        return `\n\n${placeholder}\n\n`;
+      });
+
+      // 3. Extract and protect Inline Math: $ ... $ and \( ... \)
+      text = text.replace(/(?<!\$)\$(?!\$)([^\$\n]+?)(?<!\$)\$(?!\$)|\\\(([\s\S]+?)\\\)/g, (match, p1, p2) => {
+        let math = p1 !== undefined ? p1 : p2;
+        if (!math || !math.trim()) return match;
+        math = math.replace(/(?<!\\)%/g, '\\%');
+        const placeholder = `%%DSA_MATH_INLINE_${tokenIdx++}%%`;
+        mathTokens.push({ placeholder, math, display: false });
+        return placeholder;
+      });
+
+      // 4. Any leftover unbracketed LaTeX formulas (e.g. \frac{...}{...})
+      text = text.replace(/(\\frac\{[^{}]+\}\{[^{}]+\}(?:\s*=\s*(?:\\mathbf\{[^{}]+\}|[0-9.%]+(?:\\%|[a-zA-Z%]+)?)?)?)/g, (match, formula, offset, fullStr) => {
+        const prevChar = offset > 0 ? fullStr[offset - 1] : '';
+        const nextChar = offset + match.length < fullStr.length ? fullStr[offset + match.length] : '';
+        if (prevChar === '$' || prevChar === '`' || prevChar === '\\' || nextChar === '$' || nextChar === '`') {
+          return match;
+        }
+        const math = formula.replace(/(?<!\\)%/g, '\\%');
+        const placeholder = `%%DSA_MATH_INLINE_${tokenIdx++}%%`;
+        mathTokens.push({ placeholder, math, display: false });
+        return placeholder;
+      });
+
+      // 5. Restore code blocks literally
+      for (const cb of codeBlocks) {
+        text = text.split(cb.placeholder).join(cb.content);
+      }
+
+      return { text, tokens: mathTokens };
+    },
+
+    restore(html, tokens) {
+      if (!html || !tokens || tokens.length === 0) return html;
+      let result = html;
+
+      for (const item of tokens) {
+        let renderedHtml = '';
+        if (window.katex && typeof window.katex.renderToString === 'function') {
+          try {
+            renderedHtml = window.katex.renderToString(item.math, {
+              displayMode: item.display,
+              throwOnError: false,
+              output: 'htmlAndMathml',
+              trust: true
+            });
+          } catch (e) {
+            console.warn('KaTeX render fallback:', e);
+            renderedHtml = `<span class="katex-fallback" data-raw="${escapeHtml(item.math)}">${escapeHtml(item.math)}</span>`;
+          }
+        } else {
+          renderedHtml = item.display
+            ? `<div class="katex-deferred-display">$$${escapeHtml(item.math)}$$</div>`
+            : `<span class="katex-deferred-inline">$${escapeHtml(item.math)}$</span>`;
+        }
+
+        if (item.display) {
+          const pWrapped = `<p>${item.placeholder}</p>`;
+          if (result.includes(pWrapped)) {
+            result = result.split(pWrapped).join(`<div class="math-block-container">${renderedHtml}</div>`);
+          } else {
+            result = result.split(item.placeholder).join(`<div class="math-block-container">${renderedHtml}</div>`);
+          }
+        } else {
+          result = result.split(item.placeholder).join(renderedHtml);
+        }
+      }
+
+      return result;
+    }
+  };
 
   function renderDocument(doc, anchor) {
     const cat = findCategoryForDoc(doc.id);
@@ -336,7 +1080,10 @@
     updateMarkReadBtnState(isRead);
 
     const bodyContent = stripFrontmatter(doc.content);
-    const processedMd = preprocessMarkdown(bodyContent);
+
+    // Protect all LaTeX / KaTeX math blocks and inline expressions
+    const mathProtected = MathEngine.protect(bodyContent);
+    const processedMd = preprocessMarkdown(mathProtected.text);
 
     const parser = getMarkedParser();
     let htmlContent = '';
@@ -364,16 +1111,26 @@
       htmlContent = `<pre>${escapeHtml(bodyContent)}</pre>`;
     }
 
-    elements.articleBody.innerHTML = postprocessHtml(htmlContent);
+    // Postprocess HTML (tables, diagrams, code blocks)
+    let processedHtml = postprocessHtml(htmlContent);
 
-    // Render LaTeX Math Equations with KaTeX
+    // Mount Lecture Command Deck (One-Stop Hub) and restore KaTeX math expressions
+    if (elements.articleCommandDeck) {
+      elements.articleCommandDeck.innerHTML = generateLectureCommandDeck(doc.id);
+    }
+    elements.articleBody.innerHTML = MathEngine.restore(processedHtml, mathProtected.tokens);
+
+    // Fallback pass for any dynamically injected math elements
     if (window.renderMathInElement) {
       try {
         window.renderMathInElement(elements.articleBody, {
           delimiters: [
             { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false }
+            { left: '$', right: '$', display: false },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false }
           ],
+          ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
           throwOnError: false
         });
       } catch (e) {
@@ -512,8 +1269,29 @@
   function postprocessHtml(html) {
     let result = html;
 
+    // Convert local file:/// URLs referencing python-data-structures-and-algorithms to relative web paths
+    result = result.replace(/href="file:\/\/\/[^"]*?python-data-structures-and-algorithms\/([^"]*)"/gi, (match, relPath) => {
+      return `href="../${relPath}" target="_blank" rel="noopener noreferrer"`;
+    });
+    result = result.replace(/href="file:\/\/\/[^"]*?\/([A-Za-z0-9_%.-]+\.pdf)"/gi, (match, fileName) => {
+      return `href="../New-Lectures/${fileName}" target="_blank" rel="noopener noreferrer"`;
+    });
+    // Ensure all .pdf links open in a new tab safely
+    result = result.replace(/<a\s+([^>]*href="[^"]+\.pdf"[^>]*)>/gi, (match, attrs) => {
+      if (!attrs.includes('target=')) {
+        return `<a ${attrs} target="_blank" rel="noopener noreferrer">`;
+      }
+      return match;
+    });
+
     result = result.replace(/<table\b([^>]*)>([\s\S]*?)<\/table>/gi, (match) => {
       return `<div class="table-responsive-wrapper">${match}</div>`;
+    });
+
+    result = result.replace(/<img\b([^>]*)>/gi, (match, attrs) => {
+      const altMatch = attrs.match(/alt="([^"]*)"/i);
+      const altText = altMatch ? altMatch[1] : 'ภาพประกอบบทเรียน';
+      return `<figure class="dsa-image-frame" onclick="window.WikiApp.openImageZoom(this.querySelector('img'))" title="คลิกเพื่อขยายภาพ">${match}<figcaption class="dsa-image-caption">🔍 ${escapeHtml(altText)} (คลิกขยายภาพ)</figcaption></figure>`;
     });
 
     let diagramIndexInDoc = 0;
@@ -2724,6 +3502,55 @@
     if (elements.diagramModal) elements.diagramModal.classList.remove('open');
   }
 
+  function openImageZoom(img) {
+    if (!img) return;
+    const src = img.getAttribute('src');
+    const alt = img.getAttribute('alt') || 'ภาพประกอบบทเรียน';
+    elements.diagramCanvas.innerHTML = `
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;max-width:100%;">
+        <img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" style="max-width:92vw;max-height:80vh;object-fit:contain;border-radius:10px;box-shadow:0 12px 48px rgba(0,0,0,0.7);border:1px solid rgba(79,209,232,0.3);" />
+        <p style="margin-top:16px;color:#e2e8f0;font-size:14.5px;font-family:'IBM Plex Sans Thai',sans-serif;text-align:center;font-weight:500;">
+          📷 ${escapeHtml(alt)}
+        </p>
+      </div>
+    `;
+    currentZoom = 1.0;
+    if (elements.diagramModal) elements.diagramModal.classList.add('open');
+  }
+
+  function openRefModal() {
+    const modal = document.getElementById('ref-modal');
+    if (modal) modal.classList.add('open');
+  }
+
+  function closeRefModal() {
+    const modal = document.getElementById('ref-modal');
+    if (modal) modal.classList.remove('open');
+  }
+
+  function openVoiceModal() {
+    const modal = document.getElementById('voice-modal');
+    if (modal) {
+      modal.classList.add('open');
+      if (window.renderMathInElement) {
+        try {
+          window.renderMathInElement(modal, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ],
+            throwOnError: false
+          });
+        } catch (e) {}
+      }
+    }
+  }
+
+  function closeVoiceModal() {
+    const modal = document.getElementById('voice-modal');
+    if (modal) modal.classList.remove('open');
+  }
+
   function copyCode(btn) {
     const wrapper = btn.closest('.code-card-wrapper');
     if (!wrapper) return;
@@ -2762,9 +3589,16 @@
     }, { passive: true });
 
     window.addEventListener('hashchange', () => {
+      const hashPdf = getPdfFromHash();
+      if (hashPdf) {
+        if (hashPdf !== state.currentPdf) navigateToPdf(hashPdf);
+        return;
+      }
       const docId = getDocFromHash();
       const anchor = getAnchorFromHash();
-      if (docId && docId !== state.currentDocId) navigateToDoc(docId, anchor);
+      if (docId && (docId !== state.currentDocId || state.currentPdf)) {
+        navigateToDoc(docId, anchor);
+      }
     });
 
     // Sidebar Mode Tabs
@@ -2774,8 +3608,20 @@
         updateModeTabs();
         renderSidebar();
         // If current doc is not curriculum, navigate to Chapter 1
-        if (state.currentDocId && (state.currentDocId.startsWith('11.') || state.currentDocId.startsWith('12.') || state.currentDocId.includes('Glossary') || state.currentDocId.includes('Index'))) {
+        if (state.currentDocId && (state.currentDocId.startsWith('11.') || state.currentDocId.startsWith('12.') || state.currentDocId.startsWith('13.') || state.currentDocId.startsWith('14.') || state.currentDocId.startsWith('15.') || state.currentDocId.includes('Glossary') || state.currentDocId.includes('Index'))) {
           navigateToDoc('01.1 - Introduction to Data Structures & Algorithm Analysis');
+        }
+      });
+    }
+
+    if (elements.tabModePdf) {
+      elements.tabModePdf.addEventListener('click', () => {
+        state.currentMode = 'pdf';
+        updateModeTabs();
+        renderSidebar();
+        // If current doc is not a PDF archive doc, navigate to 15.1 master catalog
+        if (!state.currentDocId || !state.currentDocId.startsWith('15.')) {
+          navigateToDoc('15.1 - คลังไฟล์ PDF สไลด์บรรยาย ใบงาน For Example และไฟล์เฉลยอาจารย์ครบทั้ง 11 บท (Teacher Master PDF & Media Catalog)');
         }
       });
     }
@@ -2882,6 +3728,8 @@
       } else if (e.key === 'Escape') {
         closeSearchModal();
         closeDiagramZoom();
+        closeRefModal();
+        closeVoiceModal();
         closeMobileSidebar();
       }
     });
@@ -2905,9 +3753,15 @@
     if (elements.sidebarBackdrop) elements.sidebarBackdrop.classList.remove('open');
   }
 
+  function getPdfFromHash() {
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    if (!hash || !hash.startsWith('pdf/')) return null;
+    return decodeURIComponent(hash.slice(4));
+  }
+
   function getDocFromHash() {
     const hash = window.location.hash.replace(/^#\/?/, '');
-    if (!hash) return null;
+    if (!hash || hash.startsWith('pdf/')) return null;
     const parts = hash.split('#');
     return decodeURIComponent(parts[0]);
   }
@@ -3116,14 +3970,22 @@ sys.stderr = _stderr_buf
   window.WikiApp = {
     openDiagramZoom,
     closeDiagramZoom,
+    openImageZoom,
+    openRefModal,
+    closeRefModal,
+    openVoiceModal,
+    closeVoiceModal,
     copyCode,
     runInDsaLab,
     navigateToDoc,
+    navigateToPdf,
     toggleInlineRunner,
     executeInlinePython,
     resetInlinePython,
-    clearInlineConsole
+    clearInlineConsole,
+    MathEngine
   };
+  window.MathEngine = MathEngine;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initApp);
