@@ -217,14 +217,17 @@ const CURRICULUM_CATEGORIES = [
     title: '🚀 บทที่ 11 (Lecture 11): Shortest Path & Dijkstra Algorithms',
     description: 'Unweighted Shortest Path (BFS), Dijkstra Algorithm บนกราฟมีค่าน้ำหนัก พร้อมตารางสถานะ Known, Dist, Path',
     files: [
-      '10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path).md'
+      '10.1 - Shortest Path Algorithms (Dijkstra, Unweighted Shortest Path).md',
+      '14.8 - Classroom Lecture Shortest Path, Assignment 4 & Final Exam Leaks (7 ข้อใหญ่ 70 คะแนน).md'
     ],
     pdfs: [
       { name: 'Lecture 11 Shortest path.pdf', title: 'สไลด์หลัก: Lecture 11 Shortest Path Algorithms & Dijkstra', kind: 'slide', path: 'Lectures/Lecture 11 Shortest path/Lecture 11 Shortest path.pdf' },
       { name: 'For Example Graph.pdf', title: 'ใบงานโจทย์: Unweighted Shortest Path (BFS)', kind: 'worksheet', path: 'Lectures/Lecture 11 Shortest path/For Example Graph.pdf' },
       { name: 'For Example Graph_solved.pdf', title: 'เฉลยอาจารย์: Unweighted Shortest Path & Dijkstra', kind: 'solved', path: 'Lectures/Lecture 11 Shortest path/For Example Graph_solved.pdf' },
       { name: 'Assign 4 Shortest Path.pdf', title: 'โจทย์การบ้าน 4: Graph BFS Shortest Path & TopoSort', kind: 'assignment', path: 'Lectures/Assignment 4 Shortest Path/For Example Graph.pdf' },
-      { name: 'Assign 4 Shortest Path_solved.pdf', title: 'เฉลยการบ้าน 4: Graph BFS Shortest Path & TopoSort', kind: 'solved', path: 'Lectures/Assignment 4 Shortest Path/For Example Graph_solved.pdf' }
+      { name: 'Assign 4 Shortest Path_solved.pdf', title: 'เฉลยการบ้าน 4: Graph BFS Shortest Path & TopoSort', kind: 'solved', path: 'Lectures/Assignment 4 Shortest Path/For Example Graph_solved.pdf' },
+      { name: 'Assignment_4_Solved_StartA.pdf', title: 'เฉลยใบงานห้องเรียน Assignment 4 (Start A ฉบับสมบูรณ์)', kind: 'solved', path: '00_Solution_Assignment4/Assignment_4_Solved_StartA.pdf' },
+      { name: 'Assignment_4_Solved_StartB.pdf', title: 'เฉลยใบงานห้องเรียน Assignment 4 (Start B ฉบับสมบูรณ์)', kind: 'solved', path: '00_Solution_Assignment4/Assignment_4_Solved_StartB.pdf' }
     ]
   },
   {
@@ -248,6 +251,7 @@ const CURRICULUM_CATEGORIES = [
     title: '🎯 ศูนย์รวมแนวข้อสอบ & สรุปสูตร (Master Exam Hub & Cheat Sheet)',
     description: 'รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน, แนวข้อสอบปลายภาค 2568, ข้อสอบจำลอง Midterm Real Mock และตาราง Big-O',
     files: [
+      '11.8 - Final Exam Complete Practice Suite (ชุดข้อสอบปลายภาคฉบับสมบูรณ์ 7 ข้อ 70 คะแนน พร้อมเฉลยละเอียด).md',
       '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions).md',
       '11.6 - Final Exam Real Classroom Prep & Solutions.md',
       '11.1 - Midterm Real Exam Mock & Solutions.md',
@@ -279,8 +283,9 @@ const EXAM_CATEGORIES = [
     id: 'exam-final',
     type: 'exam',
     title: '🏁 ข้อสอบปลายภาค & กับดักอาจารย์ (Final Exam 2568)',
-    description: 'ข้อสอบปลายภาคฉบับจริง: Hashing, Binary Heap, Sorting, Graphs, Dijkstra และ 5 กับดักห้องเรียนที่อาจารย์เน้นย้ำ',
+    description: 'ข้อสอบปลายภาคฉบับจริง 7 ข้อ 70 คะแนน: Hashing, Binary Heap, Sorting, Topological Sort, Shortest Path และทฤษฎีคำนวณ',
     files: [
+      '11.8 - Final Exam Complete Practice Suite (ชุดข้อสอบปลายภาคฉบับสมบูรณ์ 7 ข้อ 70 คะแนน พร้อมเฉลยละเอียด).md',
       '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions).md',
       '11.6 - Final Exam Real Classroom Prep & Solutions.md'
     ]
@@ -352,7 +357,8 @@ const CLASSROOM_TRANSCRIPT_CATEGORIES = [
       '14.4 - Classroom Lecture Binary Heap Python Implementation & Final Exam Trace.md',
       '14.5 - Master Catalog Classroom Slides & Photos (87 Photos).md',
       '14.6 - Classroom Lecture Sorting (Insertion, Selection, Bubble Sort) & Exam Inversions.md',
-      '14.7 - Classroom Lecture Graph Theory, Representations & Final Exam Leaks.md'
+      '14.7 - Classroom Lecture Graph Theory, Representations & Final Exam Leaks.md',
+      '14.8 - Classroom Lecture Shortest Path, Assignment 4 & Final Exam Leaks (7 ข้อใหญ่ 70 คะแนน).md'
     ]
   }
 ];
