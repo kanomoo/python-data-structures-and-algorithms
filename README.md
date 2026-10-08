@@ -48,7 +48,9 @@ python-data-structures-and-algorithms/
     └── planstd060243106.pdf
 ```
 
-## Main Folders
+> 🔗 **Google Classroom Hub**: ติดตามกำหนดส่งการบ้าน สไลด์ต้นฉบับ และโจทย์ครบทุกบทได้ที่ [KMUTNB-Classroom/01_Data_Structure_and_Algorithm_060243106](../KMUTNB-Classroom/01_Data_Structure_and_Algorithm_060243106/) และสรุปใน [Classroom Coursework & Submissions](Lectures/Classroom_Coursework_and_Submissions.md)
+
+---
 
 ### `Exams/`
 

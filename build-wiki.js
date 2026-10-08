@@ -285,6 +285,8 @@ const EXAM_CATEGORIES = [
     title: '🏁 ข้อสอบปลายภาค & กับดักอาจารย์ (Final Exam 2568)',
     description: 'ข้อสอบปลายภาคฉบับจริง 7 ข้อ 70 คะแนน: Hashing, Binary Heap, Sorting, Topological Sort, Shortest Path และทฤษฎีคำนวณ',
     files: [
+      '11.10 - Final Exam Real Paper 2564 Master Breakdown (วิเคราะห์ข้อสอบปลายภาคฉบับจริงปี 2564 อ_ประดิษฐ์ 7 ข้อ 80 คะแนนเต็ม พร้อมลายมือเฉลยรุ่นพี่).md',
+      '11.9 - Final Exam Past Paper Breakdown 2-61 & 2-xx (วิเคราะห์เจาะลึกข้อสอบจริงปลายภาคปีเก่า 8 ข้อใหญ่ 100 คะแนนเต็ม).md',
       '11.8 - Final Exam Complete Practice Suite (ชุดข้อสอบปลายภาคฉบับสมบูรณ์ 7 ข้อ 70 คะแนน พร้อมเฉลยละเอียด).md',
       '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions).md',
       '11.6 - Final Exam Real Classroom Prep & Solutions.md'
