@@ -122,35 +122,25 @@ def render_svg_graph_assignment4(width=540, height=340):
     return '\n'.join(lines)
 
 
-def render_svg_graph_exam2026_topo(width=540, height=320):
+def render_svg_graph_exam2026_topo(width=540, height=340):
     """
     Renders 2026 Final Exam Topological Sort DAG (Question 5):
-    Edges:
-      5 -> 1, 2, 7
-      7 -> 2
-      2 -> 1
-      1 -> 3, 4
-      3 -> 4, 6
-      4 -> 6
-      6 -> empty
-    Topological Order: 5, 7, 2, 1, 3, 4, 6
+    Canonical 7-vertex DAG from Lecture 10 (p.5) and classroom whiteboard.
+    Vertices: v1..v7, 12 directed edges.
+    Unique Source: v1 (in-degree=0), Unique Sink: v6 (out-degree=0).
     """
     coords = {
-        5: (50, 160),
-        7: (130, 70),
-        2: (210, 70),
-        1: (290, 160),
-        3: (370, 70),
-        4: (370, 250),
-        6: (490, 160)
+        1: (150, 60), 2: (390, 60),
+        3: (60, 180), 4: (270, 180), 5: (480, 180),
+        6: (150, 300), 7: (390, 300)
     }
     edges = [
-        (5, 7), (5, 2), (5, 1),
-        (7, 2),
-        (2, 1),
-        (1, 3), (1, 4),
-        (3, 4), (3, 6),
-        (4, 6)
+        (1, 2), (1, 3), (1, 4),
+        (2, 4), (2, 5),
+        (3, 6),
+        (4, 3), (4, 6), (4, 7),
+        (5, 4), (5, 7),
+        (7, 6)
     ]
     R = 20
     lines = [
@@ -161,10 +151,9 @@ def render_svg_graph_exam2026_topo(width=540, height=320):
         '    </marker>',
         '  </defs>',
         '  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>',
-        '  <text x="270" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#334155">Directed Acyclic Graph (DAG) [Exam 2026 Question 5]: |V|=7, |E|=10</text>'
+        '  <text x="270" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#334155">Directed Acyclic Graph (DAG) [Lecture 10 &amp; Exam 2026 Q5]: |V|=7, |E|=12</text>'
     ]
     
-    # Curved or straight edges
     for u, v in edges:
         x1, y1 = coords[u]
         x2, y2 = coords[v]
@@ -174,22 +163,30 @@ def render_svg_graph_exam2026_topo(width=540, height=320):
         if dist > 0:
             ux = dx / dist
             uy = dy / dist
-            # If edge 5 -> 1 or 5 -> 2, can curve slightly to avoid overlap
-            if (u == 5 and v == 1):
-                # Curved below
-                lines.append(f'  <path d="M {x1+R} {y1+5} Q 170 240 {x2-R+2} {y2+5}" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>')
-            elif (u == 5 and v == 2):
-                lines.append(f'  <path d="M {x1+14} {y1-14} Q 110 30 {x2-16} {y2-10}" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>')
-            else:
-                sx = x1 + ux * R
-                sy = y1 + uy * R
-                ex = x2 - ux * (R + 4)
-                ey = y2 - uy * (R + 4)
-                lines.append(f'  <line x1="{sx:.1f}" y1="{sy:.1f}" x2="{ex:.1f}" y2="{ey:.1f}" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>')
+            sx = x1 + ux * R
+            sy = y1 + uy * R
+            ex = x2 - ux * (R + 4)
+            ey = y2 - uy * (R + 4)
+            lines.append(f'  <line x1="{sx:.1f}" y1="{sy:.1f}" x2="{ex:.1f}" y2="{ey:.1f}" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>')
                 
     for u, (x, y) in coords.items():
-        lines.append(f'  <circle cx="{x}" cy="{y}" r="{R}" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>')
-        lines.append(f'  <text x="{x}" y="{y+5}" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">{u}</text>')
+        is_source = (u == 1)
+        is_sink = (u == 6)
+        if is_source:
+            fill_col = "#dbeafe"
+            stroke_col = "#1d4ed8"
+        elif is_sink:
+            fill_col = "#fef2f2"
+            stroke_col = "#dc2626"
+        else:
+            fill_col = "#f8fafc"
+            stroke_col = "#1e293b"
+        lines.append(f'  <circle cx="{x}" cy="{y}" r="{R}" fill="{fill_col}" stroke="{stroke_col}" stroke-width="{3 if (is_source or is_sink) else 2.5}"/>')
+        lines.append(f'  <text x="{x}" y="{y+5}" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">v{u}</text>')
+        if is_source:
+            lines.append(f'  <text x="{x}" y="{y-26}" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" font-weight="bold" fill="#1d4ed8">SOURCE</text>')
+        elif is_sink:
+            lines.append(f'  <text x="{x}" y="{y+32}" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" font-weight="bold" fill="#dc2626">SINK</text>')
         
     lines.append('</svg>')
     return '\n'.join(lines)
@@ -198,9 +195,11 @@ def render_svg_graph_exam2026_topo(width=540, height=320):
 def render_svg_graph_exam2026_sp(width=540, height=340):
     """
     Renders 2026 Final Exam Shortest Path Graph (Question 6):
+    Matches Assignment 4 / For Example Graph canonical 7-vertex directed graph.
+    Vertices: v1..v7, 12 directed edges.
     Edges:
       1 -> 2, 4
-      2 -> 4, 5, 7
+      2 -> 4, 5
       3 -> 1, 6
       4 -> 3, 5, 6, 7
       5 -> 7
@@ -209,17 +208,13 @@ def render_svg_graph_exam2026_sp(width=540, height=340):
     Source Vertex = 1
     """
     coords = {
-        1: (80, 170),
-        2: (210, 60),
-        3: (210, 280),
-        4: (270, 170),
-        5: (410, 60),
-        7: (410, 280),
-        6: (500, 170)
+        1: (150, 60), 2: (390, 60),
+        3: (60, 180), 4: (270, 180), 5: (480, 180),
+        6: (150, 300), 7: (390, 300)
     }
     edges = [
         (1, 2), (1, 4),
-        (2, 4), (2, 5), (2, 7),
+        (2, 4), (2, 5),
         (3, 1), (3, 6),
         (4, 3), (4, 5), (4, 6), (4, 7),
         (5, 7),
@@ -234,7 +229,7 @@ def render_svg_graph_exam2026_sp(width=540, height=340):
         '    </marker>',
         '  </defs>',
         '  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>',
-        '  <text x="270" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#334155">Directed Graph G = (V, E) [Exam 2026 Question 6]: Source Vertex = 1</text>'
+        '  <text x="270" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#334155">Directed Graph G = (V, E) [Exam 2026 Question 6]: Source Vertex = 1, |E|=12</text>'
     ]
     
     for u, v in edges:
@@ -246,12 +241,9 @@ def render_svg_graph_exam2026_sp(width=540, height=340):
         if dist > 0:
             ux = dx / dist
             uy = dy / dist
-            if u == 3 and v == 6:
-                # curve slightly below
-                lines.append(f'  <path d="M {x1+16} {y1+10} Q 350 325 {x2-10} {y2+16}" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>')
-            elif u == 2 and v == 7:
-                # diagonal through center
-                lines.append(f'  <path d="M {x1+10} {y1+16} Q 310 190 {x2-16} {y2-10}" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>')
+            if u == 3 and v == 1:
+                # curved upward left
+                lines.append(f'  <path d="M {x1+10} {y1-16} Q 95 105 {x2-16} {y2+10}" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>')
             else:
                 sx = x1 + ux * R
                 sy = y1 + uy * R
@@ -264,10 +256,9 @@ def render_svg_graph_exam2026_sp(width=540, height=340):
         fill_col = "#dbeafe" if is_source else "#f8fafc"
         stroke_col = "#2563eb" if is_source else "#1e293b"
         lines.append(f'  <circle cx="{x}" cy="{y}" r="{R}" fill="{fill_col}" stroke="{stroke_col}" stroke-width="{3 if is_source else 2.5}"/>')
-        label = f'v{u}' if is_source else f'{u}'
-        lines.append(f'  <text x="{x}" y="{y+5}" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">{u}</text>')
+        lines.append(f'  <text x="{x}" y="{y+5}" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">v{u}</text>')
         if is_source:
-            lines.append(f'  <text x="{x}" y="{y-25}" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="11" font-weight="bold" fill="#2563eb">SOURCE</text>')
+            lines.append(f'  <text x="{x}" y="{y-26}" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" font-weight="bold" fill="#2563eb">SOURCE</text>')
             
     lines.append('</svg>')
     return '\n'.join(lines)
@@ -615,26 +606,35 @@ def render_html_heap_vertical_arrays(arrays_data, labels=None):
     return '\n'.join(html)
 
 
-def render_html_shortest_path_table(table_rows, queue_slots, title="Shortest Path Processing Table (อะเรย์สำหรับประมวลผล Shortest Path)", source_vertex=1, is_blank=False):
+def render_html_shortest_path_table(table_rows, enqueue_seq=None, dequeue_seq=None, queue_slots=None, final_pointers=None, title="Shortest Path Processing Table (อะเรย์สำหรับประมวลผล Shortest Path)", source_vertex=1, is_blank=False):
     """
-    Renders the exact 4-column Shortest Path table with side-by-side Queue box
-    matching Dr. Pradit's worksheets (Assignment 4 & For Example Graph):
-    Columns: Vertex | Known | Dist (Dv) | Path (Pv)  ||  Queue [6..0]
+    Renders the official Shortest Path BFS processing table matching Dr. Pradit's worksheets:
+    - Columns: Vertex (v) | Known | Dist (Dv) | Path (Pv)
+    - Row: Enqueue Sequence
+    - Row: Dequeue Sequence
+    - Dual Queue Buffers: Horizontal [0]..[6] AND Vertical q [6]..[0]
+    - Fill-ins / Answers for front, back, currentSize, and shortest path length/order to v5 & v7.
     """
+    if queue_slots is None:
+        queue_slots = [''] * 7
+    if final_pointers is None:
+        final_pointers = {'front': 0, 'back': 6, 'currentSize': 0}
+        
     html = [
-        '<div style="display:flex; gap:20px; flex-wrap:wrap; margin:15px 0; align-items:flex-start;">',
-        '  <div style="flex:2; min-width:320px;">',
-        f'    <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px;">📝 {title} (Source = {source_vertex})</div>',
-        '    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:\'Segoe UI\', Tahoma, sans-serif; font-size:13px; border:2px solid #334155;">',
-        '      <thead>',
-        '        <tr style="background:#1e293b; color:#ffffff;">',
-        '          <th style="padding:8px 6px; border:1px solid #475569; width:65px;">Vertex (v)</th>',
-        '          <th style="padding:8px 6px; border:1px solid #475569; width:75px;">Known</th>',
-        '          <th style="padding:8px 6px; border:1px solid #475569;">Dist (Dv)</th>',
-        '          <th style="padding:8px 6px; border:1px solid #475569;">Path (Pv)</th>',
-        '        </tr>',
-        '      </thead>',
-        '      <tbody>'
+        '<div style="margin:16px 0; font-family:\'Segoe UI\', Tahoma, sans-serif;">',
+        f'  <div style="font-size:14px; font-weight:bold; color:#1e293b; margin-bottom:8px;">📝 {title} (Source Vertex = {source_vertex})</div>',
+        '  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">',
+        '    <div style="flex:2; min-width:320px;">',
+        '      <table style="width:100%; border-collapse:collapse; text-align:center; font-size:13px; border:2px solid #334155;">',
+        '        <thead>',
+        '          <tr style="background:#1e293b; color:#ffffff;">',
+        '            <th style="padding:8px 6px; border:1px solid #475569; width:75px;">Vertex (v)</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569; width:85px;">Known</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">Dist (Dv)</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">Path (Pv)</th>',
+        '          </tr>',
+        '        </thead>',
+        '        <tbody>'
     ]
     
     for row in table_rows:
@@ -644,82 +644,214 @@ def render_html_shortest_path_table(table_rows, queue_slots, title="Shortest Pat
         path = row.get('path', '0') if not is_blank else '&nbsp;'
         bg = '#eff6ff' if str(v) == str(source_vertex) else '#ffffff'
         
-        html.append(f'        <tr style="background:{bg};">')
-        html.append(f'          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">{v}</td>')
-        html.append(f'          <td style="padding:7px 6px; border:1px solid #cbd5e1;">{known}</td>')
-        html.append(f'          <td style="padding:7px 6px; border:1px solid #cbd5e1;">{dist}</td>')
-        html.append(f'          <td style="padding:7px 6px; border:1px solid #cbd5e1;">{path}</td>')
-        html.append('        </tr>')
+        html.append(f'          <tr style="background:{bg};">')
+        html.append(f'            <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">v{v}</td>')
+        html.append(f'            <td style="padding:7px 6px; border:1px solid #cbd5e1;">{known}</td>')
+        html.append(f'            <td style="padding:7px 6px; border:1px solid #cbd5e1;">{dist}</td>')
+        html.append(f'            <td style="padding:7px 6px; border:1px solid #cbd5e1;">{path}</td>')
+        html.append('          </tr>')
         
-    html.append('      </tbody>')
-    html.append('    </table>')
-    html.append('  </div>')
+    # Enqueue & Dequeue sequence rows
+    eq_val = enqueue_seq if (enqueue_seq and not is_blank) else ('............................................................' if is_blank else '1, 2, 4, 5, 3, 6, 7')
+    dq_val = dequeue_seq if (dequeue_seq and not is_blank) else ('............................................................' if is_blank else '1, 2, 4, 5, 3, 6, 7')
     
-    # Side Queue Box (indexed 6 down to 0)
-    html.append('  <div style="flex:1; min-width:160px; max-width:210px;">')
-    html.append('    <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px; text-align:center;">📦 Queue Buffer</div>')
-    html.append('    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:\'Segoe UI\', Tahoma, sans-serif; font-size:12.5px; border:2px solid #475569;">')
-    html.append('      <thead><tr style="background:#334155; color:#ffffff;"><th style="padding:6px; border:1px solid #475569; width:45px;">Index</th><th style="padding:6px; border:1px solid #475569;">Vertex</th></tr></thead>')
-    html.append('      <tbody>')
+    html.append('          <tr style="background:#e0e7ff; font-weight:bold;">')
+    html.append('            <td style="padding:8px 6px; border:1px solid #cbd5e1; color:#1e1b4b; text-align:left;" colspan="2">Enqueue Sequence:</td>')
+    html.append(f'            <td style="padding:8px 6px; border:1px solid #cbd5e1; color:#1e1b4b;" colspan="2">{eq_val}</td>')
+    html.append('          </tr>')
+    html.append('          <tr style="background:#fee2e2; font-weight:bold;">')
+    html.append('            <td style="padding:8px 6px; border:1px solid #cbd5e1; color:#991b1b; text-align:left;" colspan="2">Dequeue Sequence:</td>')
+    html.append(f'            <td style="padding:8px 6px; border:1px solid #cbd5e1; color:#991b1b;" colspan="2">{dq_val}</td>')
+    html.append('          </tr>')
     
-    # Render from 6 down to 0 matching worksheet
+    html.append('        </tbody>')
+    html.append('      </table>')
+    html.append('    </div>')
+    
+    # Side Vertical Queue Stack: q [6] down to [0]
+    html.append('    <div style="flex:1; min-width:170px; max-width:220px;">')
+    html.append('      <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px; text-align:center;">📦 Vertical Queue (q)</div>')
+    html.append('      <table style="width:100%; border-collapse:collapse; text-align:center; font-size:12.5px; border:2px solid #475569;">')
+    html.append('        <thead><tr style="background:#334155; color:#ffffff;"><th style="padding:6px; border:1px solid #475569; width:45px;">Index</th><th style="padding:6px; border:1px solid #475569;">Vertex</th></tr></thead>')
+    html.append('        <tbody>')
+    
     for idx in range(6, -1, -1):
         val = queue_slots[idx] if idx < len(queue_slots) and queue_slots[idx] is not None and not is_blank else '&nbsp;'
         val_styled = f'<strong style="color:#1e40af;">{val}</strong>' if val != '&nbsp;' and val != '-' else ('<span style="color:#94a3b8;">-</span>' if not is_blank else '&nbsp;')
-        html.append(f'        <tr style="background:{"#f8fafc" if idx % 2 == 1 else "#ffffff"};">')
-        html.append(f'          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[{idx}]</td>')
-        html.append(f'          <td style="padding:6px 4px; border:1px solid #cbd5e1;">{val_styled}</td>')
-        html.append('        </tr>')
+        html.append(f'          <tr style="background:{"#f8fafc" if idx % 2 == 1 else "#ffffff"};">')
+        html.append(f'            <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[{idx}]</td>')
+        html.append(f'            <td style="padding:6px 4px; border:1px solid #cbd5e1;">{val_styled}</td>')
+        html.append('          </tr>')
         
-    html.append('      </tbody>')
+    html.append('        </tbody>')
+    html.append('      </table>')
+    html.append('    </div>')
+    html.append('  </div>')
+    
+    # Horizontal Circular Queue buffer & Pointer values
+    html.append('  <div style="margin-top:14px; background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:8px; padding:12px;">')
+    html.append('    <div style="font-size:13px; font-weight:bold; color:#334155; margin-bottom:8px;">🔄 Horizontal Circular Queue Buffer &amp; Final Pointer Status:</div>')
+    html.append('    <table style="width:100%; border-collapse:collapse; text-align:center; margin-bottom:10px;">')
+    html.append('      <tr style="background:#334155; color:#ffffff; font-size:12px;"><th style="padding:5px;">Index</th>' + ''.join([f'<th style="padding:5px; border:1px solid #475569;">[{i}]</th>' for i in range(7)]) + '</tr>')
+    
+    row_cells = []
+    for i in range(7):
+        val = queue_slots[i] if i < len(queue_slots) and queue_slots[i] is not None and not is_blank else '&nbsp;'
+        val_dsp = f'<strong style="color:#1e40af;">{val}</strong>' if val != '&nbsp;' and val != '-' else ('<span style="color:#94a3b8;">-</span>' if not is_blank else '&nbsp;')
+        row_cells.append(f'<td style="padding:8px 4px; border:1px solid #cbd5e1; background:#ffffff;">{val_dsp}</td>')
+    html.append('      <tr><td style="padding:6px; font-weight:bold; background:#f1f5f9; border:1px solid #cbd5e1; font-size:12px;">q Value</td>' + ''.join(row_cells) + '</tr>')
     html.append('    </table>')
-    if not is_blank:
-        html.append('    <div style="font-size:11px; color:#475569; background:#f1f5f9; padding:8px; border-radius:6px; margin-top:8px; border:1px solid #e2e8f0; line-height:1.5;">')
-        html.append('      <strong>Queue Final:</strong><br/>• front = 0, back = 6<br/>• currentSize = 0 (Empty when done)')
-        html.append('    </div>')
+    
+    front_val = final_pointers.get('front', 0) if not is_blank else '............'
+    back_val = final_pointers.get('back', 6) if not is_blank else '............'
+    csize_val = final_pointers.get('currentSize', 0) if not is_blank else '............'
+    
+    html.append('    <div style="display:flex; justify-content:space-around; font-size:12.5px; color:#1e293b; background:#ffffff; padding:8px; border-radius:6px; border:1px solid #e2e8f0; flex-wrap:wrap; gap:10px;">')
+    html.append(f'      <div>• <strong>front</strong> = <span style="color:#dc2626; font-weight:bold;">{front_val}</span> (สูตร: <code>(front+1)%7</code>)</div>')
+    html.append(f'      <div>• <strong>back</strong> = <span style="color:#16a34a; font-weight:bold;">{back_val}</span> (สูตร: <code>(back+1)%7</code>)</div>')
+    html.append(f'      <div>• <strong>currentSize</strong> = <span style="color:#2563eb; font-weight:bold;">{csize_val}</span> (Empty)</div>')
+    html.append('    </div>')
+    
+    # Path questions / answers
+    html.append('    <div style="margin-top:10px; font-size:12.5px; background:#eff6ff; padding:10px; border-radius:6px; border:1px solid #bfdbfe; line-height:1.7;">')
+    if is_blank:
+        html.append('      <div><strong>6.1 Shortest Path จาก 1 ไปยัง 5:</strong> ความยาวเส้นทาง = .............. edges, ลำดับคือ ............................................................</div>')
+        html.append('      <div><strong>6.2 Shortest Path จาก 1 ไปยัง 7:</strong> ความยาวเส้นทาง = .............. edges, ลำดับคือ ............................................................</div>')
+        html.append('      <div style="font-size:11px; color:#b91c1c; margin-top:4px;">⚠️ <strong>คำเตือนอาจารย์ประดิษฐ์:</strong> ความยาวเส้นทางนับจำนวน Edge (ไม่ใช่ Node) และลำดับต้องคั่นด้วยเครื่องหมายจุลภาค <code>,</code> ห้ามใส่ลูกศร <code>-&gt;</code> เด็ดขาด!</div>')
+    else:
+        html.append('      <div><strong>6.1 Shortest Path จาก 1 ไปยัง 5:</strong> ความยาวเส้นทาง = <strong style="color:#1d4ed8;">2 edges</strong>, ลำดับคือ <strong style="color:#1d4ed8;">1, 2, 5</strong> (หรือ <strong style="color:#1d4ed8;">1, 4, 5</strong>)</div>')
+        html.append('      <div><strong>6.2 Shortest Path จาก 1 ไปยัง 7:</strong> ความยาวเส้นทาง = <strong style="color:#1d4ed8;">2 edges</strong>, ลำดับคือ <strong style="color:#1d4ed8;">1, 4, 7</strong></div>')
+        html.append('      <div style="font-size:11px; color:#b91c1c; margin-top:4px;">⚠️ <strong>คำเตือนอาจารย์ประดิษฐ์:</strong> ความยาวเส้นทางนับจำนวน Edge (2 เส้น) และลำดับต้องคั่นด้วย <code>,</code> ห้ามเขียนลูกศร <code>-&gt;</code> หากเขียนลูกศรจะได้ 0 คะแนน</div>')
+    html.append('    </div>')
+    
     html.append('  </div>')
     html.append('</div>')
     return '\n'.join(html)
 
 
-def render_html_topo_indegree_table(indegree_data, queue_slots, title="Indegree Array Tracing Table (Topological Sort)", is_blank=False):
+def render_html_topo_indegree_table(indegree_data, enqueue_row=None, dequeue_row=None, queue_slots=None, final_pointers=None, title="Indegree Array Tracing Table (Topological Sort)", is_blank=False):
     """
     Renders the exact Indegree Array Tracing table matching Dr. Pradit's worksheets (Topological sort p.6):
-    Columns: Vertex (v) | Initial | Round 1 | ... | Round 7  ||  Side Queue Box
+    - Rows for Vertices 1..7
+    - Row for Enqueue (v)
+    - Row for Dequeue (v)
+    - Side Vertical Queue Buffer: q [6] down to [0]
+    - Horizontal Circular Queue Buffer: [0]..[6]
+    - Status of front, back, currentSize, and topological order.
     """
+    if enqueue_row is None:
+        enqueue_row = ['1', '2', '5', '4', '3, 7', '-', '6', '-']
+    if dequeue_row is None:
+        dequeue_row = ['-', '1', '2', '5', '4', '3', '7', '6']
+    if queue_slots is None:
+        queue_slots = ['1', '2', '5', '4', '3', '7', '6']
+    if final_pointers is None:
+        final_pointers = {'front': 0, 'back': 6, 'currentSize': 0, 'order': '1, 2, 5, 4, 3, 7, 6'}
+        
     html = [
-        '<div style="overflow-x:auto; margin:15px 0;">',
-        f'  <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px;">📝 {title}</div>',
-        '  <table style="width:100%; border-collapse:collapse; text-align:center; font-family:\'Segoe UI\', Tahoma, sans-serif; font-size:12.5px; border:2px solid #334155;">',
-        '    <thead>',
-        '      <tr style="background:#1e293b; color:#ffffff;">',
-        '        <th style="padding:8px 6px; border:1px solid #475569; width:65px;">Vertex (v)</th>',
-        '        <th style="padding:8px 6px; border:1px solid #475569;">เริ่มต้น (Initial)</th>',
-        '        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 1</th>',
-        '        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 2</th>',
-        '        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 3</th>',
-        '        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 4</th>',
-        '        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 5</th>',
-        '        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 6</th>',
-        '        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 7</th>',
-        '      </tr>',
-        '    </thead>',
-        '    <tbody>'
+        '<div style="margin:16px 0; font-family:\'Segoe UI\', Tahoma, sans-serif;">',
+        f'  <div style="font-size:14px; font-weight:bold; color:#1e293b; margin-bottom:8px;">📝 {title}</div>',
+        '  <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">',
+        '    <div style="flex:3; min-width:480px; overflow-x:auto;">',
+        '      <table style="width:100%; border-collapse:collapse; text-align:center; font-size:12.5px; border:2px solid #334155;">',
+        '        <thead>',
+        '          <tr style="background:#1e293b; color:#ffffff;">',
+        '            <th style="padding:8px 6px; border:1px solid #475569; width:85px;">Vertex (v)</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">เริ่มต้น (Init)</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 1</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 2</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 3</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 4</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 5</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 6</th>',
+        '            <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 7</th>',
+        '          </tr>',
+        '        </thead>',
+        '        <tbody>'
     ]
     
+    rounds = ['initial', 'r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7']
     for v_data in indegree_data:
         v = v_data['vertex']
-        html.append('      <tr style="background:#ffffff;">')
-        html.append(f'        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">{v}</td>')
+        html.append('          <tr style="background:#ffffff;">')
+        html.append(f'            <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">v{v}</td>')
         
-        rounds = ['initial', 'r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7']
         for r in rounds:
             val = v_data.get(r, '&nbsp;') if not is_blank else '&nbsp;'
-            html.append(f'        <td style="padding:7px 6px; border:1px solid #cbd5e1;">{val}</td>')
-        html.append('      </tr>')
+            html.append(f'            <td style="padding:7px 6px; border:1px solid #cbd5e1;">{val}</td>')
+        html.append('          </tr>')
         
-    html.append('    </tbody>')
-    html.append('  </table>')
+    # Enqueue (v) row
+    html.append('          <tr style="background:#e0e7ff; font-weight:bold;">')
+    html.append('            <td style="padding:7px 6px; border:1px solid #cbd5e1; color:#1e1b4b;">Enqueue (v)</td>')
+    for val in enqueue_row:
+        dsp = val if not is_blank else '&nbsp;'
+        html.append(f'            <td style="padding:7px 6px; border:1px solid #cbd5e1; color:#1e1b4b;">{dsp}</td>')
+    html.append('          </tr>')
+    
+    # Dequeue (v) row
+    html.append('          <tr style="background:#fee2e2; font-weight:bold;">')
+    html.append('            <td style="padding:7px 6px; border:1px solid #cbd5e1; color:#991b1b;">Dequeue (v)</td>')
+    for val in dequeue_row:
+        dsp = val if not is_blank else '&nbsp;'
+        html.append(f'            <td style="padding:7px 6px; border:1px solid #cbd5e1; color:#991b1b;">{dsp}</td>')
+    html.append('          </tr>')
+    
+    html.append('        </tbody>')
+    html.append('      </table>')
+    html.append('    </div>')
+    
+    # Side Vertical Queue Stack: q [6] down to [0]
+    html.append('    <div style="flex:1; min-width:160px; max-width:200px;">')
+    html.append('      <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px; text-align:center;">📦 Vertical Queue (q)</div>')
+    html.append('      <table style="width:100%; border-collapse:collapse; text-align:center; font-size:12.5px; border:2px solid #475569;">')
+    html.append('        <thead><tr style="background:#334155; color:#ffffff;"><th style="padding:6px; border:1px solid #475569; width:45px;">Index</th><th style="padding:6px; border:1px solid #475569;">Vertex</th></tr></thead>')
+    html.append('        <tbody>')
+    
+    for idx in range(6, -1, -1):
+        val = queue_slots[idx] if idx < len(queue_slots) and queue_slots[idx] is not None and not is_blank else '&nbsp;'
+        val_styled = f'<strong style="color:#1e40af;">{val}</strong>' if val != '&nbsp;' and val != '-' else ('<span style="color:#94a3b8;">-</span>' if not is_blank else '&nbsp;')
+        html.append(f'          <tr style="background:{"#f8fafc" if idx % 2 == 1 else "#ffffff"};">')
+        html.append(f'            <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[{idx}]</td>')
+        html.append(f'            <td style="padding:6px 4px; border:1px solid #cbd5e1;">{val_styled}</td>')
+        html.append('          </tr>')
+        
+    html.append('        </tbody>')
+    html.append('      </table>')
+    html.append('    </div>')
+    html.append('  </div>')
+    
+    # Horizontal Circular Queue Buffer & Form fields
+    html.append('  <div style="margin-top:14px; background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:8px; padding:12px;">')
+    html.append('    <div style="font-size:13px; font-weight:bold; color:#334155; margin-bottom:8px;">🔄 Horizontal Circular Queue Buffer &amp; Final Pointer Status:</div>')
+    html.append('    <table style="width:100%; border-collapse:collapse; text-align:center; margin-bottom:10px;">')
+    html.append('      <tr style="background:#334155; color:#ffffff; font-size:12px;"><th style="padding:5px;">Index</th>' + ''.join([f'<th style="padding:5px; border:1px solid #475569;">[{i}]</th>' for i in range(7)]) + '</tr>')
+    
+    row_cells = []
+    for i in range(7):
+        val = queue_slots[i] if i < len(queue_slots) and queue_slots[i] is not None and not is_blank else '&nbsp;'
+        val_dsp = f'<strong style="color:#1e40af;">{val}</strong>' if val != '&nbsp;' and val != '-' else ('<span style="color:#94a3b8;">-</span>' if not is_blank else '&nbsp;')
+        row_cells.append(f'<td style="padding:8px 4px; border:1px solid #cbd5e1; background:#ffffff;">{val_dsp}</td>')
+    html.append('      <tr><td style="padding:6px; font-weight:bold; background:#f1f5f9; border:1px solid #cbd5e1; font-size:12px;">q Value</td>' + ''.join(row_cells) + '</tr>')
+    html.append('    </table>')
+    
+    front_val = final_pointers.get('front', 0) if not is_blank else '............'
+    back_val = final_pointers.get('back', 6) if not is_blank else '............'
+    csize_val = final_pointers.get('currentSize', 0) if not is_blank else '............'
+    order_val = final_pointers.get('order', '1, 2, 5, 4, 3, 7, 6') if not is_blank else '............................................................'
+    
+    html.append('    <div style="display:flex; justify-content:space-around; font-size:12.5px; color:#1e293b; background:#ffffff; padding:8px; border-radius:6px; border:1px solid #e2e8f0; flex-wrap:wrap; gap:10px;">')
+    html.append(f'      <div>• <strong>front</strong> = <span style="color:#dc2626; font-weight:bold;">{front_val}</span> (สูตร: <code>(front+1)%7</code>)</div>')
+    html.append(f'      <div>• <strong>back</strong> = <span style="color:#16a34a; font-weight:bold;">{back_val}</span> (สูตร: <code>(back+1)%7</code>)</div>')
+    html.append(f'      <div>• <strong>currentSize</strong> = <span style="color:#2563eb; font-weight:bold;">{csize_val}</span> (Empty)</div>')
+    html.append('    </div>')
+    
+    html.append('    <div style="margin-top:10px; font-size:12.5px; background:#eff6ff; padding:10px; border-radius:6px; border:1px solid #bfdbfe;">')
+    html.append(f'      <div><strong>ลำดับ Topological Order:</strong> <span style="color:#1d4ed8; font-weight:bold; font-size:14px;">{order_val}</span></div>')
+    html.append('      <div style="font-size:11px; color:#b91c1c; margin-top:4px;">⚠️ <strong>คำเตือนอาจารย์ประดิษฐ์:</strong> ห้ามใส่ลูกศร <code>-&gt;</code> เด็ดขาด ให้คั่นด้วยเครื่องหมายจุลภาค <code>,</code> เท่านั้น หากใส่ลูกศรจะถูกปรับเป็น 0 คะแนน</div>')
+    html.append('    </div>')
+    
+    html.append('  </div>')
     html.append('</div>')
     return '\n'.join(html)
 

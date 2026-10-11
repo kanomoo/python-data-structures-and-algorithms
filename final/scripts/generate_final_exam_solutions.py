@@ -97,6 +97,13 @@ def build_pdf():
         leading=12,
         textColor=colors.HexColor('#15803d')
     )
+    style_code = ParagraphStyle(
+        'CodeStyle',
+        fontName='Tahoma',
+        fontSize=7,
+        leading=9.5,
+        textColor=colors.HexColor('#0369a1')
+    )
     style_table_cell = ParagraphStyle(
         'TableCell',
         fontName='Tahoma',
@@ -429,77 +436,112 @@ def build_pdf():
     story.append(Paragraph(
         "<b>Core Theoretical Principles (หลักการสำคัญ):</b><br/>"
         "1. <b>Topological Ordering:</b> A linear ordering of vertices in a DAG such that for every directed edge <i>(u, v)</i>, vertex <i>u</i> appears before <i>v</i>.<br/>"
-        "2. <b>Algorithm (Kahn's Queue-based Method):</b><br/>"
-        "&nbsp;&nbsp;&nbsp;&nbsp;&bull; Compute initial in-degree of every vertex.<br/>"
-        "&nbsp;&nbsp;&nbsp;&nbsp;&bull; Enqueue all vertices with <i>in-degree == 0</i>.<br/>"
-        "&nbsp;&nbsp;&nbsp;&nbsp;&bull; Dequeue vertex <i>v</i>, append to topological sequence, and decrement the in-degree of all adjacent vertices <i>w</i>.<br/>"
-        "&nbsp;&nbsp;&nbsp;&nbsp;&bull; When <i>in-degree(w)</i> becomes 0, enqueue <i>w</i>.",
+        "2. <b>Kahn's Queue-based Algorithm (Step-by-Step):</b><br/>"
+        "&nbsp;&nbsp;&nbsp;&nbsp;&bull; Compute initial in-degree of all 7 vertices: <i>v1=0, v2=1, v3=2, v4=3, v5=1, v6=3, v7=2</i>.<br/>"
+        "&nbsp;&nbsp;&nbsp;&nbsp;&bull; Enqueue initial vertex with <i>in-degree == 0</i> &rarr; <b>Enqueue(v1)</b> into Queue slot 0.<br/>"
+        "&nbsp;&nbsp;&nbsp;&nbsp;&bull; In each round, <b>Dequeue</b> front vertex <i>v</i>, append to topological order, and decrement in-degree of all adjacent vertices <i>w</i>.<br/>"
+        "&nbsp;&nbsp;&nbsp;&nbsp;&bull; Whenever <i>in-degree(w)</i> reaches 0, immediately <b>Enqueue(w)</b> into the circular queue buffer.",
         style_body
     ))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
 
-    # Filled Indegree table
+    # Filled Indegree table with Enqueue and Dequeue rows
     t_sol_indeg = Table([
-        ['Vertex (v)', 'Initial', 'Round 1 (v5)', 'Round 2 (v7)', 'Round 3 (v2)', 'Round 4 (v1)', 'Round 5 (v3)', 'Round 6 (v4)', 'Round 7 (v6)'],
-        ['1', '1', '1', '1', '1 -> 0', '0 (dq)', '0', '0', '0'],
-        ['2', '1', '1', '1 -> 0', '0 (dq)', '0', '0', '0', '0'],
-        ['3', '1', '1', '1', '1', '1 -> 0', '0 (dq)', '0', '0'],
-        ['4', '3', '3', '3', '3 -> 2', '2 -> 1', '1 -> 0', '0 (dq)', '0'],
-        ['5', '0', '0 (dq)', '0', '0', '0', '0', '0', '0'],
-        ['6', '4', '4 -> 3', '3 -> 2', '2 -> 1', '1', '1', '1 -> 0', '0 (dq)'],
-        ['7', '1', '1 -> 0', '0 (dq)', '0', '0', '0', '0', '0'],
-        ['Dequeue (v)', '-', 'v5', 'v7', 'v2', 'v1', 'v3', 'v4', 'v6']
+        ['Vertex (v)', 'Initial', 'Round 1 (v1)', 'Round 2 (v2)', 'Round 3 (v5)', 'Round 4 (v4)', 'Round 5 (v3)', 'Round 6 (v7)', 'Round 7 (v6)'],
+        ['1', '0', '0 (dq)', '-', '-', '-', '-', '-', '-'],
+        ['2', '1', '1 -> 0', '0 (dq)', '-', '-', '-', '-', '-'],
+        ['3', '2', '2 -> 1', '1', '1', '1 -> 0', '0 (dq)', '-', '-'],
+        ['4', '3', '3 -> 2', '2 -> 1', '1 -> 0', '0 (dq)', '-', '-', '-'],
+        ['5', '1', '1', '1 -> 0', '0 (dq)', '-', '-', '-', '-'],
+        ['6', '3', '3', '3', '3', '3 -> 2', '2 -> 1', '1 -> 0', '0 (dq)'],
+        ['7', '2', '2', '2', '2 -> 1', '1 -> 0', '0', '0 (dq)', '-'],
+        ['Enqueue (v)', '1', '2', '5', '4', '3, 7', '-', '6', '-'],
+        ['Dequeue (v)', '-', '1', '2', '5', '4', '3', '7', '6']
     ], colWidths=[67] + [57]*8)
     t_sol_indeg.setStyle(TableStyle([
         ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#e2e8f0')),
         ('BACKGROUND', (0,0), (0,-1), colors.HexColor('#f1f5f9')),
+        ('BACKGROUND', (0,-2), (-1,-2), colors.HexColor('#f0fdf4')),
         ('BACKGROUND', (0,-1), (-1,-1), colors.HexColor('#fef2f2')),
-        ('FONTNAME', (0,0), (-1,-1), 'Tahoma-Bold'),
+        ('FONTNAME', (0,0), (-1,0), 'Tahoma-Bold'),
+        ('FONTNAME', (0,0), (0,-1), 'Tahoma-Bold'),
+        ('FONTNAME', (0,-2), (0,-1), 'Tahoma-Bold'),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
         ('FONTSIZE', (0,0), (-1,-1), 7.5),
-        ('TOPPADDING', (0,0), (-1,-1), 3),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
+        ('TOPPADDING', (0,0), (-1,-1), 2.2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2.2),
     ]))
     story.append(t_sol_indeg)
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 5))
 
-    # Queue simulation
-    story.append(Paragraph(
-        "<b>5.2 Circular Queue Simulation Solution (Capacity = 7):</b><br/>"
-        "Following Chapter 3 code: <code>the_array = [None]*7</code>, <code>front = 0</code>, <code>back = 0</code>.<br/>"
-        "&bull; Enqueue sequence: <i>v5 (slot 0), v7 (slot 1), v2 (slot 2), v1 (slot 3), v3 (slot 4), v4 (slot 5), v6 (slot 6)</i>.<br/>"
-        "&bull; Dequeue sequence: <i>v5 (front advances to 1), v7 (front to 2), ..., v6 (front advances to 0 circular)</i>.<br/>"
-        "Upon algorithm termination, all 7 elements have been dequeued:",
-        style_body
-    ))
-    story.append(Spacer(1, 4))
-
-    t_sol_q_box = Table([
-        ['Slot Index', '0', '1', '2', '3', '4', '5', '6'],
-        ['Queue Array', 'None', 'None', 'None', 'None', 'None', 'None', 'None']
-    ], colWidths=[75] + [64]*7)
-    t_sol_q_box.setStyle(TableStyle([
+    # Dual Queue representation (Horizontal table + Vertical stack)
+    t_sol_q_horiz = Table([
+        ['Index', '0', '1', '2', '3', '4', '5', '6'],
+        ['Queue', '1', '2', '5', '4', '3', '7', '6']
+    ], colWidths=[48] + [44]*7, rowHeights=[15, 18])
+    t_sol_q_horiz.setStyle(TableStyle([
         ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#e0f2fe')),
-        ('BACKGROUND', (0,1), (-1,1), colors.HexColor('#f1f5f9')),
+        ('BACKGROUND', (0,1), (-1,1), colors.HexColor('#eff6ff')),
         ('FONTNAME', (0,0), (-1,-1), 'Tahoma-Bold'),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
-        ('TOPPADDING', (0,0), (-1,-1), 3),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('FONTSIZE', (0,0), (-1,-1), 8),
+        ('TOPPADDING', (0,0), (-1,-1), 2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
     ]))
-    story.append(t_sol_q_box)
+
+    t_sol_q_vert = Table([
+        ['q', 'Slot'],
+        ['6', '6 (R6)'],
+        ['5', '7 (R4)'],
+        ['4', '3 (R4)'],
+        ['3', '4 (R3)'],
+        ['2', '5 (R2)'],
+        ['1', '2 (R1)'],
+        ['0', '1 (Init)']
+    ], colWidths=[24, 60], rowHeights=[13]*8)
+    t_sol_q_vert.setStyle(TableStyle([
+        ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#334155')),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('BACKGROUND', (0,1), (0,-1), colors.HexColor('#f1f5f9')),
+        ('BACKGROUND', (1,1), (1,-1), colors.HexColor('#eff6ff')),
+        ('FONTNAME', (0,0), (-1,-1), 'Tahoma-Bold'),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('FONTSIZE', (0,0), (-1,-1), 7),
+        ('TOPPADDING', (0,0), (-1,-1), 1.5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 1.5),
+    ]))
+
+    sol_q_left_flow = [
+        Paragraph("<b>5.2 Circular Queue Simulation Solution (Capacity = 7):</b>", style_body_bold),
+        Spacer(1, 2),
+        t_sol_q_horiz,
+        Spacer(1, 3),
+        Paragraph("<b>front = 0</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>back = 6</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>currentSize = 0</b> (คิวว่างเปล่าเมื่อสิ้นสุดอัลกอริทึม)", style_answer),
+        Spacer(1, 2),
+        Paragraph("<i>* Enqueue ทั้งหมด 7 ครั้ง (back: -1 &rarr; 6). Dequeue ทั้งหมด 7 ครั้ง (front วนครบรอบ: 7%7 = 0).</i>", style_body)
+    ]
+
+    t_dual_sol_q = Table([[sol_q_left_flow, t_sol_q_vert]], colWidths=[425, 95])
+    t_dual_sol_q.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 0),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+    ]))
+    story.append(t_dual_sol_q)
     story.append(Spacer(1, 4))
-    story.append(Paragraph(
-        "<b>Pointers:</b> <b>front = 0</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>back = 0</b> &nbsp;&nbsp;(Circular queue wrapped around back to index 0 after 7 enqueues and 7 dequeues).",
-        style_answer
-    ))
-    story.append(Spacer(1, 6))
 
     story.append(Paragraph(
         "<b>5.3 Resulting Topological Ordering Solution:</b><br/>"
-        "<b>Answer: &nbsp;&nbsp;v5, &nbsp;v7, &nbsp;v2, &nbsp;v1, &nbsp;v3, &nbsp;v4, &nbsp;v6</b> &nbsp;&nbsp;(or 5, 7, 2, 1, 3, 4, 6)",
+        "<b>Answer: &nbsp;&nbsp;1, &nbsp;2, &nbsp;5, &nbsp;4, &nbsp;3, &nbsp;7, &nbsp;6</b> &nbsp;&nbsp;(หรือ 1, 2, 5, 4, 7, 3, 6 ก็ได้คะแนนเต็มเช่นกัน)<br/>"
+        "<i>* คำเตือนจุด 0 คะแนน: ต้องคั่นด้วยเครื่องหมายจุลภาค (Comma) เท่านั้น ห้ามเขียนลูกศร (1 &rarr; 2 &rarr; 5...) เด็ดขาด!</i>",
         style_answer
     ))
 
@@ -531,54 +573,115 @@ def build_pdf():
     story.append(Paragraph(
         "<b>Core Theoretical Principles (หลักการสำคัญ):</b><br/>"
         "1. <b>Breadth-First Search (BFS):</b> For unweighted graphs, BFS guarantees finding the shortest path (minimum number of edges) because it explores all vertices at distance <i>d</i> before moving to distance <i>d + 1</i>.<br/>"
-        "2. <b>State Array Representation:</b><br/>"
+        "2. <b>Processing State Array:</b><br/>"
         "&nbsp;&nbsp;&nbsp;&nbsp;&bull; <code>Known</code>: Boolean indicating if shortest path to vertex is finalized.<br/>"
         "&nbsp;&nbsp;&nbsp;&nbsp;&bull; <code>Dist (d_v)</code>: Shortest distance from source vertex 1 (initialized to 0 for source, &infin; or 999 for others).<br/>"
         "&nbsp;&nbsp;&nbsp;&nbsp;&bull; <code>Path (p_v)</code>: Predecessor vertex used to reconstruct the shortest path via backtracking.",
         style_body
     ))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
 
     t_sol_sp_grid = Table([
-        ['Vertex (v)', 'Known', 'Distance (d_v)', 'Previous Path (p_v)', 'Shortest Route Sequence', 'Length (Edges)'],
+        ['Vertex (v)', 'Known (T / F)', 'Distance (d_v)', 'Previous Path (p_v)', 'Shortest Route Sequence', 'Length (Edges)'],
         ['1', 'True (1)', '0', '0 (Source)', '1', '0'],
         ['2', 'True (1)', '1', '1', '1, 2', '1'],
-        ['3', 'True (1)', '1', '1', '1, 3', '1'],
+        ['3', 'True (1)', '2', '4', '1, 4, 3', '2'],
         ['4', 'True (1)', '1', '1', '1, 4', '1'],
-        ['5', 'True (1)', '2', '4', '1, 4, 5', '2'],
-        ['6', 'True (1)', '1', '1', '1, 6', '1'],
-        ['7', 'True (1)', '2', '2', '1, 2, 7', '2']
-    ], colWidths=[60, 65, 80, 95, 143, 80])
+        ['5', 'True (1)', '2', '2 (or 4)', '1, 2, 5 (or 1, 4, 5)', '2'],
+        ['6', 'True (1)', '2', '4', '1, 4, 6', '2'],
+        ['7', 'True (1)', '2', '4', '1, 4, 7', '2'],
+        ['Enqueue Sequence', '1', '2, 4', '5', '3, 6, 7', '-'],
+        ['Dequeue Sequence', '1', '2', '4', '5', '3, 6, 7']
+    ], colWidths=[90, 75, 75, 95, 125, 60])
     t_sol_sp_grid.setStyle(TableStyle([
         ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#e2e8f0')),
-        ('BACKGROUND', (0,1), (-1,-1), colors.HexColor('#f0fdf4')),
+        ('BACKGROUND', (0,1), (-1,-3), colors.HexColor('#f0fdf4')),
+        ('BACKGROUND', (0,-2), (-1,-2), colors.HexColor('#eff6ff')),
+        ('BACKGROUND', (0,-1), (-1,-1), colors.HexColor('#fef2f2')),
+        ('FONTNAME', (0,0), (-1,-1), 'Tahoma-Bold'),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('FONTSIZE', (0,0), (-1,-1), 7.5),
+        ('TOPPADDING', (0,0), (-1,-1), 2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
+    ]))
+    story.append(t_sol_sp_grid)
+    story.append(Spacer(1, 4))
+
+    # Dual Queue representation for Shortest Path
+    t_sol_sp_q_horiz = Table([
+        ['Index', '0', '1', '2', '3', '4', '5', '6'],
+        ['Queue', '1', '2', '4', '5', '3', '6', '7']
+    ], colWidths=[48] + [44]*7, rowHeights=[15, 18])
+    t_sol_sp_q_horiz.setStyle(TableStyle([
+        ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#e0f2fe')),
+        ('BACKGROUND', (0,1), (-1,1), colors.HexColor('#eff6ff')),
         ('FONTNAME', (0,0), (-1,-1), 'Tahoma-Bold'),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
         ('FONTSIZE', (0,0), (-1,-1), 8),
-        ('TOPPADDING', (0,0), (-1,-1), 3),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
+        ('TOPPADDING', (0,0), (-1,-1), 2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
     ]))
-    story.append(t_sol_sp_grid)
-    story.append(Spacer(1, 6))
 
-    story.append(Paragraph(
-        "<b>6.2 Circular Queue Simulation State:</b><br/>"
-        "Queue processing order: Dequeue 1 (enqueues 4, 3, 2, 6) &rarr; Dequeue 4 (enqueues 5) &rarr; Dequeue 3 &rarr; Dequeue 2 (enqueues 7) &rarr; Dequeue 6 &rarr; Dequeue 5 &rarr; Dequeue 7.<br/>"
-        "All 7 vertices processed. Final queue array is empty (all elements popped).<br/>"
-        "<b>Pointers:</b> <b>front = 0</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>back = 0</b> &nbsp;&nbsp;(Wrapped around circular array of size 7).",
-        style_body
-    ))
+    t_sol_sp_q_vert = Table([
+        ['q', 'Slot'],
+        ['6', '7'],
+        ['5', '6'],
+        ['4', '3'],
+        ['3', '5'],
+        ['2', '4'],
+        ['1', '2'],
+        ['0', '1']
+    ], colWidths=[24, 60], rowHeights=[13]*8)
+    t_sol_sp_q_vert.setStyle(TableStyle([
+        ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#334155')),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('BACKGROUND', (0,1), (0,-1), colors.HexColor('#f1f5f9')),
+        ('BACKGROUND', (1,1), (1,-1), colors.HexColor('#eff6ff')),
+        ('FONTNAME', (0,0), (-1,-1), 'Tahoma-Bold'),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('FONTSIZE', (0,0), (-1,-1), 7),
+        ('TOPPADDING', (0,0), (-1,-1), 1.5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 1.5),
+    ]))
+
+    sol_sp_q_left = [
+        Paragraph("<b>6.2 Circular Queue Simulation State:</b>", style_body_bold),
+        Spacer(1, 2),
+        t_sol_sp_q_horiz,
+        Spacer(1, 3),
+        Paragraph("<b>front = 0</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>back = 6</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>currentSize = 0</b> (คิวว่างเปล่าเมื่อจบการทำงาน)", style_answer),
+        Spacer(1, 2),
+        Paragraph(
+            "<b>Pseudocode Tracing:</b> <code>v = q.dequeue(); v.known = true;<br/>"
+            "for each w in adj[v]: if (w.dist == INF) { w.dist = v.dist + 1; w.path = v; q.enqueue(w); }</code>",
+            style_code
+        )
+    ]
+
+    t_dual_sol_sp_q = Table([[sol_sp_q_left, t_sol_sp_q_vert]], colWidths=[425, 95])
+    t_dual_sol_sp_q.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 0),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+    ]))
+    story.append(t_dual_sol_sp_q)
     story.append(Spacer(1, 4))
 
     story.append(Paragraph(
         "<b>6.3 Shortest Path Reconstruction & Strict Grading Rules:</b><br/>"
-        "&bull; <b>Shortest Path to Vertex 5:</b> <b>1, 4, 5</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>Length = 2 edges</b><br/>"
-        "&bull; <b>Shortest Path to Vertex 7:</b> <b>1, 2, 7</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>Length = 2 edges</b>",
+        "&bull; <b>The length of the shortest path from Vertex 1 to Vertex 5:</b> <b>2 edges</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>Sequence:</b> <b>1, 2, 5</b> (หรือ 1, 4, 5)<br/>"
+        "&bull; <b>The length of the shortest path from Vertex 1 to Vertex 7:</b> <b>2 edges</b> &nbsp;&nbsp;|&nbsp;&nbsp; <b>Sequence:</b> <b>1, 4, 7</b>",
         style_answer
     ))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
     story.append(Paragraph(
         "<b>CRITICAL EXAM TRAP (จุดหลอก 0 คะแนน):</b><br/>"
         "1. DO NOT write arrow notation like <code>1 &rarr; 4 &rarr; 5</code>. As Dr. Pradit warned, this receives <b>0 marks immediately</b>. Always write comma-separated sequence <code>1, 4, 5</code>.<br/>"

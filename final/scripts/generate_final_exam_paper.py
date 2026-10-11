@@ -508,11 +508,11 @@ def build_pdf():
     # 5.1 Indegree tracking table
     story.append(Paragraph(
         "<b>5.1 Indegree Array Tracing:</b> [5 Marks]<br/>"
-        "Fill in the <b>Indegree Array</b> below. Show the initial in-degree of each vertex, and show the strikethrough/update "
-        "values after each round as vertices are dequeued and their incident edges removed:",
+        "Fill in the <b>Indegree Array</b> below. Show the initial in-degree of each vertex, and show the update "
+        "values after each round as vertices are dequeued. Record the exact vertices <b>Enqueued</b> and <b>Dequeued</b> in each round:",
         style_body
     ))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
 
     t_topo_indeg = Table([
         ['Vertex (v)', 'Initial', 'Round 1', 'Round 2', 'Round 3', 'Round 4', 'Round 5', 'Round 6', 'Round 7'],
@@ -523,61 +523,106 @@ def build_pdf():
         ['5', '', '', '', '', '', '', '', ''],
         ['6', '', '', '', '', '', '', '', ''],
         ['7', '', '', '', '', '', '', '', ''],
+        ['Enqueue (v)', '', '', '', '', '', '', '', ''],
         ['Dequeue (v)', '', '', '', '', '', '', '', '']
     ], colWidths=[67] + [57]*8)
     t_topo_indeg.setStyle(TableStyle([
         ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#e2e8f0')),
         ('BACKGROUND', (0,0), (0,-1), colors.HexColor('#f1f5f9')),
+        ('BACKGROUND', (0,-2), (-1,-2), colors.HexColor('#f0fdf4')),
         ('BACKGROUND', (0,-1), (-1,-1), colors.HexColor('#fef2f2')),
         ('FONTNAME', (0,0), (-1,0), 'Tahoma-Bold'),
         ('FONTNAME', (0,0), (0,-1), 'Tahoma-Bold'),
+        ('FONTNAME', (0,-2), (0,-1), 'Tahoma-Bold'),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
         ('FONTSIZE', (0,0), (-1,-1), 8),
-        ('TOPPADDING', (0,0), (-1,-1), 3),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
+        ('TOPPADDING', (0,0), (-1,-1), 2.5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2.5),
     ]))
     story.append(t_topo_indeg)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 6))
 
-    # 5.2 Queue simulation
+    # 5.2 Queue simulation (Dual representation: Horizontal past-exam array + Vertical worksheet stack)
     story.append(Paragraph(
         "<b>5.2 Circular Queue Simulation:</b> [2 Marks]<br/>"
-        "Given a <b>Queue of capacity 7 (Indices 0 to 6)</b> implementing the standard circular queue functions "
+        "Given a <b>Queue of capacity 7 (Indices 0 to 6)</b> implementing the circular queue functions "
         "<code>enqueue</code> and <code>dequeue</code> from Chapter 3.<br/>"
-        "Draw the final contents of the Queue array upon algorithm completion, and explicitly state where <b>front</b> and <b>back</b> point to:",
+        "Draw the contents of the Queue array upon algorithm completion, and explicitly specify <b>front</b>, <b>back</b>, and <b>currentSize</b>:",
         style_body
     ))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
 
-    t_q_box = Table([
-        ['Slot Index', '0', '1', '2', '3', '4', '5', '6'],
-        ['Queue Value', '', '', '', '', '', '', '']
-    ], colWidths=[75] + [64]*7)
-    t_q_box.setStyle(TableStyle([
+    # Horizontal queue table
+    t_q_horiz = Table([
+        ['Index', '0', '1', '2', '3', '4', '5', '6'],
+        ['Queue', '', '', '', '', '', '', '']
+    ], colWidths=[48] + [44]*7, rowHeights=[16, 20])
+    t_q_horiz.setStyle(TableStyle([
         ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#e0f2fe')),
         ('FONTNAME', (0,0), (-1,0), 'Tahoma-Bold'),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
-        ('TOPPADDING', (0,0), (-1,-1), 4),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('FONTSIZE', (0,0), (-1,-1), 8),
+        ('TOPPADDING', (0,0), (-1,-1), 2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
     ]))
-    story.append(t_q_box)
-    story.append(Spacer(1, 5))
-    story.append(Paragraph(
-        "<b>front points to index:</b> .................................... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "
-        "<b>back points to index:</b> ....................................",
-        style_body_bold
-    ))
-    story.append(Spacer(1, 10))
+
+    # Vertical queue stack [6..0]
+    t_q_vert = Table([
+        ['q', 'Slot'],
+        ['6', ''],
+        ['5', ''],
+        ['4', ''],
+        ['3', ''],
+        ['2', ''],
+        ['1', ''],
+        ['0', '']
+    ], colWidths=[24, 60], rowHeights=[14]*8)
+    t_q_vert.setStyle(TableStyle([
+        ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#334155')),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('BACKGROUND', (0,1), (0,-1), colors.HexColor('#f1f5f9')),
+        ('FONTNAME', (0,0), (-1,-1), 'Tahoma-Bold'),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('FONTSIZE', (0,0), (-1,-1), 7.5),
+        ('TOPPADDING', (0,0), (-1,-1), 1.5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 1.5),
+    ]))
+
+    # Left info block
+    q_left_flow = [
+        t_q_horiz,
+        Spacer(1, 4),
+        Paragraph("<b>front อยู่ที่ตำแหน่ง:</b> .................................... &nbsp;&nbsp;&nbsp;&nbsp; <b>back อยู่ที่ตำแหน่ง:</b> ....................................", style_body_bold),
+        Spacer(1, 2),
+        Paragraph("<b>currentSize เมื่อจบการทำงาน:</b> .......................... &nbsp;&nbsp;|&nbsp;&nbsp; <b>สถานะคิว:</b> [ ] ว่างเปล่า (Empty) &nbsp;&nbsp; [ ] มีข้อมูลตกค้าง", style_body),
+        Spacer(1, 2),
+        Paragraph("<i>* การนำข้อมูลเข้าออกจาก Queue ยึดตามฟังก์ชัน enqueue: (back+1)%7 และ dequeue: (front+1)%7 ในหนังสือบทที่ 3</i>", style_body)
+    ]
+
+    t_dual_q = Table([[q_left_flow, t_q_vert]], colWidths=[425, 95])
+    t_dual_q.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 0),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+    ]))
+    story.append(t_dual_q)
+    story.append(Spacer(1, 6))
 
     # 5.3 Final Topological Ordering
     story.append(Paragraph(
         "<b>5.3 Final Topological Ordering:</b> [3 Marks]<br/>"
         "Write the resulting Topological Ordering sequence produced by the algorithm:<br/>"
-        "<b>Answer:</b> &nbsp;&nbsp;.......................................................................................................................................................................",
-        style_body_bold
+        "<b>Answer:</b> &nbsp;&nbsp;.......................................................................................................................................................................<br/>"
+        "<i>* คำเตือนจุดได้ 0 คะแนน: ต้องคั่นด้วยเครื่องหมายจุลภาค (Comma เช่น 1, 2, 5, 4...) ห้ามเขียนเครื่องหมายลูกศร (1 &rarr; 2 &rarr; 5...) เด็ดขาด</i>",
+        style_body
     ))
 
     # =========================================================================
@@ -596,8 +641,8 @@ def build_pdf():
     img_sp_adj = os.path.join(DIAGRAM_DIR, 'adj_shortest_path.png')
     if os.path.exists(img_sp_graph) and os.path.exists(img_sp_adj):
         t_diag_sp = Table([[
-            RLImage(img_sp_graph, width=255, height=125),
-            RLImage(img_sp_adj, width=255, height=125)
+            RLImage(img_sp_graph, width=255, height=120),
+            RLImage(img_sp_adj, width=255, height=120)
         ]], colWidths=[260, 260])
         t_diag_sp.setStyle(TableStyle([
             ('ALIGN', (0,0), (-1,-1), 'CENTER'),
@@ -608,16 +653,15 @@ def build_pdf():
             ('RIGHTPADDING', (0,0), (-1,-1), 0),
         ]))
         story.append(t_diag_sp)
-        story.append(Spacer(1, 4))
+        story.append(Spacer(1, 3))
 
     story.append(Paragraph(
         "<b>6.1 Execution Table for Shortest Path (Starting Vertex = 1):</b> [5 Marks]<br/>"
-        "Execute the BFS-based unweighted shortest path algorithm. Fill in the final processing array table containing "
-        "<b>Known (T/F or 1/0)</b>, <b>Distance (d<sub>v</sub>)</b>, and <b>Path (p<sub>v</sub>)</b> for all 7 vertices. "
-        "Show initial values (d<sub>v</sub> = &infin; or 999, p<sub>v</sub> = 0) and the final completed values when Known is True for all vertices:",
+        "Execute the BFS-based unweighted shortest path algorithm. Fill in the processing array table containing "
+        "<b>Known (T / F)</b>, <b>Distance (d<sub>v</sub>)</b>, <b>Path (p<sub>v</sub>)</b>, and record the <b>Enqueue / Dequeue</b> sequences:",
         style_body
     ))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
 
     t_sp_grid = Table([
         ['Vertex (v)', 'Known (T / F)', 'Distance (d_v)', 'Previous Path (p_v)', 'Shortest Route from Source (1)'],
@@ -627,60 +671,109 @@ def build_pdf():
         ['4', '', '', '', ''],
         ['5', '', '', '', ''],
         ['6', '', '', '', ''],
-        ['7', '', '', '', '']
-    ], colWidths=[65, 95, 95, 115, 153])
+        ['7', '', '', '', ''],
+        ['Enqueue Sequence', '', '', '', ''],
+        ['Dequeue Sequence', '', '', '', '']
+    ], colWidths=[105, 80, 85, 105, 148])
     t_sp_grid.setStyle(TableStyle([
         ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#e2e8f0')),
         ('BACKGROUND', (0,0), (0,-1), colors.HexColor('#f1f5f9')),
+        ('BACKGROUND', (0,-2), (-1,-2), colors.HexColor('#f0fdf4')),
+        ('BACKGROUND', (0,-1), (-1,-1), colors.HexColor('#fef2f2')),
         ('FONTNAME', (0,0), (-1,0), 'Tahoma-Bold'),
         ('FONTNAME', (0,0), (0,-1), 'Tahoma-Bold'),
+        ('FONTNAME', (0,-2), (0,-1), 'Tahoma-Bold'),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
         ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
-        ('FONTSIZE', (0,0), (-1,-1), 8),
-        ('TOPPADDING', (0,0), (-1,-1), 3),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 3),
+        ('FONTSIZE', (0,0), (-1,-1), 7.8),
+        ('TOPPADDING', (0,0), (-1,-1), 2.2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2.2),
     ]))
     story.append(t_sp_grid)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 6))
 
-    # 6.2 Queue Status
+    # 6.2 Queue Status & Textbook Pseudocode Box (Dual representation matching past exam p.4 & p.10)
     story.append(Paragraph(
-        "<b>6.2 Circular Queue State upon Completion:</b> [2 Marks]<br/>"
-        "Given a <b>Queue of capacity 7 (Slots 0 to 6)</b> used to process vertices in the algorithm. "
+        "<b>6.2 Circular Queue State upon Completion & Algorithm Pseudocode:</b> [2 Marks]<br/>"
+        "Given a <b>Queue of capacity 7 (Slots 0 to 6)</b> used to process BFS shortest paths.<br/>"
         "Draw the final contents of the Queue array and specify the pointer positions after the algorithm finishes:",
         style_body
     ))
-    story.append(Spacer(1, 4))
+    story.append(Spacer(1, 3))
 
-    t_sp_q = Table([
-        ['Slot Index', '0', '1', '2', '3', '4', '5', '6'],
-        ['Queue Value', '', '', '', '', '', '', '']
-    ], colWidths=[75] + [64]*7)
-    t_sp_q.setStyle(TableStyle([
+    t_sp_q_horiz = Table([
+        ['Index', '0', '1', '2', '3', '4', '5', '6'],
+        ['Queue', '', '', '', '', '', '', '']
+    ], colWidths=[48] + [44]*7, rowHeights=[16, 20])
+    t_sp_q_horiz.setStyle(TableStyle([
         ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#e0f2fe')),
         ('FONTNAME', (0,0), (-1,0), 'Tahoma-Bold'),
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
-        ('TOPPADDING', (0,0), (-1,-1), 4),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('FONTSIZE', (0,0), (-1,-1), 8),
+        ('TOPPADDING', (0,0), (-1,-1), 2),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 2),
     ]))
-    story.append(t_sp_q)
-    story.append(Spacer(1, 5))
-    story.append(Paragraph(
-        "<b>front points to index:</b> .................................... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "
-        "<b>back points to index:</b> ....................................",
-        style_body_bold
-    ))
-    story.append(Spacer(1, 10))
+
+    t_sp_q_vert = Table([
+        ['q', 'Slot'],
+        ['6', ''],
+        ['5', ''],
+        ['4', ''],
+        ['3', ''],
+        ['2', ''],
+        ['1', ''],
+        ['0', '']
+    ], colWidths=[24, 60], rowHeights=[14]*8)
+    t_sp_q_vert.setStyle(TableStyle([
+        ('GRID', (0,0), (-1,-1), 0.8, colors.HexColor('#475569')),
+        ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#334155')),
+        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
+        ('BACKGROUND', (0,1), (0,-1), colors.HexColor('#f1f5f9')),
+        ('FONTNAME', (0,0), (-1,-1), 'Tahoma-Bold'),
+        ('ALIGN', (0,0), (-1,-1), 'CENTER'),
+        ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ('FONTSIZE', (0,0), (-1,-1), 7.5),
+        ('TOPPADDING', (0,0), (-1,-1), 1.5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 1.5),
+    ]))
+
+    sp_q_left_flow = [
+        t_sp_q_horiz,
+        Spacer(1, 4),
+        Paragraph("<b>front อยู่ที่ตำแหน่ง:</b> .................................... &nbsp;&nbsp;&nbsp;&nbsp; <b>back อยู่ที่ตำแหน่ง:</b> ....................................", style_body_bold),
+        Spacer(1, 2),
+        Paragraph("<b>currentSize:</b> .......................... &nbsp;&nbsp;|&nbsp;&nbsp; <b>สถานะคิว:</b> [ ] ว่างเปล่า (Empty) &nbsp;&nbsp; [ ] มีข้อมูลตกค้าง", style_body),
+        Spacer(1, 2),
+        Paragraph(
+            "<b>Algorithm Pseudocode (Textbook Chapter 9 / Past Exam):</b><br/>"
+            "<code>while (!q.isEmpty()) { v = q.dequeue(); v.known = true;<br/>"
+            "&nbsp;&nbsp;for each w adjacent to v: if (w.dist == INFINITY) {<br/>"
+            "&nbsp;&nbsp;&nbsp;&nbsp;w.dist = v.dist + 1; w.path = v; q.enqueue(w); } }</code>",
+            style_code
+        )
+    ]
+
+    t_dual_sp_q = Table([[sp_q_left_flow, t_sp_q_vert]], colWidths=[425, 95])
+    t_dual_sp_q.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 0),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0),
+    ]))
+    story.append(t_dual_sp_q)
+    story.append(Spacer(1, 6))
 
     # 6.3 Backtracking Path
     story.append(Paragraph(
         "<b>6.3 Shortest Path Reconstruction & Zero-Mark Warning:</b> [3 Marks]<br/>"
         "<i>Professor's Rule: Path sequences MUST be written as comma-separated sequences (e.g. 1, 4, 5). "
         "DO NOT write arrows (1 &rarr; 4 &rarr; 5) which receives 0 marks. Path length is measured in number of EDGES.</i><br/>"
-        "&bull; <b>Shortest Path to Vertex 5:</b> Sequence = ..................................................... | Length = ............. edges<br/>"
-        "&bull; <b>Shortest Path to Vertex 7:</b> Sequence = ..................................................... | Length = ............. edges",
+        "&bull; <b>The length of the shortest path from Vertex 1 to Vertex 5:</b> = ............. edges &nbsp;&nbsp;|&nbsp;&nbsp; <b>Sequence:</b> = .....................................................<br/>"
+        "&bull; <b>The length of the shortest path from Vertex 1 to Vertex 7:</b> = ............. edges &nbsp;&nbsp;|&nbsp;&nbsp; <b>Sequence:</b> = .....................................................",
         style_body
     ))
 

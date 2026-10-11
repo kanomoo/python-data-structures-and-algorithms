@@ -19,22 +19,22 @@ output_path = os.path.join(
 )
 
 # Generate SVGs and HTML components
-svg_graph_topo = sec.render_svg_graph_exam2026_topo(width=620, height=330)
+svg_graph_topo = sec.render_svg_graph_exam2026_topo(width=620, height=340)
 adj_exam_topo = {
-    1: [3, 4],
-    2: [1],
-    3: [4, 6],
-    4: [6],
-    5: [1, 2, 7],
+    1: [2, 4, 3],
+    2: [4, 5],
+    3: [6],
+    4: [3, 6, 7],
+    5: [4, 7],
     6: [],
-    7: [2]
+    7: [6]
 }
 svg_adj_topo = sec.render_svg_adj_list(adj_exam_topo, title="Adjacency List: Directed Acyclic Graph (7 Vertices)", width=560, height=370)
 
 svg_graph_sp = sec.render_svg_graph_exam2026_sp(width=620, height=340)
 adj_exam_sp = {
     1: [2, 4],
-    2: [4, 5, 7],
+    2: [4, 5],
     3: [1, 6],
     4: [3, 5, 6, 7],
     5: [7],
@@ -58,10 +58,10 @@ html_hash_blank = sec.render_html_double_hashing_table({}, table_size=19, is_bla
 html_hash_solved = sec.render_html_double_hashing_table(hash_table_solved_data, table_size=19, is_blank=False, title="เฉลยตารางแฮชสมบูรณ์: แสดง Stored Key และประวัติการชน (Collisions) ตามโครงสร้างภาษา Python")
 
 # Min-Heap Trees & Arrays
-heap_12_keys = [None, 1, 6, 2, 10, 8, 15, 5, 64, 14, 20, 24, 20]
-heap_del1 = [None, 2, 6, 5, 10, 8, 15, 20, 64, 14, 20, 24]
-heap_ins3 = [None, 2, 6, 3, 10, 8, 5, 20, 64, 14, 20, 24, 15]
-heap_del2 = [None, 3, 6, 5, 10, 8, 15, 20, 64, 14, 20, 24]
+heap_12_keys = [None, 1, 6, 2, 10, 8, 20, 5, 64, 14, 20, 15, 24]
+heap_del1 = [None, 2, 6, 5, 10, 8, 20, 24, 64, 14, 20, 15]
+heap_ins3 = [None, 2, 6, 3, 10, 8, 5, 24, 64, 14, 20, 15, 20]
+heap_del2 = [None, 3, 6, 5, 10, 8, 20, 24, 64, 14, 20, 15]
 
 svg_heap_tree_12 = sec.render_svg_minheap_tree(heap_12_keys, title="Stage 1: Binary Min-Heap Tree หลังแทรกครบ 12 ตัว (Insert 12 Keys)", width=560, height=270)
 svg_heap_tree_del1 = sec.render_svg_minheap_tree(heap_del1, title="Stage 2: Binary Min-Heap Tree หลัง deleteMin() ครั้งที่ 1", width=560, height=270)
@@ -70,33 +70,38 @@ svg_heap_tree_del2 = sec.render_svg_minheap_tree(heap_del2, title="Stage 4: Bina
 
 html_heap_4_vertical = sec.render_html_heap_vertical_arrays([heap_12_keys, heap_del1, heap_ins3, heap_del2], labels=["1. Insert 12 Keys", "2. deleteMin() 1", "3. Insert key 3", "4. deleteMin() 2"])
 
-# Topological Sort Tables & Queue
+# Topological Sort Tables & Queue (Canonical DAG: v1 Source, v6 Sink)
 topo_indeg_solved_data = [
-    {'vertex': '1', 'initial': '<del style="color:#94a3b8;">2</del> <del style="color:#ea580c;">1</del> <strong style="color:#15803d;">0</strong> (Q)', 'r1': '1', 'r2': '1', 'r3': '0 (In Q)', 'r4': 'ออก', 'r5': '-', 'r6': '-', 'r7': '-'},
-    {'vertex': '2', 'initial': '<del style="color:#94a3b8;">2</del> <del style="color:#ea580c;">1</del> <strong style="color:#15803d;">0</strong> (Q)', 'r1': '1', 'r2': '0 (In Q)', 'r3': 'ออก', 'r4': '-', 'r5': '-', 'r6': '-', 'r7': '-'},
-    {'vertex': '3', 'initial': '<del style="color:#94a3b8;">1</del> <strong style="color:#15803d;">0</strong> (Q)', 'r1': '1', 'r2': '1', 'r3': '1', 'r4': '0 (In Q)', 'r5': 'ออก', 'r6': '-', 'r7': '-'},
-    {'vertex': '4', 'initial': '<del style="color:#94a3b8;">2</del> <del style="color:#ea580c;">1</del> <strong style="color:#15803d;">0</strong> (Q)', 'r1': '2', 'r2': '2', 'r3': '2', 'r4': '1', 'r5': '0 (In Q)', 'r6': 'ออก', 'r7': '-'},
-    {'vertex': '5', 'initial': '<strong style="color:#15803d;">0</strong> (In Q)', 'r1': 'ออก', 'r2': '-', 'r3': '-', 'r4': '-', 'r5': '-', 'r6': '-', 'r7': '-'},
-    {'vertex': '6', 'initial': '<del style="color:#94a3b8;">2</del> <del style="color:#ea580c;">1</del> <strong style="color:#15803d;">0</strong> (Q)', 'r1': '2', 'r2': '2', 'r3': '2', 'r4': '2', 'r5': '1', 'r6': '0 (In Q)', 'r7': 'ออก'},
-    {'vertex': '7', 'initial': '<del style="color:#94a3b8;">1</del> <strong style="color:#15803d;">0</strong> (Q)', 'r1': '0 (In Q)', 'r2': 'ออก', 'r3': '-', 'r4': '-', 'r5': '-', 'r6': '-', 'r7': '-'},
+    {'vertex': '1', 'initial': '<strong style="color:#15803d;">0</strong> (In Q)', 'r1': '0 (dq)', 'r2': '-', 'r3': '-', 'r4': '-', 'r5': '-', 'r6': '-', 'r7': '-'},
+    {'vertex': '2', 'initial': '1', 'r1': '<del style="color:#dc2626;">1</del> <strong style="color:#15803d;">0</strong> (In Q)', 'r2': '0 (dq)', 'r3': '-', 'r4': '-', 'r5': '-', 'r6': '-', 'r7': '-'},
+    {'vertex': '3', 'initial': '2', 'r1': '<del style="color:#94a3b8;">2</del> 1', 'r2': '1', 'r3': '1', 'r4': '<del style="color:#dc2626;">1</del> <strong style="color:#15803d;">0</strong> (In Q)', 'r5': '0 (dq)', 'r6': '-', 'r7': '-'},
+    {'vertex': '4', 'initial': '3', 'r1': '<del style="color:#94a3b8;">3</del> 2', 'r2': '<del style="color:#94a3b8;">2</del> 1', 'r3': '<del style="color:#dc2626;">1</del> <strong style="color:#15803d;">0</strong> (In Q)', 'r4': '0 (dq)', 'r5': '-', 'r6': '-', 'r7': '-'},
+    {'vertex': '5', 'initial': '1', 'r1': '1', 'r2': '<del style="color:#dc2626;">1</del> <strong style="color:#15803d;">0</strong> (In Q)', 'r3': '0 (dq)', 'r4': '-', 'r5': '-', 'r6': '-', 'r7': '-'},
+    {'vertex': '6', 'initial': '3', 'r1': '3', 'r2': '3', 'r3': '3', 'r4': '<del style="color:#94a3b8;">3</del> 2', 'r5': '<del style="color:#94a3b8;">2</del> 1', 'r6': '<del style="color:#dc2626;">1</del> <strong style="color:#15803d;">0</strong> (In Q)', 'r7': '0 (dq)'},
+    {'vertex': '7', 'initial': '2', 'r1': '2', 'r2': '2', 'r3': '<del style="color:#94a3b8;">2</del> 1', 'r4': '<del style="color:#dc2626;">1</del> <strong style="color:#15803d;">0</strong> (In Q)', 'r5': '0', 'r6': '0 (dq)', 'r7': '-'},
 ]
-html_topo_indeg_blank = sec.render_html_topo_indegree_table([{'vertex': str(i)} for i in range(1, 8)], queue_slots=['']*7, title="ช่องจำลองกระดาษคำตอบ: ตาราง Indegree Array Tracing (ขนาด 7 จุดยอด)", is_blank=True)
-html_topo_indeg_solved = sec.render_html_topo_indegree_table(topo_indeg_solved_data, queue_slots=['5', '7', '2', '1', '3', '4', '6'], title="เฉลยตาราง Indegree Array Tracing ละเอียดครบ 7 รอบ", is_blank=False)
-svg_topo_queue = sec.render_svg_circular_queue(['5', '7', '2', '1', '3', '4', '6'], front_idx=0, back_idx=6, current_size=0, title="สถานะ Circular Queue เมื่อจบขั้นตอน Topological Sort (front=0, back=6)")
+enqueue_row_solved = ['1', '2', '5', '4', '3, 7', '-', '6', '-']
+dequeue_row_solved = ['-', '1', '2', '5', '4', '3', '7', '6']
+queue_slots_topo = ['1', '2', '5', '4', '3', '7', '6']
 
-# Shortest Path Tables & Queue
+html_topo_indeg_blank = sec.render_html_topo_indegree_table([{'vertex': str(i)} for i in range(1, 8)], enqueue_row=['']*8, dequeue_row=['']*8, queue_slots=['']*7, final_pointers={'front': '...', 'back': '...', 'currentSize': '...', 'order': '...'}, title="ช่องจำลองกระดาษคำตอบ: ตาราง Indegree Array Tracing (ขนาด 7 จุดยอด)", is_blank=True)
+html_topo_indeg_solved = sec.render_html_topo_indegree_table(topo_indeg_solved_data, enqueue_row=enqueue_row_solved, dequeue_row=dequeue_row_solved, queue_slots=queue_slots_topo, final_pointers={'front': 0, 'back': 6, 'currentSize': 0, 'order': '1, 2, 5, 4, 3, 7, 6'}, title="เฉลยตาราง Indegree Array Tracing ละเอียดครบ 7 รอบ", is_blank=False)
+svg_topo_queue = sec.render_svg_circular_queue(queue_slots_topo, front_idx=0, back_idx=6, current_size=0, title="สถานะ Circular Queue เมื่อจบขั้นตอน Topological Sort (front=0, back=6)")
+
+# Shortest Path Tables & Queue (Canonical Graph: Source = 1)
 sp_rows_solved = [
     {'vertex': '1', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<strong style="color:#1e40af;">0</strong>', 'path': '<strong style="color:#1e40af;">0</strong>'},
     {'vertex': '2', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">1</strong>', 'path': '<del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">1</strong>'},
     {'vertex': '3', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong>', 'path': '<del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">4</strong>'},
     {'vertex': '4', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">1</strong>', 'path': '<del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">1</strong>'},
-    {'vertex': '5', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong>', 'path': '<del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">2</strong>'},
+    {'vertex': '5', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong>', 'path': '<del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">2</strong> (หรือ 4)'},
     {'vertex': '6', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong>', 'path': '<del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">4</strong>'},
-    {'vertex': '7', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong>', 'path': '<del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">2</strong>'}
+    {'vertex': '7', 'known': '<del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong>', 'dist': '<del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong>', 'path': '<del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">4</strong> (หรือ 5)'}
 ]
-html_sp_blank = sec.render_html_shortest_path_table([{'vertex': str(i)} for i in range(1, 8)], queue_slots=['']*7, title="ช่องจำลองกระดาษคำตอบ: ตารางประมวลผล Shortest Path (Known, Dist, Path)", source_vertex=1, is_blank=True)
-html_sp_solved = sec.render_html_shortest_path_table(sp_rows_solved, queue_slots=['1', '2', '4', '5', '7', '3', '6'], title="เฉลยละเอียดตารางประมวลผล Shortest Path (การขีดฆ่าอัปเดตตามลำดับ BFS)", source_vertex=1, is_blank=False)
-svg_sp_queue = sec.render_svg_circular_queue(['1', '2', '4', '5', '7', '3', '6'], front_idx=0, back_idx=6, current_size=0, title="สถานะ Circular Queue เมื่อจบขั้นตอน Shortest Path (front=0, back=6)")
+queue_slots_sp = ['1', '2', '4', '5', '3', '6', '7']
+html_sp_blank = sec.render_html_shortest_path_table([{'vertex': str(i)} for i in range(1, 8)], enqueue_seq='', dequeue_seq='', queue_slots=['']*7, final_pointers={'front': '...', 'back': '...', 'currentSize': '...'}, title="ช่องจำลองกระดาษคำตอบ: ตารางประมวลผล Shortest Path (Known, Dist, Path)", source_vertex=1, is_blank=True)
+html_sp_solved = sec.render_html_shortest_path_table(sp_rows_solved, enqueue_seq='1, 2, 4, 5, 3, 6, 7', dequeue_seq='1, 2, 4, 5, 3, 6, 7', queue_slots=queue_slots_sp, final_pointers={'front': 0, 'back': 6, 'currentSize': 0}, title="เฉลยละเอียดตารางประมวลผล Shortest Path (การขีดฆ่าอัปเดตตามลำดับ BFS)", source_vertex=1, is_blank=False)
+svg_sp_queue = sec.render_svg_circular_queue(queue_slots_sp, front_idx=0, back_idx=6, current_size=0, title="สถานะ Circular Queue เมื่อจบขั้นตอน Shortest Path (front=0, back=6)")
 
 html_content = f"""<!DOCTYPE html>
 <html lang="th">
@@ -699,10 +704,10 @@ html_content = f"""<!DOCTYPE html>
 
     <p><strong>3. ผลลัพธ์ Topological Ordering:</strong></p>
     <p style="font-size:18px; font-weight:bold; color:#1e40af; text-align:center; background:#dbeafe; padding:12px; border-radius:8px;">
-      5, 7, 2, 1, 3, 4, 6
+      1, 2, 5, 4, 3, 7, 6 &nbsp;&nbsp;<span style="font-size:14px; font-weight:normal; color:#475569;">(หรือ 1, 2, 5, 4, 7, 3, 6)</span>
     </p>
     <div class="alert-box">
-      <strong>🚨 กับดักได้ 0 คะแนน:</strong> ห้ามเขียนลูกศร เช่น <code>5 -&gt; 7 -&gt; 2 -&gt; ...</code> ต้องเขียน <code>5, 7, 2, 1, 3, 4, 6</code> เท่านั้น!
+      <strong>🚨 กับดักได้ 0 คะแนน:</strong> ห้ามเขียนลูกศร เช่น <code>1 -&gt; 2 -&gt; 5 -&gt; ...</code> ต้องเขียนคั่นด้วยจุลภาค <code>1, 2, 5, 4, 3, 7, 6</code> เท่านั้น!
     </div>
   </div>
 
@@ -747,8 +752,8 @@ html_content = f"""<!DOCTYPE html>
 
     <p><strong>3. คำตอบเส้นทางและระยะทาง (Strict Comma Notation):</strong></p>
     <ul>
-      <li><strong>Shortest Path to Vertex 5:</strong> <strong style="color:#1e40af; font-size:16px;">1, 4, 5</strong> (หรือ <code>1, 2, 5</code>) &mdash; ความยาว (Length) = <strong>2</strong> (หรือ 2 เส้น)</li>
-      <li><strong>Shortest Path to Vertex 7:</strong> <strong style="color:#1e40af; font-size:16px;">1, 2, 7</strong> (หรือ <code>1, 4, 7</code>) &mdash; ความยาว (Length) = <strong>2</strong> (หรือ 2 เส้น)</li>
+      <li><strong>Shortest Path to Vertex 5:</strong> <strong style="color:#1e40af; font-size:16px;">1, 2, 5</strong> (หรือ <code>1, 4, 5</code>) &mdash; ความยาว (Length) = <strong>2</strong> (หรือ 2 เส้น)</li>
+      <li><strong>Shortest Path to Vertex 7:</strong> <strong style="color:#1e40af; font-size:16px;">1, 4, 7</strong> &mdash; ความยาว (Length) = <strong>2</strong> (หรือ 2 เส้น)</li>
     </ul>
 
     <div class="alert-box">
