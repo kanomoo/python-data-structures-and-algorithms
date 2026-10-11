@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ข้อสอบปลายภาค Data Structures & Algorithms (Final Exam 2026 ฉบับจริง + เฉลยละเอียด + รูปภาพและตารางตรงมาตรฐาน)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- MathJax configuration -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<style>
+  :root {
+    --primary: #0f172a;
+    --primary-accent: #2563eb;
+    --secondary-accent: #0284c7;
+    --bg-page: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
+    --success: #15803d;
+    --success-bg: #f0fdf4;
+    --danger: #b91c1c;
+    --danger-bg: #fef2f2;
+    --warning: #b45309;
+    --warning-bg: #fffbeb;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+    padding: 24px;
+  }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-color);
+  }
+
+  /* Header Section */
+  .header {
+    text-align: center;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+  }
+  .university-title {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 0 4px 0;
+  }
+  .exam-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--primary-accent);
+    margin: 4px 0;
+  }
+  .course-info {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 4px 0;
+  }
+  .student-box {
+    display: flex;
+    justify-content: space-between;
+    background: #f1f5f9;
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 14.5px;
+    font-weight: 500;
+  }
+
+  /* Rules Box */
+  .rules-box {
+    background: #eff6ff;
+    border-left: 4px solid var(--primary-accent);
+    padding: 14px 18px;
+    margin-bottom: 25px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+  }
+  .rules-title {
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 6px;
+  }
+
+  /* Section Headings */
+  h1.section-heading {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-bottom: 20px;
+  }
+
+  .part-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary);
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 6px;
+    margin-top: 25px;
+    margin-bottom: 12px;
+  }
+
+  .question-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    padding: 8px 14px;
+    margin: 14px 0 8px 0;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #1e3a8a;
+  }
+
+  .score-badge {
+    background: #dbeafe;
+    color: #1d4ed8;
+    padding: 3px 9px;
+    border-radius: 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+
+  /* Translations and Solutions */
+  .thai-trans {
+    background-color: #f1f5f9;
+    border-left: 3px solid #64748b;
+    padding: 10px 14px;
+    margin: 8px 0 12px 0;
+    font-size: 14px;
+    color: #334155;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .blank-sheet-box {
+    background: #fafafa;
+    border: 1.5px dashed #94a3b8;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 15px 0;
+  }
+
+  .solution-box {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #16a34a;
+    padding: 16px 20px;
+    margin: 16px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 14.5px;
+  }
+  .solution-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #15803d;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .theory-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-left: 4px solid #2563eb;
+    padding: 14px 18px;
+    border-radius: 0 6px 6px 0;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  .alert-box {
+    background: #fef2f2;
+    border-left: 4px solid #dc2626;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin: 14px 0;
+    font-size: 14px;
+    color: #991b1b;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 13.5px;
+  }
+  th, td {
+    border: 1px solid var(--border-color);
+    padding: 8px 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #f1f5f9;
+    color: #334155;
+    font-weight: 600;
+  }
+
+  pre {
+    background-color: #1e293b;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    background-color: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
+  }
+  .print-btn:hover { background: #1d4ed8; }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .container { box-shadow: none; border: none; padding: 0; max-width: 100%; }
+    .print-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="university-title">มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ (KMUTNB)</div>
+    <div class="course-info">คณะเทคโนโลยีและการจัดการอุตสาหกรรม / คณะวิทยาศาสตร์ประยุกต์ | ภาคเรียนที่ 1 ปีการศึกษา 2569</div>
+    <div class="exam-title">การสอบปลายภาค: วิชา 060243106 / 060223119 Data Structures and Algorithms</div>
+    <div style="font-size:14px; color:#475569; margin-top:2px;">อาจารย์ผู้สอน: รศ.ดร.ประดิษฐ์ พิทักษ์เสถียรกุล (Assoc. Prof. Dr. Pradit Pitaksatheinkul)</div>
+
+    <div class="student-box">
+      <div>ชื่อ-นามสกุล: ............................................................................</div>
+      <div>รหัสนักศึกษา: ....................................................</div>
+      <div>ตอนเรียน (Sec): .............</div>
+    </div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="rules-box">
+    <div class="rules-title">📌 ระเบียบและคำชี้แจงในการสอบ (Examination Regulations):</div>
+    <ul style="margin:4px 0; padding-left:20px;">
+      <li><strong>คะแนนรวมในข้อสอบ:</strong> 70 คะแนน (นำไปหาร 2 เหลือคะแนนเก็บสุทธิ 35 คะแนน) | เวลาสอบ: 3 ชั่วโมง</li>
+      <li><strong>อุปกรณ์ที่อนุญาต:</strong> เปิดตำราและชีทเรียนได้ (Open Book), ใช้เครื่องคิดเลขได้ <strong>ห้ามใช้โทรศัพท์มือถือทุกกรณี</strong></li>
+      <li><strong>กฎเหล็กการเขียนคำตอบ:</strong>
+        <ul>
+          <li><strong>เรื่องวิถี (Path):</strong> ต้องเขียนเป็นลำดับคั่นด้วย Comma เท่านั้น เช่น <code>1, 4, 5</code> (<strong>ห้ามใส่ลูกศร <code>-&gt;</code> เด็ดขาด ใครใส่ปรับ 0 คะแนนทันที</strong>)</li>
+          <li><strong>ความยาววิถี (Path Length):</strong> ตอบเป็นจำนวน <strong>"เส้น" (Edges)</strong> เท่านั้น</li>
+          <li><strong>Complete Graph:</strong> จำนวนเส้นเชื่อมต้องคำนวณเป็นตัวเลขจำนวนเต็ม ห้ามติดอยู่ในรูปสูตร</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART 1: OFFICIAL EXAM 2026 QUESTIONS & DETAILED SOLUTIONS                -->
+  <!-- ========================================================================= -->
+  <h1 class="section-heading">🌟 ตอนที่ 1: ชุดข้อสอบปลายภาคฉบับจริงปี 2569 (Official Final Exam - 7 ข้อใหญ่ 70 คะแนน)</h1>
+
+  <!-- QUESTION 1 -->
+  <h2 class="part-title">Question 1: Hashing &amp; Open Addressing (Double Hashing) (18 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>1.1 Double Hashing Table &amp; Probe Calculations</span>
+    <span class="score-badge">Score: 8 Marks (8 คะแนน)</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> Given an empty hash table of size $\text{TableSize} = 19$ (indexed from $0$ to $18$) using Python 1D List structure. Using <strong>Open Addressing</strong> with <strong>Double Hashing</strong> defined by:</p>
+  $$\text{Primary Hash Function: } h_0(X) = X \bmod 19$$
+  $$\text{Probe Formula: } h_i(X) = (h_0(X) + f(i)) \bmod 19 \quad \text{where } f(i) = i \times (17 - (X \bmod 17)) \quad \text{for } i = 0, 1, 2, \dots$$
+  <p>Insert the following sequence of keys sequentially into the hash table:</p>
+  $$\mathbf{26, 45, 70, 85, 102, 123, 143, 155}$$
+  <p>Show all probe calculations ($h_0, h_1, h_2, \dots$) for each key and fill the resulting hash table (1D Python List indexed from 0 to 18 with key values).</p>
+
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> กำหนดตารางแฮชว่างขนาด $19$ ช่อง (ดัชนี $0$ ถึง $18$) ตามโครงสร้างภาษา Python ใช้วิธี Open Addressing แบบ Double Hashing โดยมีฟังก์ชันแฮชหลัก $h_0(X) = X \bmod 19$ และฟังก์ชันการกระจาย $f(i) = i \times (17 - (X \bmod 17))$ จงแทรกคีย์ $26, 45, 70, 85, 102, 123, 143, 155$ ลงในตารางแฮชตามลำดับ พร้อมแสดงวิธีคำนวณการชนและการแก้การชนทีละตัว และกรอกผลลัพธ์ลงในตารางแฮชให้สมบูรณ์ตามโครงสร้างภาษา Python
+  </div>
+
+  <div class="blank-sheet-box">
+    <div style="overflow-x:auto; margin:15px 0;">
+  <div style="font-size:13px; font-weight:bold; color:#334155; margin-bottom:6px;">📝 ช่องจำลองกระดาษคำตอบข้อ 1.1: ตารางแฮชขนาด 19 ช่อง (ดัชนี 0 ถึง 18 ตามโครงสร้างภาษา Python)</div>
+  <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Tahoma, sans-serif; font-size:12.5px; border:2px solid #334155;">
+    <thead>
+      <tr style="background:#1e293b; color:#ffffff;">
+        <th style="padding:6px; border:1px solid #475569; width:95px;">Slot / Index</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[0]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[1]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[2]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[3]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[4]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[5]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[6]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[7]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[8]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[9]</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:8px 4px; font-weight:bold; background:#f1f5f9; border:1px solid #cbd5e1; color:#0f172a;">Stored Key</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+      </tr>
+      <tr style="background:#1e293b; color:#ffffff;">
+        <th style="padding:6px; border:1px solid #475569;">Slot / Index</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[10]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[11]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[12]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[13]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[14]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[15]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[16]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[17]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[18]</th>
+        <th style="padding:6px; border:1px solid #475569; background:#475569;">-</th>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:8px 4px; font-weight:bold; background:#f1f5f9; border:1px solid #cbd5e1; color:#0f172a;">Stored Key</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; height:34px;">&nbsp;</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; background:#f1f5f9;">-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+
+  <!-- SUB-QUESTION 1.2 -->
+  <h3 class="question-title">
+    <span>1.2 ข้อมูลตัวใดชนมากที่สุด ชนกี่ครั้ง และที่ตำแหน่งใด / Key with Maximum Collisions</span>
+    <span class="score-badge">Score: 3 Marks (3 คะแนน: 1 + 1 + 1)</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> Which key(s) experienced the maximum number of collisions during insertion? How many collisions did they experience, and at which cell locations?</p>
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> ข้อมูลตัวใด ขณะใส่เข้าไปใน Hash Table แล้ว มีการชนกันและแก้การชนกันมากที่สุด (มีมากกว่า 1 ตัวก็ได้) และขณะใส่ข้อมูลตัวนั้น เกิดการชนกันกี่ครั้ง ที่ตำแหน่งใด?
+  </div>
+  <div class="blank-sheet-box">
+    <p style="margin:0; font-size:15px; line-height:2;">
+      ข้อมูลตัวที่มีการชนมากที่สุด คือ .................................................................... เกิดการชนกัน ............ ครั้ง ที่ตำแหน่ง ....................................................................
+    </p>
+  </div>
+
+  <!-- SUB-QUESTION 1.3 -->
+  <h3 class="question-title">
+    <span>1.3 จำนวนการชนและแก้การชนรวมทั้งสิ้น / Total Cumulative Collisions</span>
+    <span class="score-badge">Score: 3 Marks (3 คะแนน)</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> What is the total cumulative number of collisions and resolution steps that occurred during the insertion of all 8 keys?</p>
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> เกิดการชนกันและแก้การชนกันรวมทั้งสิ้นกี่ครั้งตลอดการใส่ข้อมูลครบทั้ง 8 ตัว?
+  </div>
+  <div class="blank-sheet-box">
+    <p style="margin:0; font-size:15px; line-height:2;">
+      เกิดการชนกันและแก้การชนกันรวมทั้งสิ้น ............ ครั้ง
+    </p>
+  </div>
+
+  <!-- SUB-QUESTION 1.4 -->
+  <h3 class="question-title">
+    <span>1.4 จำนวนข้อมูลที่ต้องใส่เพิ่มอีกกี่ตัว จึงจะเกิดการ Rehashing / Threshold for Rehashing</span>
+    <span class="score-badge">Score: 4 Marks (4 คะแนน)</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> If the rehashing threshold policy is set to trigger when the load factor strictly exceeds <strong>80%</strong> of $\text{TableSize} = 19$, how many <em>additional</em> keys must be inserted before rehashing occurs?</p>
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> หากกำหนดเงื่อนไขให้ทำการ Rehash เมื่อตารางมีข้อมูลมากกว่า 80% หลังจากใส่ข้อมูลครบทั้ง 8 ตัวแล้ว จะต้องใส่ข้อมูลเพิ่มอีกอย่างน้อยกี่ตัว จึงจะเกิดการ Rehashing?
+  </div>
+  <div class="blank-sheet-box">
+    <p style="margin:0; font-size:15px; line-height:2;">
+      จะต้องใส่ข้อมูลเพิ่มอีก ............ ตัว จึงจะเกิดการ Rehash
+    </p>
+  </div>
+
+  <!-- QUESTION 1 SOLUTIONS -->
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยละเอียดและหลักการทางทฤษฎี (Complete Solution &amp; Principles):</div>
+    
+    <p><strong>1. การคำนวณการชนและการแทรกทีละคีย์:</strong></p>
+    <ul>
+      <li><strong>Key 26:</strong> $h_0(26) = 26 \bmod 19 = \mathbf{7}$ &rarr; ช่อง 7 ว่าง &rarr; บรรจุลง <strong>ช่อง 7</strong> (ชน 0 ครั้ง)</li>
+      <li><strong>Key 45:</strong> $h_0(45) = 45 \bmod 19 = \mathbf{7}$ &rarr; <em>ชนกับ 26 ที่ช่อง 7!</em> (ชนครั้งที่ 1)<br>
+        คำนวณก้าวเดิน: $s(45) = 17 - (45 \bmod 17) = 17 - 11 = 6$<br>
+        $i=1: h_1(45) = (7 + 1 \times 6) \bmod 19 = 13 \bmod 19 = \mathbf{13}$ &rarr; ช่อง 13 ว่าง &rarr; บรรจุลง <strong>ช่อง 13</strong> (ชน 1 ครั้ง)
+      </li>
+      <li><strong>Key 70:</strong> $h_0(70) = 70 \bmod 19 = \mathbf{13}$ &rarr; <em>ชนกับ 45 ที่ช่อง 13!</em> (ชนครั้งที่ 1)<br>
+        คำนวณก้าวเดิน: $s(70) = 17 - (70 \bmod 17) = 17 - 2 = 15$<br>
+        $i=1: h_1(70) = (13 + 1 \times 15) \bmod 19 = 28 \bmod 19 = \mathbf{9}$ &rarr; ช่อง 9 ว่าง &rarr; บรรจุลง <strong>ช่อง 9</strong> (ชน 1 ครั้ง)
+      </li>
+      <li><strong>Key 85:</strong> $h_0(85) = 85 \bmod 19 = \mathbf{9}$ &rarr; <em>ชนกับ 70 ที่ช่อง 9!</em> (ชนครั้งที่ 1)<br>
+        คำนวณก้าวเดิน: $s(85) = 17 - (85 \bmod 17) = 17 - 0 = 17$<br>
+        $i=1: h_1(85) = (9 + 1 \times 17) \bmod 19 = 26 \bmod 19 = \mathbf{7}$ &rarr; <em>ชนกับ 26 ที่ช่อง 7!</em> (ชนครั้งที่ 2)<br>
+        $i=2: h_2(85) = (9 + 2 \times 17) \bmod 19 = 43 \bmod 19 = \mathbf{5}$ &rarr; ช่อง 5 ว่าง &rarr; บรรจุลง <strong>ช่อง 5</strong> (ชน 2 ครั้ง)
+      </li>
+      <li><strong>Key 102:</strong> $h_0(102) = 102 \bmod 19 = \mathbf{7}$ &rarr; <em>ชนกับ 26 ที่ช่อง 7!</em> (ชนครั้งที่ 1)<br>
+        คำนวณก้าวเดิน: $s(102) = 17 - (102 \bmod 17) = 17 - 0 = 17$<br>
+        $i=1: h_1(102) = (7 + 1 \times 17) \bmod 19 = 24 \bmod 19 = \mathbf{5}$ &rarr; <em>ชนกับ 85 ที่ช่อง 5!</em> (ชนครั้งที่ 2)<br>
+        $i=2: h_2(102) = (7 + 2 \times 17) \bmod 19 = 41 \bmod 19 = \mathbf{3}$ &rarr; ช่อง 3 ว่าง &rarr; บรรจุลง <strong>ช่อง 3</strong> (ชน 2 ครั้ง)
+      </li>
+      <li><strong>Key 123:</strong> $h_0(123) = 123 \bmod 19 = \mathbf{9}$ &rarr; <em>ชนกับ 70 ที่ช่อง 9!</em> (ชนครั้งที่ 1)<br>
+        คำนวณก้าวเดิน: $s(123) = 17 - (123 \bmod 17) = 17 - 4 = 13$<br>
+        $i=1: h_1(123) = (9 + 1 \times 13) \bmod 19 = 22 \bmod 19 = \mathbf{3}$ &rarr; <em>ชนกับ 102 ที่ช่อง 3!</em> (ชนครั้งที่ 2)<br>
+        $i=2: h_2(123) = (9 + 2 \times 13) \bmod 19 = 35 \bmod 19 = \mathbf{16}$ &rarr; ช่อง 16 ว่าง &rarr; บรรจุลง <strong>ช่อง 16</strong> (ชน 2 ครั้ง)
+      </li>
+      <li><strong>Key 143:</strong> $h_0(143) = 143 \bmod 19 = \mathbf{10}$ &rarr; ช่อง 10 ว่าง &rarr; บรรจุลง <strong>ช่อง 10</strong> (ชน 0 ครั้ง)</li>
+      <li><strong>Key 155:</strong> $h_0(155) = 155 \bmod 19 = \mathbf{3}$ &rarr; <em>ชนกับ 102 ที่ช่อง 3!</em> (ชนครั้งที่ 1)<br>
+        คำนวณก้าวเดิน: $s(155) = 17 - (155 \bmod 17) = 17 - 2 = 15$<br>
+        $i=1: h_1(155) = (3 + 1 \times 15) \bmod 19 = 18 \bmod 19 = \mathbf{18}$ &rarr; ช่อง 18 ว่าง &rarr; บรรจุลง <strong>ช่อง 18</strong> (ชน 1 ครั้ง)
+      </li>
+    </ul>
+
+    <div style="overflow-x:auto; margin:15px 0;">
+  <div style="font-size:13px; font-weight:bold; color:#334155; margin-bottom:6px;">📝 เฉลยตารางแฮชสมบูรณ์: แสดง Stored Key และประวัติการชน (Collisions) ตามโครงสร้างภาษา Python</div>
+  <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Tahoma, sans-serif; font-size:12.5px; border:2px solid #334155;">
+    <thead>
+      <tr style="background:#1e293b; color:#ffffff;">
+        <th style="padding:6px; border:1px solid #475569; width:95px;">Slot / Index</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[0]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[1]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[2]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[3]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[4]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[5]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[6]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[7]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[8]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[9]</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:8px 4px; font-weight:bold; background:#f1f5f9; border:1px solid #cbd5e1; color:#0f172a;">Stored Key</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; font-weight:bold; color:#1e40af; font-size:13.5px;">102</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; font-weight:bold; color:#1e40af; font-size:13.5px;">85</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; font-weight:bold; color:#1e40af; font-size:13.5px;">26</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; font-weight:bold; color:#1e40af; font-size:13.5px;">70</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:5px 4px; font-weight:bold; background:#e2e8f0; border:1px solid #cbd5e1; color:#0f172a; font-size:11px;">Collisions</td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="background:#fee2e2; color:#dc2626; padding:1px 4px; border-radius:3px; font-size:10.5px; font-weight:bold;">ชน 2 ครั้ง</span><br/><span style="font-size:9.5px; color:#64748b;">(ช่อง 7, 5)</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="background:#fee2e2; color:#dc2626; padding:1px 4px; border-radius:3px; font-size:10.5px; font-weight:bold;">ชน 2 ครั้ง</span><br/><span style="font-size:9.5px; color:#64748b;">(ช่อง 9, 7)</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="background:#dcfce7; color:#15803d; padding:1px 4px; border-radius:3px; font-size:10.5px;">ชน 0</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="background:#fee2e2; color:#dc2626; padding:1px 4px; border-radius:3px; font-size:10.5px; font-weight:bold;">ชน 1 ครั้ง</span><br/><span style="font-size:9.5px; color:#64748b;">(ช่อง 9)</span></td>
+      </tr>
+      <tr style="background:#1e293b; color:#ffffff;">
+        <th style="padding:6px; border:1px solid #475569;">Slot / Index</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[10]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[11]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[12]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[13]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[14]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[15]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[16]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[17]</th>
+        <th style="padding:6px; border:1px solid #475569; font-weight:bold;">[18]</th>
+        <th style="padding:6px; border:1px solid #475569; background:#475569;">-</th>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:8px 4px; font-weight:bold; background:#f1f5f9; border:1px solid #cbd5e1; color:#0f172a;">Stored Key</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; font-weight:bold; color:#1e40af; font-size:13.5px;">143</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; font-weight:bold; color:#1e40af; font-size:13.5px;">45</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; font-weight:bold; color:#1e40af; font-size:13.5px;">123</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; color:#cbd5e1;">-</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; font-weight:bold; color:#1e40af; font-size:13.5px;">155</td>
+        <td style="padding:8px 4px; border:1px solid #cbd5e1; background:#f1f5f9;">-</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td style="padding:5px 4px; font-weight:bold; background:#e2e8f0; border:1px solid #cbd5e1; color:#0f172a; font-size:11px;">Collisions</td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="background:#dcfce7; color:#15803d; padding:1px 4px; border-radius:3px; font-size:10.5px;">ชน 0</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="background:#fee2e2; color:#dc2626; padding:1px 4px; border-radius:3px; font-size:10.5px; font-weight:bold;">ชน 1 ครั้ง</span><br/><span style="font-size:9.5px; color:#64748b;">(ช่อง 7)</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="background:#fee2e2; color:#dc2626; padding:1px 4px; border-radius:3px; font-size:10.5px; font-weight:bold;">ชน 2 ครั้ง</span><br/><span style="font-size:9.5px; color:#64748b;">(ช่อง 9, 3)</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="color:#cbd5e1;">-</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1;"><span style="background:#fee2e2; color:#dc2626; padding:1px 4px; border-radius:3px; font-size:10.5px; font-weight:bold;">ชน 1 ครั้ง</span><br/><span style="font-size:9.5px; color:#64748b;">(ช่อง 3)</span></td>
+        <td style="padding:5px 4px; border:1px solid #cbd5e1; background:#f1f5f9;">-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    <p><strong>สรุปคำตอบข้อ 1.2 - 1.4:</strong></p>
+    <ul>
+      <li><strong>ข้อ 1.2 ข้อมูลที่ชนมากที่สุด:</strong> <strong>85, 102, 123</strong> (เกิดการชนตัวละ <strong>2 ครั้ง</strong> โดย 85 ชนที่ช่อง 9 และ 7 | 102 ชนที่ช่อง 7 และ 5 | 123 ชนที่ช่อง 9 และ 3)</li>
+      <li><strong>ข้อ 1.3 จำนวนการชนรวม:</strong> $0 + 1 + 1 + 2 + 2 + 2 + 0 + 1 = \mathbf{9 \text{ ครั้ง}}$</li>
+      <li><strong>ข้อ 1.4 จำนวนที่ต้องใส่เพิ่มก่อน Rehash:</strong><br>
+        $\text{Threshold} = \lceil 19 \times 0.80 \rceil = \lceil 15.2 \rceil = \mathbf{16 \text{ คีย์}}$<br>
+        ปัจจุบันใส่ไปแล้ว 8 คีย์ &rarr; ดังนั้นจะต้องใส่ข้อมูลเพิ่มอีก $16 - 8 = \mathbf{8 \text{ คีย์}}$ จึงจะเกิดการ Rehash
+      </li>
+    </ul>
+  </div>
+
+  <!-- QUESTION 2 -->
+  <h2 class="part-title">Question 2: Priority Queue (Binary Min-Heap) (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>2.1 Two Properties, Sequential Insertions, DeleteMin, and Array Mapping</span>
+    <span class="score-badge">Score: 10 Marks</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> Given an empty Binary Min-Heap implemented as a 1-based array (where index 0 is unused / sentinel). You are given the sequence of 12 keys:</p>
+  $$\mathbf{64, 14, 24, 1, 20, 2, 5, 10, 6, 8, 15, 20}$$
+  <p><strong>Tasks to complete:</strong></p>
+  <ol>
+    <li>State the <strong>two fundamental properties</strong> that define a Binary Min-Heap.</li>
+    <li>Show the resulting Tree and Array after inserting all 12 keys sequentially.</li>
+    <li>Perform the first <code>deleteMin()</code>. Show the resulting Tree and Array.</li>
+    <li>Insert the key <code>3</code> into the heap. Show the resulting Tree and Array.</li>
+    <li>Perform the second <code>deleteMin()</code>. Show the final Tree and Array.</li>
+  </ol>
+
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> กำหนด Binary Min-Heap เปล่าที่เก็บในอาร์เรย์ 1 มิติ เริ่มต้นที่ดัชนี 1 (ดัชนี 0 ห้ามใช้) กำหนดชุดข้อมูล 12 ตัวคือ $64, 14, 24, 1, 20, 2, 5, 10, 6, 8, 15, 20$ จงระบุคุณสมบัติ 2 ประการของฮีป, วาดต้นไม้และเขียนอาร์เรย์หลังแทรกครบ 12 ตัว, ทำ <code>deleteMin()</code> ครั้งที่ 1, แทรกเลข <code>3</code>, และทำ <code>deleteMin()</code> ครั้งที่ 2
+  </div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยละเอียดและหลักการทางทฤษฎี (Complete Solution &amp; Principles):</div>
+    
+    <div class="theory-box">
+      <strong>📌 1. คุณสมบัติพื้นฐาน 2 ประการของ Binary Min-Heap (Two Fundamental Properties):</strong>
+      <ol>
+        <li><strong>Structure Property (คุณสมบัติเชิงโครงสร้าง):</strong> ต้องเป็น Complete Binary Tree คือโหนดจะเต็มสมบูรณ์ทุกชั้น ยกเว้นชั้นล่างสุดที่เต็มหรือไม่เต็มก็ได้ แต่หากไม่เต็ม โหนดจะต้องบรรจุชิดจากซ้ายไปขวาอย่างต่อเนื่องเสมอ</li>
+        <li><strong>Heap-Order Property (คุณสมบัติเชิงอันดับ):</strong> สำหรับโหนด $X$ ใดๆ ที่มี Parent คือ $P$ ค่าใน Parent จะต้องน้อยกว่าหรือเท่ากับค่าใน Child เสมอ ($\text{Key}(P) \le \text{Key}(X)$) ส่งผลให้โหนดที่มีค่าน้อยที่สุดจะอยู่ที่ Root เสมอ</li>
+      </ol>
+    </div>
+
+    <p><strong>2. ผังต้นไม้ (Tree Diagrams) ครบทั้ง 4 ขั้นตอน:</strong></p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0;">
+      <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 270" width="100%" height="270" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="280" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Stage 1: Binary Min-Heap Tree หลังแทรกครบ 12 ตัว (Insert 12 Keys)</text>
+  <line x1="270" y1="66" x2="140" y2="94" stroke="#475569" stroke-width="1.6"/>
+  <line x1="270" y1="66" x2="400" y2="94" stroke="#475569" stroke-width="1.6"/>
+  <line x1="140" y1="126" x2="75" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="140" y1="126" x2="205" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="400" y1="126" x2="335" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="400" y1="126" x2="465" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="75" y1="191" x2="45" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="75" y1="191" x2="105" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="205" y1="191" x2="175" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="205" y1="191" x2="235" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="335" y1="191" x2="305" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <circle cx="270" cy="50" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="270" y="55" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">1</text>
+  <text x="288" y="42" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[1]</text>
+  <circle cx="140" cy="110" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="140" y="115" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">6</text>
+  <text x="158" y="102" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[2]</text>
+  <circle cx="400" cy="110" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="400" y="115" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">2</text>
+  <text x="418" y="102" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[3]</text>
+  <circle cx="75" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="75" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">10</text>
+  <text x="93" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[4]</text>
+  <circle cx="205" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="205" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">8</text>
+  <text x="223" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[5]</text>
+  <circle cx="335" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="335" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">15</text>
+  <text x="353" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[6]</text>
+  <circle cx="465" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="465" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">5</text>
+  <text x="483" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[7]</text>
+  <circle cx="45" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="45" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">64</text>
+  <text x="63" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[8]</text>
+  <circle cx="105" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="105" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">14</text>
+  <text x="123" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[9]</text>
+  <circle cx="175" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="175" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">20</text>
+  <text x="193" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[10]</text>
+  <circle cx="235" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="235" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">24</text>
+  <text x="253" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[11]</text>
+  <circle cx="305" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="305" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">20</text>
+  <text x="323" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[12]</text>
+</svg></div>
+      <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 270" width="100%" height="270" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="280" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Stage 2: Binary Min-Heap Tree หลัง deleteMin() ครั้งที่ 1</text>
+  <line x1="270" y1="66" x2="140" y2="94" stroke="#475569" stroke-width="1.6"/>
+  <line x1="270" y1="66" x2="400" y2="94" stroke="#475569" stroke-width="1.6"/>
+  <line x1="140" y1="126" x2="75" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="140" y1="126" x2="205" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="400" y1="126" x2="335" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="400" y1="126" x2="465" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="75" y1="191" x2="45" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="75" y1="191" x2="105" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="205" y1="191" x2="175" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="205" y1="191" x2="235" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <circle cx="270" cy="50" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="270" y="55" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">2</text>
+  <text x="288" y="42" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[1]</text>
+  <circle cx="140" cy="110" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="140" y="115" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">6</text>
+  <text x="158" y="102" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[2]</text>
+  <circle cx="400" cy="110" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="400" y="115" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">5</text>
+  <text x="418" y="102" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[3]</text>
+  <circle cx="75" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="75" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">10</text>
+  <text x="93" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[4]</text>
+  <circle cx="205" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="205" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">8</text>
+  <text x="223" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[5]</text>
+  <circle cx="335" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="335" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">15</text>
+  <text x="353" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[6]</text>
+  <circle cx="465" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="465" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">20</text>
+  <text x="483" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[7]</text>
+  <circle cx="45" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="45" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">64</text>
+  <text x="63" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[8]</text>
+  <circle cx="105" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="105" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">14</text>
+  <text x="123" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[9]</text>
+  <circle cx="175" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="175" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">20</text>
+  <text x="193" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[10]</text>
+  <circle cx="235" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="235" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">24</text>
+  <text x="253" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[11]</text>
+</svg></div>
+      <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 270" width="100%" height="270" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="280" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Stage 3: Binary Min-Heap Tree หลังแทรกเลข 3 (Insert 3)</text>
+  <line x1="270" y1="66" x2="140" y2="94" stroke="#475569" stroke-width="1.6"/>
+  <line x1="270" y1="66" x2="400" y2="94" stroke="#475569" stroke-width="1.6"/>
+  <line x1="140" y1="126" x2="75" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="140" y1="126" x2="205" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="400" y1="126" x2="335" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="400" y1="126" x2="465" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="75" y1="191" x2="45" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="75" y1="191" x2="105" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="205" y1="191" x2="175" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="205" y1="191" x2="235" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="335" y1="191" x2="305" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <circle cx="270" cy="50" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="270" y="55" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">2</text>
+  <text x="288" y="42" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[1]</text>
+  <circle cx="140" cy="110" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="140" y="115" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">6</text>
+  <text x="158" y="102" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[2]</text>
+  <circle cx="400" cy="110" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="400" y="115" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">3</text>
+  <text x="418" y="102" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[3]</text>
+  <circle cx="75" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="75" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">10</text>
+  <text x="93" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[4]</text>
+  <circle cx="205" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="205" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">8</text>
+  <text x="223" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[5]</text>
+  <circle cx="335" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="335" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">5</text>
+  <text x="353" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[6]</text>
+  <circle cx="465" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="465" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">20</text>
+  <text x="483" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[7]</text>
+  <circle cx="45" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="45" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">64</text>
+  <text x="63" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[8]</text>
+  <circle cx="105" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="105" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">14</text>
+  <text x="123" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[9]</text>
+  <circle cx="175" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="175" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">20</text>
+  <text x="193" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[10]</text>
+  <circle cx="235" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="235" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">24</text>
+  <text x="253" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[11]</text>
+  <circle cx="305" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="305" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">15</text>
+  <text x="323" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[12]</text>
+</svg></div>
+      <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 270" width="100%" height="270" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="280" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Stage 4: Binary Min-Heap Tree หลัง deleteMin() ครั้งที่ 2</text>
+  <line x1="270" y1="66" x2="140" y2="94" stroke="#475569" stroke-width="1.6"/>
+  <line x1="270" y1="66" x2="400" y2="94" stroke="#475569" stroke-width="1.6"/>
+  <line x1="140" y1="126" x2="75" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="140" y1="126" x2="205" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="400" y1="126" x2="335" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="400" y1="126" x2="465" y2="159" stroke="#475569" stroke-width="1.6"/>
+  <line x1="75" y1="191" x2="45" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="75" y1="191" x2="105" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="205" y1="191" x2="175" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <line x1="205" y1="191" x2="235" y2="224" stroke="#475569" stroke-width="1.6"/>
+  <circle cx="270" cy="50" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="270" y="55" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">3</text>
+  <text x="288" y="42" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[1]</text>
+  <circle cx="140" cy="110" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="140" y="115" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">6</text>
+  <text x="158" y="102" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[2]</text>
+  <circle cx="400" cy="110" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="400" y="115" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">5</text>
+  <text x="418" y="102" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[3]</text>
+  <circle cx="75" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="75" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">10</text>
+  <text x="93" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[4]</text>
+  <circle cx="205" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="205" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">8</text>
+  <text x="223" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[5]</text>
+  <circle cx="335" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="335" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">15</text>
+  <text x="353" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[6]</text>
+  <circle cx="465" cy="175" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="465" y="180" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">20</text>
+  <text x="483" y="167" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[7]</text>
+  <circle cx="45" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="45" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">64</text>
+  <text x="63" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[8]</text>
+  <circle cx="105" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="105" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">14</text>
+  <text x="123" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[9]</text>
+  <circle cx="175" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="175" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">20</text>
+  <text x="193" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[10]</text>
+  <circle cx="235" cy="240" r="16" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="235" y="245" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#14532d">24</text>
+  <text x="253" y="232" text-anchor="start" font-family="Segoe UI, Tahoma, sans-serif" font-size="10" font-weight="bold" fill="#64748b">[11]</text>
+</svg></div>
+    </div>
+
+    <p><strong>3. ตารางอาร์เรย์แนวตั้ง 4 ตาราง (Vertical Arrays Matching Exam Paper):</strong></p>
+    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin:16px 0;">
+  <div style="flex:1; min-width:140px; max-width:200px; background:#ffffff; border:1.5px solid #cbd5e1; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+    <div style="background:#1e293b; color:#ffffff; padding:8px; font-size:12px; font-weight:bold; text-align:center;">1. Insert 12 Keys</div>
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-size:12px;">
+      <tr style="background:#f1f5f9; color:#64748b; font-weight:bold;"><th style="padding:4px; border-bottom:1px solid #cbd5e1; width:45px;">Index</th><th style="padding:4px; border-bottom:1px solid #cbd5e1;">Value</th></tr>
+      <tr style="background:#fafafa;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[0]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><span style="color:#94a3b8; font-style:italic;">unused</span></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[1]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">1</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[2]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">6</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[3]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">2</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[4]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">10</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[5]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">8</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[6]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">15</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[7]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">5</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[8]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">64</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[9]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">14</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[10]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">20</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[11]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">24</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[12]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">20</strong></td></tr>
+    </table>
+  </div>
+  <div style="flex:1; min-width:140px; max-width:200px; background:#ffffff; border:1.5px solid #cbd5e1; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+    <div style="background:#1e293b; color:#ffffff; padding:8px; font-size:12px; font-weight:bold; text-align:center;">2. deleteMin() 1</div>
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-size:12px;">
+      <tr style="background:#f1f5f9; color:#64748b; font-weight:bold;"><th style="padding:4px; border-bottom:1px solid #cbd5e1; width:45px;">Index</th><th style="padding:4px; border-bottom:1px solid #cbd5e1;">Value</th></tr>
+      <tr style="background:#fafafa;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[0]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><span style="color:#94a3b8; font-style:italic;">unused</span></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[1]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">2</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[2]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">6</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[3]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">5</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[4]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">10</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[5]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">8</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[6]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">15</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[7]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">20</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[8]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">64</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[9]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">14</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[10]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">20</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[11]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">24</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[12]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><span style="color:#cbd5e1;">-</span></td></tr>
+    </table>
+  </div>
+  <div style="flex:1; min-width:140px; max-width:200px; background:#ffffff; border:1.5px solid #cbd5e1; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+    <div style="background:#1e293b; color:#ffffff; padding:8px; font-size:12px; font-weight:bold; text-align:center;">3. Insert key 3</div>
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-size:12px;">
+      <tr style="background:#f1f5f9; color:#64748b; font-weight:bold;"><th style="padding:4px; border-bottom:1px solid #cbd5e1; width:45px;">Index</th><th style="padding:4px; border-bottom:1px solid #cbd5e1;">Value</th></tr>
+      <tr style="background:#fafafa;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[0]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><span style="color:#94a3b8; font-style:italic;">unused</span></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[1]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">2</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[2]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">6</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[3]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">3</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[4]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">10</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[5]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">8</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[6]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">5</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[7]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">20</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[8]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">64</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[9]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">14</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[10]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">20</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[11]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">24</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[12]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">15</strong></td></tr>
+    </table>
+  </div>
+  <div style="flex:1; min-width:140px; max-width:200px; background:#ffffff; border:1.5px solid #cbd5e1; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+    <div style="background:#1e293b; color:#ffffff; padding:8px; font-size:12px; font-weight:bold; text-align:center;">4. deleteMin() 2</div>
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-size:12px;">
+      <tr style="background:#f1f5f9; color:#64748b; font-weight:bold;"><th style="padding:4px; border-bottom:1px solid #cbd5e1; width:45px;">Index</th><th style="padding:4px; border-bottom:1px solid #cbd5e1;">Value</th></tr>
+      <tr style="background:#fafafa;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[0]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><span style="color:#94a3b8; font-style:italic;">unused</span></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[1]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">3</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[2]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">6</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[3]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">5</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[4]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">10</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[5]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">8</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[6]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">15</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[7]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">20</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[8]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">64</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[9]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">14</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[10]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">20</strong></td></tr>
+      <tr style="background:#eff6ff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[11]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><strong style="color:#1e40af;">24</strong></td></tr>
+      <tr style="background:#ffffff;"><td style="padding:4px 6px; border:1px solid #e2e8f0; font-family:Consolas, monospace; font-weight:600; color:#475569;">[12]</td><td style="padding:4px 6px; border:1px solid #e2e8f0;"><span style="color:#cbd5e1;">-</span></td></tr>
+    </table>
+  </div>
+</div>
+  </div>
+
+  <!-- QUESTION 3 -->
+  <h2 class="part-title">Question 3: Insertion Sort Tracing &amp; Position Moves (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>3.1 Tracing Array States &amp; Shifting Counts across Passes</span>
+    <span class="score-badge">Score: 10 Marks</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> Given an array of 12 integers indexed from $0$ to $11$:</p>
+  $$\mathbf{[9, 14, 2, 15, 6, 12, 1, 10, 5, 11, 7, 3]}$$
+  <p>Execute the standard <code>insertionSort</code> algorithm from pass $P = 1$ to $P = 11$. For each pass, show the complete array state after insertion, the element being inserted, and the exact count of position moves (element shifts) that occurred.</p>
+
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> กำหนดอาร์เรย์ขนาด 12 ช่อง (ดัชนี 0 ถึง 11) จงรัน Insertion Sort จากรอบ $P = 1$ ถึง $P = 11$ โดยแสดงสถานะของอาร์เรย์หลังจบรอบ, ตัวเลขที่ถูกนำมาแทรก (tmp), และจำนวนครั้งของการเลื่อนตำแหน่งข้อมูล (position moves)
+  </div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยละเอียดและหลักการทางทฤษฎี (Complete Solution &amp; Principles):</div>
+    
+    <p><strong>1. สูตรคำนวณกรณีแย่ที่สุด (Worst-Case Formula):</strong></p>
+    $$\text{Max Comparisons/Moves} = \frac{N(N-1)}{2} = \frac{12 \times 11}{2} = 66 \text{ ครั้ง}$$
+
+    <p><strong>2. ตาราง Tracing ละเอียดครบทุก Pass (P = 1 ถึง 11):</strong></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Pass (P)</th><th>tmp</th><th>Array Content [0 .. 11]</th><th>Moves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Init</strong></td><td>-</td><td><code>[9, 14, 2, 15, 6, 12, 1, 10, 5, 11, 7, 3]</code></td><td>-</td></tr>
+        <tr><td><strong>P = 1</strong></td><td>14</td><td><code>[9, 14, 2, 15, 6, 12, 1, 10, 5, 11, 7, 3]</code></td><td>0</td></tr>
+        <tr><td><strong>P = 2</strong></td><td>2</td><td><code>[2, 9, 14, 15, 6, 12, 1, 10, 5, 11, 7, 3]</code></td><td>2</td></tr>
+        <tr><td><strong>P = 3</strong></td><td>15</td><td><code>[2, 9, 14, 15, 6, 12, 1, 10, 5, 11, 7, 3]</code></td><td>0</td></tr>
+        <tr><td><strong>P = 4</strong></td><td>6</td><td><code>[2, 6, 9, 14, 15, 12, 1, 10, 5, 11, 7, 3]</code></td><td>3</td></tr>
+        <tr><td><strong>P = 5</strong></td><td>12</td><td><code>[2, 6, 9, 12, 14, 15, 1, 10, 5, 11, 7, 3]</code></td><td>2</td></tr>
+        <tr><td><strong>P = 6</strong></td><td>1</td><td><code>[1, 2, 6, 9, 12, 14, 15, 10, 5, 11, 7, 3]</code></td><td>6</td></tr>
+        <tr><td><strong>P = 7</strong></td><td>10</td><td><code>[1, 2, 6, 9, 10, 12, 14, 15, 5, 11, 7, 3]</code></td><td>3</td></tr>
+        <tr><td><strong>P = 8</strong></td><td>5</td><td><code>[1, 2, 5, 6, 9, 10, 12, 14, 15, 11, 7, 3]</code></td><td>6</td></tr>
+        <tr><td><strong>P = 9</strong></td><td>11</td><td><code>[1, 2, 5, 6, 9, 10, 11, 12, 14, 15, 7, 3]</code></td><td>3</td></tr>
+        <tr><td><strong>P = 10</strong></td><td>7</td><td><code>[1, 2, 5, 6, 7, 9, 10, 11, 12, 14, 15, 3]</code></td><td>6</td></tr>
+        <tr><td><strong>P = 11</strong></td><td>3</td><td><code>[1, 2, 3, 5, 6, 7, 9, 10, 11, 12, 14, 15]</code></td><td>9</td></tr>
+      </tbody>
+    </table>
+    <p><strong>จำนวนครั้งที่มีการขยับเลื่อนตำแหน่งรวม (Total Position Moves):</strong> $0+2+0+3+2+6+3+6+3+6+9 = \mathbf{40 \text{ ครั้ง}}$</p>
+  </div>
+
+  <!-- QUESTION 4 -->
+  <h2 class="part-title">Question 4: Selection Sort &amp; Bubble Sort Tracing (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>4.1 Selection Sort &amp; 4.2 Bubble Sort Tracing (5 + 5 = 10 Marks)</span>
+    <span class="score-badge">Score: 10 Marks</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> Given the input array $\mathbf{[64, 25, 12, 22, 11]}$.</p>
+  <ol>
+    <li>Show the state of the array after each pass of <strong>Selection Sort</strong> until fully sorted. State the min element identified and the swap made.</li>
+    <li>Show the state of the array after each pass of <strong>Bubble Sort</strong> with early-termination flag checking.</li>
+  </ol>
+
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> กำหนดอาร์เรย์ $[64, 25, 12, 22, 11]$ จงแสดงผลลัพธ์ของอาร์เรย์ในแต่ละรอบเมื่อเรียงลำดับด้วย Selection Sort (ระบุค่าต่ำสุดที่พบและการสลับ) และแสดงผลลัพธ์แต่ละรอบเมื่อเรียงลำดับด้วย Bubble Sort
+  </div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยละเอียดและหลักการทางทฤษฎี (Complete Solution &amp; Principles):</div>
+    
+    <p><strong>1. การทำงานของ Selection Sort:</strong></p>
+    <ul>
+      <li><strong>Initial:</strong> <code>[64, 25, 12, 22, 11]</code></li>
+      <li><strong>Pass 1:</strong> Min ในช่วง index 0..4 คือ <code>11</code> (index 4) &rarr; สลับกับ index 0 (64) &rarr; <code>[11, 25, 12, 22, 64]</code></li>
+      <li><strong>Pass 2:</strong> Min ในช่วง index 1..4 คือ <code>12</code> (index 2) &rarr; สลับกับ index 1 (25) &rarr; <code>[11, 12, 25, 22, 64]</code></li>
+      <li><strong>Pass 3:</strong> Min ในช่วง index 2..4 คือ <code>22</code> (index 3) &rarr; สลับกับ index 2 (25) &rarr; <code>[11, 12, 22, 25, 64]</code></li>
+      <li><strong>Pass 4:</strong> Min ในช่วง index 3..4 คือ <code>25</code> (index 3) &rarr; อยู่ถูกที่แล้ว ไม่ต้องสลับ &rarr; <code>[11, 12, 22, 25, 64]</code></li>
+    </ul>
+
+    <p><strong>2. การทำงานของ Bubble Sort (เปรียบเทียบคู่ติดกัน):</strong></p>
+    <ul>
+      <li><strong>Pass 1:</strong> ดัน 64 ไปท้ายสุด &rarr; <code>[25, 12, 22, 11, 64]</code> (เกิดการสลับ 4 ครั้ง)</li>
+      <li><strong>Pass 2:</strong> ดัน 25 ไปตำแหน่งที่ 3 &rarr; <code>[12, 22, 11, 25, 64]</code> (เกิดการสลับ 2 ครั้ง)</li>
+      <li><strong>Pass 3:</strong> ดัน 22 ไปตำแหน่งที่ 2 &rarr; <code>[12, 11, 22, 25, 64]</code> (เกิดการสลับ 1 ครั้ง)</li>
+      <li><strong>Pass 4:</strong> สลับ 12 กับ 11 &rarr; <code>[11, 12, 22, 25, 64]</code> (เกิดการสลับ 1 ครั้ง)</li>
+    </ul>
+  </div>
+
+  <!-- QUESTION 5 -->
+  <h2 class="part-title">Question 5: Topological Sort in DAG (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>5.1 Indegree Array Tracing &amp; Topological Ordering (Strict Comma Output Rule)</span>
+    <span class="score-badge">Score: 10 Marks</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> A Directed Acyclic Graph (DAG) with <strong>7 vertices (1 to 7)</strong> is given by the diagram and Adjacency List below:</p>
+  
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0;">
+    <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 330" width="100%" height="330" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <defs>
+    <marker id="arrow-topo26" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="270" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#334155">Directed Acyclic Graph (DAG) [Exam 2026 Question 5]: |V|=7, |E|=10</text>
+  <line x1="63.3" y1="145.1" x2="114.1" y2="87.9" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <path d="M 64 146 Q 110 30 194 60" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <path d="M 70 165 Q 170 240 272 165" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <line x1="150.0" y1="70.0" x2="186.0" y2="70.0" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <line x1="223.3" y1="84.9" x2="274.1" y2="142.1" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <line x1="303.3" y1="145.1" x2="354.1" y2="87.9" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <line x1="303.3" y1="174.9" x2="354.1" y2="232.1" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <line x1="370.0" y1="90.0" x2="370.0" y2="226.0" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <line x1="386.0" y1="82.0" x2="470.8" y2="145.6" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <line x1="386.0" y1="238.0" x2="470.8" y2="174.4" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-topo26)"/>
+  <circle cx="50" cy="160" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="50" y="165" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">5</text>
+  <circle cx="130" cy="70" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="130" y="75" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">7</text>
+  <circle cx="210" cy="70" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="210" y="75" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">2</text>
+  <circle cx="290" cy="160" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="290" y="165" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">1</text>
+  <circle cx="370" cy="70" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="370" y="75" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">3</text>
+  <circle cx="370" cy="250" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="370" y="255" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">4</text>
+  <circle cx="490" cy="160" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="490" y="165" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">6</text>
+</svg></div>
+    <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 370" width="100%" height="370" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <defs>
+    <marker id="arrow-adj" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="280" y="26" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13.5" font-weight="bold" fill="#1e293b">Adjacency List: Directed Acyclic Graph (7 Vertices)</text>
+  <text x="23" y="71" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">1</text>
+  <rect x="35" y="50" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="50" x2="75" y2="82" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="71" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">1</text>
+  <circle cx="85" cy="66" r="3" fill="#0284c7"/>
+  <line x1="85" y1="66" x2="115" y2="66" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="51" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="51" x2="151" y2="81" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="71" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">3</text>
+  <circle cx="161" cy="66" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="66" x2="191" y2="66" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="191" y="51" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="227" y1="51" x2="227" y2="81" stroke="#334155" stroke-width="1.2"/>
+  <text x="209" y="71" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">4</text>
+  <circle cx="237" cy="66" r="2.8" fill="#0284c7"/>
+  <line x1="237" y1="66" x2="261" y2="66" stroke="#334155" stroke-width="1.5"/>
+  <line x1="261" y1="66" x2="261" y2="74" stroke="#334155" stroke-width="1.5"/>
+  <line x1="252" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="2"/>
+  <line x1="255" y1="78" x2="267" y2="78" stroke="#334155" stroke-width="1.8"/>
+  <line x1="258" y1="81" x2="264" y2="81" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="113" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">2</text>
+  <rect x="35" y="92" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="92" x2="75" y2="124" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="113" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">2</text>
+  <circle cx="85" cy="108" r="3" fill="#0284c7"/>
+  <line x1="85" y1="108" x2="115" y2="108" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="93" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="93" x2="151" y2="123" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="113" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">1</text>
+  <circle cx="161" cy="108" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="108" x2="185" y2="108" stroke="#334155" stroke-width="1.5"/>
+  <line x1="185" y1="108" x2="185" y2="116" stroke="#334155" stroke-width="1.5"/>
+  <line x1="176" y1="117" x2="194" y2="117" stroke="#334155" stroke-width="2"/>
+  <line x1="179" y1="120" x2="191" y2="120" stroke="#334155" stroke-width="1.8"/>
+  <line x1="182" y1="123" x2="188" y2="123" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="155" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">3</text>
+  <rect x="35" y="134" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="134" x2="75" y2="166" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="155" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">3</text>
+  <circle cx="85" cy="150" r="3" fill="#0284c7"/>
+  <line x1="85" y1="150" x2="115" y2="150" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="135" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="135" x2="151" y2="165" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="155" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">4</text>
+  <circle cx="161" cy="150" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="150" x2="191" y2="150" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="191" y="135" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="227" y1="135" x2="227" y2="165" stroke="#334155" stroke-width="1.2"/>
+  <text x="209" y="155" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">6</text>
+  <circle cx="237" cy="150" r="2.8" fill="#0284c7"/>
+  <line x1="237" y1="150" x2="261" y2="150" stroke="#334155" stroke-width="1.5"/>
+  <line x1="261" y1="150" x2="261" y2="158" stroke="#334155" stroke-width="1.5"/>
+  <line x1="252" y1="159" x2="270" y2="159" stroke="#334155" stroke-width="2"/>
+  <line x1="255" y1="162" x2="267" y2="162" stroke="#334155" stroke-width="1.8"/>
+  <line x1="258" y1="165" x2="264" y2="165" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="197" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">4</text>
+  <rect x="35" y="176" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="176" x2="75" y2="208" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="197" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">4</text>
+  <circle cx="85" cy="192" r="3" fill="#0284c7"/>
+  <line x1="85" y1="192" x2="115" y2="192" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="177" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="177" x2="151" y2="207" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="197" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">6</text>
+  <circle cx="161" cy="192" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="192" x2="185" y2="192" stroke="#334155" stroke-width="1.5"/>
+  <line x1="185" y1="192" x2="185" y2="200" stroke="#334155" stroke-width="1.5"/>
+  <line x1="176" y1="201" x2="194" y2="201" stroke="#334155" stroke-width="2"/>
+  <line x1="179" y1="204" x2="191" y2="204" stroke="#334155" stroke-width="1.8"/>
+  <line x1="182" y1="207" x2="188" y2="207" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="239" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">5</text>
+  <rect x="35" y="218" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="218" x2="75" y2="250" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="239" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">5</text>
+  <circle cx="85" cy="234" r="3" fill="#0284c7"/>
+  <line x1="85" y1="234" x2="115" y2="234" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="219" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="219" x2="151" y2="249" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="239" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">1</text>
+  <circle cx="161" cy="234" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="234" x2="191" y2="234" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="191" y="219" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="227" y1="219" x2="227" y2="249" stroke="#334155" stroke-width="1.2"/>
+  <text x="209" y="239" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">2</text>
+  <circle cx="237" cy="234" r="2.8" fill="#0284c7"/>
+  <line x1="237" y1="234" x2="267" y2="234" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="267" y="219" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="303" y1="219" x2="303" y2="249" stroke="#334155" stroke-width="1.2"/>
+  <text x="285" y="239" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">7</text>
+  <circle cx="313" cy="234" r="2.8" fill="#0284c7"/>
+  <line x1="313" y1="234" x2="337" y2="234" stroke="#334155" stroke-width="1.5"/>
+  <line x1="337" y1="234" x2="337" y2="242" stroke="#334155" stroke-width="1.5"/>
+  <line x1="328" y1="243" x2="346" y2="243" stroke="#334155" stroke-width="2"/>
+  <line x1="331" y1="246" x2="343" y2="246" stroke="#334155" stroke-width="1.8"/>
+  <line x1="334" y1="249" x2="340" y2="249" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="281" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">6</text>
+  <rect x="35" y="260" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="260" x2="75" y2="292" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="281" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">6</text>
+  <circle cx="85" cy="276" r="3" fill="#0284c7"/>
+  <path d="M 85 276 L 117 276 L 117 288" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <line x1="108" y1="290" x2="126" y2="290" stroke="#334155" stroke-width="2"/>
+  <line x1="111" y1="293" x2="123" y2="293" stroke="#334155" stroke-width="1.8"/>
+  <line x1="114" y1="296" x2="120" y2="296" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="323" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">7</text>
+  <rect x="35" y="302" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="302" x2="75" y2="334" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="323" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">7</text>
+  <circle cx="85" cy="318" r="3" fill="#0284c7"/>
+  <line x1="85" y1="318" x2="115" y2="318" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="303" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="303" x2="151" y2="333" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="323" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">2</text>
+  <circle cx="161" cy="318" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="318" x2="185" y2="318" stroke="#334155" stroke-width="1.5"/>
+  <line x1="185" y1="318" x2="185" y2="326" stroke="#334155" stroke-width="1.5"/>
+  <line x1="176" y1="327" x2="194" y2="327" stroke="#334155" stroke-width="2"/>
+  <line x1="179" y1="330" x2="191" y2="330" stroke="#334155" stroke-width="1.8"/>
+  <line x1="182" y1="333" x2="188" y2="333" stroke="#334155" stroke-width="1.5"/>
+</svg></div>
+  </div>
+
+  <ol>
+    <li>Fill in the <strong>Indegree Array</strong> below across all 7 rounds of Kahn's Algorithm.</li>
+    <li>Draw the resulting state of the <strong>Circular Queue</strong> (size 7) when the algorithm terminates. State <code>front</code> and <code>back</code> pointer values.</li>
+    <li>Write the final <strong>Topological Ordering</strong> as a comma-separated list (e.g. <code>v1, v2, ...</code>). <strong>DO NOT USE ARROWS!</strong></li>
+  </ol>
+
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> กำหนดกราฟ DAG 7 จุดยอดตามภาพและ Adjacency List จงเติมตาราง Indegree Array ให้สมบูรณ์ครบ 7 รอบ, วาดภาพ Circular Queue เมื่อจบขั้นตอนพร้อมระบุ front และ back, และเขียนลำดับ Topological Ordering คั่นด้วยเครื่องหมายจุลภาคเท่านั้น (ห้ามใช้ลูกศร)
+  </div>
+
+  <div class="blank-sheet-box">
+    <div style="overflow-x:auto; margin:15px 0;">
+  <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px;">📝 ช่องจำลองกระดาษคำตอบ: ตาราง Indegree Array Tracing (ขนาด 7 จุดยอด)</div>
+  <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Tahoma, sans-serif; font-size:12.5px; border:2px solid #334155;">
+    <thead>
+      <tr style="background:#1e293b; color:#ffffff;">
+        <th style="padding:8px 6px; border:1px solid #475569; width:65px;">Vertex (v)</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">เริ่มต้น (Initial)</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 1</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 2</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 3</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 4</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 5</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 6</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 7</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">3</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">4</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">5</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">6</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">7</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยละเอียดและหลักการทางทฤษฎี (Complete Solution &amp; Principles):</div>
+    
+    <p><strong>1. ตารางค่า Indegree ทีละรอบ (Indegree Tracking Table):</strong></p>
+    <div style="overflow-x:auto; margin:15px 0;">
+  <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px;">📝 เฉลยตาราง Indegree Array Tracing ละเอียดครบ 7 รอบ</div>
+  <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Tahoma, sans-serif; font-size:12.5px; border:2px solid #334155;">
+    <thead>
+      <tr style="background:#1e293b; color:#ffffff;">
+        <th style="padding:8px 6px; border:1px solid #475569; width:65px;">Vertex (v)</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">เริ่มต้น (Initial)</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 1</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 2</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 3</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 4</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 5</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 6</th>
+        <th style="padding:8px 6px; border:1px solid #475569;">รอบที่ 7</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">2</del> <del style="color:#ea580c;">1</del> <strong style="color:#15803d;">0</strong> (Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">0 (In Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">ออก</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">2</del> <del style="color:#ea580c;">1</del> <strong style="color:#15803d;">0</strong> (Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">0 (In Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">ออก</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">3</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">1</del> <strong style="color:#15803d;">0</strong> (Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">0 (In Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">ออก</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">4</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">2</del> <del style="color:#ea580c;">1</del> <strong style="color:#15803d;">0</strong> (Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">0 (In Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">ออก</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">5</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;"><strong style="color:#15803d;">0</strong> (In Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">ออก</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">6</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">2</del> <del style="color:#ea580c;">1</del> <strong style="color:#15803d;">0</strong> (Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">2</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">1</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">0 (In Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">ออก</td>
+      </tr>
+      <tr style="background:#ffffff;">
+        <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; background:#f8fafc; color:#0f172a;">7</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">1</del> <strong style="color:#15803d;">0</strong> (Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">0 (In Q)</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">ออก</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+        <td style="padding:7px 6px; border:1px solid #cbd5e1;">-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    <p><strong>2. การทำงานของ Circular Queue (ขนาด 7 ช่อง, ดัชนี 0..6):</strong></p>
+    <div style="max-width:560px; margin:14px 0;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" width="100%" height="270" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <defs>
+    <marker id="arrow-front" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-back" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="240" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">สถานะ Circular Queue เมื่อจบขั้นตอน Topological Sort (front=0, back=6)</text>
+  <rect x="55" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="79" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[0]</text>
+  <text x="79" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">5</text>
+  <line x1="79" y1="139" x2="79" y2="110" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-front)"/>
+  <text x="79" y="153" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="11" font-weight="bold" fill="#dc2626">front=0</text>
+  <rect x="103" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="127" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[1]</text>
+  <text x="127" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">7</text>
+  <rect x="151" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="175" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[2]</text>
+  <text x="175" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">2</text>
+  <rect x="199" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="223" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[3]</text>
+  <text x="223" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">1</text>
+  <rect x="247" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="271" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[4]</text>
+  <text x="271" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">3</text>
+  <rect x="295" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="319" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[5]</text>
+  <text x="319" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">4</text>
+  <rect x="343" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="367" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[6]</text>
+  <text x="367" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">6</text>
+  <line x1="367" y1="175" x2="367" y2="110" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-back)"/>
+  <text x="367" y="189" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="11" font-weight="bold" fill="#16a34a">back=6</text>
+  <rect x="416" y="50" width="160" height="185" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="428" y="72" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">สถานะพอยน์เตอร์จบลูป:</text>
+  <text x="428" y="96" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" fill="#334155">• <tspan font-weight="bold" fill="#dc2626">front</tspan> = 0</text>
+  <text x="428" y="118" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" fill="#334155">• <tspan font-weight="bold" fill="#16a34a">back</tspan> = 6</text>
+  <text x="428" y="140" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" fill="#334155">• <tspan font-weight="bold" fill="#2563eb">currentSize</tspan> = 0</text>
+  <line x1="426" y1="152" x2="566" y2="152" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="428" y="172" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" fill="#64748b">สูตร Enqueue:</text>
+  <text x="428" y="188" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" font-family="Consolas" fill="#0f172a">back = (back+1)%7</text>
+  <text x="428" y="208" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" fill="#64748b">สูตร Dequeue:</text>
+  <text x="428" y="224" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" font-family="Consolas" fill="#0f172a">front = (front+1)%7</text>
+</svg>
+    </div>
+
+    <p><strong>3. ผลลัพธ์ Topological Ordering:</strong></p>
+    <p style="font-size:18px; font-weight:bold; color:#1e40af; text-align:center; background:#dbeafe; padding:12px; border-radius:8px;">
+      5, 7, 2, 1, 3, 4, 6
+    </p>
+    <div class="alert-box">
+      <strong>🚨 กับดักได้ 0 คะแนน:</strong> ห้ามเขียนลูกศร เช่น <code>5 -&gt; 7 -&gt; 2 -&gt; ...</code> ต้องเขียน <code>5, 7, 2, 1, 3, 4, 6</code> เท่านั้น!
+    </div>
+  </div>
+
+  <!-- QUESTION 6 -->
+  <h2 class="part-title">Question 6: Unweighted Shortest Path (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>6.1 BFS Processing Table, Shortest Path to v5 and v7 (With Strict Comma Output Rule)</span>
+    <span class="score-badge">Score: 10 Marks</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> Given the directed graph $G = (V, E)$ with 7 vertices ($V = \{1, 2, 3, 4, 5, 6, 7\}$) defined by the diagram and Adjacency List below:</p>
+  
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:16px 0;">
+    <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 340" width="100%" height="340" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <defs>
+    <marker id="arrow-sp26" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="270" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#334155">Directed Graph G = (V, E) [Exam 2026 Question 6]: Source Vertex = 1</text>
+  <line x1="95.3" y1="157.1" x2="191.7" y2="75.5" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="100.0" y1="170.0" x2="246.0" y2="170.0" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="219.6" y1="77.6" x2="258.5" y2="148.9" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="230.0" y1="60.0" x2="386.0" y2="60.0" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <path d="M 220 76 Q 310 190 394 270" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="194.7" y1="267.1" x2="98.3" y2="185.5" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <path d="M 226 290 Q 350 325 490 186" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="260.4" y1="187.6" x2="221.5" y2="258.9" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="285.7" y1="157.6" x2="391.1" y2="74.8" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="290.0" y1="170.0" x2="476.0" y2="170.0" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="285.7" y1="182.4" x2="391.1" y2="265.2" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="410.0" y1="80.0" x2="410.0" y2="256.0" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <line x1="422.7" y1="264.5" x2="484.8" y2="188.6" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow-sp26)"/>
+  <circle cx="80" cy="170" r="20" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+  <text x="80" y="175" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">1</text>
+  <text x="80" y="145" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="11" font-weight="bold" fill="#2563eb">SOURCE</text>
+  <circle cx="210" cy="60" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="210" y="65" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">2</text>
+  <circle cx="210" cy="280" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="210" y="285" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">3</text>
+  <circle cx="270" cy="170" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="270" y="175" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">4</text>
+  <circle cx="410" cy="60" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="410" y="65" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">5</text>
+  <circle cx="410" cy="280" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="410" y="285" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">7</text>
+  <circle cx="500" cy="170" r="20" fill="#f8fafc" stroke="#1e293b" stroke-width="2.5"/>
+  <text x="500" y="175" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">6</text>
+</svg></div>
+    <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 370" width="100%" height="370" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <defs>
+    <marker id="arrow-adj" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#1e293b"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="280" y="26" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13.5" font-weight="bold" fill="#1e293b">Adjacency List: Directed Graph (Source = 1, 7 Vertices)</text>
+  <text x="23" y="71" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">1</text>
+  <rect x="35" y="50" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="50" x2="75" y2="82" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="71" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">1</text>
+  <circle cx="85" cy="66" r="3" fill="#0284c7"/>
+  <line x1="85" y1="66" x2="115" y2="66" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="51" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="51" x2="151" y2="81" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="71" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">2</text>
+  <circle cx="161" cy="66" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="66" x2="191" y2="66" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="191" y="51" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="227" y1="51" x2="227" y2="81" stroke="#334155" stroke-width="1.2"/>
+  <text x="209" y="71" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">4</text>
+  <circle cx="237" cy="66" r="2.8" fill="#0284c7"/>
+  <line x1="237" y1="66" x2="261" y2="66" stroke="#334155" stroke-width="1.5"/>
+  <line x1="261" y1="66" x2="261" y2="74" stroke="#334155" stroke-width="1.5"/>
+  <line x1="252" y1="75" x2="270" y2="75" stroke="#334155" stroke-width="2"/>
+  <line x1="255" y1="78" x2="267" y2="78" stroke="#334155" stroke-width="1.8"/>
+  <line x1="258" y1="81" x2="264" y2="81" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="113" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">2</text>
+  <rect x="35" y="92" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="92" x2="75" y2="124" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="113" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">2</text>
+  <circle cx="85" cy="108" r="3" fill="#0284c7"/>
+  <line x1="85" y1="108" x2="115" y2="108" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="93" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="93" x2="151" y2="123" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="113" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">4</text>
+  <circle cx="161" cy="108" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="108" x2="191" y2="108" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="191" y="93" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="227" y1="93" x2="227" y2="123" stroke="#334155" stroke-width="1.2"/>
+  <text x="209" y="113" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">5</text>
+  <circle cx="237" cy="108" r="2.8" fill="#0284c7"/>
+  <line x1="237" y1="108" x2="267" y2="108" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="267" y="93" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="303" y1="93" x2="303" y2="123" stroke="#334155" stroke-width="1.2"/>
+  <text x="285" y="113" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">7</text>
+  <circle cx="313" cy="108" r="2.8" fill="#0284c7"/>
+  <line x1="313" y1="108" x2="337" y2="108" stroke="#334155" stroke-width="1.5"/>
+  <line x1="337" y1="108" x2="337" y2="116" stroke="#334155" stroke-width="1.5"/>
+  <line x1="328" y1="117" x2="346" y2="117" stroke="#334155" stroke-width="2"/>
+  <line x1="331" y1="120" x2="343" y2="120" stroke="#334155" stroke-width="1.8"/>
+  <line x1="334" y1="123" x2="340" y2="123" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="155" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">3</text>
+  <rect x="35" y="134" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="134" x2="75" y2="166" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="155" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">3</text>
+  <circle cx="85" cy="150" r="3" fill="#0284c7"/>
+  <line x1="85" y1="150" x2="115" y2="150" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="135" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="135" x2="151" y2="165" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="155" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">1</text>
+  <circle cx="161" cy="150" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="150" x2="191" y2="150" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="191" y="135" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="227" y1="135" x2="227" y2="165" stroke="#334155" stroke-width="1.2"/>
+  <text x="209" y="155" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">6</text>
+  <circle cx="237" cy="150" r="2.8" fill="#0284c7"/>
+  <line x1="237" y1="150" x2="261" y2="150" stroke="#334155" stroke-width="1.5"/>
+  <line x1="261" y1="150" x2="261" y2="158" stroke="#334155" stroke-width="1.5"/>
+  <line x1="252" y1="159" x2="270" y2="159" stroke="#334155" stroke-width="2"/>
+  <line x1="255" y1="162" x2="267" y2="162" stroke="#334155" stroke-width="1.8"/>
+  <line x1="258" y1="165" x2="264" y2="165" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="197" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">4</text>
+  <rect x="35" y="176" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="176" x2="75" y2="208" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="197" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">4</text>
+  <circle cx="85" cy="192" r="3" fill="#0284c7"/>
+  <line x1="85" y1="192" x2="115" y2="192" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="177" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="177" x2="151" y2="207" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="197" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">3</text>
+  <circle cx="161" cy="192" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="192" x2="191" y2="192" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="191" y="177" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="227" y1="177" x2="227" y2="207" stroke="#334155" stroke-width="1.2"/>
+  <text x="209" y="197" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">5</text>
+  <circle cx="237" cy="192" r="2.8" fill="#0284c7"/>
+  <line x1="237" y1="192" x2="267" y2="192" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="267" y="177" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="303" y1="177" x2="303" y2="207" stroke="#334155" stroke-width="1.2"/>
+  <text x="285" y="197" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">6</text>
+  <circle cx="313" cy="192" r="2.8" fill="#0284c7"/>
+  <line x1="313" y1="192" x2="343" y2="192" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="343" y="177" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="379" y1="177" x2="379" y2="207" stroke="#334155" stroke-width="1.2"/>
+  <text x="361" y="197" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">7</text>
+  <circle cx="389" cy="192" r="2.8" fill="#0284c7"/>
+  <line x1="389" y1="192" x2="413" y2="192" stroke="#334155" stroke-width="1.5"/>
+  <line x1="413" y1="192" x2="413" y2="200" stroke="#334155" stroke-width="1.5"/>
+  <line x1="404" y1="201" x2="422" y2="201" stroke="#334155" stroke-width="2"/>
+  <line x1="407" y1="204" x2="419" y2="204" stroke="#334155" stroke-width="1.8"/>
+  <line x1="410" y1="207" x2="416" y2="207" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="239" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">5</text>
+  <rect x="35" y="218" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="218" x2="75" y2="250" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="239" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">5</text>
+  <circle cx="85" cy="234" r="3" fill="#0284c7"/>
+  <line x1="85" y1="234" x2="115" y2="234" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="219" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="219" x2="151" y2="249" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="239" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">7</text>
+  <circle cx="161" cy="234" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="234" x2="185" y2="234" stroke="#334155" stroke-width="1.5"/>
+  <line x1="185" y1="234" x2="185" y2="242" stroke="#334155" stroke-width="1.5"/>
+  <line x1="176" y1="243" x2="194" y2="243" stroke="#334155" stroke-width="2"/>
+  <line x1="179" y1="246" x2="191" y2="246" stroke="#334155" stroke-width="1.8"/>
+  <line x1="182" y1="249" x2="188" y2="249" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="281" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">6</text>
+  <rect x="35" y="260" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="260" x2="75" y2="292" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="281" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">6</text>
+  <circle cx="85" cy="276" r="3" fill="#0284c7"/>
+  <path d="M 85 276 L 117 276 L 117 288" fill="none" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <line x1="108" y1="290" x2="126" y2="290" stroke="#334155" stroke-width="2"/>
+  <line x1="111" y1="293" x2="123" y2="293" stroke="#334155" stroke-width="1.8"/>
+  <line x1="114" y1="296" x2="120" y2="296" stroke="#334155" stroke-width="1.5"/>
+  <text x="23" y="323" text-anchor="end" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#475569">7</text>
+  <rect x="35" y="302" width="60" height="32" fill="#f1f5f9" stroke="#334155" stroke-width="1.8"/>
+  <line x1="75" y1="302" x2="75" y2="334" stroke="#334155" stroke-width="1.2"/>
+  <text x="55" y="323" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">7</text>
+  <circle cx="85" cy="318" r="3" fill="#0284c7"/>
+  <line x1="85" y1="318" x2="115" y2="318" stroke="#334155" stroke-width="1.5" marker-end="url(#arrow-adj)"/>
+  <rect x="115" y="303" width="56" height="30" fill="#ffffff" stroke="#334155" stroke-width="1.6" rx="2"/>
+  <line x1="151" y1="303" x2="151" y2="333" stroke="#334155" stroke-width="1.2"/>
+  <text x="133" y="323" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">6</text>
+  <circle cx="161" cy="318" r="2.8" fill="#0284c7"/>
+  <line x1="161" y1="318" x2="185" y2="318" stroke="#334155" stroke-width="1.5"/>
+  <line x1="185" y1="318" x2="185" y2="326" stroke="#334155" stroke-width="1.5"/>
+  <line x1="176" y1="327" x2="194" y2="327" stroke="#334155" stroke-width="2"/>
+  <line x1="179" y1="330" x2="191" y2="330" stroke="#334155" stroke-width="1.8"/>
+  <line x1="182" y1="333" x2="188" y2="333" stroke="#334155" stroke-width="1.5"/>
+</svg></div>
+  </div>
+
+  <ol>
+    <li>Execute the Unweighted Shortest Path algorithm (BFS) using <strong>Source Vertex = 1</strong>. Complete the table tracking <code>Known</code>, $d_v$ (shortest distance), and $p_v$ (previous vertex) with Queue buffer alongside.</li>
+    <li>State the shortest path and path length from vertex 1 to <strong>vertex 5</strong>.</li>
+    <li>State the shortest path and path length from vertex 1 to <strong>vertex 7</strong>.</li>
+  </ol>
+
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> กำหนดกราฟระบุทิศทาง 7 จุดยอดตามภาพและ Adjacency List จงรันขั้นตอนวิธี Unweighted Shortest Path (BFS) โดยให้จุดยอด 1 เป็นจุดเริ่มต้น เติมตารางบันทึกสถานะ Known, dv, pv และคิว พร้อมระบุเส้นทางที่สั้นที่สุดพร้อมความยาวเส้นทางไปยังจุดยอด 5 และจุดยอด 7
+  </div>
+
+  <div class="blank-sheet-box">
+    <div style="display:flex; gap:20px; flex-wrap:wrap; margin:15px 0; align-items:flex-start;">
+  <div style="flex:2; min-width:320px;">
+    <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px;">📝 ช่องจำลองกระดาษคำตอบ: ตารางประมวลผล Shortest Path (Known, Dist, Path) (Source = 1)</div>
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Tahoma, sans-serif; font-size:13px; border:2px solid #334155;">
+      <thead>
+        <tr style="background:#1e293b; color:#ffffff;">
+          <th style="padding:8px 6px; border:1px solid #475569; width:65px;">Vertex (v)</th>
+          <th style="padding:8px 6px; border:1px solid #475569; width:75px;">Known</th>
+          <th style="padding:8px 6px; border:1px solid #475569;">Dist (Dv)</th>
+          <th style="padding:8px 6px; border:1px solid #475569;">Path (Pv)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#eff6ff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">1</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">2</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">3</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">4</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">5</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">6</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">7</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="flex:1; min-width:160px; max-width:210px;">
+    <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px; text-align:center;">📦 Queue Buffer</div>
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Tahoma, sans-serif; font-size:12.5px; border:2px solid #475569;">
+      <thead><tr style="background:#334155; color:#ffffff;"><th style="padding:6px; border:1px solid #475569; width:45px;">Index</th><th style="padding:6px; border:1px solid #475569;">Vertex</th></tr></thead>
+      <tbody>
+        <tr style="background:#ffffff;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[6]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[5]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[4]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[3]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[2]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[1]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[0]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;">&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  </div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยละเอียดและหลักการทางทฤษฎี (Complete Solution &amp; Principles):</div>
+    
+    <p><strong>1. ตารางประมวลผล Shortest Path (การขีดฆ่าอัปเดตตามลำดับ BFS):</strong></p>
+    <div style="display:flex; gap:20px; flex-wrap:wrap; margin:15px 0; align-items:flex-start;">
+  <div style="flex:2; min-width:320px;">
+    <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px;">📝 เฉลยละเอียดตารางประมวลผล Shortest Path (การขีดฆ่าอัปเดตตามลำดับ BFS) (Source = 1)</div>
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Tahoma, sans-serif; font-size:13px; border:2px solid #334155;">
+      <thead>
+        <tr style="background:#1e293b; color:#ffffff;">
+          <th style="padding:8px 6px; border:1px solid #475569; width:65px;">Vertex (v)</th>
+          <th style="padding:8px 6px; border:1px solid #475569; width:75px;">Known</th>
+          <th style="padding:8px 6px; border:1px solid #475569;">Dist (Dv)</th>
+          <th style="padding:8px 6px; border:1px solid #475569;">Path (Pv)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#eff6ff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">1</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">0</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">0</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">2</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">1</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">1</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">3</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">4</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">4</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">1</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">1</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">5</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">2</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">6</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">4</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:7px 6px; border:1px solid #cbd5e1; font-weight:bold; color:#0f172a;">7</td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#dc2626;">F</del> <strong style="color:#15803d;">T</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">&infin;</del> <strong style="color:#1e40af;">2</strong></td>
+          <td style="padding:7px 6px; border:1px solid #cbd5e1;"><del style="color:#94a3b8;">0</del> <strong style="color:#1e40af;">2</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="flex:1; min-width:160px; max-width:210px;">
+    <div style="font-size:13px; font-weight:bold; color:#1e293b; margin-bottom:6px; text-align:center;">📦 Queue Buffer</div>
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Tahoma, sans-serif; font-size:12.5px; border:2px solid #475569;">
+      <thead><tr style="background:#334155; color:#ffffff;"><th style="padding:6px; border:1px solid #475569; width:45px;">Index</th><th style="padding:6px; border:1px solid #475569;">Vertex</th></tr></thead>
+      <tbody>
+        <tr style="background:#ffffff;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[6]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">6</strong></td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[5]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">3</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[4]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">7</strong></td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[3]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">5</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[2]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">4</strong></td>
+        </tr>
+        <tr style="background:#f8fafc;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[1]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">2</strong></td>
+        </tr>
+        <tr style="background:#ffffff;">
+          <td style="padding:6px 4px; border:1px solid #cbd5e1; font-weight:600; color:#64748b; font-family:Consolas, monospace;">[0]</td>
+          <td style="padding:6px 4px; border:1px solid #cbd5e1;"><strong style="color:#1e40af;">1</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size:11px; color:#475569; background:#f1f5f9; padding:8px; border-radius:6px; margin-top:8px; border:1px solid #e2e8f0; line-height:1.5;">
+      <strong>Queue Final:</strong><br/>• front = 0, back = 6<br/>• currentSize = 0 (Empty when done)
+    </div>
+  </div>
+</div>
+
+    <p><strong>2. ผังจำลอง Circular Queue เมื่อจบขั้นตอน:</strong></p>
+    <div style="max-width:560px; margin:14px 0;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 270" width="100%" height="270" style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.05);">
+  <defs>
+    <marker id="arrow-front" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#dc2626"/>
+    </marker>
+    <marker id="arrow-back" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#ffffff" rx="8"/>
+  <text x="240" y="24" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">สถานะ Circular Queue เมื่อจบขั้นตอน Shortest Path (front=0, back=6)</text>
+  <rect x="55" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="79" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[0]</text>
+  <text x="79" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">1</text>
+  <line x1="79" y1="139" x2="79" y2="110" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-front)"/>
+  <text x="79" y="153" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="11" font-weight="bold" fill="#dc2626">front=0</text>
+  <rect x="103" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="127" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[1]</text>
+  <text x="127" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">2</text>
+  <rect x="151" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="175" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[2]</text>
+  <text x="175" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">4</text>
+  <rect x="199" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="223" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[3]</text>
+  <text x="223" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">5</text>
+  <rect x="247" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="271" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[4]</text>
+  <text x="271" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">7</text>
+  <rect x="295" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="319" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[5]</text>
+  <text x="319" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">3</text>
+  <rect x="343" y="65" width="48" height="42" fill="#eff6ff" stroke="#475569" stroke-width="1.8"/>
+  <text x="367" y="57" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#64748b">[6]</text>
+  <text x="367" y="91" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="15" font-weight="bold" fill="#1e3a8a">6</text>
+  <line x1="367" y1="175" x2="367" y2="110" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-back)"/>
+  <text x="367" y="189" text-anchor="middle" font-family="Segoe UI, Tahoma, sans-serif" font-size="11" font-weight="bold" fill="#16a34a">back=6</text>
+  <rect x="416" y="50" width="160" height="185" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" rx="6"/>
+  <text x="428" y="72" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">สถานะพอยน์เตอร์จบลูป:</text>
+  <text x="428" y="96" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" fill="#334155">• <tspan font-weight="bold" fill="#dc2626">front</tspan> = 0</text>
+  <text x="428" y="118" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" fill="#334155">• <tspan font-weight="bold" fill="#16a34a">back</tspan> = 6</text>
+  <text x="428" y="140" font-family="Segoe UI, Tahoma, sans-serif" font-size="12" fill="#334155">• <tspan font-weight="bold" fill="#2563eb">currentSize</tspan> = 0</text>
+  <line x1="426" y1="152" x2="566" y2="152" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="428" y="172" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" fill="#64748b">สูตร Enqueue:</text>
+  <text x="428" y="188" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" font-family="Consolas" fill="#0f172a">back = (back+1)%7</text>
+  <text x="428" y="208" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" fill="#64748b">สูตร Dequeue:</text>
+  <text x="428" y="224" font-family="Segoe UI, Tahoma, sans-serif" font-size="10.5" font-family="Consolas" fill="#0f172a">front = (front+1)%7</text>
+</svg>
+    </div>
+
+    <p><strong>3. คำตอบเส้นทางและระยะทาง (Strict Comma Notation):</strong></p>
+    <ul>
+      <li><strong>Shortest Path to Vertex 5:</strong> <strong style="color:#1e40af; font-size:16px;">1, 4, 5</strong> (หรือ <code>1, 2, 5</code>) &mdash; ความยาว (Length) = <strong>2</strong> (หรือ 2 เส้น)</li>
+      <li><strong>Shortest Path to Vertex 7:</strong> <strong style="color:#1e40af; font-size:16px;">1, 2, 7</strong> (หรือ <code>1, 4, 7</code>) &mdash; ความยาว (Length) = <strong>2</strong> (หรือ 2 เส้น)</li>
+    </ul>
+
+    <div class="alert-box">
+      <strong>🚨 กับดักได้ 0 คะแนนขั้นวิกฤต (Zero-Mark Arrow Trap):</strong><br>
+      อ.ประดิษฐ์ สั่งเน้นย้ำหลายรอบว่า <strong>ห้ามเขียนลูกศรเด็ดขาด!</strong> (เช่น ห้ามเขียน <code>1 -&gt; 4 -&gt; 5</code>) ใครเขียนลูกศรจะถูกปรับ <strong>0 คะแนนทันทีทั้งข้อ</strong>!<br>
+      ต้องเขียนเป็นลำดับคั่นด้วยเครื่องหมายจุลภาคเท่านั้น เช่น <strong><code>1, 4, 5</code></strong><br>
+      และหน่วยของความยาวตอบเป็นจำนวน <strong>"เส้น" (Edges)</strong> ห้ามตอบหน่วยนิ้วหรือเซนติเมตร
+    </div>
+  </div>
+
+  <!-- QUESTION 7 -->
+  <h2 class="part-title">Question 7: Properties &amp; Theory Calculations (10 คะแนน)</h2>
+
+  <h3 class="question-title">
+    <span>7.1 Data Structure Properties, Ideal Hash, Memory Waste &amp; Tree Formulas</span>
+    <span class="score-badge">Score: 10 Marks</span>
+  </h3>
+  <p><strong>Question Statement (EN):</strong> Answer the following sub-questions thoroughly:</p>
+  <ol>
+    <li>Which data structures are governed by <strong>2 properties</strong>? Which are governed by <strong>3 properties</strong>? State each property clearly.</li>
+    <li>State 3 ideal theoretical properties of Hash Functions. Which one is impossible in practice, and why (2 reasons)?</li>
+    <li>In a directed graph with $|V| = 7$ vertices and $|E| = 12$ edges stored as a $7 \times 7$ Adjacency Matrix:
+      <ul>
+        <li>What percentage of memory entries are actively used (contain 1)?</li>
+        <li>What percentage of memory entries are wasted (contain 0)?</li>
+      </ul>
+    </li>
+    <li>How many edges are in a Complete Graph $K_{16}$? (Calculate as an exact integer).</li>
+    <li>A Complete Binary Tree has height $H = 10$. What are the minimum and maximum possible number of nodes?</li>
+    <li>State the 1-based array formulas for finding the Parent, Left Child, and Right Child of node at index $i$ in a Binary Heap.</li>
+  </ol>
+
+  <div class="thai-trans">
+    <strong>(คำแปลภาษาไทย):</strong> ตอบคำถามเชิงทฤษฎีและการคำนวณ: โครงสร้างใดมี 2 คุณสมบัติ/3 คุณสมบัติ, คุณสมบัติในอุดมคติของ Hash Function, เปอร์เซ็นต์ความสูญเสียในหน่วยความจำของ Adjacency Matrix, จำนวนเส้นใน Complete Graph $K_{16}$, จำนวนโหนดต่ำสุดและสูงสุดของ Complete Binary Tree สูง 10, และสูตร Parent/Left/Right Child ในอาร์เรย์ฮีป
+  </div>
+
+  <div class="solution-box">
+    <div class="solution-title">💡 เฉลยละเอียดและหลักการทางทฤษฎี (Complete Solution &amp; Principles):</div>
+    
+    <ol>
+      <li><strong>โครงสร้างข้อมูลที่มี 2 คุณสมบัติ:</strong><br>
+        • <strong>Binary Min-Heap:</strong> (1) Structure Property (Complete Binary Tree), (2) Heap-Order Property (Parent &le; Children)<br>
+        • <strong>AVL Tree:</strong> (1) Binary Search Tree Property, (2) Balance Property ($|h_L - h_R| \le 1$)<br>
+        <strong>โครงสร้างข้อมูลที่มี 3 คุณสมบัติ:</strong><br>
+        • <strong>Hashing:</strong> (1) Deterministic, (2) Uniform Distribution, (3) Fast Computation / Range Matching
+      </li>
+      <li><strong>คุณสมบัติในอุดมคติของ Hash Function 3 ข้อ:</strong><br>
+        1. คำนวณง่ายและรวดเร็ว ($O(1)$)<br>
+        2. กระจายคีย์ได้สม่ำเสมอทั่วทุกช่องในตาราง (Uniform Distribution)<br>
+        3. คีย์ที่ต่างกันต้องได้ค่าดัชนีต่างกัน (One-to-One Mapping หรือ Perfect Hashing)<br>
+        <strong>ข้อที่เป็นไปไม่ได้ในทางปฏิบัติ:</strong> <strong>ข้อ 3 (One-to-One Mapping)</strong><br>
+        <em>สาเหตุ 2 ประการ:</em><br>
+        (1) ขนาดของ Key Space มีค่าเป็นอนันต์หรือใหญ่กว่าขนาด TableSize มาก ($|K| \gg \text{TableSize}$)<br>
+        (2) กฎช่องนกพิราบ (Pigeonhole Principle): เมื่อจำนวนคีย์มากกว่าจำนวนช่อง ย่อมเกิด Collision อย่างหลีกเลี่ยงไม่ได้
+      </li>
+      <li><strong>การคำนวณร้อยละความสูญเสียใน RAM (Adjacency Matrix $7 \times 7$):</strong><br>
+        • พื้นที่ทั้งหมดในตาราง: $7 \times 7 = \mathbf{49 \text{ ช่อง}}$<br>
+        • ช่องที่เป็น 1 (Used): $\frac{12}{49} \times 100 \approx \mathbf{24.48\%}$<br>
+        • ช่องที่เป็น 0 (Wasted): $\frac{37}{49} \times 100 \approx \mathbf{75.52\%}$ (สูญเปล่าในหน่วยความจำ)
+      </li>
+      <li><strong>จำนวนเส้นเชื่อมใน Complete Graph $K_{16}$:</strong><br>
+        $$\text{Edges} = \frac{N(N-1)}{2} = \frac{16 \times 15}{2} = \frac{240}{2} = \mathbf{120 \text{ เส้น}}$$
+      </li>
+      <li><strong>จำนวนโหนดของ Complete Binary Tree สูง $H = 10$:</strong><br>
+        • น้อยที่สุด (Minimum Nodes): $2^H = 2^{10} = \mathbf{1,024 \text{ โหนด}}$ (หรือ $H+1 = 11$ หากเป็นโหนดแบบ Binary Tree ทั่วไป)<br>
+        • มากที่สุด (Maximum Nodes): $2^{H+1} - 1 = 2^{11} - 1 = 2,048 - 1 = \mathbf{2,047 \text{ โหนด}}$
+      </li>
+      <li><strong>สูตรการคำนวณตำแหน่งใน 1-Based Array Binary Heap:</strong><br>
+        • $\text{Parent}(i) = \lfloor i / 2 \rfloor$ (หรือ <code>i // 2</code> ใน Python)<br>
+        • $\text{Left Child}(i) = 2 \times i$<br>
+        • $\text{Right Child}(i) = 2 \times i + 1$
+      </li>
+    </ol>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART 2: INTERVIEW & WHITEBOARD SECRETS                                    -->
+  <!-- ========================================================================= -->
+  <h1 class="section-heading">🎯 ตอนที่ 2: คลังข้อสอบข้อเขียนย่อย &amp; หลักการที่ ดร.ประดิษฐ์ ย้ำในห้องเรียน</h1>
+
+  <div class="theory-box">
+    <h3 style="margin-top:0; color:#1e40af;">2.1 หลักการ Map ของ Binary Heap (Complete Binary Tree to 1D Array)</h3>
+    <p>ทำไม Binary Heap จึงไม่จำเป็นต้องใช้ Pointer เชื่อมโยงเหมือน Linked Tree ทั่วไป?</p>
+    <p><strong>คำตอบ:</strong> เพราะคุณสมบัติ <strong>Complete Binary Tree</strong> รับประกันว่าโหนดจะถูกเติมเต็มชิดซ้ายเสมอ จึงสามารถ Map ลงใน 1D Array ได้โดยไม่มีช่องว่าง (Gaps) ทำให้หา Parent และ Child ได้ด้วยสูตรคณิตศาสตร์ $\lfloor i/2 \rfloor, 2i, 2i+1$ ได้ทันทีในเวลา $O(1)$ ประหยัด Memory ของ Pointer และเพิ่ม Cache Locality</p>
+  </div>
+
+  <div class="theory-box">
+    <h3 style="margin-top:0; color:#1e40af;">2.2 การ Trace ฟังก์ชัน insert(x) ด้วยตัวแปร hole</h3>
+    <p>การแทรกข้อมูลใน Binary Min-Heap จะเปิดช่องว่างที่เรียกว่า <code>hole</code> ที่ตำแหน่งท้ายสุดของอาร์เรย์ (<code>currentSize + 1</code>) จากนั้นทำการเปรียบเทียบค่า <code>x</code> กับ Parent ที่ <code>hole // 2</code> หาก <code>x &lt; array[hole // 2]</code> จะเลื่อนค่า Parent ลงมาที่ <code>hole</code> และเลื่อน <code>hole = hole // 2</code> จนกว่าจะเจอตำแหน่งที่เหมาะสม (Percolate Up) จึงใส่ <code>x</code> ลงใน <code>hole</code></p>
+  </div>
+
+  <div class="theory-box">
+    <h3 style="margin-top:0; color:#1e40af;">2.3 ไวยากรณ์การเรียกเมธอด deleteMin() ใน Python</h3>
+    <p>ในภาษา Python คลาส BinaryHeap เมธอด <code>deleteMin()</code> <strong>ไม่มีการรับพารามิเตอร์ใดๆ</strong></p>
+    <pre><code>min_val = heap.deleteMin()  # ถูกต้อง! ห้ามใส่พารามิเตอร์ เช่น heap.deleteMin(x) เด็ดขาด</code></pre>
+  </div>
+
+  <div class="theory-box">
+    <h3 style="margin-top:0; color:#1e40af;">2.4 นิยามภาษาอังกฤษของหลักการ Wrap Around ใน Hashing &amp; Queue</h3>
+    <p><strong>Wrap Around Definition:</strong> "The circular indexing mechanism where the pointer or probe index that reaches the end of the array (<code>size - 1</code>) cycles back to the beginning (<code>index 0</code>) using the modulo operator (<code>index % size</code>), avoiding array boundary overflow."</p>
+  </div>
+
+  <div class="theory-box">
+    <h3 style="margin-top:0; color:#1e40af;">2.5 การเลือกค่า R ในสูตร Double Hashing</h3>
+    <p>ในสูตร $f(i) = i \times (R - (X \bmod R))$ ค่า $R$ จะต้องเป็น <strong>จำนวนเฉพาะ (Prime Number) ที่น้อยกว่า TableSize</strong> เสมอ เพื่อให้ค่า step size ที่ได้เป็นจำนวนเต็มบวก ($1 \le \text{step} \le R$) และเป็น Coprime กับ TableSize ป้องกันการวนลูปไม่ทั่วตาราง</p>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PART 3: ZERO-SCORE TRAPS MATRIX                                          -->
+  <!-- ========================================================================= -->
+  <h1 class="section-heading">🛑 ตอนที่ 3: ตารางสรุป 12 กับดักได้ 0 คะแนน (Zero-Score Traps Cheat Sheet)</h1>
+
+  <table>
+    <thead>
+      <tr style="background:#1e293b; color:white;">
+        <th style="width:50px; text-align:center;">ข้อที่</th>
+        <th style="width:220px;">หัวข้อ / โจทย์</th>
+        <th>กับดักที่ทำให้ได้ 0 คะแนน</th>
+        <th>คำตอบที่ถูกต้องตามเกณฑ์ อ.ประดิษฐ์</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">1</td>
+        <td><strong>การเขียน Shortest Path</strong></td>
+        <td>เขียนลูกศร เช่น <code>1 -&gt; 4 -&gt; 5</code> หรือ <code>A -&gt; C -&gt; D</code></td>
+        <td>เขียนคั่นด้วย Comma เท่านั้น: <strong><code>1, 4, 5</code></strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">2</td>
+        <td><strong>หน่วยของความยาววิถี (Path Length)</strong></td>
+        <td>ตอบหน่วยเป็นนิ้ว, ซม., หรือกิโลเมตร</td>
+        <td>ตอบเป็นจำนวน <strong>"เส้น"</strong> (Edges) หรือตัวเลขจำนวนเต็ม</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">3</td>
+        <td><strong>Topological Ordering</strong></td>
+        <td>เขียนลูกศร เช่น <code>5 -&gt; 7 -&gt; 2 -&gt; 1</code></td>
+        <td>เขียนเป็นลำดับคั่นด้วย Comma: <strong><code>5, 7, 2, 1, 3, 4, 6</code></strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">4</td>
+        <td><strong>Complete Graph</strong></td>
+        <td>ตอบติดอยู่ในรูปสูตร เช่น $16(15)/2$</td>
+        <td>คำนวณเป็นตัวเลขจำนวนเต็ม: <strong><code>120 เส้น</code></strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">5</td>
+        <td><strong>Binary Heap Array Index 0</strong></td>
+        <td>ใส่ข้อมูล Root ลงที่ช่อง 0</td>
+        <td>ช่อง 0 เว้นว่าง (unused/sentinel) Root ต้องเริ่มที่ <strong>ช่อง 1</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">6</td>
+        <td><strong>การเรียก deleteMin() ใน Python</strong></td>
+        <td>ส่งค่าเข้าไป เช่น <code>heap.deleteMin(2)</code></td>
+        <td>เรียกแบบไม่มีพารามิเตอร์: <strong><code>heap.deleteMin()</code></strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">7</td>
+        <td><strong>นิยาม Connect ใน Graph</strong></td>
+        <td>แปลว่า "ต่อเชื่อม"</td>
+        <td>แปลว่า <strong>"ต่อเนื่อง"</strong> (มีวิถีเดินถึงกันได้)</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">8</td>
+        <td><strong>Adjacent ใน Directed Graph</strong></td>
+        <td>ตอบสลับทิศทาง เช่น $(u, v)$ แล้วบอกว่า $u$ adjacent $v$</td>
+        <td>$(u, v)$ แปลว่า <strong>$v$ adjacent $u$</strong> (หัวลูกศร adjacent ท้ายลูกศร)</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">9</td>
+        <td><strong>การนับจำนวนการชนใน Hashing</strong></td>
+        <td>เผลอนับการชนของคีย์ตัวอื่นมารวมด้วย (เช่น ตอบ 6 ครั้ง) หรือนับการชนและการแก้การชนแยกเป็น 2 ครั้ง</td>
+        <td>นับเฉพาะการชนของตัวมันเองเท่านั้น (ตอบ 3 ครั้ง) และการชนกับการแก้การชนในแต่ละครั้งนับเป็น 1 ครั้ง ไม่ใช่นับเป็น 2 ครั้ง</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">10</td>
+        <td><strong>Circular Queue Wrap Around</strong></td>
+        <td>บวก index เกินขนาดตาราง (เช่น 7) โดยไม่ mod</td>
+        <td>ใช้สูตร Modulo เสมอ: <code>(index + 1) % TableSize</code></td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">11</td>
+        <td><strong>Unweighted Shortest Path</strong></td>
+        <td>ใช้ Dijkstra หรือคำนวณน้ำหนัก</td>
+        <td>ใช้ <strong>BFS + Queue</strong> เท่านั้น</td>
+      </tr>
+      <tr>
+        <td style="text-align:center; font-weight:bold;">12</td>
+        <td><strong>Insertion Sort Worst Case</strong></td>
+        <td>สับสนระหว่างจำนวนครั้งที่เปรียบเทียบกับการเลื่อนตำแหน่ง</td>
+        <td>จำนวนครั้งเลื่อนตำแหน่งเท่ากับ $N(N-1)/2$ ในกรณีเรียงกลับหลัง</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center; margin-top:40px; padding-top:20px; border-top:1px solid #cbd5e1; color:#64748b; font-size:14px;">
+    เอกสารรวบรวมข้อสอบปลายภาคและเฉลยละเอียด Data Structures &amp; Algorithms (มจพ.) | จัดทำขึ้นเพื่อการเตรียมสอบปลายภาคอย่างสมบูรณ์แบบ
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">
+  🖨️ พิมพ์ข้อสอบ / บันทึก PDF (Print Exam)
+</button>
+
+</body>
+</html>
