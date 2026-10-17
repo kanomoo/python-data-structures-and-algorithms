@@ -145,7 +145,8 @@ const CURRICULUM_CATEGORIES = [
       '14.1 - Classroom Lecture Hashing, Open Addressing & Rehashing.md'
     ],
     pdfs: [
-      { name: 'Lecture 7 Hashing.pdf', title: 'สไลด์หลัก: Lecture 7 Hash Tables & Collision Resolution', kind: 'slide', path: 'Lectures/Lecture 7 Hashing/Lecture 7 Hashing.pdf' }
+      { name: 'Lecture 7 Hashing.pdf', title: 'สไลด์หลัก: Lecture 7 Hash Tables & Collision Resolution', kind: 'slide', path: 'Lectures/Lecture 7 Hashing/Lecture 7 Hashing.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 7.pdf', title: 'สไลด์หลักสูตรใหม่: Lecture 7 Hashing', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 7.pdf' }
     ]
   },
   {
@@ -164,6 +165,8 @@ const CURRICULUM_CATEGORIES = [
     pdfs: [
       { name: 'Lecture 8 Priority Queue (Heap).pdf', title: 'สไลด์หลัก: Lecture 8 Priority Queue & Binary Heap', kind: 'slide', path: 'Lectures/Lecture 8 Priority Queue (Heap)/Lecture 8 Priority Queue (Heap).pdf' },
       { name: 'Lecture 8.1 Priority Queue (Insert and deleteMin).pdf', title: 'สไลด์หลัก: Lecture 8.1 Binary Heap (Insert & DeleteMin)', kind: 'slide', path: 'Lectures/Lecture 8.1 Priority Queue (Insert and deleteMin)/Lecture 8.1 Priority Queue (Insert and deleteMin).pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 8.pdf', title: 'สไลด์หลักสูตรใหม่: Lecture 8 Priority Queue', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 8.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 8.1.pdf', title: 'สไลด์หลักสูตรใหม่: Lecture 8.1 Binary Heap', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 8.1.pdf' },
       { name: 'For example Binary Heap.pdf', title: 'ใบงานโจทย์: For Example Binary Heap (Percolate Up/Down)', kind: 'worksheet', path: 'Lectures/Lecture 8.1 Priority Queue (Insert and deleteMin)/For example Binary Heap.pdf' },
       { name: 'For example Binary Heap_solved.pdf', title: 'เฉลยอาจารย์: For Example Binary Heap', kind: 'solved', path: 'Lectures/Lecture 8.1 Priority Queue (Insert and deleteMin)/For example Binary Heap_solved.pdf' },
       { name: 'Assignment 3 Inclass.pdf', title: 'โจทย์การบ้าน 3: Binary Min-Heap In-class แทรก 15 ค่า', kind: 'assignment', path: 'Lectures/Assignment 3 Binary Heap/Assignment 3 Inclass.pdf' },
@@ -185,6 +188,7 @@ const CURRICULUM_CATEGORIES = [
       { name: 'Lecture 9 Sorting.pdf', title: 'สไลด์หลัก: Lecture 9 Sorting Algorithms', kind: 'slide', path: 'Lectures/Lecture 9 Sorting/Lecture 9 Sorting.pdf' },
       { name: 'Lecture 9.1.pdf', title: 'สไลด์เสริม: Lecture 9.1 Sorting', kind: 'slide', path: 'Lectures/Lecture 9 Sorting/Lecture 9.1.pdf' },
       { name: 'DATA STRUCTURES & ALGORITHMS_Lecture 9 168.pdf', title: 'สไลด์ปรับปรุง Edit168: Lecture 9 Sorting', kind: 'slide', path: 'Lectures/Lecture 9 Sorting/New/DATA STRUCTURES & ALGORITHMS_Lecture 9 168.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 9 168.pdf', title: 'สไลด์หลักสูตรใหม่: Lecture 9 Sorting', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 9 168.pdf' },
       { name: 'For Example Bubble sort.pdf', title: 'ใบงานโจทย์: Bubble Sort Tracing & Swaps', kind: 'worksheet', path: 'Lectures/Lecture 9 Sorting/For Example Bubble sort.pdf' },
       { name: 'For Example Bubble sort_solved.pdf', title: 'เฉลยอาจารย์: Bubble Sort Tracing', kind: 'solved', path: 'Lectures/Lecture 9 Sorting/For Example Bubble sort_solved.pdf' },
       { name: 'For Example Selection sort.pdf', title: 'ใบงานโจทย์: Selection Sort Tracing', kind: 'worksheet', path: 'Lectures/Lecture 9 Sorting/For Example Selection sort.pdf' },
@@ -207,6 +211,7 @@ const CURRICULUM_CATEGORIES = [
     ],
     pdfs: [
       { name: 'Lecture 10 Graph.pdf', title: 'สไลด์หลัก: Lecture 10 Graph Fundamentals & Representations', kind: 'slide', path: 'Lectures/Lecture 10 Graph/Lecture 10 Graph.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 10 168.pdf', title: 'สไลด์หลักสูตรใหม่: Lecture 10 Graph', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 10 168.pdf' },
       { name: 'Topological sort.pdf', title: 'ใบงานโจทย์: Topological Sort (Kahn Algorithm)', kind: 'worksheet', path: 'Lectures/Lecture 10 Graph/Topological sort.pdf' },
       { name: 'Topological sort_solved.pdf', title: 'เฉลยอาจารย์: Topological Sort', kind: 'solved', path: 'Lectures/Lecture 10 Graph/Topological sort_solved.pdf' }
     ]
@@ -222,6 +227,7 @@ const CURRICULUM_CATEGORIES = [
     ],
     pdfs: [
       { name: 'Lecture 11 Shortest path.pdf', title: 'สไลด์หลัก: Lecture 11 Shortest Path Algorithms & Dijkstra', kind: 'slide', path: 'Lectures/Lecture 11 Shortest path/Lecture 11 Shortest path.pdf' },
+      { name: 'DATA STRUCTURES - ALGORITHMS_Lecture 11 168.pdf', title: 'สไลด์หลักสูตรใหม่: Lecture 11 Shortest Path', kind: 'slide', path: 'New-Lectures/DATA STRUCTURES - ALGORITHMS_Lecture 11 168.pdf' },
       { name: 'For Example Graph.pdf', title: 'ใบงานโจทย์: Unweighted Shortest Path (BFS)', kind: 'worksheet', path: 'Lectures/Lecture 11 Shortest path/For Example Graph.pdf' },
       { name: 'For Example Graph_solved.pdf', title: 'เฉลยอาจารย์: Unweighted Shortest Path & Dijkstra', kind: 'solved', path: 'Lectures/Lecture 11 Shortest path/For Example Graph_solved.pdf' },
       { name: 'Assign 4 Shortest Path.pdf', title: 'โจทย์การบ้าน 4: Graph BFS Shortest Path & TopoSort', kind: 'assignment', path: 'Lectures/Assignment 4 Shortest Path/For Example Graph.pdf' },
@@ -251,6 +257,8 @@ const CURRICULUM_CATEGORIES = [
     title: '🎯 ศูนย์รวมแนวข้อสอบ & สรุปสูตร (Master Exam Hub & Cheat Sheet)',
     description: 'รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน, แนวข้อสอบปลายภาค 2568, ข้อสอบจำลอง Midterm Real Mock และตาราง Big-O',
     files: [
+      '11.10 - Final Exam Real Paper 2564 Master Breakdown (วิเคราะห์ข้อสอบปลายภาคฉบับจริงปี 2564 อ_ประดิษฐ์ 7 ข้อ 80 คะแนนเต็ม พร้อมลายมือเฉลยรุ่นพี่).md',
+      '11.9 - Final Exam Past Paper Breakdown 2-61 & 2-xx (วิเคราะห์เจาะลึกข้อสอบจริงปลายภาคปีเก่า 8 ข้อใหญ่ 100 คะแนนเต็ม).md',
       '11.8 - Final Exam Complete Practice Suite (ชุดข้อสอบปลายภาคฉบับสมบูรณ์ 7 ข้อ 70 คะแนน พร้อมเฉลยละเอียด).md',
       '11.7 - รวมข้อสอบจริงที่อาจารย์พูดในห้องเรียน (All Classroom Leaked Exam Problems & Solutions).md',
       '11.6 - Final Exam Real Classroom Prep & Solutions.md',

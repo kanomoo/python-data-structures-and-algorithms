@@ -1,0 +1,12 @@
+แนวทางข้อสอบปลายภาค คะแนนในข้อสอบ 70 คะแนน หาร 2 เหลือ 35 คะแนนเปิดตำรา ใช้เครื่องคิดเลขได้ ห้ามใช้โทรศัพท์มือถือทุกกรณี
+1. Hashing
+2. binary heap
+3. insertion sort
+4. selection sort/bubble sort
+5. topological sort
+6. unweighted shortest path
+7. คำถามย่อยๆ หลายข้อ เช่น properties โครงสร้างอะไรเอ่ยที่มี 2, 3 
+	three properties two properties
+
+
+พวกที่มีการคำนวณใช้สูตรเปอร์เซนต์ what percentage of เป็นต้น how many
